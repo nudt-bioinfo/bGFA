@@ -1,0 +1,13 @@
+digraph "GFA::addWalk"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="GFA::addWalk",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Add a new walk to the GFA."];
+  Node1 -> Node2 [id="edge3_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="Walk::getStoreSize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_walk.html#ae304ec3492b221d72c3b3f0f21656b7f",tooltip="Get the storage size of the Walk in uword_t units."];
+  Node2 -> Node3 [id="edge4_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="Walk::setStoreSize",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_walk.html#a946f4a98833645f7dadf3924490a411e",tooltip="Compute storage size in uword_t units."];
+}

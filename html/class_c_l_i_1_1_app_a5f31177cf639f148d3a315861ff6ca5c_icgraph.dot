@@ -1,0 +1,24 @@
+digraph "CLI::App::get_parent"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="CLI::App::get_parent",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Get the parent of this subcommand (or nullptr if main app)."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CLI::Option_group::\ladd_option",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_option__group.html#a29c346abf87173bccd860d3a9813a5c5",tooltip="Add an existing option to the Option_group."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CLI::Option_group::\ladd_options",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_option__group.html#afdc8b0b76fcc2ef4df8fbf2218edfd20",tooltip="Add an existing option to the Option_group."];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="CLI::Option_group::\ladd_options",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_option__group.html#a449fcf469561e36a9276707097fd9935",tooltip="Add a bunch of options to the group."];
+  Node2 -> Node4 [id="edge4_Node000002_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node5 [id="edge5_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="CLI::Option_group::\ladd_subcommand",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_option__group.html#a1be93903743c2cdc64f1237ca956ff0b",tooltip="Add an existing subcommand to be a member of an option_group."];
+  Node5 -> Node5 [id="edge6_Node000005_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge7_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="CLI::Formatter::make_help",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_formatter.html#a4e7b7e57dc85c2151c42916ab9715993",tooltip="This puts everything together."];
+  Node1 -> Node7 [id="edge8_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="CLI::ConfigBase::to\l_config",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_config_base.html#af942b73981e9e9fb5b0ced54b63b1e61",tooltip="Convert an app into a configuration."];
+  Node7 -> Node7 [id="edge9_Node000007_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

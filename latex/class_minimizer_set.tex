@@ -1,0 +1,719 @@
+\doxysection{Minimizer\+Set Class Reference}
+\hypertarget{class_minimizer_set}{}\label{class_minimizer_set}\index{MinimizerSet@{MinimizerSet}}
+
+
+Class for managing minimizers in a graph.  
+
+
+
+
+{\ttfamily \+\#include $<$bgfa\+\_\+seed.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{Minimizer\+Set}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor initializes with default minimizer length and window size. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_minimizer_set_a162f794326a3d99321446257e1892ee2}{Minimizer\+Set}} (int length, int window\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Constructor with specified minimizer length and window size. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_minimizer_set_a4e697236e8be3d8525967b7c46467796}{Minimizer\+Set}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} length, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} window\+\_\+size, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} mode)
+\begin{DoxyCompactList}\small\item\em Constructor with specified minimizer length, window size, and mode. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_minimizer_set_ac12d20a2cb40334f1ab08cc19555d086}{Minimizer\+Set}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} gfa, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} length, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} window\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Constructor that extracts minimizers from a \doxylink{class_g_f_a}{GFA} graph. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_minimizer_set_a0889daf4707fbed536dc3583ffa45836}{Minimizer\+Set}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} gfa, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} length, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} window\+\_\+size, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} mode)
+\begin{DoxyCompactList}\small\item\em Constructor that extracts minimizers from a \doxylink{class_g_f_a}{GFA} graph with specified mode. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_minimizer_set_a6e5b11efc34e5a739f4c15b7c1451649}{Minimizer\+Set}} (\doxymbox{\hyperlink{class_segment}{Segment}} segment, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} length, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} window\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Constructor that extracts minimizers from a \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_minimizer_set_a01a7fbadc4fcc9bcb06824f2fa572156}{Minimizer\+Set}} (\doxymbox{\hyperlink{class_segment}{Segment}} segment, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} length, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} window\+\_\+size, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} mode)
+\begin{DoxyCompactList}\small\item\em Constructor that extracts minimizers from a \doxylink{class_segment}{Segment} with specified mode. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_minimizer_set_a02826c035cac4307033da9c26d83c4fd}{Minimizer\+Set}} (const std::\+string \&filename)
+\begin{DoxyCompactList}\small\item\em Constructor that loads minimizers from a b\+MIN file. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_minimizer_set_ab35f67b6420b03e4c5f6cd637eb4cf3b}{get\+Minimizer\+Num}} () const
+\begin{DoxyCompactList}\small\item\em Get the number of minimizers stored. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e}{get\+Length}} () const
+\begin{DoxyCompactList}\small\item\em Get the minimizer length. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_minimizer_set_a21678694eb637e1989367d7390290227}{get\+Window\+Size}} () const
+\begin{DoxyCompactList}\small\item\em Get the minimizer window size. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_minimizer_set_a017be930961cc6b2045ad052c52c0159}{get\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Get the minimizer mode. \end{DoxyCompactList}\item 
+const std::\+unordered\+\_\+map$<$ \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\+\_\+t}}, \doxymbox{\hyperlink{class_minimizer}{Minimizer}} $>$ \& \doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{get\+Minimizer\+Table}} () const
+\begin{DoxyCompactList}\small\item\em Get the minimizer table. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_acd67243f2d4b8a0bc27ba4ad46b5521b}{set\+Length}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} length)
+\begin{DoxyCompactList}\small\item\em Set the minimizer length, it can only be set when the minimizer table is empty. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_a8d680e1d7fd2f5a0d45c5f99025c2778}{set\+Window\+Size}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} window\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Set the minimizer window size, it can only be set when the minimizer table is empty. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_ab28a65c454e8e804b6905306856371a2}{set\+Mode}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} mode)
+\begin{DoxyCompactList}\small\item\em Set the minimizer mode, it can only be set when the minimizer table is empty. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_a7b687a54acbe06f0dab19a6c8c71efb1}{print2bin}} ()
+\begin{DoxyCompactList}\small\item\em Print minimizer data in binary format. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_ade4c7986f06ca078bf0e16c467f5c86f}{write\+Seed2bmin}} (const std::\+string \&filename)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_minimizer_set_a7ae3c696c3190192397bfae20434fd9e}{get\+Minimizer\+From\+GFA}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} gfa)
+\begin{DoxyCompactList}\small\item\em Get minimizers from a graph. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_a07a402b5e207dcb7836c7c4b3eac6618}{get\+Minimizer\+Frombmin}} (const std::\+string \&filename)
+\begin{DoxyCompactList}\small\item\em Load minimizers from a b\+MIN file. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_minimizer_set_a06193efad39c7c590593a104acfd50f5}{bin2sequence}} (\doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\+\_\+t}} bin\+\_\+strm, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} l\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Convert binary encoded sequence to string. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_a8da7253af1079acd28b88bf2b986be2e}{get\+Minimizer\+From\+Segment}} (\doxymbox{\hyperlink{class_segment}{Segment}} segment)
+\begin{DoxyCompactList}\small\item\em Get minimizers from a segment based on the specified mode. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_a4e9d25ae18e65dd189dd30a985658f5f}{get\+Minimizer\+Of\+Node\+\_\+\+Single\+Mode}} (\doxymbox{\hyperlink{class_segment}{Segment}} node, bool is\+\_\+reverse=false)
+\begin{DoxyCompactList}\small\item\em Get minimizers of a node in single strand mode. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_a1d456e90e524d029b3286645fcababb4}{get\+Minimizer\+Of\+Node\+\_\+\+Single\+Reverse\+Mode}} (\doxymbox{\hyperlink{class_segment}{Segment}} node)
+\begin{DoxyCompactList}\small\item\em Get minimizers of a node in single strand reverse mode. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_minimizer_set_a6417ba26cd0e085531cd226b77bb5611}{get\+Minimizer\+Of\+Node\+\_\+\+Double\+Mode}} (\doxymbox{\hyperlink{class_segment}{Segment}} node)
+\begin{DoxyCompactList}\small\item\em Get minimizers of a node in double strand mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Length of the minimizer. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\+\_\+size\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Window size for minimizer selection. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{mode\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_minimizer}{Minimizer} mode (single, single-\/reverse, double). \end{DoxyCompactList}\item 
+std::\+unordered\+\_\+map$<$ \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\+\_\+t}}, \doxymbox{\hyperlink{class_minimizer}{Minimizer}} $>$ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\+\_\+minimizer\+\_\+map\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_minimizer}{Minimizer} table (hash map). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std::\+ostream \& \doxymbox{\hyperlink{class_minimizer_set_a7c03713b78e3526c028169d3f73bbafa}{operator$<$$<$}} (std::\+ostream \&os, \doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&ms)
+\begin{DoxyCompactList}\small\item\em Output stream operator for \doxylink{class_g_f_a}{GFA}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class for managing minimizers in a graph. 
+
+This class provides methods to extract and store minimizers from graph segments. 
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00122}{122}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_minimizer_set_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{MinimizerSet()}{MinimizerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/8]}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d} 
+Minimizer\+Set::\+\+Minimizer\+Set (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor initializes with default minimizer length and window size. 
+
+Default length is 15, window size is 20 and mode is single strand 
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00141}{141}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 0
+\Hypertarget{class_minimizer_set_a162f794326a3d99321446257e1892ee2}\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{MinimizerSet()}{MinimizerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/8]}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a162f794326a3d99321446257e1892ee2} 
+Minimizer\+Set::\+\+Minimizer\+Set (\begin{DoxyParamCaption}\item[{int}]{length}{, }\item[{int}]{window\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor with specified minimizer length and window size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{int\}} & length\+\_\+ -\/ Length of the minimizer \\
+\hline
+{\em \{int\}} & window\+\_\+size\+\_\+ -\/ Window size for minimizer selection \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00148}{148}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_a4e697236e8be3d8525967b7c46467796}\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{MinimizerSet()}{MinimizerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [3/8]}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a4e697236e8be3d8525967b7c46467796} 
+Minimizer\+Set::\+\+Minimizer\+Set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{length}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{window\+\_\+size}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor with specified minimizer length, window size, and mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{int\}} & length\+\_\+ -\/ Length of the minimizer \\
+\hline
+{\em \{int\}} & window\+\_\+size\+\_\+ -\/ Window size for minimizer selection \\
+\hline
+{\em \{uint8\+\_\+t\}} & mode -\/ \doxylink{class_minimizer}{Minimizer} mode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00162}{162}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_ac12d20a2cb40334f1ab08cc19555d086}\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{MinimizerSet()}{MinimizerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [4/8]}}
+{\footnotesize\ttfamily \label{class_minimizer_set_ac12d20a2cb40334f1ab08cc19555d086} 
+Minimizer\+Set::\+\+Minimizer\+Set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}}}]{gfa}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{length}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{window\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that extracts minimizers from a \doxylink{class_g_f_a}{GFA} graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+GFA\}} & gfa -\/ \doxylink{class_g_f_a}{GFA} graph object \\
+\hline
+{\em \{int\}} & length\+\_\+ -\/ Length of the minimizer \\
+\hline
+{\em \{int\}} & window\+\_\+size\+\_\+ -\/ Window size for minimizer selection \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00177}{177}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+\Hypertarget{class_minimizer_set_a0889daf4707fbed536dc3583ffa45836}\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{MinimizerSet()}{MinimizerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [5/8]}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a0889daf4707fbed536dc3583ffa45836} 
+Minimizer\+Set::\+\+Minimizer\+Set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}}}]{gfa}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{length}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{window\+\_\+size}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that extracts minimizers from a \doxylink{class_g_f_a}{GFA} graph with specified mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+GFA\}} & gfa -\/ \doxylink{class_g_f_a}{GFA} graph object \\
+\hline
+{\em \{int\}} & length\+\_\+ -\/ Length of the minimizer \\
+\hline
+{\em \{int\}} & window\+\_\+size\+\_\+ -\/ Window size for minimizer selection \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00189}{189}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{class_minimizer_set_a6e5b11efc34e5a739f4c15b7c1451649}\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{MinimizerSet()}{MinimizerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [6/8]}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a6e5b11efc34e5a739f4c15b7c1451649} 
+Minimizer\+Set::\+\+Minimizer\+Set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_segment}{Segment}}}]{segment}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{length}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{window\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that extracts minimizers from a \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & segment -\/ \doxylink{class_segment}{Segment} object \\
+\hline
+{\em \{int\}} & length\+\_\+ -\/ Length of the minimizer \\
+\hline
+{\em \{int\}} & window\+\_\+size\+\_\+ -\/ Window size for minimizer selection \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00202}{202}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{class_minimizer_set_a01a7fbadc4fcc9bcb06824f2fa572156}\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{MinimizerSet()}{MinimizerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [7/8]}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a01a7fbadc4fcc9bcb06824f2fa572156} 
+Minimizer\+Set::\+\+Minimizer\+Set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_segment}{Segment}}}]{segment}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{length}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{window\+\_\+size}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that extracts minimizers from a \doxylink{class_segment}{Segment} with specified mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & segment -\/ \doxylink{class_segment}{Segment} object \\
+\hline
+{\em \{int\}} & length\+\_\+ -\/ Length of the minimizer \\
+\hline
+{\em \{int\}} & window\+\_\+size\+\_\+ -\/ Window size for minimizer selection \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00214}{214}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+\Hypertarget{class_minimizer_set_a02826c035cac4307033da9c26d83c4fd}\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\index{MinimizerSet@{MinimizerSet}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{MinimizerSet()}{MinimizerSet()}\hspace{0.1cm}{\footnotesize\ttfamily [8/8]}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a02826c035cac4307033da9c26d83c4fd} 
+Minimizer\+Set::\+\+Minimizer\+Set (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that loads minimizers from a b\+MIN file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & \&filename -\/ \doxylink{class_path}{Path} to the b\+MIN file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00225}{225}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+
+
+\label{doc-func-members}
+\Hypertarget{class_minimizer_set_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_minimizer_set_a06193efad39c7c590593a104acfd50f5}\index{MinimizerSet@{MinimizerSet}!bin2sequence@{bin2sequence}}
+\index{bin2sequence@{bin2sequence}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{bin2sequence()}{bin2sequence()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a06193efad39c7c590593a104acfd50f5} 
+std::\+string Minimizer\+Set::\+bin2sequence (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\+\_\+t}}}]{bin\+\_\+strm}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{l\+\_\+str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Convert binary encoded sequence to string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uint64\+\_\+t\}} & bin\+\_\+strm -\/ Binary encoded sequence \\
+\hline
+{\em \{uint16\+\_\+t\}} & l\+\_\+str -\/ Length of the sequence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{string\} Decoded sequence string 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00484}{484}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e}\index{MinimizerSet@{MinimizerSet}!getLength@{getLength}}
+\index{getLength@{getLength}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Minimizer\+Set::\+get\+Length (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the minimizer length. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_minimizer}{Minimizer} length 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00247}{247}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{class_minimizer_set_a07a402b5e207dcb7836c7c4b3eac6618}\index{MinimizerSet@{MinimizerSet}!getMinimizerFrombmin@{getMinimizerFrombmin}}
+\index{getMinimizerFrombmin@{getMinimizerFrombmin}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMinimizerFrombmin()}{getMinimizerFrombmin()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a07a402b5e207dcb7836c7c4b3eac6618} 
+void Minimizer\+Set::\+get\+Minimizer\+Frombmin (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Load minimizers from a b\+MIN file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & \&filename -\/ \doxylink{class_path}{Path} to the b\+MIN file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00405}{405}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{class_minimizer_set_a7ae3c696c3190192397bfae20434fd9e}\index{MinimizerSet@{MinimizerSet}!getMinimizerFromGFA@{getMinimizerFromGFA}}
+\index{getMinimizerFromGFA@{getMinimizerFromGFA}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMinimizerFromGFA()}{getMinimizerFromGFA()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a7ae3c696c3190192397bfae20434fd9e} 
+void Minimizer\+Set::\+get\+Minimizer\+From\+GFA (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}}}]{gfa}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get minimizers from a graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+GFA\}} & gfa \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00392}{392}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{class_minimizer_set_a8da7253af1079acd28b88bf2b986be2e}\index{MinimizerSet@{MinimizerSet}!getMinimizerFromSegment@{getMinimizerFromSegment}}
+\index{getMinimizerFromSegment@{getMinimizerFromSegment}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMinimizerFromSegment()}{getMinimizerFromSegment()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a8da7253af1079acd28b88bf2b986be2e} 
+void Minimizer\+Set::\+get\+Minimizer\+From\+Segment (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_segment}{Segment}}}]{segment}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get minimizers from a segment based on the specified mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & segment \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00500}{500}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 11
+Here is the caller graph for this function:\+
+% FIG 12
+\Hypertarget{class_minimizer_set_ab35f67b6420b03e4c5f6cd637eb4cf3b}\index{MinimizerSet@{MinimizerSet}!getMinimizerNum@{getMinimizerNum}}
+\index{getMinimizerNum@{getMinimizerNum}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMinimizerNum()}{getMinimizerNum()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_ab35f67b6420b03e4c5f6cd637eb4cf3b} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Minimizer\+Set::\+get\+Minimizer\+Num (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of minimizers stored. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} Number of minimizers 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00241}{241}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_a6417ba26cd0e085531cd226b77bb5611}\index{MinimizerSet@{MinimizerSet}!getMinimizerOfNode\_DoubleMode@{getMinimizerOfNode\_DoubleMode}}
+\index{getMinimizerOfNode\_DoubleMode@{getMinimizerOfNode\_DoubleMode}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMinimizerOfNode\_DoubleMode()}{getMinimizerOfNode\_DoubleMode()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a6417ba26cd0e085531cd226b77bb5611} 
+void Minimizer\+Set::\+get\+Minimizer\+Of\+Node\+\_\+\+Double\+Mode (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_segment}{Segment}}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get minimizers of a node in double strand mode. 
+
+It calls both single strand and single strand reverse mode functions 
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\texorpdfstring{$\ast$}{*}\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00867}{867}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 13
+Here is the caller graph for this function:\+
+% FIG 14
+\Hypertarget{class_minimizer_set_a4e9d25ae18e65dd189dd30a985658f5f}\index{MinimizerSet@{MinimizerSet}!getMinimizerOfNode\_SingleMode@{getMinimizerOfNode\_SingleMode}}
+\index{getMinimizerOfNode\_SingleMode@{getMinimizerOfNode\_SingleMode}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMinimizerOfNode\_SingleMode()}{getMinimizerOfNode\_SingleMode()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a4e9d25ae18e65dd189dd30a985658f5f} 
+void Minimizer\+Set::\+get\+Minimizer\+Of\+Node\+\_\+\+Single\+Mode (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_segment}{Segment}}}]{node}{, }\item[{bool}]{is\+\_\+reverse}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get minimizers of a node in single strand mode. 
+
+The core concept of this function is based on Li Heng\textquotesingle{}s minimap2 code on Git\+Hub (\href{https://github.com/lh3/minimap2}{\texttt{https:\+/\+/\+github.\+com/\+lh3/\+minimap2}}) 
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & node \\
+\hline
+{\em \{bool\}} & is\+\_\+reverse \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\texorpdfstring{$\ast$}{*}\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00526}{526}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 15
+Here is the caller graph for this function:\+
+% FIG 16
+\Hypertarget{class_minimizer_set_a1d456e90e524d029b3286645fcababb4}\index{MinimizerSet@{MinimizerSet}!getMinimizerOfNode\_SingleReverseMode@{getMinimizerOfNode\_SingleReverseMode}}
+\index{getMinimizerOfNode\_SingleReverseMode@{getMinimizerOfNode\_SingleReverseMode}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMinimizerOfNode\_SingleReverseMode()}{getMinimizerOfNode\_SingleReverseMode()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a1d456e90e524d029b3286645fcababb4} 
+void Minimizer\+Set::\+get\+Minimizer\+Of\+Node\+\_\+\+Single\+Reverse\+Mode (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_segment}{Segment}}}]{node}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Get minimizers of a node in single strand reverse mode. 
+
+The core concept of this function is based on Li Heng\textquotesingle{}s minimap2 code on Git\+Hub (\href{https://github.com/lh3/minimap2}{\texttt{https:\+/\+/\+github.\+com/\+lh3/\+minimap2}}) 
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & node \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\texorpdfstring{$\ast$}{*}\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00697}{697}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 17
+Here is the caller graph for this function:\+
+% FIG 18
+\Hypertarget{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}\index{MinimizerSet@{MinimizerSet}!getMinimizerTable@{getMinimizerTable}}
+\index{getMinimizerTable@{getMinimizerTable}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMinimizerTable()}{getMinimizerTable()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8} 
+const std::\+unordered\+\_\+map$<$ \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\+\_\+t}}, \doxymbox{\hyperlink{class_minimizer}{Minimizer}} $>$ \& Minimizer\+Set::\+get\+Minimizer\+Table (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the minimizer table. 
+
+\begin{DoxyReturn}{Returns}
+\{const map$<$uint64\+\_\+t, pair$<$uint64\+\_\+t, vector$<$uint64\+\_\+t$>$$>$$>$\&\} \doxylink{class_minimizer}{Minimizer} table 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00265}{265}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 19
+\Hypertarget{class_minimizer_set_a017be930961cc6b2045ad052c52c0159}\index{MinimizerSet@{MinimizerSet}!getMode@{getMode}}
+\index{getMode@{getMode}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a017be930961cc6b2045ad052c52c0159} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Minimizer\+Set::\+get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the minimizer mode. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_minimizer}{Minimizer} mode 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00259}{259}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 20
+\Hypertarget{class_minimizer_set_a21678694eb637e1989367d7390290227}\index{MinimizerSet@{MinimizerSet}!getWindowSize@{getWindowSize}}
+\index{getWindowSize@{getWindowSize}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{getWindowSize()}{getWindowSize()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a21678694eb637e1989367d7390290227} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Minimizer\+Set::\+get\+Window\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the minimizer window size. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_minimizer}{Minimizer} window size 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00253}{253}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 21
+\Hypertarget{class_minimizer_set_a7b687a54acbe06f0dab19a6c8c71efb1}\index{MinimizerSet@{MinimizerSet}!print2bin@{print2bin}}
+\index{print2bin@{print2bin}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{print2bin()}{print2bin()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a7b687a54acbe06f0dab19a6c8c71efb1} 
+void Minimizer\+Set::\+print2bin (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Print minimizer data in binary format. 
+
+Outputs the minimizer length, window size, and each minimizer entry in hexadecimal format. It often used for debugging or exporting minimizer data. 
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00345}{345}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 22
+\Hypertarget{class_minimizer_set_acd67243f2d4b8a0bc27ba4ad46b5521b}\index{MinimizerSet@{MinimizerSet}!setLength@{setLength}}
+\index{setLength@{setLength}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{setLength()}{setLength()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_acd67243f2d4b8a0bc27ba4ad46b5521b} 
+void Minimizer\+Set::\+set\+Length (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{length}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the minimizer length, it can only be set when the minimizer table is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & length -\/ New minimizer length \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00274}{274}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_ab28a65c454e8e804b6905306856371a2}\index{MinimizerSet@{MinimizerSet}!setMode@{setMode}}
+\index{setMode@{setMode}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_ab28a65c454e8e804b6905306856371a2} 
+void Minimizer\+Set::\+set\+Mode (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the minimizer mode, it can only be set when the minimizer table is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & mode -\/ New minimizer mode \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00304}{304}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_a8d680e1d7fd2f5a0d45c5f99025c2778}\index{MinimizerSet@{MinimizerSet}!setWindowSize@{setWindowSize}}
+\index{setWindowSize@{setWindowSize}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{setWindowSize()}{setWindowSize()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a8d680e1d7fd2f5a0d45c5f99025c2778} 
+void Minimizer\+Set::\+set\+Window\+Size (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{window\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the minimizer window size, it can only be set when the minimizer table is empty. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & window\+\_\+size -\/ New minimizer window size \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00291}{291}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_ade4c7986f06ca078bf0e16c467f5c86f}\index{MinimizerSet@{MinimizerSet}!writeSeed2bmin@{writeSeed2bmin}}
+\index{writeSeed2bmin@{writeSeed2bmin}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{writeSeed2bmin()}{writeSeed2bmin()}}
+{\footnotesize\ttfamily \label{class_minimizer_set_ade4c7986f06ca078bf0e16c467f5c86f} 
+void Minimizer\+Set::\+write\+Seed2bmin (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00361}{361}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 23
+
+
+\label{doc-related-members}
+\Hypertarget{class_minimizer_set_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_minimizer_set_a7c03713b78e3526c028169d3f73bbafa}\index{MinimizerSet@{MinimizerSet}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a7c03713b78e3526c028169d3f73bbafa} 
+std::\+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{, }\item[{\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&}]{ms}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Output stream operator for \doxylink{class_g_f_a}{GFA}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00316}{316}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_minimizer_set_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}\index{MinimizerSet@{MinimizerSet}!hash\_minimizer\_map\_@{hash\_minimizer\_map\_}}
+\index{hash\_minimizer\_map\_@{hash\_minimizer\_map\_}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{hash\_minimizer\_map\_}{hash\_minimizer\_map\_}}
+{\footnotesize\ttfamily \label{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f} 
+std::\+unordered\+\_\+map$<$\doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\+\_\+t}}, \doxymbox{\hyperlink{class_minimizer}{Minimizer}}$>$ Minimizer\+Set::\+hash\+\_\+minimizer\+\_\+map\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_minimizer}{Minimizer} table (hash map). 
+
+key-\/\texorpdfstring{$>$}{>}hash; value-\/\texorpdfstring{$>$}{>}(sequence(64), \+[offset(32+31+1)]\+) offset:\+ 32-\/bits id, 31-\/bits offset,1 bit direction 
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00134}{134}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}\index{MinimizerSet@{MinimizerSet}!length\_@{length\_}}
+\index{length\_@{length\_}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{length\_}{length\_}}
+{\footnotesize\ttfamily \label{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Minimizer\+Set::\+length\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Length of the minimizer. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00125}{125}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}\index{MinimizerSet@{MinimizerSet}!mode\_@{mode\_}}
+\index{mode\_@{mode\_}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{mode\_}{mode\_}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Minimizer\+Set::\+mode\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_minimizer}{Minimizer} mode (single, single-\/reverse, double). 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00127}{127}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}\index{MinimizerSet@{MinimizerSet}!window\_size\_@{window\_size\_}}
+\index{window\_size\_@{window\_size\_}!MinimizerSet@{MinimizerSet}}
+\doxysubsubsection{\texorpdfstring{window\_size\_}{window\_size\_}}
+{\footnotesize\ttfamily \label{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Minimizer\+Set::\+window\+\_\+size\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Window size for minimizer selection. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00126}{126}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\doxymbox{\hyperlink{bgfa__seed_8hpp}{bgfa\+\_\+seed.\+hpp}}\end{DoxyCompactItemize}

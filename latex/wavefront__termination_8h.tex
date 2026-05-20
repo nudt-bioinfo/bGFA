@@ -1,0 +1,68 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+termination.h File Reference}
+\hypertarget{wavefront__termination_8h}{}\label{wavefront__termination_8h}\index{src/wfa/wavefront/wavefront\_termination.h@{src/wfa/wavefront/wavefront\_termination.h}}
+{\ttfamily \+\#include "{}wavefront\+\_\+aligner.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+termination.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__termination_8h_acc7b6bfc0c1543bc778b950a3f62ef10}{WF\+\_\+\+TERMINATION\+\_\+\+ENDSFREE}}(h,  v)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{wavefront__termination_8h_ac239eee337203d23a60fc6cc265d05f2}{wavefront\+\_\+termination\+\_\+end2end}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const mwavefront, const int score, const int score\+\_\+mod)
+\item 
+bool \doxymbox{\hyperlink{wavefront__termination_8h_ace1ca406c2936ef3c86a1c9431662b95}{wavefront\+\_\+termination\+\_\+endsfree}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const mwavefront, const int score, const int k, const \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}} offset)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{wavefront__termination_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{wavefront__termination_8h_acc7b6bfc0c1543bc778b950a3f62ef10}\index{wavefront\_termination.h@{wavefront\_termination.h}!WF\_TERMINATION\_ENDSFREE@{WF\_TERMINATION\_ENDSFREE}}
+\index{WF\_TERMINATION\_ENDSFREE@{WF\_TERMINATION\_ENDSFREE}!wavefront\_termination.h@{wavefront\_termination.h}}
+\doxysubsubsection{\texorpdfstring{WF\_TERMINATION\_ENDSFREE}{WF\_TERMINATION\_ENDSFREE}}
+{\footnotesize\ttfamily \label{wavefront__termination_8h_acc7b6bfc0c1543bc778b950a3f62ef10} 
+\+\#define WF\+\_\+\+TERMINATION\+\_\+\+ENDSFREE(\begin{DoxyParamCaption}\item[{}]{h}{, }\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((h\ >=\ text\_length)\ ||\ (v\ >=\ pattern\_length))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__termination_8h_source_l00040}{40}} of file \doxymbox{\hyperlink{wavefront__termination_8h_source}{wavefront\+\_\+termination.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__termination_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__termination_8h_ac239eee337203d23a60fc6cc265d05f2}\index{wavefront\_termination.h@{wavefront\_termination.h}!wavefront\_termination\_end2end@{wavefront\_termination\_end2end}}
+\index{wavefront\_termination\_end2end@{wavefront\_termination\_end2end}!wavefront\_termination.h@{wavefront\_termination.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_termination\_end2end()}{wavefront\_termination\_end2end()}}
+{\footnotesize\ttfamily \label{wavefront__termination_8h_ac239eee337203d23a60fc6cc265d05f2} 
+bool wavefront\+\_\+termination\+\_\+end2end (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mwavefront}{, }\item[{const int}]{score}{, }\item[{const int}]{score\+\_\+mod}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__termination_8c_source_l00037}{37}} of file \doxymbox{\hyperlink{wavefront__termination_8c_source}{wavefront\+\_\+termination.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{wavefront__termination_8h_ace1ca406c2936ef3c86a1c9431662b95}\index{wavefront\_termination.h@{wavefront\_termination.h}!wavefront\_termination\_endsfree@{wavefront\_termination\_endsfree}}
+\index{wavefront\_termination\_endsfree@{wavefront\_termination\_endsfree}!wavefront\_termination.h@{wavefront\_termination.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_termination\_endsfree()}{wavefront\_termination\_endsfree()}}
+{\footnotesize\ttfamily \label{wavefront__termination_8h_ace1ca406c2936ef3c86a1c9431662b95} 
+bool wavefront\+\_\+termination\+\_\+endsfree (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mwavefront}{, }\item[{const int}]{score}{, }\item[{const int}]{k}{, }\item[{const \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}}}]{offset}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__termination_8c_source_l00115}{115}} of file \doxymbox{\hyperlink{wavefront__termination_8c_source}{wavefront\+\_\+termination.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3

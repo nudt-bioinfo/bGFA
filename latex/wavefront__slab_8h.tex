@@ -1,0 +1,180 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+slab.h File Reference}
+\hypertarget{wavefront__slab_8h}{}\label{wavefront__slab_8h}\index{src/wfa/wavefront/wavefront\_slab.h@{src/wfa/wavefront/wavefront\_slab.h}}
+{\ttfamily \+\#include "{}utils/\+vector.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+slab.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45}{wf\+\_\+slab\+\_\+mode\+\_\+t}} \{ \doxymbox{\hyperlink{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45ac82759e8e2701fd94f5fdd8f3211d724}{wf\+\_\+slab\+\_\+reuse}} = 1
+, \doxymbox{\hyperlink{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45a88f035666a63ec92af8f3d860cc68650}{wf\+\_\+slab\+\_\+tight}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{wavefront__slab_8h_a875959ebe1417c500b04770e7e6f8c30}{wavefront\+\_\+slab\+\_\+new}} (const int init\+\_\+wf\+\_\+length, const bool allocate\+\_\+backtrace, const \doxymbox{\hyperlink{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45}{wf\+\_\+slab\+\_\+mode\+\_\+t}} slab\+\_\+mode, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{wavefront__slab_8h_a76a70024bbf6095478855442e6fcdd56}{wavefront\+\_\+slab\+\_\+reap}} (\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+slab)
+\item 
+void \doxymbox{\hyperlink{wavefront__slab_8h_aa5310b3e2282ba55460c938d5bf1ba6b}{wavefront\+\_\+slab\+\_\+clear}} (\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+slab)
+\item 
+void \doxymbox{\hyperlink{wavefront__slab_8h_ad9df277880d6dda013bf89ff07dcf2a0}{wavefront\+\_\+slab\+\_\+delete}} (\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+slab)
+\item 
+void \doxymbox{\hyperlink{wavefront__slab_8h_a96f64136602285f3d9db2b17e4317c8f}{wavefront\+\_\+slab\+\_\+set\+\_\+mode}} (\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+slab, const \doxymbox{\hyperlink{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45}{wf\+\_\+slab\+\_\+mode\+\_\+t}} slab\+\_\+mode)
+\item 
+\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{wavefront__slab_8h_ad2e58678e3228c242f82b0e81c07ba92}{wavefront\+\_\+slab\+\_\+allocate}} (\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+slab, const int min\+\_\+lo, const int max\+\_\+hi)
+\item 
+void \doxymbox{\hyperlink{wavefront__slab_8h_aceb79f3bf4f6371b78a9e19e1ea24041}{wavefront\+\_\+slab\+\_\+free}} (\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+slab, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{wavefront__slab_8h_a03c38a93bddacb706fb0847031588799}{wavefront\+\_\+slab\+\_\+get\+\_\+size}} (\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+slab)
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{wavefront__slab_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45}\index{wavefront\_slab.h@{wavefront\_slab.h}!wf\_slab\_mode\_t@{wf\_slab\_mode\_t}}
+\index{wf\_slab\_mode\_t@{wf\_slab\_mode\_t}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wf\_slab\_mode\_t}{wf\_slab\_mode\_t}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45} 
+enum \doxymbox{\hyperlink{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45}{wf\+\_\+slab\+\_\+mode\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_slab\_reuse@{wf\_slab\_reuse}!wavefront\_slab.h@{wavefront\_slab.h}}
+\index{wavefront\_slab.h@{wavefront\_slab.h}!wf\_slab\_reuse@{wf\_slab\_reuse}}
+}\Hypertarget{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45ac82759e8e2701fd94f5fdd8f3211d724}\label{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45ac82759e8e2701fd94f5fdd8f3211d724} 
+wf\+\_\+slab\+\_\+reuse&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_slab\_tight@{wf\_slab\_tight}!wavefront\_slab.h@{wavefront\_slab.h}}
+\index{wavefront\_slab.h@{wavefront\_slab.h}!wf\_slab\_tight@{wf\_slab\_tight}}
+}\Hypertarget{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45a88f035666a63ec92af8f3d860cc68650}\label{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45a88f035666a63ec92af8f3d860cc68650} 
+wf\+\_\+slab\+\_\+tight&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8h_source_l00042}{42}} of file \doxymbox{\hyperlink{wavefront__slab_8h_source}{wavefront\+\_\+slab.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__slab_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__slab_8h_ad2e58678e3228c242f82b0e81c07ba92}\index{wavefront\_slab.h@{wavefront\_slab.h}!wavefront\_slab\_allocate@{wavefront\_slab\_allocate}}
+\index{wavefront\_slab\_allocate@{wavefront\_slab\_allocate}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_slab\_allocate()}{wavefront\_slab\_allocate()}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_ad2e58678e3228c242f82b0e81c07ba92} 
+\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*} wavefront\+\_\+slab\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+slab}{, }\item[{const int}]{min\+\_\+lo}{, }\item[{const int}]{max\+\_\+hi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8c_source_l00222}{222}} of file \doxymbox{\hyperlink{wavefront__slab_8c_source}{wavefront\+\_\+slab.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__slab_8h_aa5310b3e2282ba55460c938d5bf1ba6b}\index{wavefront\_slab.h@{wavefront\_slab.h}!wavefront\_slab\_clear@{wavefront\_slab\_clear}}
+\index{wavefront\_slab\_clear@{wavefront\_slab\_clear}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_slab\_clear()}{wavefront\_slab\_clear()}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_aa5310b3e2282ba55460c938d5bf1ba6b} 
+void wavefront\+\_\+slab\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+slab}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8c_source_l00135}{135}} of file \doxymbox{\hyperlink{wavefront__slab_8c_source}{wavefront\+\_\+slab.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__slab_8h_ad9df277880d6dda013bf89ff07dcf2a0}\index{wavefront\_slab.h@{wavefront\_slab.h}!wavefront\_slab\_delete@{wavefront\_slab\_delete}}
+\index{wavefront\_slab\_delete@{wavefront\_slab\_delete}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_slab\_delete()}{wavefront\_slab\_delete()}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_ad9df277880d6dda013bf89ff07dcf2a0} 
+void wavefront\+\_\+slab\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+slab}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8c_source_l00149}{149}} of file \doxymbox{\hyperlink{wavefront__slab_8c_source}{wavefront\+\_\+slab.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{wavefront__slab_8h_aceb79f3bf4f6371b78a9e19e1ea24041}\index{wavefront\_slab.h@{wavefront\_slab.h}!wavefront\_slab\_free@{wavefront\_slab\_free}}
+\index{wavefront\_slab\_free@{wavefront\_slab\_free}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_slab\_free()}{wavefront\_slab\_free()}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_aceb79f3bf4f6371b78a9e19e1ea24041} 
+void wavefront\+\_\+slab\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+slab}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8c_source_l00260}{260}} of file \doxymbox{\hyperlink{wavefront__slab_8c_source}{wavefront\+\_\+slab.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{wavefront__slab_8h_a03c38a93bddacb706fb0847031588799}\index{wavefront\_slab.h@{wavefront\_slab.h}!wavefront\_slab\_get\_size@{wavefront\_slab\_get\_size}}
+\index{wavefront\_slab\_get\_size@{wavefront\_slab\_get\_size}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_slab\_get\_size()}{wavefront\_slab\_get\_size()}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_a03c38a93bddacb706fb0847031588799} 
+uint64\+\_\+t wavefront\+\_\+slab\+\_\+get\+\_\+size (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+slab}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8c_source_l00287}{287}} of file \doxymbox{\hyperlink{wavefront__slab_8c_source}{wavefront\+\_\+slab.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{wavefront__slab_8h_a875959ebe1417c500b04770e7e6f8c30}\index{wavefront\_slab.h@{wavefront\_slab.h}!wavefront\_slab\_new@{wavefront\_slab\_new}}
+\index{wavefront\_slab\_new@{wavefront\_slab\_new}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_slab\_new()}{wavefront\_slab\_new()}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_a875959ebe1417c500b04770e7e6f8c30} 
+\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*} wavefront\+\_\+slab\+\_\+new (\begin{DoxyParamCaption}\item[{const int}]{init\+\_\+wf\+\_\+length}{, }\item[{const bool}]{allocate\+\_\+backtrace}{, }\item[{const \doxymbox{\hyperlink{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45}{wf\+\_\+slab\+\_\+mode\+\_\+t}}}]{slab\+\_\+mode}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8c_source_l00045}{45}} of file \doxymbox{\hyperlink{wavefront__slab_8c_source}{wavefront\+\_\+slab.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{wavefront__slab_8h_a76a70024bbf6095478855442e6fcdd56}\index{wavefront\_slab.h@{wavefront\_slab.h}!wavefront\_slab\_reap@{wavefront\_slab\_reap}}
+\index{wavefront\_slab\_reap@{wavefront\_slab\_reap}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_slab\_reap()}{wavefront\_slab\_reap()}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_a76a70024bbf6095478855442e6fcdd56} 
+void wavefront\+\_\+slab\+\_\+reap (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+slab}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8c_source_l00129}{129}} of file \doxymbox{\hyperlink{wavefront__slab_8c_source}{wavefront\+\_\+slab.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{wavefront__slab_8h_a96f64136602285f3d9db2b17e4317c8f}\index{wavefront\_slab.h@{wavefront\_slab.h}!wavefront\_slab\_set\_mode@{wavefront\_slab\_set\_mode}}
+\index{wavefront\_slab\_set\_mode@{wavefront\_slab\_set\_mode}!wavefront\_slab.h@{wavefront\_slab.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_slab\_set\_mode()}{wavefront\_slab\_set\_mode()}}
+{\footnotesize\ttfamily \label{wavefront__slab_8h_a96f64136602285f3d9db2b17e4317c8f} 
+void wavefront\+\_\+slab\+\_\+set\+\_\+mode (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__slab__t}{wavefront\+\_\+slab\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+slab}{, }\item[{const \doxymbox{\hyperlink{wavefront__slab_8h_a1c1ecec1577ef0368f7b2961340d1f45}{wf\+\_\+slab\+\_\+mode\+\_\+t}}}]{slab\+\_\+mode}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__slab_8c_source_l00175}{175}} of file \doxymbox{\hyperlink{wavefront__slab_8c_source}{wavefront\+\_\+slab.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 14

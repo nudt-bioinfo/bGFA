@@ -1,0 +1,130 @@
+\doxysection{src/\+wfa/\+utils/\+heatmap.c File Reference}
+\hypertarget{heatmap_8c}{}\label{heatmap_8c}\index{src/wfa/utils/heatmap.c@{src/wfa/utils/heatmap.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}heatmap.\+h"{}}\newline
+Include dependency graph for heatmap.\+c:\+
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{heatmap_8c_a79ad05bbf58c98d849e1c902a0b79be9}{HEATMAP\+\_\+\+INT\+\_\+\+MIN}}~INT\+\_\+\+MIN
+\item 
+\+\#define \doxymbox{\hyperlink{heatmap_8c_a0dbad3378794091501627e632964e425}{HEATMAP\+\_\+\+INT\+\_\+\+MAX}}~INT\+\_\+\+MAX
+\item 
+\+\#define \doxymbox{\hyperlink{heatmap_8c_a0657f40eb035b362671eb0221972f655}{HEATMAP\+\_\+\+SEPARATOR}}~\textquotesingle{},\textquotesingle{}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{heatmap_8c_a182d7fc7a7b710de0c5a8ecc46b69af1}{heatmap\+\_\+new}} (const \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3ec}{heatmap\+\_\+type}} type, const int min\+\_\+v, const int max\+\_\+v, const int min\+\_\+h, const int max\+\_\+h, const int resolution\+\_\+points)
+\item 
+void \doxymbox{\hyperlink{heatmap_8c_a52840eca664ec6090e33deea52b2242b}{heatmap\+\_\+clear}} (\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const heatmap)
+\item 
+void \doxymbox{\hyperlink{heatmap_8c_ae8059941b7f91341a8e90419cc38e059}{heatmap\+\_\+delete}} (\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const heatmap)
+\item 
+void \doxymbox{\hyperlink{heatmap_8c_ad4e82d3e6cbb0d3bed9a5baa3ca62b7d}{heatmap\+\_\+set}} (\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const heatmap, const int v, const int h, const int value)
+\item 
+void \doxymbox{\hyperlink{heatmap_8c_a41782eadde6f70ccd746b8dc8c8ae121}{heatmap\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const heatmap)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{heatmap_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{heatmap_8c_a0dbad3378794091501627e632964e425}\index{heatmap.c@{heatmap.c}!HEATMAP\_INT\_MAX@{HEATMAP\_INT\_MAX}}
+\index{HEATMAP\_INT\_MAX@{HEATMAP\_INT\_MAX}!heatmap.c@{heatmap.c}}
+\doxysubsubsection{\texorpdfstring{HEATMAP\_INT\_MAX}{HEATMAP\_INT\_MAX}}
+{\footnotesize\ttfamily \label{heatmap_8c_a0dbad3378794091501627e632964e425} 
+\+\#define HEATMAP\+\_\+\+INT\+\_\+\+MAX~INT\+\_\+\+MAX}
+
+
+
+Definition at line \doxymbox{\hyperlink{heatmap_8c_source_l00038}{38}} of file \doxymbox{\hyperlink{heatmap_8c_source}{heatmap.\+c}}.
+
+\Hypertarget{heatmap_8c_a79ad05bbf58c98d849e1c902a0b79be9}\index{heatmap.c@{heatmap.c}!HEATMAP\_INT\_MIN@{HEATMAP\_INT\_MIN}}
+\index{HEATMAP\_INT\_MIN@{HEATMAP\_INT\_MIN}!heatmap.c@{heatmap.c}}
+\doxysubsubsection{\texorpdfstring{HEATMAP\_INT\_MIN}{HEATMAP\_INT\_MIN}}
+{\footnotesize\ttfamily \label{heatmap_8c_a79ad05bbf58c98d849e1c902a0b79be9} 
+\+\#define HEATMAP\+\_\+\+INT\+\_\+\+MIN~INT\+\_\+\+MIN}
+
+
+
+Definition at line \doxymbox{\hyperlink{heatmap_8c_source_l00037}{37}} of file \doxymbox{\hyperlink{heatmap_8c_source}{heatmap.\+c}}.
+
+\Hypertarget{heatmap_8c_a0657f40eb035b362671eb0221972f655}\index{heatmap.c@{heatmap.c}!HEATMAP\_SEPARATOR@{HEATMAP\_SEPARATOR}}
+\index{HEATMAP\_SEPARATOR@{HEATMAP\_SEPARATOR}!heatmap.c@{heatmap.c}}
+\doxysubsubsection{\texorpdfstring{HEATMAP\_SEPARATOR}{HEATMAP\_SEPARATOR}}
+{\footnotesize\ttfamily \label{heatmap_8c_a0657f40eb035b362671eb0221972f655} 
+\+\#define HEATMAP\+\_\+\+SEPARATOR~\textquotesingle{},\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{heatmap_8c_source_l00039}{39}} of file \doxymbox{\hyperlink{heatmap_8c_source}{heatmap.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{heatmap_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{heatmap_8c_a52840eca664ec6090e33deea52b2242b}\index{heatmap.c@{heatmap.c}!heatmap\_clear@{heatmap\_clear}}
+\index{heatmap\_clear@{heatmap\_clear}!heatmap.c@{heatmap.c}}
+\doxysubsubsection{\texorpdfstring{heatmap\_clear()}{heatmap\_clear()}}
+{\footnotesize\ttfamily \label{heatmap_8c_a52840eca664ec6090e33deea52b2242b} 
+void heatmap\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{heatmap}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{heatmap_8c_source_l00083}{83}} of file \doxymbox{\hyperlink{heatmap_8c_source}{heatmap.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{heatmap_8c_ae8059941b7f91341a8e90419cc38e059}\index{heatmap.c@{heatmap.c}!heatmap\_delete@{heatmap\_delete}}
+\index{heatmap\_delete@{heatmap\_delete}!heatmap.c@{heatmap.c}}
+\doxysubsubsection{\texorpdfstring{heatmap\_delete()}{heatmap\_delete()}}
+{\footnotesize\ttfamily \label{heatmap_8c_ae8059941b7f91341a8e90419cc38e059} 
+void heatmap\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{heatmap}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{heatmap_8c_source_l00106}{106}} of file \doxymbox{\hyperlink{heatmap_8c_source}{heatmap.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{heatmap_8c_a182d7fc7a7b710de0c5a8ecc46b69af1}\index{heatmap.c@{heatmap.c}!heatmap\_new@{heatmap\_new}}
+\index{heatmap\_new@{heatmap\_new}!heatmap.c@{heatmap.c}}
+\doxysubsubsection{\texorpdfstring{heatmap\_new()}{heatmap\_new()}}
+{\footnotesize\ttfamily \label{heatmap_8c_a182d7fc7a7b710de0c5a8ecc46b69af1} 
+\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*} heatmap\+\_\+new (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3ec}{heatmap\+\_\+type}}}]{type}{, }\item[{const int}]{min\+\_\+v}{, }\item[{const int}]{max\+\_\+v}{, }\item[{const int}]{min\+\_\+h}{, }\item[{const int}]{max\+\_\+h}{, }\item[{const int}]{resolution\+\_\+points}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{heatmap_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{heatmap_8c_source}{heatmap.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{heatmap_8c_a41782eadde6f70ccd746b8dc8c8ae121}\index{heatmap.c@{heatmap.c}!heatmap\_print@{heatmap\_print}}
+\index{heatmap\_print@{heatmap\_print}!heatmap.c@{heatmap.c}}
+\doxysubsubsection{\texorpdfstring{heatmap\_print()}{heatmap\_print()}}
+{\footnotesize\ttfamily \label{heatmap_8c_a41782eadde6f70ccd746b8dc8c8ae121} 
+void heatmap\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{heatmap}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{heatmap_8c_source_l00151}{151}} of file \doxymbox{\hyperlink{heatmap_8c_source}{heatmap.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{heatmap_8c_ad4e82d3e6cbb0d3bed9a5baa3ca62b7d}\index{heatmap.c@{heatmap.c}!heatmap\_set@{heatmap\_set}}
+\index{heatmap\_set@{heatmap\_set}!heatmap.c@{heatmap.c}}
+\doxysubsubsection{\texorpdfstring{heatmap\_set()}{heatmap\_set()}}
+{\footnotesize\ttfamily \label{heatmap_8c_ad4e82d3e6cbb0d3bed9a5baa3ca62b7d} 
+void heatmap\+\_\+set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structheatmap__t}{heatmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{heatmap}{, }\item[{const int}]{v}{, }\item[{const int}]{h}{, }\item[{const int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{heatmap_8c_source_l00118}{118}} of file \doxymbox{\hyperlink{heatmap_8c_source}{heatmap.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6

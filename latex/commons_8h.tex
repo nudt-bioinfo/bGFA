@@ -1,0 +1,1832 @@
+\doxysection{src/\+wfa/\+utils/\+commons.h File Reference}
+\hypertarget{commons_8h}{}\label{commons_8h}\index{src/wfa/utils/commons.h@{src/wfa/utils/commons.h}}
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$unistd.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include $<$float.\+h$>$}\newline
+{\ttfamily \+\#include $<$inttypes.\+h$>$}\newline
+{\ttfamily \+\#include $<$ctype.\+h$>$}\newline
+{\ttfamily \+\#include $<$sys/\+types.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$wchar.\+h$>$}\newline
+{\ttfamily \+\#include $<$time.\+h$>$}\newline
+{\ttfamily \+\#include $<$sys/\+time.\+h$>$}\newline
+{\ttfamily \+\#include $<$sys/\+stat.\+h$>$}\newline
+{\ttfamily \+\#include $<$fcntl.\+h$>$}\newline
+{\ttfamily \+\#include $<$limits.\+h$>$}\newline
+{\ttfamily \+\#include $<$math.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdarg.\+h$>$}\newline
+{\ttfamily \+\#include $<$getopt.\+h$>$}\newline
+{\ttfamily \+\#include $<$errno.\+h$>$}\newline
+{\ttfamily \+\#include $<$assert.\+h$>$}\newline
+{\ttfamily \+\#include $<$signal.\+h$>$}\newline
+Include dependency graph for commons.\+h:\+
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a0dfecde8c77f5e43efed6498e69242c2}{STRINGIFY\+\_\+}}(a)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a51840e7e288c8d25587ce062de9d9515}{STRINGIFY}}(a)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_aac9153aee4bdb92701df902e06a74eb3}{SWAP}}(a,  b)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_aadbbc7b02d94a4c18646813ac8d7dec1}{EOS}}~\textquotesingle{}\textbackslash{}0\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a4e67e9429d48a2ba8f833ee3b1dceb5d}{EOL}}~\textquotesingle{}\textbackslash{}n\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad58a1fbfc85c7e4790fc55e654f50221}{TAB}}~\textquotesingle{}\textbackslash{}t\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a757c0deba59949e5a5e349e99f14afb8}{DOS\+\_\+\+EOL}}~\textquotesingle{}\textbackslash{}r\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a0ea7ff5947c5f5430a29fdd98391eb2a}{PLUS}}~\textquotesingle{}+\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a5381a445a1e4bdc36460151d82eed95a}{MINUS}}~\textquotesingle{}-\/\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ac8dc47e3b39c930caed4bfd05b4ba805}{FORMAT}}~\textquotesingle{}\%\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a5ff6e798033f03e74730e99f01936f84}{SPACE}}~\textquotesingle{} \textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a69eb17477fd6f6af2c9ca2d5f4c7df3c}{SLASH}}~\textquotesingle{}/\+\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a94c3dc9846edbbb70f678768633a4796}{STAR}}~\textquotesingle{}\texorpdfstring{$\ast$}{*}\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8a5043e7ab655e37e903ffbd8b95d6b2}{DOT}}~\textquotesingle{}.\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a9d6d08a24e6e2e6fb0a45deffcede95e}{COMA}}~\textquotesingle{},\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ae6402f35ea263d89cb367e0ab2b0f278}{SEMICOLON}}~\textquotesingle{};\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8301ee0d0b0055ebb4e8ecc46fadd69e}{COLON}}~\textquotesingle{}:\+\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a7172fe24d1ffc31d15b20a77ea9f34dd}{HASH}}~\textquotesingle{}\+\#\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a4c2ad6b30ace010814f2ed48fcae6ebf}{UNDERSCORE}}~\textquotesingle{}\+\_\+\textquotesingle{}
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\+\_\+\+FACTOR\+\_\+1K}}~(1000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\+\_\+\+FACTOR\+\_\+1M}}~(1000000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\+\_\+\+FACTOR\+\_\+1G}}~(1000000000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a3d6b47a4752f1441d49a0044021f1ea0}{NUM\+\_\+\+LINES\+\_\+1K}}~(1000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a9d640bd8e7adf751facc64e2882f50c9}{NUM\+\_\+\+LINES\+\_\+2K}}~(2000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a4bc365be99ae4eb8fb5319098fc42779}{NUM\+\_\+\+LINES\+\_\+5K}}~(5000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a9a194c8884781754e94792263ff47c7d}{NUM\+\_\+\+LINES\+\_\+10K}}~(10000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a878843eb59500a6971be144f135baeff}{NUM\+\_\+\+LINES\+\_\+20K}}~(20000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_addb913e4fe0fd9d1ffd06731c51b5baa}{NUM\+\_\+\+LINES\+\_\+50K}}~(50000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8597d238b562442cda80b14bdd5faf3c}{NUM\+\_\+\+LINES\+\_\+100K}}~(100000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a9d26d2b2a755cfe61fef94358b57df95}{NUM\+\_\+\+LINES\+\_\+200K}}~(200000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a9ac5a44eca6fb145037a5004eadef155}{NUM\+\_\+\+LINES\+\_\+500K}}~(500000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a7764f300cbd1f7e4cb449958d751826d}{NUM\+\_\+\+LINES\+\_\+1M}}~(1000000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a72bb61d7c267a2961a745f764457aaf0}{NUM\+\_\+\+LINES\+\_\+2M}}~(2000000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ada327f3ea4cf2e3fc41d237ad1ead479}{NUM\+\_\+\+LINES\+\_\+5M}}~(5000000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a2e1a2145ec6e61bfbd8494adc9aa9938}{NUM\+\_\+\+LINES\+\_\+10M}}~(10000000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_acb81f5ad9e76e0c665808bdebae2fcff}{NUM\+\_\+\+LINES\+\_\+20M}}~(20000000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a968df1bf1ccbac8075915a6b6ac4c573}{NUM\+\_\+\+LINES\+\_\+50M}}~(50000000ul)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ac28db512f80213adf865cd76fddb3c8d}{BUFFER\+\_\+\+SIZE\+\_\+1K}}~(1ul$<$$<$10)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_acd6c7fda55f2a4b2cc4351a1e7988385}{BUFFER\+\_\+\+SIZE\+\_\+2K}}~(1ul$<$$<$11)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a3c0eaf9534a3ede516f1001298148674}{BUFFER\+\_\+\+SIZE\+\_\+4K}}~(1ul$<$$<$12)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a66bf4c30890d0ceca5b83ba7795f2368}{BUFFER\+\_\+\+SIZE\+\_\+8K}}~(1ul$<$$<$13)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a0b698438fa983678d3086aae18a2d00b}{BUFFER\+\_\+\+SIZE\+\_\+16K}}~(1ul$<$$<$14)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a76a3593a4bbf9c8aaa651fd63f1a2276}{BUFFER\+\_\+\+SIZE\+\_\+32K}}~(1ul$<$$<$15)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_adb73ffa1edeb77301bd7154ffe118b76}{BUFFER\+\_\+\+SIZE\+\_\+64K}}~(1ul$<$$<$16)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a9b0dbd7d3279be3d91bf63d7b5becf74}{BUFFER\+\_\+\+SIZE\+\_\+128K}}~(1ul$<$$<$17)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a25b0488fba1782fc62108d211c79f757}{BUFFER\+\_\+\+SIZE\+\_\+256K}}~(1ul$<$$<$18)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_aeeea7ab2b02f990f50fa380a1e951962}{BUFFER\+\_\+\+SIZE\+\_\+512K}}~(1ul$<$$<$19)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_abdaa0e4dba7e17ca68e3fa985cfa3a81}{BUFFER\+\_\+\+SIZE\+\_\+1M}}~(1ul$<$$<$20)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8f15595a4b8023a96a684b5a9fefcd09}{BUFFER\+\_\+\+SIZE\+\_\+2M}}~(1ul$<$$<$21)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad024ecc8c19c40a45ca9ae62d44b9699}{BUFFER\+\_\+\+SIZE\+\_\+4M}}~(1ul$<$$<$22)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_aa5efd9be8c655f88041692d105636936}{BUFFER\+\_\+\+SIZE\+\_\+8M}}~(1ul$<$$<$23)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a442f4e3f0262a283164cee50bd1d35ab}{BUFFER\+\_\+\+SIZE\+\_\+16M}}~(1ul$<$$<$24)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ac88e232496b3ba99c2786b994ecaeb2c}{BUFFER\+\_\+\+SIZE\+\_\+32M}}~(1ul$<$$<$25)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ac53e6f58b81c5bbec736f00d07e3102e}{BUFFER\+\_\+\+SIZE\+\_\+64M}}~(1ul$<$$<$26)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a69134ccb36111c0441a9daf00348ca2e}{BUFFER\+\_\+\+SIZE\+\_\+128M}}~(1ul$<$$<$27)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ae44a0bfb5a4e794e56f695e8a5dd9dd2}{BUFFER\+\_\+\+SIZE\+\_\+256M}}~(1ul$<$$<$28)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_af07720a49008e99e3551d9e9ba5a322a}{BUFFER\+\_\+\+SIZE\+\_\+512M}}~(1ul$<$$<$29)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_afdc864572fa97ec9bfac999528a11536}{BUFFER\+\_\+\+SIZE\+\_\+1G}}~(1ul$<$$<$30)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a3c119e05251709baa644a76d61c630f1}{BUFFER\+\_\+\+SIZE\+\_\+2G}}~(1ul$<$$<$31)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a80aa30f2b644f4ff839a787a7667d85c}{BUFFER\+\_\+\+SIZE\+\_\+4G}}~(1ul$<$$<$32)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a5cd8ac81f7d1f5a4cc06bb9a84153769}{BUFFER\+\_\+\+SIZE\+\_\+8G}}~(1ul$<$$<$33)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad7fe2ab32a454181c782adbe25b628a5}{BUFFER\+\_\+\+SIZE\+\_\+16G}}~(1ul$<$$<$34)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a7df982524618dee59a0a001257e06973}{BUFFER\+\_\+\+SIZE\+\_\+32G}}~(1ul$<$$<$35)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a460f67750ff6d88cb82ee1333778b821}{BUFFER\+\_\+\+SIZE\+\_\+64G}}~(1ul$<$$<$36)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a63436b2267c2fda1cc548add965b6065}{BUFFER\+\_\+\+SIZE\+\_\+128G}}~(1ul$<$$<$37)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a85d3a8263812ca7127848b8d5e203f01}{BUFFER\+\_\+\+SIZE\+\_\+256G}}~(1ul$<$$<$38)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a104cf3528daaa835c30d3f159a3be3d1}{CONVERT\+\_\+\+B\+\_\+\+TO\+\_\+\+KB}}(number)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_adec104e0612084739970d4f0629e2cdd}{CONVERT\+\_\+\+B\+\_\+\+TO\+\_\+\+MB}}(number)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a48e60591da14df7304ec7414cc08957b}{CONVERT\+\_\+\+B\+\_\+\+TO\+\_\+\+GB}}(number)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8ee44c78d0a3cc293c0e9b86f4b24758}{UINT512\+\_\+\+LENGTH}}~512
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_aa224f01d0820c277c5f0b803da7181f9}{UINT512\+\_\+\+SIZE}}~64
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ab12b6bd0166eed40d5c77aba49090da6}{UINT256\+\_\+\+LENGTH}}~256
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_aafbc9a90a767e31b21f5805e877248bb}{UINT256\+\_\+\+SIZE}}~32
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ae7179d6d56af7c40c3242418ba1c7817}{UINT128\+\_\+\+LENGTH}}~128
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a2a53311b43cc819cdf42e07001003df8}{UINT128\+\_\+\+SIZE}}~16
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a1975636872ec62179e62077b2792467d}{UINT64\+\_\+\+LENGTH}}~64
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a83d57fa5bf231d2224ca44e347370cd7}{UINT64\+\_\+\+SIZE}}~8
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a3f185debd33a5cf261da855898a55d10}{UINT32\+\_\+\+LENGTH}}~32
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a587f427d930ffcd6e8117b992bdfc3dd}{UINT32\+\_\+\+SIZE}}~4
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a97b682183d9d02d2cc71d86f3bba5ebe}{UINT16\+\_\+\+LENGTH}}~16
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a5581151d29ca9367f186a455e7918b24}{UINT16\+\_\+\+SIZE}}~2
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a6e453747c2f134436ca5b98abb18357d}{UINT8\+\_\+\+LENGTH}}~8
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad5398075b4c5c28ca8b5df6a7b434a4b}{UINT8\+\_\+\+SIZE}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_af6db2831e2fa619472f709fc4815809c}{UINT64\+\_\+\+ZEROS}}~0x0000000000000000ull
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ac16874d272760313e02641f93912af11}{UINT64\+\_\+\+ONES}}~0x\+FFFFFFFFFFFFFFFFull
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a3a81a7a09b4a9f49989473aa5b7132ef}{UINT32\+\_\+\+ZEROS}}~0x00000000ul
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a35071de5024f70388bb44a6242619ae5}{UINT32\+\_\+\+ONES}}~0x\+FFFFFFFFul
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ae0969379f46e52ffd8c5ade34cde4ad7}{UINT64\+\_\+\+ONE\+\_\+\+MASK}}~0x0000000000000001ull
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ac87c16cc96133e8b689ac0dacf87f8cc}{UINT64\+\_\+\+ZERO\+\_\+\+MASK}}~0x\+FFFFFFFFFFFFFFFEull
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a7493c62432846de570155cf5235bdb74}{UINT64\+\_\+\+ONE\+\_\+\+LAST\+\_\+\+MASK}}~0x8000000000000000ull
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ace063e66f3ab283b8fe7c04919260827}{UINT64\+\_\+\+ZERO\+\_\+\+LAST\+\_\+\+MASK}}~0x7\+FFFFFFFFFFFFFFFull
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a6c97e68bbf12396ed53dbb059e076c94}{UINT32\+\_\+\+ONE\+\_\+\+MASK}}~0x00000001ul
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad43567832538324f098a7e0813ece799}{UINT32\+\_\+\+ZERO\+\_\+\+MASK}}~0x\+FFFFFFFEul
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_adf202b971de4ac1f8b7d68ea0c9242be}{UINT32\+\_\+\+ONE\+\_\+\+LAST\+\_\+\+MASK}}~0x80000000ul
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_aaac0bb4f66a425e8f530e9904d10ceab}{UINT32\+\_\+\+ZERO\+\_\+\+LAST\+\_\+\+MASK}}~0x7\+FFFFFFFul
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a4f2007be7667a201ee454fc6ffa57cfa}{UINT64\+\_\+\+TO\+\_\+\+UINT32\+\_\+\+LSB}}(value)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_aa008c6db139db45d7fcfa7d0cbafa275}{UINT64\+\_\+\+TO\+\_\+\+UINT32\+\_\+\+MSB}}(value)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(a,  b)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(a,  b)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ae2f08dc603ae93c402abd918ba4e23e1}{ABS}}(a)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8235870449eaa1be3abb2759cf061b8d}{rand\+\_\+init}}()
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a302caafd1e7f980faa410a8225c94615}{rand\+\_\+i}}(min,  max)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad72e46a8aea2c374deb646a24f526c59}{rand\+\_\+f}}(min,  max)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8bdb338d0a5a363ed9909629d424c13c}{IS\+\_\+\+NUMBER}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a529f6816b5dbe4c4e0df9847c8b47fd4}{IS\+\_\+\+DIGIT}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a37401e630216e4f5edd0802017d46799}{IS\+\_\+\+LETTER}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a08a1b0cc8dad131ef5779d7034c99ac8}{IS\+\_\+\+ALPHANUMERIC}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a519e0f6fe0e92a6563e716674a59961b}{IS\+\_\+\+BETWEEN}}(number,  a,  b)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a1948a7503777d84952d671d9deebb4c1}{IS\+\_\+\+EOL}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a7fe00fa6b1d39ccde20b433b7e8f8c24}{IS\+\_\+\+ANY\+\_\+\+EOL}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a5ce0744edddd391375e19d4a138d2b9b}{IS\+\_\+\+HEX\+\_\+\+DIGIT}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a91b2b20c14202580afd878d5a4f37f81}{IS\+\_\+\+END\+\_\+\+OF\+\_\+\+RECORD}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ac2549b0e90268501d3870ca2f58832b5}{IS\+\_\+\+END\+\_\+\+OF\+\_\+\+FIELD}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8af8cbe29ac7c6604f63b484ecbf37ab}{GET\+\_\+\+DIGIT}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a59c05d17e4f604486d97d840dc15606f}{GET\+\_\+\+HEX\+\_\+\+DIGIT}}(character)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a499946e20c4008bf731706413b0234a3}{BOUNDED\+\_\+\+SUBTRACTION}}(minuend,  subtrahend,  limit)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a1a78c783ec2897a3688bedf437865337}{BOUNDED\+\_\+\+ADDITION}}(summand\+\_\+A,  summand\+\_\+B,  limit)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a1043f2bce7798db699e388b13fcaa37c}{PERCENTAGE}}(AMOUNT,  TOTAL)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a8b8a0baa6b603351ede6411419d61096}{DIV\+\_\+\+FLOOR}}(NUMERATOR,  DENOMINATOR)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad7555fc30b9a2aed0ad31f408794ce07}{DIV\+\_\+\+CEIL}}(NUMERATOR,  DENOMINATOR)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a0a059fc6efa7cbb43bf5edea65399052}{DIVC\+\_\+\+FLOOR}}(NUMERATOR,  DENOMINATOR)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a7494712f806534f6d91b2f34353c4550}{DIVC\+\_\+\+CEIL}}(NUMERATOR,  DENOMINATOR)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ad434d0a5c49b91936c6fa1cda555218a}{TELESCOPIC\+\_\+\+FACTOR}}~(3.\+0/\+2.\+0)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ac032d233a8ebfcd82fd49d0824eefb18}{FORCE\+\_\+\+INLINE}}~\doxymbox{\hyperlink{struct____attribute____}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}((always\+\_\+inline)) inline
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a97f4186d0769063f5f724ef216f5dfd7}{FORCE\+\_\+\+NO\+\_\+\+INLINE}}~\doxymbox{\hyperlink{struct____attribute____}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((noinline))
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a134a102c2f8092507f5aa30c2201e1b6}{PRAGMA\+\_\+\+LOOP\+\_\+\+VECTORIZE}}~\+\_\+\+Pragma("{}ivdep"{})
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_af527eda3bec33576d0ca6bf17647b4f5}{POPCOUNT\+\_\+64}}(word64)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a9d8659ca5be526621d67376bd51a0b42}{POPCOUNT\+\_\+32}}(word32)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_ae77db8319fcb86987ecd78af9f784eb0}{PREFETCH}}(ADDR)
+\item 
+\+\#define \doxymbox{\hyperlink{commons_8h_a158c0eba54b61d40bfcf14320118eb32}{PRINT\+\_\+\+CHAR\+\_\+\+REP}}(stream,  character,  times)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{commons_8h_a3700d09312e8e0f261baa1f3bdd69e68}{rand\+\_\+iid}} (const uint64\+\_\+t min, const uint64\+\_\+t max)
+\item 
+uint32\+\_\+t \doxymbox{\hyperlink{commons_8h_abe131608949cd1a799b39a59cc6cb480}{nominal\+\_\+prop\+\_\+u32}} (const uint32\+\_\+t base, const double factor)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{commons_8h_ad335190ac722a6d54bfe56d107a5d472}{nominal\+\_\+prop\+\_\+u64}} (const uint64\+\_\+t base, const double factor)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{commons_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{commons_8h_ae2f08dc603ae93c402abd918ba4e23e1}\index{commons.h@{commons.h}!ABS@{ABS}}
+\index{ABS@{ABS}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{ABS}{ABS}}
+{\footnotesize\ttfamily \label{commons_8h_ae2f08dc603ae93c402abd918ba4e23e1} 
+\+\#define ABS(\begin{DoxyParamCaption}\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((a)>=0)?(a):-\/(a))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00196}{196}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a1a78c783ec2897a3688bedf437865337}\index{commons.h@{commons.h}!BOUNDED\_ADDITION@{BOUNDED\_ADDITION}}
+\index{BOUNDED\_ADDITION@{BOUNDED\_ADDITION}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BOUNDED\_ADDITION}{BOUNDED\_ADDITION}}
+{\footnotesize\ttfamily \label{commons_8h_a1a78c783ec2897a3688bedf437865337} 
+\+\#define BOUNDED\+\_\+\+ADDITION(\begin{DoxyParamCaption}\item[{}]{summand\+\_\+A}{, }\item[{}]{summand\+\_\+B}{, }\item[{}]{limit}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((((summand\_A)+(summand\_B))<(limit))\ ?\ (summand\_A)+(summand\_B):(limit))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00229}{229}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a499946e20c4008bf731706413b0234a3}\index{commons.h@{commons.h}!BOUNDED\_SUBTRACTION@{BOUNDED\_SUBTRACTION}}
+\index{BOUNDED\_SUBTRACTION@{BOUNDED\_SUBTRACTION}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BOUNDED\_SUBTRACTION}{BOUNDED\_SUBTRACTION}}
+{\footnotesize\ttfamily \label{commons_8h_a499946e20c4008bf731706413b0234a3} 
+\+\#define BOUNDED\+\_\+\+SUBTRACTION(\begin{DoxyParamCaption}\item[{}]{minuend}{, }\item[{}]{subtrahend}{, }\item[{}]{limit}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((minuend)>((limit)+(subtrahend)))\ ?\ (minuend)-\/(subtrahend):(limit))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00228}{228}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a63436b2267c2fda1cc548add965b6065}\index{commons.h@{commons.h}!BUFFER\_SIZE\_128G@{BUFFER\_SIZE\_128G}}
+\index{BUFFER\_SIZE\_128G@{BUFFER\_SIZE\_128G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_128G}{BUFFER\_SIZE\_128G}}
+{\footnotesize\ttfamily \label{commons_8h_a63436b2267c2fda1cc548add965b6065} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+128G~(1ul$<$$<$37)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00146}{146}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a9b0dbd7d3279be3d91bf63d7b5becf74}\index{commons.h@{commons.h}!BUFFER\_SIZE\_128K@{BUFFER\_SIZE\_128K}}
+\index{BUFFER\_SIZE\_128K@{BUFFER\_SIZE\_128K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_128K}{BUFFER\_SIZE\_128K}}
+{\footnotesize\ttfamily \label{commons_8h_a9b0dbd7d3279be3d91bf63d7b5becf74} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+128K~(1ul$<$$<$17)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00126}{126}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a69134ccb36111c0441a9daf00348ca2e}\index{commons.h@{commons.h}!BUFFER\_SIZE\_128M@{BUFFER\_SIZE\_128M}}
+\index{BUFFER\_SIZE\_128M@{BUFFER\_SIZE\_128M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_128M}{BUFFER\_SIZE\_128M}}
+{\footnotesize\ttfamily \label{commons_8h_a69134ccb36111c0441a9daf00348ca2e} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+128M~(1ul$<$$<$27)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00136}{136}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad7fe2ab32a454181c782adbe25b628a5}\index{commons.h@{commons.h}!BUFFER\_SIZE\_16G@{BUFFER\_SIZE\_16G}}
+\index{BUFFER\_SIZE\_16G@{BUFFER\_SIZE\_16G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_16G}{BUFFER\_SIZE\_16G}}
+{\footnotesize\ttfamily \label{commons_8h_ad7fe2ab32a454181c782adbe25b628a5} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+16G~(1ul$<$$<$34)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00143}{143}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a0b698438fa983678d3086aae18a2d00b}\index{commons.h@{commons.h}!BUFFER\_SIZE\_16K@{BUFFER\_SIZE\_16K}}
+\index{BUFFER\_SIZE\_16K@{BUFFER\_SIZE\_16K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_16K}{BUFFER\_SIZE\_16K}}
+{\footnotesize\ttfamily \label{commons_8h_a0b698438fa983678d3086aae18a2d00b} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+16K~(1ul$<$$<$14)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00123}{123}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a442f4e3f0262a283164cee50bd1d35ab}\index{commons.h@{commons.h}!BUFFER\_SIZE\_16M@{BUFFER\_SIZE\_16M}}
+\index{BUFFER\_SIZE\_16M@{BUFFER\_SIZE\_16M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_16M}{BUFFER\_SIZE\_16M}}
+{\footnotesize\ttfamily \label{commons_8h_a442f4e3f0262a283164cee50bd1d35ab} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+16M~(1ul$<$$<$24)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00133}{133}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_afdc864572fa97ec9bfac999528a11536}\index{commons.h@{commons.h}!BUFFER\_SIZE\_1G@{BUFFER\_SIZE\_1G}}
+\index{BUFFER\_SIZE\_1G@{BUFFER\_SIZE\_1G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_1G}{BUFFER\_SIZE\_1G}}
+{\footnotesize\ttfamily \label{commons_8h_afdc864572fa97ec9bfac999528a11536} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+1G~(1ul$<$$<$30)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00139}{139}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ac28db512f80213adf865cd76fddb3c8d}\index{commons.h@{commons.h}!BUFFER\_SIZE\_1K@{BUFFER\_SIZE\_1K}}
+\index{BUFFER\_SIZE\_1K@{BUFFER\_SIZE\_1K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_1K}{BUFFER\_SIZE\_1K}}
+{\footnotesize\ttfamily \label{commons_8h_ac28db512f80213adf865cd76fddb3c8d} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+1K~(1ul$<$$<$10)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00119}{119}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_abdaa0e4dba7e17ca68e3fa985cfa3a81}\index{commons.h@{commons.h}!BUFFER\_SIZE\_1M@{BUFFER\_SIZE\_1M}}
+\index{BUFFER\_SIZE\_1M@{BUFFER\_SIZE\_1M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_1M}{BUFFER\_SIZE\_1M}}
+{\footnotesize\ttfamily \label{commons_8h_abdaa0e4dba7e17ca68e3fa985cfa3a81} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+1M~(1ul$<$$<$20)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00129}{129}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a85d3a8263812ca7127848b8d5e203f01}\index{commons.h@{commons.h}!BUFFER\_SIZE\_256G@{BUFFER\_SIZE\_256G}}
+\index{BUFFER\_SIZE\_256G@{BUFFER\_SIZE\_256G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_256G}{BUFFER\_SIZE\_256G}}
+{\footnotesize\ttfamily \label{commons_8h_a85d3a8263812ca7127848b8d5e203f01} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+256G~(1ul$<$$<$38)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00147}{147}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a25b0488fba1782fc62108d211c79f757}\index{commons.h@{commons.h}!BUFFER\_SIZE\_256K@{BUFFER\_SIZE\_256K}}
+\index{BUFFER\_SIZE\_256K@{BUFFER\_SIZE\_256K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_256K}{BUFFER\_SIZE\_256K}}
+{\footnotesize\ttfamily \label{commons_8h_a25b0488fba1782fc62108d211c79f757} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+256K~(1ul$<$$<$18)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00127}{127}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ae44a0bfb5a4e794e56f695e8a5dd9dd2}\index{commons.h@{commons.h}!BUFFER\_SIZE\_256M@{BUFFER\_SIZE\_256M}}
+\index{BUFFER\_SIZE\_256M@{BUFFER\_SIZE\_256M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_256M}{BUFFER\_SIZE\_256M}}
+{\footnotesize\ttfamily \label{commons_8h_ae44a0bfb5a4e794e56f695e8a5dd9dd2} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+256M~(1ul$<$$<$28)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00137}{137}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a3c119e05251709baa644a76d61c630f1}\index{commons.h@{commons.h}!BUFFER\_SIZE\_2G@{BUFFER\_SIZE\_2G}}
+\index{BUFFER\_SIZE\_2G@{BUFFER\_SIZE\_2G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_2G}{BUFFER\_SIZE\_2G}}
+{\footnotesize\ttfamily \label{commons_8h_a3c119e05251709baa644a76d61c630f1} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+2G~(1ul$<$$<$31)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00140}{140}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_acd6c7fda55f2a4b2cc4351a1e7988385}\index{commons.h@{commons.h}!BUFFER\_SIZE\_2K@{BUFFER\_SIZE\_2K}}
+\index{BUFFER\_SIZE\_2K@{BUFFER\_SIZE\_2K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_2K}{BUFFER\_SIZE\_2K}}
+{\footnotesize\ttfamily \label{commons_8h_acd6c7fda55f2a4b2cc4351a1e7988385} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+2K~(1ul$<$$<$11)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00120}{120}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8f15595a4b8023a96a684b5a9fefcd09}\index{commons.h@{commons.h}!BUFFER\_SIZE\_2M@{BUFFER\_SIZE\_2M}}
+\index{BUFFER\_SIZE\_2M@{BUFFER\_SIZE\_2M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_2M}{BUFFER\_SIZE\_2M}}
+{\footnotesize\ttfamily \label{commons_8h_a8f15595a4b8023a96a684b5a9fefcd09} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+2M~(1ul$<$$<$21)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00130}{130}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a7df982524618dee59a0a001257e06973}\index{commons.h@{commons.h}!BUFFER\_SIZE\_32G@{BUFFER\_SIZE\_32G}}
+\index{BUFFER\_SIZE\_32G@{BUFFER\_SIZE\_32G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_32G}{BUFFER\_SIZE\_32G}}
+{\footnotesize\ttfamily \label{commons_8h_a7df982524618dee59a0a001257e06973} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+32G~(1ul$<$$<$35)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00144}{144}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a76a3593a4bbf9c8aaa651fd63f1a2276}\index{commons.h@{commons.h}!BUFFER\_SIZE\_32K@{BUFFER\_SIZE\_32K}}
+\index{BUFFER\_SIZE\_32K@{BUFFER\_SIZE\_32K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_32K}{BUFFER\_SIZE\_32K}}
+{\footnotesize\ttfamily \label{commons_8h_a76a3593a4bbf9c8aaa651fd63f1a2276} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+32K~(1ul$<$$<$15)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00124}{124}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ac88e232496b3ba99c2786b994ecaeb2c}\index{commons.h@{commons.h}!BUFFER\_SIZE\_32M@{BUFFER\_SIZE\_32M}}
+\index{BUFFER\_SIZE\_32M@{BUFFER\_SIZE\_32M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_32M}{BUFFER\_SIZE\_32M}}
+{\footnotesize\ttfamily \label{commons_8h_ac88e232496b3ba99c2786b994ecaeb2c} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+32M~(1ul$<$$<$25)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00134}{134}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a80aa30f2b644f4ff839a787a7667d85c}\index{commons.h@{commons.h}!BUFFER\_SIZE\_4G@{BUFFER\_SIZE\_4G}}
+\index{BUFFER\_SIZE\_4G@{BUFFER\_SIZE\_4G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_4G}{BUFFER\_SIZE\_4G}}
+{\footnotesize\ttfamily \label{commons_8h_a80aa30f2b644f4ff839a787a7667d85c} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+4G~(1ul$<$$<$32)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00141}{141}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a3c0eaf9534a3ede516f1001298148674}\index{commons.h@{commons.h}!BUFFER\_SIZE\_4K@{BUFFER\_SIZE\_4K}}
+\index{BUFFER\_SIZE\_4K@{BUFFER\_SIZE\_4K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_4K}{BUFFER\_SIZE\_4K}}
+{\footnotesize\ttfamily \label{commons_8h_a3c0eaf9534a3ede516f1001298148674} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+4K~(1ul$<$$<$12)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00121}{121}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad024ecc8c19c40a45ca9ae62d44b9699}\index{commons.h@{commons.h}!BUFFER\_SIZE\_4M@{BUFFER\_SIZE\_4M}}
+\index{BUFFER\_SIZE\_4M@{BUFFER\_SIZE\_4M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_4M}{BUFFER\_SIZE\_4M}}
+{\footnotesize\ttfamily \label{commons_8h_ad024ecc8c19c40a45ca9ae62d44b9699} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+4M~(1ul$<$$<$22)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00131}{131}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_aeeea7ab2b02f990f50fa380a1e951962}\index{commons.h@{commons.h}!BUFFER\_SIZE\_512K@{BUFFER\_SIZE\_512K}}
+\index{BUFFER\_SIZE\_512K@{BUFFER\_SIZE\_512K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_512K}{BUFFER\_SIZE\_512K}}
+{\footnotesize\ttfamily \label{commons_8h_aeeea7ab2b02f990f50fa380a1e951962} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+512K~(1ul$<$$<$19)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00128}{128}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_af07720a49008e99e3551d9e9ba5a322a}\index{commons.h@{commons.h}!BUFFER\_SIZE\_512M@{BUFFER\_SIZE\_512M}}
+\index{BUFFER\_SIZE\_512M@{BUFFER\_SIZE\_512M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_512M}{BUFFER\_SIZE\_512M}}
+{\footnotesize\ttfamily \label{commons_8h_af07720a49008e99e3551d9e9ba5a322a} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+512M~(1ul$<$$<$29)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00138}{138}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a460f67750ff6d88cb82ee1333778b821}\index{commons.h@{commons.h}!BUFFER\_SIZE\_64G@{BUFFER\_SIZE\_64G}}
+\index{BUFFER\_SIZE\_64G@{BUFFER\_SIZE\_64G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_64G}{BUFFER\_SIZE\_64G}}
+{\footnotesize\ttfamily \label{commons_8h_a460f67750ff6d88cb82ee1333778b821} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+64G~(1ul$<$$<$36)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00145}{145}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_adb73ffa1edeb77301bd7154ffe118b76}\index{commons.h@{commons.h}!BUFFER\_SIZE\_64K@{BUFFER\_SIZE\_64K}}
+\index{BUFFER\_SIZE\_64K@{BUFFER\_SIZE\_64K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_64K}{BUFFER\_SIZE\_64K}}
+{\footnotesize\ttfamily \label{commons_8h_adb73ffa1edeb77301bd7154ffe118b76} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+64K~(1ul$<$$<$16)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00125}{125}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ac53e6f58b81c5bbec736f00d07e3102e}\index{commons.h@{commons.h}!BUFFER\_SIZE\_64M@{BUFFER\_SIZE\_64M}}
+\index{BUFFER\_SIZE\_64M@{BUFFER\_SIZE\_64M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_64M}{BUFFER\_SIZE\_64M}}
+{\footnotesize\ttfamily \label{commons_8h_ac53e6f58b81c5bbec736f00d07e3102e} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+64M~(1ul$<$$<$26)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00135}{135}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a5cd8ac81f7d1f5a4cc06bb9a84153769}\index{commons.h@{commons.h}!BUFFER\_SIZE\_8G@{BUFFER\_SIZE\_8G}}
+\index{BUFFER\_SIZE\_8G@{BUFFER\_SIZE\_8G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_8G}{BUFFER\_SIZE\_8G}}
+{\footnotesize\ttfamily \label{commons_8h_a5cd8ac81f7d1f5a4cc06bb9a84153769} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+8G~(1ul$<$$<$33)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00142}{142}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a66bf4c30890d0ceca5b83ba7795f2368}\index{commons.h@{commons.h}!BUFFER\_SIZE\_8K@{BUFFER\_SIZE\_8K}}
+\index{BUFFER\_SIZE\_8K@{BUFFER\_SIZE\_8K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_8K}{BUFFER\_SIZE\_8K}}
+{\footnotesize\ttfamily \label{commons_8h_a66bf4c30890d0ceca5b83ba7795f2368} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+8K~(1ul$<$$<$13)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00122}{122}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_aa5efd9be8c655f88041692d105636936}\index{commons.h@{commons.h}!BUFFER\_SIZE\_8M@{BUFFER\_SIZE\_8M}}
+\index{BUFFER\_SIZE\_8M@{BUFFER\_SIZE\_8M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE\_8M}{BUFFER\_SIZE\_8M}}
+{\footnotesize\ttfamily \label{commons_8h_aa5efd9be8c655f88041692d105636936} 
+\+\#define BUFFER\+\_\+\+SIZE\+\_\+8M~(1ul$<$$<$23)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00132}{132}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8301ee0d0b0055ebb4e8ecc46fadd69e}\index{commons.h@{commons.h}!COLON@{COLON}}
+\index{COLON@{COLON}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{COLON}{COLON}}
+{\footnotesize\ttfamily \label{commons_8h_a8301ee0d0b0055ebb4e8ecc46fadd69e} 
+\+\#define COLON~\textquotesingle{}:\+\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00086}{86}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a9d6d08a24e6e2e6fb0a45deffcede95e}\index{commons.h@{commons.h}!COMA@{COMA}}
+\index{COMA@{COMA}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{COMA}{COMA}}
+{\footnotesize\ttfamily \label{commons_8h_a9d6d08a24e6e2e6fb0a45deffcede95e} 
+\+\#define COMA~\textquotesingle{},\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00084}{84}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a48e60591da14df7304ec7414cc08957b}\index{commons.h@{commons.h}!CONVERT\_B\_TO\_GB@{CONVERT\_B\_TO\_GB}}
+\index{CONVERT\_B\_TO\_GB@{CONVERT\_B\_TO\_GB}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{CONVERT\_B\_TO\_GB}{CONVERT\_B\_TO\_GB}}
+{\footnotesize\ttfamily \label{commons_8h_a48e60591da14df7304ec7414cc08957b} 
+\+\#define CONVERT\+\_\+\+B\+\_\+\+TO\+\_\+\+GB(\begin{DoxyParamCaption}\item[{}]{number}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((number)/(1024*1024*1024))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00151}{151}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a104cf3528daaa835c30d3f159a3be3d1}\index{commons.h@{commons.h}!CONVERT\_B\_TO\_KB@{CONVERT\_B\_TO\_KB}}
+\index{CONVERT\_B\_TO\_KB@{CONVERT\_B\_TO\_KB}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{CONVERT\_B\_TO\_KB}{CONVERT\_B\_TO\_KB}}
+{\footnotesize\ttfamily \label{commons_8h_a104cf3528daaa835c30d3f159a3be3d1} 
+\+\#define CONVERT\+\_\+\+B\+\_\+\+TO\+\_\+\+KB(\begin{DoxyParamCaption}\item[{}]{number}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((number)/(1024))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00149}{149}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_adec104e0612084739970d4f0629e2cdd}\index{commons.h@{commons.h}!CONVERT\_B\_TO\_MB@{CONVERT\_B\_TO\_MB}}
+\index{CONVERT\_B\_TO\_MB@{CONVERT\_B\_TO\_MB}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{CONVERT\_B\_TO\_MB}{CONVERT\_B\_TO\_MB}}
+{\footnotesize\ttfamily \label{commons_8h_adec104e0612084739970d4f0629e2cdd} 
+\+\#define CONVERT\+\_\+\+B\+\_\+\+TO\+\_\+\+MB(\begin{DoxyParamCaption}\item[{}]{number}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((number)/(1024*1024))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00150}{150}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad7555fc30b9a2aed0ad31f408794ce07}\index{commons.h@{commons.h}!DIV\_CEIL@{DIV\_CEIL}}
+\index{DIV\_CEIL@{DIV\_CEIL}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{DIV\_CEIL}{DIV\_CEIL}}
+{\footnotesize\ttfamily \label{commons_8h_ad7555fc30b9a2aed0ad31f408794ce07} 
+\+\#define DIV\+\_\+\+CEIL(\begin{DoxyParamCaption}\item[{}]{NUMERATOR}{, }\item[{}]{DENOMINATOR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((NUMERATOR)+((DENOMINATOR)-\/1))/(DENOMINATOR))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00233}{233}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8b8a0baa6b603351ede6411419d61096}\index{commons.h@{commons.h}!DIV\_FLOOR@{DIV\_FLOOR}}
+\index{DIV\_FLOOR@{DIV\_FLOOR}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{DIV\_FLOOR}{DIV\_FLOOR}}
+{\footnotesize\ttfamily \label{commons_8h_a8b8a0baa6b603351ede6411419d61096} 
+\+\#define DIV\+\_\+\+FLOOR(\begin{DoxyParamCaption}\item[{}]{NUMERATOR}{, }\item[{}]{DENOMINATOR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((NUMERATOR)/(DENOMINATOR))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00232}{232}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a7494712f806534f6d91b2f34353c4550}\index{commons.h@{commons.h}!DIVC\_CEIL@{DIVC\_CEIL}}
+\index{DIVC\_CEIL@{DIVC\_CEIL}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{DIVC\_CEIL}{DIVC\_CEIL}}
+{\footnotesize\ttfamily \label{commons_8h_a7494712f806534f6d91b2f34353c4550} 
+\+\#define DIVC\+\_\+\+CEIL(\begin{DoxyParamCaption}\item[{}]{NUMERATOR}{, }\item[{}]{DENOMINATOR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((DENOMINATOR)\ ?\ \doxymbox{\hyperlink{commons_8h_ad7555fc30b9a2aed0ad31f408794ce07}{DIV\_CEIL}}(NUMERATOR,DENOMINATOR)\ :(0))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00235}{235}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a0a059fc6efa7cbb43bf5edea65399052}\index{commons.h@{commons.h}!DIVC\_FLOOR@{DIVC\_FLOOR}}
+\index{DIVC\_FLOOR@{DIVC\_FLOOR}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{DIVC\_FLOOR}{DIVC\_FLOOR}}
+{\footnotesize\ttfamily \label{commons_8h_a0a059fc6efa7cbb43bf5edea65399052} 
+\+\#define DIVC\+\_\+\+FLOOR(\begin{DoxyParamCaption}\item[{}]{NUMERATOR}{, }\item[{}]{DENOMINATOR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((DENOMINATOR)\ ?\ \doxymbox{\hyperlink{commons_8h_a8b8a0baa6b603351ede6411419d61096}{DIV\_FLOOR}}(NUMERATOR,DENOMINATOR)\ :(0))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00234}{234}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a757c0deba59949e5a5e349e99f14afb8}\index{commons.h@{commons.h}!DOS\_EOL@{DOS\_EOL}}
+\index{DOS\_EOL@{DOS\_EOL}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{DOS\_EOL}{DOS\_EOL}}
+{\footnotesize\ttfamily \label{commons_8h_a757c0deba59949e5a5e349e99f14afb8} 
+\+\#define DOS\+\_\+\+EOL~\textquotesingle{}\textbackslash{}r\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00076}{76}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8a5043e7ab655e37e903ffbd8b95d6b2}\index{commons.h@{commons.h}!DOT@{DOT}}
+\index{DOT@{DOT}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{DOT}{DOT}}
+{\footnotesize\ttfamily \label{commons_8h_a8a5043e7ab655e37e903ffbd8b95d6b2} 
+\+\#define DOT~\textquotesingle{}.\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00083}{83}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a4e67e9429d48a2ba8f833ee3b1dceb5d}\index{commons.h@{commons.h}!EOL@{EOL}}
+\index{EOL@{EOL}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{EOL}{EOL}}
+{\footnotesize\ttfamily \label{commons_8h_a4e67e9429d48a2ba8f833ee3b1dceb5d} 
+\+\#define EOL~\textquotesingle{}\textbackslash{}n\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00074}{74}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_aadbbc7b02d94a4c18646813ac8d7dec1}\index{commons.h@{commons.h}!EOS@{EOS}}
+\index{EOS@{EOS}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{EOS}{EOS}}
+{\footnotesize\ttfamily \label{commons_8h_aadbbc7b02d94a4c18646813ac8d7dec1} 
+\+\#define EOS~\textquotesingle{}\textbackslash{}0\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00073}{73}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ac032d233a8ebfcd82fd49d0824eefb18}\index{commons.h@{commons.h}!FORCE\_INLINE@{FORCE\_INLINE}}
+\index{FORCE\_INLINE@{FORCE\_INLINE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{FORCE\_INLINE}{FORCE\_INLINE}}
+{\footnotesize\ttfamily \label{commons_8h_ac032d233a8ebfcd82fd49d0824eefb18} 
+\+\#define FORCE\+\_\+\+INLINE~\doxymbox{\hyperlink{struct____attribute____}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}}((always\+\_\+inline)) inline}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00245}{245}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a97f4186d0769063f5f724ef216f5dfd7}\index{commons.h@{commons.h}!FORCE\_NO\_INLINE@{FORCE\_NO\_INLINE}}
+\index{FORCE\_NO\_INLINE@{FORCE\_NO\_INLINE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{FORCE\_NO\_INLINE}{FORCE\_NO\_INLINE}}
+{\footnotesize\ttfamily \label{commons_8h_a97f4186d0769063f5f724ef216f5dfd7} 
+\+\#define FORCE\+\_\+\+NO\+\_\+\+INLINE~\doxymbox{\hyperlink{struct____attribute____}{\+\_\+\+\_\+attribute\+\_\+\+\_\+}} ((noinline))}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00246}{246}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ac8dc47e3b39c930caed4bfd05b4ba805}\index{commons.h@{commons.h}!FORMAT@{FORMAT}}
+\index{FORMAT@{FORMAT}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{FORMAT}{FORMAT}}
+{\footnotesize\ttfamily \label{commons_8h_ac8dc47e3b39c930caed4bfd05b4ba805} 
+\+\#define FORMAT~\textquotesingle{}\%\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00079}{79}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8af8cbe29ac7c6604f63b484ecbf37ab}\index{commons.h@{commons.h}!GET\_DIGIT@{GET\_DIGIT}}
+\index{GET\_DIGIT@{GET\_DIGIT}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{GET\_DIGIT}{GET\_DIGIT}}
+{\footnotesize\ttfamily \label{commons_8h_a8af8cbe29ac7c6604f63b484ecbf37ab} 
+\+\#define GET\+\_\+\+DIGIT(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((character)\ -\/\ \textcolor{charliteral}{'0'})}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00222}{222}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a59c05d17e4f604486d97d840dc15606f}\index{commons.h@{commons.h}!GET\_HEX\_DIGIT@{GET\_HEX\_DIGIT}}
+\index{GET\_HEX\_DIGIT@{GET\_HEX\_DIGIT}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{GET\_HEX\_DIGIT}{GET\_HEX\_DIGIT}}
+{\footnotesize\ttfamily \label{commons_8h_a59c05d17e4f604486d97d840dc15606f} 
+\+\#define GET\+\_\+\+HEX\+\_\+\+DIGIT(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\doxymbox{\hyperlink{commons_8h_a8bdb338d0a5a363ed9909629d424c13c}{IS\_NUMBER}}(character)\ ?\ \doxymbox{\hyperlink{commons_8h_a8af8cbe29ac7c6604f63b484ecbf37ab}{GET\_DIGIT}}(character)\ :\ (toupper(character)\ -\/\ \textcolor{stringliteral}{'A'}\ +\ 10))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00223}{223}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a7172fe24d1ffc31d15b20a77ea9f34dd}\index{commons.h@{commons.h}!HASH@{HASH}}
+\index{HASH@{HASH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{HASH}{HASH}}
+{\footnotesize\ttfamily \label{commons_8h_a7172fe24d1ffc31d15b20a77ea9f34dd} 
+\+\#define HASH~\textquotesingle{}\+\#\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00087}{87}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a08a1b0cc8dad131ef5779d7034c99ac8}\index{commons.h@{commons.h}!IS\_ALPHANUMERIC@{IS\_ALPHANUMERIC}}
+\index{IS\_ALPHANUMERIC@{IS\_ALPHANUMERIC}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_ALPHANUMERIC}{IS\_ALPHANUMERIC}}
+{\footnotesize\ttfamily \label{commons_8h_a08a1b0cc8dad131ef5779d7034c99ac8} 
+\+\#define IS\+\_\+\+ALPHANUMERIC(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\doxymbox{\hyperlink{commons_8h_a8bdb338d0a5a363ed9909629d424c13c}{IS\_NUMBER}}(character)\ ||\ \doxymbox{\hyperlink{commons_8h_a37401e630216e4f5edd0802017d46799}{IS\_LETTER}}(character))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00212}{212}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a7fe00fa6b1d39ccde20b433b7e8f8c24}\index{commons.h@{commons.h}!IS\_ANY\_EOL@{IS\_ANY\_EOL}}
+\index{IS\_ANY\_EOL@{IS\_ANY\_EOL}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_ANY\_EOL}{IS\_ANY\_EOL}}
+{\footnotesize\ttfamily \label{commons_8h_a7fe00fa6b1d39ccde20b433b7e8f8c24} 
+\+\#define IS\+\_\+\+ANY\+\_\+\+EOL(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((character)==\doxymbox{\hyperlink{commons_8h_a4e67e9429d48a2ba8f833ee3b1dceb5d}{EOL}}\ ||\ (character)==\doxymbox{\hyperlink{commons_8h_a757c0deba59949e5a5e349e99f14afb8}{DOS\_EOL}})}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00216}{216}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a519e0f6fe0e92a6563e716674a59961b}\index{commons.h@{commons.h}!IS\_BETWEEN@{IS\_BETWEEN}}
+\index{IS\_BETWEEN@{IS\_BETWEEN}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_BETWEEN}{IS\_BETWEEN}}
+{\footnotesize\ttfamily \label{commons_8h_a519e0f6fe0e92a6563e716674a59961b} 
+\+\#define IS\+\_\+\+BETWEEN(\begin{DoxyParamCaption}\item[{}]{number}{, }\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((a)<=(number)\ \&\&\ (number)<=(b))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00213}{213}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a529f6816b5dbe4c4e0df9847c8b47fd4}\index{commons.h@{commons.h}!IS\_DIGIT@{IS\_DIGIT}}
+\index{IS\_DIGIT@{IS\_DIGIT}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_DIGIT}{IS\_DIGIT}}
+{\footnotesize\ttfamily \label{commons_8h_a529f6816b5dbe4c4e0df9847c8b47fd4} 
+\+\#define IS\+\_\+\+DIGIT(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{commons_8h_a8bdb338d0a5a363ed9909629d424c13c}{IS\_NUMBER}}(character)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00210}{210}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ac2549b0e90268501d3870ca2f58832b5}\index{commons.h@{commons.h}!IS\_END\_OF\_FIELD@{IS\_END\_OF\_FIELD}}
+\index{IS\_END\_OF\_FIELD@{IS\_END\_OF\_FIELD}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_END\_OF\_FIELD}{IS\_END\_OF\_FIELD}}
+{\footnotesize\ttfamily \label{commons_8h_ac2549b0e90268501d3870ca2f58832b5} 
+\+\#define IS\+\_\+\+END\+\_\+\+OF\+\_\+\+FIELD(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ \doxymbox{\hyperlink{commons_8h_a91b2b20c14202580afd878d5a4f37f81}{IS\_END\_OF\_RECORD}}(character)\ ||\ (character)==\doxymbox{\hyperlink{commons_8h_a5ff6e798033f03e74730e99f01936f84}{SPACE}}\ ||\ (character)==\doxymbox{\hyperlink{commons_8h_ad58a1fbfc85c7e4790fc55e654f50221}{TAB}}\ )}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00220}{220}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a91b2b20c14202580afd878d5a4f37f81}\index{commons.h@{commons.h}!IS\_END\_OF\_RECORD@{IS\_END\_OF\_RECORD}}
+\index{IS\_END\_OF\_RECORD@{IS\_END\_OF\_RECORD}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_END\_OF\_RECORD}{IS\_END\_OF\_RECORD}}
+{\footnotesize\ttfamily \label{commons_8h_a91b2b20c14202580afd878d5a4f37f81} 
+\+\#define IS\+\_\+\+END\+\_\+\+OF\+\_\+\+RECORD(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ (character)==\doxymbox{\hyperlink{commons_8h_a4e67e9429d48a2ba8f833ee3b1dceb5d}{EOL}}\ ||\ (character)==\doxymbox{\hyperlink{commons_8h_aadbbc7b02d94a4c18646813ac8d7dec1}{EOS}}\ )}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00219}{219}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a1948a7503777d84952d671d9deebb4c1}\index{commons.h@{commons.h}!IS\_EOL@{IS\_EOL}}
+\index{IS\_EOL@{IS\_EOL}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_EOL}{IS\_EOL}}
+{\footnotesize\ttfamily \label{commons_8h_a1948a7503777d84952d671d9deebb4c1} 
+\+\#define IS\+\_\+\+EOL(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((character)==\doxymbox{\hyperlink{commons_8h_a4e67e9429d48a2ba8f833ee3b1dceb5d}{EOL}})}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00215}{215}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a5ce0744edddd391375e19d4a138d2b9b}\index{commons.h@{commons.h}!IS\_HEX\_DIGIT@{IS\_HEX\_DIGIT}}
+\index{IS\_HEX\_DIGIT@{IS\_HEX\_DIGIT}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_HEX\_DIGIT}{IS\_HEX\_DIGIT}}
+{\footnotesize\ttfamily \label{commons_8h_a5ce0744edddd391375e19d4a138d2b9b} 
+\+\#define IS\+\_\+\+HEX\+\_\+\+DIGIT(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\doxymbox{\hyperlink{commons_8h_a8bdb338d0a5a363ed9909629d424c13c}{IS\_NUMBER}}(character)\ ||\ (\textcolor{charliteral}{'a'}\ <=\ (character)\ \&\&\ (character)\ <=\ \textcolor{charliteral}{'f'})\ ||\ (\textcolor{charliteral}{'A'}\ <=\ (character)\ \&\&\ (character)\ <=\ \textcolor{charliteral}{'F'}))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00217}{217}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a37401e630216e4f5edd0802017d46799}\index{commons.h@{commons.h}!IS\_LETTER@{IS\_LETTER}}
+\index{IS\_LETTER@{IS\_LETTER}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_LETTER}{IS\_LETTER}}
+{\footnotesize\ttfamily \label{commons_8h_a37401e630216e4f5edd0802017d46799} 
+\+\#define IS\+\_\+\+LETTER(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((\textcolor{charliteral}{'a'}\ <=\ (character)\ \&\&\ (character)\ <=\ \textcolor{charliteral}{'z'})\ ||\ (\textcolor{charliteral}{'A'}\ <=\ (character)\ \&\&\ (character)\ <=\ \textcolor{charliteral}{'Z'}))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00211}{211}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8bdb338d0a5a363ed9909629d424c13c}\index{commons.h@{commons.h}!IS\_NUMBER@{IS\_NUMBER}}
+\index{IS\_NUMBER@{IS\_NUMBER}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{IS\_NUMBER}{IS\_NUMBER}}
+{\footnotesize\ttfamily \label{commons_8h_a8bdb338d0a5a363ed9909629d424c13c} 
+\+\#define IS\+\_\+\+NUMBER(\begin{DoxyParamCaption}\item[{}]{character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\textcolor{charliteral}{'0'}\ <=\ (character)\ \&\&\ (character)\ <=\ \textcolor{charliteral}{'9'})}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00209}{209}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f}\index{commons.h@{commons.h}!MAX@{MAX}}
+\index{MAX@{MAX}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
+{\footnotesize\ttfamily \label{commons_8h_afa99ec4acc4ecb2dc3c2d05da15d0e3f} 
+\+\#define MAX(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((a)>=(b))?(a):(b))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00195}{195}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}\index{commons.h@{commons.h}!METRIC\_FACTOR\_1G@{METRIC\_FACTOR\_1G}}
+\index{METRIC\_FACTOR\_1G@{METRIC\_FACTOR\_1G}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{METRIC\_FACTOR\_1G}{METRIC\_FACTOR\_1G}}
+{\footnotesize\ttfamily \label{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c} 
+\+\#define METRIC\+\_\+\+FACTOR\+\_\+1G~(1000000000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00095}{95}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}\index{commons.h@{commons.h}!METRIC\_FACTOR\_1K@{METRIC\_FACTOR\_1K}}
+\index{METRIC\_FACTOR\_1K@{METRIC\_FACTOR\_1K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{METRIC\_FACTOR\_1K}{METRIC\_FACTOR\_1K}}
+{\footnotesize\ttfamily \label{commons_8h_a408508f0d18a6bd5a1c6c137ef791842} 
+\+\#define METRIC\+\_\+\+FACTOR\+\_\+1K~(1000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00093}{93}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}\index{commons.h@{commons.h}!METRIC\_FACTOR\_1M@{METRIC\_FACTOR\_1M}}
+\index{METRIC\_FACTOR\_1M@{METRIC\_FACTOR\_1M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{METRIC\_FACTOR\_1M}{METRIC\_FACTOR\_1M}}
+{\footnotesize\ttfamily \label{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8} 
+\+\#define METRIC\+\_\+\+FACTOR\+\_\+1M~(1000000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00094}{94}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a3acffbd305ee72dcd4593c0d8af64a4f}\index{commons.h@{commons.h}!MIN@{MIN}}
+\index{MIN@{MIN}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
+{\footnotesize\ttfamily \label{commons_8h_a3acffbd305ee72dcd4593c0d8af64a4f} 
+\+\#define MIN(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((a)<=(b))?(a):(b))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00194}{194}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a5381a445a1e4bdc36460151d82eed95a}\index{commons.h@{commons.h}!MINUS@{MINUS}}
+\index{MINUS@{MINUS}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{MINUS}{MINUS}}
+{\footnotesize\ttfamily \label{commons_8h_a5381a445a1e4bdc36460151d82eed95a} 
+\+\#define MINUS~\textquotesingle{}-\/\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00078}{78}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8597d238b562442cda80b14bdd5faf3c}\index{commons.h@{commons.h}!NUM\_LINES\_100K@{NUM\_LINES\_100K}}
+\index{NUM\_LINES\_100K@{NUM\_LINES\_100K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_100K}{NUM\_LINES\_100K}}
+{\footnotesize\ttfamily \label{commons_8h_a8597d238b562442cda80b14bdd5faf3c} 
+\+\#define NUM\+\_\+\+LINES\+\_\+100K~(100000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00106}{106}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a9a194c8884781754e94792263ff47c7d}\index{commons.h@{commons.h}!NUM\_LINES\_10K@{NUM\_LINES\_10K}}
+\index{NUM\_LINES\_10K@{NUM\_LINES\_10K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_10K}{NUM\_LINES\_10K}}
+{\footnotesize\ttfamily \label{commons_8h_a9a194c8884781754e94792263ff47c7d} 
+\+\#define NUM\+\_\+\+LINES\+\_\+10K~(10000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00103}{103}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a2e1a2145ec6e61bfbd8494adc9aa9938}\index{commons.h@{commons.h}!NUM\_LINES\_10M@{NUM\_LINES\_10M}}
+\index{NUM\_LINES\_10M@{NUM\_LINES\_10M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_10M}{NUM\_LINES\_10M}}
+{\footnotesize\ttfamily \label{commons_8h_a2e1a2145ec6e61bfbd8494adc9aa9938} 
+\+\#define NUM\+\_\+\+LINES\+\_\+10M~(10000000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00112}{112}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a3d6b47a4752f1441d49a0044021f1ea0}\index{commons.h@{commons.h}!NUM\_LINES\_1K@{NUM\_LINES\_1K}}
+\index{NUM\_LINES\_1K@{NUM\_LINES\_1K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_1K}{NUM\_LINES\_1K}}
+{\footnotesize\ttfamily \label{commons_8h_a3d6b47a4752f1441d49a0044021f1ea0} 
+\+\#define NUM\+\_\+\+LINES\+\_\+1K~(1000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00100}{100}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a7764f300cbd1f7e4cb449958d751826d}\index{commons.h@{commons.h}!NUM\_LINES\_1M@{NUM\_LINES\_1M}}
+\index{NUM\_LINES\_1M@{NUM\_LINES\_1M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_1M}{NUM\_LINES\_1M}}
+{\footnotesize\ttfamily \label{commons_8h_a7764f300cbd1f7e4cb449958d751826d} 
+\+\#define NUM\+\_\+\+LINES\+\_\+1M~(1000000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00109}{109}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a9d26d2b2a755cfe61fef94358b57df95}\index{commons.h@{commons.h}!NUM\_LINES\_200K@{NUM\_LINES\_200K}}
+\index{NUM\_LINES\_200K@{NUM\_LINES\_200K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_200K}{NUM\_LINES\_200K}}
+{\footnotesize\ttfamily \label{commons_8h_a9d26d2b2a755cfe61fef94358b57df95} 
+\+\#define NUM\+\_\+\+LINES\+\_\+200K~(200000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00107}{107}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a878843eb59500a6971be144f135baeff}\index{commons.h@{commons.h}!NUM\_LINES\_20K@{NUM\_LINES\_20K}}
+\index{NUM\_LINES\_20K@{NUM\_LINES\_20K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_20K}{NUM\_LINES\_20K}}
+{\footnotesize\ttfamily \label{commons_8h_a878843eb59500a6971be144f135baeff} 
+\+\#define NUM\+\_\+\+LINES\+\_\+20K~(20000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00104}{104}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_acb81f5ad9e76e0c665808bdebae2fcff}\index{commons.h@{commons.h}!NUM\_LINES\_20M@{NUM\_LINES\_20M}}
+\index{NUM\_LINES\_20M@{NUM\_LINES\_20M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_20M}{NUM\_LINES\_20M}}
+{\footnotesize\ttfamily \label{commons_8h_acb81f5ad9e76e0c665808bdebae2fcff} 
+\+\#define NUM\+\_\+\+LINES\+\_\+20M~(20000000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00113}{113}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a9d640bd8e7adf751facc64e2882f50c9}\index{commons.h@{commons.h}!NUM\_LINES\_2K@{NUM\_LINES\_2K}}
+\index{NUM\_LINES\_2K@{NUM\_LINES\_2K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_2K}{NUM\_LINES\_2K}}
+{\footnotesize\ttfamily \label{commons_8h_a9d640bd8e7adf751facc64e2882f50c9} 
+\+\#define NUM\+\_\+\+LINES\+\_\+2K~(2000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00101}{101}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a72bb61d7c267a2961a745f764457aaf0}\index{commons.h@{commons.h}!NUM\_LINES\_2M@{NUM\_LINES\_2M}}
+\index{NUM\_LINES\_2M@{NUM\_LINES\_2M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_2M}{NUM\_LINES\_2M}}
+{\footnotesize\ttfamily \label{commons_8h_a72bb61d7c267a2961a745f764457aaf0} 
+\+\#define NUM\+\_\+\+LINES\+\_\+2M~(2000000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00110}{110}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a9ac5a44eca6fb145037a5004eadef155}\index{commons.h@{commons.h}!NUM\_LINES\_500K@{NUM\_LINES\_500K}}
+\index{NUM\_LINES\_500K@{NUM\_LINES\_500K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_500K}{NUM\_LINES\_500K}}
+{\footnotesize\ttfamily \label{commons_8h_a9ac5a44eca6fb145037a5004eadef155} 
+\+\#define NUM\+\_\+\+LINES\+\_\+500K~(500000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00108}{108}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_addb913e4fe0fd9d1ffd06731c51b5baa}\index{commons.h@{commons.h}!NUM\_LINES\_50K@{NUM\_LINES\_50K}}
+\index{NUM\_LINES\_50K@{NUM\_LINES\_50K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_50K}{NUM\_LINES\_50K}}
+{\footnotesize\ttfamily \label{commons_8h_addb913e4fe0fd9d1ffd06731c51b5baa} 
+\+\#define NUM\+\_\+\+LINES\+\_\+50K~(50000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00105}{105}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a968df1bf1ccbac8075915a6b6ac4c573}\index{commons.h@{commons.h}!NUM\_LINES\_50M@{NUM\_LINES\_50M}}
+\index{NUM\_LINES\_50M@{NUM\_LINES\_50M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_50M}{NUM\_LINES\_50M}}
+{\footnotesize\ttfamily \label{commons_8h_a968df1bf1ccbac8075915a6b6ac4c573} 
+\+\#define NUM\+\_\+\+LINES\+\_\+50M~(50000000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00114}{114}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a4bc365be99ae4eb8fb5319098fc42779}\index{commons.h@{commons.h}!NUM\_LINES\_5K@{NUM\_LINES\_5K}}
+\index{NUM\_LINES\_5K@{NUM\_LINES\_5K}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_5K}{NUM\_LINES\_5K}}
+{\footnotesize\ttfamily \label{commons_8h_a4bc365be99ae4eb8fb5319098fc42779} 
+\+\#define NUM\+\_\+\+LINES\+\_\+5K~(5000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00102}{102}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ada327f3ea4cf2e3fc41d237ad1ead479}\index{commons.h@{commons.h}!NUM\_LINES\_5M@{NUM\_LINES\_5M}}
+\index{NUM\_LINES\_5M@{NUM\_LINES\_5M}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{NUM\_LINES\_5M}{NUM\_LINES\_5M}}
+{\footnotesize\ttfamily \label{commons_8h_ada327f3ea4cf2e3fc41d237ad1ead479} 
+\+\#define NUM\+\_\+\+LINES\+\_\+5M~(5000000ul)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00111}{111}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a1043f2bce7798db699e388b13fcaa37c}\index{commons.h@{commons.h}!PERCENTAGE@{PERCENTAGE}}
+\index{PERCENTAGE@{PERCENTAGE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{PERCENTAGE}{PERCENTAGE}}
+{\footnotesize\ttfamily \label{commons_8h_a1043f2bce7798db699e388b13fcaa37c} 
+\+\#define PERCENTAGE(\begin{DoxyParamCaption}\item[{}]{AMOUNT}{, }\item[{}]{TOTAL}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((TOTAL)?100.0*(float)(AMOUNT)/(float)(TOTAL):0.0)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00231}{231}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a0ea7ff5947c5f5430a29fdd98391eb2a}\index{commons.h@{commons.h}!PLUS@{PLUS}}
+\index{PLUS@{PLUS}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{PLUS}{PLUS}}
+{\footnotesize\ttfamily \label{commons_8h_a0ea7ff5947c5f5430a29fdd98391eb2a} 
+\+\#define PLUS~\textquotesingle{}+\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00077}{77}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a9d8659ca5be526621d67376bd51a0b42}\index{commons.h@{commons.h}!POPCOUNT\_32@{POPCOUNT\_32}}
+\index{POPCOUNT\_32@{POPCOUNT\_32}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{POPCOUNT\_32}{POPCOUNT\_32}}
+{\footnotesize\ttfamily \label{commons_8h_a9d8659ca5be526621d67376bd51a0b42} 
+\+\#define POPCOUNT\+\_\+32(\begin{DoxyParamCaption}\item[{}]{word32}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_builtin\_popcount((word32))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00263}{263}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_af527eda3bec33576d0ca6bf17647b4f5}\index{commons.h@{commons.h}!POPCOUNT\_64@{POPCOUNT\_64}}
+\index{POPCOUNT\_64@{POPCOUNT\_64}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{POPCOUNT\_64}{POPCOUNT\_64}}
+{\footnotesize\ttfamily \label{commons_8h_af527eda3bec33576d0ca6bf17647b4f5} 
+\+\#define POPCOUNT\+\_\+64(\begin{DoxyParamCaption}\item[{}]{word64}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_builtin\_popcountll((word64))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00262}{262}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a134a102c2f8092507f5aa30c2201e1b6}\index{commons.h@{commons.h}!PRAGMA\_LOOP\_VECTORIZE@{PRAGMA\_LOOP\_VECTORIZE}}
+\index{PRAGMA\_LOOP\_VECTORIZE@{PRAGMA\_LOOP\_VECTORIZE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{PRAGMA\_LOOP\_VECTORIZE}{PRAGMA\_LOOP\_VECTORIZE}}
+{\footnotesize\ttfamily \label{commons_8h_a134a102c2f8092507f5aa30c2201e1b6} 
+\+\#define PRAGMA\+\_\+\+LOOP\+\_\+\+VECTORIZE~\+\_\+\+Pragma("{}ivdep"{})}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00256}{256}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ae77db8319fcb86987ecd78af9f784eb0}\index{commons.h@{commons.h}!PREFETCH@{PREFETCH}}
+\index{PREFETCH@{PREFETCH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{PREFETCH}{PREFETCH}}
+{\footnotesize\ttfamily \label{commons_8h_ae77db8319fcb86987ecd78af9f784eb0} 
+\+\#define PREFETCH(\begin{DoxyParamCaption}\item[{}]{ADDR}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\_\_builtin\_prefetch(((\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*)ADDR))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00268}{268}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a158c0eba54b61d40bfcf14320118eb32}\index{commons.h@{commons.h}!PRINT\_CHAR\_REP@{PRINT\_CHAR\_REP}}
+\index{PRINT\_CHAR\_REP@{PRINT\_CHAR\_REP}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{PRINT\_CHAR\_REP}{PRINT\_CHAR\_REP}}
+{\footnotesize\ttfamily \label{commons_8h_a158c0eba54b61d40bfcf14320118eb32} 
+\+\#define PRINT\+\_\+\+CHAR\+\_\+\+REP(\begin{DoxyParamCaption}\item[{}]{stream}{, }\item[{}]{character}{, }\item[{}]{times}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ \textcolor{keywordtype}{int}\ i;\ \(\backslash\)}
+\DoxyCodeLine{\ \ for\ (i=0;i<times;++i)\ fprintf(stream,\textcolor{stringliteral}{"{}\%c"{}},character);\ \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00273}{273}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad72e46a8aea2c374deb646a24f526c59}\index{commons.h@{commons.h}!rand\_f@{rand\_f}}
+\index{rand\_f@{rand\_f}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{rand\_f}{rand\_f}}
+{\footnotesize\ttfamily \label{commons_8h_ad72e46a8aea2c374deb646a24f526c59} 
+\+\#define rand\+\_\+f(\begin{DoxyParamCaption}\item[{}]{min}{, }\item[{}]{max}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ min\ +\ ((double)rand()/(double)(RAND\_MAX+1))\ *\ (max-\/min+1)\ )}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00203}{203}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a302caafd1e7f980faa410a8225c94615}\index{commons.h@{commons.h}!rand\_i@{rand\_i}}
+\index{rand\_i@{rand\_i}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{rand\_i}{rand\_i}}
+{\footnotesize\ttfamily \label{commons_8h_a302caafd1e7f980faa410a8225c94615} 
+\+\#define rand\+\_\+i(\begin{DoxyParamCaption}\item[{}]{min}{, }\item[{}]{max}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\ min\ +\ (\ rand()\%(max-\/min+1)\ )\ )}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00202}{202}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8235870449eaa1be3abb2759cf061b8d}\index{commons.h@{commons.h}!rand\_init@{rand\_init}}
+\index{rand\_init@{rand\_init}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{rand\_init}{rand\_init}}
+{\footnotesize\ttfamily \label{commons_8h_a8235870449eaa1be3abb2759cf061b8d} 
+\+\#define rand\+\_\+init(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{srand(time(0))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00201}{201}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ae6402f35ea263d89cb367e0ab2b0f278}\index{commons.h@{commons.h}!SEMICOLON@{SEMICOLON}}
+\index{SEMICOLON@{SEMICOLON}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{SEMICOLON}{SEMICOLON}}
+{\footnotesize\ttfamily \label{commons_8h_ae6402f35ea263d89cb367e0ab2b0f278} 
+\+\#define SEMICOLON~\textquotesingle{};\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00085}{85}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a69eb17477fd6f6af2c9ca2d5f4c7df3c}\index{commons.h@{commons.h}!SLASH@{SLASH}}
+\index{SLASH@{SLASH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{SLASH}{SLASH}}
+{\footnotesize\ttfamily \label{commons_8h_a69eb17477fd6f6af2c9ca2d5f4c7df3c} 
+\+\#define SLASH~\textquotesingle{}/\+\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00081}{81}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a5ff6e798033f03e74730e99f01936f84}\index{commons.h@{commons.h}!SPACE@{SPACE}}
+\index{SPACE@{SPACE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{SPACE}{SPACE}}
+{\footnotesize\ttfamily \label{commons_8h_a5ff6e798033f03e74730e99f01936f84} 
+\+\#define SPACE~\textquotesingle{} \textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00080}{80}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a94c3dc9846edbbb70f678768633a4796}\index{commons.h@{commons.h}!STAR@{STAR}}
+\index{STAR@{STAR}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{STAR}{STAR}}
+{\footnotesize\ttfamily \label{commons_8h_a94c3dc9846edbbb70f678768633a4796} 
+\+\#define STAR~\textquotesingle{}\texorpdfstring{$\ast$}{*}\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00082}{82}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a51840e7e288c8d25587ce062de9d9515}\index{commons.h@{commons.h}!STRINGIFY@{STRINGIFY}}
+\index{STRINGIFY@{STRINGIFY}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{STRINGIFY}{STRINGIFY}}
+{\footnotesize\ttfamily \label{commons_8h_a51840e7e288c8d25587ce062de9d9515} 
+\+\#define STRINGIFY(\begin{DoxyParamCaption}\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{commons_8h_a0dfecde8c77f5e43efed6498e69242c2}{STRINGIFY\_}}(a)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00067}{67}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a0dfecde8c77f5e43efed6498e69242c2}\index{commons.h@{commons.h}!STRINGIFY\_@{STRINGIFY\_}}
+\index{STRINGIFY\_@{STRINGIFY\_}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{STRINGIFY\_}{STRINGIFY\_}}
+{\footnotesize\ttfamily \label{commons_8h_a0dfecde8c77f5e43efed6498e69242c2} 
+\+\#define STRINGIFY\+\_\+(\begin{DoxyParamCaption}\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#a}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00066}{66}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_aac9153aee4bdb92701df902e06a74eb3}\index{commons.h@{commons.h}!SWAP@{SWAP}}
+\index{SWAP@{SWAP}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{SWAP}{SWAP}}
+{\footnotesize\ttfamily \label{commons_8h_aac9153aee4bdb92701df902e06a74eb3} 
+\+\#define SWAP(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{\_\_typeof\_\_(a)\ aux\ =\ a;\ a\ =\ b;\ b\ =\ aux;\}\ \textcolor{keywordflow}{while}\ (0)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00068}{68}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad58a1fbfc85c7e4790fc55e654f50221}\index{commons.h@{commons.h}!TAB@{TAB}}
+\index{TAB@{TAB}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{TAB}{TAB}}
+{\footnotesize\ttfamily \label{commons_8h_ad58a1fbfc85c7e4790fc55e654f50221} 
+\+\#define TAB~\textquotesingle{}\textbackslash{}t\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00075}{75}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad434d0a5c49b91936c6fa1cda555218a}\index{commons.h@{commons.h}!TELESCOPIC\_FACTOR@{TELESCOPIC\_FACTOR}}
+\index{TELESCOPIC\_FACTOR@{TELESCOPIC\_FACTOR}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{TELESCOPIC\_FACTOR}{TELESCOPIC\_FACTOR}}
+{\footnotesize\ttfamily \label{commons_8h_ad434d0a5c49b91936c6fa1cda555218a} 
+\+\#define TELESCOPIC\+\_\+\+FACTOR~(3.\+0/\+2.\+0)}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00237}{237}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ae7179d6d56af7c40c3242418ba1c7817}\index{commons.h@{commons.h}!UINT128\_LENGTH@{UINT128\_LENGTH}}
+\index{UINT128\_LENGTH@{UINT128\_LENGTH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT128\_LENGTH}{UINT128\_LENGTH}}
+{\footnotesize\ttfamily \label{commons_8h_ae7179d6d56af7c40c3242418ba1c7817} 
+\+\#define UINT128\+\_\+\+LENGTH~128}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00160}{160}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a2a53311b43cc819cdf42e07001003df8}\index{commons.h@{commons.h}!UINT128\_SIZE@{UINT128\_SIZE}}
+\index{UINT128\_SIZE@{UINT128\_SIZE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT128\_SIZE}{UINT128\_SIZE}}
+{\footnotesize\ttfamily \label{commons_8h_a2a53311b43cc819cdf42e07001003df8} 
+\+\#define UINT128\+\_\+\+SIZE~16}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00161}{161}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a97b682183d9d02d2cc71d86f3bba5ebe}\index{commons.h@{commons.h}!UINT16\_LENGTH@{UINT16\_LENGTH}}
+\index{UINT16\_LENGTH@{UINT16\_LENGTH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT16\_LENGTH}{UINT16\_LENGTH}}
+{\footnotesize\ttfamily \label{commons_8h_a97b682183d9d02d2cc71d86f3bba5ebe} 
+\+\#define UINT16\+\_\+\+LENGTH~16}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00166}{166}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a5581151d29ca9367f186a455e7918b24}\index{commons.h@{commons.h}!UINT16\_SIZE@{UINT16\_SIZE}}
+\index{UINT16\_SIZE@{UINT16\_SIZE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT16\_SIZE}{UINT16\_SIZE}}
+{\footnotesize\ttfamily \label{commons_8h_a5581151d29ca9367f186a455e7918b24} 
+\+\#define UINT16\+\_\+\+SIZE~2}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00167}{167}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ab12b6bd0166eed40d5c77aba49090da6}\index{commons.h@{commons.h}!UINT256\_LENGTH@{UINT256\_LENGTH}}
+\index{UINT256\_LENGTH@{UINT256\_LENGTH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT256\_LENGTH}{UINT256\_LENGTH}}
+{\footnotesize\ttfamily \label{commons_8h_ab12b6bd0166eed40d5c77aba49090da6} 
+\+\#define UINT256\+\_\+\+LENGTH~256}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00158}{158}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_aafbc9a90a767e31b21f5805e877248bb}\index{commons.h@{commons.h}!UINT256\_SIZE@{UINT256\_SIZE}}
+\index{UINT256\_SIZE@{UINT256\_SIZE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT256\_SIZE}{UINT256\_SIZE}}
+{\footnotesize\ttfamily \label{commons_8h_aafbc9a90a767e31b21f5805e877248bb} 
+\+\#define UINT256\+\_\+\+SIZE~32}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00159}{159}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a3f185debd33a5cf261da855898a55d10}\index{commons.h@{commons.h}!UINT32\_LENGTH@{UINT32\_LENGTH}}
+\index{UINT32\_LENGTH@{UINT32\_LENGTH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT32\_LENGTH}{UINT32\_LENGTH}}
+{\footnotesize\ttfamily \label{commons_8h_a3f185debd33a5cf261da855898a55d10} 
+\+\#define UINT32\+\_\+\+LENGTH~32}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00164}{164}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_adf202b971de4ac1f8b7d68ea0c9242be}\index{commons.h@{commons.h}!UINT32\_ONE\_LAST\_MASK@{UINT32\_ONE\_LAST\_MASK}}
+\index{UINT32\_ONE\_LAST\_MASK@{UINT32\_ONE\_LAST\_MASK}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT32\_ONE\_LAST\_MASK}{UINT32\_ONE\_LAST\_MASK}}
+{\footnotesize\ttfamily \label{commons_8h_adf202b971de4ac1f8b7d68ea0c9242be} 
+\+\#define UINT32\+\_\+\+ONE\+\_\+\+LAST\+\_\+\+MASK~0x80000000ul}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00185}{185}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a6c97e68bbf12396ed53dbb059e076c94}\index{commons.h@{commons.h}!UINT32\_ONE\_MASK@{UINT32\_ONE\_MASK}}
+\index{UINT32\_ONE\_MASK@{UINT32\_ONE\_MASK}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT32\_ONE\_MASK}{UINT32\_ONE\_MASK}}
+{\footnotesize\ttfamily \label{commons_8h_a6c97e68bbf12396ed53dbb059e076c94} 
+\+\#define UINT32\+\_\+\+ONE\+\_\+\+MASK~0x00000001ul}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00183}{183}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a35071de5024f70388bb44a6242619ae5}\index{commons.h@{commons.h}!UINT32\_ONES@{UINT32\_ONES}}
+\index{UINT32\_ONES@{UINT32\_ONES}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT32\_ONES}{UINT32\_ONES}}
+{\footnotesize\ttfamily \label{commons_8h_a35071de5024f70388bb44a6242619ae5} 
+\+\#define UINT32\+\_\+\+ONES~0x\+FFFFFFFFul}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00177}{177}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a587f427d930ffcd6e8117b992bdfc3dd}\index{commons.h@{commons.h}!UINT32\_SIZE@{UINT32\_SIZE}}
+\index{UINT32\_SIZE@{UINT32\_SIZE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT32\_SIZE}{UINT32\_SIZE}}
+{\footnotesize\ttfamily \label{commons_8h_a587f427d930ffcd6e8117b992bdfc3dd} 
+\+\#define UINT32\+\_\+\+SIZE~4}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00165}{165}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_aaac0bb4f66a425e8f530e9904d10ceab}\index{commons.h@{commons.h}!UINT32\_ZERO\_LAST\_MASK@{UINT32\_ZERO\_LAST\_MASK}}
+\index{UINT32\_ZERO\_LAST\_MASK@{UINT32\_ZERO\_LAST\_MASK}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT32\_ZERO\_LAST\_MASK}{UINT32\_ZERO\_LAST\_MASK}}
+{\footnotesize\ttfamily \label{commons_8h_aaac0bb4f66a425e8f530e9904d10ceab} 
+\+\#define UINT32\+\_\+\+ZERO\+\_\+\+LAST\+\_\+\+MASK~0x7\+FFFFFFFul}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00186}{186}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad43567832538324f098a7e0813ece799}\index{commons.h@{commons.h}!UINT32\_ZERO\_MASK@{UINT32\_ZERO\_MASK}}
+\index{UINT32\_ZERO\_MASK@{UINT32\_ZERO\_MASK}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT32\_ZERO\_MASK}{UINT32\_ZERO\_MASK}}
+{\footnotesize\ttfamily \label{commons_8h_ad43567832538324f098a7e0813ece799} 
+\+\#define UINT32\+\_\+\+ZERO\+\_\+\+MASK~0x\+FFFFFFFEul}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00184}{184}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a3a81a7a09b4a9f49989473aa5b7132ef}\index{commons.h@{commons.h}!UINT32\_ZEROS@{UINT32\_ZEROS}}
+\index{UINT32\_ZEROS@{UINT32\_ZEROS}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT32\_ZEROS}{UINT32\_ZEROS}}
+{\footnotesize\ttfamily \label{commons_8h_a3a81a7a09b4a9f49989473aa5b7132ef} 
+\+\#define UINT32\+\_\+\+ZEROS~0x00000000ul}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00176}{176}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a8ee44c78d0a3cc293c0e9b86f4b24758}\index{commons.h@{commons.h}!UINT512\_LENGTH@{UINT512\_LENGTH}}
+\index{UINT512\_LENGTH@{UINT512\_LENGTH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT512\_LENGTH}{UINT512\_LENGTH}}
+{\footnotesize\ttfamily \label{commons_8h_a8ee44c78d0a3cc293c0e9b86f4b24758} 
+\+\#define UINT512\+\_\+\+LENGTH~512}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00156}{156}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_aa224f01d0820c277c5f0b803da7181f9}\index{commons.h@{commons.h}!UINT512\_SIZE@{UINT512\_SIZE}}
+\index{UINT512\_SIZE@{UINT512\_SIZE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT512\_SIZE}{UINT512\_SIZE}}
+{\footnotesize\ttfamily \label{commons_8h_aa224f01d0820c277c5f0b803da7181f9} 
+\+\#define UINT512\+\_\+\+SIZE~64}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00157}{157}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a1975636872ec62179e62077b2792467d}\index{commons.h@{commons.h}!UINT64\_LENGTH@{UINT64\_LENGTH}}
+\index{UINT64\_LENGTH@{UINT64\_LENGTH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_LENGTH}{UINT64\_LENGTH}}
+{\footnotesize\ttfamily \label{commons_8h_a1975636872ec62179e62077b2792467d} 
+\+\#define UINT64\+\_\+\+LENGTH~64}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00162}{162}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a7493c62432846de570155cf5235bdb74}\index{commons.h@{commons.h}!UINT64\_ONE\_LAST\_MASK@{UINT64\_ONE\_LAST\_MASK}}
+\index{UINT64\_ONE\_LAST\_MASK@{UINT64\_ONE\_LAST\_MASK}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_ONE\_LAST\_MASK}{UINT64\_ONE\_LAST\_MASK}}
+{\footnotesize\ttfamily \label{commons_8h_a7493c62432846de570155cf5235bdb74} 
+\+\#define UINT64\+\_\+\+ONE\+\_\+\+LAST\+\_\+\+MASK~0x8000000000000000ull}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00181}{181}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ae0969379f46e52ffd8c5ade34cde4ad7}\index{commons.h@{commons.h}!UINT64\_ONE\_MASK@{UINT64\_ONE\_MASK}}
+\index{UINT64\_ONE\_MASK@{UINT64\_ONE\_MASK}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_ONE\_MASK}{UINT64\_ONE\_MASK}}
+{\footnotesize\ttfamily \label{commons_8h_ae0969379f46e52ffd8c5ade34cde4ad7} 
+\+\#define UINT64\+\_\+\+ONE\+\_\+\+MASK~0x0000000000000001ull}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00179}{179}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ac16874d272760313e02641f93912af11}\index{commons.h@{commons.h}!UINT64\_ONES@{UINT64\_ONES}}
+\index{UINT64\_ONES@{UINT64\_ONES}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_ONES}{UINT64\_ONES}}
+{\footnotesize\ttfamily \label{commons_8h_ac16874d272760313e02641f93912af11} 
+\+\#define UINT64\+\_\+\+ONES~0x\+FFFFFFFFFFFFFFFFull}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00175}{175}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a83d57fa5bf231d2224ca44e347370cd7}\index{commons.h@{commons.h}!UINT64\_SIZE@{UINT64\_SIZE}}
+\index{UINT64\_SIZE@{UINT64\_SIZE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_SIZE}{UINT64\_SIZE}}
+{\footnotesize\ttfamily \label{commons_8h_a83d57fa5bf231d2224ca44e347370cd7} 
+\+\#define UINT64\+\_\+\+SIZE~8}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00163}{163}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a4f2007be7667a201ee454fc6ffa57cfa}\index{commons.h@{commons.h}!UINT64\_TO\_UINT32\_LSB@{UINT64\_TO\_UINT32\_LSB}}
+\index{UINT64\_TO\_UINT32\_LSB@{UINT64\_TO\_UINT32\_LSB}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_TO\_UINT32\_LSB}{UINT64\_TO\_UINT32\_LSB}}
+{\footnotesize\ttfamily \label{commons_8h_a4f2007be7667a201ee454fc6ffa57cfa} 
+\+\#define UINT64\+\_\+\+TO\+\_\+\+UINT32\+\_\+\+LSB(\begin{DoxyParamCaption}\item[{}]{value}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((uint32\_t)((value)\ \&\ 0x00000000FFFFFFFFul))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00188}{188}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_aa008c6db139db45d7fcfa7d0cbafa275}\index{commons.h@{commons.h}!UINT64\_TO\_UINT32\_MSB@{UINT64\_TO\_UINT32\_MSB}}
+\index{UINT64\_TO\_UINT32\_MSB@{UINT64\_TO\_UINT32\_MSB}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_TO\_UINT32\_MSB}{UINT64\_TO\_UINT32\_MSB}}
+{\footnotesize\ttfamily \label{commons_8h_aa008c6db139db45d7fcfa7d0cbafa275} 
+\+\#define UINT64\+\_\+\+TO\+\_\+\+UINT32\+\_\+\+MSB(\begin{DoxyParamCaption}\item[{}]{value}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((uint32\_t)((value)\ >>\ 32))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00189}{189}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ace063e66f3ab283b8fe7c04919260827}\index{commons.h@{commons.h}!UINT64\_ZERO\_LAST\_MASK@{UINT64\_ZERO\_LAST\_MASK}}
+\index{UINT64\_ZERO\_LAST\_MASK@{UINT64\_ZERO\_LAST\_MASK}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_ZERO\_LAST\_MASK}{UINT64\_ZERO\_LAST\_MASK}}
+{\footnotesize\ttfamily \label{commons_8h_ace063e66f3ab283b8fe7c04919260827} 
+\+\#define UINT64\+\_\+\+ZERO\+\_\+\+LAST\+\_\+\+MASK~0x7\+FFFFFFFFFFFFFFFull}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00182}{182}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ac87c16cc96133e8b689ac0dacf87f8cc}\index{commons.h@{commons.h}!UINT64\_ZERO\_MASK@{UINT64\_ZERO\_MASK}}
+\index{UINT64\_ZERO\_MASK@{UINT64\_ZERO\_MASK}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_ZERO\_MASK}{UINT64\_ZERO\_MASK}}
+{\footnotesize\ttfamily \label{commons_8h_ac87c16cc96133e8b689ac0dacf87f8cc} 
+\+\#define UINT64\+\_\+\+ZERO\+\_\+\+MASK~0x\+FFFFFFFFFFFFFFFEull}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00180}{180}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_af6db2831e2fa619472f709fc4815809c}\index{commons.h@{commons.h}!UINT64\_ZEROS@{UINT64\_ZEROS}}
+\index{UINT64\_ZEROS@{UINT64\_ZEROS}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT64\_ZEROS}{UINT64\_ZEROS}}
+{\footnotesize\ttfamily \label{commons_8h_af6db2831e2fa619472f709fc4815809c} 
+\+\#define UINT64\+\_\+\+ZEROS~0x0000000000000000ull}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00174}{174}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a6e453747c2f134436ca5b98abb18357d}\index{commons.h@{commons.h}!UINT8\_LENGTH@{UINT8\_LENGTH}}
+\index{UINT8\_LENGTH@{UINT8\_LENGTH}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT8\_LENGTH}{UINT8\_LENGTH}}
+{\footnotesize\ttfamily \label{commons_8h_a6e453747c2f134436ca5b98abb18357d} 
+\+\#define UINT8\+\_\+\+LENGTH~8}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00168}{168}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_ad5398075b4c5c28ca8b5df6a7b434a4b}\index{commons.h@{commons.h}!UINT8\_SIZE@{UINT8\_SIZE}}
+\index{UINT8\_SIZE@{UINT8\_SIZE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UINT8\_SIZE}{UINT8\_SIZE}}
+{\footnotesize\ttfamily \label{commons_8h_ad5398075b4c5c28ca8b5df6a7b434a4b} 
+\+\#define UINT8\+\_\+\+SIZE~1}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00169}{169}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+\Hypertarget{commons_8h_a4c2ad6b30ace010814f2ed48fcae6ebf}\index{commons.h@{commons.h}!UNDERSCORE@{UNDERSCORE}}
+\index{UNDERSCORE@{UNDERSCORE}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{UNDERSCORE}{UNDERSCORE}}
+{\footnotesize\ttfamily \label{commons_8h_a4c2ad6b30ace010814f2ed48fcae6ebf} 
+\+\#define UNDERSCORE~\textquotesingle{}\+\_\+\textquotesingle{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8h_source_l00088}{88}} of file \doxymbox{\hyperlink{commons_8h_source}{commons.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{commons_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{commons_8h_abe131608949cd1a799b39a59cc6cb480}\index{commons.h@{commons.h}!nominal\_prop\_u32@{nominal\_prop\_u32}}
+\index{nominal\_prop\_u32@{nominal\_prop\_u32}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{nominal\_prop\_u32()}{nominal\_prop\_u32()}}
+{\footnotesize\ttfamily \label{commons_8h_abe131608949cd1a799b39a59cc6cb480} 
+uint32\+\_\+t nominal\+\_\+prop\+\_\+u32 (\begin{DoxyParamCaption}\item[{const uint32\+\_\+t}]{base}{, }\item[{const double}]{factor}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8c_source_l00054}{54}} of file \doxymbox{\hyperlink{commons_8c_source}{commons.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{commons_8h_ad335190ac722a6d54bfe56d107a5d472}\index{commons.h@{commons.h}!nominal\_prop\_u64@{nominal\_prop\_u64}}
+\index{nominal\_prop\_u64@{nominal\_prop\_u64}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{nominal\_prop\_u64()}{nominal\_prop\_u64()}}
+{\footnotesize\ttfamily \label{commons_8h_ad335190ac722a6d54bfe56d107a5d472} 
+uint64\+\_\+t nominal\+\_\+prop\+\_\+u64 (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{base}{, }\item[{const double}]{factor}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{commons_8c_source_l00063}{63}} of file \doxymbox{\hyperlink{commons_8c_source}{commons.\+c}}.
+
+\Hypertarget{commons_8h_a3700d09312e8e0f261baa1f3bdd69e68}\index{commons.h@{commons.h}!rand\_iid@{rand\_iid}}
+\index{rand\_iid@{rand\_iid}!commons.h@{commons.h}}
+\doxysubsubsection{\texorpdfstring{rand\_iid()}{rand\_iid()}}
+{\footnotesize\ttfamily \label{commons_8h_a3700d09312e8e0f261baa1f3bdd69e68} 
+uint64\+\_\+t rand\+\_\+iid (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{min}{, }\item[{const uint64\+\_\+t}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00080}{80}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3

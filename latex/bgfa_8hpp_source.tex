@@ -1,0 +1,56 @@
+\doxysection{bgfa.\+hpp}
+\hypertarget{bgfa_8hpp_source}{}\label{bgfa_8hpp_source}\index{src/bgfa.hpp@{src/bgfa.hpp}}
+\doxymbox{\hyperlink{bgfa_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \(\backslash\)bGFA\(\backslash\)src\(\backslash\)bgfa.hpp}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ @brief\ Basic\ definitions\ for\ bGFA\ project}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00004}00004\ \textcolor{comment}{\ *\ @details\ This\ file\ contains\ basic\ type\ definitions,\ constants,}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ and\ includes\ necessary\ for\ the\ bGFA\ project.}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ @author\ grampart}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00007}00007\ \textcolor{comment}{\ *\ @version\ V1.0}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00008}00008\ \textcolor{comment}{\ *\ @copyright:\ Copyright(c)\ 2025\ by\ grampart,\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00009}00009\ \textcolor{comment}{\ *\ @license:\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00010}00010\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#ifndef\ BGFA\_H\_}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#define\ BGFA\_H\_}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ <array>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ <cassert>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00017}00017\ \textcolor{preprocessor}{\#include\ <cctype>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00018}00018\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00019}00019\ \textcolor{preprocessor}{\#include\ <cstring>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00020}00020\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00021}00021\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00022}00022\ \textcolor{preprocessor}{\#include\ <iomanip>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00023}00023\ \textcolor{preprocessor}{\#include\ <queue>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00024}00024\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00025}00025\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00026}00026\ \textcolor{preprocessor}{\#include\ <sys/time.h>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00027}00027\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00028}00028\ \textcolor{preprocessor}{\#include\ <unordered\_set>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00029}00029\ \textcolor{preprocessor}{\#include\ <unistd.h>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00030}00030\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00032}00032\ \textcolor{comment}{//\ Define\ WORD\_BIT\ if\ not\ already\ defined}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00034}00034\ \textcolor{preprocessor}{\#ifndef\ WORD\_BIT}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00035}\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{00035}}\ \textcolor{preprocessor}{\#define\ WORD\_BIT\ 32\ }}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00036}00036\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00038}00038\ \textcolor{preprocessor}{\#ifndef\ \_\_WORDSIZE}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00039}\doxymbox{\hyperlink{bgfa_8hpp_aeea7ec6e47ecea02cc6812b268034b28}{00039}}\ \textcolor{preprocessor}{\#define\ \_\_WORDSIZE\ WORD\_BIT}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00040}00040\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00042}00042\ \textcolor{preprocessor}{\#if\ WORD\_BIT\ ==\ 16}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00043}00043\ \textcolor{keyword}{typedef}\ uint16\_t\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}};}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00044}00044\ \textcolor{preprocessor}{\#elif\ WORD\_BIT\ ==\ 32}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00045}\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{00045}}\ \textcolor{keyword}{typedef}\ uint32\_t\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}};}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00046}00046\ \textcolor{preprocessor}{\#elif\ WORD\_BIT\ ==\ 64}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00047}00047\ \textcolor{keyword}{typedef}\ uint64\_t\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}};}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00048}00048\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{bgfa_8hpp_source_l00050}00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ BGFA\_H\_}}
+
+\end{DoxyCode}

@@ -1,0 +1,406 @@
+\doxysection{generate\+\_\+dataset.\+c}
+\hypertarget{generate__dataset_8c_source}{}\label{generate__dataset_8c_source}\index{src/wfa/tools/generate\_dataset/generate\_dataset.c@{src/wfa/tools/generate\_dataset/generate\_dataset.c}}
+\doxymbox{\hyperlink{generate__dataset_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Sequence\ Generator\ for\ benchmarking\ pairwise\ algorithms}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ <stdio.h>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00034}00034\ \textcolor{preprocessor}{\#include\ <getopt.h>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00035}00035\ \textcolor{preprocessor}{\#include\ <stddef.h>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00037}00037\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00038}00038\ \textcolor{preprocessor}{\#include\ <math.h>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00039}00039\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00041}00041\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00042}00042\ \textcolor{comment}{\ *\ Common}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00043}00043\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00044}\doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{00044}}\ \textcolor{preprocessor}{\#define\ MIN(a,b)\ (((a)<=(b))?(a):(b))}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00045}\doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{00045}}\ \textcolor{preprocessor}{\#define\ MAX(a,b)\ (((a)>=(b))?(a):(b))}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00046}\doxymbox{\hyperlink{generate__dataset_8c_ae2f08dc603ae93c402abd918ba4e23e1}{00046}}\ \textcolor{preprocessor}{\#define\ ABS(a)\ (((a)>=0)?(a):-\/(a))}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00048}00048\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00049}00049\ \textcolor{comment}{\ *\ DNA\ Alphabet}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00050}00050\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00051}00051\ \textcolor{comment}{//\#define\ ALPHABET\_SIZE\ 26}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00052}00052\ \textcolor{comment}{//char\ alphabet[]\ =\ \{}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00053}00053\ \textcolor{comment}{//\ \ \ \ 'A','B','C','D','E',}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00054}00054\ \textcolor{comment}{//\ \ \ \ 'F','G','H','I','J',}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00055}00055\ \textcolor{comment}{//\ \ \ \ 'K','L','M','N','O',}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00056}00056\ \textcolor{comment}{//\ \ \ \ 'P','Q','R','S','T',}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00057}00057\ \textcolor{comment}{//\ \ \ \ 'U','V','W','X','Y',}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00058}00058\ \textcolor{comment}{//\ \ \ \ 'Z'}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00059}00059\ \textcolor{comment}{//\};}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00060}\doxymbox{\hyperlink{generate__dataset_8c_a6572f1706059832f94025fa12c6c45ed}{00060}}\ \textcolor{preprocessor}{\#define\ ALPHABET\_SIZE\ 4}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00061}\doxymbox{\hyperlink{generate__dataset_8c_aa0caf1362d64b0af98bb3c37b8919755}{00061}}\ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{generate__dataset_8c_aa0caf1362d64b0af98bb3c37b8919755}{alphabet}}[]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00062}00062\ \ \ \ \ \textcolor{charliteral}{'A'},\textcolor{charliteral}{'C'},\textcolor{charliteral}{'G'},\textcolor{charliteral}{'T'}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00063}00063\ \};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00065}00065\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00066}00066\ \textcolor{comment}{\ *\ Sequence\ errors}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00067}00067\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00068}\doxymbox{\hyperlink{structseq__error__t}{00068}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00069}00069\ \ \ \textcolor{comment}{//\ Error\ log}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00070}\doxymbox{\hyperlink{structseq__error__t_a934b5163385d914f63f89ae4e4da0d82}{00070}}\ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{structseq__error__t_a934b5163385d914f63f89ae4e4da0d82}{operation}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00071}\doxymbox{\hyperlink{structseq__error__t_ac0bd9a1280ef9a2101cc7db4c687c3da}{00071}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structseq__error__t_ac0bd9a1280ef9a2101cc7db4c687c3da}{position}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00072}00072\ \ \ \textcolor{comment}{//\ Mismatch\ detail}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00073}\doxymbox{\hyperlink{structseq__error__t_a6e856ac7a54238786b379d10ad0195a3}{00073}}\ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{structseq__error__t_a6e856ac7a54238786b379d10ad0195a3}{base\_char}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00074}\doxymbox{\hyperlink{structseq__error__t_ae95a92fd9c2d738f1eababde8258f15a}{00074}}\ \ \ \textcolor{keywordtype}{char}\ \doxymbox{\hyperlink{structseq__error__t_ae95a92fd9c2d738f1eababde8258f15a}{replacement\_char}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00075}00075\ \}\ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00077}00077\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00078}00078\ \textcolor{comment}{\ *\ Random\ number\ generator\ [min,max)}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00079}00079\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00080}\doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{00080}}\ uint64\_t\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ min,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00082}00082\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ max)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00083}00083\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n\_rand\ =\ rand();\ \textcolor{comment}{//\ [0,\ RAND\_MAX]}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00084}00084\ \ \ \textcolor{keyword}{const}\ uint64\_t\ range\ =\ max\ -\/\ min;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00085}00085\ \ \ \textcolor{keyword}{const}\ uint64\_t\ rem\ =\ RAND\_MAX\ \%\ range;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00086}00086\ \ \ \textcolor{keyword}{const}\ uint64\_t\ sample\ =\ RAND\_MAX\ /\ range;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00087}00087\ \ \ \textcolor{comment}{//\ Consider\ the\ small\ interval\ within\ remainder\ of\ RAND\_MAX}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00088}00088\ \ \ \textcolor{keywordflow}{if}\ (n\_rand\ <\ RAND\_MAX\ -\/\ rem)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00089}00089\ \ \ \ \ \textcolor{keywordflow}{return}\ min\ +\ n\_rand/sample;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00090}00090\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(min,max);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00092}00092\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00093}00093\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00094}00094\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00095}00095\ \textcolor{comment}{\ *\ Generate\ random\ sequence}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00096}00096\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00097}\doxymbox{\hyperlink{generate__dataset_8c_a09ecbb3fa135f1ab6d22617af29b2ace}{00097}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{generate__dataset_8c_a09ecbb3fa135f1ab6d22617af29b2ace}{sequence\_generate\_random}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ sequence,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00099}00099\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ length)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00100}00100\ \ \ \textcolor{comment}{//\ Generate\ random\ characters}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00101}00101\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00102}00102\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<length;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00103}00103\ \ \ \ \ sequence[i]\ =\ \doxymbox{\hyperlink{generate__dataset_8c_aa0caf1362d64b0af98bb3c37b8919755}{alphabet}}[\doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,\doxymbox{\hyperlink{generate__dataset_8c_a6572f1706059832f94025fa12c6c45ed}{ALPHABET\_SIZE}})];}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00104}00104\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00105}00105\ \ \ sequence[length]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00106}00106\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00107}00107\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00108}00108\ \textcolor{comment}{\ *\ Extract\ sequence}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00109}00109\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00110}\doxymbox{\hyperlink{generate__dataset_8c_a59e959c3656abed03617695ebbc76a7a}{00110}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{generate__dataset_8c_a59e959c3656abed03617695ebbc76a7a}{sequence\_extract}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00111}00111\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ seqlong,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00112}00112\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ seqlong\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00113}00113\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ seqshort,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00114}00114\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ seqshort\_length)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00115}00115\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ length\_diff\ =\ seqlong\_length\ -\/\ seqshort\_length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00116}00116\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ offset\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,length\_diff+1);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00117}00117\ \ \ strncpy(seqshort,seqlong+offset,seqshort\_length);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00118}00118\ \ \ \textcolor{comment}{//\ Return\ offset}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00119}00119\ \ \ \textcolor{keywordflow}{return}\ offset;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00120}00120\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00121}00121\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00122}00122\ \textcolor{comment}{\ *\ Debug}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00123}00123\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00124}\doxymbox{\hyperlink{generate__dataset_8c_a8b188fa0a1e6e212c708253dfca96232}{00124}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{generate__dataset_8c_a8b188fa0a1e6e212c708253dfca96232}{sequence\_errors\_print}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00125}00125\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00126}00126\ \ \ \ \ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}*\ \textcolor{keyword}{const}\ errors\_log)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00127}00127\ \ \ \textcolor{keywordtype}{int}\ i\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00128}00128\ \ \ \textcolor{keywordflow}{while}\ (errors\_log[i].operation\ !=\ \textcolor{charliteral}{'\(\backslash\)0'})\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{switch}\ (errors\_log[i].operation)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00130}00130\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'M'}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}(M,\%d,\%c-\/>\%c)"{}},errors\_log[i].position,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00132}00132\ \ \ \ \ \ \ \ \ \ \ \ \ errors\_log[i].base\_char,errors\_log[i].replacement\_char);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00134}00134\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00135}00135\ \ \ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}(\%c,\%d)"{}},errors\_log[i].operation,errors\_log[i].position);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00137}00137\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00138}00138\ \ \ \ \ ++i;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00139}00139\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00140}00140\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00141}00141\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00142}00142\ \textcolor{comment}{\ *\ Sequence\ errors\ generation}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00143}00143\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00144}\doxymbox{\hyperlink{generate__dataset_8c_a2c53f24073e264e93b691d70662bf22d}{00144}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{generate__dataset_8c_a2c53f24073e264e93b691d70662bf22d}{sequence\_generate\_mismatch}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00145}00145\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ sequence,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00146}00146\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sequence\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00147}00147\ \ \ \ \ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}*\ \textcolor{keyword}{const}\ errors\_log)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00148}00148\ \ \ \textcolor{comment}{//\ Generate\ random\ mismatch}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00149}00149\ \ \ \textcolor{keywordtype}{char}\ character;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00150}00150\ \ \ \textcolor{keywordtype}{int}\ position;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00151}00151\ \ \ \textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00152}00152\ \ \ \ \ position\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,sequence\_length);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00153}00153\ \ \ \ \ character\ =\ \doxymbox{\hyperlink{generate__dataset_8c_aa0caf1362d64b0af98bb3c37b8919755}{alphabet}}[\doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,\doxymbox{\hyperlink{generate__dataset_8c_a6572f1706059832f94025fa12c6c45ed}{ALPHABET\_SIZE}})];}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00154}00154\ \ \ \}\ \textcolor{keywordflow}{while}\ (sequence[position]\ ==\ character);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00155}00155\ \ \ \textcolor{comment}{//\ Log}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00156}00156\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_a934b5163385d914f63f89ae4e4da0d82}{operation}}\ =\ \textcolor{charliteral}{'M'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00157}00157\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_ac0bd9a1280ef9a2101cc7db4c687c3da}{position}}\ =\ position;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00158}00158\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_a6e856ac7a54238786b379d10ad0195a3}{base\_char}}\ =\ sequence[position];}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00159}00159\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_ae95a92fd9c2d738f1eababde8258f15a}{replacement\_char}}\ =\ character;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00160}00160\ \ \ \textcolor{comment}{//\ Set\ mismatch}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00161}00161\ \ \ sequence[position]\ =\ character;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00162}00162\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00163}\doxymbox{\hyperlink{generate__dataset_8c_a1a15052f5865a4095b925c3ecc6d7978}{00163}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{generate__dataset_8c_a1a15052f5865a4095b925c3ecc6d7978}{sequence\_generate\_deletion}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00164}00164\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ sequence,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00165}00165\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ sequence\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00166}00166\ \ \ \ \ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}*\ \textcolor{keyword}{const}\ errors\_log)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00167}00167\ \ \ \textcolor{comment}{//\ Generate\ random\ deletion}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00168}00168\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ position\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,*sequence\_length);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00169}00169\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ new\_sequence\_length\ =\ *sequence\_length\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00170}00170\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00171}00171\ \ \ \textcolor{keywordflow}{for}\ (i=position;i<new\_sequence\_length;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00172}00172\ \ \ \ \ sequence[i]\ =\ sequence[i+1];}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00173}00173\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00174}00174\ \ \ *sequence\_length\ =\ new\_sequence\_length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00175}00175\ \ \ \textcolor{comment}{//\ Log}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00176}00176\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_a934b5163385d914f63f89ae4e4da0d82}{operation}}\ =\ \textcolor{charliteral}{'D'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00177}00177\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_ac0bd9a1280ef9a2101cc7db4c687c3da}{position}}\ =\ position;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00178}00178\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00179}\doxymbox{\hyperlink{generate__dataset_8c_a312690150b4ac09164708187b723beba}{00179}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{generate__dataset_8c_a312690150b4ac09164708187b723beba}{sequence\_generate\_insertion}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00180}00180\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ sequence,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00181}00181\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ sequence\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00182}00182\ \ \ \ \ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}*\ \textcolor{keyword}{const}\ errors\_log)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00183}00183\ \ \ \textcolor{comment}{//\ Generate\ random\ insertion}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00184}00184\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ position\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,*sequence\_length);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00185}00185\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ new\_sequence\_length\ =\ *sequence\_length\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00186}00186\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00187}00187\ \ \ \textcolor{keywordflow}{for}\ (i=new\_sequence\_length-\/1;i>position;-\/-\/i)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00188}00188\ \ \ \ \ sequence[i]\ =\ sequence[i-\/1];}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00189}00189\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00190}00190\ \ \ *sequence\_length\ =\ new\_sequence\_length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00191}00191\ \ \ \textcolor{comment}{//\ Insert\ random\ character}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00192}00192\ \ \ sequence[position]\ =\ \doxymbox{\hyperlink{generate__dataset_8c_aa0caf1362d64b0af98bb3c37b8919755}{alphabet}}[\doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,\doxymbox{\hyperlink{generate__dataset_8c_a6572f1706059832f94025fa12c6c45ed}{ALPHABET\_SIZE}})];}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00193}00193\ \ \ \textcolor{comment}{//\ Log}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00194}00194\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_a934b5163385d914f63f89ae4e4da0d82}{operation}}\ =\ \textcolor{charliteral}{'I'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00195}00195\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_ac0bd9a1280ef9a2101cc7db4c687c3da}{position}}\ =\ position;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00196}00196\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00197}\doxymbox{\hyperlink{generate__dataset_8c_a30001acb7180e5d95406d201fd24fa2e}{00197}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{generate__dataset_8c_a30001acb7180e5d95406d201fd24fa2e}{sequence\_generate\_errors}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00198}00198\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ sequence,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00199}00199\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sequence\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00200}00200\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_errors,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00201}00201\ \ \ \ \ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}*\ \textcolor{keyword}{const}\ errors\_log)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00202}00202\ \ \ \textcolor{keywordtype}{int}\ length\ =\ sequence\_length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00203}00203\ \ \ \textcolor{comment}{//\ Generate\ random\ errors}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00204}00204\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00205}00205\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<num\_errors;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00206}00206\ \ \ \ \ \textcolor{keywordtype}{int}\ error\_type\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,3);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00207}00207\ \ \ \ \ \textcolor{keywordflow}{switch}\ (error\_type)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00208}00208\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 0:\ \doxymbox{\hyperlink{generate__dataset_8c_a2c53f24073e264e93b691d70662bf22d}{sequence\_generate\_mismatch}}(sequence,length,errors\_log+i);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00209}00209\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \doxymbox{\hyperlink{generate__dataset_8c_a1a15052f5865a4095b925c3ecc6d7978}{sequence\_generate\_deletion}}(sequence,\&length,errors\_log+i);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00210}00210\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \doxymbox{\hyperlink{generate__dataset_8c_a312690150b4ac09164708187b723beba}{sequence\_generate\_insertion}}(sequence,\&length,errors\_log+i);\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00211}00211\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00212}00212\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00213}00213\ \ \ \textcolor{comment}{//\ Close\ sequence\ and\ return\ length}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00214}00214\ \ \ sequence[length]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00215}00215\ \ \ errors\_log[num\_errors].\doxymbox{\hyperlink{structseq__error__t_a934b5163385d914f63f89ae4e4da0d82}{operation}}\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00216}00216\ \ \ \textcolor{keywordflow}{return}\ length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00217}00217\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00218}00218\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00219}00219\ \textcolor{comment}{\ *\ Large-\/Indel\ generation}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00220}00220\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00221}\doxymbox{\hyperlink{generate__dataset_8c_af3e601db681a672bfcb5f9163cd2b7ba}{00221}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{generate__dataset_8c_af3e601db681a672bfcb5f9163cd2b7ba}{sequence\_generate\_indel}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00222}00222\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ sequence,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00223}00223\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ sequence\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00224}00224\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ deletion\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00225}00225\ \ \ \ \ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}*\ \textcolor{keyword}{const}\ errors\_log)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00226}00226\ \ \ \textcolor{comment}{//\ Generate\ random\ deletion}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00227}00227\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ position\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,*sequence\_length);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00228}00228\ \ \ \textcolor{keywordflow}{if}\ (deletion\_length\ >=\ *sequence\_length)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00229}00229\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ new\_sequence\_length\ =\ *sequence\_length\ -\/\ deletion\_length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00230}00230\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00231}00231\ \ \ \textcolor{keywordflow}{for}\ (i=position;i<new\_sequence\_length;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00232}00232\ \ \ \ \ sequence[i]\ =\ sequence[i+deletion\_length];}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00233}00233\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00234}00234\ \ \ *sequence\_length\ =\ new\_sequence\_length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00235}00235\ \ \ \textcolor{comment}{//\ Log}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00236}00236\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_a934b5163385d914f63f89ae4e4da0d82}{operation}}\ =\ \textcolor{charliteral}{'N'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00237}00237\ \ \ errors\_log-\/>\doxymbox{\hyperlink{structseq__error__t_ac0bd9a1280ef9a2101cc7db4c687c3da}{position}}\ =\ position;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00238}00238\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00239}\doxymbox{\hyperlink{generate__dataset_8c_a10fb4cc41a7ee03742c865951e7d6bca}{00239}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{generate__dataset_8c_a10fb4cc41a7ee03742c865951e7d6bca}{sequence\_generate\_indels}}(}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00240}00240\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ sequence,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00241}00241\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sequence\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00242}00242\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_indels,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00243}00243\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ deletion\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00244}00244\ \ \ \ \ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}*\ \textcolor{keyword}{const}\ errors\_log)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00245}00245\ \ \ \textcolor{keywordtype}{int}\ length\ =\ sequence\_length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00246}00246\ \ \ \textcolor{comment}{//\ Generate\ random\ indels}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00247}00247\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00248}00248\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ indels\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\_iid}}(0,max\_indels+1);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00249}00249\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<indels;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00250}00250\ \ \ \ \ \doxymbox{\hyperlink{generate__dataset_8c_af3e601db681a672bfcb5f9163cd2b7ba}{sequence\_generate\_indel}}(sequence,\&length,deletion\_length,errors\_log+i);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00251}00251\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00252}00252\ \ \ \textcolor{comment}{//\ Close\ sequence\ and\ return\ length}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00253}00253\ \ \ sequence[length]\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00254}00254\ \ \ errors\_log[indels].\doxymbox{\hyperlink{structseq__error__t_a934b5163385d914f63f89ae4e4da0d82}{operation}}\ =\ \textcolor{charliteral}{'\(\backslash\)0'};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00255}00255\ \ \ \textcolor{keywordflow}{return}\ length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00256}00256\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00257}00257\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00258}00258\ \textcolor{comment}{\ *\ Parameters}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00259}00259\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00260}\doxymbox{\hyperlink{structcountour__bench__args}{00260}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00261}\doxymbox{\hyperlink{structcountour__bench__args_aa956a82cf95ca86aaaf9b7bc5f4c625e}{00261}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structcountour__bench__args_aa956a82cf95ca86aaaf9b7bc5f4c625e}{num\_reads}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00262}\doxymbox{\hyperlink{structcountour__bench__args_ab2c504891be4a1cd35ab399714326eba}{00262}}\ \ \ \textcolor{keywordtype}{char}\ *\doxymbox{\hyperlink{structcountour__bench__args_ab2c504891be4a1cd35ab399714326eba}{output}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00263}\doxymbox{\hyperlink{structcountour__bench__args_a03ef6385ae28f99935229dd70c5cf5e7}{00263}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structcountour__bench__args_a03ef6385ae28f99935229dd70c5cf5e7}{length}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00264}\doxymbox{\hyperlink{structcountour__bench__args_aebd474e226e9659bba34db136c3e0e00}{00264}}\ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structcountour__bench__args_aebd474e226e9659bba34db136c3e0e00}{length\_diff}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00265}\doxymbox{\hyperlink{structcountour__bench__args_a1f2ea6f14b5b0454a90f16aa3cbb933f}{00265}}\ \ \ \textcolor{keywordtype}{float}\ \doxymbox{\hyperlink{structcountour__bench__args_a1f2ea6f14b5b0454a90f16aa3cbb933f}{error\_degree}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00266}\doxymbox{\hyperlink{structcountour__bench__args_a1a018983ae6d7b789feaa479bd599263}{00266}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structcountour__bench__args_a1a018983ae6d7b789feaa479bd599263}{indels\_num}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00267}\doxymbox{\hyperlink{structcountour__bench__args_a3fdc91b267526d665db3d22bfcd1ba26}{00267}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structcountour__bench__args_a3fdc91b267526d665db3d22bfcd1ba26}{indels\_length}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00268}\doxymbox{\hyperlink{structcountour__bench__args_a1be516994edf0fe64e99ecb4a47a8299}{00268}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structcountour__bench__args_a1be516994edf0fe64e99ecb4a47a8299}{debug}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00269}00269\ \}\ \doxymbox{\hyperlink{structcountour__bench__args}{countour\_bench\_args}};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00270}\doxymbox{\hyperlink{generate__dataset_8c_a188374f8a44c602e6db43e9197eb6188}{00270}}\ \doxymbox{\hyperlink{structcountour__bench__args}{countour\_bench\_args}}\ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00271}00271\ \ \ \ \ .num\_reads\ =\ 1000,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00272}00272\ \ \ \ \ .output\ =\ NULL,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00273}00273\ \ \ \ \ .length\ =\ 100,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00274}00274\ \ \ \ \ .length\_diff\ =\ 1.0,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00275}00275\ \ \ \ \ .error\_degree\ =\ 0.04,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00276}00276\ \ \ \ \ .indels\_num\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00277}00277\ \ \ \ \ .indels\_length\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00278}00278\ \ \ \ \ .debug\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00279}00279\ \};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00280}00280\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00281}00281\ \textcolor{comment}{\ *\ Menu\ \&\ parsing\ cmd\ options}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00282}00282\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00283}\doxymbox{\hyperlink{generate__dataset_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}{00283}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{generate__dataset_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}}()\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00284}00284\ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}USE:\ ./generate-\/datasets\ [OPTIONS]...\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ Options::\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ -\/-\/output|o\ \ \ \ \ \ \ \ \ PATH\ \ \ \ \ \ \ \ Output\ path\ of\ the\ generated\ sequences\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00287}00287\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ -\/-\/num-\/patterns|n\ \ \ INT\ \ \ \ \ \ \ \ \ Total\ number\ of\ sequence-\/pairs\ generated\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ -\/-\/length|l\ \ \ \ \ \ \ \ \ INT\ \ \ \ \ \ \ \ \ Length\ of\ the\ pattern\ (pattern.length)\ \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00289}00289\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ -\/-\/length-\/diff\ \ \ \ \ \ FLOAT\ \ \ \ \ \ \ Length\ of\ the\ text\ as\ percentage\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ of\ the\ pattern.length\ (default=1.0)\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00291}00291\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ -\/-\/error|e\ \ \ \ \ \ \ \ \ \ FLOAT\ \ \ \ \ \ \ Simulated\ errors\ (mismatch/insertion/deletion)\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ as\ a\ percentage\ of\ the\ pattern.length\ (default=0.04)\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00293}00293\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ -\/-\/indels\ \ \ \ \ \ \ \ \ \ \ NUM,LENGTH\ \ Insert\ up\ to\ additional\ INT\ indels\ of\ LENGTH\ (default=0,0)\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00294}00294\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//"{}\ \ \ \ \ \ \ \ -\/-\/debug|g\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ -\/-\/help|h\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00296}00296\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00297}\doxymbox{\hyperlink{generate__dataset_8c_ac28906ed3a3a34f6c8b04e2ec1479383}{00297}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{generate__dataset_8c_ac28906ed3a3a34f6c8b04e2ec1479383}{parse\_arguments}}(\textcolor{keywordtype}{int}\ argc,\textcolor{keywordtype}{char}**\ argv)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00298}00298\ \ \ \textcolor{keyword}{struct\ }option\ long\_options[]\ =\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00299}00299\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}num-\/patterns"{}},\ required\_argument,\ 0,\ \textcolor{charliteral}{'n'}\ \},}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00300}00300\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}output"{}},\ required\_argument,\ 0,\ \textcolor{charliteral}{'o'}\ \},}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00301}00301\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}length"{}},\ required\_argument,\ 0,\ \textcolor{charliteral}{'l'}\ \},}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00302}00302\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}length-\/diff"{}},\ required\_argument,\ 0,\ 1000\ \},}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00303}00303\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}error"{}},\ required\_argument,\ 0,\ \textcolor{charliteral}{'e'}\ \},}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00304}00304\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}indels"{}},\ required\_argument,\ 0,\ 1001\ \},}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00305}00305\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}debug"{}},\ no\_argument,\ 0,\ \textcolor{charliteral}{'g'}\ \},}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00306}00306\ \ \ \ \ \{\ \textcolor{stringliteral}{"{}help"{}},\ no\_argument,\ 0,\ \textcolor{charliteral}{'h'}\ \},}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00307}00307\ \ \ \ \ \{\ 0,\ 0,\ 0,\ 0\ \}\ \};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00308}00308\ \ \ \textcolor{keywordtype}{int}\ c,option\_index;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00309}00309\ \ \ \textcolor{keywordflow}{if}\ (argc\ <=\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00310}00310\ \ \ \ \ \doxymbox{\hyperlink{generate__dataset_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}}();}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00311}00311\ \ \ \ \ exit(0);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00312}00312\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00313}00313\ \ \ \textcolor{keywordflow}{while}\ (1)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00314}00314\ \ \ \ \ c=getopt\_long(argc,argv,\textcolor{stringliteral}{"{}n:o:l:e:gh"{}},long\_options,\&option\_index);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00315}00315\ \ \ \ \ \textcolor{keywordflow}{if}\ (c==-\/1)\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00316}00316\ \ \ \ \ \textcolor{keywordflow}{switch}\ (c)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00317}00317\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'n'}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00318}00318\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.num\_reads\ =\ atoi(optarg);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00319}00319\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00320}00320\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'o'}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00321}00321\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.output\ =\ optarg;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00322}00322\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00323}00323\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'l'}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00324}00324\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.length\ =\ atoi(optarg);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00325}00325\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00326}00326\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1000:\ \textcolor{comment}{//\ -\/-\/length-\/diff}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00327}00327\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.length\_diff\ =\ atof(optarg);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00328}00328\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00329}00329\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'e'}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00330}00330\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.error\_degree\ =\ atof(optarg);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00331}00331\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00332}00332\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ 1001:\ \{\ \textcolor{comment}{//\ -\/-\/indels}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00333}00333\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}*\ sentinel\ =\ strtok(optarg,\textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00334}00334\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.indels\_num\ =\ atof(sentinel);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00335}00335\ \ \ \ \ \ \ \ \ sentinel\ =\ strtok(NULL,\textcolor{stringliteral}{"{},"{}});}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00336}00336\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.indels\_length\ =\ atof(sentinel);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00337}00337\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00338}00338\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00339}00339\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'g'}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00340}00340\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.debug\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00341}00341\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00342}00342\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'h'}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00343}00343\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{generate__dataset_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}}();}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00344}00344\ \ \ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00345}00345\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \textcolor{charliteral}{'?'}:\ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00346}00346\ \ \ \ \ \ \ \ \ fprintf(stderr,\ \textcolor{stringliteral}{"{}Option\ not\ recognized\ \(\backslash\)n"{}});\ exit(1);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00347}00347\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00348}00348\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00349}00349\ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00350}\doxymbox{\hyperlink{generate__dataset_8c_a0ddf1224851353fc92bfbff6f499fa97}{00350}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{test__bgfa_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(\textcolor{keywordtype}{int}\ argc,\textcolor{keywordtype}{char}*\ argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00351}00351\ \ \ \textcolor{comment}{//\ Parsing\ command-\/line\ options}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00352}00352\ \ \ \doxymbox{\hyperlink{generate__dataset_8c_ac28906ed3a3a34f6c8b04e2ec1479383}{parse\_arguments}}(argc,argv);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00353}00353\ \ \ \textcolor{comment}{//\ Open\ file}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00354}00354\ \ \ FILE*\ \textcolor{keyword}{const}\ output\_file\ =\ (\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.output==NULL)\ ?\ stdout\ :\ fopen(\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.output,\textcolor{stringliteral}{"{}w"{}});}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00355}00355\ \ \ \textcolor{comment}{//\ Allocate\ sequences}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00356}00356\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length\ =\ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.length;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00357}00357\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length\ =\ ceil((\textcolor{keywordtype}{float})pattern\_length\ *\ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.length\_diff);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00358}00358\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ seqlong\_length\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(pattern\_length,text\_length);\ \textcolor{comment}{//\ Long\ sequence}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00359}00359\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ seqshort\_length\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(pattern\_length,text\_length);\ \textcolor{comment}{//\ Short\ sequence}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00360}00360\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_errors\ =\ (\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.error\_degree\ >=\ 1.0)\ ?}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00361}00361\ \ \ \ \ \ \ (\textcolor{keywordtype}{int})\ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.error\_degree\ :\ ceil((\textcolor{keywordtype}{float})pattern\_length\ *\ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.error\_degree);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00362}00362\ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ seqlong\ =\ malloc(seqlong\_length+1);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00363}00363\ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ seqshort\ =\ malloc(seqshort\_length+1+num\_errors+\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.indels\_num*\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.indels\_length);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00364}00364\ \ \ \doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}*\ \textcolor{keyword}{const}\ errors\_log\ =\ malloc((num\_errors+\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.indels\_num+1)*\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structseq__error__t}{seq\_error\_t}}));}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00365}00365\ \ \ \textcolor{comment}{//\ Read-\/align\ loop}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00366}00366\ \ \ srand(time(0));}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00367}00367\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00368}00368\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.num\_reads;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00369}00369\ \ \ \ \ \textcolor{comment}{//\ Generate\ random\ sequence}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00370}00370\ \ \ \ \ \doxymbox{\hyperlink{generate__dataset_8c_a09ecbb3fa135f1ab6d22617af29b2ace}{sequence\_generate\_random}}(seqlong,seqlong\_length);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00371}00371\ \ \ \ \ \textcolor{comment}{//\ Extract\ short\ sequence\ from\ long}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00372}00372\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ offset\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a59e959c3656abed03617695ebbc76a7a}{sequence\_extract}}(seqlong,seqlong\_length,seqshort,seqshort\_length);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00373}00373\ \ \ \ \ \textcolor{comment}{//\ Generate\ errors}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00374}00374\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_errors\ >\ 0)\ \doxymbox{\hyperlink{generate__dataset_8c_a30001acb7180e5d95406d201fd24fa2e}{sequence\_generate\_errors}}(seqshort,seqshort\_length,num\_errors,errors\_log);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00375}00375\ \ \ \ \ \textcolor{comment}{//\ Generate\ indels}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00376}00376\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.indels\_num\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00377}00377\ \ \ \ \ \ \ \doxymbox{\hyperlink{generate__dataset_8c_a10fb4cc41a7ee03742c865951e7d6bca}{sequence\_generate\_indels}}(seqshort,seqshort\_length,}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.indels\_num,\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.indels\_length,errors\_log+num\_errors);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00379}00379\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00380}00380\ \ \ \ \ \textcolor{comment}{//\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00381}00381\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.debug)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00382}00382\ \ \ \ \ \ \ fprintf(output\_file,\textcolor{stringliteral}{"{}\#DEBUG\ offset=\%d\ errors="{}},offset);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00383}00383\ \ \ \ \ \ \ \doxymbox{\hyperlink{generate__dataset_8c_a8b188fa0a1e6e212c708253dfca96232}{sequence\_errors\_print}}(output\_file,errors\_log);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00384}00384\ \ \ \ \ \ \ fprintf(output\_file,\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00385}00385\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00386}00386\ \ \ \ \ \textcolor{comment}{//\ Print}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00387}00387\ \ \ \ \ \textcolor{keywordflow}{if}\ (pattern\_length\ <=\ text\_length)\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00388}00388\ \ \ \ \ \ \ fprintf(output\_file,\textcolor{stringliteral}{"{}>\%s\(\backslash\)n"{}},seqshort);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00389}00389\ \ \ \ \ \ \ fprintf(output\_file,\textcolor{stringliteral}{"{}<\%s\(\backslash\)n"{}},seqlong);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00390}00390\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00391}00391\ \ \ \ \ \ \ fprintf(output\_file,\textcolor{stringliteral}{"{}<\%s\(\backslash\)n"{}},seqlong);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00392}00392\ \ \ \ \ \ \ fprintf(output\_file,\textcolor{stringliteral}{"{}>\%s\(\backslash\)n"{}},seqshort);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00393}00393\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00394}00394\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00395}00395\ \ \ \textcolor{comment}{//\ Close\ files\ \&\ free}}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00396}00396\ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{align__benchmark__params_8c_adee49fb6550f86a91ed62d5930142c2a}{parameters}}.output!=NULL)\ fclose(output\_file);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00397}00397\ \ \ free(seqlong);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00398}00398\ \ \ free(seqshort);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00399}00399\ \ \ free(errors\_log);}
+\DoxyCodeLine{\Hypertarget{generate__dataset_8c_source_l00400}00400\ \}}
+
+\end{DoxyCode}

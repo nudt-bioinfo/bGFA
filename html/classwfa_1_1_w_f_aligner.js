@@ -1,0 +1,55 @@
+var classwfa_1_1_w_f_aligner =
+[
+    [ "AlignmentScope", "classwfa_1_1_w_f_aligner.html#a93053072bc5ad24e5b216c36df7c447d", [
+      [ "Score", "classwfa_1_1_w_f_aligner.html#a93053072bc5ad24e5b216c36df7c447dad14be3f859c9bcf099db73127f1d2df3", null ],
+      [ "Alignment", "classwfa_1_1_w_f_aligner.html#a93053072bc5ad24e5b216c36df7c447dab7d62f4978bb18273c0af338fdec2a19", null ]
+    ] ],
+    [ "AlignmentStatus", "classwfa_1_1_w_f_aligner.html#a7ec82b975ec9892eb56b108fbd4e888e", [
+      [ "StatusAlgCompleted", "classwfa_1_1_w_f_aligner.html#a7ec82b975ec9892eb56b108fbd4e888ea41cef18aab045450e9d08cbe1985b7df", null ],
+      [ "StatusAlgPartial", "classwfa_1_1_w_f_aligner.html#a7ec82b975ec9892eb56b108fbd4e888ea2d3dd04904e07a27d6c0a40e7513c213", null ],
+      [ "StatusMaxStepsReached", "classwfa_1_1_w_f_aligner.html#a7ec82b975ec9892eb56b108fbd4e888ea8f30b9c4e9c6566d1a94e1113a1731eb", null ],
+      [ "StatusOOM", "classwfa_1_1_w_f_aligner.html#a7ec82b975ec9892eb56b108fbd4e888ea8943eb9f96f0bd9c69018a60447bc630", null ]
+    ] ],
+    [ "MemoryModel", "classwfa_1_1_w_f_aligner.html#a7530f7b2331026947f8d20cc29e740dc", [
+      [ "MemoryHigh", "classwfa_1_1_w_f_aligner.html#a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c", null ],
+      [ "MemoryMed", "classwfa_1_1_w_f_aligner.html#a7530f7b2331026947f8d20cc29e740dcab7169426d21772db00430411c77cb710", null ],
+      [ "MemoryLow", "classwfa_1_1_w_f_aligner.html#a7530f7b2331026947f8d20cc29e740dca45f2e04e585e58fc4988fb2d4e45da50", null ],
+      [ "MemoryUltralow", "classwfa_1_1_w_f_aligner.html#a7530f7b2331026947f8d20cc29e740dca48bcb5f3e66a1766e4da3c1aac3f1f85", null ]
+    ] ],
+    [ "WFAligner", "classwfa_1_1_w_f_aligner.html#af72ca980da1cd76682dcfa08f5f36a19", null ],
+    [ "~WFAligner", "classwfa_1_1_w_f_aligner.html#a95f07f9e31a2126979a298c24fec0441", null ],
+    [ "WFAligner", "classwfa_1_1_w_f_aligner.html#abe6e53411b55fb89c1364efdd420ce12", null ],
+    [ "alignEnd2End", "classwfa_1_1_w_f_aligner.html#afd14b6c3918611f6266ac22f33f370b1", null ],
+    [ "alignEnd2End", "classwfa_1_1_w_f_aligner.html#a99245a1009dd024c5f57f872005b79b4", null ],
+    [ "alignEnd2End", "classwfa_1_1_w_f_aligner.html#aa0a930c5c6b9d1b8c2afda7acca7105b", null ],
+    [ "alignEnd2End", "classwfa_1_1_w_f_aligner.html#ab859204bd8d7a7db61fe89b8a7e948c4", null ],
+    [ "alignEndsFree", "classwfa_1_1_w_f_aligner.html#add96afb608fa163c26e02dfb65bba7d9", null ],
+    [ "alignEndsFree", "classwfa_1_1_w_f_aligner.html#a4922b691c3b18b847d35f04c8a0892cc", null ],
+    [ "alignEndsFree", "classwfa_1_1_w_f_aligner.html#a72ed5108617a5b9b77f81e8be972cfab", null ],
+    [ "alignEndsFree", "classwfa_1_1_w_f_aligner.html#a4beac355aefe1665e6c51a2dcd393b8a", null ],
+    [ "alignExtension", "classwfa_1_1_w_f_aligner.html#a4d19f9f8f73d9af391093d804bafeea7", null ],
+    [ "alignExtension", "classwfa_1_1_w_f_aligner.html#a5d12e2d7957d0d4dc7eef961b8ab5a1d", null ],
+    [ "alignExtension", "classwfa_1_1_w_f_aligner.html#a7ef2c4e0306866717b7a0977b99cfd72", null ],
+    [ "alignExtension", "classwfa_1_1_w_f_aligner.html#a0fb88ca5b9e0f99dfa868896e317adfc", null ],
+    [ "debugTag", "classwfa_1_1_w_f_aligner.html#a7df4f2b66af9ccdad1c3d7f67e2fa252", null ],
+    [ "getAlignment", "classwfa_1_1_w_f_aligner.html#a7694d2e86aaaca45b55be6021df1d793", null ],
+    [ "getAlignment", "classwfa_1_1_w_f_aligner.html#a839995dd497fea8b57575570975bdca3", null ],
+    [ "getAlignmentScore", "classwfa_1_1_w_f_aligner.html#af5efcdbc5c29170b91ebfe48441a9fe3", null ],
+    [ "getAlignmentStatus", "classwfa_1_1_w_f_aligner.html#a2c1878bf10c14b01dd0d330a6e03b293", null ],
+    [ "getCIGAR", "classwfa_1_1_w_f_aligner.html#a1446154bcbde83ffc8d81df0999da5a8", null ],
+    [ "getCIGAR", "classwfa_1_1_w_f_aligner.html#aa2f5aa68153c61a333cce526d3f7fe19", null ],
+    [ "printPretty", "classwfa_1_1_w_f_aligner.html#a72e87630efda69e0ea88e5270aa53622", null ],
+    [ "setHeuristicBandedAdaptive", "classwfa_1_1_w_f_aligner.html#ab4d7de1e16b492b77b7f58f3c40a1422", null ],
+    [ "setHeuristicBandedStatic", "classwfa_1_1_w_f_aligner.html#aa9d446a5c30c3ac1fac3186af87d041e", null ],
+    [ "setHeuristicNone", "classwfa_1_1_w_f_aligner.html#abbad13e68dde89caa96a421b39cd3d92", null ],
+    [ "setHeuristicWFadaptive", "classwfa_1_1_w_f_aligner.html#a0ca3ca4fbf157084fc69095c0ab02446", null ],
+    [ "setHeuristicWFmash", "classwfa_1_1_w_f_aligner.html#a193e2a8b6609e87ef12aa95c84df83b2", null ],
+    [ "setHeuristicXDrop", "classwfa_1_1_w_f_aligner.html#a54b37a5d488cbc41151d5e0ae14880fa", null ],
+    [ "setHeuristicZDrop", "classwfa_1_1_w_f_aligner.html#a74b0787835647f08ceb74f67302d5166", null ],
+    [ "setMaxAlignmentSteps", "classwfa_1_1_w_f_aligner.html#a2224fb1316c40c87a491d65f727062f2", null ],
+    [ "setMaxMemory", "classwfa_1_1_w_f_aligner.html#a4f70e0e80f370608e580b054cb30b952", null ],
+    [ "setMaxNumThreads", "classwfa_1_1_w_f_aligner.html#a396b5547f21312fb5e1f1e150f425dbe", null ],
+    [ "strStatus", "classwfa_1_1_w_f_aligner.html#aa9740ce5ffdc7f43b4d30f934d6b1293", null ],
+    [ "attributes", "classwfa_1_1_w_f_aligner.html#a89e8c70fa90755afead1eea58d3547af", null ],
+    [ "wfAligner", "classwfa_1_1_w_f_aligner.html#a4c2edcb2f5d68722c04eafdca94ceb53", null ]
+];

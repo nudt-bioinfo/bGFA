@@ -1,0 +1,24 @@
+digraph "align_benchmark_is_wavefront"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="align_benchmark_is\l_wavefront",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="align_input_configure\l_global",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$align__benchmark_8c.html#a4dfffe1ddaf655b1854597cf1c4654bc",tooltip=" "];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="align_benchmark_parallel",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$align__benchmark_8c.html#a4b24e57ad218a57005beb528e8112aed",tooltip=" "];
+  Node3 -> Node4 [id="edge3_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="main",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$align__benchmark_8c.html#a0ddf1224851353fc92bfbff6f499fa97",tooltip=" "];
+  Node2 -> Node5 [id="edge4_Node000002_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="align_benchmark_sequential",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$align__benchmark_8c.html#aa502d12df4fcbed45a011091ef5dfe1a",tooltip=" "];
+  Node5 -> Node4 [id="edge5_Node000005_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge6_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="align_input_configure\l_local",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$align__benchmark_8c.html#a6d476af3254af2feeeb8b368c808fd87",tooltip=" "];
+  Node6 -> Node7 [id="edge7_Node000006_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="align_benchmark_run\l_algorithm",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$align__benchmark_8c.html#a03b30642fd2788209a67a8346766e32a",tooltip=" "];
+  Node7 -> Node3 [id="edge8_Node000007_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 -> Node5 [id="edge9_Node000007_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+}

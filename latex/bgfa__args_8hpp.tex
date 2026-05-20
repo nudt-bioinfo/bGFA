@@ -1,0 +1,75 @@
+\doxysection{src/\+bgfa\+\_\+args.hpp File Reference}
+\hypertarget{bgfa__args_8hpp}{}\label{bgfa__args_8hpp}\index{src/bgfa\_args.hpp@{src/bgfa\_args.hpp}}
+{\ttfamily \+\#include "{}./\+\+CLI11/\+\+CLI11.\+hpp"{}}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$map$>$}\newline
+{\ttfamily \+\#include $<$stdexcept$>$}\newline
+Include dependency graph for bgfa\+\_\+args.\+hpp:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{struct_convert_args}{Convert\+Args}}
+\item 
+struct \doxymbox{\hyperlink{struct_index_args}{Index\+Args}}
+\item 
+struct \doxymbox{\hyperlink{struct_view_args}{View\+Args}}
+\item 
+struct \doxymbox{\hyperlink{struct_merge_args}{Merge\+Args}}
+\item 
+class \doxymbox{\hyperlink{class_command_parser}{Command\+Parser}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std::\+map$<$ std::\+string, int $>$ \doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{args\+Map}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{args\+Map}} \doxymbox{\hyperlink{bgfa__args_8hpp_ac3acfb7d645df58812ea484384c955b9}{index\+\_\+itrmode\+\_\+map}} \{\{"{}single"{}, 0\}, \{"{}single-\/reverse"{}, 1\}, \{"{}double"{}, 2\}\}
+\item 
+\doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{args\+Map}} \doxymbox{\hyperlink{bgfa__args_8hpp_acaec4764ccc1b01a53cb52466bdd931a}{merge\+\_\+alig\+\_\+map}} \{\{"{}ksw"{}, 0\}, \{"{}wfa"{}, 1\}\}
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{bgfa__args_8hpp_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}\index{bgfa\_args.hpp@{bgfa\_args.hpp}!argsMap@{argsMap}}
+\index{argsMap@{argsMap}!bgfa\_args.hpp@{bgfa\_args.hpp}}
+\doxysubsubsection{\texorpdfstring{argsMap}{argsMap}}
+{\footnotesize\ttfamily \label{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0} 
+typedef std::\+map$<$std::\+string, int$>$ \doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{args\+Map}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__args_8hpp_source_l00016}{16}} of file \doxymbox{\hyperlink{bgfa__args_8hpp_source}{bgfa\+\_\+args.\+hpp}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{bgfa__args_8hpp_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{bgfa__args_8hpp_ac3acfb7d645df58812ea484384c955b9}\index{bgfa\_args.hpp@{bgfa\_args.hpp}!index\_itrmode\_map@{index\_itrmode\_map}}
+\index{index\_itrmode\_map@{index\_itrmode\_map}!bgfa\_args.hpp@{bgfa\_args.hpp}}
+\doxysubsubsection{\texorpdfstring{index\_itrmode\_map}{index\_itrmode\_map}}
+{\footnotesize\ttfamily \label{bgfa__args_8hpp_ac3acfb7d645df58812ea484384c955b9} 
+\doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{args\+Map}} index\+\_\+itrmode\+\_\+map \{\{"{}single"{}, 0\}, \{"{}single-\/reverse"{}, 1\}, \{"{}double"{}, 2\}\}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__args_8hpp_source_l00017}{17}} of file \doxymbox{\hyperlink{bgfa__args_8hpp_source}{bgfa\+\_\+args.\+hpp}}.
+
+\Hypertarget{bgfa__args_8hpp_acaec4764ccc1b01a53cb52466bdd931a}\index{bgfa\_args.hpp@{bgfa\_args.hpp}!merge\_alig\_map@{merge\_alig\_map}}
+\index{merge\_alig\_map@{merge\_alig\_map}!bgfa\_args.hpp@{bgfa\_args.hpp}}
+\doxysubsubsection{\texorpdfstring{merge\_alig\_map}{merge\_alig\_map}}
+{\footnotesize\ttfamily \label{bgfa__args_8hpp_acaec4764ccc1b01a53cb52466bdd931a} 
+\doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{args\+Map}} merge\+\_\+alig\+\_\+map \{\{"{}ksw"{}, 0\}, \{"{}wfa"{}, 1\}\}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__args_8hpp_source_l00018}{18}} of file \doxymbox{\hyperlink{bgfa__args_8hpp_source}{bgfa\+\_\+args.\+hpp}}.
+

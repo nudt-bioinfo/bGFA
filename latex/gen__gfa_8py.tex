@@ -1,0 +1,45 @@
+\doxysection{src/\+test/\+script/\+gen\+\_\+gfa.py File Reference}
+\hypertarget{gen__gfa_8py}{}\label{gen__gfa_8py}\index{src/test/script/gen\_gfa.py@{src/test/script/gen\_gfa.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespacegen__gfa}{gen\+\_\+gfa}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{gen\+\_\+gfa.\+random\+\_\+dna}} (int length, random.\+Random rng)
+\item 
+None \doxymbox{\hyperlink{namespacegen__gfa_aa3d7537b9f1285bea5db3361738ccb10}{gen\+\_\+gfa.\+write\+\_\+gfa}} (str output\+\_\+path, Sequence\+[str]\+ sequences, Sequence\+[Tuple\+[int, int, str, str]\+]\+ edges)
+\item 
+int \doxymbox{\hyperlink{namespacegen__gfa_ae9265ee80c26309e91b461d5a5682741}{gen\+\_\+gfa.\+\_\+target\+\_\+edge\+\_\+count}} (int n, float mult)
+\item 
+List\+[Tuple\+[int, int, str, str]\+]\+ \doxymbox{\hyperlink{namespacegen__gfa_a3620cff3d113c979cc6a52faffde337e}{gen\+\_\+gfa.\+\_\+generate\+\_\+edges}} (int num\+\_\+nodes, float edge\+\_\+mult, random.\+Random rng)
+\item 
+List\+[str]\+ \doxymbox{\hyperlink{namespacegen__gfa_acb03bb3d5910e26b88c06f6bcdc86a50}{gen\+\_\+gfa.\+\_\+sample\+\_\+lengths\+\_\+mode\+\_\+a}} (int n, int avg\+\_\+len, random.\+Random rng)
+\item 
+List\+[float]\+ \doxymbox{\hyperlink{namespacegen__gfa_a6e2de3b35f596b7b760104151ab24f30}{gen\+\_\+gfa.\+\_\+bin\+\_\+avgs}} (int max\+\_\+len\+\_\+last\+\_\+bin)
+\item 
+List\+[float]\+ \doxymbox{\hyperlink{namespacegen__gfa_a020c84ebd82745909224a2609e3716bb}{gen\+\_\+gfa.\+\_\+normalize\+\_\+dist}} (List\+[float]\+ dist)
+\item 
+List\+[float]\+ \doxymbox{\hyperlink{namespacegen__gfa_a1d73098bc886ef662461f65f29deb879}{gen\+\_\+gfa.\+\_\+perturb\+\_\+percentages}} (List\+[float]\+ dist\+\_\+pct, float jitter, random.\+Random rng)
+\item 
+List\+[int]\+ \doxymbox{\hyperlink{namespacegen__gfa_af3c8138f749128f3baccc8bc67f909dc}{gen\+\_\+gfa.\+\_\+round\+\_\+counts}} (int total, List\+[float]\+ weights)
+\item 
+List\+[str]\+ \doxymbox{\hyperlink{namespacegen__gfa_aa3aaf94ddfdd2b2393ca12f3ae412f07}{gen\+\_\+gfa.\+\_\+sample\+\_\+lengths\+\_\+mode\+\_\+b}} (int total\+\_\+len, List\+[float]\+ dist\+\_\+pct, int max\+\_\+len\+\_\+last\+\_\+bin, random.\+Random rng, float tol=0.\+1)
+\item 
+argparse.\+Namespace \doxymbox{\hyperlink{namespacegen__gfa_a8576015783986833d302646ee9ae44ad}{gen\+\_\+gfa.\+parse\+\_\+args}} (List\+[str]\+ argv)
+\item 
+int \doxymbox{\hyperlink{namespacegen__gfa_a1b0bebd85b753e4a8c015afb9bef3af3}{gen\+\_\+gfa.\+main}} (List\+[str]\+ argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacegen__gfa_ac46088ae35a74a7fdc8c33a82157f53a}{gen\+\_\+gfa.\+DNA\+\_\+\+ALPHABET}} = "{}ACGT"{}
+\item 
+list \doxymbox{\hyperlink{namespacegen__gfa_a0c005c517fae8e8648891dd695b54405}{gen\+\_\+gfa.\+BINS\+\_\+\+SPECS}}
+\item 
+dict \doxymbox{\hyperlink{namespacegen__gfa_ac5d0745222bc70617393c10c575f6c29}{gen\+\_\+gfa.\+PRESET\+\_\+\+DISTS}}
+\item 
+dict \doxymbox{\hyperlink{namespacegen__gfa_a62870d65c96727f87fe4af3552b9d282}{gen\+\_\+gfa.\+EDGE\+\_\+\+MULT\+\_\+\+CHOICES}} = \{"{}1.\+2"{}:\+ 1.\+2, "{}1.\+5"{}:\+ 1.\+5, "{}2.\+0"{}:\+ 2.\+0\}
+\end{DoxyCompactItemize}

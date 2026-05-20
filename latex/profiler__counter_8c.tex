@@ -1,0 +1,364 @@
+\doxysection{src/\+wfa/\+system/\+profiler\+\_\+counter.c File Reference}
+\hypertarget{profiler__counter_8c}{}\label{profiler__counter_8c}\index{src/wfa/system/profiler\_counter.c@{src/wfa/system/profiler\_counter.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}profiler\+\_\+counter.\+h"{}}\newline
+Include dependency graph for profiler\+\_\+counter.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_a7205b8c2c72f2c54aeb0029ccd16a80a}{counter\+\_\+reset}} (\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_acbd71bfd6af600aad54f743f8331a9a3}{counter\+\_\+add}} (\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter, const uint64\+\_\+t amount)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_acb0c93ba8c01b19003497dc036340c98}{counter\+\_\+get\+\_\+total}} (const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_a1b78cde9eb8f3e06ae3b9421c840ada6}{counter\+\_\+get\+\_\+num\+\_\+samples}} (const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_ad5bddf9cac868302d023381062ab6048}{counter\+\_\+get\+\_\+min}} (const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_ada86ab55cf8736111cb3b83c7c373ad8}{counter\+\_\+get\+\_\+max}} (const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter)
+\item 
+double \doxymbox{\hyperlink{profiler__counter_8c_a72ecf068a2080857bc7b51b063df9cb3}{counter\+\_\+get\+\_\+mean}} (const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter)
+\item 
+double \doxymbox{\hyperlink{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b}{counter\+\_\+get\+\_\+variance}} (const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter)
+\item 
+double \doxymbox{\hyperlink{profiler__counter_8c_aab5759c91be55e4e2537fbb3eff70437}{counter\+\_\+get\+\_\+stddev}} (const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_a3309eb329061c41266f6370b32dfd5cb}{counter\+\_\+combine\+\_\+sum}} (\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter\+\_\+dst, \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter\+\_\+src)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_a62be5bc271f3830d6075ed26aa2ce4cf}{counter\+\_\+print\+\_\+stats}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter, const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const ref\+\_\+counter, const char \texorpdfstring{$\ast$}{*}const units)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_a6225bcddb2fc8f77c06f3cf650ab96d4}{counter\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter, const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const ref\+\_\+counter, const char \texorpdfstring{$\ast$}{*}const units, const bool full\+\_\+report)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_ad35f0ab207433fb713a822fcf09feaaa}{percentage\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const counter, const char \texorpdfstring{$\ast$}{*}const units)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_a8e16c8a17f44dc1f548f68172c8d77db}{rcounter\+\_\+start}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter, const uint64\+\_\+t reference)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_a1eb117bd38a4e2de28990379b5f5ca77}{rcounter\+\_\+stop}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter, const uint64\+\_\+t reference)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_aac66016e9e8fa8e3958123faff280535}{rcounter\+\_\+pause}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter, const uint64\+\_\+t reference)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_a853f160bccf6f9b1bf72c4770373392d}{rcounter\+\_\+restart}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter, const uint64\+\_\+t reference)
+\item 
+void \doxymbox{\hyperlink{profiler__counter_8c_a0b2f49dd29bc1f614533937c48a4a37c}{rcounter\+\_\+reset}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_a69941ec7136d3966c457043a9f5f8c2a}{rcounter\+\_\+get\+\_\+total}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_ac60e1659e157970793009403eeeb593a}{rcounter\+\_\+get\+\_\+num\+\_\+samples}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_aa3df72c58258bf23c5af9f32aa599a8a}{rcounter\+\_\+get\+\_\+min}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_a07cc4c219e47211abc9ca1ebbca9f138}{rcounter\+\_\+get\+\_\+max}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_a402450f04be131232c857460d14fd165}{rcounter\+\_\+get\+\_\+mean}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_a0e3355f39547706561dda0fbe3929b9f}{rcounter\+\_\+get\+\_\+variance}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__counter_8c_acd902a517858b41541e76dcf7d6a92b6}{rcounter\+\_\+get\+\_\+stddev}} (\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const rcounter)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{profiler__counter_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{profiler__counter_8c_acbd71bfd6af600aad54f743f8331a9a3}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_add@{counter\_add}}
+\index{counter\_add@{counter\_add}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_add()}{counter\_add()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_acbd71bfd6af600aad54f743f8331a9a3} 
+void counter\+\_\+add (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{, }\item[{const uint64\+\_\+t}]{amount}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00043}{43}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{profiler__counter_8c_a3309eb329061c41266f6370b32dfd5cb}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_combine\_sum@{counter\_combine\_sum}}
+\index{counter\_combine\_sum@{counter\_combine\_sum}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_combine\_sum()}{counter\_combine\_sum()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a3309eb329061c41266f6370b32dfd5cb} 
+void counter\+\_\+combine\+\_\+sum (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter\+\_\+dst}{, }\item[{\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter\+\_\+src}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00087}{87}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+\Hypertarget{profiler__counter_8c_ada86ab55cf8736111cb3b83c7c373ad8}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_get\_max@{counter\_get\_max}}
+\index{counter\_get\_max@{counter\_get\_max}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_get\_max()}{counter\_get\_max()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_ada86ab55cf8736111cb3b83c7c373ad8} 
+uint64\+\_\+t counter\+\_\+get\+\_\+max (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00075}{75}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{profiler__counter_8c_a72ecf068a2080857bc7b51b063df9cb3}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_get\_mean@{counter\_get\_mean}}
+\index{counter\_get\_mean@{counter\_get\_mean}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_get\_mean()}{counter\_get\_mean()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a72ecf068a2080857bc7b51b063df9cb3} 
+double counter\+\_\+get\+\_\+mean (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00078}{78}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{profiler__counter_8c_ad5bddf9cac868302d023381062ab6048}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_get\_min@{counter\_get\_min}}
+\index{counter\_get\_min@{counter\_get\_min}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_get\_min()}{counter\_get\_min()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_ad5bddf9cac868302d023381062ab6048} 
+uint64\+\_\+t counter\+\_\+get\+\_\+min (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00072}{72}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{profiler__counter_8c_a1b78cde9eb8f3e06ae3b9421c840ada6}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_get\_num\_samples@{counter\_get\_num\_samples}}
+\index{counter\_get\_num\_samples@{counter\_get\_num\_samples}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_get\_num\_samples()}{counter\_get\_num\_samples()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a1b78cde9eb8f3e06ae3b9421c840ada6} 
+uint64\+\_\+t counter\+\_\+get\+\_\+num\+\_\+samples (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00069}{69}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{profiler__counter_8c_aab5759c91be55e4e2537fbb3eff70437}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_get\_stddev@{counter\_get\_stddev}}
+\index{counter\_get\_stddev@{counter\_get\_stddev}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_get\_stddev()}{counter\_get\_stddev()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_aab5759c91be55e4e2537fbb3eff70437} 
+double counter\+\_\+get\+\_\+stddev (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00084}{84}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{profiler__counter_8c_acb0c93ba8c01b19003497dc036340c98}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_get\_total@{counter\_get\_total}}
+\index{counter\_get\_total@{counter\_get\_total}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_get\_total()}{counter\_get\_total()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_acb0c93ba8c01b19003497dc036340c98} 
+uint64\+\_\+t counter\+\_\+get\+\_\+total (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00066}{66}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_get\_variance@{counter\_get\_variance}}
+\index{counter\_get\_variance@{counter\_get\_variance}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_get\_variance()}{counter\_get\_variance()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b} 
+double counter\+\_\+get\+\_\+variance (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00081}{81}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{profiler__counter_8c_a6225bcddb2fc8f77c06f3cf650ab96d4}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_print@{counter\_print}}
+\index{counter\_print@{counter\_print}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_print()}{counter\_print()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a6225bcddb2fc8f77c06f3cf650ab96d4} 
+void counter\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{, }\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{ref\+\_\+counter}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{units}{, }\item[{const bool}]{full\+\_\+report}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00175}{175}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 10
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{profiler__counter_8c_a62be5bc271f3830d6075ed26aa2ce4cf}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_print\_stats@{counter\_print\_stats}}
+\index{counter\_print\_stats@{counter\_print\_stats}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_print\_stats()}{counter\_print\_stats()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a62be5bc271f3830d6075ed26aa2ce4cf} 
+void counter\+\_\+print\+\_\+stats (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{, }\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{ref\+\_\+counter}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{units}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00099}{99}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{profiler__counter_8c_a7205b8c2c72f2c54aeb0029ccd16a80a}\index{profiler\_counter.c@{profiler\_counter.c}!counter\_reset@{counter\_reset}}
+\index{counter\_reset@{counter\_reset}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{counter\_reset()}{counter\_reset()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a7205b8c2c72f2c54aeb0029ccd16a80a} 
+void counter\+\_\+reset (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00039}{39}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 14
+\Hypertarget{profiler__counter_8c_ad35f0ab207433fb713a822fcf09feaaa}\index{profiler\_counter.c@{profiler\_counter.c}!percentage\_print@{percentage\_print}}
+\index{percentage\_print@{percentage\_print}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{percentage\_print()}{percentage\_print()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_ad35f0ab207433fb713a822fcf09feaaa} 
+void percentage\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{counter}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{units}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00216}{216}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 15
+\Hypertarget{profiler__counter_8c_a07cc4c219e47211abc9ca1ebbca9f138}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_get\_max@{rcounter\_get\_max}}
+\index{rcounter\_get\_max@{rcounter\_get\_max}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_get\_max()}{rcounter\_get\_max()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a07cc4c219e47211abc9ca1ebbca9f138} 
+uint64\+\_\+t rcounter\+\_\+get\+\_\+max (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00283}{283}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 16
+\Hypertarget{profiler__counter_8c_a402450f04be131232c857460d14fd165}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_get\_mean@{rcounter\_get\_mean}}
+\index{rcounter\_get\_mean@{rcounter\_get\_mean}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_get\_mean()}{rcounter\_get\_mean()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a402450f04be131232c857460d14fd165} 
+uint64\+\_\+t rcounter\+\_\+get\+\_\+mean (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00286}{286}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 17
+\Hypertarget{profiler__counter_8c_aa3df72c58258bf23c5af9f32aa599a8a}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_get\_min@{rcounter\_get\_min}}
+\index{rcounter\_get\_min@{rcounter\_get\_min}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_get\_min()}{rcounter\_get\_min()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_aa3df72c58258bf23c5af9f32aa599a8a} 
+uint64\+\_\+t rcounter\+\_\+get\+\_\+min (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00280}{280}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 18
+\Hypertarget{profiler__counter_8c_ac60e1659e157970793009403eeeb593a}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_get\_num\_samples@{rcounter\_get\_num\_samples}}
+\index{rcounter\_get\_num\_samples@{rcounter\_get\_num\_samples}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_get\_num\_samples()}{rcounter\_get\_num\_samples()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_ac60e1659e157970793009403eeeb593a} 
+uint64\+\_\+t rcounter\+\_\+get\+\_\+num\+\_\+samples (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00277}{277}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+\Hypertarget{profiler__counter_8c_acd902a517858b41541e76dcf7d6a92b6}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_get\_stddev@{rcounter\_get\_stddev}}
+\index{rcounter\_get\_stddev@{rcounter\_get\_stddev}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_get\_stddev()}{rcounter\_get\_stddev()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_acd902a517858b41541e76dcf7d6a92b6} 
+uint64\+\_\+t rcounter\+\_\+get\+\_\+stddev (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00292}{292}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 20
+\Hypertarget{profiler__counter_8c_a69941ec7136d3966c457043a9f5f8c2a}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_get\_total@{rcounter\_get\_total}}
+\index{rcounter\_get\_total@{rcounter\_get\_total}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_get\_total()}{rcounter\_get\_total()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a69941ec7136d3966c457043a9f5f8c2a} 
+uint64\+\_\+t rcounter\+\_\+get\+\_\+total (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00274}{274}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 21
+\Hypertarget{profiler__counter_8c_a0e3355f39547706561dda0fbe3929b9f}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_get\_variance@{rcounter\_get\_variance}}
+\index{rcounter\_get\_variance@{rcounter\_get\_variance}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_get\_variance()}{rcounter\_get\_variance()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a0e3355f39547706561dda0fbe3929b9f} 
+uint64\+\_\+t rcounter\+\_\+get\+\_\+variance (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00289}{289}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 22
+\Hypertarget{profiler__counter_8c_aac66016e9e8fa8e3958123faff280535}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_pause@{rcounter\_pause}}
+\index{rcounter\_pause@{rcounter\_pause}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_pause()}{rcounter\_pause()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_aac66016e9e8fa8e3958123faff280535} 
+void rcounter\+\_\+pause (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{, }\item[{const uint64\+\_\+t}]{reference}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00260}{260}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 23
+\Hypertarget{profiler__counter_8c_a0b2f49dd29bc1f614533937c48a4a37c}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_reset@{rcounter\_reset}}
+\index{rcounter\_reset@{rcounter\_reset}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_reset()}{rcounter\_reset()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a0b2f49dd29bc1f614533937c48a4a37c} 
+void rcounter\+\_\+reset (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00270}{270}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 24
+\Hypertarget{profiler__counter_8c_a853f160bccf6f9b1bf72c4770373392d}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_restart@{rcounter\_restart}}
+\index{rcounter\_restart@{rcounter\_restart}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_restart()}{rcounter\_restart()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a853f160bccf6f9b1bf72c4770373392d} 
+void rcounter\+\_\+restart (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{, }\item[{const uint64\+\_\+t}]{reference}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00265}{265}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+\Hypertarget{profiler__counter_8c_a8e16c8a17f44dc1f548f68172c8d77db}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_start@{rcounter\_start}}
+\index{rcounter\_start@{rcounter\_start}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_start()}{rcounter\_start()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a8e16c8a17f44dc1f548f68172c8d77db} 
+void rcounter\+\_\+start (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{, }\item[{const uint64\+\_\+t}]{reference}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00248}{248}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+\Hypertarget{profiler__counter_8c_a1eb117bd38a4e2de28990379b5f5ca77}\index{profiler\_counter.c@{profiler\_counter.c}!rcounter\_stop@{rcounter\_stop}}
+\index{rcounter\_stop@{rcounter\_stop}!profiler\_counter.c@{profiler\_counter.c}}
+\doxysubsubsection{\texorpdfstring{rcounter\_stop()}{rcounter\_stop()}}
+{\footnotesize\ttfamily \label{profiler__counter_8c_a1eb117bd38a4e2de28990379b5f5ca77} 
+void rcounter\+\_\+stop (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\+\_\+rcounter\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{rcounter}{, }\item[{const uint64\+\_\+t}]{reference}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__counter_8c_source_l00254}{254}} of file \doxymbox{\hyperlink{profiler__counter_8c_source}{profiler\+\_\+counter.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 25

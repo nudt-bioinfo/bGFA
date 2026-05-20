@@ -1,0 +1,111 @@
+\doxysection{src/\+wfa/\+utils/\+bitmap.c File Reference}
+\hypertarget{bitmap_8c}{}\label{bitmap_8c}\index{src/wfa/utils/bitmap.c@{src/wfa/utils/bitmap.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}utils/\+bitmap.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+Include dependency graph for bitmap.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{bitmap_8c_a8a0e6a299e0b58694427de47bcd92225}{bitmap\+\_\+new}} (const uint64\+\_\+t length, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{bitmap_8c_a4c772fb263ac5fa3479f7a7a52fe92f7}{bitmap\+\_\+delete}} (\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const bitmap)
+\item 
+void \doxymbox{\hyperlink{bitmap_8c_ac60fdd26e186a633faa49e615c4159a4}{bitmap\+\_\+set}} (\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const bitmap, const uint64\+\_\+t position)
+\item 
+bool \doxymbox{\hyperlink{bitmap_8c_a4d809a3c114cfcd587b1bc7c96f8bc73}{bitmap\+\_\+is\+\_\+set}} (\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const bitmap, const uint64\+\_\+t position)
+\item 
+bool \doxymbox{\hyperlink{bitmap_8c_a36c933933a9f231022515ecd0edaf9a9}{bitmap\+\_\+check\+\_\+\+\_\+set}} (\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const bitmap, const uint64\+\_\+t position)
+\item 
+void \doxymbox{\hyperlink{bitmap_8c_a39b1fb5f1e2d49c1944e49e9cdf2fa99}{bitmap\+\_\+update\+\_\+counters}} (\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const bitmap)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{bitmap_8c_a7c8d8dee2165d10a2a115ccb056012f3}{bitmap\+\_\+erank}} (\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const bitmap, const uint64\+\_\+t position)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{bitmap_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{bitmap_8c_a36c933933a9f231022515ecd0edaf9a9}\index{bitmap.c@{bitmap.c}!bitmap\_check\_\_set@{bitmap\_check\_\_set}}
+\index{bitmap\_check\_\_set@{bitmap\_check\_\_set}!bitmap.c@{bitmap.c}}
+\doxysubsubsection{\texorpdfstring{bitmap\_check\_\_set()}{bitmap\_check\_\_set()}}
+{\footnotesize\ttfamily \label{bitmap_8c_a36c933933a9f231022515ecd0edaf9a9} 
+bool bitmap\+\_\+check\+\_\+\+\_\+set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bitmap}{, }\item[{const uint64\+\_\+t}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bitmap_8c_source_l00083}{83}} of file \doxymbox{\hyperlink{bitmap_8c_source}{bitmap.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{bitmap_8c_a4c772fb263ac5fa3479f7a7a52fe92f7}\index{bitmap.c@{bitmap.c}!bitmap\_delete@{bitmap\_delete}}
+\index{bitmap\_delete@{bitmap\_delete}!bitmap.c@{bitmap.c}}
+\doxysubsubsection{\texorpdfstring{bitmap\_delete()}{bitmap\_delete()}}
+{\footnotesize\ttfamily \label{bitmap_8c_a4c772fb263ac5fa3479f7a7a52fe92f7} 
+void bitmap\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bitmap}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bitmap_8c_source_l00053}{53}} of file \doxymbox{\hyperlink{bitmap_8c_source}{bitmap.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{bitmap_8c_a7c8d8dee2165d10a2a115ccb056012f3}\index{bitmap.c@{bitmap.c}!bitmap\_erank@{bitmap\_erank}}
+\index{bitmap\_erank@{bitmap\_erank}!bitmap.c@{bitmap.c}}
+\doxysubsubsection{\texorpdfstring{bitmap\_erank()}{bitmap\_erank()}}
+{\footnotesize\ttfamily \label{bitmap_8c_a7c8d8dee2165d10a2a115ccb056012f3} 
+uint64\+\_\+t bitmap\+\_\+erank (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bitmap}{, }\item[{const uint64\+\_\+t}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bitmap_8c_source_l00114}{114}} of file \doxymbox{\hyperlink{bitmap_8c_source}{bitmap.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{bitmap_8c_a4d809a3c114cfcd587b1bc7c96f8bc73}\index{bitmap.c@{bitmap.c}!bitmap\_is\_set@{bitmap\_is\_set}}
+\index{bitmap\_is\_set@{bitmap\_is\_set}!bitmap.c@{bitmap.c}}
+\doxysubsubsection{\texorpdfstring{bitmap\_is\_set()}{bitmap\_is\_set()}}
+{\footnotesize\ttfamily \label{bitmap_8c_a4d809a3c114cfcd587b1bc7c96f8bc73} 
+bool bitmap\+\_\+is\+\_\+set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bitmap}{, }\item[{const uint64\+\_\+t}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bitmap_8c_source_l00073}{73}} of file \doxymbox{\hyperlink{bitmap_8c_source}{bitmap.\+c}}.
+
+\Hypertarget{bitmap_8c_a8a0e6a299e0b58694427de47bcd92225}\index{bitmap.c@{bitmap.c}!bitmap\_new@{bitmap\_new}}
+\index{bitmap\_new@{bitmap\_new}!bitmap.c@{bitmap.c}}
+\doxysubsubsection{\texorpdfstring{bitmap\_new()}{bitmap\_new()}}
+{\footnotesize\ttfamily \label{bitmap_8c_a8a0e6a299e0b58694427de47bcd92225} 
+\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*} bitmap\+\_\+new (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{length}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bitmap_8c_source_l00039}{39}} of file \doxymbox{\hyperlink{bitmap_8c_source}{bitmap.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{bitmap_8c_ac60fdd26e186a633faa49e615c4159a4}\index{bitmap.c@{bitmap.c}!bitmap\_set@{bitmap\_set}}
+\index{bitmap\_set@{bitmap\_set}!bitmap.c@{bitmap.c}}
+\doxysubsubsection{\texorpdfstring{bitmap\_set()}{bitmap\_set()}}
+{\footnotesize\ttfamily \label{bitmap_8c_ac60fdd26e186a633faa49e615c4159a4} 
+void bitmap\+\_\+set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bitmap}{, }\item[{const uint64\+\_\+t}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bitmap_8c_source_l00064}{64}} of file \doxymbox{\hyperlink{bitmap_8c_source}{bitmap.\+c}}.
+
+\Hypertarget{bitmap_8c_a39b1fb5f1e2d49c1944e49e9cdf2fa99}\index{bitmap.c@{bitmap.c}!bitmap\_update\_counters@{bitmap\_update\_counters}}
+\index{bitmap\_update\_counters@{bitmap\_update\_counters}!bitmap.c@{bitmap.c}}
+\doxysubsubsection{\texorpdfstring{bitmap\_update\_counters()}{bitmap\_update\_counters()}}
+{\footnotesize\ttfamily \label{bitmap_8c_a39b1fb5f1e2d49c1944e49e9cdf2fa99} 
+void bitmap\+\_\+update\+\_\+counters (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbitmap__t}{bitmap\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bitmap}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bitmap_8c_source_l00101}{101}} of file \doxymbox{\hyperlink{bitmap_8c_source}{bitmap.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6

@@ -1,0 +1,249 @@
+\doxysection{src/\+wfa/\+tools Directory Reference}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192}{}\label{dir_f858fa0df565ccd1ee97085615bcf192}\index{src/wfa/tools Directory Reference@{src/wfa/tools Directory Reference}}
+Directory dependency graph for tools:\+
+% FIG 0
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \doxymbox{\hyperlink{dir_3a1fea662fe83d246d84518384055c1d}{align\+\_\+benchmark}}
+\item 
+directory \doxymbox{\hyperlink{dir_161b12a095a7cc65e0e59b8d25752fad}{generate\+\_\+dataset}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md30}{}\doxysubsection{\texorpdfstring{WFA TOOLS}{WFA TOOLS}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md30}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md31}{}\doxysubsection{\texorpdfstring{WHAT IS THIS?}{WHAT IS THIS?}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md31}
+The WFA2-\/lib offers tools that exploits the different libraries features and serve as examples on how to use and exploit the library functions. Also, these tools serve for testing the library and benchmarking its performance against other state-\/of-\/the-\/art tools and libraries for pairwise alignment. If you are interested in benchmarking WFA2-\/lib and other algorithms (internal or external), checkout the branch {\ttfamily benchmark}.
+
+
+\begin{DoxyItemize}
+\item Generate Dataset
+\item Align Benchmark
+\end{DoxyItemize}\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md32}{}\doxysubsection{\texorpdfstring{\label{_tool.generate}%
+ 1. GENERATE DATASET TOOL}{\label{_tool.generate}%
+ 1. GENERATE DATASET TOOL}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md32}
+The {\itshape generate-\/dataset} tool allows generating synthetic random datasets for testing and benchmarking purposes. This tool produces a simple output format (i.\+e., each pair of sequences in 2 lines) containing the pairs of sequences to be aligned using the {\itshape align-\/benchmark} tool. For example, the following command generates a dataset named \textquotesingle{}sample.\+dataset.\+seq\textquotesingle{} of 5M pairs of 100 bases with an alignment error of 5\% (i.\+e., 5 mismatches, insertions, or deletions per alignment).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$>\ ./bin/generate\_dataset\ -\/n\ 5000000\ -\/l\ 100\ -\/e\ 0.05\ -\/o\ sample.dataset.seq}
+
+\end{DoxyCode}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md33}{}\doxysubsubsection{\texorpdfstring{Command-\/line Options}{Command-\/line Options}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md33}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/output|o\ <File>}
+\DoxyCodeLine{\ \ Filename/Path\ to\ the\ output\ dataset.}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/num-\/patterns|n\ <Integer>}
+\DoxyCodeLine{\ \ Total\ number\ of\ sequence-\/pairs\ generated\ (i.e.,\ pattern+text).}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/length|l\ <Integer>}
+\DoxyCodeLine{\ \ Length\ of\ the\ generated\ pattern\ (ie.,\ query\ or\ sequence)\ and\ text\ (i.e.,\ target\ or\ reference)}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/length|l\ <Integer>}
+\DoxyCodeLine{\ \ Length\ of\ the\ pattern\ (pattern.length).}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/length-\/diff\ <Float>}
+\DoxyCodeLine{\ \ Length\ of\ the\ text\ as\ percentage\ of\ the\ pattern.length\ (default=1.0).}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/error|e\ <Float>}
+\DoxyCodeLine{\ \ Simulated\ errors\ (mismatch/insertion/deletion)\ as\ a\ percentage\ of\ the\ pattern.length\ (default=0.04).\ This\ parameter\ may\ modify\ the\ final\ length\ of\ the\ text.}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/indels\ <Integer1>,<Integer2>\ \ }
+\DoxyCodeLine{\ \ Insert\ up\ to\ additional\ <Integer1>\ indels\ of\ <Integer2>\ (default=0,0)\ \ }
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/help|h}
+\DoxyCodeLine{\ \ Outputs\ a\ succinct\ manual\ for\ the\ tool.}
+
+\end{DoxyCode}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md34}{}\doxysubsection{\texorpdfstring{\label{_tool.align}%
+ 2. ALIGNMENT BENCHMARK TOOL}{\label{_tool.align}%
+ 2. ALIGNMENT BENCHMARK TOOL}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md34}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md35}{}\doxysubsubsection{\texorpdfstring{Introduction to Alignment Benchmarking}{Introduction to Alignment Benchmarking}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md35}
+The WFA2-\/lib includes the benchmarking tool {\itshape align-\/benchmark} to test and compare the performance of various pairwise alignment implementations. This tool takes as input a dataset containing pairs of sequences (i.\+e., pattern and text) to align. Patterns are preceded by the \textquotesingle{}\texorpdfstring{$>$}{>}\textquotesingle{} symbol and texts by the \textquotesingle{}\texorpdfstring{$<$}{<}\textquotesingle{} symbol. Example:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{>ATTGGAAAATAGGATTGGGGTTTGTTTATATTTGGGTTGAGGGATGTCCCACCTTCGTCGTCCTTACGTTTCCGGAAGGGAGTGGTTAGCTCGAAGCCCA}
+\DoxyCodeLine{<GATTGGAAAATAGGATGGGGTTTGTTTATATTTGGGTTGAGGGATGTCCCACCTTGTCGTCCTTACGTTTCCGGAAGGGAGTGGTTGCTCGAAGCCCA}
+\DoxyCodeLine{>CCGTAGAGTTAGACACTCGACCGTGGTGAATCCGCGACCACCGCTTTGACGGGCGCTCTACGGTATCCCGCGATTTGTGTACGTGAAGCAGTGATTAAAC}
+\DoxyCodeLine{<CCTAGAGTTAGACACTCGACCGTGGTGAATCCGCGATCTACCGCTTTGACGGGCGCTCTACGGTATCCCGCGATTTGTGTACGTGAAGCGAGTGATTAAAC}
+\DoxyCodeLine{[...]}
+
+\end{DoxyCode}
+
+
+Once you have the dataset ready, you can run the {\itshape align-\/benchmark} tool to benchmark the performance of a specific pairwise alignment method. For example, the WFA algorithm:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$>\ ./bin/align\_benchmark\ -\/i\ sample.dataset.seq\ -\/a\ gap-\/affine-\/wfa}
+\DoxyCodeLine{...processed\ 10000\ reads\ (benchmark=125804.398\ reads/s;alignment=188049.469\ reads/s)}
+\DoxyCodeLine{...processed\ 20000\ reads\ (benchmark=117722.406\ reads/s;alignment=180925.031\ reads/s)}
+\DoxyCodeLine{[...]}
+\DoxyCodeLine{...processed\ 5000000\ reads\ (benchmark=113844.039\ reads/s;alignment=177325.281\ reads/s)}
+\DoxyCodeLine{[Benchmark]}
+\DoxyCodeLine{=>\ Total.reads\ \ \ \ \ \ \ \ \ \ \ \ 5000000}
+\DoxyCodeLine{=>\ Time.Benchmark\ \ \ \ \ \ \ \ 43.92\ s\ \ (\ \ \ \ 1\ \ \ call,\ \ 43.92\ \ s/call\ \{min43.92s,Max43.92s\})}
+\DoxyCodeLine{\ \ =>\ Time.Alignment\ \ \ \ \ \ 28.20\ s\ \ (\ 64.20\ \%)\ (\ \ \ \ 5\ Mcalls,\ \ \ 5.64\ us/call\ \{min438ns,Max47.05ms\})}
+
+\end{DoxyCode}
+
+
+The {\itshape align-\/benchmark} tool will finish and report overall benchmark time (including reading the input, setup, checking, etc.) and the time taken by the algorithm (i.\+e., {\itshape Time.\+Alignment}). If you want to measure the accuracy of the alignment method, you can add the option {\ttfamily -\/-\/check} and all the alignments will be verified.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$>\ ./bin/align\_benchmark\ -\/i\ sample.dataset.seq\ -\/a\ gap-\/affine-\/wfa\ -\/-\/check}
+\DoxyCodeLine{...processed\ 10000\ reads\ (benchmark=14596.232\ reads/s;alignment=201373.984\ reads/s)}
+\DoxyCodeLine{...processed\ 20000\ reads\ (benchmark=13807.268\ reads/s;alignment=194224.922\ reads/s)}
+\DoxyCodeLine{[...]}
+\DoxyCodeLine{...processed\ 5000000\ reads\ (benchmark=10625.568\ reads/s;alignment=131371.703\ reads/s)}
+\DoxyCodeLine{[Benchmark]}
+\DoxyCodeLine{=>\ Total.reads\ \ \ \ \ \ \ \ \ \ \ \ 5000000}
+\DoxyCodeLine{=>\ Time.Benchmark\ \ \ \ \ \ \ \ \ 7.84\ m\ \ (\ \ \ \ 1\ \ \ call,\ 470.56\ \ s/call\ \{min470.56s,Max470.56s\})}
+\DoxyCodeLine{\ \ =>\ Time.Alignment\ \ \ \ \ \ 28.06\ s\ \ (\ \ 5.9\ \%)\ (\ \ \ \ 5\ Mcalls,\ \ \ 5.61\ us/call\ \{min424ns,Max73.61ms\})}
+\DoxyCodeLine{[Accuracy]}
+\DoxyCodeLine{\ =>\ Alignments.Correct\ \ \ \ \ \ \ \ 5.00\ Malg\ \ \ \ \ \ \ \ (100.00\ \%)\ (samples=5M\{mean1.00,min1.00,Max1.00,Var0.00,StdDev0.00)\}}
+\DoxyCodeLine{\ =>\ Score.Correct\ \ \ \ \ \ \ \ \ \ \ \ \ 5.00\ Malg\ \ \ \ \ \ \ \ (100.00\ \%)\ (samples=5M\{mean1.00,min1.00,Max1.00,Var0.00,StdDev0.00)\}}
+\DoxyCodeLine{\ \ \ =>\ Score.Total\ \ \ \ \ \ \ \ \ \ \ 147.01\ Mscore\ uds.\ \ \ \ \ \ \ \ \ \ \ \ (samples=5M\{mean29.40,min0.00,Max40.00,Var37.00,StdDev6.00)\}}
+\DoxyCodeLine{\ \ \ \ \ =>\ Score.Diff\ \ \ \ \ \ \ \ \ \ \ \ 0.00\ score\ uds.\ \ (\ \ 0.00\ \%)\ (samples=0,-\/-\/n/a-\/-\/)\}}
+\DoxyCodeLine{\ =>\ CIGAR.Correct\ \ \ \ \ \ \ \ \ \ \ \ \ 0.00\ alg\ \ \ \ \ \ \ \ \ (\ \ 0.00\ \%)\ (samples=0,-\/-\/n/a-\/-\/)\}}
+\DoxyCodeLine{\ \ \ =>\ CIGAR.Matches\ \ \ \ \ \ \ \ \ 484.76\ Mbases\ \ \ \ \ \ (\ 96.95\ \%)\ (samples=484M\{mean1.00,min1.00,Max1.00,Var0.00,StdDev0.00)\}}
+\DoxyCodeLine{\ \ \ =>\ CIGAR.Mismatches\ \ \ \ \ \ \ \ 7.77\ Mbases\ \ \ \ \ \ (\ \ 1.55\ \%)\ (samples=7M\{mean1.00,min1.00,Max1.00,Var0.00,StdDev0.00)\}}
+\DoxyCodeLine{\ \ \ =>\ CIGAR.Insertions\ \ \ \ \ \ \ \ 7.47\ Mbases\ \ \ \ \ \ (\ \ 1.49\ \%)\ (samples=7M\{mean1.00,min1.00,Max1.00,Var0.00,StdDev0.00)\}}
+\DoxyCodeLine{\ \ \ =>\ CIGAR.Deletions\ \ \ \ \ \ \ \ \ 7.47\ Mbases\ \ \ \ \ \ (\ \ 1.49\ \%)\ (samples=7M\{mean1.00,min1.00,Max1.00,Var0.00,StdDev0.00)\}}
+
+\end{DoxyCode}
+
+
+Using the {\ttfamily -\/-\/check} option, the tool will report {\itshape Alignments.\+Correct} (i.\+e., total alignments that are correct, not necessarily optimal), and {\itshape Score.\+Correct} (i.\+e., total alignments that have the optimal score). Note that the overall benchmark time will increase due to the overhead introduced by the checking routine, however the {\itshape Time.\+Alignment} should remain the same.\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md36}{}\doxysubsubsection{\texorpdfstring{Algorithms \& Implementations Summary}{Algorithms \& Implementations Summary}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md36}
+Summary of algorithms/\+methods implemented within the benchmarking tool. If you are interested in benchmarking WFA with other algorithms implemented or integrated into the WFA library, checkout branch {\ttfamily benchmark}.
+
+
+\begin{DoxyTable}{5}{}{}{1}
+\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Algorithm Name  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Code-\/name  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Distance  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Output  &\SetCell{c,bg=\tableheadbgcolor,font=\bfseries}Library  \\
+WFA Indel (LCS)  &\SetCell{c}indel-\/wfa  &\SetCell{c}Indel  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+Bit-\/\+Parallel-\/\+Myers (BPM)  &\SetCell{c}edit-\/bpm  &\SetCell{c}Edit  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+DP Edit  &\SetCell{c}edit-\/dp  &\SetCell{c}Edit  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+DP Edit (Banded)  &\SetCell{c}edit-\/dp-\/banded  &\SetCell{c}Edit  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+WFA Edit  &\SetCell{c}edit-\/wfa  &\SetCell{c}Edit  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+DP Gap-\/linear (NW)  &\SetCell{c}gap-\/linear-\/nw  &\SetCell{c}Gap-\/linear  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+WFA Gap-\/linear  &\SetCell{c}gap-\/linear-\/wfa  &\SetCell{c}Gap-\/linear  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+DP Gap-\/affine (SWG)  &\SetCell{c}gap-\/affine-\/swg  &\SetCell{c}Gap-\/affine  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+DP Gap-\/affine Banded (SWG Banded)  &\SetCell{c}gap-\/affine-\/swg-\/banded  &\SetCell{c}Gap-\/affine  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+WFA Gap-\/affine  &\SetCell{c}gap-\/affine-\/wfa  &\SetCell{c}Gap-\/affine  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+DP Gap-\/affine Dual-\/\+Cost  &\SetCell{c}gap-\/affine2p-\/dp  &\SetCell{c}Gap-\/affine (2P)  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+WFA Gap-\/affine Dual-\/\+Cost  &\SetCell{c}gap-\/affine2p-\/wfa  &\SetCell{c}Gap-\/affine (2P)  &\SetCell{c}Alignment  &\SetCell{c}WFA2-\/lib  \\
+\end{DoxyTable}
+
+
+
+\begin{DoxyItemize}
+\item DP:\+ Dynamic Programming
+\item SWG:\+ Smith-\/\+Waterman-\/\+Gotoh
+\item NW:\+ Needleman-\/\+Wunsch
+\end{DoxyItemize}\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md37}{}\doxysubsubsection{\texorpdfstring{Command-\/line Options}{Command-\/line Options}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md37}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md38}{}\doxysubsubsubsection{\texorpdfstring{-\/ Input}{-\/ Input}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md38}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/algorithm|a\ <algorithm-\/code-\/name>\ }
+\DoxyCodeLine{\ \ Selects\ pair-\/wise\ alignment\ algorithm/implementation.}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{-\/-\/input|i\ <File>}
+\DoxyCodeLine{\ \ Filename/path\ to\ the\ input\ SEQ\ file.\ That\ is,\ file\ containing\ the\ sequence\ pairs\ to}
+\DoxyCodeLine{\ \ align.\ Sequences\ are\ stored\ one\ per\ line,\ grouped\ by\ pairs\ where\ the\ pattern\ is\ }
+\DoxyCodeLine{\ \ preceded\ by\ '>'\ and\ text\ by\ '<'.}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/output|o\ <File>}
+\DoxyCodeLine{\ \ Filename/path\ of\ the\ output\ file\ containing\ a\ brief\ report\ of\ the\ alignment.\ Each\ line}
+\DoxyCodeLine{\ \ corresponds\ to\ the\ alignment\ of\ one\ input\ pair\ with\ the\ following\ tab-\/separated\ fields:}
+\DoxyCodeLine{\ \ <SCORE>\ \ <CIGAR>}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/output-\/full\ <File>\ }
+\DoxyCodeLine{\ \ Filename/path\ of\ the\ output\ file\ containing\ a\ report\ of\ the\ alignment.\ Each\ line}
+\DoxyCodeLine{\ \ corresponds\ to\ the\ alignment\ of\ one\ input\ pair\ with\ the\ following\ tab-\/separated\ fields:}
+\DoxyCodeLine{\ \ <PATTERN-\/LENGTH>\ \ <TEXT-\/LENGTH>\ \ <SCORE>\ \ <PATTERN>\ \ <TEXT>\ \ <CIGAR>}
+
+\end{DoxyCode}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md39}{}\doxysubsubsubsection{\texorpdfstring{-\/ Penalties \& Span}{-\/ Penalties \& Span}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md39}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/lineal-\/penalties|p\ M,X,I}
+\DoxyCodeLine{\ \ Selects\ gap-\/lineal\ penalties\ for\ those\ alignment\ algorithms\ that\ use\ this\ penalty\ model.}
+\DoxyCodeLine{\ \ Example:\ -\/-\/lineal-\/penalties="{}0,1,2"{}}
+\DoxyCodeLine{\ \ \ \ M\ -\/\ Match\ penalty}
+\DoxyCodeLine{\ \ \ \ X\ -\/\ Mismatch\ penalty}
+\DoxyCodeLine{\ \ \ \ I\ -\/\ Indel\ penalty}
+\DoxyCodeLine{\ \ \ \ \ \ }
+\DoxyCodeLine{-\/-\/affine-\/penalties|g\ M,X,O,E}
+\DoxyCodeLine{\ \ Selects\ gap-\/affine\ penalties\ for\ those\ alignment\ algorithms\ that\ use\ this\ penalty\ model.}
+\DoxyCodeLine{\ \ Example:\ -\/-\/affine-\/penalties="{}0,4,2,6"{}\ }
+\DoxyCodeLine{\ \ \ \ M\ -\/\ Match\ penalty}
+\DoxyCodeLine{\ \ \ \ X\ -\/\ Mismatch\ penalty}
+\DoxyCodeLine{\ \ \ \ O\ -\/\ Open\ penalty}
+\DoxyCodeLine{\ \ \ \ E\ -\/\ Extend\ penalty}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/affine2p-\/penalties\ M,X,O1,E1,O2,E2\ }
+\DoxyCodeLine{\ \ Select\ gap-\/affine\ dual-\/cost\ penalties\ for\ those\ alignment\ algorithms\ that\ use\ this\ \ }
+\DoxyCodeLine{\ \ penalty\ model.\ Example:\ -\/-\/affine2p-\/penalties="{}0,4,2,6,20,2"{}\ }
+\DoxyCodeLine{\ \ \ \ M\ \ -\/\ Match\ penalty}
+\DoxyCodeLine{\ \ \ \ X\ \ -\/\ Mismatch\ penalty}
+\DoxyCodeLine{\ \ \ \ O1\ -\/\ Open\ penalty\ (gap\ 1)}
+\DoxyCodeLine{\ \ \ \ E1\ -\/\ Extend\ penalty\ (gap\ 1)}
+\DoxyCodeLine{\ \ \ \ O2\ -\/\ Open\ penalty\ (gap\ 2)}
+\DoxyCodeLine{\ \ \ \ E2\ -\/\ Extend\ penalty\ (gap\ 2)}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/ends-\/free\ P0,Pf,T0,Tf}
+\DoxyCodeLine{\ \ Determines\ the\ maximum\ ends\ length\ to\ allow\ for\ free\ in\ the\ ends-\/free\ alignment\ mode.}
+\DoxyCodeLine{\ \ Example:\ -\/-\/ends-\/free="{}100,100,0,0"{}}
+\DoxyCodeLine{\ \ \ \ P0\ -\/\ Pattern\ begin\ (for\ free)}
+\DoxyCodeLine{\ \ \ \ Pf\ -\/\ Pattern\ end\ (for\ free)}
+\DoxyCodeLine{\ \ \ \ T0\ -\/\ Text\ begin\ (for\ free)}
+\DoxyCodeLine{\ \ \ \ Tf\ -\/\ Text\ end\ (for\ free)}
+
+\end{DoxyCode}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md40}{}\doxysubsubsubsection{\texorpdfstring{-\/ Wavefront parameters}{-\/ Wavefront parameters}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md40}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/minimum-\/wavefront-\/length\ <INT>}
+\DoxyCodeLine{\ \ Selects\ the\ minimum\ wavefront\ length\ to\ trigger\ the\ WFA-\/Adapt\ reduction\ method.}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/maximum-\/difference-\/distance\ <INT>}
+\DoxyCodeLine{\ \ Selects\ the\ maximum\ difference\ distance\ for\ the\ WFA-\/Adapt\ reduction\ method.\ \ }
+
+\end{DoxyCode}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md41}{}\doxysubsubsubsection{\texorpdfstring{-\/ Others}{-\/ Others}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md41}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{-\/-\/bandwidth\ <INT>}
+\DoxyCodeLine{\ \ Selects\ the\ bandwidth\ size\ for\ those\ algorithms\ that\ use\ bandwidth\ strategy.\ }
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/num-\/threads|t\ <INT>}
+\DoxyCodeLine{\ \ Sets\ the\ number\ of\ threads\ to\ use\ to\ align\ the\ sequences.\ If\ the\ multithreaded\ mode\ is}
+\DoxyCodeLine{\ \ enabled,\ the\ input\ is\ read\ in\ batches\ of\ multiple\ sequences\ and\ aligned\ using\ the\ number}
+\DoxyCodeLine{\ \ of\ threads\ configured.\ }
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/batch-\/size\ <INT>}
+\DoxyCodeLine{\ \ Selects\ the\ number\ of\ pairs\ of\ sequences\ to\ read\ per\ batch\ in\ the\ multithreaded\ mode.}
+\DoxyCodeLine{\ \ }
+\DoxyCodeLine{-\/-\/check|c\ 'correct'|'score'|'alignment'\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\ \ Activates\ the\ verification\ of\ the\ alignment\ results.\ }
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/check-\/distance\ 'edit'|'gap-\/lineal'|'gap-\/affine'}
+\DoxyCodeLine{\ \ Select\ the\ alignment-\/model\ to\ use\ for\ verification\ of\ the\ results.}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/check-\/bandwidth\ <INT>}
+\DoxyCodeLine{\ \ Sets\ a\ bandwidth\ for\ the\ simple\ verification\ functions.}
+\DoxyCodeLine{}
+\DoxyCodeLine{-\/-\/help|h}
+\DoxyCodeLine{\ \ Outputs\ a\ succinct\ manual\ for\ the\ tool.}
+
+\end{DoxyCode}
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md42}{}\doxysubsection{\texorpdfstring{AUTHORS}{AUTHORS}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md42}
+Santiago Marco-\/\+Sola -\/ \href{mailto:santiagomsola@gmail.com}{\texttt{santiagomsola@gmail.\+com}} ~\newline
+\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md43}{}\doxysubsection{\texorpdfstring{REPORTING BUGS}{REPORTING BUGS}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md43}
+Feedback and bug reporting it\textquotesingle{}s highly appreciated. Please report any issue or suggestion on github or by email to the main developer (\href{mailto:santiagomsola@gmail.com}{\texttt{santiagomsola@gmail.\+com}}).\hypertarget{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md44}{}\doxysubsection{\texorpdfstring{LICENSE}{LICENSE}}\label{dir_f858fa0df565ccd1ee97085615bcf192_autotoc_md44}
+WFA Tools are distributed under MIT licence. 

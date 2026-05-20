@@ -1,0 +1,93 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+compute\+\_\+affine2p.c File Reference}
+\hypertarget{wavefront__compute__affine2p_8c}{}\label{wavefront__compute__affine2p_8c}\index{src/wfa/wavefront/wavefront\_compute\_affine2p.c@{src/wfa/wavefront/wavefront\_compute\_affine2p.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+compute.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+compute\+\_\+affine.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+backtrace\+\_\+offload.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+compute\+\_\+affine2p.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_a9946eab3280bc1c0f4b206d9d9496fb0}{wavefront\+\_\+compute\+\_\+affine2p\+\_\+idm}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const \doxymbox{\hyperlink{structwavefront__set__t}{wavefront\+\_\+set\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+set, const int lo, const int hi)
+\item 
+void \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_abf519e02862a0d3f5728a777b49f6005}{wavefront\+\_\+compute\+\_\+affine2p\+\_\+idm\+\_\+piggyback}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const \doxymbox{\hyperlink{structwavefront__set__t}{wavefront\+\_\+set\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+set, const int lo, const int hi)
+\item 
+void \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_ac39a9453082a9ffff3cad66e812b037b}{wavefront\+\_\+compute\+\_\+affine2p\+\_\+dispatcher}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__set__t}{wavefront\+\_\+set\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+set, const int lo, const int hi)
+\item 
+void \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_ad136de52bff3d2ef23c50966d2081ea3}{wavefront\+\_\+compute\+\_\+affine2p\+\_\+dispatcher\+\_\+omp}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__set__t}{wavefront\+\_\+set\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront\+\_\+set, const int lo, const int hi)
+\item 
+void \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_a4d3707b16785663665d7837c046a28de}{wavefront\+\_\+compute\+\_\+affine2p}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__compute__affine2p_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__compute__affine2p_8c_a4d3707b16785663665d7837c046a28de}\index{wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}!wavefront\_compute\_affine2p@{wavefront\_compute\_affine2p}}
+\index{wavefront\_compute\_affine2p@{wavefront\_compute\_affine2p}!wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_compute\_affine2p()}{wavefront\_compute\_affine2p()}}
+{\footnotesize\ttfamily \label{wavefront__compute__affine2p_8c_a4d3707b16785663665d7837c046a28de} 
+void wavefront\+\_\+compute\+\_\+affine2p (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source_l00334}{334}} of file \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source}{wavefront\+\_\+compute\+\_\+affine2p.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{wavefront__compute__affine2p_8c_ac39a9453082a9ffff3cad66e812b037b}\index{wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}!wavefront\_compute\_affine2p\_dispatcher@{wavefront\_compute\_affine2p\_dispatcher}}
+\index{wavefront\_compute\_affine2p\_dispatcher@{wavefront\_compute\_affine2p\_dispatcher}!wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_compute\_affine2p\_dispatcher()}{wavefront\_compute\_affine2p\_dispatcher()}}
+{\footnotesize\ttfamily \label{wavefront__compute__affine2p_8c_ac39a9453082a9ffff3cad66e812b037b} 
+void wavefront\+\_\+compute\+\_\+affine2p\+\_\+dispatcher (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__set__t}{wavefront\+\_\+set\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+set}{, }\item[{const int}]{lo}{, }\item[{const int}]{hi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source_l00286}{286}} of file \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source}{wavefront\+\_\+compute\+\_\+affine2p.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{wavefront__compute__affine2p_8c_ad136de52bff3d2ef23c50966d2081ea3}\index{wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}!wavefront\_compute\_affine2p\_dispatcher\_omp@{wavefront\_compute\_affine2p\_dispatcher\_omp}}
+\index{wavefront\_compute\_affine2p\_dispatcher\_omp@{wavefront\_compute\_affine2p\_dispatcher\_omp}!wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_compute\_affine2p\_dispatcher\_omp()}{wavefront\_compute\_affine2p\_dispatcher\_omp()}}
+{\footnotesize\ttfamily \label{wavefront__compute__affine2p_8c_ad136de52bff3d2ef23c50966d2081ea3} 
+void wavefront\+\_\+compute\+\_\+affine2p\+\_\+dispatcher\+\_\+omp (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__set__t}{wavefront\+\_\+set\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+set}{, }\item[{const int}]{lo}{, }\item[{const int}]{hi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source_l00309}{309}} of file \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source}{wavefront\+\_\+compute\+\_\+affine2p.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{wavefront__compute__affine2p_8c_a9946eab3280bc1c0f4b206d9d9496fb0}\index{wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}!wavefront\_compute\_affine2p\_idm@{wavefront\_compute\_affine2p\_idm}}
+\index{wavefront\_compute\_affine2p\_idm@{wavefront\_compute\_affine2p\_idm}!wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_compute\_affine2p\_idm()}{wavefront\_compute\_affine2p\_idm()}}
+{\footnotesize\ttfamily \label{wavefront__compute__affine2p_8c_a9946eab3280bc1c0f4b206d9d9496fb0} 
+void wavefront\+\_\+compute\+\_\+affine2p\+\_\+idm (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const \doxymbox{\hyperlink{structwavefront__set__t}{wavefront\+\_\+set\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+set}{, }\item[{const int}]{lo}{, }\item[{const int}]{hi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source_l00045}{45}} of file \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source}{wavefront\+\_\+compute\+\_\+affine2p.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{wavefront__compute__affine2p_8c_abf519e02862a0d3f5728a777b49f6005}\index{wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}!wavefront\_compute\_affine2p\_idm\_piggyback@{wavefront\_compute\_affine2p\_idm\_piggyback}}
+\index{wavefront\_compute\_affine2p\_idm\_piggyback@{wavefront\_compute\_affine2p\_idm\_piggyback}!wavefront\_compute\_affine2p.c@{wavefront\_compute\_affine2p.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_compute\_affine2p\_idm\_piggyback()}{wavefront\_compute\_affine2p\_idm\_piggyback()}}
+{\footnotesize\ttfamily \label{wavefront__compute__affine2p_8c_abf519e02862a0d3f5728a777b49f6005} 
+void wavefront\+\_\+compute\+\_\+affine2p\+\_\+idm\+\_\+piggyback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const \doxymbox{\hyperlink{structwavefront__set__t}{wavefront\+\_\+set\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+set}{, }\item[{const int}]{lo}{, }\item[{const int}]{hi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source_l00110}{110}} of file \doxymbox{\hyperlink{wavefront__compute__affine2p_8c_source}{wavefront\+\_\+compute\+\_\+affine2p.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 8

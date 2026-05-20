@@ -1,0 +1,875 @@
+\doxysection{Segment Class Reference}
+\hypertarget{class_segment}{}\label{class_segment}\index{Segment@{Segment}}
+
+
+\doxylink{class_segment}{Segment} class representing a graph segment.  
+
+
+
+
+{\ttfamily \+\#include $<$bgfa\+\_\+graph.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}{Segment}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor initializes an empty segment. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_segment_af6acec1fac554bf83859852e5c6e2adc}{Segment}} (const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} id, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} sosr, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} length, const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&sequence)
+\begin{DoxyCompactList}\small\item\em Constructor with id, dis, length, and binary sequence. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_segment_a30d254cdf33eb9d2c13fd67a5abc5925}{Segment}} (const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} id, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} length, const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&sequence)
+\begin{DoxyCompactList}\small\item\em Constructor with id, length, and binary sequence (default:\+ 0). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_segment_aaa828f91b4ea5f23093eaa2a3c7fb4f2}{Segment}} (const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} id, const std::\+string \&sequence\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Constructor with id and string sequence (dis default:\+ 0). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_segment_ae543c10ab3936abb0a5f4b990ef82f79}{Segment}} (const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} id, const std::\+string \&sequence\+\_\+str, const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} offset, const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} rank)
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a44d2763636bd56cecf70dda3f88377c6}{get\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Get the Id of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a3020c3e7940566bb79d891d88a2e2ec9}{get\+Dis}} () const
+\begin{DoxyCompactList}\small\item\em Get the Dis of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a71f0ee26d77b47e850b0c6d533c45172}{get\+Sosr}} () const
+\begin{DoxyCompactList}\small\item\em Get the SOSR of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a265545d35475c5afab65afbd03c82270}{get\+Offset}} () const
+\begin{DoxyCompactList}\small\item\em Get the Offset of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_aa30f4702663bfafbed831dab79e09658}{get\+Rank}} () const
+\begin{DoxyCompactList}\small\item\em Get the Rank of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a811b62cf39d61b1bf05a02dc93bf3441}{get\+Length}} () const
+\begin{DoxyCompactList}\small\item\em Get the Length of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a76bfa7f276b70f1d96cca77d012baeae}{get\+Store\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the storage size of the \doxylink{class_segment}{Segment} in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_ab7fc455ded0bc313d6900fa0a226815e}{get\+Store\+Size}} (bool store\+\_\+id) const
+\item 
+std::\+string \doxymbox{\hyperlink{class_segment_a68afa9b1485b7e7910ef9180c7e090f7}{get\+Sequence\+As\+String}} () const
+\begin{DoxyCompactList}\small\item\em Get the Sequence of the \doxylink{class_segment}{Segment} as a string. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \& \doxymbox{\hyperlink{class_segment_a554ebd20459c001033b541a83044e732}{get\+Binary\+Sequence}} () const
+\begin{DoxyCompactList}\small\item\em Get the binary encoded Sequence of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+char \doxymbox{\hyperlink{class_segment_a32c04d5aa9abbe72c63393f5d3422536}{get\+Base\+At}} (size\+\_\+t position) const
+\begin{DoxyCompactList}\small\item\em Get the base character at a specific position in the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_segment_af8c80c868de71c7427825fb2f53607ef}{set\+Id}} (const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} id)
+\begin{DoxyCompactList}\small\item\em Set the Id of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_segment_abce975a7f8b40c7a175dc83dd650b06c}{set\+Sequence}} (const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&sequence)
+\begin{DoxyCompactList}\small\item\em Set the Length of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_segment_a091807f996bfdc63027e2707c78e8cb2}{set\+Sequence\+From\+String}} (const std::\+string \&sequence\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Set the Sequence of the \doxylink{class_segment}{Segment} from a string. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_segment_a236fb0be7fb2f61e3c20e14dd7e8b93f}{set\+Dis}} (const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} dis)
+\begin{DoxyCompactList}\small\item\em Set the Dis of the \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_segment_ac08df25a10a9c1c560fcbe701421339b}{set\+Sosr}} (const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} offset, const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} rank)
+\begin{DoxyCompactList}\small\item\em Set the SOSR of the \doxylink{class_segment}{Segment} Used only in generating \doxylink{class_segment}{Segment} object. It will change the offset and rank info, so be careful when using it. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_segment_a2d37c10abefa339bba1c215fe6923de7}{to\+Gfa\+Txt}} () const
+\begin{DoxyCompactList}\small\item\em Convert the \doxylink{class_segment}{Segment} to \doxylink{class_g_f_a}{GFA} text format. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_segment_aae54445288d03b0bdd32d7c96818e585}{to\+Bgfa\+Bin}} (std::\+ofstream \&output\+\_\+file, bool store\+\_\+id=true) const
+\begin{DoxyCompactList}\small\item\em Convert the \doxylink{class_segment}{Segment} to b\+GFA binary format. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_segment_a737febf9a6e3b94348e021cf61cda8ff}{operator==}} (const \doxymbox{\hyperlink{class_segment}{Segment}} \&other) const
+\begin{DoxyCompactList}\small\item\em Equality operator for \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_segment_a5281e7acb4c8a74d89dd26abb014fb8b}{operator!=}} (const \doxymbox{\hyperlink{class_segment}{Segment}} \&other) const
+\begin{DoxyCompactList}\small\item\em Inequality operator for \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_segment_a334d9343a0df8725471aa8f1fe3f785c}{operator$<$}} (const \doxymbox{\hyperlink{class_segment}{Segment}} \&other) const
+\begin{DoxyCompactList}\small\item\em Less-\/than operator for \doxylink{class_segment}{Segment} (based on distance, then ID). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_segment_af0711420d3c79b4028550314d7963bc1}{operator$>$}} (const \doxymbox{\hyperlink{class_segment}{Segment}} \&other) const
+\begin{DoxyCompactList}\small\item\em Greater-\/than operator for \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_segment_a5e7979c67e29c6d77fa4641ec9f5aec1}{operator$<$=}} (const \doxymbox{\hyperlink{class_segment}{Segment}} \&other) const
+\begin{DoxyCompactList}\small\item\em Less-\/than-\/or-\/equal-\/to operator for \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_segment_a32e25120495691308ae1ef1650d2a1b8}{operator$>$=}} (const \doxymbox{\hyperlink{class_segment}{Segment}} \&other) const
+\begin{DoxyCompactList}\small\item\em Greater-\/than-\/or-\/equal-\/to operator for \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_segment_a1d49cddf5cec8c66b0645f3b8f675b74}{string\+To\+Binary}} (const std::\+string \&seq\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Set the Sequence of the \doxylink{class_segment}{Segment} from a string. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_segment_a91dae51be4e1416233ed28f1f644bc28}{set\+Store\+Size}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a497b4ea3dc99843868b332e8a9f758f9}{id\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_segment}{Segment} ID. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a4058e83d8f8050b38f2ae7214bab1232}{dis\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_segment}{Segment} distance, not stored. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_aa3f08bdef4b67c01ed39fb7eb4ebf5e5}{sosr\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_segment}{Segment} offset and rank (low 6 bits for rank, high bits for offset). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a1370b9da5efafc6b21944756c5e0d186}{length\+\_\+}}
+\begin{DoxyCompactList}\small\item\em \doxylink{class_segment}{Segment} length(\+SL:\+i), not stored. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \doxymbox{\hyperlink{class_segment_a8410d94c5fcd688bbba403ebf0e9894b}{sequence\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Binary encoded sequence. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_segment_a050d18c7a8835b1220282e72bea61379}{store\+\_\+size\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Size in storage (in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std::\+ostream \& \doxymbox{\hyperlink{class_segment_af6b15795c98ec858fde6616d54b73f7b}{operator$<$$<$}} (std::\+ostream \&os, const \doxymbox{\hyperlink{class_segment}{Segment}} \&segment)
+\begin{DoxyCompactList}\small\item\em Output stream operator for \doxylink{class_segment}{Segment}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_segment}{Segment} class representing a graph segment. 
+
+The equality comparison for segments does not follow the same rules as the greater-\/than and less-\/than comparisons. Two segments are considered equal if their sequences are identical, regardless of their IDs or other attributes. A segment is considered less than another if its dis is smaller, and then by id. 
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00119}{119}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_segment_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8}\index{Segment@{Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{Segment()}{Segment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{class_segment_adfe9fc7ffcc7269f961d4b1f6720d1e8} 
+Segment::\+\+Segment (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor initializes an empty segment. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00134}{134}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 0
+\Hypertarget{class_segment_af6acec1fac554bf83859852e5c6e2adc}\index{Segment@{Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{Segment()}{Segment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{class_segment_af6acec1fac554bf83859852e5c6e2adc} 
+Segment::\+\+Segment (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{id}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{sosr}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{length}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&}]{sequence}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor with id, dis, length, and binary sequence. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & id -\/ \doxylink{class_segment}{Segment} ID \\
+\hline
+{\em \{uword\+\_\+t\}} & sosr -\/ \doxylink{class_segment}{Segment} offset and rank \\
+\hline
+{\em \{uword\+\_\+t\}} & length -\/ \doxylink{class_segment}{Segment} length \\
+\hline
+{\em \{vector$<$uword\+\_\+t$>$\}} & \&sequence -\/ Binary encoded sequence \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00143}{143}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+\Hypertarget{class_segment_a30d254cdf33eb9d2c13fd67a5abc5925}\index{Segment@{Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{Segment()}{Segment()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{class_segment_a30d254cdf33eb9d2c13fd67a5abc5925} 
+Segment::\+\+Segment (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{id}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{length}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&}]{sequence}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor with id, length, and binary sequence (default:\+ 0). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & id -\/ \doxylink{class_segment}{Segment} ID \\
+\hline
+{\em \{uword\+\_\+t\}} & length -\/ \doxylink{class_segment}{Segment} length \\
+\hline
+{\em \{vector$<$uword\+\_\+t$>$\}} & \&sequence -\/ Binary encoded sequence \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00156}{156}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{class_segment_aaa828f91b4ea5f23093eaa2a3c7fb4f2}\index{Segment@{Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{Segment()}{Segment()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{class_segment_aaa828f91b4ea5f23093eaa2a3c7fb4f2} 
+Segment::\+\+Segment (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{id}{, }\item[{const std::\+string \&}]{sequence\+\_\+str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor with id and string sequence (dis default:\+ 0). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & id -\/ \doxylink{class_segment}{Segment} ID \\
+\hline
+{\em \{string\}} & \&sequence\+\_\+str -\/ \doxylink{class_segment}{Segment} sequence string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00168}{168}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{class_segment_ae543c10ab3936abb0a5f4b990ef82f79}\index{Segment@{Segment}!Segment@{Segment}}
+\index{Segment@{Segment}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{Segment()}{Segment()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{class_segment_ae543c10ab3936abb0a5f4b990ef82f79} 
+Segment::\+\+Segment (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{id}{, }\item[{const std::\+string \&}]{sequence\+\_\+str}{, }\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{offset}{, }\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{rank}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00175}{175}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+
+
+\label{doc-func-members}
+\Hypertarget{class_segment_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_segment_a32c04d5aa9abbe72c63393f5d3422536}\index{Segment@{Segment}!getBaseAt@{getBaseAt}}
+\index{getBaseAt@{getBaseAt}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getBaseAt()}{getBaseAt()}}
+{\footnotesize\ttfamily \label{class_segment_a32c04d5aa9abbe72c63393f5d3422536} 
+char Segment::\+get\+Base\+At (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{position}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the base character at a specific position in the \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{size\+\_\+t\}} & position -\/ Position in the sequence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{char\} Base character at the specified position 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00282}{282}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{class_segment_a554ebd20459c001033b541a83044e732}\index{Segment@{Segment}!getBinarySequence@{getBinarySequence}}
+\index{getBinarySequence@{getBinarySequence}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getBinarySequence()}{getBinarySequence()}}
+{\footnotesize\ttfamily \label{class_segment_a554ebd20459c001033b541a83044e732} 
+const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \& Segment::\+get\+Binary\+Sequence (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the binary encoded Sequence of the \doxylink{class_segment}{Segment}. 
+
+\begin{DoxyReturn}{Returns}
+\{const vector$<$uword\+\_\+t$>$\&\} Binary encoded sequence 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00275}{275}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{class_segment_a3020c3e7940566bb79d891d88a2e2ec9}\index{Segment@{Segment}!getDis@{getDis}}
+\index{getDis@{getDis}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getDis()}{getDis()}}
+{\footnotesize\ttfamily \label{class_segment_a3020c3e7940566bb79d891d88a2e2ec9} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+get\+Dis (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Dis of the \doxylink{class_segment}{Segment}. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_segment}{Segment} distance 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00193}{193}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{class_segment_a44d2763636bd56cecf70dda3f88377c6}\index{Segment@{Segment}!getId@{getId}}
+\index{getId@{getId}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily \label{class_segment_a44d2763636bd56cecf70dda3f88377c6} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Id of the \doxylink{class_segment}{Segment}. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_segment}{Segment} ID 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00187}{187}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{class_segment_a811b62cf39d61b1bf05a02dc93bf3441}\index{Segment@{Segment}!getLength@{getLength}}
+\index{getLength@{getLength}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getLength()}{getLength()}}
+{\footnotesize\ttfamily \label{class_segment_a811b62cf39d61b1bf05a02dc93bf3441} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+get\+Length (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Length of the \doxylink{class_segment}{Segment}. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_segment}{Segment} length 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00217}{217}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{class_segment_a265545d35475c5afab65afbd03c82270}\index{Segment@{Segment}!getOffset@{getOffset}}
+\index{getOffset@{getOffset}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getOffset()}{getOffset()}}
+{\footnotesize\ttfamily \label{class_segment_a265545d35475c5afab65afbd03c82270} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+get\+Offset (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Offset of the \doxylink{class_segment}{Segment}. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_segment}{Segment} offset 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00205}{205}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{class_segment_aa30f4702663bfafbed831dab79e09658}\index{Segment@{Segment}!getRank@{getRank}}
+\index{getRank@{getRank}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getRank()}{getRank()}}
+{\footnotesize\ttfamily \label{class_segment_aa30f4702663bfafbed831dab79e09658} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+get\+Rank (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Rank of the \doxylink{class_segment}{Segment}. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_segment}{Segment} rank 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00211}{211}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{class_segment_a68afa9b1485b7e7910ef9180c7e090f7}\index{Segment@{Segment}!getSequenceAsString@{getSequenceAsString}}
+\index{getSequenceAsString@{getSequenceAsString}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getSequenceAsString()}{getSequenceAsString()}}
+{\footnotesize\ttfamily \label{class_segment_a68afa9b1485b7e7910ef9180c7e090f7} 
+std::\+string Segment::\+get\+Sequence\+As\+String (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the Sequence of the \doxylink{class_segment}{Segment} as a string. 
+
+\begin{DoxyReturn}{Returns}
+\{string\} \doxylink{class_segment}{Segment} sequence 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00261}{261}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{class_segment_a71f0ee26d77b47e850b0c6d533c45172}\index{Segment@{Segment}!getSosr@{getSosr}}
+\index{getSosr@{getSosr}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getSosr()}{getSosr()}}
+{\footnotesize\ttfamily \label{class_segment_a71f0ee26d77b47e850b0c6d533c45172} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+get\+Sosr (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the SOSR of the \doxylink{class_segment}{Segment}. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} \doxylink{class_segment}{Segment} sosr 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00199}{199}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_segment_a76bfa7f276b70f1d96cca77d012baeae}\index{Segment@{Segment}!getStoreSize@{getStoreSize}}
+\index{getStoreSize@{getStoreSize}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getStoreSize()}{getStoreSize()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_segment_a76bfa7f276b70f1d96cca77d012baeae} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+get\+Store\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the storage size of the \doxylink{class_segment}{Segment} in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} Storage size 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00223}{223}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 14
+Here is the caller graph for this function:\+
+% FIG 15
+\Hypertarget{class_segment_ab7fc455ded0bc313d6900fa0a226815e}\index{Segment@{Segment}!getStoreSize@{getStoreSize}}
+\index{getStoreSize@{getStoreSize}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{getStoreSize()}{getStoreSize()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_segment_ab7fc455ded0bc313d6900fa0a226815e} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+get\+Store\+Size (\begin{DoxyParamCaption}\item[{bool}]{store\+\_\+id}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00229}{229}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_segment_a5281e7acb4c8a74d89dd26abb014fb8b}\index{Segment@{Segment}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{operator"!=()}{operator!=()}}
+{\footnotesize\ttfamily \label{class_segment_a5281e7acb4c8a74d89dd26abb014fb8b} 
+bool Segment::\+operator!= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_segment}{Segment}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Inequality operator for \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & \&other -\/ Other segment to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} True if segments are not equal, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00514}{514}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 16
+\Hypertarget{class_segment_a334d9343a0df8725471aa8f1fe3f785c}\index{Segment@{Segment}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily \label{class_segment_a334d9343a0df8725471aa8f1fe3f785c} 
+bool Segment::\+operator$<$ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_segment}{Segment}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Less-\/than operator for \doxylink{class_segment}{Segment} (based on distance, then ID). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & \&other -\/ Other segment to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00524}{524}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 17
+\Hypertarget{class_segment_a5e7979c67e29c6d77fa4641ec9f5aec1}\index{Segment@{Segment}!operator$<$=@{operator$<$=}}
+\index{operator$<$=@{operator$<$=}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{operator$<$=()}{operator<=()}}
+{\footnotesize\ttfamily \label{class_segment_a5e7979c67e29c6d77fa4641ec9f5aec1} 
+bool Segment::\+operator$<$= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_segment}{Segment}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Less-\/than-\/or-\/equal-\/to operator for \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & \&other -\/ Other segment to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00545}{545}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 18
+\Hypertarget{class_segment_a737febf9a6e3b94348e021cf61cda8ff}\index{Segment@{Segment}!operator==@{operator==}}
+\index{operator==@{operator==}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{class_segment_a737febf9a6e3b94348e021cf61cda8ff} 
+bool Segment::\+operator== (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_segment}{Segment}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Equality operator for \doxylink{class_segment}{Segment}. 
+
+Two segments are equal if their sequences are same. 
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & \&other -\/ Other segment to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} True if segments are equal, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00504}{504}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+\Hypertarget{class_segment_af0711420d3c79b4028550314d7963bc1}\index{Segment@{Segment}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily \label{class_segment_af0711420d3c79b4028550314d7963bc1} 
+bool Segment::\+operator$>$ (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_segment}{Segment}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Greater-\/than operator for \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & \&other -\/ Other segment to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00538}{538}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 20
+\Hypertarget{class_segment_a32e25120495691308ae1ef1650d2a1b8}\index{Segment@{Segment}!operator$>$=@{operator$>$=}}
+\index{operator$>$=@{operator$>$=}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{operator$>$=()}{operator>=()}}
+{\footnotesize\ttfamily \label{class_segment_a32e25120495691308ae1ef1650d2a1b8} 
+bool Segment::\+operator$>$= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_segment}{Segment}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Greater-\/than-\/or-\/equal-\/to operator for \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Segment\}} & \&other -\/ Other segment to compare \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00552}{552}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 21
+\Hypertarget{class_segment_a236fb0be7fb2f61e3c20e14dd7e8b93f}\index{Segment@{Segment}!setDis@{setDis}}
+\index{setDis@{setDis}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{setDis()}{setDis()}}
+{\footnotesize\ttfamily \label{class_segment_a236fb0be7fb2f61e3c20e14dd7e8b93f} 
+void Segment::\+set\+Dis (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{dis}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Dis of the \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & dis -\/ \doxylink{class_segment}{Segment} distance \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00331}{331}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 22
+\Hypertarget{class_segment_af8c80c868de71c7427825fb2f53607ef}\index{Segment@{Segment}!setId@{setId}}
+\index{setId@{setId}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily \label{class_segment_af8c80c868de71c7427825fb2f53607ef} 
+void Segment::\+set\+Id (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Id of the \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & id -\/ \doxylink{class_segment}{Segment} ID \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00304}{304}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 23
+\Hypertarget{class_segment_abce975a7f8b40c7a175dc83dd650b06c}\index{Segment@{Segment}!setSequence@{setSequence}}
+\index{setSequence@{setSequence}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{setSequence()}{setSequence()}}
+{\footnotesize\ttfamily \label{class_segment_abce975a7f8b40c7a175dc83dd650b06c} 
+void Segment::\+set\+Sequence (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&}]{sequence}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Length of the \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & length -\/ \doxylink{class_segment}{Segment} length \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00310}{310}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_segment_a091807f996bfdc63027e2707c78e8cb2}\index{Segment@{Segment}!setSequenceFromString@{setSequenceFromString}}
+\index{setSequenceFromString@{setSequenceFromString}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{setSequenceFromString()}{setSequenceFromString()}}
+{\footnotesize\ttfamily \label{class_segment_a091807f996bfdc63027e2707c78e8cb2} 
+void Segment::\+set\+Sequence\+From\+String (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{sequence\+\_\+str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the Sequence of the \doxylink{class_segment}{Segment} from a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & \&sequence\+\_\+str -\/ \doxylink{class_segment}{Segment} sequence string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00321}{321}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 24
+\Hypertarget{class_segment_ac08df25a10a9c1c560fcbe701421339b}\index{Segment@{Segment}!setSosr@{setSosr}}
+\index{setSosr@{setSosr}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{setSosr()}{setSosr()}}
+{\footnotesize\ttfamily \label{class_segment_ac08df25a10a9c1c560fcbe701421339b} 
+void Segment::\+set\+Sosr (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{offset}{, }\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{rank}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the SOSR of the \doxylink{class_segment}{Segment} Used only in generating \doxylink{class_segment}{Segment} object. It will change the offset and rank info, so be careful when using it. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & offset -\/ \doxylink{class_segment}{Segment} offset \\
+\hline
+{\em \{uword\+\_\+t\}} & rank -\/ \doxylink{class_segment}{Segment} rank \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00339}{339}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 25
+\Hypertarget{class_segment_a91dae51be4e1416233ed28f1f644bc28}\index{Segment@{Segment}!setStoreSize@{setStoreSize}}
+\index{setStoreSize@{setStoreSize}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{setStoreSize()}{setStoreSize()}}
+{\footnotesize\ttfamily \label{class_segment_a91dae51be4e1416233ed28f1f644bc28} 
+void Segment::\+set\+Store\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00610}{610}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 26
+\Hypertarget{class_segment_a1d49cddf5cec8c66b0645f3b8f675b74}\index{Segment@{Segment}!stringToBinary@{stringToBinary}}
+\index{stringToBinary@{stringToBinary}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{stringToBinary()}{stringToBinary()}}
+{\footnotesize\ttfamily \label{class_segment_a1d49cddf5cec8c66b0645f3b8f675b74} 
+void Segment::\+string\+To\+Binary (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{seq\+\_\+str}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Set the Sequence of the \doxylink{class_segment}{Segment} from a string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & \&seq\+\_\+str -\/ \doxylink{class_segment}{Segment} sequence string \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00595}{595}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 27
+\Hypertarget{class_segment_aae54445288d03b0bdd32d7c96818e585}\index{Segment@{Segment}!toBgfaBin@{toBgfaBin}}
+\index{toBgfaBin@{toBgfaBin}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{toBgfaBin()}{toBgfaBin()}}
+{\footnotesize\ttfamily \label{class_segment_aae54445288d03b0bdd32d7c96818e585} 
+void Segment::\+to\+Bgfa\+Bin (\begin{DoxyParamCaption}\item[{std::\+ofstream \&}]{output\+\_\+file}{, }\item[{bool}]{store\+\_\+id}{ = {\ttfamily true}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert the \doxylink{class_segment}{Segment} to b\+GFA binary format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{ofstream\}} & \&output\+\_\+file -\/ Output binary file stream \\
+\hline
+{\em \{uword\+\_\+t\}} & \&s\+\_\+offset -\/ Current offset in the binary file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00370}{370}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 28
+\Hypertarget{class_segment_a2d37c10abefa339bba1c215fe6923de7}\index{Segment@{Segment}!toGfaTxt@{toGfaTxt}}
+\index{toGfaTxt@{toGfaTxt}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{toGfaTxt()}{toGfaTxt()}}
+{\footnotesize\ttfamily \label{class_segment_a2d37c10abefa339bba1c215fe6923de7} 
+std::\+string Segment::\+to\+Gfa\+Txt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert the \doxylink{class_segment}{Segment} to \doxylink{class_g_f_a}{GFA} text format. 
+
+\begin{DoxyReturn}{Returns}
+\{string\} \doxylink{class_g_f_a}{GFA} text representation of the segment 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00348}{348}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 29
+
+
+\label{doc-related-members}
+\Hypertarget{class_segment_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_segment_af6b15795c98ec858fde6616d54b73f7b}\index{Segment@{Segment}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_segment_af6b15795c98ec858fde6616d54b73f7b} 
+std::\+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{, }\item[{const \doxymbox{\hyperlink{class_segment}{Segment}} \&}]{segment}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Output stream operator for \doxylink{class_segment}{Segment}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{ostream\}} & \&os -\/ Output stream \\
+\hline
+{\em \{\+Segment\}} & \&segment -\/ \doxylink{class_segment}{Segment} to output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{ostream\&\} Reference to the output stream 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00560}{560}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_segment_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_segment_a4058e83d8f8050b38f2ae7214bab1232}\index{Segment@{Segment}!dis\_@{dis\_}}
+\index{dis\_@{dis\_}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{dis\_}{dis\_}}
+{\footnotesize\ttfamily \label{class_segment_a4058e83d8f8050b38f2ae7214bab1232} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+dis\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_segment}{Segment} distance, not stored. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00123}{123}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_segment_a497b4ea3dc99843868b332e8a9f758f9}\index{Segment@{Segment}!id\_@{id\_}}
+\index{id\_@{id\_}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{id\_}{id\_}}
+{\footnotesize\ttfamily \label{class_segment_a497b4ea3dc99843868b332e8a9f758f9} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+id\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_segment}{Segment} ID. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00122}{122}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_segment_a1370b9da5efafc6b21944756c5e0d186}\index{Segment@{Segment}!length\_@{length\_}}
+\index{length\_@{length\_}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{length\_}{length\_}}
+{\footnotesize\ttfamily \label{class_segment_a1370b9da5efafc6b21944756c5e0d186} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+length\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_segment}{Segment} length(\+SL:\+i), not stored. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00125}{125}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_segment_a8410d94c5fcd688bbba403ebf0e9894b}\index{Segment@{Segment}!sequence\_@{sequence\_}}
+\index{sequence\_@{sequence\_}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{sequence\_}{sequence\_}}
+{\footnotesize\ttfamily \label{class_segment_a8410d94c5fcd688bbba403ebf0e9894b} 
+std::\+vector$<$\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}$>$ Segment::\+sequence\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Binary encoded sequence. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00126}{126}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_segment_aa3f08bdef4b67c01ed39fb7eb4ebf5e5}\index{Segment@{Segment}!sosr\_@{sosr\_}}
+\index{sosr\_@{sosr\_}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{sosr\_}{sosr\_}}
+{\footnotesize\ttfamily \label{class_segment_aa3f08bdef4b67c01ed39fb7eb4ebf5e5} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+sosr\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+\doxylink{class_segment}{Segment} offset and rank (low 6 bits for rank, high bits for offset). 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00124}{124}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_segment_a050d18c7a8835b1220282e72bea61379}\index{Segment@{Segment}!store\_size\_@{store\_size\_}}
+\index{store\_size\_@{store\_size\_}!Segment@{Segment}}
+\doxysubsubsection{\texorpdfstring{store\_size\_}{store\_size\_}}
+{\footnotesize\ttfamily \label{class_segment_a050d18c7a8835b1220282e72bea61379} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Segment::\+store\+\_\+size\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Size in storage (in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units). 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00128}{128}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\doxymbox{\hyperlink{bgfa__graph_8hpp}{bgfa\+\_\+graph.\+hpp}}\end{DoxyCompactItemize}

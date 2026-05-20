@@ -1,0 +1,190 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+penalties.h File Reference}
+\hypertarget{wavefront__penalties_8h}{}\label{wavefront__penalties_8h}\index{src/wfa/wavefront/wavefront\_penalties.h@{src/wfa/wavefront/wavefront\_penalties.h}}
+{\ttfamily \+\#include "{}alignment/\+linear\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+affine\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+affine2p\+\_\+penalties.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+penalties.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__penalties_8h_ae286dd63e4dcd4da43091cfba9a31c1b}{WF\+\_\+\+SCORE\+\_\+\+TO\+\_\+\+SW\+\_\+\+SCORE}}(swg\+\_\+match,  plen,  tlen,  wf\+\_\+score)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\+\_\+metric\+\_\+t}} \{ \newline
+\doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9}{indel}} = 0
+, \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab9973bd80402101013fe9b4e66c7e64f}{edit}} = 1
+, \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaae71387ff7cf210d857caee413c21582}{gap\+\_\+linear}} = 2
+, \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{gap\+\_\+affine}} = 3
+, \newline
+\doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab2dc11ac0ec88c88ab4999ea27460322}{gap\+\_\+affine\+\_\+2p}} = 4
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{wavefront__penalties_8h_a4e5940a30f585534a38549f0aa5b3424}{wavefront\+\_\+penalties\+\_\+set\+\_\+indel}} (\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+penalties)
+\item 
+void \doxymbox{\hyperlink{wavefront__penalties_8h_af27cb4c0f06ddeeb93ee6b9a74f451e8}{wavefront\+\_\+penalties\+\_\+set\+\_\+edit}} (\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+penalties)
+\item 
+void \doxymbox{\hyperlink{wavefront__penalties_8h_a8eed9d249e1262456637045435803eb7}{wavefront\+\_\+penalties\+\_\+set\+\_\+linear}} (\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+penalties, \doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const linear\+\_\+penalties)
+\item 
+void \doxymbox{\hyperlink{wavefront__penalties_8h_a087daf549444df41e0cba03cab63db19}{wavefront\+\_\+penalties\+\_\+set\+\_\+affine}} (\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+penalties, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const affine\+\_\+penalties)
+\item 
+void \doxymbox{\hyperlink{wavefront__penalties_8h_a1707be9e0763d6117f161a4f49e3d24e}{wavefront\+\_\+penalties\+\_\+set\+\_\+affine2p}} (\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+penalties, \doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const affine2p\+\_\+penalties)
+\item 
+void \doxymbox{\hyperlink{wavefront__penalties_8h_acd5fd4ead9f4ec04aad132b1124c2046}{wavefront\+\_\+penalties\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+penalties)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{wavefront__penalties_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{wavefront__penalties_8h_ae286dd63e4dcd4da43091cfba9a31c1b}\index{wavefront\_penalties.h@{wavefront\_penalties.h}!WF\_SCORE\_TO\_SW\_SCORE@{WF\_SCORE\_TO\_SW\_SCORE}}
+\index{WF\_SCORE\_TO\_SW\_SCORE@{WF\_SCORE\_TO\_SW\_SCORE}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\doxysubsubsection{\texorpdfstring{WF\_SCORE\_TO\_SW\_SCORE}{WF\_SCORE\_TO\_SW\_SCORE}}
+{\footnotesize\ttfamily \label{wavefront__penalties_8h_ae286dd63e4dcd4da43091cfba9a31c1b} 
+\+\#define WF\+\_\+\+SCORE\+\_\+\+TO\+\_\+\+SW\+\_\+\+SCORE(\begin{DoxyParamCaption}\item[{}]{swg\+\_\+match}{, }\item[{}]{plen}{, }\item[{}]{tlen}{, }\item[{}]{wf\+\_\+score}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((swg\_match*(plen+tlen)\ -\/\ wf\_score)/2)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__penalties_8h_source_l00073}{73}} of file \doxymbox{\hyperlink{wavefront__penalties_8h_source}{wavefront\+\_\+penalties.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{wavefront__penalties_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}\index{wavefront\_penalties.h@{wavefront\_penalties.h}!distance\_metric\_t@{distance\_metric\_t}}
+\index{distance\_metric\_t@{distance\_metric\_t}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\doxysubsubsection{\texorpdfstring{distance\_metric\_t}{distance\_metric\_t}}
+{\footnotesize\ttfamily \label{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec} 
+enum \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\+\_\+metric\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{indel@{indel}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\index{wavefront\_penalties.h@{wavefront\_penalties.h}!indel@{indel}}
+}\Hypertarget{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9}\label{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9} 
+indel&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{edit@{edit}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\index{wavefront\_penalties.h@{wavefront\_penalties.h}!edit@{edit}}
+}\Hypertarget{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab9973bd80402101013fe9b4e66c7e64f}\label{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab9973bd80402101013fe9b4e66c7e64f} 
+edit&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{gap\_linear@{gap\_linear}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\index{wavefront\_penalties.h@{wavefront\_penalties.h}!gap\_linear@{gap\_linear}}
+}\Hypertarget{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaae71387ff7cf210d857caee413c21582}\label{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaae71387ff7cf210d857caee413c21582} 
+gap\+\_\+linear&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{gap\_affine@{gap\_affine}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\index{wavefront\_penalties.h@{wavefront\_penalties.h}!gap\_affine@{gap\_affine}}
+}\Hypertarget{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}\label{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf} 
+gap\+\_\+affine&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{gap\_affine\_2p@{gap\_affine\_2p}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\index{wavefront\_penalties.h@{wavefront\_penalties.h}!gap\_affine\_2p@{gap\_affine\_2p}}
+}\Hypertarget{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab2dc11ac0ec88c88ab4999ea27460322}\label{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab2dc11ac0ec88c88ab4999ea27460322} 
+gap\+\_\+affine\+\_\+2p&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__penalties_8h_source_l00042}{42}} of file \doxymbox{\hyperlink{wavefront__penalties_8h_source}{wavefront\+\_\+penalties.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__penalties_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__penalties_8h_acd5fd4ead9f4ec04aad132b1124c2046}\index{wavefront\_penalties.h@{wavefront\_penalties.h}!wavefront\_penalties\_print@{wavefront\_penalties\_print}}
+\index{wavefront\_penalties\_print@{wavefront\_penalties\_print}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_penalties\_print()}{wavefront\_penalties\_print()}}
+{\footnotesize\ttfamily \label{wavefront__penalties_8h_acd5fd4ead9f4ec04aad132b1124c2046} 
+void wavefront\+\_\+penalties\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__penalties_8c_source_l00177}{177}} of file \doxymbox{\hyperlink{wavefront__penalties_8c_source}{wavefront\+\_\+penalties.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{wavefront__penalties_8h_a087daf549444df41e0cba03cab63db19}\index{wavefront\_penalties.h@{wavefront\_penalties.h}!wavefront\_penalties\_set\_affine@{wavefront\_penalties\_set\_affine}}
+\index{wavefront\_penalties\_set\_affine@{wavefront\_penalties\_set\_affine}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_penalties\_set\_affine()}{wavefront\_penalties\_set\_affine()}}
+{\footnotesize\ttfamily \label{wavefront__penalties_8h_a087daf549444df41e0cba03cab63db19} 
+void wavefront\+\_\+penalties\+\_\+set\+\_\+affine (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+penalties}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{affine\+\_\+penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__penalties_8c_source_l00095}{95}} of file \doxymbox{\hyperlink{wavefront__penalties_8c_source}{wavefront\+\_\+penalties.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__penalties_8h_a1707be9e0763d6117f161a4f49e3d24e}\index{wavefront\_penalties.h@{wavefront\_penalties.h}!wavefront\_penalties\_set\_affine2p@{wavefront\_penalties\_set\_affine2p}}
+\index{wavefront\_penalties\_set\_affine2p@{wavefront\_penalties\_set\_affine2p}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_penalties\_set\_affine2p()}{wavefront\_penalties\_set\_affine2p()}}
+{\footnotesize\ttfamily \label{wavefront__penalties_8h_a1707be9e0763d6117f161a4f49e3d24e} 
+void wavefront\+\_\+penalties\+\_\+set\+\_\+affine2p (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+penalties}{, }\item[{\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{affine2p\+\_\+penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__penalties_8c_source_l00132}{132}} of file \doxymbox{\hyperlink{wavefront__penalties_8c_source}{wavefront\+\_\+penalties.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{wavefront__penalties_8h_af27cb4c0f06ddeeb93ee6b9a74f451e8}\index{wavefront\_penalties.h@{wavefront\_penalties.h}!wavefront\_penalties\_set\_edit@{wavefront\_penalties\_set\_edit}}
+\index{wavefront\_penalties\_set\_edit@{wavefront\_penalties\_set\_edit}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_penalties\_set\_edit()}{wavefront\_penalties\_set\_edit()}}
+{\footnotesize\ttfamily \label{wavefront__penalties_8h_af27cb4c0f06ddeeb93ee6b9a74f451e8} 
+void wavefront\+\_\+penalties\+\_\+set\+\_\+edit (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__penalties_8c_source_l00051}{51}} of file \doxymbox{\hyperlink{wavefront__penalties_8c_source}{wavefront\+\_\+penalties.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__penalties_8h_a4e5940a30f585534a38549f0aa5b3424}\index{wavefront\_penalties.h@{wavefront\_penalties.h}!wavefront\_penalties\_set\_indel@{wavefront\_penalties\_set\_indel}}
+\index{wavefront\_penalties\_set\_indel@{wavefront\_penalties\_set\_indel}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_penalties\_set\_indel()}{wavefront\_penalties\_set\_indel()}}
+{\footnotesize\ttfamily \label{wavefront__penalties_8h_a4e5940a30f585534a38549f0aa5b3424} 
+void wavefront\+\_\+penalties\+\_\+set\+\_\+indel (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__penalties_8c_source_l00039}{39}} of file \doxymbox{\hyperlink{wavefront__penalties_8c_source}{wavefront\+\_\+penalties.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{wavefront__penalties_8h_a8eed9d249e1262456637045435803eb7}\index{wavefront\_penalties.h@{wavefront\_penalties.h}!wavefront\_penalties\_set\_linear@{wavefront\_penalties\_set\_linear}}
+\index{wavefront\_penalties\_set\_linear@{wavefront\_penalties\_set\_linear}!wavefront\_penalties.h@{wavefront\_penalties.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_penalties\_set\_linear()}{wavefront\_penalties\_set\_linear()}}
+{\footnotesize\ttfamily \label{wavefront__penalties_8h_a8eed9d249e1262456637045435803eb7} 
+void wavefront\+\_\+penalties\+\_\+set\+\_\+linear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+penalties}{, }\item[{\doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{linear\+\_\+penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__penalties_8c_source_l00063}{63}} of file \doxymbox{\hyperlink{wavefront__penalties_8c_source}{wavefront\+\_\+penalties.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 7

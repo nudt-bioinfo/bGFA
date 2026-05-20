@@ -1,0 +1,132 @@
+\doxysection{modify\+\_\+graph Namespace Reference}
+\hypertarget{namespacemodify__graph}{}\label{namespacemodify__graph}\index{modify\_graph@{modify\_graph}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+Tuple\+[Dict\+[int, str]\+, List\+[Tuple\+[int, int, str, str, str]\+]\+, List\+[Tuple\+[str, List\+[str]\+, List\+[str]\+]\+]\+]\+ \doxymbox{\hyperlink{namespacemodify__graph_aff927fcfe45cdb595e0c527dd10ebe62}{parse\+\_\+gfa}} (str path)
+\item 
+str \doxymbox{\hyperlink{namespacemodify__graph_af4e7bc401c7a625e38f981c340615a94}{mutate\+\_\+sequence}} (str seq, float rate, random.\+Random rng)
+\item 
+None \doxymbox{\hyperlink{namespacemodify__graph_a0469beeb22a5233e8742d46b38bfd7c3}{write\+\_\+gfa}} (str path, Dict\+[int, str]\+ segments, List\+[Tuple\+[int, int, str, str, str]\+]\+ links, List\+[Tuple\+[str, List\+[str]\+, List\+[str]\+]\+]\+ paths)
+\item 
+argparse.\+Namespace \doxymbox{\hyperlink{namespacemodify__graph_aff705de4f9f9dc1899089285e99f1ad6}{parse\+\_\+args}} (List\+[str]\+ argv)
+\item 
+Optional\+[List\+[int]\+]\+ \doxymbox{\hyperlink{namespacemodify__graph_a6b7041a90d4495f35f13deeb56b21371}{\+\_\+parse\+\_\+nodes\+\_\+arg}} (Optional\+[str]\+ nodes\+\_\+arg)
+\item 
+int \doxymbox{\hyperlink{namespacemodify__graph_a585ebf550f01293db226e6a5a7928879}{main}} (List\+[str]\+ argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacemodify__graph_a8315bb9aee9b8fdaff323652f8be725c}{DNA\+\_\+\+ALPHABET}} = "{}ACGT"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}file /bGFA/src/test/script/modify_graph.py
+brief: Modify at least one node sequence in a GFA
+details: Parse S/L/P records from an input GFA, mutate one segment's sequence, and write to a new GFA.
+author: grampart
+version: 0.1
+copyright: Copyright(c) 2025 by grampart, All Rights Reserved.
+license: MIT License
+\end{DoxyVerb}
+ 
+
+\label{doc-func-members}
+\Hypertarget{namespacemodify__graph_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacemodify__graph_a6b7041a90d4495f35f13deeb56b21371}\index{modify\_graph@{modify\_graph}!\_parse\_nodes\_arg@{\_parse\_nodes\_arg}}
+\index{\_parse\_nodes\_arg@{\_parse\_nodes\_arg}!modify\_graph@{modify\_graph}}
+\doxysubsubsection{\texorpdfstring{\_parse\_nodes\_arg()}{\_parse\_nodes\_arg()}}
+{\footnotesize\ttfamily \label{namespacemodify__graph_a6b7041a90d4495f35f13deeb56b21371} 
+ Optional\+[List\+[int]\+]\+ modify\+\_\+graph.\+\_\+parse\+\_\+nodes\+\_\+arg (\begin{DoxyParamCaption}\item[{Optional\+[str]\+}]{nodes\+\_\+arg}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{modify__graph_8py_source_l00120}{120}} of file \doxymbox{\hyperlink{modify__graph_8py_source}{modify\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 0
+\Hypertarget{namespacemodify__graph_a585ebf550f01293db226e6a5a7928879}\index{modify\_graph@{modify\_graph}!main@{main}}
+\index{main@{main}!modify\_graph@{modify\_graph}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{namespacemodify__graph_a585ebf550f01293db226e6a5a7928879} 
+ int modify\+\_\+graph.\+main (\begin{DoxyParamCaption}\item[{List\+[str]\+}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{modify__graph_8py_source_l00129}{129}} of file \doxymbox{\hyperlink{modify__graph_8py_source}{modify\+\_\+graph.\+py}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+\Hypertarget{namespacemodify__graph_af4e7bc401c7a625e38f981c340615a94}\index{modify\_graph@{modify\_graph}!mutate\_sequence@{mutate\_sequence}}
+\index{mutate\_sequence@{mutate\_sequence}!modify\_graph@{modify\_graph}}
+\doxysubsubsection{\texorpdfstring{mutate\_sequence()}{mutate\_sequence()}}
+{\footnotesize\ttfamily \label{namespacemodify__graph_af4e7bc401c7a625e38f981c340615a94} 
+ str modify\+\_\+graph.\+mutate\+\_\+sequence (\begin{DoxyParamCaption}\item[{str}]{seq}{, }\item[{float}]{rate}{, }\item[{random.\+Random}]{rng}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Mutate sequence with given rate by substituting bases randomly (not equal to original).\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{modify__graph_8py_source_l00070}{70}} of file \doxymbox{\hyperlink{modify__graph_8py_source}{modify\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{namespacemodify__graph_aff705de4f9f9dc1899089285e99f1ad6}\index{modify\_graph@{modify\_graph}!parse\_args@{parse\_args}}
+\index{parse\_args@{parse\_args}!modify\_graph@{modify\_graph}}
+\doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
+{\footnotesize\ttfamily \label{namespacemodify__graph_aff705de4f9f9dc1899089285e99f1ad6} 
+ argparse.\+Namespace modify\+\_\+graph.\+parse\+\_\+args (\begin{DoxyParamCaption}\item[{List\+[str]\+}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{modify__graph_8py_source_l00101}{101}} of file \doxymbox{\hyperlink{modify__graph_8py_source}{modify\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{namespacemodify__graph_aff927fcfe45cdb595e0c527dd10ebe62}\index{modify\_graph@{modify\_graph}!parse\_gfa@{parse\_gfa}}
+\index{parse\_gfa@{parse\_gfa}!modify\_graph@{modify\_graph}}
+\doxysubsubsection{\texorpdfstring{parse\_gfa()}{parse\_gfa()}}
+{\footnotesize\ttfamily \label{namespacemodify__graph_aff927fcfe45cdb595e0c527dd10ebe62} 
+ Tuple\+[Dict\+[int, str]\+, List\+[Tuple\+[int, int, str, str, str]\+]\+, List\+[Tuple\+[str, List\+[str]\+, List\+[str]\+]\+]\+]\+ modify\+\_\+graph.\+parse\+\_\+gfa (\begin{DoxyParamCaption}\item[{str}]{path}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Parse a GFA v1 file.
+Returns:
+- segments: map id -> sequence
+- links: list of (from_id, to_id, from_orient, to_orient, overlap)
+- paths: list of (name, node_ids[], offsets[] as strings)
+\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{modify__graph_8py_source_l00020}{20}} of file \doxymbox{\hyperlink{modify__graph_8py_source}{modify\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{namespacemodify__graph_a0469beeb22a5233e8742d46b38bfd7c3}\index{modify\_graph@{modify\_graph}!write\_gfa@{write\_gfa}}
+\index{write\_gfa@{write\_gfa}!modify\_graph@{modify\_graph}}
+\doxysubsubsection{\texorpdfstring{write\_gfa()}{write\_gfa()}}
+{\footnotesize\ttfamily \label{namespacemodify__graph_a0469beeb22a5233e8742d46b38bfd7c3} 
+ None modify\+\_\+graph.\+write\+\_\+gfa (\begin{DoxyParamCaption}\item[{str}]{path}{, }\item[{Dict\+[int, str]\+}]{segments}{, }\item[{List\+[Tuple\+[int, int, str, str, str]\+]\+}]{links}{, }\item[{List\+[Tuple\+[str, List\+[str]\+, List\+[str]\+]\+]\+}]{paths}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{modify__graph_8py_source_l00087}{87}} of file \doxymbox{\hyperlink{modify__graph_8py_source}{modify\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+
+
+\label{doc-var-members}
+\Hypertarget{namespacemodify__graph_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacemodify__graph_a8315bb9aee9b8fdaff323652f8be725c}\index{modify\_graph@{modify\_graph}!DNA\_ALPHABET@{DNA\_ALPHABET}}
+\index{DNA\_ALPHABET@{DNA\_ALPHABET}!modify\_graph@{modify\_graph}}
+\doxysubsubsection{\texorpdfstring{DNA\_ALPHABET}{DNA\_ALPHABET}}
+{\footnotesize\ttfamily \label{namespacemodify__graph_a8315bb9aee9b8fdaff323652f8be725c} 
+str modify\+\_\+graph.\+DNA\+\_\+\+ALPHABET = "{}ACGT"{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{modify__graph_8py_source_l00017}{17}} of file \doxymbox{\hyperlink{modify__graph_8py_source}{modify\+\_\+graph.\+py}}.
+

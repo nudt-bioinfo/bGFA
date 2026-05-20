@@ -1,0 +1,28 @@
+var wavefront__backtrace__buffer_8h =
+[
+    [ "__attribute__", "struct____attribute____.html", "struct____attribute____" ],
+    [ "wf_backtrace_init_pos_t", "structwf__backtrace__init__pos__t.html", "structwf__backtrace__init__pos__t" ],
+    [ "wf_backtrace_buffer_t", "structwf__backtrace__buffer__t.html", "structwf__backtrace__buffer__t" ],
+    [ "BT_BLOCK_IDX_MAX", "wavefront__backtrace__buffer_8h.html#a6609dd030e03a440dda6ddbe0ef8e287", null ],
+    [ "BT_BLOCK_IDX_NULL", "wavefront__backtrace__buffer_8h.html#a0742dab0c37b79d84747d350692985de", null ],
+    [ "bt_block_idx_t", "wavefront__backtrace__buffer_8h.html#a41dc65ba28e1c984278301c6c7100d6e", null ],
+    [ "wf_backtrace_buffer_add_used", "wavefront__backtrace__buffer_8h.html#a7233a82c1e317ac9e9144c98befec98b", null ],
+    [ "wf_backtrace_buffer_clear", "wavefront__backtrace__buffer_8h.html#a4e75f12759c34eccc3d1ae5d0f95b5f0", null ],
+    [ "wf_backtrace_buffer_compact_marked", "wavefront__backtrace__buffer_8h.html#abcc9cc1e1a977dab5d525681ffcde6e7", null ],
+    [ "wf_backtrace_buffer_delete", "wavefront__backtrace__buffer_8h.html#a631f8ab51af0efa56a4b6497720b08a2", null ],
+    [ "wf_backtrace_buffer_get_mem", "wavefront__backtrace__buffer_8h.html#a5a6ea3505f32b1f04bef341fe280a1ab", null ],
+    [ "wf_backtrace_buffer_get_num_compacted_blocks", "wavefront__backtrace__buffer_8h.html#a7997269c737a203ca141f4c749511b4f", null ],
+    [ "wf_backtrace_buffer_get_size_allocated", "wavefront__backtrace__buffer_8h.html#a1c954ae96f0badcc30d7caf5a6835372", null ],
+    [ "wf_backtrace_buffer_get_size_used", "wavefront__backtrace__buffer_8h.html#a32536bf793b32f66e39c38ff2b6f279e", null ],
+    [ "wf_backtrace_buffer_get_used", "wavefront__backtrace__buffer_8h.html#acc1f0dbe6adb04202a4be0606a0e1312", null ],
+    [ "wf_backtrace_buffer_init_block", "wavefront__backtrace__buffer_8h.html#a2f986c2c69337197acd792bb67a87d45", null ],
+    [ "wf_backtrace_buffer_mark_backtrace", "wavefront__backtrace__buffer_8h.html#a67b8cfc7630ff889577d224361e48efd", null ],
+    [ "wf_backtrace_buffer_mark_backtrace_batch", "wavefront__backtrace__buffer_8h.html#a1d7c647fd3d196a3ea4b26d4f9cea12d", null ],
+    [ "wf_backtrace_buffer_new", "wavefront__backtrace__buffer_8h.html#af3a8cc5e4b3318927caebeddd69a112a", null ],
+    [ "wf_backtrace_buffer_reap", "wavefront__backtrace__buffer_8h.html#a4fcc7056a986fa264f473f593010e4d0", null ],
+    [ "wf_backtrace_buffer_reset_compaction", "wavefront__backtrace__buffer_8h.html#a412fdb55d98009760c2fd8b1f5381ecb", null ],
+    [ "wf_backtrace_buffer_set_num_compacted_blocks", "wavefront__backtrace__buffer_8h.html#a7ea5f45e569e68dd9bd918afb84a9101", null ],
+    [ "wf_backtrace_buffer_traceback_pcigar", "wavefront__backtrace__buffer_8h.html#aab17e11569e2d37d6a978224ad82640e", null ],
+    [ "wf_backtrace_buffer_unpack_cigar_affine", "wavefront__backtrace__buffer_8h.html#a29b912564b009be541048a585f98f93b", null ],
+    [ "wf_backtrace_buffer_unpack_cigar_linear", "wavefront__backtrace__buffer_8h.html#a5e9e95e43f085844235d745e0e3c92aa", null ]
+];

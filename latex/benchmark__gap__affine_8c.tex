@@ -1,0 +1,81 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+benchmark/\+benchmark\+\_\+gap\+\_\+affine.c File Reference}
+\hypertarget{benchmark__gap__affine_8c}{}\label{benchmark__gap__affine_8c}\index{src/wfa/tools/align\_benchmark/benchmark/benchmark\_gap\_affine.c@{src/wfa/tools/align\_benchmark/benchmark/benchmark\_gap\_affine.c}}
+{\ttfamily \+\#include "{}benchmark/\+benchmark\+\_\+check.\+h"{}}\newline
+{\ttfamily \+\#include "{}benchmark/\+benchmark\+\_\+gap\+\_\+affine.\+h"{}}\newline
+{\ttfamily \+\#include "{}gap\+\_\+affine/\+affine\+\_\+matrix.\+h"{}}\newline
+{\ttfamily \+\#include "{}gap\+\_\+affine/\+swg.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront/\+wavefront\+\_\+align.\+h"{}}\newline
+Include dependency graph for benchmark\+\_\+gap\+\_\+affine.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{benchmark__gap__affine_8c_a1f842c86974c5ffc55640575ffa9d1dd}{benchmark\+\_\+gap\+\_\+affine\+\_\+swg}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\item 
+void \doxymbox{\hyperlink{benchmark__gap__affine_8c_a21c9c8fcccca46324d5163cf73b47a8b}{benchmark\+\_\+gap\+\_\+affine\+\_\+swg\+\_\+endsfree}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\item 
+void \doxymbox{\hyperlink{benchmark__gap__affine_8c_a7060105c7a539a2c8a2c1307bbe1617a}{benchmark\+\_\+gap\+\_\+affine\+\_\+swg\+\_\+banded}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties, const int bandwidth)
+\item 
+void \doxymbox{\hyperlink{benchmark__gap__affine_8c_a4f8b2d7fba2aa218571622146959dbab}{benchmark\+\_\+gap\+\_\+affine\+\_\+wavefront}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{benchmark__gap__affine_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{benchmark__gap__affine_8c_a1f842c86974c5ffc55640575ffa9d1dd}\index{benchmark\_gap\_affine.c@{benchmark\_gap\_affine.c}!benchmark\_gap\_affine\_swg@{benchmark\_gap\_affine\_swg}}
+\index{benchmark\_gap\_affine\_swg@{benchmark\_gap\_affine\_swg}!benchmark\_gap\_affine.c@{benchmark\_gap\_affine.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_gap\_affine\_swg()}{benchmark\_gap\_affine\_swg()}}
+{\footnotesize\ttfamily \label{benchmark__gap__affine_8c_a1f842c86974c5ffc55640575ffa9d1dd} 
+void benchmark\+\_\+gap\+\_\+affine\+\_\+swg (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__gap__affine_8c_source_l00041}{41}} of file \doxymbox{\hyperlink{benchmark__gap__affine_8c_source}{benchmark\+\_\+gap\+\_\+affine.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{benchmark__gap__affine_8c_a7060105c7a539a2c8a2c1307bbe1617a}\index{benchmark\_gap\_affine.c@{benchmark\_gap\_affine.c}!benchmark\_gap\_affine\_swg\_banded@{benchmark\_gap\_affine\_swg\_banded}}
+\index{benchmark\_gap\_affine\_swg\_banded@{benchmark\_gap\_affine\_swg\_banded}!benchmark\_gap\_affine.c@{benchmark\_gap\_affine.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_gap\_affine\_swg\_banded()}{benchmark\_gap\_affine\_swg\_banded()}}
+{\footnotesize\ttfamily \label{benchmark__gap__affine_8c_a7060105c7a539a2c8a2c1307bbe1617a} 
+void benchmark\+\_\+gap\+\_\+affine\+\_\+swg\+\_\+banded (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{, }\item[{const int}]{bandwidth}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__gap__affine_8c_source_l00099}{99}} of file \doxymbox{\hyperlink{benchmark__gap__affine_8c_source}{benchmark\+\_\+gap\+\_\+affine.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{benchmark__gap__affine_8c_a21c9c8fcccca46324d5163cf73b47a8b}\index{benchmark\_gap\_affine.c@{benchmark\_gap\_affine.c}!benchmark\_gap\_affine\_swg\_endsfree@{benchmark\_gap\_affine\_swg\_endsfree}}
+\index{benchmark\_gap\_affine\_swg\_endsfree@{benchmark\_gap\_affine\_swg\_endsfree}!benchmark\_gap\_affine.c@{benchmark\_gap\_affine.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_gap\_affine\_swg\_endsfree()}{benchmark\_gap\_affine\_swg\_endsfree()}}
+{\footnotesize\ttfamily \label{benchmark__gap__affine_8c_a21c9c8fcccca46324d5163cf73b47a8b} 
+void benchmark\+\_\+gap\+\_\+affine\+\_\+swg\+\_\+endsfree (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__gap__affine_8c_source_l00069}{69}} of file \doxymbox{\hyperlink{benchmark__gap__affine_8c_source}{benchmark\+\_\+gap\+\_\+affine.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{benchmark__gap__affine_8c_a4f8b2d7fba2aa218571622146959dbab}\index{benchmark\_gap\_affine.c@{benchmark\_gap\_affine.c}!benchmark\_gap\_affine\_wavefront@{benchmark\_gap\_affine\_wavefront}}
+\index{benchmark\_gap\_affine\_wavefront@{benchmark\_gap\_affine\_wavefront}!benchmark\_gap\_affine.c@{benchmark\_gap\_affine.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_gap\_affine\_wavefront()}{benchmark\_gap\_affine\_wavefront()}}
+{\footnotesize\ttfamily \label{benchmark__gap__affine_8c_a4f8b2d7fba2aa218571622146959dbab} 
+void benchmark\+\_\+gap\+\_\+affine\+\_\+wavefront (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__gap__affine_8c_source_l00128}{128}} of file \doxymbox{\hyperlink{benchmark__gap__affine_8c_source}{benchmark\+\_\+gap\+\_\+affine.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+Here is the caller graph for this function:\+
+% FIG 8

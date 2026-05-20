@@ -1,0 +1,335 @@
+\doxysection{gen\+\_\+graph.\+py}
+\hypertarget{gen__graph_8py_source}{}\label{gen__graph_8py_source}\index{src/test/script/gen\_graph.py@{src/test/script/gen\_graph.py}}
+\doxymbox{\hyperlink{gen__graph_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00001}\doxymbox{\hyperlink{namespacegen__graph}{00001}}\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00002}00002\ \textcolor{stringliteral}{Generate\ simple\ GFA\ graphs\ for\ testing.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00003}00003\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00004}00004\ \textcolor{stringliteral}{This\ script\ creates\ DNA\ sequences\ and\ graph\ edges\ with\ configurable}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00005}00005\ \textcolor{stringliteral}{complexity,\ optionally\ compressing\ linear\ chains\ into\ single\ segments.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00006}00006\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00007}00007\ \textcolor{stringliteral}{Author:\ grampart}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00008}00008\ \textcolor{stringliteral}{Version:\ 0.1}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00009}00009\ \textcolor{stringliteral}{Copyright:\ Copyright(c)\ 2025\ by\ grampart}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00010}00010\ \textcolor{stringliteral}{License:\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00011}00011\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00012}00012\ \textcolor{comment}{\#\ Generate\ a\ simple\ GFA\ file:\ configurable\ node\ count,\ sequence\ length,\ and\ graph\ complexity}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00013}00013\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00014}00014\ \textcolor{keyword}{import}\ argparse}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00015}00015\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00016}00016\ \textcolor{keyword}{import}\ random}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00017}00017\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00018}00018\ \textcolor{keyword}{from}\ collections\ \textcolor{keyword}{import}\ defaultdict,\ deque}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00019}00019\ \textcolor{keyword}{from}\ typing\ \textcolor{keyword}{import}\ Dict,\ List,\ Tuple}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00020}00020\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00021}\doxymbox{\hyperlink{namespacegen__graph_ac8a4f34098ed24be47e7181e11ffc63c}{00021}}\ DNA\_ALPHABET\ =\ \textcolor{stringliteral}{"{}ACGT"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00024}\doxymbox{\hyperlink{namespacegen__graph_a44cc4c0593dc212e80d34151586006f1}{00024}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__graph_a44cc4c0593dc212e80d34151586006f1}{random\_dna}}(length:\ int,\ rng:\ random.Random)\ -\/>\ str:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00025}00025\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Generate\ a\ random\ DNA\ string\ of\ 90\string~110\%\ length\ using\ provided\ RNG."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00026}00026\ \ \ \ \ \textcolor{comment}{\#\ Choose\ an\ actual\ length\ uniformly\ in\ [0.9*length,\ 1.1*length]}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00027}00027\ \ \ \ \ min\_len\ =\ max(1,\ int(length\ *\ 0.9))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00028}00028\ \ \ \ \ max\_len\ =\ max(min\_len,\ int(length\ *\ 1.1))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00029}00029\ \ \ \ \ real\_len\ =\ rng.randint(min\_len,\ max\_len)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00030}00030\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}}.join(rng.choice(DNA\_ALPHABET)\ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ range(real\_len))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00033}\doxymbox{\hyperlink{namespacegen__graph_a8936cb4754cfb812ad74be21049cff91}{00033}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__graph_a8936cb4754cfb812ad74be21049cff91}{make\_edges}}(}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00034}00034\ \ \ \ \ num\_nodes:\ int,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00035}00035\ \ \ \ \ complexity:\ int,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00036}00036\ \ \ \ \ loop\_prob:\ float,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00037}00037\ \ \ \ \ rng:\ random.Random,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00038}00038\ )\ -\/>\ List[Tuple[int,\ int,\ str,\ str]]:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00039}00039\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Construct\ edges\ for\ a\ test\ graph.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00040}00040\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00041}00041\ \textcolor{stringliteral}{\ \ \ \ Returns\ a\ list\ of\ edges\ in\ the\ form:}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00042}00042\ \textcolor{stringliteral}{\ \ \ \ (from\_id,\ to\_id,\ from\_orient,\ to\_orient),\ with\ orientations\ in\ '+'\ or\ '-\/'.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00043}00043\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00045}00045\ \ \ \ \ edges:\ List[Tuple[int,\ int,\ str,\ str]]\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00047}00047\ \ \ \ \ \textcolor{comment}{\#\ Base\ linear\ backbone}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00048}00048\ \ \ \ \ \textcolor{keywordflow}{for}\ node\_id\ \textcolor{keywordflow}{in}\ range(1,\ num\_nodes):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00049}00049\ \ \ \ \ \ \ \ \ edges.append((node\_id,\ node\_id\ +\ 1,\ \textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}+"{}}))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00051}00051\ \ \ \ \ \textcolor{comment}{\#\ Add\ branches\ and\ loops\ per\ complexity}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00052}00052\ \ \ \ \ extra\_edges\ =\ 0}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{if}\ complexity\ <=\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ edges}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00055}00055\ \ \ \ \ \textcolor{keywordflow}{elif}\ complexity\ ==\ 1:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00056}00056\ \ \ \ \ \ \ \ \ extra\_edges\ =\ max(1,\ num\_nodes\ //\ 4)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{elif}\ complexity\ ==\ 2:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00058}00058\ \ \ \ \ \ \ \ \ extra\_edges\ =\ max(2,\ num\_nodes\ //\ 3)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00059}00059\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ extra\_edges\ =\ max(3,\ num\_nodes\ //\ 2)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00061}00061\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00062}00062\ \ \ \ \ \textcolor{comment}{\#\ Helper:\ check\ if\ adding\ edge\ (a-\/>b)\ will\ create\ a\ cycle\ (loop)}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{def\ }would\_create\_cycle(src:\ int,\ dst:\ int,\ current\_edges:\ List[Tuple[int,\ int,\ str,\ str]])\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Return\ True\ if\ adding\ edge\ src-\/>dst\ forms\ a\ cycle.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00065}00065\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00066}00066\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ A\ cycle\ exists\ when\ src\ ==\ dst\ or\ there\ is\ already\ a\ path\ dst-\/>...-\/>src.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00067}00067\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ src\ ==\ dst:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00070}00070\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ BFS/DFS\ to\ see\ if\ there\ is\ a\ path\ from\ b\ to\ a\ in\ current\ graph}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ adj\ =\ defaultdict(list)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ u,\ v,\ \_oa,\ \_ob\ \textcolor{keywordflow}{in}\ current\_edges:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ adj[u].append(v)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ seen\ =\ set()}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ dq\ =\ deque([dst])}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00076}00076\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ dq:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ v\ =\ dq.popleft()}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ v\ ==\ src:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{True}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ v\ \textcolor{keywordflow}{in}\ seen:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ seen.add(v)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ w\ \textcolor{keywordflow}{in}\ adj.get(v,\ []):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ w\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ seen:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dq.append(w)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00088}00088\ \ \ \ \ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ range(extra\_edges):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00089}00089\ \ \ \ \ \ \ \ \ a\ =\ rng.randint(1,\ num\_nodes)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ b\ =\ rng.randint(1,\ num\_nodes)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00091}00091\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Decide\ if\ we\ add\ a\ cycle-\/forming\ edge}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00092}00092\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ would\_create\_cycle(a,\ b,\ edges):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00093}00093\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ rng.random()\ <\ loop\_prob:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00094}00094\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ edges.append(}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00095}00095\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (a,\ b,\ rng.choice([\textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}-\/"{}}]),\ rng.choice([\textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}-\/"{}}]))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ else:\ skip\ cycle\ edge\ this\ time}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Non-\/cycle\ edge:\ add\ directly\ (no\ extra\ branch\_prob\ gating)}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ \ \ \ \ edges.append(}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00101}00101\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (a,\ b,\ rng.choice([\textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}-\/"{}}]),\ rng.choice([\textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}-\/"{}}])))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00103}00103\ \ \ \ \ \textcolor{keywordflow}{return}\ edges}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00105}00105\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00106}\doxymbox{\hyperlink{namespacegen__graph_a9387068e739e07c90ae75f1e8e0f63a0}{00106}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__graph_a9387068e739e07c90ae75f1e8e0f63a0}{\_is\_strict\_linear}}(num\_nodes:\ int,\ edges:\ List[Tuple[int,\ int,\ str,\ str]])\ -\/>\ bool:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00107}00107\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Check\ if\ the\ whole\ graph\ forms\ a\ strict\ linear\ chain."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{if}\ num\_nodes\ ==\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00110}00110\ \ \ \ \ \textcolor{comment}{\#\ Must\ have\ exactly\ n-\/1\ edges}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00111}00111\ \ \ \ \ \textcolor{keywordflow}{if}\ len(edges)\ !=\ max(0,\ num\_nodes\ -\/\ 1):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00113}00113\ \ \ \ \ indeg\ =\ defaultdict(int)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00114}00114\ \ \ \ \ outdeg\ =\ defaultdict(int)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00115}00115\ \ \ \ \ nodes\ =\ set(range(1,\ num\_nodes\ +\ 1))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{for}\ a,\ b,\ \_oa,\ \_ob\ \textcolor{keywordflow}{in}\ edges:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00117}00117\ \ \ \ \ \ \ \ \ outdeg[a]\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00118}00118\ \ \ \ \ \ \ \ \ indeg[b]\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00119}00119\ \ \ \ \ \textcolor{comment}{\#\ Degree\ profile\ checks}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00120}00120\ \ \ \ \ starts\ =\ [v\ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ nodes\ \textcolor{keywordflow}{if}\ indeg[v]\ ==\ 0\ \textcolor{keywordflow}{and}\ outdeg[v]\ ==\ 1]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00121}00121\ \ \ \ \ ends\ =\ [v\ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ nodes\ \textcolor{keywordflow}{if}\ indeg[v]\ ==\ 1\ \textcolor{keywordflow}{and}\ outdeg[v]\ ==\ 0]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00122}00122\ \ \ \ \ mids\_ok\ =\ all((indeg[v]\ ==\ 1\ \textcolor{keywordflow}{and}\ outdeg[v]\ ==\ 1)\ \textcolor{keywordflow}{or}\ (}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ indeg[v]\ +\ outdeg[v]\ ==\ 0)\ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ nodes\ \textcolor{keywordflow}{if}\ v\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ set(starts\ +\ ends))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{if}\ len(starts)\ !=\ 1\ \textcolor{keywordflow}{or}\ len(ends)\ !=\ 1\ \textcolor{keywordflow}{or}\ \textcolor{keywordflow}{not}\ mids\_ok:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00126}00126\ \ \ \ \ \textcolor{comment}{\#\ Connectivity\ check}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00127}00127\ \ \ \ \ s\ =\ starts[0]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00128}00128\ \ \ \ \ seen\ =\ set([s])}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00129}00129\ \ \ \ \ cur\ =\ s}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ range(num\_nodes\ -\/\ 1):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ nxt\ =\ \textcolor{keywordtype}{None}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ a,\ b,\ \_oa,\ \_ob\ \textcolor{keywordflow}{in}\ edges:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ a\ ==\ cur:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nxt\ =\ b}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00135}00135\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00136}00136\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ nxt\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{or}\ nxt\ \textcolor{keywordflow}{in}\ seen:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{False}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00138}00138\ \ \ \ \ \ \ \ \ seen.add(nxt)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00139}00139\ \ \ \ \ \ \ \ \ cur\ =\ nxt}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{return}\ len(seen)\ ==\ num\_nodes}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00141}00141\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00143}\doxymbox{\hyperlink{namespacegen__graph_aa580740b06a8f4ab01eb590ecb0e8e2f}{00143}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__graph_aa580740b06a8f4ab01eb590ecb0e8e2f}{write\_gfa}}(output\_path:\ str,\ sequences:\ List[str],\ edges:\ List[Tuple[int,\ int,\ str,\ str]])\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00144}00144\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Write\ GFA\ v1:\ S/L\ records;\ add\ one\ P\ record\ if\ strictly\ linear.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00145}00145\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00146}00146\ \textcolor{stringliteral}{\ \ \ \ If\ \`{}output\_path\`{}\ is\ '-\/',\ emit\ to\ stdout\ instead\ of\ a\ file.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00147}00147\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{if}\ output\_path\ ==\ \textcolor{stringliteral}{"{}-\/"{}}:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00149}00149\ \ \ \ \ \ \ \ \ f\ =\ sys.stdout}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Avoid\ mixing\ binary\ and\ text\ modes;\ stdout\ is\ fine}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00151}00151\ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}H\(\backslash\)tVN:Z:1\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00152}00152\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ seq\ \textcolor{keywordflow}{in}\ enumerate(sequences,\ start=1):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}S\(\backslash\)t\{i\}\(\backslash\)t\{seq\}\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00154}00154\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (a,\ b,\ oa,\ ob)\ \textcolor{keywordflow}{in}\ edges:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}L\(\backslash\)t\{a\}\(\backslash\)t\{oa\}\(\backslash\)t\{b\}\(\backslash\)t\{ob\}\(\backslash\)t0M\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00156}00156\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(sequences)\ >\ 0\ \textcolor{keywordflow}{and}\ \doxymbox{\hyperlink{namespacegen__graph_a9387068e739e07c90ae75f1e8e0f63a0}{\_is\_strict\_linear}}(len(sequences),\ edges):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ path\_nodes\ =\ \textcolor{stringliteral}{"{},"{}}.join(str(i)\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(1,\ len(sequences)\ +\ 1))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}P\(\backslash\)tlinear\(\backslash\)t\{path\_nodes\}\(\backslash\)t*\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00159}00159\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00160}00160\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00161}00161\ \ \ \ \ os.makedirs(os.path.dirname(output\_path)\ \textcolor{keywordflow}{or}\ \textcolor{stringliteral}{"{}."{}},\ exist\_ok=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00162}00162\ \ \ \ \ \textcolor{keyword}{with}\ open(output\_path,\ \textcolor{stringliteral}{"{}w"{}},\ encoding=\textcolor{stringliteral}{"{}utf-\/8"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00163}00163\ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}H\(\backslash\)tVN:Z:1\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00164}00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ seq\ \textcolor{keywordflow}{in}\ enumerate(sequences,\ start=1):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}S\(\backslash\)t\{i\}\(\backslash\)t\{seq\}\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (a,\ b,\ oa,\ ob)\ \textcolor{keywordflow}{in}\ edges:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}L\(\backslash\)t\{a\}\(\backslash\)t\{oa\}\(\backslash\)t\{b\}\(\backslash\)t\{ob\}\(\backslash\)t0M\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00168}00168\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(sequences)\ >\ 0\ \textcolor{keywordflow}{and}\ \doxymbox{\hyperlink{namespacegen__graph_a9387068e739e07c90ae75f1e8e0f63a0}{\_is\_strict\_linear}}(len(sequences),\ edges):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ path\_nodes\ =\ \textcolor{stringliteral}{"{},"{}}.join(str(i)\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(1,\ len(sequences)\ +\ 1))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}P\(\backslash\)tlinear\(\backslash\)t\{path\_nodes\}\(\backslash\)t*\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00171}00171\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00173}\doxymbox{\hyperlink{namespacegen__graph_aa4c8645ae16ebe7ffc0ab2c7b41a5284}{00173}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__graph_aa4c8645ae16ebe7ffc0ab2c7b41a5284}{compress\_linear}}(}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00174}00174\ \ \ \ \ sequences:\ List[str],}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00175}00175\ \ \ \ \ edges:\ List[Tuple[int,\ int,\ str,\ str]],}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00176}00176\ )\ -\/>\ Tuple[List[str],\ List[Tuple[int,\ int,\ str,\ str]],\ Dict[int,\ int]]:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00177}00177\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00178}00178\ \textcolor{stringliteral}{\ \ \ \ Merge\ maximal\ strictly\ linear\ chains\ where\ internal\ nodes\ have\ in-\/degree==1\ and\ out-\/degree==1.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00179}00179\ \textcolor{stringliteral}{\ \ \ \ Returns:}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00180}00180\ \textcolor{stringliteral}{\ \ \ \ -\/\ New\ sequence\ list\ (reindexed\ 1..M)}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00181}00181\ \textcolor{stringliteral}{\ \ \ \ -\/\ New\ edge\ list\ (orientations\ normalized\ to\ '+')}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00182}00182\ \textcolor{stringliteral}{\ \ \ \ -\/\ Mapping\ from\ old\ id\ to\ new\ id}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00183}00183\ \textcolor{stringliteral}{\ \ \ \ Note:\ For\ simplicity\ and\ robustness,\ orientations\ are\ normalized\ to\ '+',\ and\ overlap\ stays\ as\ '0M'.}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00184}00184\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00185}00185\ \ \ \ \ num\_nodes\ =\ len(sequences)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00186}00186\ \ \ \ \ id\_to\_seq:\ Dict[int,\ str]\ =\ \{i\ +\ 1:\ s\ \textcolor{keywordflow}{for}\ i,\ s\ \textcolor{keywordflow}{in}\ enumerate(sequences)\}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00187}00187\ \ \ \ \ outgoing:\ Dict[int,\ List[Tuple[int,\ int,\ str,\ str]]]\ =\ defaultdict(list)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00188}00188\ \ \ \ \ incoming:\ Dict[int,\ List[Tuple[int,\ int,\ str,\ str]]]\ =\ defaultdict(list)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{for}\ e\ \textcolor{keywordflow}{in}\ edges:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00190}00190\ \ \ \ \ \ \ \ \ a,\ b,\ oa,\ ob\ =\ e}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00191}00191\ \ \ \ \ \ \ \ \ outgoing[a].append(e)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00192}00192\ \ \ \ \ \ \ \ \ incoming[b].append(e)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00193}00193\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00194}00194\ \ \ \ \ indeg\ =\ \{i:\ len(incoming.get(i,\ []))\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(1,\ num\_nodes\ +\ 1)\}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00195}00195\ \ \ \ \ outdeg\ =\ \{i:\ len(outgoing.get(i,\ []))\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(1,\ num\_nodes\ +\ 1)\}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00196}00196\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00197}00197\ \ \ \ \ visited\ =\ set()}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00198}00198\ \ \ \ \ chains:\ List[List[int]]\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00199}00199\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00200}00200\ \ \ \ \ \textcolor{comment}{\#\ Find\ chain\ starts:\ out==1\ and\ in!=1,\ or\ sources\ with\ in==0}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00201}00201\ \ \ \ \ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ range(1,\ num\_nodes\ +\ 1):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00202}00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ v\ \textcolor{keywordflow}{in}\ visited\ \textcolor{keywordflow}{and}\ indeg.get(v,\ 0)\ ==\ 0\ \textcolor{keywordflow}{and}\ outdeg.get(v,\ 0)\ ==\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00204}00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ outdeg.get(v,\ 0)\ ==\ 1\ \textcolor{keywordflow}{and}\ indeg.get(v,\ 0)\ !=\ 1:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ cur\ =\ v}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ chain\ =\ [cur]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ visited.add(cur)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ outdeg.get(cur,\ 0)\ ==\ 1:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e\ =\ outgoing[cur][0]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nxt\ =\ e[1]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ indeg.get(nxt,\ 0)\ !=\ 1\ \textcolor{keywordflow}{or}\ nxt\ \textcolor{keywordflow}{in}\ visited:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chain.append(nxt)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ visited.add(nxt)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cur\ =\ nxt}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ chains.append(chain)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00217}00217\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00218}00218\ \ \ \ \ \textcolor{comment}{\#\ Handle\ unvisited\ segments\ with\ out==1\ and\ in==1\ (find\ leftmost\ and\ expand)}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00219}00219\ \ \ \ \ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ range(1,\ num\_nodes\ +\ 1):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ v\ \textcolor{keywordflow}{in}\ visited:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ outdeg.get(v,\ 0)\ ==\ 1\ \textcolor{keywordflow}{and}\ indeg.get(v,\ 0)\ ==\ 1:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Backtrack\ to\ the\ leftmost}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ left\ =\ v}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ indeg.get(left,\ 0)\ ==\ 1:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prev\_e\ =\ incoming[left][0]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ prev\_v\ =\ prev\_e[0]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ outdeg.get(prev\_v,\ 0)\ !=\ 1\ \textcolor{keywordflow}{or}\ prev\_v\ \textcolor{keywordflow}{in}\ visited:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ left\ =\ prev\_v}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Expand\ to\ the\ right\ from\ left}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ cur\ =\ left}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ chain\ =\ [cur]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ visited.add(cur)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ outdeg.get(cur,\ 0)\ ==\ 1:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ e\ =\ outgoing[cur][0]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ nxt\ =\ e[1]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ indeg.get(nxt,\ 0)\ !=\ 1\ \textcolor{keywordflow}{or}\ nxt\ \textcolor{keywordflow}{in}\ visited:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ chain.append(nxt)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ visited.add(nxt)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cur\ =\ nxt}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ chains.append(chain)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00244}00244\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00245}00245\ \ \ \ \ \textcolor{comment}{\#\ Remaining\ isolated\ nodes\ (out==0\ and\ in==0)\ are\ also\ chains}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00246}00246\ \ \ \ \ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ range(1,\ num\_nodes\ +\ 1):}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ v\ \textcolor{keywordflow}{not}\ \textcolor{keywordflow}{in}\ visited:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ chains.append([v])}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ visited.add(v)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00250}00250\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00251}00251\ \ \ \ \ \textcolor{comment}{\#\ Build\ new\ graph}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00252}00252\ \ \ \ \ new\_id\ =\ 0}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00253}00253\ \ \ \ \ old\_to\_new:\ Dict[int,\ int]\ =\ \{\}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00254}00254\ \ \ \ \ new\_seq\_by\_id:\ Dict[int,\ str]\ =\ \{\}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{for}\ chain\ \textcolor{keywordflow}{in}\ chains:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00256}00256\ \ \ \ \ \ \ \ \ new\_id\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ merged\_seq\ =\ \textcolor{stringliteral}{"{}"{}}.join(id\_to\_seq[x]\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ chain)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ new\_seq\_by\_id[new\_id]\ =\ merged\_seq}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00259}00259\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ chain:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ old\_to\_new[x]\ =\ new\_id}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00262}00262\ \ \ \ \ \textcolor{comment}{\#\ Rebuild\ edges:\ keep\ inter-\/chain\ edges;\ remove\ internal;\ normalize\ orient\ to\ '+'}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00263}00263\ \ \ \ \ new\_edges\_set\ =\ set()}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00264}00264\ \ \ \ \ \textcolor{keywordflow}{for}\ a,\ b,\ \_oa,\ \_ob\ \textcolor{keywordflow}{in}\ edges:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ na,\ nb\ =\ old\_to\_new[a],\ old\_to\_new[b]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00266}00266\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ na\ ==\ nb:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00268}00268\ \ \ \ \ \ \ \ \ new\_edges\_set.add((na,\ nb,\ \textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}+"{}}))}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00269}00269\ \ \ \ \ new\_edges\ =\ list(new\_edges\_set)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00270}00270\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00271}00271\ \ \ \ \ \textcolor{comment}{\#\ Sort\ by\ new\ id\ and\ emit\ lists}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00272}00272\ \ \ \ \ sequences\_out\ =\ [new\_seq\_by\_id[i]\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(1,\ new\_id\ +\ 1)]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00273}00273\ \ \ \ \ \textcolor{keywordflow}{return}\ sequences\_out,\ new\_edges,\ old\_to\_new}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00274}00274\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00276}\doxymbox{\hyperlink{namespacegen__graph_a6e58c0f46f4acfc0f9d7affd51cfbdb6}{00276}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__graph_a6e58c0f46f4acfc0f9d7affd51cfbdb6}{parse\_args}}(argv:\ List[str])\ -\/>\ argparse.Namespace:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00277}00277\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Parse\ CLI\ arguments\ for\ graph\ generation."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00278}00278\ \ \ \ \ p\ =\ argparse.ArgumentParser(description=\textcolor{stringliteral}{"{}Generate\ a\ simple\ GFA\ graph\ file"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00279}00279\ \ \ \ \ p.add\_argument(\textcolor{stringliteral}{"{}-\/n"{}},\ \textcolor{stringliteral}{"{}-\/-\/nodes"{}},\ type=int,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ default=10,\ help=\textcolor{stringliteral}{"{}Number\ of\ nodes"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00281}00281\ \ \ \ \ p.add\_argument(\textcolor{stringliteral}{"{}-\/l"{}},\ \textcolor{stringliteral}{"{}-\/-\/length"{}},\ type=int,\ default=100,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Sequence\ length\ of\ each\ node"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00283}00283\ \ \ \ \ p.add\_argument(\textcolor{stringliteral}{"{}-\/c"{}},\ \textcolor{stringliteral}{"{}-\/-\/complexity"{}},\ type=int,\ default=1,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ choices=[0,\ 1,\ 2,\ 3],\ help=\textcolor{stringliteral}{"{}Graph\ complexity\ level\ 0-\/3"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00285}00285\ \ \ \ \ p.add\_argument(\textcolor{stringliteral}{"{}-\/o"{}},\ \textcolor{stringliteral}{"{}-\/-\/output"{}},\ type=str,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00286}00286\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ default=\textcolor{stringliteral}{"{}temp/generated.gfa"{}},\ help=\textcolor{stringliteral}{"{}Output\ GFA\ file\ path"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00287}00287\ \ \ \ \ p.add\_argument(\textcolor{stringliteral}{"{}-\/-\/emit"{}},\ type=str,\ choices=[\textcolor{stringliteral}{"{}file"{}},\ \textcolor{stringliteral}{"{}stdout"{}}],\ default=\textcolor{stringliteral}{"{}file"{}},}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00288}00288\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Emit\ target:\ save\ to\ file\ or\ print\ to\ stdout\ ('-\/'\ path\ also\ prints)"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00289}00289\ \ \ \ \ p.add\_argument(\textcolor{stringliteral}{"{}-\/-\/loop-\/prob"{}},\ type=float,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00290}00290\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ default=0.2,\ help=\textcolor{stringliteral}{"{}Probability\ of\ loops\ (a-\/>a)"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00291}00291\ \ \ \ \ p.add\_argument(\textcolor{stringliteral}{"{}-\/-\/seed"{}},\ type=int,\ default=\textcolor{keywordtype}{None},}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00292}00292\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Random\ seed\ (reproducible)"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00293}00293\ \ \ \ \ \textcolor{keywordflow}{return}\ p.parse\_args(argv)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00295}00295\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00296}\doxymbox{\hyperlink{namespacegen__graph_a33581113e7691305c1e360ea83a87b83}{00296}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{test__bgfa_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(argv:\ List[str])\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00297}00297\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Entry\ point:\ build\ sequences\ and\ edges,\ compress,\ and\ write\ GFA."{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00298}00298\ \ \ \ \ args\ =\ \doxymbox{\hyperlink{namespacegen__graph_a6e58c0f46f4acfc0f9d7affd51cfbdb6}{parse\_args}}(argv)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00299}00299\ \ \ \ \ \textcolor{keywordflow}{if}\ args.nodes\ <=\ 0\ \textcolor{keywordflow}{or}\ args.length\ <=\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00300}00300\ \ \ \ \ \ \ \ \ print(}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[gen\_graph]\ Node\ count\ and\ length\ must\ be\ positive\ integers"{}},\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00302}00302\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00303}00303\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00304}00304\ \ \ \ \ rng\ =\ random.Random(args.seed)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00305}00305\ \ \ \ \ sequences\ =\ [\doxymbox{\hyperlink{namespacegen__graph_a44cc4c0593dc212e80d34151586006f1}{random\_dna}}(args.length,\ rng)\ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ range(args.nodes)]}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00306}00306\ \ \ \ \ edges\ =\ \doxymbox{\hyperlink{namespacegen__graph_a8936cb4754cfb812ad74be21049cff91}{make\_edges}}(}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00307}00307\ \ \ \ \ \ \ \ \ num\_nodes=args.nodes,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00308}00308\ \ \ \ \ \ \ \ \ complexity=args.complexity,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00309}00309\ \ \ \ \ \ \ \ \ loop\_prob=args.loop\_prob,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00310}00310\ \ \ \ \ \ \ \ \ rng=rng,}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00311}00311\ \ \ \ \ )}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00312}00312\ \ \ \ \ \textcolor{comment}{\#\ Stats\ before\ compression}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00313}00313\ \ \ \ \ n0,\ m0\ =\ len(sequences),\ len(edges)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00314}00314\ \ \ \ \ \textcolor{comment}{\#\ Perform\ linear-\/chain\ compression}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00315}00315\ \ \ \ \ sequences2,\ edges2,\ mapping\ =\ \doxymbox{\hyperlink{namespacegen__graph_aa4c8645ae16ebe7ffc0ab2c7b41a5284}{compress\_linear}}(sequences,\ edges)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00316}00316\ \ \ \ \ n1,\ m1\ =\ len(sequences2),\ len(edges2)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00317}00317\ \ \ \ \ output\_path\ =\ \textcolor{stringliteral}{"{}-\/"{}}\ \textcolor{keywordflow}{if}\ args.emit\ ==\ \textcolor{stringliteral}{"{}stdout"{}}\ \textcolor{keywordflow}{or}\ args.output\ ==\ \textcolor{stringliteral}{"{}-\/"{}}\ \textcolor{keywordflow}{else}\ args.output}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00318}00318\ \ \ \ \ \doxymbox{\hyperlink{namespacegen__graph_aa580740b06a8f4ab01eb590ecb0e8e2f}{write\_gfa}}(output\_path,\ sequences2,\ edges2)}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00319}00319\ \ \ \ \ \textcolor{comment}{\#\ Summary\ report}}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00320}00320\ \ \ \ \ merged\_nodes\ =\ n0\ -\/\ n1}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00321}00321\ \ \ \ \ print(}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00322}00322\ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}[gen\_graph]\ Original:\ nodes=\{n0\},\ edges=\{m0\};\ Compressed:\ nodes=\{n1\},\ edges=\{m1\};\ merged\_nodes=\{merged\_nodes\}"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00323}00323\ \ \ \ \ print(}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00324}00324\ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}[gen\_graph]\ Written:\ \{'stdout'\ if\ output\_path\ ==\ '-\/'\ else\ output\_path\}\ (len=\{args.length\},\ complexity=\{args.complexity\})"{}})}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00325}00325\ \ \ \ \ \textcolor{keywordflow}{return}\ 0}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00326}00326\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00327}00327\ }
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00328}00328\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
+\DoxyCodeLine{\Hypertarget{gen__graph_8py_source_l00329}00329\ \ \ \ \ sys.exit(\doxymbox{\hyperlink{test__bgfa_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(sys.argv[1:]))}
+
+\end{DoxyCode}

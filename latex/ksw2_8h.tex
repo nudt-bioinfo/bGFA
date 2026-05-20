@@ -1,0 +1,514 @@
+\doxysection{src/\+ksw/\+ksw2.h File Reference}
+\hypertarget{ksw2_8h}{}\label{ksw2_8h}\index{src/ksw/ksw2.h@{src/ksw/ksw2.h}}
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for ksw2.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a078f74a21b80bf07417745a64cec0309}{KSW\+\_\+\+NEG\+\_\+\+INF}}~-\/0x40000000
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a22db7af83dc10199e3022ea9f67da998}{KSW\+\_\+\+EZ\+\_\+\+SCORE\+\_\+\+ONLY}}~0x01
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_abd62588dcd071a31841f2b3e55b9f32b}{KSW\+\_\+\+EZ\+\_\+\+RIGHT}}~0x02
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a53b6f2312cdb8106a6185d14da3ec225}{KSW\+\_\+\+EZ\+\_\+\+GENERIC\+\_\+\+SC}}~0x04
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_adaf20c2653ea67c516e8b5f68d74443b}{KSW\+\_\+\+EZ\+\_\+\+APPROX\+\_\+\+MAX}}~0x08
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_acb0b55ffce45e447bb28be8ed98ce942}{KSW\+\_\+\+EZ\+\_\+\+APPROX\+\_\+\+DROP}}~0x10
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_ad9ae3ba509f1535692381972fa040cc2}{KSW\+\_\+\+EZ\+\_\+\+EXTZ\+\_\+\+ONLY}}~0x40
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_ae0c5a9322c75dbd5edcfd834ec02def3}{KSW\+\_\+\+EZ\+\_\+\+REV\+\_\+\+CIGAR}}~0x80
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a5c5fb98accbd36d1e5bfe146fb8f7778}{KSW\+\_\+\+EZ\+\_\+\+SPLICE\+\_\+\+FOR}}~0x100
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a4ce5339a5c9d8e8e049084194ed0a13c}{KSW\+\_\+\+EZ\+\_\+\+SPLICE\+\_\+\+REV}}~0x200
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_af064084643e0eb90039de1d8f36ad401}{KSW\+\_\+\+EZ\+\_\+\+SPLICE\+\_\+\+FLANK}}~0x400
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_af8f617b54677df75d03ba1ea03ac94af}{KSW\+\_\+\+EZ\+\_\+\+EQX}}~0x800
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a54c3488bfc8afccac1c6ea4bd5e56c3a}{KSW\+\_\+\+CIGAR\+\_\+\+MATCH}}~0
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_abc05644142c62c0a8de2fe1538a740dc}{KSW\+\_\+\+CIGAR\+\_\+\+INS}}~1
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_ad77f8c586520ac0c554df79a37a7355e}{KSW\+\_\+\+CIGAR\+\_\+\+DEL}}~2
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a6d5aeb5976ad4419c87024de87b75649}{KSW\+\_\+\+CIGAR\+\_\+\+N\+\_\+\+SKIP}}~3
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a580c9fef3f3532ac4ef48df07a0ce5da}{KSW\+\_\+\+CIGAR\+\_\+\+EQ}}~7
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a40ea17e6d12f41c9ff30f05cf6f34d48}{KSW\+\_\+\+CIGAR\+\_\+X}}~8
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a52dcec8d7b16f5b7162788007dc32986}{kmalloc}}(km,  size)
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a42a8bae29556840f665b45d2cbef065d}{kcalloc}}(km,  count,  size)
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_a1f8aa21286567991e553ccd721dda5b5}{krealloc}}(km,  ptr,  size)
+\item 
+\+\#define \doxymbox{\hyperlink{ksw2_8h_af6aede434c19024528e53c7d1b7029d1}{kfree}}(km,  ptr)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{ksw2_8h_af1b8caa12224a1458bfa7173c4579c66}{ksw\+\_\+extz}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat, int8\+\_\+t q, int8\+\_\+t e, int w, int zdrop, int flag, \doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}ez)
+\item 
+void \doxymbox{\hyperlink{ksw2_8h_a62b9c92cce7c36c28fa4bb85ed9f3dce}{ksw\+\_\+extz2\+\_\+sse}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat, int8\+\_\+t q, int8\+\_\+t e, int w, int zdrop, int end\+\_\+bonus, int flag, \doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}ez)
+\item 
+void \doxymbox{\hyperlink{ksw2_8h_ac165621cd2aab05bbd7766e3eb192d32}{ksw\+\_\+extd}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat, int8\+\_\+t gapo, int8\+\_\+t gape, int8\+\_\+t gapo2, int8\+\_\+t gape2, int w, int zdrop, int flag, \doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}ez)
+\item 
+void \doxymbox{\hyperlink{ksw2_8h_af3a1558ab1f6fefee5a004f22895221e}{ksw\+\_\+extd2\+\_\+sse}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat, int8\+\_\+t gapo, int8\+\_\+t gape, int8\+\_\+t gapo2, int8\+\_\+t gape2, int w, int zdrop, int end\+\_\+bonus, int flag, \doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}ez)
+\item 
+void \doxymbox{\hyperlink{ksw2_8h_af45b1d921e9bb3a6cb27ed69ca02ec93}{ksw\+\_\+exts2\+\_\+sse}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat, int8\+\_\+t gapo, int8\+\_\+t gape, int8\+\_\+t gapo2, int8\+\_\+t noncan, int zdrop, int8\+\_\+t junc\+\_\+bonus, int flag, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}junc, \doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}ez)
+\item 
+void \doxymbox{\hyperlink{ksw2_8h_acd36e314bfa4769a910c140b6265d696}{ksw\+\_\+extf2\+\_\+sse}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t mch, int8\+\_\+t mis, int8\+\_\+t e, int w, int xdrop, \doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}ez)
+\item 
+int \doxymbox{\hyperlink{ksw2_8h_ac04efb698c6f0b469b1e306a6d5cef1d}{ksw\+\_\+gg}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat, int8\+\_\+t gapo, int8\+\_\+t gape, int w, int \texorpdfstring{$\ast$}{*}m\+\_\+cigar\+\_\+, int \texorpdfstring{$\ast$}{*}n\+\_\+cigar\+\_\+, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}cigar\+\_\+)
+\item 
+int \doxymbox{\hyperlink{ksw2_8h_a667681620f2fb6f60a71f2d536ada969}{ksw\+\_\+gg2}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat, int8\+\_\+t gapo, int8\+\_\+t gape, int w, int \texorpdfstring{$\ast$}{*}m\+\_\+cigar\+\_\+, int \texorpdfstring{$\ast$}{*}n\+\_\+cigar\+\_\+, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}cigar\+\_\+)
+\item 
+int \doxymbox{\hyperlink{ksw2_8h_ab2d16c6da8ed63019523757411d1366c}{ksw\+\_\+gg2\+\_\+sse}} (void \texorpdfstring{$\ast$}{*}km, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int8\+\_\+t m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat, int8\+\_\+t gapo, int8\+\_\+t gape, int w, int \texorpdfstring{$\ast$}{*}m\+\_\+cigar\+\_\+, int \texorpdfstring{$\ast$}{*}n\+\_\+cigar\+\_\+, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}cigar\+\_\+)
+\item 
+void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{ksw2_8h_a55e33e533913db52a012fce34b26ea77}{ksw\+\_\+ll\+\_\+qinit}} (void \texorpdfstring{$\ast$}{*}km, int size, int qlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, int m, const int8\+\_\+t \texorpdfstring{$\ast$}{*}mat)
+\item 
+int \doxymbox{\hyperlink{ksw2_8h_ae1d0eb0bb4c73a5386ea2b6690c48ec2}{ksw\+\_\+ll\+\_\+i16}} (void \texorpdfstring{$\ast$}{*}q, int tlen, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int gapo, int gape, int \texorpdfstring{$\ast$}{*}qe, int \texorpdfstring{$\ast$}{*}te)
+\item 
+static uint32\+\_\+t \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{ksw2_8h_aa0dd8dda71f16afbe8163125139976b6}{ksw\+\_\+push\+\_\+cigar}} (void \texorpdfstring{$\ast$}{*}km, int \texorpdfstring{$\ast$}{*}n\+\_\+cigar, int \texorpdfstring{$\ast$}{*}m\+\_\+cigar, uint32\+\_\+t \texorpdfstring{$\ast$}{*}cigar, uint32\+\_\+t op, int len)
+\item 
+static void \doxymbox{\hyperlink{ksw2_8h_a0622933f675165316e519bec76adedfc}{ksw\+\_\+backtrack}} (void \texorpdfstring{$\ast$}{*}km, int is\+\_\+rot, int is\+\_\+rev, int min\+\_\+intron\+\_\+len, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}p, const int \texorpdfstring{$\ast$}{*}off, const int \texorpdfstring{$\ast$}{*}off\+\_\+end, int n\+\_\+col, int i0, int j0, int \texorpdfstring{$\ast$}{*}m\+\_\+cigar\+\_\+, int \texorpdfstring{$\ast$}{*}n\+\_\+cigar\+\_\+, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}cigar\+\_\+)
+\item 
+static void \doxymbox{\hyperlink{ksw2_8h_ae48bc06392a24dfaff2cfb223ea45143}{ksw\+\_\+cigar2eqx}} (void \texorpdfstring{$\ast$}{*}km, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}query, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}target, int nc0, const uint32\+\_\+t \texorpdfstring{$\ast$}{*}ci0, int \texorpdfstring{$\ast$}{*}mc1, int \texorpdfstring{$\ast$}{*}nc1, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}ci1)
+\item 
+static void \doxymbox{\hyperlink{ksw2_8h_a9989ab81f487d14de0d572104c2af1b5}{ksw\+\_\+reset\+\_\+extz}} (\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}ez)
+\item 
+static int \doxymbox{\hyperlink{ksw2_8h_a892601c3d791100ae1a2dce89fc87e67}{ksw\+\_\+apply\+\_\+zdrop}} (\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}ez, int is\+\_\+rot, int32\+\_\+t H, int a, int b, int zdrop, int8\+\_\+t e)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{ksw2_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{ksw2_8h_a42a8bae29556840f665b45d2cbef065d}\index{ksw2.h@{ksw2.h}!kcalloc@{kcalloc}}
+\index{kcalloc@{kcalloc}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{kcalloc}{kcalloc}}
+{\footnotesize\ttfamily \label{ksw2_8h_a42a8bae29556840f665b45d2cbef065d} 
+\+\#define kcalloc(\begin{DoxyParamCaption}\item[{}]{km}{, }\item[{}]{count}{, }\item[{}]{size}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{calloc((count),\ (size))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00108}{108}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_af6aede434c19024528e53c7d1b7029d1}\index{ksw2.h@{ksw2.h}!kfree@{kfree}}
+\index{kfree@{kfree}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{kfree}{kfree}}
+{\footnotesize\ttfamily \label{ksw2_8h_af6aede434c19024528e53c7d1b7029d1} 
+\+\#define kfree(\begin{DoxyParamCaption}\item[{}]{km}{, }\item[{}]{ptr}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{free((ptr))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00110}{110}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a52dcec8d7b16f5b7162788007dc32986}\index{ksw2.h@{ksw2.h}!kmalloc@{kmalloc}}
+\index{kmalloc@{kmalloc}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{kmalloc}{kmalloc}}
+{\footnotesize\ttfamily \label{ksw2_8h_a52dcec8d7b16f5b7162788007dc32986} 
+\+\#define kmalloc(\begin{DoxyParamCaption}\item[{}]{km}{, }\item[{}]{size}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{malloc((size))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00107}{107}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a1f8aa21286567991e553ccd721dda5b5}\index{ksw2.h@{ksw2.h}!krealloc@{krealloc}}
+\index{krealloc@{krealloc}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{krealloc}{krealloc}}
+{\footnotesize\ttfamily \label{ksw2_8h_a1f8aa21286567991e553ccd721dda5b5} 
+\+\#define krealloc(\begin{DoxyParamCaption}\item[{}]{km}{, }\item[{}]{ptr}{, }\item[{}]{size}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{realloc((ptr),\ (size))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00109}{109}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_ad77f8c586520ac0c554df79a37a7355e}\index{ksw2.h@{ksw2.h}!KSW\_CIGAR\_DEL@{KSW\_CIGAR\_DEL}}
+\index{KSW\_CIGAR\_DEL@{KSW\_CIGAR\_DEL}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_CIGAR\_DEL}{KSW\_CIGAR\_DEL}}
+{\footnotesize\ttfamily \label{ksw2_8h_ad77f8c586520ac0c554df79a37a7355e} 
+\+\#define KSW\+\_\+\+CIGAR\+\_\+\+DEL~2}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00024}{24}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a580c9fef3f3532ac4ef48df07a0ce5da}\index{ksw2.h@{ksw2.h}!KSW\_CIGAR\_EQ@{KSW\_CIGAR\_EQ}}
+\index{KSW\_CIGAR\_EQ@{KSW\_CIGAR\_EQ}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_CIGAR\_EQ}{KSW\_CIGAR\_EQ}}
+{\footnotesize\ttfamily \label{ksw2_8h_a580c9fef3f3532ac4ef48df07a0ce5da} 
+\+\#define KSW\+\_\+\+CIGAR\+\_\+\+EQ~7}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00026}{26}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_abc05644142c62c0a8de2fe1538a740dc}\index{ksw2.h@{ksw2.h}!KSW\_CIGAR\_INS@{KSW\_CIGAR\_INS}}
+\index{KSW\_CIGAR\_INS@{KSW\_CIGAR\_INS}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_CIGAR\_INS}{KSW\_CIGAR\_INS}}
+{\footnotesize\ttfamily \label{ksw2_8h_abc05644142c62c0a8de2fe1538a740dc} 
+\+\#define KSW\+\_\+\+CIGAR\+\_\+\+INS~1}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00023}{23}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a54c3488bfc8afccac1c6ea4bd5e56c3a}\index{ksw2.h@{ksw2.h}!KSW\_CIGAR\_MATCH@{KSW\_CIGAR\_MATCH}}
+\index{KSW\_CIGAR\_MATCH@{KSW\_CIGAR\_MATCH}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_CIGAR\_MATCH}{KSW\_CIGAR\_MATCH}}
+{\footnotesize\ttfamily \label{ksw2_8h_a54c3488bfc8afccac1c6ea4bd5e56c3a} 
+\+\#define KSW\+\_\+\+CIGAR\+\_\+\+MATCH~0}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00022}{22}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a6d5aeb5976ad4419c87024de87b75649}\index{ksw2.h@{ksw2.h}!KSW\_CIGAR\_N\_SKIP@{KSW\_CIGAR\_N\_SKIP}}
+\index{KSW\_CIGAR\_N\_SKIP@{KSW\_CIGAR\_N\_SKIP}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_CIGAR\_N\_SKIP}{KSW\_CIGAR\_N\_SKIP}}
+{\footnotesize\ttfamily \label{ksw2_8h_a6d5aeb5976ad4419c87024de87b75649} 
+\+\#define KSW\+\_\+\+CIGAR\+\_\+\+N\+\_\+\+SKIP~3}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00025}{25}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a40ea17e6d12f41c9ff30f05cf6f34d48}\index{ksw2.h@{ksw2.h}!KSW\_CIGAR\_X@{KSW\_CIGAR\_X}}
+\index{KSW\_CIGAR\_X@{KSW\_CIGAR\_X}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_CIGAR\_X}{KSW\_CIGAR\_X}}
+{\footnotesize\ttfamily \label{ksw2_8h_a40ea17e6d12f41c9ff30f05cf6f34d48} 
+\+\#define KSW\+\_\+\+CIGAR\+\_\+X~8}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00027}{27}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_acb0b55ffce45e447bb28be8ed98ce942}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_APPROX\_DROP@{KSW\_EZ\_APPROX\_DROP}}
+\index{KSW\_EZ\_APPROX\_DROP@{KSW\_EZ\_APPROX\_DROP}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_APPROX\_DROP}{KSW\_EZ\_APPROX\_DROP}}
+{\footnotesize\ttfamily \label{ksw2_8h_acb0b55ffce45e447bb28be8ed98ce942} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+APPROX\+\_\+\+DROP~0x10}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00012}{12}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_adaf20c2653ea67c516e8b5f68d74443b}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_APPROX\_MAX@{KSW\_EZ\_APPROX\_MAX}}
+\index{KSW\_EZ\_APPROX\_MAX@{KSW\_EZ\_APPROX\_MAX}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_APPROX\_MAX}{KSW\_EZ\_APPROX\_MAX}}
+{\footnotesize\ttfamily \label{ksw2_8h_adaf20c2653ea67c516e8b5f68d74443b} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+APPROX\+\_\+\+MAX~0x08}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00011}{11}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_af8f617b54677df75d03ba1ea03ac94af}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_EQX@{KSW\_EZ\_EQX}}
+\index{KSW\_EZ\_EQX@{KSW\_EZ\_EQX}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_EQX}{KSW\_EZ\_EQX}}
+{\footnotesize\ttfamily \label{ksw2_8h_af8f617b54677df75d03ba1ea03ac94af} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+EQX~0x800}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00018}{18}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_ad9ae3ba509f1535692381972fa040cc2}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_EXTZ\_ONLY@{KSW\_EZ\_EXTZ\_ONLY}}
+\index{KSW\_EZ\_EXTZ\_ONLY@{KSW\_EZ\_EXTZ\_ONLY}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_EXTZ\_ONLY}{KSW\_EZ\_EXTZ\_ONLY}}
+{\footnotesize\ttfamily \label{ksw2_8h_ad9ae3ba509f1535692381972fa040cc2} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+EXTZ\+\_\+\+ONLY~0x40}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00013}{13}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a53b6f2312cdb8106a6185d14da3ec225}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_GENERIC\_SC@{KSW\_EZ\_GENERIC\_SC}}
+\index{KSW\_EZ\_GENERIC\_SC@{KSW\_EZ\_GENERIC\_SC}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_GENERIC\_SC}{KSW\_EZ\_GENERIC\_SC}}
+{\footnotesize\ttfamily \label{ksw2_8h_a53b6f2312cdb8106a6185d14da3ec225} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+GENERIC\+\_\+\+SC~0x04}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00010}{10}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_ae0c5a9322c75dbd5edcfd834ec02def3}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_REV\_CIGAR@{KSW\_EZ\_REV\_CIGAR}}
+\index{KSW\_EZ\_REV\_CIGAR@{KSW\_EZ\_REV\_CIGAR}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_REV\_CIGAR}{KSW\_EZ\_REV\_CIGAR}}
+{\footnotesize\ttfamily \label{ksw2_8h_ae0c5a9322c75dbd5edcfd834ec02def3} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+REV\+\_\+\+CIGAR~0x80}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00014}{14}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_abd62588dcd071a31841f2b3e55b9f32b}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_RIGHT@{KSW\_EZ\_RIGHT}}
+\index{KSW\_EZ\_RIGHT@{KSW\_EZ\_RIGHT}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_RIGHT}{KSW\_EZ\_RIGHT}}
+{\footnotesize\ttfamily \label{ksw2_8h_abd62588dcd071a31841f2b3e55b9f32b} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+RIGHT~0x02}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00009}{9}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a22db7af83dc10199e3022ea9f67da998}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_SCORE\_ONLY@{KSW\_EZ\_SCORE\_ONLY}}
+\index{KSW\_EZ\_SCORE\_ONLY@{KSW\_EZ\_SCORE\_ONLY}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_SCORE\_ONLY}{KSW\_EZ\_SCORE\_ONLY}}
+{\footnotesize\ttfamily \label{ksw2_8h_a22db7af83dc10199e3022ea9f67da998} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+SCORE\+\_\+\+ONLY~0x01}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00008}{8}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_af064084643e0eb90039de1d8f36ad401}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_SPLICE\_FLANK@{KSW\_EZ\_SPLICE\_FLANK}}
+\index{KSW\_EZ\_SPLICE\_FLANK@{KSW\_EZ\_SPLICE\_FLANK}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_SPLICE\_FLANK}{KSW\_EZ\_SPLICE\_FLANK}}
+{\footnotesize\ttfamily \label{ksw2_8h_af064084643e0eb90039de1d8f36ad401} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+SPLICE\+\_\+\+FLANK~0x400}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00017}{17}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a5c5fb98accbd36d1e5bfe146fb8f7778}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_SPLICE\_FOR@{KSW\_EZ\_SPLICE\_FOR}}
+\index{KSW\_EZ\_SPLICE\_FOR@{KSW\_EZ\_SPLICE\_FOR}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_SPLICE\_FOR}{KSW\_EZ\_SPLICE\_FOR}}
+{\footnotesize\ttfamily \label{ksw2_8h_a5c5fb98accbd36d1e5bfe146fb8f7778} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+SPLICE\+\_\+\+FOR~0x100}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00015}{15}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a4ce5339a5c9d8e8e049084194ed0a13c}\index{ksw2.h@{ksw2.h}!KSW\_EZ\_SPLICE\_REV@{KSW\_EZ\_SPLICE\_REV}}
+\index{KSW\_EZ\_SPLICE\_REV@{KSW\_EZ\_SPLICE\_REV}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_EZ\_SPLICE\_REV}{KSW\_EZ\_SPLICE\_REV}}
+{\footnotesize\ttfamily \label{ksw2_8h_a4ce5339a5c9d8e8e049084194ed0a13c} 
+\+\#define KSW\+\_\+\+EZ\+\_\+\+SPLICE\+\_\+\+REV~0x200}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00016}{16}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a078f74a21b80bf07417745a64cec0309}\index{ksw2.h@{ksw2.h}!KSW\_NEG\_INF@{KSW\_NEG\_INF}}
+\index{KSW\_NEG\_INF@{KSW\_NEG\_INF}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{KSW\_NEG\_INF}{KSW\_NEG\_INF}}
+{\footnotesize\ttfamily \label{ksw2_8h_a078f74a21b80bf07417745a64cec0309} 
+\+\#define KSW\+\_\+\+NEG\+\_\+\+INF~-\/0x40000000}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00006}{6}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{ksw2_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{ksw2_8h_a892601c3d791100ae1a2dce89fc87e67}\index{ksw2.h@{ksw2.h}!ksw\_apply\_zdrop@{ksw\_apply\_zdrop}}
+\index{ksw\_apply\_zdrop@{ksw\_apply\_zdrop}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_apply\_zdrop()}{ksw\_apply\_zdrop()}}
+{\footnotesize\ttfamily \label{ksw2_8h_a892601c3d791100ae1a2dce89fc87e67} 
+int ksw\+\_\+apply\+\_\+zdrop (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ez}{, }\item[{int}]{is\+\_\+rot}{, }\item[{int32\+\_\+t}]{H}{, }\item[{int}]{a}{, }\item[{int}]{b}{, }\item[{int}]{zdrop}{, }\item[{int8\+\_\+t}]{e}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00191}{191}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+\Hypertarget{ksw2_8h_a0622933f675165316e519bec76adedfc}\index{ksw2.h@{ksw2.h}!ksw\_backtrack@{ksw\_backtrack}}
+\index{ksw\_backtrack@{ksw\_backtrack}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_backtrack()}{ksw\_backtrack()}}
+{\footnotesize\ttfamily \label{ksw2_8h_a0622933f675165316e519bec76adedfc} 
+void ksw\+\_\+backtrack (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{is\+\_\+rot}{, }\item[{int}]{is\+\_\+rev}{, }\item[{int}]{min\+\_\+intron\+\_\+len}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{p}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{off}{, }\item[{const int \texorpdfstring{$\ast$}{*}}]{off\+\_\+end}{, }\item[{int}]{n\+\_\+col}{, }\item[{int}]{i0}{, }\item[{int}]{j0}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{m\+\_\+cigar\+\_\+}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{n\+\_\+cigar\+\_\+}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{cigar\+\_\+}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00129}{129}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{ksw2_8h_ae48bc06392a24dfaff2cfb223ea45143}\index{ksw2.h@{ksw2.h}!ksw\_cigar2eqx@{ksw\_cigar2eqx}}
+\index{ksw\_cigar2eqx@{ksw\_cigar2eqx}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_cigar2eqx()}{ksw\_cigar2eqx()}}
+{\footnotesize\ttfamily \label{ksw2_8h_ae48bc06392a24dfaff2cfb223ea45143} 
+void ksw\+\_\+cigar2eqx (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int}]{nc0}{, }\item[{const uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{ci0}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{mc1}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{nc1}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{ci1}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00163}{163}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{ksw2_8h_ac165621cd2aab05bbd7766e3eb192d32}\index{ksw2.h@{ksw2.h}!ksw\_extd@{ksw\_extd}}
+\index{ksw\_extd@{ksw\_extd}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_extd()}{ksw\_extd()}}
+{\footnotesize\ttfamily \label{ksw2_8h_ac165621cd2aab05bbd7766e3eb192d32} 
+void ksw\+\_\+extd (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{, }\item[{int8\+\_\+t}]{gapo}{, }\item[{int8\+\_\+t}]{gape}{, }\item[{int8\+\_\+t}]{gapo2}{, }\item[{int8\+\_\+t}]{gape2}{, }\item[{int}]{w}{, }\item[{int}]{zdrop}{, }\item[{int}]{flag}{, }\item[{\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ez}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ksw2_8h_af3a1558ab1f6fefee5a004f22895221e}\index{ksw2.h@{ksw2.h}!ksw\_extd2\_sse@{ksw\_extd2\_sse}}
+\index{ksw\_extd2\_sse@{ksw\_extd2\_sse}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_extd2\_sse()}{ksw\_extd2\_sse()}}
+{\footnotesize\ttfamily \label{ksw2_8h_af3a1558ab1f6fefee5a004f22895221e} 
+void ksw\+\_\+extd2\+\_\+sse (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{, }\item[{int8\+\_\+t}]{gapo}{, }\item[{int8\+\_\+t}]{gape}{, }\item[{int8\+\_\+t}]{gapo2}{, }\item[{int8\+\_\+t}]{gape2}{, }\item[{int}]{w}{, }\item[{int}]{zdrop}{, }\item[{int}]{end\+\_\+bonus}{, }\item[{int}]{flag}{, }\item[{\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ez}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ksw2_8h_acd36e314bfa4769a910c140b6265d696}\index{ksw2.h@{ksw2.h}!ksw\_extf2\_sse@{ksw\_extf2\_sse}}
+\index{ksw\_extf2\_sse@{ksw\_extf2\_sse}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_extf2\_sse()}{ksw\_extf2\_sse()}}
+{\footnotesize\ttfamily \label{ksw2_8h_acd36e314bfa4769a910c140b6265d696} 
+void ksw\+\_\+extf2\+\_\+sse (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{mch}{, }\item[{int8\+\_\+t}]{mis}{, }\item[{int8\+\_\+t}]{e}{, }\item[{int}]{w}{, }\item[{int}]{xdrop}{, }\item[{\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ez}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ksw2_8h_af45b1d921e9bb3a6cb27ed69ca02ec93}\index{ksw2.h@{ksw2.h}!ksw\_exts2\_sse@{ksw\_exts2\_sse}}
+\index{ksw\_exts2\_sse@{ksw\_exts2\_sse}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_exts2\_sse()}{ksw\_exts2\_sse()}}
+{\footnotesize\ttfamily \label{ksw2_8h_af45b1d921e9bb3a6cb27ed69ca02ec93} 
+void ksw\+\_\+exts2\+\_\+sse (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{, }\item[{int8\+\_\+t}]{gapo}{, }\item[{int8\+\_\+t}]{gape}{, }\item[{int8\+\_\+t}]{gapo2}{, }\item[{int8\+\_\+t}]{noncan}{, }\item[{int}]{zdrop}{, }\item[{int8\+\_\+t}]{junc\+\_\+bonus}{, }\item[{int}]{flag}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{junc}{, }\item[{\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ez}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ksw2_8h_af1b8caa12224a1458bfa7173c4579c66}\index{ksw2.h@{ksw2.h}!ksw\_extz@{ksw\_extz}}
+\index{ksw\_extz@{ksw\_extz}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_extz()}{ksw\_extz()}}
+{\footnotesize\ttfamily \label{ksw2_8h_af1b8caa12224a1458bfa7173c4579c66} 
+void ksw\+\_\+extz (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{, }\item[{int8\+\_\+t}]{q}{, }\item[{int8\+\_\+t}]{e}{, }\item[{int}]{w}{, }\item[{int}]{zdrop}{, }\item[{int}]{flag}{, }\item[{\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ez}{}\end{DoxyParamCaption})}
+
+NW-\/like extension
+
+
+\begin{DoxyParams}{Parameters}
+{\em km} & memory pool, when used with kalloc \\
+\hline
+{\em qlen} & query length \\
+\hline
+{\em query} & query sequence with 0 \texorpdfstring{$<$}{<}= query\+[i]\+ \texorpdfstring{$<$}{<} m \\
+\hline
+{\em tlen} & target length \\
+\hline
+{\em target} & target sequence with 0 \texorpdfstring{$<$}{<}= target\+[i]\+ \texorpdfstring{$<$}{<} m \\
+\hline
+{\em m} & number of residue types \\
+\hline
+{\em mat} & m\texorpdfstring{$\ast$}{*}m scoring mattrix in one-\/dimension array \\
+\hline
+{\em gapo} & gap open penalty; a gap of length l cost "{}-\/(gapo+l\texorpdfstring{$\ast$}{*}gape)"{} \\
+\hline
+{\em gape} & gap extension penalty \\
+\hline
+{\em w} & band width (\texorpdfstring{$<$}{<}0 to disable) \\
+\hline
+{\em zdrop} & off-\/diagonal drop-\/off to stop extension (positive; \texorpdfstring{$<$}{<}0 to disable) \\
+\hline
+{\em flag} & flag (see KSW\+\_\+\+EZ\+\_\+\texorpdfstring{$\ast$}{*} macros) \\
+\hline
+{\em ez} & (out) scores and cigar \\
+\hline
+\end{DoxyParams}
+\Hypertarget{ksw2_8h_a62b9c92cce7c36c28fa4bb85ed9f3dce}\index{ksw2.h@{ksw2.h}!ksw\_extz2\_sse@{ksw\_extz2\_sse}}
+\index{ksw\_extz2\_sse@{ksw\_extz2\_sse}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_extz2\_sse()}{ksw\_extz2\_sse()}}
+{\footnotesize\ttfamily \label{ksw2_8h_a62b9c92cce7c36c28fa4bb85ed9f3dce} 
+void ksw\+\_\+extz2\+\_\+sse (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{, }\item[{int8\+\_\+t}]{q}{, }\item[{int8\+\_\+t}]{e}{, }\item[{int}]{w}{, }\item[{int}]{zdrop}{, }\item[{int}]{end\+\_\+bonus}{, }\item[{int}]{flag}{, }\item[{\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ez}{}\end{DoxyParamCaption})}
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{ksw2_8h_ac04efb698c6f0b469b1e306a6d5cef1d}\index{ksw2.h@{ksw2.h}!ksw\_gg@{ksw\_gg}}
+\index{ksw\_gg@{ksw\_gg}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_gg()}{ksw\_gg()}}
+{\footnotesize\ttfamily \label{ksw2_8h_ac04efb698c6f0b469b1e306a6d5cef1d} 
+int ksw\+\_\+gg (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{, }\item[{int8\+\_\+t}]{gapo}{, }\item[{int8\+\_\+t}]{gape}{, }\item[{int}]{w}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{m\+\_\+cigar\+\_\+}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{n\+\_\+cigar\+\_\+}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{cigar\+\_\+}{}\end{DoxyParamCaption})}
+
+Global alignment
+
+(first 10 parameters identical to ksw\+\_\+extz\+\_\+sse()) 
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+cigar} & (modified) max CIGAR length; feed 0 if cigar==0 \\
+\hline
+{\em n\+\_\+cigar} & (out) number of CIGAR elements \\
+\hline
+{\em cigar} & (out) BAM-\/encoded CIGAR; caller need to deallocate with \doxylink{ksw2_8h_af6aede434c19024528e53c7d1b7029d1}{kfree(km, )}\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+score of the alignment 
+\end{DoxyReturn}
+\Hypertarget{ksw2_8h_a667681620f2fb6f60a71f2d536ada969}\index{ksw2.h@{ksw2.h}!ksw\_gg2@{ksw\_gg2}}
+\index{ksw\_gg2@{ksw\_gg2}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_gg2()}{ksw\_gg2()}}
+{\footnotesize\ttfamily \label{ksw2_8h_a667681620f2fb6f60a71f2d536ada969} 
+int ksw\+\_\+gg2 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{, }\item[{int8\+\_\+t}]{gapo}{, }\item[{int8\+\_\+t}]{gape}{, }\item[{int}]{w}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{m\+\_\+cigar\+\_\+}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{n\+\_\+cigar\+\_\+}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{cigar\+\_\+}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ksw2_8h_ab2d16c6da8ed63019523757411d1366c}\index{ksw2.h@{ksw2.h}!ksw\_gg2\_sse@{ksw\_gg2\_sse}}
+\index{ksw\_gg2\_sse@{ksw\_gg2\_sse}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_gg2\_sse()}{ksw\_gg2\_sse()}}
+{\footnotesize\ttfamily \label{ksw2_8h_ab2d16c6da8ed63019523757411d1366c} 
+int ksw\+\_\+gg2\+\_\+sse (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int8\+\_\+t}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{, }\item[{int8\+\_\+t}]{gapo}{, }\item[{int8\+\_\+t}]{gape}{, }\item[{int}]{w}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{m\+\_\+cigar\+\_\+}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{n\+\_\+cigar\+\_\+}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{cigar\+\_\+}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ksw2_8h_ae1d0eb0bb4c73a5386ea2b6690c48ec2}\index{ksw2.h@{ksw2.h}!ksw\_ll\_i16@{ksw\_ll\_i16}}
+\index{ksw\_ll\_i16@{ksw\_ll\_i16}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_ll\_i16()}{ksw\_ll\_i16()}}
+{\footnotesize\ttfamily \label{ksw2_8h_ae1d0eb0bb4c73a5386ea2b6690c48ec2} 
+int ksw\+\_\+ll\+\_\+i16 (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{q}{, }\item[{int}]{tlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{target}{, }\item[{int}]{gapo}{, }\item[{int}]{gape}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{qe}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{te}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ksw2_8h_a55e33e533913db52a012fce34b26ea77}\index{ksw2.h@{ksw2.h}!ksw\_ll\_qinit@{ksw\_ll\_qinit}}
+\index{ksw\_ll\_qinit@{ksw\_ll\_qinit}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_ll\_qinit()}{ksw\_ll\_qinit()}}
+{\footnotesize\ttfamily \label{ksw2_8h_a55e33e533913db52a012fce34b26ea77} 
+void \texorpdfstring{$\ast$}{*} ksw\+\_\+ll\+\_\+qinit (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int}]{size}{, }\item[{int}]{qlen}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{query}{, }\item[{int}]{m}{, }\item[{const int8\+\_\+t \texorpdfstring{$\ast$}{*}}]{mat}{}\end{DoxyParamCaption})}
+
+\Hypertarget{ksw2_8h_aa0dd8dda71f16afbe8163125139976b6}\index{ksw2.h@{ksw2.h}!ksw\_push\_cigar@{ksw\_push\_cigar}}
+\index{ksw\_push\_cigar@{ksw\_push\_cigar}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_push\_cigar()}{ksw\_push\_cigar()}}
+{\footnotesize\ttfamily \label{ksw2_8h_aa0dd8dda71f16afbe8163125139976b6} 
+uint32\+\_\+t \texorpdfstring{$\ast$}{*} ksw\+\_\+push\+\_\+cigar (\begin{DoxyParamCaption}\item[{void \texorpdfstring{$\ast$}{*}}]{km}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{n\+\_\+cigar}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{m\+\_\+cigar}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}}]{cigar}{, }\item[{uint32\+\_\+t}]{op}{, }\item[{int}]{len}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00113}{113}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{ksw2_8h_a9989ab81f487d14de0d572104c2af1b5}\index{ksw2.h@{ksw2.h}!ksw\_reset\_extz@{ksw\_reset\_extz}}
+\index{ksw\_reset\_extz@{ksw\_reset\_extz}!ksw2.h@{ksw2.h}}
+\doxysubsubsection{\texorpdfstring{ksw\_reset\_extz()}{ksw\_reset\_extz()}}
+{\footnotesize\ttfamily \label{ksw2_8h_a9989ab81f487d14de0d572104c2af1b5} 
+void ksw\+\_\+reset\+\_\+extz (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structksw__extz__t}{ksw\+\_\+extz\+\_\+t}} \texorpdfstring{$\ast$}{*}}]{ez}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{ksw2_8h_source_l00184}{184}} of file \doxymbox{\hyperlink{ksw2_8h_source}{ksw2.\+h}}.
+

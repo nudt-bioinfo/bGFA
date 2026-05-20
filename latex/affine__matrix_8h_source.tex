@@ -1,0 +1,89 @@
+\doxysection{affine\+\_\+matrix.\+h}
+\hypertarget{affine__matrix_8h_source}{}\label{affine__matrix_8h_source}\index{src/wfa/tools/align\_benchmark/gap\_affine/affine\_matrix.h@{src/wfa/tools/align\_benchmark/gap\_affine/affine\_matrix.h}}
+\doxymbox{\hyperlink{affine__matrix_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Gap-\/affine\ Matrix}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ AFFINE\_MATRIX\_H\_}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ AFFINE\_MATRIX\_H\_}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{cigar_8h}{alignment/cigar.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00037}00037\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00038}00038\ \textcolor{comment}{\ *\ Constants}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00039}00039\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00040}\doxymbox{\hyperlink{affine__matrix_8h_aed6102d6a9dfc5223b5e0ea958363c7a}{00040}}\ \textcolor{preprocessor}{\#define\ AFFINE\_SCORE\_MAX\ (10000000)}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00042}00042\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00043}00043\ \textcolor{comment}{\ *\ Affine\ Matrix}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00044}00044\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00045}\doxymbox{\hyperlink{structaffine__cell__t}{00045}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00046}\doxymbox{\hyperlink{structaffine__cell__t_a33c28d48df5116070aca814884a8f075}{00046}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine__cell__t_a33c28d48df5116070aca814884a8f075}{M}};\ \textcolor{comment}{//\ Alignment\ matching/mismatching}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00047}\doxymbox{\hyperlink{structaffine__cell__t_a5473f7a043d3a80f20e7173bd4f38ed1}{00047}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine__cell__t_a5473f7a043d3a80f20e7173bd4f38ed1}{I}};\ \textcolor{comment}{//\ Alignment\ ends\ with\ a\ gap\ in\ the\ reference\ (insertion)}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00048}\doxymbox{\hyperlink{structaffine__cell__t_a001e6c51face1192ce9b8bdd26fcee61}{00048}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine__cell__t_a001e6c51face1192ce9b8bdd26fcee61}{D}};\ \textcolor{comment}{//\ Alignment\ ends\ with\ a\ gap\ in\ the\ read\ (deletion)}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00049}00049\ \}\ \doxymbox{\hyperlink{structaffine__cell__t}{affine\_cell\_t}};}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00050}\doxymbox{\hyperlink{structaffine__matrix__t}{00050}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00051}00051\ \ \ \textcolor{comment}{//\ Affine\ Matrix}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00052}\doxymbox{\hyperlink{structaffine__matrix__t_a1ce592cc5a3f330df745f596dc5da436}{00052}}\ \ \ \doxymbox{\hyperlink{structaffine__cell__t}{affine\_cell\_t}}**\ \doxymbox{\hyperlink{structaffine__matrix__t_a1ce592cc5a3f330df745f596dc5da436}{columns}};}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00053}\doxymbox{\hyperlink{structaffine__matrix__t_a3a61678c5be9c8c669b58b7b502cfb42}{00053}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine__matrix__t_a3a61678c5be9c8c669b58b7b502cfb42}{num\_rows}};}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00054}\doxymbox{\hyperlink{structaffine__matrix__t_a36fdbc8e084735949a582083b54389f5}{00054}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine__matrix__t_a36fdbc8e084735949a582083b54389f5}{num\_columns}};}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00055}00055\ \}\ \doxymbox{\hyperlink{structaffine__matrix__t}{affine\_matrix\_t}};}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00056}00056\ }
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00057}00057\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00058}00058\ \textcolor{comment}{\ *\ Gap-\/Affine\ Matrix\ Setup}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00059}00059\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00060}00060\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{affine__matrix_8h_ab09a33c9f570a2ca5b872728599bde43}{affine\_matrix\_allocate}}(}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00061}00061\ \ \ \ \ \doxymbox{\hyperlink{structaffine__matrix__t}{affine\_matrix\_t}}*\ \textcolor{keyword}{const}\ matrix,}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_rows,}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_columns,}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00064}00064\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00065}00065\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{affine__matrix_8h_a8cb2e7cacd5d14c05fadb3daa7c214c9}{affine\_matrix\_free}}(}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00066}00066\ \ \ \ \ \doxymbox{\hyperlink{structaffine__matrix__t}{affine\_matrix\_t}}*\ \textcolor{keyword}{const}\ matrix,}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00067}00067\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00069}00069\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00070}00070\ \textcolor{comment}{\ *\ Display}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00071}00071\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00072}00072\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{affine__matrix_8h_af8efbca6245edd0fd4db63b5d98ff839}{affine\_matrix\_print}}(}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00073}00073\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structaffine__matrix__t}{affine\_matrix\_t}}*\ \textcolor{keyword}{const}\ matrix,}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}});}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00077}00077\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{affine__matrix_8h_abb237afce249873a1c0a21641d13df27}{affine\_matrix\_print\_extended}}(}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00078}00078\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structaffine__matrix__t}{affine\_matrix\_t}}*\ \textcolor{keyword}{const}\ matrix,}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00081}00081\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}});}
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{affine__matrix_8h_source_l00083}00083\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ AFFINE\_MATRIX\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

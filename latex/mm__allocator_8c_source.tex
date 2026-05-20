@@ -1,0 +1,623 @@
+\doxysection{mm\+\_\+allocator.\+c}
+\hypertarget{mm__allocator_8c_source}{}\label{mm__allocator_8c_source}\index{src/wfa/system/mm\_allocator.c@{src/wfa/system/mm\_allocator.c}}
+\doxymbox{\hyperlink{mm__allocator_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00029}00029\ \textcolor{comment}{\ *\ VERSION:\ v21.02.15}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00030}00030\ \textcolor{comment}{\ *\ DESCRIPTION:\ Simple\ managed-\/memory\ allocator\ that\ reduces\ the\ overhead}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00031}00031\ \textcolor{comment}{\ *\ \ \ of\ using\ malloc/calloc/free\ functions\ by\ allocating\ slabs\ of\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00032}00032\ \textcolor{comment}{\ *\ \ \ and\ dispatching\ memory\ segments\ in\ order.}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00033}00033\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mm__allocator_8h}{mm\_allocator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00038}00038\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00039}00039\ \textcolor{comment}{\ *\ Debug}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00040}00040\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00041}00041\ \textcolor{comment}{//\#define\ MM\_ALLOCATOR\_FORCE\_MALLOC\ /*\ Delegate\ all\ requests\ to\ malloc\ within\ the\ mm-\/allocator\ handler\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00042}00042\ \textcolor{comment}{//\#define\ MM\_ALLOCATOR\_DISABLE\ \ \ \ \ \ /*\ Completely\ disable\ the\ mm-\/allocator\ (delegate\ to\ raw\ malloc)\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00044}00044\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00045}00045\ \textcolor{comment}{\ *\ Constants}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00046}00046\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00047}\doxymbox{\hyperlink{mm__allocator_8c_a7a1dedeef8d1cf9122f1984064637643}{00047}}\ \textcolor{preprocessor}{\#define\ MM\_ALLOCATOR\_SEGMENT\_INITIAL\_REQUESTS\ \ \ 10000}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00048}\doxymbox{\hyperlink{mm__allocator_8c_a802eef66116f38f6770d78d0acb700d8}{00048}}\ \textcolor{preprocessor}{\#define\ MM\_ALLOCATOR\_INITIAL\_SEGMENTS\ \ \ \ \ \ \ \ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00049}\doxymbox{\hyperlink{mm__allocator_8c_a049a9e0d7331a1e75367b56f8b12c171}{00049}}\ \textcolor{preprocessor}{\#define\ MM\_ALLOCATOR\_INITIAL\_MALLOC\_REQUESTS\ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00050}\doxymbox{\hyperlink{mm__allocator_8c_abf6bf8756097ebdd897823e2f21f331c}{00050}}\ \textcolor{preprocessor}{\#define\ MM\_ALLOCATOR\_INITIAL\_STATES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00052}00052\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00053}00053\ \textcolor{comment}{\ *\ Allocator\ Segments\ Freed\ Cond}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00054}00054\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00055}\doxymbox{\hyperlink{mm__allocator_8c_ab07e908b2ecfb2a34e8984c9de77e6fa}{00055}}\ \textcolor{preprocessor}{\#define\ MM\_ALLOCATOR\_FREED\_FLAG\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x80000000ul}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00056}\doxymbox{\hyperlink{mm__allocator_8c_a08bd76eca3756b2928765a24c0b48bf0}{00056}}\ \textcolor{preprocessor}{\#define\ MM\_ALLOCATOR\_REQUEST\_IS\_FREE(request)\ \ ((request)-\/>size\ \&\ MM\_ALLOCATOR\_FREED\_FLAG)}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00057}\doxymbox{\hyperlink{mm__allocator_8c_a80309bde56ae41eff7208dc9092ef460}{00057}}\ \textcolor{preprocessor}{\#define\ MM\_ALLOCATOR\_REQUEST\_SET\_FREE(request)\ ((request)-\/>size\ |=\ MM\_ALLOCATOR\_FREED\_FLAG)}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00058}\doxymbox{\hyperlink{mm__allocator_8c_a47dade121d72e6ad6177f5536a33a26c}{00058}}\ \textcolor{preprocessor}{\#define\ MM\_ALLOCATOR\_REQUEST\_SIZE(request)\ \ \ \ \ ((request)-\/>size\ \&\ \string~(MM\_ALLOCATOR\_FREED\_FLAG))}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00060}00060\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00061}00061\ \textcolor{comment}{\ *\ Reference\ (Header\ of\ every\ memory\ allocated)}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00062}00062\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00063}\doxymbox{\hyperlink{structmm__allocator__reference__t}{00063}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00064}\doxymbox{\hyperlink{structmm__allocator__reference__t_ad5f8e607150522715271587a05f0b107}{00064}}\ \ \ uint32\_t\ \doxymbox{\hyperlink{structmm__allocator__reference__t_ad5f8e607150522715271587a05f0b107}{segment\_idx}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00065}\doxymbox{\hyperlink{structmm__allocator__reference__t_a57549c4dc2f8baf243fc45c601404b5f}{00065}}\ \ \ uint32\_t\ \doxymbox{\hyperlink{structmm__allocator__reference__t_a57549c4dc2f8baf243fc45c601404b5f}{request\_idx}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00066}00066\ \}\ \doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00067}00067\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00068}00068\ \textcolor{comment}{\ *\ Memory\ Request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00069}00069\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00070}\doxymbox{\hyperlink{structmm__allocator__request__t}{00070}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00071}00071\ \ \ \textcolor{comment}{//\ Request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00072}\doxymbox{\hyperlink{structmm__allocator__request__t_abd8eb01c8b700c9f9307c62f09dcd7eb}{00072}}\ \ \ uint32\_t\ \doxymbox{\hyperlink{structmm__allocator__request__t_abd8eb01c8b700c9f9307c62f09dcd7eb}{offset}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00073}\doxymbox{\hyperlink{structmm__allocator__request__t_addd89b2b5a5aaf31d0e087101f476498}{00073}}\ \ \ uint32\_t\ \doxymbox{\hyperlink{structmm__allocator__request__t_addd89b2b5a5aaf31d0e087101f476498}{size}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00074}00074\ \ \ \textcolor{comment}{//\ Log}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00075}00075\ \textcolor{preprocessor}{\#ifdef\ MM\_ALLOCATOR\_LOG}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00076}00076\ \ \ uint64\_t\ timestamp;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00077}00077\ \ \ \textcolor{keywordtype}{char}*\ func\_name;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00078}00078\ \ \ uint64\_t\ line\_no;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00079}00079\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00080}00080\ \}\ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00081}\doxymbox{\hyperlink{structmm__malloc__request__t}{00081}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00082}00082\ \ \ \textcolor{comment}{//\ Request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00083}\doxymbox{\hyperlink{structmm__malloc__request__t_a5d6f98864c73e49552dc33e9f122917b}{00083}}\ \ \ \textcolor{keywordtype}{void}*\ \doxymbox{\hyperlink{structmm__malloc__request__t_a5d6f98864c73e49552dc33e9f122917b}{mem}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00084}\doxymbox{\hyperlink{structmm__malloc__request__t_a73c8b00948e89a9554fdcc02517af5fd}{00084}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__malloc__request__t_a73c8b00948e89a9554fdcc02517af5fd}{size}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00085}00085\ \ \ \textcolor{comment}{//\ Log}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00086}00086\ \textcolor{preprocessor}{\#ifdef\ MM\_ALLOCATOR\_LOG}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00087}00087\ \ \ uint64\_t\ timestamp;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00088}00088\ \ \ \textcolor{keywordtype}{char}*\ func\_name;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00089}00089\ \ \ uint64\_t\ line\_no;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00090}00090\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00091}00091\ \ \ \textcolor{comment}{//\ MM\ Reference}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00092}\doxymbox{\hyperlink{structmm__malloc__request__t_a13a94095a7dfeafe62f65463838c00a8}{00092}}\ \ \ \doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*\ \doxymbox{\hyperlink{structmm__malloc__request__t_a13a94095a7dfeafe62f65463838c00a8}{reference}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00093}00093\ \}\ \doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00094}00094\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00095}00095\ \textcolor{comment}{\ *\ Memory\ Segments}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00096}00096\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00097}\doxymbox{\hyperlink{structmm__allocator__segment__t}{00097}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00098}00098\ \ \ \textcolor{comment}{//\ Index\ (ID)}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00099}\doxymbox{\hyperlink{structmm__allocator__segment__t_a9fc8143e48d6b21178547042a5fd2b89}{00099}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__allocator__segment__t_a9fc8143e48d6b21178547042a5fd2b89}{idx}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Index\ in\ the\ segments\ vector}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00100}00100\ \ \ \textcolor{comment}{//\ Memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00101}\doxymbox{\hyperlink{structmm__allocator__segment__t_a11dbffe251f59ed491fcfb751900b8dc}{00101}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__allocator__segment__t_a11dbffe251f59ed491fcfb751900b8dc}{size}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Total\ memory\ available}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00102}\doxymbox{\hyperlink{structmm__allocator__segment__t_aeaa2f056933f10106eaefbf9075bb2c4}{00102}}\ \ \ \textcolor{keywordtype}{void}*\ \doxymbox{\hyperlink{structmm__allocator__segment__t_aeaa2f056933f10106eaefbf9075bb2c4}{memory}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00103}\doxymbox{\hyperlink{structmm__allocator__segment__t_aecb6dacb139b3c82c1c0da666c157a29}{00103}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__allocator__segment__t_aecb6dacb139b3c82c1c0da666c157a29}{used}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bytes\ used\ (offset\ to\ memory\ next\ free\ byte)}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00104}00104\ \ \ \textcolor{comment}{//\ Requests}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00105}\doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{00105}}\ \ \ \doxymbox{\hyperlink{structvector__t}{vector\_t}}*\ \doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{requests}};\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Memory\ requests\ (mm\_allocator\_request\_t)}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00106}00106\ \}\ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00108}00108\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00109}00109\ \textcolor{comment}{\ *\ Segments}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00110}00110\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00111}\doxymbox{\hyperlink{mm__allocator_8c_ac59dbe43d6e9a6b8c9c149fb9f9b463a}{00111}}\ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \doxymbox{\hyperlink{mm__allocator_8c_ac59dbe43d6e9a6b8c9c149fb9f9b463a}{mm\_allocator\_segment\_new}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00112}00112\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00113}00113\ \ \ \textcolor{comment}{//\ Allocate\ handler}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00114}00114\ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ (\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*)\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}));}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00115}00115\ \ \ \textcolor{comment}{//\ Index}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00116}00116\ \ \ \textcolor{keyword}{const}\ uint64\_t\ segment\_idx\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aac5a4a42e2d108725f1efb1025a46020}{segments}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00117}00117\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a9fc8143e48d6b21178547042a5fd2b89}{idx}}\ =\ segment\_idx;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00118}00118\ \ \ \textcolor{comment}{//\ Memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00119}00119\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a11dbffe251f59ed491fcfb751900b8dc}{size}}\ =\ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a651ffd69b674c522543d48d224f44563}{segment\_size}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00120}00120\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_aeaa2f056933f10106eaefbf9075bb2c4}{memory}}\ =\ malloc(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a651ffd69b674c522543d48d224f44563}{segment\_size}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00121}00121\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_aecb6dacb139b3c82c1c0da666c157a29}{used}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00122}00122\ \ \ \textcolor{comment}{//\ Requests}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00123}00123\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{requests}}\ =\ \doxymbox{\hyperlink{vector_8h_a4786de815d5637b2ee097263a582d1a0}{vector\_new}}(\doxymbox{\hyperlink{mm__allocator_8c_a7a1dedeef8d1cf9122f1984064637643}{MM\_ALLOCATOR\_SEGMENT\_INITIAL\_REQUESTS}},\doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00124}00124\ \ \ \textcolor{comment}{//\ Add\ to\ segments}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00125}00125\ \ \ \doxymbox{\hyperlink{vector_8h_a04da31aeb07f7f2f981feb97a65730f4}{vector\_insert}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aac5a4a42e2d108725f1efb1025a46020}{segments}},segment,\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00126}00126\ \ \ \textcolor{comment}{//\ Return}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00127}00127\ \ \ \textcolor{keywordflow}{return}\ segment;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00128}00128\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00129}\doxymbox{\hyperlink{mm__allocator_8c_ac462a2d95d1b12cde16b40a24bd0aec9}{00129}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_ac462a2d95d1b12cde16b40a24bd0aec9}{mm\_allocator\_segment\_clear}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00130}00130\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00131}00131\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_aecb6dacb139b3c82c1c0da666c157a29}{used}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00132}00132\ \ \ \doxymbox{\hyperlink{vector_8h_aaa7e86baaa12fb648e515991c8416017}{vector\_clear}}(segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00133}00133\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00134}\doxymbox{\hyperlink{mm__allocator_8c_ace3f478c03d87082d79b023351ebc14b}{00134}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_ace3f478c03d87082d79b023351ebc14b}{mm\_allocator\_segment\_delete}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00135}00135\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00136}00136\ \ \ \doxymbox{\hyperlink{vector_8c_a20a5c81de9d61719072d55eac137d3c0}{vector\_delete}}(segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00137}00137\ \ \ free(segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_aeaa2f056933f10106eaefbf9075bb2c4}{memory}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00138}00138\ \ \ free(segment);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00139}00139\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00140}\doxymbox{\hyperlink{mm__allocator_8c_a3e848b65dc1a17fc6139cca21404130a}{00140}}\ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}}*\ \doxymbox{\hyperlink{mm__allocator_8c_a3e848b65dc1a17fc6139cca21404130a}{mm\_allocator\_segment\_get\_request}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00141}00141\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00142}00142\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ request\_idx)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00143}00143\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{requests}},request\_idx,\doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00145}\doxymbox{\hyperlink{mm__allocator_8c_a6f47e5420078c0271c2d3e54d9c02c73}{00145}}\ uint64\_t\ \doxymbox{\hyperlink{mm__allocator_8c_a6f47e5420078c0271c2d3e54d9c02c73}{mm\_allocator\_segment\_get\_num\_requests}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00146}00146\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00147}00147\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00148}00148\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00149}00149\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00150}00150\ \textcolor{comment}{\ *\ Setup}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00151}00151\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00152}\doxymbox{\hyperlink{mm__allocator_8c_a88d0d229ad2eb882e34b33c347884907}{00152}}\ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \doxymbox{\hyperlink{mm__allocator_8c_a88d0d229ad2eb882e34b33c347884907}{mm\_allocator\_new}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00153}00153\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ segment\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00154}00154\ \ \ \textcolor{comment}{//\ Allocate\ handler}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00155}00155\ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator\ =\ (\doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*)\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}));}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00156}00156\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a4ac258978fa37e426a34737fa8b06ce3}{request\_ticker}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00157}00157\ \ \ \textcolor{comment}{//\ Segments}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00158}00158\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a651ffd69b674c522543d48d224f44563}{segment\_size}}\ =\ segment\_size;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00159}00159\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aac5a4a42e2d108725f1efb1025a46020}{segments}}\ =\ \doxymbox{\hyperlink{vector_8h_a4786de815d5637b2ee097263a582d1a0}{vector\_new}}(\doxymbox{\hyperlink{mm__allocator_8c_a802eef66116f38f6770d78d0acb700d8}{MM\_ALLOCATOR\_INITIAL\_SEGMENTS}},\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00160}00160\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aaebc60a103de38b99009c9a211ea77a4}{segments\_free}}\ =\ \doxymbox{\hyperlink{vector_8h_a4786de815d5637b2ee097263a582d1a0}{vector\_new}}(\doxymbox{\hyperlink{mm__allocator_8c_a802eef66116f38f6770d78d0acb700d8}{MM\_ALLOCATOR\_INITIAL\_SEGMENTS}},\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00161}00161\ \ \ \textcolor{comment}{//\ Allocate\ an\ initial\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00162}00162\ \textcolor{preprocessor}{\#ifndef\ MM\_ALLOCATOR\_FORCE\_MALLOC}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00163}00163\ \textcolor{preprocessor}{\#ifndef\ MM\_ALLOCATOR\_DISABLE}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00164}00164\ \ \ \doxymbox{\hyperlink{mm__allocator_8c_ac59dbe43d6e9a6b8c9c149fb9f9b463a}{mm\_allocator\_segment\_new}}(mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00165}00165\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00166}00166\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00167}00167\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_addd2bbf7728e313dcaa16a72fa564012}{current\_segment\_idx}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00168}00168\ \ \ \textcolor{comment}{//\ Malloc\ Memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00169}00169\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}}\ =\ \doxymbox{\hyperlink{vector_8h_a4786de815d5637b2ee097263a582d1a0}{vector\_new}}(\doxymbox{\hyperlink{mm__allocator_8c_a049a9e0d7331a1e75367b56f8b12c171}{MM\_ALLOCATOR\_INITIAL\_MALLOC\_REQUESTS}},\doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00170}00170\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_ae82fb3dbeba6985f33cac32c66cdc546}{malloc\_requests\_freed}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00171}00171\ \ \ \textcolor{comment}{//\ Return}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00172}00172\ \ \ \textcolor{keywordflow}{return}\ mm\_allocator;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00173}00173\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00174}\doxymbox{\hyperlink{mm__allocator_8c_aed161b2464e7e0fe75f8695a3c4a60bb}{00174}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_aed161b2464e7e0fe75f8695a3c4a60bb}{mm\_allocator\_clear}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00175}00175\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00176}00176\ \ \ \textcolor{comment}{//\ Clear\ segments}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00177}00177\ \ \ \doxymbox{\hyperlink{vector_8h_aaa7e86baaa12fb648e515991c8416017}{vector\_clear}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aaebc60a103de38b99009c9a211ea77a4}{segments\_free}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00178}00178\ \ \ \doxymbox{\hyperlink{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}{VECTOR\_ITERATE}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aac5a4a42e2d108725f1efb1025a46020}{segments}},segment\_ptr,p,\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00179}00179\ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_ac462a2d95d1b12cde16b40a24bd0aec9}{mm\_allocator\_segment\_clear}}(*segment\_ptr);\ \textcolor{comment}{//\ Clear\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00180}00180\ \ \ \ \ \doxymbox{\hyperlink{vector_8h_a04da31aeb07f7f2f981feb97a65730f4}{vector\_insert}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aaebc60a103de38b99009c9a211ea77a4}{segments\_free}},*segment\_ptr,\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*);\ \textcolor{comment}{//\ Add\ to\ free\ segments}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00181}00181\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00182}00182\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_addd2bbf7728e313dcaa16a72fa564012}{current\_segment\_idx}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00183}00183\ \ \ \textcolor{comment}{//\ Clear\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00184}00184\ \ \ \doxymbox{\hyperlink{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}{VECTOR\_ITERATE}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}},malloc\_request,m,\doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}})\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00185}00185\ \ \ \ \ \textcolor{keywordflow}{if}\ (malloc\_request-\/>size\ >\ 0)\ free(malloc\_request-\/>mem);\ \textcolor{comment}{//\ Free\ malloc\ requests}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00186}00186\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00187}00187\ \ \ \doxymbox{\hyperlink{vector_8h_aaa7e86baaa12fb648e515991c8416017}{vector\_clear}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00188}00188\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_ae82fb3dbeba6985f33cac32c66cdc546}{malloc\_requests\_freed}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00189}00189\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00190}\doxymbox{\hyperlink{mm__allocator_8c_a5a178f665979a8a66aa46d3479d4d221}{00190}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_a5a178f665979a8a66aa46d3479d4d221}{mm\_allocator\_delete}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00191}00191\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00192}00192\ \ \ \textcolor{comment}{//\ Free\ segments}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00193}00193\ \ \ \doxymbox{\hyperlink{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}{VECTOR\_ITERATE}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aac5a4a42e2d108725f1efb1025a46020}{segments}},segment\_ptr,p,\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00194}00194\ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_ace3f478c03d87082d79b023351ebc14b}{mm\_allocator\_segment\_delete}}(*segment\_ptr);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00195}00195\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00196}00196\ \ \ \doxymbox{\hyperlink{vector_8c_a20a5c81de9d61719072d55eac137d3c0}{vector\_delete}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aac5a4a42e2d108725f1efb1025a46020}{segments}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00197}00197\ \ \ \doxymbox{\hyperlink{vector_8c_a20a5c81de9d61719072d55eac137d3c0}{vector\_delete}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aaebc60a103de38b99009c9a211ea77a4}{segments\_free}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00198}00198\ \ \ \textcolor{comment}{//\ Free\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00199}00199\ \ \ \doxymbox{\hyperlink{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}{VECTOR\_ITERATE}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}},malloc\_request,m,\doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}})\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00200}00200\ \ \ \ \ \textcolor{keywordflow}{if}\ (malloc\_request-\/>size\ >\ 0)\ free(malloc\_request-\/>mem);\ \textcolor{comment}{//\ Free\ malloc\ requests}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00201}00201\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00202}00202\ \ \ \doxymbox{\hyperlink{vector_8c_a20a5c81de9d61719072d55eac137d3c0}{vector\_delete}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00203}00203\ \ \ \textcolor{comment}{//\ Free\ handler}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00204}00204\ \ \ free(mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00205}00205\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00206}00206\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00207}00207\ \textcolor{comment}{\ *\ Accessors}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00208}00208\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00209}\doxymbox{\hyperlink{mm__allocator_8c_aa95a3864c0e60b5c08e6ba363070ffb1}{00209}}\ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \doxymbox{\hyperlink{mm__allocator_8c_aa95a3864c0e60b5c08e6ba363070ffb1}{mm\_allocator\_get\_segment}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00210}00210\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00211}00211\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ segment\_idx)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00212}00212\ \ \ \textcolor{keywordflow}{return}\ *(\doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aac5a4a42e2d108725f1efb1025a46020}{segments}},segment\_idx,\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*));}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00213}00213\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00214}\doxymbox{\hyperlink{mm__allocator_8c_a06d35baab85ca8045a5740722131f0a6}{00214}}\ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \doxymbox{\hyperlink{mm__allocator_8c_a06d35baab85ca8045a5740722131f0a6}{mm\_allocator\_get\_segment\_free}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00215}00215\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00216}00216\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ segment\_idx)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00217}00217\ \ \ \textcolor{keywordflow}{return}\ *(\doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aaebc60a103de38b99009c9a211ea77a4}{segments\_free}},segment\_idx,\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*));}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00218}00218\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00219}\doxymbox{\hyperlink{mm__allocator_8c_a8116982e4005a6a57e357ecc3e60582f}{00219}}\ uint64\_t\ \doxymbox{\hyperlink{mm__allocator_8c_a8116982e4005a6a57e357ecc3e60582f}{mm\_allocator\_get\_num\_segments}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00220}00220\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00221}00221\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aac5a4a42e2d108725f1efb1025a46020}{segments}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00222}00222\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00223}\doxymbox{\hyperlink{mm__allocator_8c_a6471478621247800c92f0830006543cf}{00223}}\ uint64\_t\ \doxymbox{\hyperlink{mm__allocator_8c_a6471478621247800c92f0830006543cf}{mm\_allocator\_get\_num\_segments\_free}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00224}00224\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00225}00225\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aaebc60a103de38b99009c9a211ea77a4}{segments\_free}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00226}00226\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00227}00227\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00228}00228\ \textcolor{comment}{\ *\ Allocate}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00229}00229\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00230}\doxymbox{\hyperlink{mm__allocator_8c_a5bb06498140aada7cdf1de1c03139b0a}{00230}}\ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \doxymbox{\hyperlink{mm__allocator_8c_a5bb06498140aada7cdf1de1c03139b0a}{mm\_allocator\_fetch\_segment}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00231}00231\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00232}00232\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_bytes)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00233}00233\ \ \ \textcolor{comment}{//\ Fetch\ current\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00234}00234\ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ curr\_segment\ =}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00235}00235\ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_aa95a3864c0e60b5c08e6ba363070ffb1}{mm\_allocator\_get\_segment}}(mm\_allocator,mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_addd2bbf7728e313dcaa16a72fa564012}{current\_segment\_idx}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00236}00236\ \ \ \textcolor{comment}{//\ Check\ overall\ segment\ size}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00237}00237\ \ \ \textcolor{keywordflow}{if}\ (num\_bytes\ >\ curr\_segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a11dbffe251f59ed491fcfb751900b8dc}{size}}/2)\ \{\ \textcolor{comment}{//\ Never\ buy\ anything\ you\ cannot\ afford\ twice}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00238}00238\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ \textcolor{comment}{//\ Memory\ request\ over\ max-\/request\ size}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00239}00239\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00240}00240\ \ \ \textcolor{comment}{//\ Check\ available\ segment\ size}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00241}00241\ \ \ \textcolor{keywordflow}{if}\ (curr\_segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_aecb6dacb139b3c82c1c0da666c157a29}{used}}\ +\ num\_bytes\ <=\ curr\_segment-\/>size)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00242}00242\ \ \ \ \ \textcolor{keywordflow}{return}\ curr\_segment;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00243}00243\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00244}00244\ \ \ \textcolor{comment}{//\ Check\ overall\ segment\ size}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00245}00245\ \ \ \textcolor{keywordflow}{if}\ (num\_bytes\ >\ curr\_segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a11dbffe251f59ed491fcfb751900b8dc}{size}})\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00246}00246\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ \textcolor{comment}{//\ Memory\ request\ over\ segment\ size}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00247}00247\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00248}00248\ \ \ \textcolor{comment}{//\ Get\ free\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00249}00249\ \ \ \textcolor{keyword}{const}\ uint64\_t\ free\_segments\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a6471478621247800c92f0830006543cf}{mm\_allocator\_get\_num\_segments\_free}}(mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00250}00250\ \ \ \textcolor{keywordflow}{if}\ (free\_segments\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00251}00251\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00252}00252\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a06d35baab85ca8045a5740722131f0a6}{mm\_allocator\_get\_segment\_free}}(mm\_allocator,free\_segments-\/1);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00253}00253\ \ \ \ \ \doxymbox{\hyperlink{vector_8h_af48538f2eaa5b5742ac30e756a8aa757}{vector\_dec\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aaebc60a103de38b99009c9a211ea77a4}{segments\_free}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00254}00254\ \ \ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_addd2bbf7728e313dcaa16a72fa564012}{current\_segment\_idx}}\ =\ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a9fc8143e48d6b21178547042a5fd2b89}{idx}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00255}00255\ \ \ \ \ \textcolor{keywordflow}{return}\ segment;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00256}00256\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00257}00257\ \ \ \textcolor{comment}{//\ Allocate\ new\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00258}00258\ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ \doxymbox{\hyperlink{mm__allocator_8c_ac59dbe43d6e9a6b8c9c149fb9f9b463a}{mm\_allocator\_segment\_new}}(mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00259}00259\ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_addd2bbf7728e313dcaa16a72fa564012}{current\_segment\_idx}}\ =\ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a9fc8143e48d6b21178547042a5fd2b89}{idx}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00260}00260\ \ \ \textcolor{keywordflow}{return}\ segment;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00261}00261\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00262}\doxymbox{\hyperlink{mm__allocator_8c_a85b3a701730ab5b54b6fccd9399d7ee5}{00262}}\ \textcolor{keywordtype}{void}*\ \doxymbox{\hyperlink{mm__allocator_8c_a85b3a701730ab5b54b6fccd9399d7ee5}{mm\_allocator\_allocate}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00263}00263\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00264}00264\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_bytes,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00265}00265\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ zero\_mem,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00266}00266\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ align\_bytes}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00267}00267\ \#ifdef\ MM\_ALLOCATOR\_LOG}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00268}00268\ \ \ \ \ ,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ func\_name,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00269}00269\ \ \ \ \ uint64\_t\ line\_no}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00270}00270\ \#endif}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00271}00271\ \ \ \ \ )\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00272}00272\ \textcolor{preprocessor}{\#ifdef\ MM\_ALLOCATOR\_DISABLE}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00273}00273\ \ \ \textcolor{keywordtype}{void}*\ memory\ =\ calloc(1,num\_bytes);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00274}00274\ \ \ \textcolor{keywordflow}{if}\ (zero\_mem)\ memset(memory,0,num\_bytes);\ \textcolor{comment}{//\ Set\ zero}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00275}00275\ \ \ \textcolor{keywordflow}{return}\ memory;\ \textcolor{comment}{//\ TODO:\ alignment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00276}00276\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00277}00277\ \ \ \textcolor{comment}{//\ Zero\ check}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00278}00278\ \ \ \textcolor{keywordflow}{if}\ (num\_bytes\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00279}00279\ \ \ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}MMAllocator\ error.\ Zero\ bytes\ requested\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00280}00280\ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00281}00281\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00282}00282\ \ \ \textcolor{comment}{//\ Add\ payload}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00283}00283\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_bytes\_allocated\ =\ num\_bytes\ +\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}})\ +\ align\_bytes;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00284}00284\ \ \ \textcolor{comment}{//\ Fetch\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00285}00285\ \textcolor{preprocessor}{\#ifdef\ MM\_ALLOCATOR\_FORCE\_MALLOC}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00286}00286\ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ NULL;\ \textcolor{comment}{//\ Force\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00287}00287\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00288}00288\ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a5bb06498140aada7cdf1de1c03139b0a}{mm\_allocator\_fetch\_segment}}(mm\_allocator,num\_bytes\_allocated);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00289}00289\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00290}00290\ \ \ \textcolor{keywordflow}{if}\ (segment\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00291}00291\ \ \ \ \ \textcolor{comment}{//\ Allocate\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00292}00292\ \ \ \ \ \textcolor{keywordtype}{void}*\ \textcolor{keyword}{const}\ memory\_base\ =\ segment-\/>memory\ +\ segment-\/>used;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00293}00293\ \ \ \ \ \textcolor{keywordflow}{if}\ (zero\_mem)\ memset(memory\_base,0,num\_bytes\_allocated);\ \textcolor{comment}{//\ Set\ zero}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00294}00294\ \ \ \ \ \textcolor{comment}{//\ Compute\ aligned\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00295}00295\ \ \ \ \ \textcolor{keywordtype}{void}*\ memory\_aligned\ =\ memory\_base\ +\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}})\ +\ align\_bytes;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00296}00296\ \ \ \ \ \textcolor{keywordflow}{if}\ (align\_bytes\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00297}00297\ \ \ \ \ \ \ memory\_aligned\ =\ memory\_aligned\ -\/\ ((uintptr\_t)memory\_aligned\ \%\ align\_bytes);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00298}00298\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00299}00299\ \ \ \ \ \textcolor{comment}{//\ Set\ mm\_reference}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00300}00300\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*\ \textcolor{keyword}{const}\ mm\_reference\ =\ (\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*)(memory\_aligned\ -\/\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}));}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00301}00301\ \ \ \ \ mm\_reference-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_ad5f8e607150522715271587a05f0b107}{segment\_idx}}\ =\ segment-\/>idx;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00302}00302\ \ \ \ \ mm\_reference-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_a57549c4dc2f8baf243fc45c601404b5f}{request\_idx}}\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a6f47e5420078c0271c2d3e54d9c02c73}{mm\_allocator\_segment\_get\_num\_requests}}(segment);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00303}00303\ \ \ \ \ \textcolor{comment}{//\ Add\ request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00304}00304\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}}*\ request;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00305}00305\ \ \ \ \ \doxymbox{\hyperlink{vector_8h_a77b7a9afa88a10ca886a84883b65a069}{vector\_alloc\_new}}(segment-\/>requests,\doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}},request);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00306}00306\ \ \ \ \ request-\/>\doxymbox{\hyperlink{structmm__allocator__request__t_abd8eb01c8b700c9f9307c62f09dcd7eb}{offset}}\ =\ segment-\/>used;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00307}00307\ \ \ \ \ request-\/>\doxymbox{\hyperlink{structmm__allocator__request__t_addd89b2b5a5aaf31d0e087101f476498}{size}}\ =\ num\_bytes\_allocated;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00308}00308\ \textcolor{preprocessor}{\#ifdef\ MM\_ALLOCATOR\_LOG}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00309}00309\ \ \ \ \ request-\/>timestamp\ =\ (mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a4ac258978fa37e426a34737fa8b06ce3}{request\_ticker}})++;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00310}00310\ \ \ \ \ request-\/>func\_name\ =\ (\textcolor{keywordtype}{char}*)func\_name;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00311}00311\ \ \ \ \ request-\/>line\_no\ =\ line\_no;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00312}00312\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00313}00313\ \ \ \ \ \textcolor{comment}{//\ Update\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00314}00314\ \ \ \ \ segment-\/>used\ +=\ num\_bytes\_allocated;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00315}00315\ \ \ \ \ \textcolor{comment}{//\ Return\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00316}00316\ \ \ \ \ \textcolor{keywordflow}{return}\ memory\_aligned;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00317}00317\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00318}00318\ \ \ \ \ \textcolor{comment}{//\ Malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00319}00319\ \ \ \ \ \textcolor{keywordtype}{void}*\ \textcolor{keyword}{const}\ memory\_base\ =\ malloc(num\_bytes\_allocated);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00320}00320\ \ \ \ \ \textcolor{keywordflow}{if}\ (zero\_mem)\ memset(memory\_base,0,num\_bytes\_allocated);\ \textcolor{comment}{//\ Set\ zero}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00321}00321\ \ \ \ \ \textcolor{comment}{//\ Compute\ aligned\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00322}00322\ \ \ \ \ \textcolor{keywordtype}{void}*\ memory\_aligned\ =\ memory\_base\ +\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}})\ +\ align\_bytes;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00323}00323\ \ \ \ \ \textcolor{keywordflow}{if}\ (align\_bytes\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00324}00324\ \ \ \ \ \ \ memory\_aligned\ =\ memory\_aligned\ -\/\ ((uintptr\_t)memory\_aligned\ \%\ align\_bytes);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00325}00325\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00326}00326\ \ \ \ \ \textcolor{comment}{//\ Set\ reference}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00327}00327\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*\ \textcolor{keyword}{const}\ mm\_reference\ =\ (\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*)(memory\_aligned\ -\/\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}));}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00328}00328\ \ \ \ \ mm\_reference-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_ad5f8e607150522715271587a05f0b107}{segment\_idx}}\ =\ UINT32\_MAX;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00329}00329\ \ \ \ \ mm\_reference-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_a57549c4dc2f8baf243fc45c601404b5f}{request\_idx}}\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00330}00330\ \ \ \ \ \textcolor{comment}{//\ Add\ malloc-\/request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00331}00331\ \ \ \ \ \doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}}*\ request;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00332}00332\ \ \ \ \ \doxymbox{\hyperlink{vector_8h_a77b7a9afa88a10ca886a84883b65a069}{vector\_alloc\_new}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}},\doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}},request);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00333}00333\ \ \ \ \ request-\/>\doxymbox{\hyperlink{structmm__malloc__request__t_a5d6f98864c73e49552dc33e9f122917b}{mem}}\ =\ memory\_base;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00334}00334\ \ \ \ \ request-\/>\doxymbox{\hyperlink{structmm__malloc__request__t_a73c8b00948e89a9554fdcc02517af5fd}{size}}\ =\ num\_bytes\_allocated;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00335}00335\ \textcolor{preprocessor}{\#ifdef\ MM\_ALLOCATOR\_LOG}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00336}00336\ \ \ \ \ request-\/>timestamp\ =\ (mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a4ac258978fa37e426a34737fa8b06ce3}{request\_ticker}})++;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00337}00337\ \ \ \ \ request-\/>func\_name\ =\ (\textcolor{keywordtype}{char}*)func\_name;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00338}00338\ \ \ \ \ request-\/>line\_no\ =\ line\_no;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00339}00339\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00340}00340\ \ \ \ \ request-\/>\doxymbox{\hyperlink{structmm__malloc__request__t_a13a94095a7dfeafe62f65463838c00a8}{reference}}\ =\ mm\_reference;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00341}00341\ \ \ \ \ \textcolor{comment}{//\ Return\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00342}00342\ \ \ \ \ \textcolor{keywordflow}{return}\ memory\_aligned;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00343}00343\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00344}00344\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00345}00345\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00346}00346\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00347}00347\ \textcolor{comment}{\ *\ Allocator\ Free}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00348}00348\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00349}\doxymbox{\hyperlink{mm__allocator_8c_a1621c655fa0be06b0a8feb4233a3efc2}{00349}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_a1621c655fa0be06b0a8feb4233a3efc2}{mm\_allocator\_free\_malloc\_request}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00350}00350\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00351}00351\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*\ \textcolor{keyword}{const}\ mm\_reference)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00352}00352\ \ \ \textcolor{comment}{//\ Fetch\ request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00353}00353\ \ \ \doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}}*\ \textcolor{keyword}{const}\ request\ =}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00354}00354\ \ \ \ \ \ \ \doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}},mm\_reference-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_a57549c4dc2f8baf243fc45c601404b5f}{request\_idx}},\doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00355}00355\ \ \ \textcolor{comment}{//\ Check\ double-\/free}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00356}00356\ \ \ \textcolor{keywordflow}{if}\ (request-\/>\doxymbox{\hyperlink{structmm__malloc__request__t_a73c8b00948e89a9554fdcc02517af5fd}{size}}\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00357}00357\ \ \ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}MMAllocator\ error:\ double\ free\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00358}00358\ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00359}00359\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00360}00360\ \ \ \textcolor{comment}{//\ Free\ request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00361}00361\ \ \ request-\/>\doxymbox{\hyperlink{structmm__malloc__request__t_a73c8b00948e89a9554fdcc02517af5fd}{size}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00362}00362\ \ \ free(request-\/>\doxymbox{\hyperlink{structmm__malloc__request__t_a5d6f98864c73e49552dc33e9f122917b}{mem}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00363}00363\ \ \ ++(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_ae82fb3dbeba6985f33cac32c66cdc546}{malloc\_requests\_freed}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00364}00364\ \ \ \textcolor{comment}{//\ Check\ number\ of\ freed\ requests}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00365}00365\ \ \ \textcolor{keywordflow}{if}\ (mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_ae82fb3dbeba6985f33cac32c66cdc546}{malloc\_requests\_freed}}\ >=\ 1000)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00366}00366\ \ \ \ \ \textcolor{comment}{//\ Remove\ freed\ requests}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00367}00367\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_requests\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00368}00368\ \ \ \ \ \doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}}*\ \textcolor{keyword}{const}\ requests\ =\ \doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}},\doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00369}00369\ \ \ \ \ uint64\_t\ i,\ busy\_requests\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00370}00370\ \ \ \ \ \textcolor{keywordflow}{for}\ (i=0;i<num\_requests;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00371}00371\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (requests[i].size\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00372}00372\ \ \ \ \ \ \ \ \ requests[busy\_requests]\ =\ requests[i];}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00373}00373\ \ \ \ \ \ \ \ \ requests[busy\_requests].\doxymbox{\hyperlink{structmm__malloc__request__t_a13a94095a7dfeafe62f65463838c00a8}{reference}}-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_a57549c4dc2f8baf243fc45c601404b5f}{request\_idx}}\ =\ busy\_requests;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00374}00374\ \ \ \ \ \ \ \ \ ++busy\_requests;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00375}00375\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00376}00376\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00377}00377\ \ \ \ \ \doxymbox{\hyperlink{vector_8h_a44866c41c3b4831b671a176fce9c0c67}{vector\_set\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}},busy\_requests);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00378}00378\ \ \ \ \ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_ae82fb3dbeba6985f33cac32c66cdc546}{malloc\_requests\_freed}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00379}00379\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00380}00380\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00381}\doxymbox{\hyperlink{mm__allocator_8c_a28fe5be1dceddba315ac2e78dee09f40}{00381}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_a28fe5be1dceddba315ac2e78dee09f40}{mm\_allocator\_free\_allocator\_request}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00382}00382\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00383}00383\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*\ \textcolor{keyword}{const}\ mm\_reference)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00384}00384\ \ \ \textcolor{comment}{//\ Fetch\ segment\ and\ request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00385}00385\ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00386}00386\ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_aa95a3864c0e60b5c08e6ba363070ffb1}{mm\_allocator\_get\_segment}}(mm\_allocator,mm\_reference-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_ad5f8e607150522715271587a05f0b107}{segment\_idx}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00387}00387\ \ \ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}}*\ \textcolor{keyword}{const}\ request\ =}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00388}00388\ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a3e848b65dc1a17fc6139cca21404130a}{mm\_allocator\_segment\_get\_request}}(segment,mm\_reference-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_a57549c4dc2f8baf243fc45c601404b5f}{request\_idx}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00389}00389\ \ \ \textcolor{comment}{//\ Check\ double-\/free}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00390}00390\ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{mm__allocator_8c_a08bd76eca3756b2928765a24c0b48bf0}{MM\_ALLOCATOR\_REQUEST\_IS\_FREE}}(request))\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00391}00391\ \ \ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}MMAllocator\ error:\ double\ free\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00392}00392\ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00393}00393\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00394}00394\ \ \ \textcolor{comment}{//\ Free\ request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00395}00395\ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a80309bde56ae41eff7208dc9092ef460}{MM\_ALLOCATOR\_REQUEST\_SET\_FREE}}(request);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00396}00396\ \ \ \textcolor{comment}{//\ Free\ contiguous\ request(s)\ at\ the\ end\ of\ the\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00397}00397\ \ \ uint64\_t\ num\_requests\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a6f47e5420078c0271c2d3e54d9c02c73}{mm\_allocator\_segment\_get\_num\_requests}}(segment);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00398}00398\ \ \ \textcolor{keywordflow}{if}\ (mm\_reference-\/>\doxymbox{\hyperlink{structmm__allocator__reference__t_a57549c4dc2f8baf243fc45c601404b5f}{request\_idx}}\ ==\ num\_requests-\/1)\ \{\ \textcolor{comment}{//\ Is\ the\ last\ request?}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00399}00399\ \ \ \ \ -\/-\/num\_requests;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00400}00400\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}}*\ request\ =}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00401}00401\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{requests}},\doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}})\ +\ (num\_requests-\/1);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00402}00402\ \ \ \ \ \textcolor{keywordflow}{while}\ (num\_requests>0\ \&\&\ \doxymbox{\hyperlink{mm__allocator_8c_a08bd76eca3756b2928765a24c0b48bf0}{MM\_ALLOCATOR\_REQUEST\_IS\_FREE}}(request))\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00403}00403\ \ \ \ \ \ \ -\/-\/num\_requests;\ \textcolor{comment}{//\ Free\ request}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00404}00404\ \ \ \ \ \ \ -\/-\/request;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00405}00405\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00406}00406\ \ \ \ \ \textcolor{comment}{//\ Update\ segment\ used}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00407}00407\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_requests\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00408}00408\ \ \ \ \ \ \ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_aecb6dacb139b3c82c1c0da666c157a29}{used}}\ =\ request-\/>\doxymbox{\hyperlink{structmm__allocator__request__t_abd8eb01c8b700c9f9307c62f09dcd7eb}{offset}}\ +\ request-\/>\doxymbox{\hyperlink{structmm__allocator__request__t_addd89b2b5a5aaf31d0e087101f476498}{size}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00409}00409\ \ \ \ \ \ \ \doxymbox{\hyperlink{vector_8h_a44866c41c3b4831b671a176fce9c0c67}{vector\_set\_used}}(segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a0eeadacc8194dc04a0c48a9a0059cbb1}{requests}},num\_requests);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00410}00410\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00411}00411\ \ \ \ \ \ \ \textcolor{comment}{//\ Segment\ fully\ freed}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00412}00412\ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_ac462a2d95d1b12cde16b40a24bd0aec9}{mm\_allocator\_segment\_clear}}(segment);\ \textcolor{comment}{//\ Clear}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00413}00413\ \ \ \ \ \ \ \textcolor{comment}{//\ Add\ to\ free\ segments\ (if\ it\ is\ not\ the\ current\ segment)}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00414}00414\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a9fc8143e48d6b21178547042a5fd2b89}{idx}}\ !=\ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_addd2bbf7728e313dcaa16a72fa564012}{current\_segment\_idx}})\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00415}00415\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{vector_8h_a04da31aeb07f7f2f981feb97a65730f4}{vector\_insert}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_aaebc60a103de38b99009c9a211ea77a4}{segments\_free}},segment,\doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00416}00416\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00417}00417\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00418}00418\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00419}00419\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00420}\doxymbox{\hyperlink{mm__allocator_8c_a2e6409a5effa914e7489bb4ec6db5188}{00420}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_a2e6409a5effa914e7489bb4ec6db5188}{mm\_allocator\_free}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00421}00421\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00422}00422\ \ \ \ \ \textcolor{keywordtype}{void}*\ \textcolor{keyword}{const}\ memory)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00423}00423\ \textcolor{preprocessor}{\#ifdef\ MM\_ALLOCATOR\_DISABLE}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00424}00424\ \ \ free(memory);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00425}00425\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00426}00426\ \ \ \textcolor{comment}{//\ Get\ reference}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00427}00427\ \ \ \textcolor{keywordtype}{void}*\ \textcolor{keyword}{const}\ effective\_memory\ =\ memory\ -\/\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00428}00428\ \ \ \doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*\ \textcolor{keyword}{const}\ mm\_reference\ =\ (\doxymbox{\hyperlink{structmm__allocator__reference__t}{mm\_allocator\_reference\_t}}*)\ effective\_memory;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00429}00429\ \ \ \textcolor{keywordflow}{if}\ (mm\_reference-\/>segment\_idx\ ==\ UINT32\_MAX)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00430}00430\ \ \ \ \ \textcolor{comment}{//\ Free\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00431}00431\ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a1621c655fa0be06b0a8feb4233a3efc2}{mm\_allocator\_free\_malloc\_request}}(mm\_allocator,mm\_reference);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00432}00432\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00433}00433\ \ \ \ \ \textcolor{comment}{//\ Free\ allocator\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00434}00434\ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a28fe5be1dceddba315ac2e78dee09f40}{mm\_allocator\_free\_allocator\_request}}(mm\_allocator,mm\_reference);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00435}00435\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00436}00436\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00437}00437\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00438}00438\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00439}00439\ \textcolor{comment}{\ *\ Utils}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00440}00440\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00441}\doxymbox{\hyperlink{mm__allocator_8c_aeb25c11282d496d2537b547641738a7c}{00441}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_aeb25c11282d496d2537b547641738a7c}{mm\_allocator\_get\_occupation}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00442}00442\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00443}00443\ \ \ \ \ uint64\_t*\ \textcolor{keyword}{const}\ bytes\_used\_malloc,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00444}00444\ \ \ \ \ uint64\_t*\ \textcolor{keyword}{const}\ bytes\_used\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00445}00445\ \ \ \ \ uint64\_t*\ \textcolor{keyword}{const}\ bytes\_free\_available,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00446}00446\ \ \ \ \ uint64\_t*\ \textcolor{keyword}{const}\ bytes\_free\_fragmented)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00447}00447\ \ \ \textcolor{comment}{//\ Init}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00448}00448\ \ \ *bytes\_used\_malloc\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00449}00449\ \ \ *bytes\_used\_allocator\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00450}00450\ \ \ *bytes\_free\_available\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00451}00451\ \ \ *bytes\_free\_fragmented\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00452}00452\ \ \ \textcolor{comment}{//\ Check\ allocator\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00453}00453\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_segments\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a8116982e4005a6a57e357ecc3e60582f}{mm\_allocator\_get\_num\_segments}}(mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00454}00454\ \ \ int64\_t\ segment\_idx,\ request\_idx;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00455}00455\ \ \ \textcolor{keywordflow}{for}\ (segment\_idx=0;segment\_idx<num\_segments;++segment\_idx)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00456}00456\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ \doxymbox{\hyperlink{mm__allocator_8c_aa95a3864c0e60b5c08e6ba363070ffb1}{mm\_allocator\_get\_segment}}(mm\_allocator,segment\_idx);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00457}00457\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_requests\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a6f47e5420078c0271c2d3e54d9c02c73}{mm\_allocator\_segment\_get\_num\_requests}}(segment);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00458}00458\ \ \ \ \ \textcolor{keywordtype}{bool}\ memory\_freed\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00459}00459\ \ \ \ \ \textcolor{keywordflow}{for}\ (request\_idx=num\_requests-\/1;request\_idx>=0;-\/-\/request\_idx)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00460}00460\ \ \ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}}*\ \textcolor{keyword}{const}\ request\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a3e848b65dc1a17fc6139cca21404130a}{mm\_allocator\_segment\_get\_request}}(segment,request\_idx);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00461}00461\ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ size\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a47dade121d72e6ad6177f5536a33a26c}{MM\_ALLOCATOR\_REQUEST\_SIZE}}(request);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00462}00462\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{mm__allocator_8c_a08bd76eca3756b2928765a24c0b48bf0}{MM\_ALLOCATOR\_REQUEST\_IS\_FREE}}(request))\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00463}00463\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (memory\_freed)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ *bytes\_free\_available\ +=\ size;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00465}00465\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ *bytes\_free\_fragmented\ +=\ size;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00467}00467\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00468}00468\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00469}00469\ \ \ \ \ \ \ \ \ memory\_freed\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00470}00470\ \ \ \ \ \ \ \ \ *bytes\_used\_allocator\ +=\ size;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00471}00471\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00472}00472\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00473}00473\ \ \ \ \ \textcolor{comment}{//\ Account\ for\ free\ space\ at\ the\ end\ of\ the\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00474}00474\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_requests\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00475}00475\ \ \ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}}*\ \textcolor{keyword}{const}\ request\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a3e848b65dc1a17fc6139cca21404130a}{mm\_allocator\_segment\_get\_request}}(segment,num\_requests-\/1);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00476}00476\ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ bytes\_free\_at\_end\ =\ segment-\/>\doxymbox{\hyperlink{structmm__allocator__segment__t_a11dbffe251f59ed491fcfb751900b8dc}{size}}\ -\/\ (request-\/>\doxymbox{\hyperlink{structmm__allocator__request__t_abd8eb01c8b700c9f9307c62f09dcd7eb}{offset}}+request-\/>\doxymbox{\hyperlink{structmm__allocator__request__t_addd89b2b5a5aaf31d0e087101f476498}{size}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00477}00477\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (segment\_idx\ ==\ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_addd2bbf7728e313dcaa16a72fa564012}{current\_segment\_idx}})\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00478}00478\ \ \ \ \ \ \ \ \ *bytes\_free\_available\ +=\ bytes\_free\_at\_end;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00479}00479\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00480}00480\ \ \ \ \ \ \ \ \ *bytes\_free\_fragmented\ +=\ bytes\_free\_at\_end;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00481}00481\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00482}00482\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00483}00483\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00484}00484\ \ \ \textcolor{comment}{//\ Check\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00485}00485\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_requests\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00486}00486\ \ \ \doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}}*\ \textcolor{keyword}{const}\ requests\ =\ \doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}},\doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00487}00487\ \ \ uint64\_t\ i;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00488}00488\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<num\_requests;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00489}00489\ \ \ \ \ *bytes\_used\_malloc\ +=\ requests[i].\doxymbox{\hyperlink{structmm__malloc__request__t_a73c8b00948e89a9554fdcc02517af5fd}{size}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00490}00490\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00491}00491\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00492}00492\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00493}00493\ \textcolor{comment}{\ *\ Display}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00494}00494\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00495}\doxymbox{\hyperlink{mm__allocator_8c_a39dec62537902caaac9c1e7369c61d41}{00495}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_a39dec62537902caaac9c1e7369c61d41}{mm\_allocator\_print\_allocator\_request}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00496}00496\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00497}00497\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}}*\ \textcolor{keyword}{const}\ request,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00498}00498\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ segment\_idx,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00499}00499\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ request\_idx)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00500}00500\ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ [\#\%03"{}}\ PRIu64\ \textcolor{stringliteral}{"{}/\%05"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\(\backslash\)t\%s\(\backslash\)t@\%08u\(\backslash\)t(\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ Bytes)"{}}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00501}00501\ \#ifdef\ MM\_ALLOCATOR\_LOG}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)t\%s:\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\(\backslash\)t\{ts=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\}"{}}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00503}00503\ \#endif}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ segment\_idx,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ request\_idx,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a08bd76eca3756b2928765a24c0b48bf0}{MM\_ALLOCATOR\_REQUEST\_IS\_FREE}}(request)\ ?\ \textcolor{stringliteral}{"{}Free]\ \ \ \ \ "{}}\ :\ \textcolor{stringliteral}{"{}Allocated]"{}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ request-\/>\doxymbox{\hyperlink{structmm__allocator__request__t_abd8eb01c8b700c9f9307c62f09dcd7eb}{offset}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ (uint64\_t)\doxymbox{\hyperlink{mm__allocator_8c_a47dade121d72e6ad6177f5536a33a26c}{MM\_ALLOCATOR\_REQUEST\_SIZE}}(request)}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00510}00510\ \#ifdef\ MM\_ALLOCATOR\_LOG}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ ,request-\/>func\_name,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ request-\/>line\_no,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ request-\/>timestamp}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00514}00514\ \#endif}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00515}00515\ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00516}00516\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00517}\doxymbox{\hyperlink{mm__allocator_8c_aa30f9ba2826542809d56ff79f4225940}{00517}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_aa30f9ba2826542809d56ff79f4225940}{mm\_allocator\_print\_malloc\_request}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00518}00518\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00519}00519\ \ \ \ \ \doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}}*\ \textcolor{keyword}{const}\ request)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00520}00520\ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ [@\%p"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\(\backslash\)t(\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ Bytes)"{}}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00521}00521\ \#ifdef\ MM\_ALLOCATOR\_LOG}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)t\%s:\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\(\backslash\)t\{ts=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\}"{}}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00523}00523\ \#endif}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ request-\/>\doxymbox{\hyperlink{structmm__malloc__request__t_a5d6f98864c73e49552dc33e9f122917b}{mem}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ request-\/>\doxymbox{\hyperlink{structmm__malloc__request__t_a73c8b00948e89a9554fdcc02517af5fd}{size}}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00527}00527\ \#ifdef\ MM\_ALLOCATOR\_LOG}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ ,request-\/>func\_name,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ request-\/>line\_no,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ request-\/>timestamp}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00531}00531\ \#endif}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00532}00532\ \ \ \ \ \ \ );}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00533}00533\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00534}\doxymbox{\hyperlink{mm__allocator_8c_a2fee120f74a945c37139436e74876b8a}{00534}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_a2fee120f74a945c37139436e74876b8a}{mm\_allocator\_print\_allocator\_requests}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00535}00535\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00536}00536\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00537}00537\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ compact\_free)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00538}00538\ \ \ \textcolor{comment}{//\ Print\ allocator\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00539}00539\ \ \ uint64\_t\ segment\_idx,\ request\_idx;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00540}00540\ \ \ uint64\_t\ free\_block\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00541}00541\ \ \ \textcolor{keywordtype}{bool}\ has\_requests\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00542}00542\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ =>\ MMAllocator.requests\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00543}00543\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_segments\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a8116982e4005a6a57e357ecc3e60582f}{mm\_allocator\_get\_num\_segments}}(mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00544}00544\ \ \ \textcolor{keywordflow}{for}\ (segment\_idx=0;segment\_idx<num\_segments;++segment\_idx)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00545}00545\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__segment__t}{mm\_allocator\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ \doxymbox{\hyperlink{mm__allocator_8c_aa95a3864c0e60b5c08e6ba363070ffb1}{mm\_allocator\_get\_segment}}(mm\_allocator,segment\_idx);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00546}00546\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_requests\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a6f47e5420078c0271c2d3e54d9c02c73}{mm\_allocator\_segment\_get\_num\_requests}}(segment);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00547}00547\ \ \ \ \ \textcolor{keywordflow}{for}\ (request\_idx=0;request\_idx<num\_requests;++request\_idx)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00548}00548\ \ \ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__request__t}{mm\_allocator\_request\_t}}*\ \textcolor{keyword}{const}\ request\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a3e848b65dc1a17fc6139cca21404130a}{mm\_allocator\_segment\_get\_request}}(segment,request\_idx);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00549}00549\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (compact\_free)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00550}00550\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{mm__allocator_8c_a08bd76eca3756b2928765a24c0b48bf0}{MM\_ALLOCATOR\_REQUEST\_IS\_FREE}}(request))\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ free\_block\ +=\ \doxymbox{\hyperlink{mm__allocator_8c_a47dade121d72e6ad6177f5536a33a26c}{MM\_ALLOCATOR\_REQUEST\_SIZE}}(request);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00552}00552\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (free\_block\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ [n/a\(\backslash\)tFree]\ \ \ \ \ \ \(\backslash\)t(\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ Bytes)\(\backslash\)n"{}},free\_block);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ free\_block\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00556}00556\ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00557}00557\ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a39dec62537902caaac9c1e7369c61d41}{mm\_allocator\_print\_allocator\_request}}(stream,request,segment\_idx,request\_idx);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00558}00558\ \ \ \ \ \ \ \ \ \ \ has\_requests\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00559}00559\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00560}00560\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00561}00561\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a39dec62537902caaac9c1e7369c61d41}{mm\_allocator\_print\_allocator\_request}}(stream,request,segment\_idx,request\_idx);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00562}00562\ \ \ \ \ \ \ \ \ has\_requests\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00563}00563\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00564}00564\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00565}00565\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00566}00566\ \ \ \textcolor{keywordflow}{if}\ (!has\_requests)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00567}00567\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ -\/-\/\ No\ requests\ -\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00568}00568\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00569}00569\ \ \ \textcolor{comment}{//\ Print\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00570}00570\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ =>\ MMMalloc.requests\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00571}00571\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_requests\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00572}00572\ \ \ \doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}}*\ \textcolor{keyword}{const}\ requests\ =\ \doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a6ada9efa406dacceb85fe7790969e5e6}{malloc\_requests}},\doxymbox{\hyperlink{structmm__malloc__request__t}{mm\_malloc\_request\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00573}00573\ \ \ uint64\_t\ i;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00574}00574\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<num\_requests;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00575}00575\ \ \ \ \ \textcolor{keywordflow}{if}\ (requests[i].size\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00576}00576\ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_aa30f9ba2826542809d56ff79f4225940}{mm\_allocator\_print\_malloc\_request}}(stream,requests+i);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00577}00577\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00578}00578\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00579}00579\ \ \ \textcolor{keywordflow}{if}\ (num\_requests\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00580}00580\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ -\/-\/\ No\ requests\ -\/-\/\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00581}00581\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00582}00582\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00583}\doxymbox{\hyperlink{mm__allocator_8c_ae5ff25aef9cf1a1c79c4cbbc3bd3ca60}{00583}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__allocator_8c_ae5ff25aef9cf1a1c79c4cbbc3bd3ca60}{mm\_allocator\_print}}(}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00584}00584\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00585}00585\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator,}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00586}00586\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ display\_requests)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00587}00587\ \ \ \textcolor{comment}{//\ Print\ header}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00588}00588\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}MMAllocator.report\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00589}00589\ \ \ \textcolor{comment}{//\ Print\ segment\ information}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00590}00590\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_segments\ =\ \doxymbox{\hyperlink{mm__allocator_8c_a8116982e4005a6a57e357ecc3e60582f}{mm\_allocator\_get\_num\_segments}}(mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00591}00591\ \ \ \textcolor{keyword}{const}\ uint64\_t\ segment\_size\ =\ mm\_allocator-\/>\doxymbox{\hyperlink{structmm__allocator__t_a651ffd69b674c522543d48d224f44563}{segment\_size}};}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00592}00592\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ =>\ Segments.allocated\ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}},num\_segments);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00593}00593\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ =>\ Segments.size\ \ \ \ \ \ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ MB\(\backslash\)n"{}},segment\_size/(1024*1024));}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00594}00594\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ =>\ Memory.available\ \ \ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ MB\(\backslash\)n"{}},num\_segments*(segment\_size/(1024*1024)));}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00595}00595\ \ \ \textcolor{comment}{//\ Print\ memory\ information}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00596}00596\ \ \ uint64\_t\ bytes\_used\_malloc,\ bytes\_used\_allocator;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00597}00597\ \ \ uint64\_t\ bytes\_free\_available,\ bytes\_free\_fragmented;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00598}00598\ \ \ \doxymbox{\hyperlink{mm__allocator_8c_aeb25c11282d496d2537b547641738a7c}{mm\_allocator\_get\_occupation}}(mm\_allocator,\&bytes\_used\_malloc,\&bytes\_used\_allocator,\&bytes\_free\_available,\&bytes\_free\_fragmented);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00599}00599\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ bytes\_total\ =\ num\_segments\ *\ segment\_size;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00600}00600\ \ \ \textcolor{keyword}{const}\ uint64\_t\ bytes\_free\ =\ bytes\_free\_available\ +\ bytes\_free\_fragmented;}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00601}00601\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ =>\ Memory.used\ \ \ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ (\%2.1f\ \%\%)\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00602}00602\ \ \ \ \ \ \ bytes\_used\_allocator,100.0f*(\textcolor{keywordtype}{float})bytes\_used\_allocator/bytes\_total);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00603}00603\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ =>\ Memory.free\ \ \ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ (\%2.1f\ \%\%)\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00604}00604\ \ \ \ \ \ \ bytes\_free,100.0f*(\textcolor{keywordtype}{float})bytes\_free/bytes\_total);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00605}00605\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ \ \ =>\ Memory.free.available\ \ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ (\%2.1f\ \%\%)\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00606}00606\ \ \ \ \ \ \ bytes\_free\_available,100.0f*(\textcolor{keywordtype}{float})bytes\_free\_available/bytes\_total);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00607}00607\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ \ \ =>\ Memory.free.fragmented\ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ (\%2.1f\ \%\%)\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00608}00608\ \ \ \ \ \ \ bytes\_free\_fragmented,100.0f*(\textcolor{keywordtype}{float})bytes\_free\_fragmented/bytes\_total);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00609}00609\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ =>\ Memory.malloc\ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}},bytes\_used\_malloc);}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00610}00610\ \ \ \textcolor{comment}{//\ Print\ memory\ requests}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00611}00611\ \ \ \textcolor{keywordflow}{if}\ (display\_requests)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00612}00612\ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a2fee120f74a945c37139436e74876b8a}{mm\_allocator\_print\_allocator\_requests}}(stream,mm\_allocator,\textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00613}00613\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00614}00614\ \}}
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00615}00615\ }
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00616}00616\ }
+\DoxyCodeLine{\Hypertarget{mm__allocator_8c_source_l00617}00617\ }
+
+\end{DoxyCode}

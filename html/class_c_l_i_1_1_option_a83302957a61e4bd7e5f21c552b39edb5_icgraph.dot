@@ -1,0 +1,17 @@
+digraph "CLI::Option::allow_extra_args"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="CLI::Option::allow\l_extra_args",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CLI::retire_option",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i.html#a84edecf0b4d0e45e81b20c19e6c097ed",tooltip="Helper function to mark an option as retired."];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CLI::retire_option",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i.html#a6733544327ee85937c94d95aaa9b882d",tooltip="Helper function to mark an option as retired."];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="CLI::retire_option",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i.html#a2eae5d0a175c514839e83db937c2c98a",tooltip="Helper function to mark an option as retired."];
+  Node2 -> Node5 [id="edge4_Node000002_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="CLI::retire_option",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i.html#a28afc25e37f81840d50f2d0f2617aeb6",tooltip="Helper function to mark an option as retired."];
+}

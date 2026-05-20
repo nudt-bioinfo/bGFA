@@ -1,0 +1,204 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+offset.h File Reference}
+\hypertarget{wavefront__offset_8h}{}\label{wavefront__offset_8h}\index{src/wfa/wavefront/wavefront\_offset.h@{src/wfa/wavefront/wavefront\_offset.h}}
+This graph shows which files directly or indirectly include this file:\+
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_ad46ed6d4a63125219168a21066abcb26}{WAVEFRONT\+\_\+\+OFFSET\+\_\+\+NULL}}~(INT32\+\_\+\+MIN/\+2)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_a439f839f1fbabe13684474209d4eadb5}{WAVEFRONT\+\_\+\+LENGTH}}(lo,  hi)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_a07102e008c25090ce4eb4ec64dcf62fe}{WAVEFRONT\+\_\+V}}(k,  offset)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_a4b578347574878ed12e490f8a54044f5}{WAVEFRONT\+\_\+H}}(k,  offset)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_aa772d0c7f24cf612cff42049b71efcd3}{WAVEFRONT\+\_\+\+ANTIDIAGONAL}}(k,  offset)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_aa10843b3c9ac3b60bd47822c22dd39f3}{DPMATRIX\+\_\+\+DIAGONAL\+\_\+\+NULL}}~INT\+\_\+\+MAX
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_a3319441d39aa847021e3e979abb79b3b}{DPMATRIX\+\_\+\+DIAGONAL}}(h,  v)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_adb201a885d72cacf142beb1ba6e09661}{DPMATRIX\+\_\+\+ANTIDIAGONAL}}(h,  v)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_a7fc5555efe8335bbb6e04f4950eff0e7}{DPMATRIX\+\_\+\+OFFSET}}(h,  v)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__offset_8h_a4c99ed280cc79dc07a9d1c98c99c2327}{WAVEFRONT\+\_\+\+K\+\_\+\+INVERSE}}(k,  plen,  tlen)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int32\+\_\+t \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}}
+\item 
+typedef uint32\+\_\+t \doxymbox{\hyperlink{wavefront__offset_8h_ad2f2f0874303a1eb2599f056fb5bb836}{wf\+\_\+unsigned\+\_\+offset\+\_\+t}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{wavefront__offset_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{wavefront__offset_8h_adb201a885d72cacf142beb1ba6e09661}\index{wavefront\_offset.h@{wavefront\_offset.h}!DPMATRIX\_ANTIDIAGONAL@{DPMATRIX\_ANTIDIAGONAL}}
+\index{DPMATRIX\_ANTIDIAGONAL@{DPMATRIX\_ANTIDIAGONAL}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{DPMATRIX\_ANTIDIAGONAL}{DPMATRIX\_ANTIDIAGONAL}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_adb201a885d72cacf142beb1ba6e09661} 
+\+\#define DPMATRIX\+\_\+\+ANTIDIAGONAL(\begin{DoxyParamCaption}\item[{}]{h}{, }\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((h)+(v))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00056}{56}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_a3319441d39aa847021e3e979abb79b3b}\index{wavefront\_offset.h@{wavefront\_offset.h}!DPMATRIX\_DIAGONAL@{DPMATRIX\_DIAGONAL}}
+\index{DPMATRIX\_DIAGONAL@{DPMATRIX\_DIAGONAL}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{DPMATRIX\_DIAGONAL}{DPMATRIX\_DIAGONAL}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_a3319441d39aa847021e3e979abb79b3b} 
+\+\#define DPMATRIX\+\_\+\+DIAGONAL(\begin{DoxyParamCaption}\item[{}]{h}{, }\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((h)-\/(v))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_aa10843b3c9ac3b60bd47822c22dd39f3}\index{wavefront\_offset.h@{wavefront\_offset.h}!DPMATRIX\_DIAGONAL\_NULL@{DPMATRIX\_DIAGONAL\_NULL}}
+\index{DPMATRIX\_DIAGONAL\_NULL@{DPMATRIX\_DIAGONAL\_NULL}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{DPMATRIX\_DIAGONAL\_NULL}{DPMATRIX\_DIAGONAL\_NULL}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_aa10843b3c9ac3b60bd47822c22dd39f3} 
+\+\#define DPMATRIX\+\_\+\+DIAGONAL\+\_\+\+NULL~INT\+\_\+\+MAX}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00054}{54}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_a7fc5555efe8335bbb6e04f4950eff0e7}\index{wavefront\_offset.h@{wavefront\_offset.h}!DPMATRIX\_OFFSET@{DPMATRIX\_OFFSET}}
+\index{DPMATRIX\_OFFSET@{DPMATRIX\_OFFSET}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{DPMATRIX\_OFFSET}{DPMATRIX\_OFFSET}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_a7fc5555efe8335bbb6e04f4950eff0e7} 
+\+\#define DPMATRIX\+\_\+\+OFFSET(\begin{DoxyParamCaption}\item[{}]{h}{, }\item[{}]{v}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(h)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00057}{57}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_aa772d0c7f24cf612cff42049b71efcd3}\index{wavefront\_offset.h@{wavefront\_offset.h}!WAVEFRONT\_ANTIDIAGONAL@{WAVEFRONT\_ANTIDIAGONAL}}
+\index{WAVEFRONT\_ANTIDIAGONAL@{WAVEFRONT\_ANTIDIAGONAL}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{WAVEFRONT\_ANTIDIAGONAL}{WAVEFRONT\_ANTIDIAGONAL}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_aa772d0c7f24cf612cff42049b71efcd3} 
+\+\#define WAVEFRONT\+\_\+\+ANTIDIAGONAL(\begin{DoxyParamCaption}\item[{}]{k}{, }\item[{}]{offset}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(2*(offset)-\/(k))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00052}{52}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_a4b578347574878ed12e490f8a54044f5}\index{wavefront\_offset.h@{wavefront\_offset.h}!WAVEFRONT\_H@{WAVEFRONT\_H}}
+\index{WAVEFRONT\_H@{WAVEFRONT\_H}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{WAVEFRONT\_H}{WAVEFRONT\_H}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_a4b578347574878ed12e490f8a54044f5} 
+\+\#define WAVEFRONT\+\_\+H(\begin{DoxyParamCaption}\item[{}]{k}{, }\item[{}]{offset}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(offset)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00051}{51}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_a4c99ed280cc79dc07a9d1c98c99c2327}\index{wavefront\_offset.h@{wavefront\_offset.h}!WAVEFRONT\_K\_INVERSE@{WAVEFRONT\_K\_INVERSE}}
+\index{WAVEFRONT\_K\_INVERSE@{WAVEFRONT\_K\_INVERSE}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{WAVEFRONT\_K\_INVERSE}{WAVEFRONT\_K\_INVERSE}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_a4c99ed280cc79dc07a9d1c98c99c2327} 
+\+\#define WAVEFRONT\+\_\+\+K\+\_\+\+INVERSE(\begin{DoxyParamCaption}\item[{}]{k}{, }\item[{}]{plen}{, }\item[{}]{tlen}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((tlen)-\/(plen)-\/(k))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00059}{59}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_a439f839f1fbabe13684474209d4eadb5}\index{wavefront\_offset.h@{wavefront\_offset.h}!WAVEFRONT\_LENGTH@{WAVEFRONT\_LENGTH}}
+\index{WAVEFRONT\_LENGTH@{WAVEFRONT\_LENGTH}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{WAVEFRONT\_LENGTH}{WAVEFRONT\_LENGTH}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_a439f839f1fbabe13684474209d4eadb5} 
+\+\#define WAVEFRONT\+\_\+\+LENGTH(\begin{DoxyParamCaption}\item[{}]{lo}{, }\item[{}]{hi}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((hi)-\/(lo)+1)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00049}{49}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_ad46ed6d4a63125219168a21066abcb26}\index{wavefront\_offset.h@{wavefront\_offset.h}!WAVEFRONT\_OFFSET\_NULL@{WAVEFRONT\_OFFSET\_NULL}}
+\index{WAVEFRONT\_OFFSET\_NULL@{WAVEFRONT\_OFFSET\_NULL}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{WAVEFRONT\_OFFSET\_NULL}{WAVEFRONT\_OFFSET\_NULL}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_ad46ed6d4a63125219168a21066abcb26} 
+\+\#define WAVEFRONT\+\_\+\+OFFSET\+\_\+\+NULL~(INT32\+\_\+\+MIN/\+2)}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_a07102e008c25090ce4eb4ec64dcf62fe}\index{wavefront\_offset.h@{wavefront\_offset.h}!WAVEFRONT\_V@{WAVEFRONT\_V}}
+\index{WAVEFRONT\_V@{WAVEFRONT\_V}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{WAVEFRONT\_V}{WAVEFRONT\_V}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_a07102e008c25090ce4eb4ec64dcf62fe} 
+\+\#define WAVEFRONT\+\_\+V(\begin{DoxyParamCaption}\item[{}]{k}{, }\item[{}]{offset}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((offset)-\/(k))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00050}{50}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{wavefront__offset_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}\index{wavefront\_offset.h@{wavefront\_offset.h}!wf\_offset\_t@{wf\_offset\_t}}
+\index{wf\_offset\_t@{wf\_offset\_t}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{wf\_offset\_t}{wf\_offset\_t}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21} 
+typedef int32\+\_\+t \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00038}{38}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+
+\Hypertarget{wavefront__offset_8h_ad2f2f0874303a1eb2599f056fb5bb836}\index{wavefront\_offset.h@{wavefront\_offset.h}!wf\_unsigned\_offset\_t@{wf\_unsigned\_offset\_t}}
+\index{wf\_unsigned\_offset\_t@{wf\_unsigned\_offset\_t}!wavefront\_offset.h@{wavefront\_offset.h}}
+\doxysubsubsection{\texorpdfstring{wf\_unsigned\_offset\_t}{wf\_unsigned\_offset\_t}}
+{\footnotesize\ttfamily \label{wavefront__offset_8h_ad2f2f0874303a1eb2599f056fb5bb836} 
+typedef uint32\+\_\+t \doxymbox{\hyperlink{wavefront__offset_8h_ad2f2f0874303a1eb2599f056fb5bb836}{wf\+\_\+unsigned\+\_\+offset\+\_\+t}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__offset_8h_source_l00039}{39}} of file \doxymbox{\hyperlink{wavefront__offset_8h_source}{wavefront\+\_\+offset.\+h}}.
+

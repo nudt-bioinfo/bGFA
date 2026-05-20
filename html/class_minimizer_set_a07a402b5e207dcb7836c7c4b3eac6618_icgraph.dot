@@ -1,0 +1,11 @@
+digraph "MinimizerSet::getMinimizerFrombmin"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="MinimizerSet::getMinimizer\lFrombmin",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Load minimizers from a bMIN file."];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="MinimizerSet::MinimizerSet",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_minimizer_set.html#a02826c035cac4307033da9c26d83c4fd",tooltip="Constructor that loads minimizers from a bMIN file."];
+}

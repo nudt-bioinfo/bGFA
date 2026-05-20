@@ -1,0 +1,15 @@
+digraph "wavefront_unialign_print_status"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="wavefront_unialign\l_print_status",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="wavefront_aligner_print_mode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__aligner_8c.html#a297e5d90e31a78738f33073b219a2024",tooltip=" "];
+  Node1 -> Node3 [id="edge2_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="wavefront_slab_get_size",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__slab_8c.html#a03c38a93bddacb706fb0847031588799",tooltip=" "];
+  Node1 -> Node4 [id="edge3_Node000001_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="wf_backtrace_buffer\l_get_size_used",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__backtrace__buffer_8c.html#a32536bf793b32f66e39c38ff2b6f279e",tooltip=" "];
+}

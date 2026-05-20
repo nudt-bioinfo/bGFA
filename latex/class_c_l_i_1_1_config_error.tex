@@ -1,0 +1,81 @@
+\doxysection{CLI::\+Config\+Error Class Reference}
+\hypertarget{class_c_l_i_1_1_config_error}{}\label{class_c_l_i_1_1_config_error}\index{CLI::ConfigError@{CLI::ConfigError}}
+
+
+Thrown when extra values are found in an INI file.  
+
+
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+Config\+Error:\+
+% FIG 0
+
+
+Collaboration diagram for CLI::\+Config\+Error:\+
+% FIG 1
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_config_error}{Config\+Error}} \doxymbox{\hyperlink{class_c_l_i_1_1_config_error_ac99a7b10ea5e947f4a89a82f7a40870c}{Extras}} (std::\+string item)
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_config_error}{Config\+Error}} \doxymbox{\hyperlink{class_c_l_i_1_1_config_error_a909ce236b2deb557277721a8cb8bcbcc}{Not\+Configurable}} (std::\+string item)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_error}{CLI::\+\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_error_a28565e52e7527594d2c60c5aab14c9a6}{get\+\_\+exit\+\_\+code}} () const
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_error_a6acdbeb066f1d58a14156f05808b85a7}{get\+\_\+name}} () const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a7b30cbdb0c6f3ef3d5550df7d8e18904}{Error}} (std::\+string name, std::\+string msg, int exit\+\_\+code=static\+\_\+cast$<$ int $>$(\doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037ea45b3e4c35409fb597ea598dc4b984b8c}{Exit\+Codes::\+\+Base\+Class}}))
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a52187308eced1fc96f270ef384dbd7a2}{Error}} (std::\+string name, std::\+string msg, \doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037e}{Exit\+Codes}} exit\+\_\+code)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Thrown when extra values are found in an INI file. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01601}{1601}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1_config_error_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1_config_error_ac99a7b10ea5e947f4a89a82f7a40870c}\index{CLI::ConfigError@{CLI::ConfigError}!Extras@{Extras}}
+\index{Extras@{Extras}!CLI::ConfigError@{CLI::ConfigError}}
+\doxysubsubsection{\texorpdfstring{Extras()}{Extras()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_config_error_ac99a7b10ea5e947f4a89a82f7a40870c} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_config_error}{Config\+Error}} CLI::\+\+Config\+Error::\+\+Extras (\begin{DoxyParamCaption}\item[{std::\+string}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01604}{1604}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{class_c_l_i_1_1_config_error_a909ce236b2deb557277721a8cb8bcbcc}\index{CLI::ConfigError@{CLI::ConfigError}!NotConfigurable@{NotConfigurable}}
+\index{NotConfigurable@{NotConfigurable}!CLI::ConfigError@{CLI::ConfigError}}
+\doxysubsubsection{\texorpdfstring{NotConfigurable()}{NotConfigurable()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_config_error_a909ce236b2deb557277721a8cb8bcbcc} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_config_error}{Config\+Error}} CLI::\+\+Config\+Error::\+\+Not\+Configurable (\begin{DoxyParamCaption}\item[{std::\+string}]{item}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01605}{1605}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

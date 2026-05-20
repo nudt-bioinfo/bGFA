@@ -1,0 +1,232 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+heuristic.h File Reference}
+\hypertarget{wavefront__heuristic_8h}{}\label{wavefront__heuristic_8h}\index{src/wfa/wavefront/wavefront\_heuristic.h@{src/wfa/wavefront/wavefront\_heuristic.h}}
+This graph shows which files directly or indirectly include this file:\+
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170f}{wf\+\_\+heuristic\+\_\+strategy}} \{ \newline
+\doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa5655ae76980f1c963968bc609efcebaf}{wf\+\_\+heuristic\+\_\+none}} = 0x0000000000000000ul
+, \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170faa216d3dfec11873135bb0dbba85aaf6e}{wf\+\_\+heuristic\+\_\+banded\+\_\+static}} = 0x0000000000000001ul
+, \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa2823a1549f80f70901d0b37396f7cd38}{wf\+\_\+heuristic\+\_\+banded\+\_\+adaptive}} = 0x0000000000000002ul
+, \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fadcf1c9917b9320485e81264e4aece70e}{wf\+\_\+heuristic\+\_\+wfadaptive}} = 0x0000000000000004ul
+, \newline
+\doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa7b97818260bed4627131dc5b04ae42f9}{wf\+\_\+heuristic\+\_\+xdrop}} = 0x0000000000000010ul
+, \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fade8bbbd7e14e3f4e71f5dcdd85671d26}{wf\+\_\+heuristic\+\_\+zdrop}} = 0x0000000000000020ul
+, \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fafae7c9c547ce14cf7c40111fa7206986}{wf\+\_\+heuristic\+\_\+wfmash}} = 0x0000000000000040ul
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_af4930b7bd379dafaa4bcafcd0dbe6327}{wavefront\+\_\+heuristic\+\_\+set\+\_\+none}} (\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic)
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_a723c04647a317f8deb8e5f22197643fc}{wavefront\+\_\+heuristic\+\_\+set\+\_\+wfadaptive}} (\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic, const int min\+\_\+wavefront\+\_\+length, const int max\+\_\+distance\+\_\+threshold, const int steps\+\_\+between\+\_\+cutoffs)
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_aa45782b7f6c7d854b31684808cc642bc}{wavefront\+\_\+heuristic\+\_\+set\+\_\+wfmash}} (\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic, const int min\+\_\+wavefront\+\_\+length, const int max\+\_\+distance\+\_\+threshold, const int steps\+\_\+between\+\_\+cutoffs)
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_ae1729ed7a091d01ade2a300406af9a2c}{wavefront\+\_\+heuristic\+\_\+set\+\_\+xdrop}} (\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic, const int xdrop, const int steps\+\_\+between\+\_\+cutoffs)
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_a1ab65f34c247d08f9a089d34a3ac8861}{wavefront\+\_\+heuristic\+\_\+set\+\_\+zdrop}} (\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic, const int ydrop, const int steps\+\_\+between\+\_\+cutoffs)
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_aa36e395cbacd8cb964b9f421902901ce}{wavefront\+\_\+heuristic\+\_\+set\+\_\+banded\+\_\+static}} (\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic, const int band\+\_\+min\+\_\+k, const int band\+\_\+max\+\_\+k)
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_a2edbc9413ecab1e4d88af6a2fa4f7c2f}{wavefront\+\_\+heuristic\+\_\+set\+\_\+banded\+\_\+adaptive}} (\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic, const int band\+\_\+min\+\_\+k, const int band\+\_\+max\+\_\+k, const int steps\+\_\+between\+\_\+cutoffs)
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_a93430ca092518fb04ceca3ef13eb7362}{wavefront\+\_\+heuristic\+\_\+clear}} (\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic)
+\item 
+bool \doxymbox{\hyperlink{wavefront__heuristic_8h_a9e963e79ed6031b983d63487e3a84a38}{wavefront\+\_\+heuristic\+\_\+cufoff}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score, const int score\+\_\+mod)
+\item 
+void \doxymbox{\hyperlink{wavefront__heuristic_8h_aa9c2e855584f96debe1769f889b8e050}{wavefront\+\_\+heuristic\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+heuristic)
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{wavefront__heuristic_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170f}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wf\_heuristic\_strategy@{wf\_heuristic\_strategy}}
+\index{wf\_heuristic\_strategy@{wf\_heuristic\_strategy}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wf\_heuristic\_strategy}{wf\_heuristic\_strategy}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170f} 
+enum \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170f}{wf\+\_\+heuristic\+\_\+strategy}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_heuristic\_none@{wf\_heuristic\_none}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wf\_heuristic\_none@{wf\_heuristic\_none}}
+}\Hypertarget{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa5655ae76980f1c963968bc609efcebaf}\label{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa5655ae76980f1c963968bc609efcebaf} 
+wf\+\_\+heuristic\+\_\+none&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_heuristic\_banded\_static@{wf\_heuristic\_banded\_static}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wf\_heuristic\_banded\_static@{wf\_heuristic\_banded\_static}}
+}\Hypertarget{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170faa216d3dfec11873135bb0dbba85aaf6e}\label{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170faa216d3dfec11873135bb0dbba85aaf6e} 
+wf\+\_\+heuristic\+\_\+banded\+\_\+static&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_heuristic\_banded\_adaptive@{wf\_heuristic\_banded\_adaptive}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wf\_heuristic\_banded\_adaptive@{wf\_heuristic\_banded\_adaptive}}
+}\Hypertarget{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa2823a1549f80f70901d0b37396f7cd38}\label{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa2823a1549f80f70901d0b37396f7cd38} 
+wf\+\_\+heuristic\+\_\+banded\+\_\+adaptive&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_heuristic\_wfadaptive@{wf\_heuristic\_wfadaptive}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wf\_heuristic\_wfadaptive@{wf\_heuristic\_wfadaptive}}
+}\Hypertarget{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fadcf1c9917b9320485e81264e4aece70e}\label{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fadcf1c9917b9320485e81264e4aece70e} 
+wf\+\_\+heuristic\+\_\+wfadaptive&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_heuristic\_xdrop@{wf\_heuristic\_xdrop}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wf\_heuristic\_xdrop@{wf\_heuristic\_xdrop}}
+}\Hypertarget{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa7b97818260bed4627131dc5b04ae42f9}\label{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa7b97818260bed4627131dc5b04ae42f9} 
+wf\+\_\+heuristic\+\_\+xdrop&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_heuristic\_zdrop@{wf\_heuristic\_zdrop}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wf\_heuristic\_zdrop@{wf\_heuristic\_zdrop}}
+}\Hypertarget{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fade8bbbd7e14e3f4e71f5dcdd85671d26}\label{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fade8bbbd7e14e3f4e71f5dcdd85671d26} 
+wf\+\_\+heuristic\+\_\+zdrop&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_heuristic\_wfmash@{wf\_heuristic\_wfmash}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wf\_heuristic\_wfmash@{wf\_heuristic\_wfmash}}
+}\Hypertarget{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fafae7c9c547ce14cf7c40111fa7206986}\label{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fafae7c9c547ce14cf7c40111fa7206986} 
+wf\+\_\+heuristic\+\_\+wfmash&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{wavefront__heuristic_8h_source}{wavefront\+\_\+heuristic.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__heuristic_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__heuristic_8h_a93430ca092518fb04ceca3ef13eb7362}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_clear@{wavefront\_heuristic\_clear}}
+\index{wavefront\_heuristic\_clear@{wavefront\_heuristic\_clear}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_clear()}{wavefront\_heuristic\_clear()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_a93430ca092518fb04ceca3ef13eb7362} 
+void wavefront\+\_\+heuristic\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00114}{114}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{wavefront__heuristic_8h_a9e963e79ed6031b983d63487e3a84a38}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_cufoff@{wavefront\_heuristic\_cufoff}}
+\index{wavefront\_heuristic\_cufoff@{wavefront\_heuristic\_cufoff}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_cufoff()}{wavefront\_heuristic\_cufoff()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_a9e963e79ed6031b983d63487e3a84a38} 
+bool wavefront\+\_\+heuristic\+\_\+cufoff (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score}{, }\item[{const int}]{score\+\_\+mod}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00509}{509}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__heuristic_8h_aa9c2e855584f96debe1769f889b8e050}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_print@{wavefront\_heuristic\_print}}
+\index{wavefront\_heuristic\_print@{wavefront\_heuristic\_print}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_print()}{wavefront\_heuristic\_print()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_aa9c2e855584f96debe1769f889b8e050} 
+void wavefront\+\_\+heuristic\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00571}{571}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{wavefront__heuristic_8h_a2edbc9413ecab1e4d88af6a2fa4f7c2f}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_set\_banded\_adaptive@{wavefront\_heuristic\_set\_banded\_adaptive}}
+\index{wavefront\_heuristic\_set\_banded\_adaptive@{wavefront\_heuristic\_set\_banded\_adaptive}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_set\_banded\_adaptive()}{wavefront\_heuristic\_set\_banded\_adaptive()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_a2edbc9413ecab1e4d88af6a2fa4f7c2f} 
+void wavefront\+\_\+heuristic\+\_\+set\+\_\+banded\+\_\+adaptive (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{, }\item[{const int}]{band\+\_\+min\+\_\+k}{, }\item[{const int}]{band\+\_\+max\+\_\+k}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00102}{102}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__heuristic_8h_aa36e395cbacd8cb964b9f421902901ce}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_set\_banded\_static@{wavefront\_heuristic\_set\_banded\_static}}
+\index{wavefront\_heuristic\_set\_banded\_static@{wavefront\_heuristic\_set\_banded\_static}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_set\_banded\_static()}{wavefront\_heuristic\_set\_banded\_static()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_aa36e395cbacd8cb964b9f421902901ce} 
+void wavefront\+\_\+heuristic\+\_\+set\+\_\+banded\+\_\+static (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{, }\item[{const int}]{band\+\_\+min\+\_\+k}{, }\item[{const int}]{band\+\_\+max\+\_\+k}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00094}{94}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{wavefront__heuristic_8h_af4930b7bd379dafaa4bcafcd0dbe6327}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_set\_none@{wavefront\_heuristic\_set\_none}}
+\index{wavefront\_heuristic\_set\_none@{wavefront\_heuristic\_set\_none}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_set\_none()}{wavefront\_heuristic\_set\_none()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_af4930b7bd379dafaa4bcafcd0dbe6327} 
+void wavefront\+\_\+heuristic\+\_\+set\+\_\+none (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00040}{40}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{wavefront__heuristic_8h_a723c04647a317f8deb8e5f22197643fc}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_set\_wfadaptive@{wavefront\_heuristic\_set\_wfadaptive}}
+\index{wavefront\_heuristic\_set\_wfadaptive@{wavefront\_heuristic\_set\_wfadaptive}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_set\_wfadaptive()}{wavefront\_heuristic\_set\_wfadaptive()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_a723c04647a317f8deb8e5f22197643fc} 
+void wavefront\+\_\+heuristic\+\_\+set\+\_\+wfadaptive (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{, }\item[{const int}]{min\+\_\+wavefront\+\_\+length}{, }\item[{const int}]{max\+\_\+distance\+\_\+threshold}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{wavefront__heuristic_8h_aa45782b7f6c7d854b31684808cc642bc}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_set\_wfmash@{wavefront\_heuristic\_set\_wfmash}}
+\index{wavefront\_heuristic\_set\_wfmash@{wavefront\_heuristic\_set\_wfmash}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_set\_wfmash()}{wavefront\_heuristic\_set\_wfmash()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_aa45782b7f6c7d854b31684808cc642bc} 
+void wavefront\+\_\+heuristic\+\_\+set\+\_\+wfmash (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{, }\item[{const int}]{min\+\_\+wavefront\+\_\+length}{, }\item[{const int}]{max\+\_\+distance\+\_\+threshold}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00056}{56}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{wavefront__heuristic_8h_ae1729ed7a091d01ade2a300406af9a2c}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_set\_xdrop@{wavefront\_heuristic\_set\_xdrop}}
+\index{wavefront\_heuristic\_set\_xdrop@{wavefront\_heuristic\_set\_xdrop}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_set\_xdrop()}{wavefront\_heuristic\_set\_xdrop()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_ae1729ed7a091d01ade2a300406af9a2c} 
+void wavefront\+\_\+heuristic\+\_\+set\+\_\+xdrop (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{, }\item[{const int}]{xdrop}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00068}{68}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{wavefront__heuristic_8h_a1ab65f34c247d08f9a089d34a3ac8861}\index{wavefront\_heuristic.h@{wavefront\_heuristic.h}!wavefront\_heuristic\_set\_zdrop@{wavefront\_heuristic\_set\_zdrop}}
+\index{wavefront\_heuristic\_set\_zdrop@{wavefront\_heuristic\_set\_zdrop}!wavefront\_heuristic.h@{wavefront\_heuristic.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_heuristic\_set\_zdrop()}{wavefront\_heuristic\_set\_zdrop()}}
+{\footnotesize\ttfamily \label{wavefront__heuristic_8h_a1ab65f34c247d08f9a089d34a3ac8861} 
+void wavefront\+\_\+heuristic\+\_\+set\+\_\+zdrop (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+heuristic}{, }\item[{const int}]{ydrop}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__heuristic_8c_source_l00081}{81}} of file \doxymbox{\hyperlink{wavefront__heuristic_8c_source}{wavefront\+\_\+heuristic.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 11

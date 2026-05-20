@@ -1,0 +1,71 @@
+\doxysection{CLI::\+adl\+\_\+detail::\+is\+\_\+lexical\+\_\+castable\texorpdfstring{$<$}{<} T, S \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_c_l_i_1_1adl__detail_1_1is__lexical__castable}{}\label{class_c_l_i_1_1adl__detail_1_1is__lexical__castable}\index{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$@{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$}}
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr bool \doxymbox{\hyperlink{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_a9a57de30998229b13050b60545cff7a5}{value}} = decltype(\doxymbox{\hyperlink{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_a458b229c3351b947b1095dfd77a488d7}{test}}$<$T, S$>$(0))::\+value
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename TT, typename SS$>$ }\\static auto \doxymbox{\hyperlink{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_a458b229c3351b947b1095dfd77a488d7}{test}} (int) -\/$>$ decltype(lexical\+\_\+cast(std::\+declval$<$ const SS \& $>$(), std::\+declval$<$ TT \& $>$()), std::\+true\+\_\+type())
+\item 
+{\footnotesize template$<$typename, typename$>$ }\\static auto \doxymbox{\hyperlink{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_afc6c6c9e6fc8db4cb8750c35b387e749}{test}} (...) -\/$>$ std::\+false\+\_\+type
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename S = std::\+string$>$\newline
+class CLI::\+adl\+\_\+detail::\+is\+\_\+lexical\+\_\+castable$<$ T, S $>$}
+Check for existence of user-\/supplied lexical\+\_\+cast.
+
+This struct has to be in a separate namespace so that it doesn\textquotesingle{}t see our lexical\+\_\+cast overloads in \doxylink{namespace_c_l_i_1_1detail}{CLI::\+detail}. Standard says it shouldn\textquotesingle{}t see them if it\textquotesingle{}s defined before the corresponding lexical\+\_\+cast declarations, but this requires a working implementation of two-\/phase lookup, and not all compilers can boast that (msvc, ahem). 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01707}{1707}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_afc6c6c9e6fc8db4cb8750c35b387e749}\index{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$@{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$}!test@{test}}
+\index{test@{test}!CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$@{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_afc6c6c9e6fc8db4cb8750c35b387e749} 
+template$<$typename T, typename S = std::\+string$>$ \\
+template$<$typename, typename$>$ \\
+auto \doxymbox{\hyperlink{class_c_l_i_1_1adl__detail_1_1is__lexical__castable}{CLI::\+adl\+\_\+detail::\+is\+\_\+lexical\+\_\+castable}}$<$ T, S $>$::\+test (\begin{DoxyParamCaption}\item[{}]{...}{}\end{DoxyParamCaption}) -\/$>$  std::\+false\+\_\+type\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_a458b229c3351b947b1095dfd77a488d7}\index{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$@{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$}!test@{test}}
+\index{test@{test}!CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$@{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_a458b229c3351b947b1095dfd77a488d7} 
+template$<$typename T, typename S = std::\+string$>$ \\
+template$<$typename TT, typename SS$>$ \\
+auto \doxymbox{\hyperlink{class_c_l_i_1_1adl__detail_1_1is__lexical__castable}{CLI::\+adl\+\_\+detail::\+is\+\_\+lexical\+\_\+castable}}$<$ T, S $>$::\+test (\begin{DoxyParamCaption}\item[{int}]{}{}\end{DoxyParamCaption}) -\/$>$  decltype(lexical\+\_\+cast(std::\+declval$<$ const SS \& $>$(), std::\+declval$<$ TT \& $>$()), std::\+true\+\_\+type())\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_a9a57de30998229b13050b60545cff7a5}\index{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$@{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$}!value@{value}}
+\index{value@{value}!CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$@{CLI::adl\_detail::is\_lexical\_castable$<$ T, S $>$}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_a9a57de30998229b13050b60545cff7a5} 
+template$<$typename T, typename S = std::\+string$>$ \\
+bool \doxymbox{\hyperlink{class_c_l_i_1_1adl__detail_1_1is__lexical__castable}{CLI::\+adl\+\_\+detail::\+is\+\_\+lexical\+\_\+castable}}$<$ T, S $>$::\+value = decltype(\doxymbox{\hyperlink{class_c_l_i_1_1adl__detail_1_1is__lexical__castable_a458b229c3351b947b1095dfd77a488d7}{test}}$<$T, S$>$(0))::\+value\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01714}{1714}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

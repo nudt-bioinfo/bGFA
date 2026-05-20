@@ -1,0 +1,19 @@
+digraph "Walk::getStoreSize"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="Walk::getStoreSize",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Get the storage size of the Walk in uword_t units."];
+  Node1 -> Node2 [id="edge6_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="GFA::addWalk",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_g_f_a.html#a7b1f5e2cd94e509a723cb7601a993eb0",tooltip="Add a new walk to the GFA."];
+  Node1 -> Node3 [id="edge7_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="GFA::parseWalkLine",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_g_f_a.html#a758ab8179620ae4a9889c42e66db7f2f",tooltip="Parse a walk line from GFA file."];
+  Node3 -> Node4 [id="edge8_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="GFA::loadFromFileGfa",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_g_f_a.html#a1f0e3d6f5eaec8adbe2a81ead8d0897a",tooltip="Load GFA graph from a GFA format file."];
+  Node4 -> Node5 [id="edge9_Node000004_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="GFA::GFA",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_g_f_a.html#aac2d83c82be02dc80396ca8c43fd1469",tooltip="Loads GFA file (supports .gfa and .bgfa formats)."];
+  Node4 -> Node6 [id="edge10_Node000004_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="GFA::GFA",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_g_f_a.html#a6f7e94ad4768ac9aabe74f70b02b6fe2",tooltip="Loads GFA file (supports .gfa and .bgfa formats)."];
+}

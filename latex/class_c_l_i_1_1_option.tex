@@ -1,0 +1,2392 @@
+\doxysection{CLI::\+Option Class Reference}
+\hypertarget{class_c_l_i_1_1_option}{}\label{class_c_l_i_1_1_option}\index{CLI::Option@{CLI::Option}}
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+Option:\+
+% FIG 0
+
+
+Collaboration diagram for CLI::\+Option:\+
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{Indent}\textbf{ Basic}\par
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a72d6fb10f92fb81fc7a10327ce1a7da6}{Option}} (const Option \&)=delete
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_a4c6bad0d2ed76477d603c6439d18184e}{operator=}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \&)=delete
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+size\+\_\+t \doxymbox{\hyperlink{class_c_l_i_1_1_option_a80fde04b01db5b894001fb9c0c86be88}{count}} () const
+\begin{DoxyCompactList}\small\item\em Count the total number of times an option was passed. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_ab9d324306095b7af93bc09812f5b4dec}{empty}} () const
+\begin{DoxyCompactList}\small\item\em True if the option was not passed. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_ab73e846fb3a78ac7eff8b6cd6afb24a1}{operator bool}} () const
+\begin{DoxyCompactList}\small\item\em This bool operator returns true if any arguments were passed or the option callback is forced. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_l_i_1_1_option_abbd36aaff5cdca8b10346bafed51da39}{clear}} ()
+\begin{DoxyCompactList}\small\item\em Clear the parsed results (mostly for testing). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Setting options}\par
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a0b7cf6e62c1800a53ad314772eef6ed1}{expected}} (int value)
+\begin{DoxyCompactList}\small\item\em Set the number of expected arguments. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a5ce50b85bd7195531936a9e306aed9d1}{expected}} (int value\+\_\+min, int value\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Set the range of expected arguments. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a83302957a61e4bd7e5f21c552b39edb5}{allow\+\_\+extra\+\_\+args}} (bool value=true)
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_acf81df108f7fa668b63f5f36edf6a647}{get\+\_\+allow\+\_\+extra\+\_\+args}} () const
+\begin{DoxyCompactList}\small\item\em Get the current value of allow extra args. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a86d413992d2193c81db1ce250ddf2e26}{trigger\+\_\+on\+\_\+parse}} (bool value=true)
+\begin{DoxyCompactList}\small\item\em Set the value of trigger\+\_\+on\+\_\+parse which specifies that the option callback should be triggered on every parse. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a93b394e70e1f6c9f3e6d17cb1b7b82b5}{get\+\_\+trigger\+\_\+on\+\_\+parse}} () const
+\begin{DoxyCompactList}\small\item\em The status of trigger on parse. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ae07696e732630332ad126bed994f57a1}{force\+\_\+callback}} (bool value=true)
+\begin{DoxyCompactList}\small\item\em Set the value of force\+\_\+callback. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a4eb94edb9c0a98708283755c8429e43a}{get\+\_\+force\+\_\+callback}} () const
+\begin{DoxyCompactList}\small\item\em The status of force\+\_\+callback. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a81a26e9320e4ec616fbbd6fa3ad60ef7}{run\+\_\+callback\+\_\+for\+\_\+default}} (bool value=true)
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a5d0e8dc1c4c6e607fc210d4bd76d5292}{get\+\_\+run\+\_\+callback\+\_\+for\+\_\+default}} () const
+\begin{DoxyCompactList}\small\item\em Get the current value of run\+\_\+callback\+\_\+for\+\_\+default. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}} (\doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}} validator, const std::\+string \&validator\+\_\+name="{}"{})
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{class_c_l_i_1_1_validator}{Validator} with a built in type name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a4e3e8322ce7a54d981a699c3badda460}{check}} (std::\+function$<$ std::\+string(const std::\+string \&)$>$ \doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}}, std::\+string Validator\+\_\+description="{}"{}, std::\+string Validator\+\_\+name="{}"{})
+\begin{DoxyCompactList}\small\item\em Adds a \doxylink{class_c_l_i_1_1_validator}{Validator}. Takes a const string\& and returns an error message (empty if conversion/\+check is okay). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_addc5729386141a7a4c1b2f15a3b0c96a}{transform}} (\doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}}, const std::\+string \&Validator\+\_\+name="{}"{})
+\begin{DoxyCompactList}\small\item\em Adds a transforming \doxylink{class_c_l_i_1_1_validator}{Validator} with a built in type name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_abcd86bbee5fad44445178a27d671ece3}{transform}} (const std::\+function$<$ std::\+string(std::\+string)$>$ \&func, std::\+string transform\+\_\+description="{}"{}, std::\+string transform\+\_\+name="{}"{})
+\begin{DoxyCompactList}\small\item\em Adds a Validator-\/like function that can change result. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ae906bbff88716b3012299cc3b3caf2aa}{each}} (const std::\+function$<$ void(std::\+string)$>$ \&func)
+\begin{DoxyCompactList}\small\item\em Adds a user supplied function to run on each item passed in (communicate though lambda capture). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa2b9f2b5c4e4b5aaa0db05b540821533}{get\+\_\+validator}} (const std::\+string \&Validator\+\_\+name="{}"{})
+\begin{DoxyCompactList}\small\item\em Get a named \doxylink{class_c_l_i_1_1_validator}{Validator}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a10023e268d8f26bd49d07ac42116b3bf}{get\+\_\+validator}} (int index)
+\begin{DoxyCompactList}\small\item\em Get a \doxylink{class_c_l_i_1_1_validator}{Validator} by index NOTE:\+ this may not be the order of definition. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad81f0537b30d16f02a066473ef3ad5dc}{needs}} (\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}opt)
+\begin{DoxyCompactList}\small\item\em Sets required options. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T = App$>$ }\\\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_aec2946d8cf9744bc55a3b8954df09999}{needs}} (std::\+string opt\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Can find a string if needed. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename A, typename B, typename... ARG$>$ }\\\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad9fb912d3f5fcf2b882cbb220412a3be}{needs}} (A opt, B opt1, ARG... args)
+\begin{DoxyCompactList}\small\item\em Any number supported, any mix of string and Opt. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_ae6b5e58393e35d7ebb9348f29c7175ef}{remove\+\_\+needs}} (\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}opt)
+\begin{DoxyCompactList}\small\item\em Remove needs link from an option. Returns true if the option really was in the needs list. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a8b32d0d8b6451590dda0503c97185e06}{excludes}} (\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}opt)
+\begin{DoxyCompactList}\small\item\em Sets excluded options. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T = App$>$ }\\\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa1110e431ac1c6d5fbdc985ed29b0e0b}{excludes}} (std::\+string opt\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Can find a string if needed. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename A, typename B, typename... ARG$>$ }\\\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_afbb2f4c5cdad55a70f4503938804234a}{excludes}} (A opt, B opt1, ARG... args)
+\begin{DoxyCompactList}\small\item\em Any number supported, any mix of string and Opt. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a7eb7a368736bd163a11f73d2b7d53883}{remove\+\_\+excludes}} (\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}opt)
+\begin{DoxyCompactList}\small\item\em Remove needs link from an option. Returns true if the option really was in the needs list. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad47dfb0c974c94041c605882919afdb5}{envname}} (std::\+string name)
+\begin{DoxyCompactList}\small\item\em Sets environment variable to read if no option given. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T = App$>$ }\\\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a3906c06092f4c7c109c39fdc86183fd6}{ignore\+\_\+case}} (bool value=true)
+\item 
+{\footnotesize template$<$typename T = App$>$ }\\\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad02168c79c67a4b39e64b98d4cc39ca9}{ignore\+\_\+underscore}} (bool value=true)
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a849a0cf07784e81b514761722a0d9efc}{multi\+\_\+option\+\_\+policy}} (\doxymbox{\hyperlink{namespace_c_l_i_a991a3264d3459575fc7e83eb54d73d2b}{Multi\+Option\+Policy}} value=\doxymbox{\hyperlink{namespace_c_l_i_a991a3264d3459575fc7e83eb54d73d2ba8ce61dd2505effd96f937fa743b6491f}{Multi\+Option\+Policy::\+\+Throw}})
+\begin{DoxyCompactList}\small\item\em Take the last argument if given multiple times (or another policy). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a79441c26ba3d4e180ec3efa81d0481de}{disable\+\_\+flag\+\_\+override}} (bool value=true)
+\begin{DoxyCompactList}\small\item\em Disable flag overrides values, e.\+g. --flag=
+
+is not allowed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Accessors}\par
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_aca087786d31c9e85a21bb82b90ac3cc4}{get\+\_\+type\+\_\+size}} () const
+\begin{DoxyCompactList}\small\item\em The number of arguments the option expects. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_a3df401e4f287b49b6a01624140413e37}{get\+\_\+type\+\_\+size\+\_\+min}} () const
+\begin{DoxyCompactList}\small\item\em The minimum number of arguments the option expects. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa7f105207c9d6f56d0d010ab244654dc}{get\+\_\+type\+\_\+size\+\_\+max}} () const
+\begin{DoxyCompactList}\small\item\em The maximum number of arguments the option expects. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a88a9148534376eb78670c21c4fa71784}{get\+\_\+inject\+\_\+separator}} () const
+\begin{DoxyCompactList}\small\item\em Return the inject\+\_\+separator flag. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_a1ba76f997de3a9676c59737497b930a7}{get\+\_\+envname}} () const
+\begin{DoxyCompactList}\small\item\em The environment variable associated to this value. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+set$<$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa319dc3a13fa9e2a1ac09653f60e0471}{get\+\_\+needs}} () const
+\begin{DoxyCompactList}\small\item\em The set of options needed. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+set$<$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a99a400047a690f7129c4e71fb56b4b08}{get\+\_\+excludes}} () const
+\begin{DoxyCompactList}\small\item\em The set of options excluded. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_a60c5498e164ce433929c6e62e71f0e58}{get\+\_\+default\+\_\+str}} () const
+\begin{DoxyCompactList}\small\item\em The default value (for help printing). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{namespace_c_l_i_aee5516e2fe4d7b0298d5491d73ccefe5}{callback\+\_\+t}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a877dcf67798939236419b4f9f515926d}{get\+\_\+callback}} () const
+\begin{DoxyCompactList}\small\item\em Get the callback function. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_a959bed8835597088ea76f4a3028ba995}{get\+\_\+lnames}} () const
+\begin{DoxyCompactList}\small\item\em Get the long names. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa64fc49adbb3a8cc86e411b0506853d1}{get\+\_\+snames}} () const
+\begin{DoxyCompactList}\small\item\em Get the short names. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+vector$<$ std::\+string $>$ \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_aef3cbb52dc41a428122ea2e46ab1ef34}{get\+\_\+fnames}} () const
+\begin{DoxyCompactList}\small\item\em Get the flag names with specified default values. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_ab3439e582d9b2a1968eaeecd2221c4a2}{get\+\_\+single\+\_\+name}} () const
+\begin{DoxyCompactList}\small\item\em Get a single name for the option, first of lname, sname, pname, envname. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_ab733159b8285bc0bb9832dc36524922c}{get\+\_\+expected}} () const
+\begin{DoxyCompactList}\small\item\em The number of times the option expects to be included. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_aba45c2317a24bbecd46778a0ed8a1951}{get\+\_\+expected\+\_\+min}} () const
+\begin{DoxyCompactList}\small\item\em The number of times the option expects to be included. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_abc2f07af59e6a602ea6295486360f349}{get\+\_\+expected\+\_\+max}} () const
+\begin{DoxyCompactList}\small\item\em The max number of times the option expects to be included. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_a65f68eaa288d2608560ae87f3c36f6fa}{get\+\_\+items\+\_\+expected\+\_\+min}} () const
+\begin{DoxyCompactList}\small\item\em The total min number of expected string values to be used. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_a7bdc3555509b93cbd8d5b9b2ccb3b016}{get\+\_\+items\+\_\+expected\+\_\+max}} () const
+\begin{DoxyCompactList}\small\item\em Get the maximum number of items expected to be returned and used for the callback. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa12c4f65cf2ac9c58ebe050c46603fc0}{get\+\_\+items\+\_\+expected}} () const
+\begin{DoxyCompactList}\small\item\em The total min number of expected string values to be used. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a0f23a3a1ed7c5a47585117a4c9f27120}{get\+\_\+positional}} () const
+\begin{DoxyCompactList}\small\item\em True if the argument can be given directly. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a6208cfc282d4029741775092a4e9c52d}{nonpositional}} () const
+\begin{DoxyCompactList}\small\item\em True if option has at least one non-\/positional name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_af2c8f58356a6962622ff62acd349fd3d}{has\+\_\+description}} () const
+\begin{DoxyCompactList}\small\item\em True if option has description. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_aada76bb0c7227e3b6b13e3586c5b6264}{get\+\_\+description}} () const
+\begin{DoxyCompactList}\small\item\em Get the description. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_adb517865b2f89c023e9544085cb332e4}{description}} (std::\+string option\+\_\+description)
+\begin{DoxyCompactList}\small\item\em Set the description. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a5bdcc74efea965f6d440b03432df50e5}{option\+\_\+text}} (std::\+string \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_a0d3abd0d07feca3d080e8ef9a2284306}{get\+\_\+option\+\_\+text}} () const
+\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Help tools}\par
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_a47e135d5198fd9df5b481091d2538b60}{get\+\_\+name}} (bool positional=false, bool all\+\_\+options=false) const
+\begin{DoxyCompactList}\small\item\em Gets a comma separated list of names. Will include /\+ prefer the positional name if positional is true. If all\+\_\+options is false, pick just the most descriptive name to show. Use {\ttfamily get\+\_\+name(true)} to get the positional name (replaces {\ttfamily get\+\_\+pname}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Parser tools}\par
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_c_l_i_1_1_option_a3f124f1827ca11033d591b5673fc2ac2}{run\+\_\+callback}} ()
+\begin{DoxyCompactList}\small\item\em Process the callback. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_a67b1e51f9f873b265dac8122746fc2d7}{matching\+\_\+name}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \&other) const
+\begin{DoxyCompactList}\small\item\em If options share any of the same names, find it. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_ae72ff0b89bebb2987d548c186c577e50}{operator==}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \&other) const
+\begin{DoxyCompactList}\small\item\em If options share any of the same names, they are equal (not counting positional). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a1f9eda27ddb1b2d520e29724d550f6a0}{check\+\_\+name}} (const std::\+string \&name) const
+\begin{DoxyCompactList}\small\item\em Check a name. Requires "{}-\/"{} or "{}-\/-\/"{} for short /\+ long, supports positional name. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a46e7395f6a8a720e4305aea2edb4aa7b}{check\+\_\+sname}} (std::\+string name) const
+\begin{DoxyCompactList}\small\item\em Requires "{}-\/"{} to be removed from string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a6e970efc39aa4984b9bb797d071ce34a}{check\+\_\+lname}} (std::\+string name) const
+\begin{DoxyCompactList}\small\item\em Requires "{}-\/-\/"{} to be removed from string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a331870cf4db8893cac3af126aac487a8}{check\+\_\+fname}} (std::\+string name) const
+\begin{DoxyCompactList}\small\item\em Requires "{}-\/-\/"{} to be removed from string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa006173c1a09b0ed01bff4b305b042ca}{get\+\_\+flag\+\_\+value}} (const std::\+string \&name, std::\+string input\+\_\+value) const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ae2f3035c86ed75260c3871a653f5e013}{add\+\_\+result}} (std::\+string s)
+\begin{DoxyCompactList}\small\item\em Puts a result at the end. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a54967c825fa239f589e174468a8c217c}{add\+\_\+result}} (std::\+string s, int \&results\+\_\+added)
+\begin{DoxyCompactList}\small\item\em Puts a result at the end and get a count of the number of arguments actually added. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad1c9ca3d030380fd79a7b9a224632c42}{add\+\_\+result}} (std::\+vector$<$ std::\+string $>$ s)
+\begin{DoxyCompactList}\small\item\em Puts a result at the end. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const \doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_a73fc56f3cd1a81fb029df35b033798a9}{results}} () const
+\begin{DoxyCompactList}\small\item\em Get the current complete results set. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a2db0b397f74420d034944ce55d07509a}{reduced\+\_\+results}} () const
+\begin{DoxyCompactList}\small\item\em Get a copy of the results. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\void \doxymbox{\hyperlink{class_c_l_i_1_1_option_ac445a3a3ac14d7ec0f229887028bbbf7}{results}} (T \&output) const
+\begin{DoxyCompactList}\small\item\em Get the results as a specified type. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename T$>$ }\\\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} T \doxymbox{\hyperlink{class_c_l_i_1_1_option_afa754a6958592feece4483d0bf7915e4}{as}} () const
+\begin{DoxyCompactList}\small\item\em Return the results as the specified type. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a4c0023b0ba34fb5f230a8f09f035bd41}{get\+\_\+callback\+\_\+run}} () const
+\begin{DoxyCompactList}\small\item\em See if the callback has been run already. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_option_base}{CLI::\+\+Option\+Base$<$ Option $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a17077e6cf3e228a4978fb4be525bc80d}{group}} (const std::\+string \&name)
+\begin{DoxyCompactList}\small\item\em Changes the group membership. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_af18d4c8d8c2392b6947db9179110289a}{required}} (bool value=true)
+\begin{DoxyCompactList}\small\item\em Set the option as required. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a083eb9ce01d6f8a59f6cfea0cece2e05}{mandatory}} (bool value=true)
+\begin{DoxyCompactList}\small\item\em Support Plumbum term. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_ac5ee05409ef6e5369e78ecf127bb0e7f}{always\+\_\+capture\+\_\+default}} (bool value=true)
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_aeb86193da05c10a12814ce45d2d16e0d}{get\+\_\+group}} () const
+\begin{DoxyCompactList}\small\item\em Get the group of this option. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a4a2814630a3bb90e590787ce42d328c0}{get\+\_\+required}} () const
+\begin{DoxyCompactList}\small\item\em True if this is a required option. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a61337239ed9e0c24f3b9cfa03f26ac1c}{get\+\_\+ignore\+\_\+case}} () const
+\begin{DoxyCompactList}\small\item\em The status of ignore case. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_ad8fc92bccec9e6914e65a86df39bc375}{get\+\_\+ignore\+\_\+underscore}} () const
+\begin{DoxyCompactList}\small\item\em The status of ignore\+\_\+underscore. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a794bf202a485c85be3337a1989b210f5}{get\+\_\+configurable}} () const
+\begin{DoxyCompactList}\small\item\em The status of configurable. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_ae86ec9b363f987e6ee429c758964e314}{get\+\_\+disable\+\_\+flag\+\_\+override}} () const
+\begin{DoxyCompactList}\small\item\em The status of configurable. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} char \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a3d9bba2ebb8d4687832cf0a836c49dd6}{get\+\_\+delimiter}} () const
+\begin{DoxyCompactList}\small\item\em Get the current delimiter char. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a3930392dbaba7676b01b96b5019baa84}{get\+\_\+always\+\_\+capture\+\_\+default}} () const
+\begin{DoxyCompactList}\small\item\em Return true if this will automatically capture the default value for help printing. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{namespace_c_l_i_a991a3264d3459575fc7e83eb54d73d2b}{Multi\+Option\+Policy}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a7005856406c1e8ca05ad3aa7f9226cda}{get\+\_\+multi\+\_\+option\+\_\+policy}} () const
+\begin{DoxyCompactList}\small\item\em The status of the multi option policy. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_abf721b86beb0f957a4d85ad4f6e72c20}{take\+\_\+last}} ()
+\begin{DoxyCompactList}\small\item\em Set the multi option policy to take last. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a5727e47f4541f99986503b086f1da735}{take\+\_\+first}} ()
+\begin{DoxyCompactList}\small\item\em Set the multi option policy to take last. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a0edb237c89d77253e079e4d6c7f86e8c}{take\+\_\+all}} ()
+\begin{DoxyCompactList}\small\item\em Set the multi option policy to take all arguments. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a1c353d2455f0fc251fa8d0e98b66ea93}{join}} ()
+\begin{DoxyCompactList}\small\item\em Set the multi option policy to join. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a618d6a4f8137bec3272a04d848106046}{configurable}} (bool value=true)
+\begin{DoxyCompactList}\small\item\em Allow in a configuration file. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a620c2f57aca00ad2ad1fe8870143fcc1}{delimiter}} (char value=\textquotesingle{}\textbackslash{}0\textquotesingle{})
+\begin{DoxyCompactList}\small\item\em Allow in a configuration file. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} (std::\+string option\+\_\+name, std::\+string option\+\_\+description, \doxymbox{\hyperlink{namespace_c_l_i_aee5516e2fe4d7b0298d5491d73ccefe5}{callback\+\_\+t}} callback, \doxymbox{\hyperlink{class_c_l_i_1_1_option_a8efb526a434cbcd7d019ee4a5703dbcd}{App}} \texorpdfstring{$\ast$}{*}parent, bool allow\+\_\+non\+\_\+standard=false)
+\begin{DoxyCompactList}\small\item\em Making an option by hand is not defined, it must be made by the \doxylink{class_c_l_i_1_1_app}{App} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_option_base}{CLI::\+\+Option\+Base$<$ Option $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_aeccfd835475420d963f2fff446c32003}{copy\+\_\+to}} (T \texorpdfstring{$\ast$}{*}other) const
+\begin{DoxyCompactList}\small\item\em Copy the contents to another similar class (one based on \doxylink{class_c_l_i_1_1_option_base}{Option\+Base}). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{Indent}\textbf{ Names}\par
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a7d8ef1d4012fde878668c943d9b197bc}{snames\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em A list of the short names ({\ttfamily -\/a}) without the leading dashes. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_ae06feaf7ca62a5497514a09f44724430}{lnames\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em A list of the long names ({\ttfamily -\/-\/long}) without the leading dashes. \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+pair$<$ std::\+string, std::\+string $>$ $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad2c7c8c939c6eacfb25ae7a83c0640af}{default\+\_\+flag\+\_\+values\+\_\+}} \{\}
+\item 
+std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a56635c9d01c0fde66df3a5edf87b8a31}{fnames\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em a list of flag names with specified default values; \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_a3599a92dde17b22551dcdfcb9798f0f3}{pname\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em A positional name. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_acac4bf11cbd933967ced9175946ffbe6}{envname\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em If given, check the environment for this option. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Help}\par
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa6427b2f3303cc4469cacdc098b9d4bf}{description\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em The description for help strings. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_a169893983f2dd0dc840ebca98bb76698}{default\+\_\+str\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em A human readable default value, either manually set, captured, or captured by default. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_a23dc529b1db815e7056750d671e29896}{option\+\_\+text\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em If given, replace the text that describes the option type and usage in the help text. \end{DoxyCompactList}\item 
+std::\+function$<$ std::\+string()$>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a2080c70a11f8935118dffc924824aa87}{type\+\_\+name\+\_\+}} \{\+[$\,$]\+() \{ return std::\+string(); \}\}
+\item 
+std::\+function$<$ std::\+string()$>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_acc7769c9cd48d7c7302dd51aa8fd3bd2}{default\+\_\+function\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em Run this function to capture a default (ignore if empty). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Configuration}\par
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad9a5a55a8c3fdce89dbf5c167c183ca6}{type\+\_\+size\+\_\+max\+\_\+}} \{1\}
+\item 
+int \doxymbox{\hyperlink{class_c_l_i_1_1_option_a23e5549e7c0490f15018ee84bc39d644}{type\+\_\+size\+\_\+min\+\_\+}} \{1\}
+\begin{DoxyCompactList}\small\item\em The minimum number of arguments an option should be expecting. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_c_l_i_1_1_option_a35e04622c4de2eab61a04421d0618741}{expected\+\_\+min\+\_\+}} \{1\}
+\begin{DoxyCompactList}\small\item\em The minimum number of expected values. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_c_l_i_1_1_option_a963ed9f9758d938c860bc14bf1db57b6}{expected\+\_\+max\+\_\+}} \{1\}
+\begin{DoxyCompactList}\small\item\em The maximum number of expected values. \end{DoxyCompactList}\item 
+std::\+vector$<$ \doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad406b8299fb243f0caa52a35863c82b7}{validators\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em A list of Validators to run on each value parsed. \end{DoxyCompactList}\item 
+std::\+set$<$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a3bd8d2ff461e8046b284cdbfcd741dce}{needs\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em A list of options that are required with this option. \end{DoxyCompactList}\item 
+std::\+set$<$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a49c5490dd092599c067833fd0f5c79d3}{excludes\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em A list of options that are excluded with this option. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\begin{Indent}\textbf{ Other}\par
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a8efb526a434cbcd7d019ee4a5703dbcd}{App}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a9391ef1d3ed3f0607633b36faf72f5c0}{parent\+\_\+}} \{nullptr\}
+\begin{DoxyCompactList}\small\item\em link back up to the parent \doxylink{class_c_l_i_1_1_app}{App} for fallthrough \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{namespace_c_l_i_aee5516e2fe4d7b0298d5491d73ccefe5}{callback\+\_\+t}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ab79262b952902ff5e1cba6e3788aca54}{callback\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em Options store a callback to do all the work. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\end{Indent}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_option_base}{CLI::\+\+Option\+Base$<$ Option $>$}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_ad0d8bd0637023f7d87a8e95315e8fb21}{group\+\_\+}}
+\begin{DoxyCompactList}\small\item\em The group membership. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_abad838fd3da11f840a40536a279912ac}{required\+\_\+}}
+\begin{DoxyCompactList}\small\item\em True if this is a required option. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a616d0aa1bd4e540733e24f88bc17cd3a}{ignore\+\_\+case\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Ignore the case when matching (option, not value). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_adafc24528125977c500b9b0c7b5068bf}{ignore\+\_\+underscore\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Ignore underscores when matching (option, not value). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a86801bb8560b37e40ea60815871a22ee}{configurable\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Allow this option to be given in a configuration file. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_ab62f608c0957e32ccf56f2834aa574c1}{disable\+\_\+flag\+\_\+override\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Disable overriding flag values with \textquotesingle{}=value\textquotesingle{}. \end{DoxyCompactList}\item 
+char \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_ac4164d93e2b8e59b2de24dad04a9f34b}{delimiter\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Specify a delimiter character for vector arguments. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a23aca05ffa9c2d3fbba10b5434cdba64}{always\+\_\+capture\+\_\+default\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Automatically capture default value. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{namespace_c_l_i_a991a3264d3459575fc7e83eb54d73d2b}{Multi\+Option\+Policy}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_base_a2c5483d3c992baad97beed3de2b82b05}{multi\+\_\+option\+\_\+policy\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Policy for handling multiple arguments beyond the expected Max. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+friend \doxymbox{\hyperlink{class_c_l_i_1_1_option_a8efb526a434cbcd7d019ee4a5703dbcd}{App}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Parsing results}
+\begin{DoxyCompactItemize}
+\item 
+enum class \doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9}{option\+\_\+state}} :\+ char \{ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9adbc77665f51d780a776978e34f065af5}{parsing}} = 0
+, \doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9ac9e825f4641cd3bec0ba01a0c2d67755}{validated}} = 2
+, \doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9a282fabc3aa55dcf5a73ad91ea6c62de6}{reduced}} = 4
+, \doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9a3e711527b127cf4c52c3470324bb7a74}{callback\+\_\+run}} = 6
+ \}
+\begin{DoxyCompactList}\small\item\em enumeration for the option state machine \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_af45b214347a715edf92b1e3de5c4b938}{results\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em complete Results of parsing \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a7e1e5e40353f296f4b1f0a5940dc7099}{proc\+\_\+results\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em results after reduction \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9}{option\+\_\+state}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a239c3f2953f88bc9cf1a2bc99af39095}{current\+\_\+option\+\_\+state\+\_\+}} \{\doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9adbc77665f51d780a776978e34f065af5}{option\+\_\+state::\+parsing}}\}
+\begin{DoxyCompactList}\small\item\em Whether the callback has run (needed for INI parsing). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_adb0563505e82a3932466a23700ce66ba}{allow\+\_\+extra\+\_\+args\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em Specify that extra args beyond type\+\_\+size\+\_\+max should be allowed. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a47712db860c1df802ff0ee51cbc2200e}{flag\+\_\+like\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em Specify that the option should act like a flag vs regular option. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a16ff0fc34306cdd0c51379f16d61eeec}{run\+\_\+callback\+\_\+for\+\_\+default\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em Control option to run the callback to set the default. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa95f089d19a4b14039261fd7e35e6223}{inject\+\_\+separator\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em flag indicating a separator needs to be injected after each argument call \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a4716e3d2f016a0a33580fc4981580e9d}{trigger\+\_\+on\+\_\+result\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em flag indicating that the option should trigger the validation and callback chain on each result when loaded \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_option_a4b75830d792af9a8b7e0e19f5c26fa2e}{force\+\_\+callback\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em flag indicating that the option should force the callback regardless if any results present \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Custom options}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad4ff97f7911d552972c10771bcf488d7}{type\+\_\+name\+\_\+fn}} (std::\+function$<$ std::\+string()$>$ typefun)
+\begin{DoxyCompactList}\small\item\em Set the type function to run when displayed on this option. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a1fcb3c625eeca46ef953732a71403027}{type\+\_\+name}} (std::\+string typeval)
+\begin{DoxyCompactList}\small\item\em Set a custom option typestring. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a02b6f5518f72c1106319823633c5f518}{type\+\_\+size}} (int option\+\_\+type\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Set a custom option size. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_aafe51763adc6345fa22258e22b037e4c}{type\+\_\+size}} (int option\+\_\+type\+\_\+size\+\_\+min, int option\+\_\+type\+\_\+size\+\_\+max)
+\begin{DoxyCompactList}\small\item\em Set a custom option type size range. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_l_i_1_1_option_a8238350326df789724d4a8e422c1fa10}{inject\+\_\+separator}} (bool value=true)
+\begin{DoxyCompactList}\small\item\em Set the value of the separator injection flag. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a3d5ac9c31bf8b29852e18c8908d16235}{default\+\_\+function}} (const std::\+function$<$ std::\+string()$>$ \&func)
+\begin{DoxyCompactList}\small\item\em Set a capture function for the default. Mostly used by \doxylink{class_c_l_i_1_1_app}{App}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ac3c74dba1e4c52bba56b57ed0bcfba74}{capture\+\_\+default\+\_\+str}} ()
+\begin{DoxyCompactList}\small\item\em Capture the default value from the original value (if it can be captured). \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ac742a336add6ee44ce61dc3dd196fd23}{default\+\_\+str}} (std::\+string val)
+\begin{DoxyCompactList}\small\item\em Set the default value string representation (does not change the contained value). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename X$>$ }\\\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{class_c_l_i_1_1_option_ad54a6c2a78d84970977f84212a7a6a7b}{default\+\_\+val}} (const X \&val)
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_a32e483c3e2246ae03b9c9fe8535ced11}{get\+\_\+type\+\_\+name}} () const
+\begin{DoxyCompactList}\small\item\em Get the full typename for this option. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_l_i_1_1_option_a7f80e1e545c91f8babef62cf52221d0d}{\+\_\+validate\+\_\+results}} (\doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \&res) const
+\begin{DoxyCompactList}\small\item\em Run the results through the Validators. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_c_l_i_1_1_option_aa94827437444cbd41f9d59a84c35ca40}{\+\_\+reduce\+\_\+results}} (\doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \&out, const \doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \&original) const
+\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_option_afd4ba41c3478ceb636fdfc4dfdfcb2b3}{\+\_\+validate}} (std::\+string \&result, int index) const
+\item 
+int \doxymbox{\hyperlink{class_c_l_i_1_1_option_a2a5f4081506d6e1c937a8fc7346edfa4}{\+\_\+add\+\_\+result}} (std::\+string \&\&result, std::\+vector$<$ std::\+string $>$ \&res) const
+\begin{DoxyCompactList}\small\item\em Add a single result to the result set, taking into account delimiters. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05384}{5384}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{class_c_l_i_1_1_option_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9}\index{CLI::Option@{CLI::Option}!option\_state@{option\_state}}
+\index{option\_state@{option\_state}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{option\_state}{option\_state}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9} 
+enum class \doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9}{CLI::\+\+Option::\+option\+\_\+state}} :\+ char\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [protected]}}
+
+
+
+enumeration for the option state machine 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{parsing@{parsing}!CLI::Option@{CLI::Option}}
+\index{CLI::Option@{CLI::Option}!parsing@{parsing}}
+}\Hypertarget{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9adbc77665f51d780a776978e34f065af5}\label{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9adbc77665f51d780a776978e34f065af5} 
+parsing&The option is currently collecting parsed results. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{validated@{validated}!CLI::Option@{CLI::Option}}
+\index{CLI::Option@{CLI::Option}!validated@{validated}}
+}\Hypertarget{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9ac9e825f4641cd3bec0ba01a0c2d67755}\label{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9ac9e825f4641cd3bec0ba01a0c2d67755} 
+validated&the results have been validated \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{reduced@{reduced}!CLI::Option@{CLI::Option}}
+\index{CLI::Option@{CLI::Option}!reduced@{reduced}}
+}\Hypertarget{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9a282fabc3aa55dcf5a73ad91ea6c62de6}\label{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9a282fabc3aa55dcf5a73ad91ea6c62de6} 
+reduced&a subset of results has been generated \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{callback\_run@{callback\_run}!CLI::Option@{CLI::Option}}
+\index{CLI::Option@{CLI::Option}!callback\_run@{callback\_run}}
+}\Hypertarget{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9a3e711527b127cf4c52c3470324bb7a74}\label{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9a3e711527b127cf4c52c3470324bb7a74} 
+callback\+\_\+run&the callback has been executed \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05474}{5474}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_c_l_i_1_1_option_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}\index{CLI::Option@{CLI::Option}!Option@{Option}}
+\index{Option@{Option}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{Option()}{Option()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc} 
+CLI::\+\+Option::\+\+Option (\begin{DoxyParamCaption}\item[{std::\+string}]{option\+\_\+name}{, }\item[{std::\+string}]{option\+\_\+description}{, }\item[{\doxymbox{\hyperlink{namespace_c_l_i_aee5516e2fe4d7b0298d5491d73ccefe5}{callback\+\_\+t}}}]{callback}{, }\item[{\doxymbox{\hyperlink{class_c_l_i_1_1_option_a8efb526a434cbcd7d019ee4a5703dbcd}{App}} \texorpdfstring{$\ast$}{*}}]{parent}{, }\item[{bool}]{allow\+\_\+non\+\_\+standard}{ = {\ttfamily false}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Making an option by hand is not defined, it must be made by the \doxylink{class_c_l_i_1_1_app}{App} class. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05497}{5497}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{class_c_l_i_1_1_option_a72d6fb10f92fb81fc7a10327ce1a7da6}\index{CLI::Option@{CLI::Option}!Option@{Option}}
+\index{Option@{Option}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{Option()}{Option()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a72d6fb10f92fb81fc7a10327ce1a7da6} 
+CLI::\+\+Option::\+\+Option (\begin{DoxyParamCaption}\item[{const Option \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Here is the call graph for this function:\+
+% FIG 4
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1_option_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1_option_a2a5f4081506d6e1c937a8fc7346edfa4}\index{CLI::Option@{CLI::Option}!\_add\_result@{\_add\_result}}
+\index{\_add\_result@{\_add\_result}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{\_add\_result()}{\_add\_result()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a2a5f4081506d6e1c937a8fc7346edfa4} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} int CLI::\+\+Option::\+\+\_\+add\+\_\+result (\begin{DoxyParamCaption}\item[{std::\+string \&\&}]{result}{, }\item[{std::\+vector$<$ std::\+string $>$ \&}]{res}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Add a single result to the result set, taking into account delimiters. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06622}{6622}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{class_c_l_i_1_1_option_aa94827437444cbd41f9d59a84c35ca40}\index{CLI::Option@{CLI::Option}!\_reduce\_results@{\_reduce\_results}}
+\index{\_reduce\_results@{\_reduce\_results}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{\_reduce\_results()}{\_reduce\_results()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa94827437444cbd41f9d59a84c35ca40} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} void CLI::\+\+Option::\+\+\_\+reduce\+\_\+results (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \&}]{out}{, }\item[{const \doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \&}]{original}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+reduce the results in accordance with the \doxylink{namespace_c_l_i_a991a3264d3459575fc7e83eb54d73d2b}{Multi\+Option\+Policy} 
+\begin{DoxyParams}[1]{Parameters}
+\doxymbox{\texttt{out}}  & {\em out} & results are assigned to res if there if they are different \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06522}{6522}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{class_c_l_i_1_1_option_afd4ba41c3478ceb636fdfc4dfdfcb2b3}\index{CLI::Option@{CLI::Option}!\_validate@{\_validate}}
+\index{\_validate@{\_validate}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{\_validate()}{\_validate()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_afd4ba41c3478ceb636fdfc4dfdfcb2b3} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} std::\+string CLI::\+\+Option::\+\+\_\+validate (\begin{DoxyParamCaption}\item[{std::\+string \&}]{result}{, }\item[{int}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06600}{6600}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{class_c_l_i_1_1_option_a7f80e1e545c91f8babef62cf52221d0d}\index{CLI::Option@{CLI::Option}!\_validate\_results@{\_validate\_results}}
+\index{\_validate\_results@{\_validate\_results}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{\_validate\_results()}{\_validate\_results()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a7f80e1e545c91f8babef62cf52221d0d} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} void CLI::\+\+Option::\+\+\_\+validate\+\_\+results (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \&}]{res}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Run the results through the Validators. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06482}{6482}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 10
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{class_c_l_i_1_1_option_ae2f3035c86ed75260c3871a653f5e013}\index{CLI::Option@{CLI::Option}!add\_result@{add\_result}}
+\index{add\_result@{add\_result}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{add\_result()}{add\_result()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ae2f3035c86ed75260c3871a653f5e013} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+add\+\_\+result (\begin{DoxyParamCaption}\item[{std::\+string}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Puts a result at the end. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06388}{6388}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{class_c_l_i_1_1_option_a54967c825fa239f589e174468a8c217c}\index{CLI::Option@{CLI::Option}!add\_result@{add\_result}}
+\index{add\_result@{add\_result}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{add\_result()}{add\_result()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a54967c825fa239f589e174468a8c217c} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+add\+\_\+result (\begin{DoxyParamCaption}\item[{std::\+string}]{s}{, }\item[{int \&}]{results\+\_\+added}{}\end{DoxyParamCaption})}
+
+
+
+Puts a result at the end and get a count of the number of arguments actually added. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06394}{6394}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 14
+\Hypertarget{class_c_l_i_1_1_option_ad1c9ca3d030380fd79a7b9a224632c42}\index{CLI::Option@{CLI::Option}!add\_result@{add\_result}}
+\index{add\_result@{add\_result}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{add\_result()}{add\_result()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad1c9ca3d030380fd79a7b9a224632c42} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+add\+\_\+result (\begin{DoxyParamCaption}\item[{std::\+vector$<$ std::\+string $>$}]{s}{}\end{DoxyParamCaption})}
+
+
+
+Puts a result at the end. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06400}{6400}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 15
+\Hypertarget{class_c_l_i_1_1_option_a83302957a61e4bd7e5f21c552b39edb5}\index{CLI::Option@{CLI::Option}!allow\_extra\_args@{allow\_extra\_args}}
+\index{allow\_extra\_args@{allow\_extra\_args}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{allow\_extra\_args()}{allow\_extra\_args()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a83302957a61e4bd7e5f21c552b39edb5} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+allow\+\_\+extra\+\_\+args (\begin{DoxyParamCaption}\item[{bool}]{value}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the value of allow\+\_\+extra\+\_\+args which allows extra value arguments on the flag or option to be included with each instance 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05540}{5540}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 16
+Here is the caller graph for this function:\+
+% FIG 17
+\Hypertarget{class_c_l_i_1_1_option_afa754a6958592feece4483d0bf7915e4}\index{CLI::Option@{CLI::Option}!as@{as}}
+\index{as@{as}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{as()}{as()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_afa754a6958592feece4483d0bf7915e4} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} T CLI::\+\+Option::\+as (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the results as the specified type. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05861}{5861}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 18
+\Hypertarget{class_c_l_i_1_1_option_ac3c74dba1e4c52bba56b57ed0bcfba74}\index{CLI::Option@{CLI::Option}!capture\_default\_str@{capture\_default\_str}}
+\index{capture\_default\_str@{capture\_default\_str}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{capture\_default\_str()}{capture\_default\_str()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ac3c74dba1e4c52bba56b57ed0bcfba74} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+capture\+\_\+default\+\_\+str (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Capture the default value from the original value (if it can be captured). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05902}{5902}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+\Hypertarget{class_c_l_i_1_1_option_a4e3e8322ce7a54d981a699c3badda460}\index{CLI::Option@{CLI::Option}!check@{check}}
+\index{check@{check}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a4e3e8322ce7a54d981a699c3badda460} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+check (\begin{DoxyParamCaption}\item[{std::\+function$<$ std::\+string(const std::\+string \&)$>$}]{Validator}{, }\item[{std::\+string}]{Validator\+\_\+description}{ = {\ttfamily "{}"{}}, }\item[{std::\+string}]{Validator\+\_\+name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Adds a \doxylink{class_c_l_i_1_1_validator}{Validator}. Takes a const string\& and returns an error message (empty if conversion/\+check is okay). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06043}{6043}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 20
+\Hypertarget{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}\index{CLI::Option@{CLI::Option}!check@{check}}
+\index{check@{check}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{check()}{check()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+check (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}}}]{validator}{, }\item[{const std::\+string \&}]{validator\+\_\+name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Adds a \doxylink{class_c_l_i_1_1_validator}{Validator} with a built in type name. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06035}{6035}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 21
+Here is the caller graph for this function:\+
+% FIG 22
+\Hypertarget{class_c_l_i_1_1_option_a331870cf4db8893cac3af126aac487a8}\index{CLI::Option@{CLI::Option}!check\_fname@{check\_fname}}
+\index{check\_fname@{check\_fname}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{check\_fname()}{check\_fname()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a331870cf4db8893cac3af126aac487a8} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+check\+\_\+fname (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Requires "{}-\/-\/"{} to be removed from string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05803}{5803}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 23
+Here is the caller graph for this function:\+
+% FIG 24
+\Hypertarget{class_c_l_i_1_1_option_a6e970efc39aa4984b9bb797d071ce34a}\index{CLI::Option@{CLI::Option}!check\_lname@{check\_lname}}
+\index{check\_lname@{check\_lname}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{check\_lname()}{check\_lname()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a6e970efc39aa4984b9bb797d071ce34a} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+check\+\_\+lname (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Requires "{}-\/-\/"{} to be removed from string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05798}{5798}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 25
+Here is the caller graph for this function:\+
+% FIG 26
+\Hypertarget{class_c_l_i_1_1_option_a1f9eda27ddb1b2d520e29724d550f6a0}\index{CLI::Option@{CLI::Option}!check\_name@{check\_name}}
+\index{check\_name@{check\_name}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{check\_name()}{check\_name()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a1f9eda27ddb1b2d520e29724d550f6a0} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} bool CLI::\+\+Option::\+check\+\_\+name (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const}
+
+
+
+Check a name. Requires "{}-\/"{} or "{}-\/-\/"{} for short /\+ long, supports positional name. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06313}{6313}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 27
+Here is the caller graph for this function:\+
+% FIG 28
+\Hypertarget{class_c_l_i_1_1_option_a46e7395f6a8a720e4305aea2edb4aa7b}\index{CLI::Option@{CLI::Option}!check\_sname@{check\_sname}}
+\index{check\_sname@{check\_sname}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{check\_sname()}{check\_sname()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a46e7395f6a8a720e4305aea2edb4aa7b} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+check\+\_\+sname (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Requires "{}-\/"{} to be removed from string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05793}{5793}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 29
+Here is the caller graph for this function:\+
+% FIG 30
+\Hypertarget{class_c_l_i_1_1_option_abbd36aaff5cdca8b10346bafed51da39}\index{CLI::Option@{CLI::Option}!clear@{clear}}
+\index{clear@{clear}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_abbd36aaff5cdca8b10346bafed51da39} 
+void CLI::\+\+Option::\+clear (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Clear the parsed results (mostly for testing). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05523}{5523}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 31
+\Hypertarget{class_c_l_i_1_1_option_a80fde04b01db5b894001fb9c0c86be88}\index{CLI::Option@{CLI::Option}!count@{count}}
+\index{count@{count}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{count()}{count()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a80fde04b01db5b894001fb9c0c86be88} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+size\+\_\+t CLI::\+\+Option::\+count (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Count the total number of times an option was passed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05514}{5514}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 32
+\Hypertarget{class_c_l_i_1_1_option_a3d5ac9c31bf8b29852e18c8908d16235}\index{CLI::Option@{CLI::Option}!default\_function@{default\_function}}
+\index{default\_function@{default\_function}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{default\_function()}{default\_function()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a3d5ac9c31bf8b29852e18c8908d16235} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+default\+\_\+function (\begin{DoxyParamCaption}\item[{const std::\+function$<$ std::\+string()$>$ \&}]{func}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set a capture function for the default. Mostly used by \doxylink{class_c_l_i_1_1_app}{App}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05896}{5896}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 33
+\Hypertarget{class_c_l_i_1_1_option_ac742a336add6ee44ce61dc3dd196fd23}\index{CLI::Option@{CLI::Option}!default\_str@{default\_str}}
+\index{default\_str@{default\_str}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{default\_str()}{default\_str()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ac742a336add6ee44ce61dc3dd196fd23} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+default\+\_\+str (\begin{DoxyParamCaption}\item[{std::\+string}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the default value string representation (does not change the contained value). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05910}{5910}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 34
+Here is the caller graph for this function:\+
+% FIG 35
+\Hypertarget{class_c_l_i_1_1_option_ad54a6c2a78d84970977f84212a7a6a7b}\index{CLI::Option@{CLI::Option}!default\_val@{default\_val}}
+\index{default\_val@{default\_val}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{default\_val()}{default\_val()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad54a6c2a78d84970977f84212a7a6a7b} 
+template$<$typename X$>$ \\
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+default\+\_\+val (\begin{DoxyParamCaption}\item[{const X \&}]{val}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the default value and validate the results and run the callback if appropriate to set the value into the bound value only available for types that can be converted to a string 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05917}{5917}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 36
+Here is the caller graph for this function:\+
+% FIG 37
+\Hypertarget{class_c_l_i_1_1_option_adb517865b2f89c023e9544085cb332e4}\index{CLI::Option@{CLI::Option}!description@{description}}
+\index{description@{description}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_adb517865b2f89c023e9544085cb332e4} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+description (\begin{DoxyParamCaption}\item[{std::\+string}]{option\+\_\+description}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the description. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05752}{5752}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 38
+Here is the caller graph for this function:\+
+% FIG 39
+\Hypertarget{class_c_l_i_1_1_option_a79441c26ba3d4e180ec3efa81d0481de}\index{CLI::Option@{CLI::Option}!disable\_flag\_override@{disable\_flag\_override}}
+\index{disable\_flag\_override@{disable\_flag\_override}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{disable\_flag\_override()}{disable\_flag\_override()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a79441c26ba3d4e180ec3efa81d0481de} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+disable\+\_\+flag\+\_\+override (\begin{DoxyParamCaption}\item[{bool}]{value}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Disable flag overrides values, e.\+g. --flag=
+
+is not allowed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05665}{5665}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 40
+\Hypertarget{class_c_l_i_1_1_option_ae906bbff88716b3012299cc3b3caf2aa}\index{CLI::Option@{CLI::Option}!each@{each}}
+\index{each@{each}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{each()}{each()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ae906bbff88716b3012299cc3b3caf2aa} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+each (\begin{DoxyParamCaption}\item[{const std::\+function$<$ void(std::\+string)$>$ \&}]{func}{}\end{DoxyParamCaption})}
+
+
+
+Adds a user supplied function to run on each item passed in (communicate though lambda capture). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06073}{6073}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 41
+\Hypertarget{class_c_l_i_1_1_option_ab9d324306095b7af93bc09812f5b4dec}\index{CLI::Option@{CLI::Option}!empty@{empty}}
+\index{empty@{empty}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ab9d324306095b7af93bc09812f5b4dec} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+empty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+True if the option was not passed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05517}{5517}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 42
+\Hypertarget{class_c_l_i_1_1_option_ad47dfb0c974c94041c605882919afdb5}\index{CLI::Option@{CLI::Option}!envname@{envname}}
+\index{envname@{envname}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{envname()}{envname()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad47dfb0c974c94041c605882919afdb5} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+envname (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets environment variable to read if no option given. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05644}{5644}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 43
+\Hypertarget{class_c_l_i_1_1_option_afbb2f4c5cdad55a70f4503938804234a}\index{CLI::Option@{CLI::Option}!excludes@{excludes}}
+\index{excludes@{excludes}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{excludes()}{excludes()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_afbb2f4c5cdad55a70f4503938804234a} 
+template$<$typename A, typename B, typename... ARG$>$ \\
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+excludes (\begin{DoxyParamCaption}\item[{A}]{opt}{, }\item[{B}]{opt1}{, }\item[{ARG...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Any number supported, any mix of string and Opt. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05635}{5635}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 44
+\Hypertarget{class_c_l_i_1_1_option_a8b32d0d8b6451590dda0503c97185e06}\index{CLI::Option@{CLI::Option}!excludes@{excludes}}
+\index{excludes@{excludes}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{excludes()}{excludes()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a8b32d0d8b6451590dda0503c97185e06} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+excludes (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}}]{opt}{}\end{DoxyParamCaption})}
+
+
+
+Sets excluded options. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06113}{6113}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 45
+Here is the caller graph for this function:\+
+% FIG 46
+\Hypertarget{class_c_l_i_1_1_option_aa1110e431ac1c6d5fbdc985ed29b0e0b}\index{CLI::Option@{CLI::Option}!excludes@{excludes}}
+\index{excludes@{excludes}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{excludes()}{excludes()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa1110e431ac1c6d5fbdc985ed29b0e0b} 
+template$<$typename T = App$>$ \\
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+excludes (\begin{DoxyParamCaption}\item[{std::\+string}]{opt\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Can find a string if needed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05626}{5626}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 47
+\Hypertarget{class_c_l_i_1_1_option_a0b7cf6e62c1800a53ad314772eef6ed1}\index{CLI::Option@{CLI::Option}!expected@{expected}}
+\index{expected@{expected}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{expected()}{expected()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a0b7cf6e62c1800a53ad314772eef6ed1} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+expected (\begin{DoxyParamCaption}\item[{int}]{value}{}\end{DoxyParamCaption})}
+
+
+
+Set the number of expected arguments. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05995}{5995}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 48
+Here is the caller graph for this function:\+
+% FIG 49
+\Hypertarget{class_c_l_i_1_1_option_a5ce50b85bd7195531936a9e306aed9d1}\index{CLI::Option@{CLI::Option}!expected@{expected}}
+\index{expected@{expected}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{expected()}{expected()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a5ce50b85bd7195531936a9e306aed9d1} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+expected (\begin{DoxyParamCaption}\item[{int}]{value\+\_\+min}{, }\item[{int}]{value\+\_\+max}{}\end{DoxyParamCaption})}
+
+
+
+Set the range of expected arguments. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06016}{6016}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 50
+\Hypertarget{class_c_l_i_1_1_option_ae07696e732630332ad126bed994f57a1}\index{CLI::Option@{CLI::Option}!force\_callback@{force\_callback}}
+\index{force\_callback@{force\_callback}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{force\_callback()}{force\_callback()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ae07696e732630332ad126bed994f57a1} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+force\+\_\+callback (\begin{DoxyParamCaption}\item[{bool}]{value}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the value of force\+\_\+callback. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05555}{5555}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 51
+Here is the caller graph for this function:\+
+% FIG 52
+\Hypertarget{class_c_l_i_1_1_option_acf81df108f7fa668b63f5f36edf6a647}\index{CLI::Option@{CLI::Option}!get\_allow\_extra\_args@{get\_allow\_extra\_args}}
+\index{get\_allow\_extra\_args@{get\_allow\_extra\_args}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_allow\_extra\_args()}{get\_allow\_extra\_args()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_acf81df108f7fa668b63f5f36edf6a647} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+get\+\_\+allow\+\_\+extra\+\_\+args (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current value of allow extra args. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05545}{5545}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 53
+\Hypertarget{class_c_l_i_1_1_option_a877dcf67798939236419b4f9f515926d}\index{CLI::Option@{CLI::Option}!get\_callback@{get\_callback}}
+\index{get\_callback@{get\_callback}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_callback()}{get\_callback()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a877dcf67798939236419b4f9f515926d} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{namespace_c_l_i_aee5516e2fe4d7b0298d5491d73ccefe5}{callback\+\_\+t}} CLI::\+\+Option::\+get\+\_\+callback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the callback function. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05697}{5697}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a4c0023b0ba34fb5f230a8f09f035bd41}\index{CLI::Option@{CLI::Option}!get\_callback\_run@{get\_callback\_run}}
+\index{get\_callback\_run@{get\_callback\_run}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_callback\_run()}{get\_callback\_run()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a4c0023b0ba34fb5f230a8f09f035bd41} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+get\+\_\+callback\+\_\+run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+See if the callback has been run already. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05868}{5868}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 54
+\Hypertarget{class_c_l_i_1_1_option_a60c5498e164ce433929c6e62e71f0e58}\index{CLI::Option@{CLI::Option}!get\_default\_str@{get\_default\_str}}
+\index{get\_default\_str@{get\_default\_str}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_default\_str()}{get\_default\_str()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a60c5498e164ce433929c6e62e71f0e58} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string CLI::\+\+Option::\+get\+\_\+default\+\_\+str (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The default value (for help printing). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05694}{5694}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 55
+\Hypertarget{class_c_l_i_1_1_option_aada76bb0c7227e3b6b13e3586c5b6264}\index{CLI::Option@{CLI::Option}!get\_description@{get\_description}}
+\index{get\_description@{get\_description}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_description()}{get\_description()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aada76bb0c7227e3b6b13e3586c5b6264} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& CLI::\+\+Option::\+get\+\_\+description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the description. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05749}{5749}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 56
+\Hypertarget{class_c_l_i_1_1_option_a1ba76f997de3a9676c59737497b930a7}\index{CLI::Option@{CLI::Option}!get\_envname@{get\_envname}}
+\index{get\_envname@{get\_envname}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_envname()}{get\_envname()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a1ba76f997de3a9676c59737497b930a7} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string CLI::\+\+Option::\+get\+\_\+envname (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The environment variable associated to this value. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05685}{5685}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 57
+\Hypertarget{class_c_l_i_1_1_option_a99a400047a690f7129c4e71fb56b4b08}\index{CLI::Option@{CLI::Option}!get\_excludes@{get\_excludes}}
+\index{get\_excludes@{get\_excludes}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_excludes()}{get\_excludes()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a99a400047a690f7129c4e71fb56b4b08} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+set$<$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} $>$ CLI::\+\+Option::\+get\+\_\+excludes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The set of options excluded. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05691}{5691}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 58
+\Hypertarget{class_c_l_i_1_1_option_ab733159b8285bc0bb9832dc36524922c}\index{CLI::Option@{CLI::Option}!get\_expected@{get\_expected}}
+\index{get\_expected@{get\_expected}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_expected()}{get\_expected()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ab733159b8285bc0bb9832dc36524922c} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+expected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The number of times the option expects to be included. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05721}{5721}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 59
+\Hypertarget{class_c_l_i_1_1_option_abc2f07af59e6a602ea6295486360f349}\index{CLI::Option@{CLI::Option}!get\_expected\_max@{get\_expected\_max}}
+\index{get\_expected\_max@{get\_expected\_max}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_expected\_max()}{get\_expected\_max()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_abc2f07af59e6a602ea6295486360f349} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+expected\+\_\+max (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The max number of times the option expects to be included. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05726}{5726}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 60
+\Hypertarget{class_c_l_i_1_1_option_aba45c2317a24bbecd46778a0ed8a1951}\index{CLI::Option@{CLI::Option}!get\_expected\_min@{get\_expected\_min}}
+\index{get\_expected\_min@{get\_expected\_min}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_expected\_min()}{get\_expected\_min()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aba45c2317a24bbecd46778a0ed8a1951} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+expected\+\_\+min (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The number of times the option expects to be included. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05724}{5724}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 61
+\Hypertarget{class_c_l_i_1_1_option_aa006173c1a09b0ed01bff4b305b042ca}\index{CLI::Option@{CLI::Option}!get\_flag\_value@{get\_flag\_value}}
+\index{get\_flag\_value@{get\_flag\_value}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_flag\_value()}{get\_flag\_value()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa006173c1a09b0ed01bff4b305b042ca} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} std::\+string CLI::\+\+Option::\+get\+\_\+flag\+\_\+value (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{std::\+string}]{input\+\_\+value}{}\end{DoxyParamCaption}) const}
+
+Get the value that goes for a flag, nominally gets the default value but allows for overrides if not disabled 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06342}{6342}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 62
+Here is the caller graph for this function:\+
+% FIG 63
+\Hypertarget{class_c_l_i_1_1_option_aef3cbb52dc41a428122ea2e46ab1ef34}\index{CLI::Option@{CLI::Option}!get\_fnames@{get\_fnames}}
+\index{get\_fnames@{get\_fnames}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_fnames()}{get\_fnames()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aef3cbb52dc41a428122ea2e46ab1ef34} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+vector$<$ std::\+string $>$ \& CLI::\+\+Option::\+get\+\_\+fnames (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the flag names with specified default values. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05706}{5706}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 64
+\Hypertarget{class_c_l_i_1_1_option_a4eb94edb9c0a98708283755c8429e43a}\index{CLI::Option@{CLI::Option}!get\_force\_callback@{get\_force\_callback}}
+\index{get\_force\_callback@{get\_force\_callback}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_force\_callback()}{get\_force\_callback()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a4eb94edb9c0a98708283755c8429e43a} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+get\+\_\+force\+\_\+callback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The status of force\+\_\+callback. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05560}{5560}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a88a9148534376eb78670c21c4fa71784}\index{CLI::Option@{CLI::Option}!get\_inject\_separator@{get\_inject\_separator}}
+\index{get\_inject\_separator@{get\_inject\_separator}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_inject\_separator()}{get\_inject\_separator()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a88a9148534376eb78670c21c4fa71784} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+get\+\_\+inject\+\_\+separator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Return the inject\+\_\+separator flag. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05682}{5682}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 65
+\Hypertarget{class_c_l_i_1_1_option_aa12c4f65cf2ac9c58ebe050c46603fc0}\index{CLI::Option@{CLI::Option}!get\_items\_expected@{get\_items\_expected}}
+\index{get\_items\_expected@{get\_items\_expected}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_items\_expected()}{get\_items\_expected()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa12c4f65cf2ac9c58ebe050c46603fc0} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+items\+\_\+expected (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The total min number of expected string values to be used. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05737}{5737}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 66
+Here is the caller graph for this function:\+
+% FIG 67
+\Hypertarget{class_c_l_i_1_1_option_a7bdc3555509b93cbd8d5b9b2ccb3b016}\index{CLI::Option@{CLI::Option}!get\_items\_expected\_max@{get\_items\_expected\_max}}
+\index{get\_items\_expected\_max@{get\_items\_expected\_max}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_items\_expected\_max()}{get\_items\_expected\_max()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a7bdc3555509b93cbd8d5b9b2ccb3b016} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+items\+\_\+expected\+\_\+max (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the maximum number of items expected to be returned and used for the callback. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05732}{5732}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 68
+Here is the caller graph for this function:\+
+% FIG 69
+\Hypertarget{class_c_l_i_1_1_option_a65f68eaa288d2608560ae87f3c36f6fa}\index{CLI::Option@{CLI::Option}!get\_items\_expected\_min@{get\_items\_expected\_min}}
+\index{get\_items\_expected\_min@{get\_items\_expected\_min}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_items\_expected\_min()}{get\_items\_expected\_min()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a65f68eaa288d2608560ae87f3c36f6fa} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+items\+\_\+expected\+\_\+min (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The total min number of expected string values to be used. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05729}{5729}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 70
+\Hypertarget{class_c_l_i_1_1_option_a959bed8835597088ea76f4a3028ba995}\index{CLI::Option@{CLI::Option}!get\_lnames@{get\_lnames}}
+\index{get\_lnames@{get\_lnames}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_lnames()}{get\_lnames()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a959bed8835597088ea76f4a3028ba995} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+vector$<$ std::\+string $>$ \& CLI::\+\+Option::\+get\+\_\+lnames (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the long names. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05700}{5700}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a47e135d5198fd9df5b481091d2538b60}\index{CLI::Option@{CLI::Option}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a47e135d5198fd9df5b481091d2538b60} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} std::\+string CLI::\+\+Option::\+get\+\_\+name (\begin{DoxyParamCaption}\item[{bool}]{positional}{ = {\ttfamily false}, }\item[{bool}]{all\+\_\+options}{ = {\ttfamily false}}\end{DoxyParamCaption}) const}
+
+
+
+Gets a comma separated list of names. Will include /\+ prefer the positional name if positional is true. If all\+\_\+options is false, pick just the most descriptive name to show. Use {\ttfamily get\+\_\+name(true)} to get the positional name (replaces {\ttfamily get\+\_\+pname}). 
+
+The all list will never include a positional unless asked or that\textquotesingle{}s the only name.
+\begin{DoxyParams}{Parameters}
+{\em positional} & Show the positional name  \\
+\hline
+{\em all\+\_\+options} & Show every option \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06192}{6192}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 71
+Here is the caller graph for this function:\+
+% FIG 72
+\Hypertarget{class_c_l_i_1_1_option_aa319dc3a13fa9e2a1ac09653f60e0471}\index{CLI::Option@{CLI::Option}!get\_needs@{get\_needs}}
+\index{get\_needs@{get\_needs}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_needs()}{get\_needs()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa319dc3a13fa9e2a1ac09653f60e0471} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+set$<$ \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} $>$ CLI::\+\+Option::\+get\+\_\+needs (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The set of options needed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05688}{5688}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 73
+\Hypertarget{class_c_l_i_1_1_option_a0d3abd0d07feca3d080e8ef9a2284306}\index{CLI::Option@{CLI::Option}!get\_option\_text@{get\_option\_text}}
+\index{get\_option\_text@{get\_option\_text}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_option\_text()}{get\_option\_text()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a0d3abd0d07feca3d080e8ef9a2284306} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& CLI::\+\+Option::\+get\+\_\+option\+\_\+text (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05762}{5762}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 74
+\Hypertarget{class_c_l_i_1_1_option_a0f23a3a1ed7c5a47585117a4c9f27120}\index{CLI::Option@{CLI::Option}!get\_positional@{get\_positional}}
+\index{get\_positional@{get\_positional}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_positional()}{get\_positional()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a0f23a3a1ed7c5a47585117a4c9f27120} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+get\+\_\+positional (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+True if the argument can be given directly. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05740}{5740}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 75
+\Hypertarget{class_c_l_i_1_1_option_a5d0e8dc1c4c6e607fc210d4bd76d5292}\index{CLI::Option@{CLI::Option}!get\_run\_callback\_for\_default@{get\_run\_callback\_for\_default}}
+\index{get\_run\_callback\_for\_default@{get\_run\_callback\_for\_default}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_run\_callback\_for\_default()}{get\_run\_callback\_for\_default()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a5d0e8dc1c4c6e607fc210d4bd76d5292} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+get\+\_\+run\+\_\+callback\+\_\+for\+\_\+default (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current value of run\+\_\+callback\+\_\+for\+\_\+default. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05569}{5569}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 76
+\Hypertarget{class_c_l_i_1_1_option_ab3439e582d9b2a1968eaeecd2221c4a2}\index{CLI::Option@{CLI::Option}!get\_single\_name@{get\_single\_name}}
+\index{get\_single\_name@{get\_single\_name}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_single\_name()}{get\_single\_name()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ab3439e582d9b2a1968eaeecd2221c4a2} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& CLI::\+\+Option::\+get\+\_\+single\+\_\+name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a single name for the option, first of lname, sname, pname, envname. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05708}{5708}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 77
+\Hypertarget{class_c_l_i_1_1_option_aa64fc49adbb3a8cc86e411b0506853d1}\index{CLI::Option@{CLI::Option}!get\_snames@{get\_snames}}
+\index{get\_snames@{get\_snames}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_snames()}{get\_snames()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa64fc49adbb3a8cc86e411b0506853d1} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+vector$<$ std::\+string $>$ \& CLI::\+\+Option::\+get\+\_\+snames (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the short names. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05703}{5703}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a93b394e70e1f6c9f3e6d17cb1b7b82b5}\index{CLI::Option@{CLI::Option}!get\_trigger\_on\_parse@{get\_trigger\_on\_parse}}
+\index{get\_trigger\_on\_parse@{get\_trigger\_on\_parse}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_trigger\_on\_parse()}{get\_trigger\_on\_parse()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a93b394e70e1f6c9f3e6d17cb1b7b82b5} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+get\+\_\+trigger\+\_\+on\+\_\+parse (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The status of trigger on parse. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05552}{5552}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 78
+\Hypertarget{class_c_l_i_1_1_option_a32e483c3e2246ae03b9c9fe8535ced11}\index{CLI::Option@{CLI::Option}!get\_type\_name@{get\_type\_name}}
+\index{get\_type\_name@{get\_type\_name}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_type\_name()}{get\_type\_name()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a32e483c3e2246ae03b9c9fe8535ced11} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} std::\+string CLI::\+\+Option::\+get\+\_\+type\+\_\+name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get the full typename for this option. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06469}{6469}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 79
+Here is the caller graph for this function:\+
+% FIG 80
+\Hypertarget{class_c_l_i_1_1_option_aca087786d31c9e85a21bb82b90ac3cc4}\index{CLI::Option@{CLI::Option}!get\_type\_size@{get\_type\_size}}
+\index{get\_type\_size@{get\_type\_size}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_type\_size()}{get\_type\_size()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aca087786d31c9e85a21bb82b90ac3cc4} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+type\+\_\+size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The number of arguments the option expects. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05674}{5674}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 81
+\Hypertarget{class_c_l_i_1_1_option_aa7f105207c9d6f56d0d010ab244654dc}\index{CLI::Option@{CLI::Option}!get\_type\_size\_max@{get\_type\_size\_max}}
+\index{get\_type\_size\_max@{get\_type\_size\_max}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_type\_size\_max()}{get\_type\_size\_max()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa7f105207c9d6f56d0d010ab244654dc} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+type\+\_\+size\+\_\+max (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The maximum number of arguments the option expects. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05679}{5679}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 82
+\Hypertarget{class_c_l_i_1_1_option_a3df401e4f287b49b6a01624140413e37}\index{CLI::Option@{CLI::Option}!get\_type\_size\_min@{get\_type\_size\_min}}
+\index{get\_type\_size\_min@{get\_type\_size\_min}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_type\_size\_min()}{get\_type\_size\_min()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a3df401e4f287b49b6a01624140413e37} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Option::\+get\+\_\+type\+\_\+size\+\_\+min (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+The minimum number of arguments the option expects. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05677}{5677}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 83
+\Hypertarget{class_c_l_i_1_1_option_aa2b9f2b5c4e4b5aaa0db05b540821533}\index{CLI::Option@{CLI::Option}!get\_validator@{get\_validator}}
+\index{get\_validator@{get\_validator}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_validator()}{get\_validator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa2b9f2b5c4e4b5aaa0db05b540821533} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+get\+\_\+validator (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{Validator\+\_\+name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Get a named \doxylink{class_c_l_i_1_1_validator}{Validator}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06083}{6083}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 84
+\Hypertarget{class_c_l_i_1_1_option_a10023e268d8f26bd49d07ac42116b3bf}\index{CLI::Option@{CLI::Option}!get\_validator@{get\_validator}}
+\index{get\_validator@{get\_validator}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{get\_validator()}{get\_validator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a10023e268d8f26bd49d07ac42116b3bf} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+get\+\_\+validator (\begin{DoxyParamCaption}\item[{int}]{index}{}\end{DoxyParamCaption})}
+
+
+
+Get a \doxylink{class_c_l_i_1_1_validator}{Validator} by index NOTE:\+ this may not be the order of definition. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06095}{6095}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_af2c8f58356a6962622ff62acd349fd3d}\index{CLI::Option@{CLI::Option}!has\_description@{has\_description}}
+\index{has\_description@{has\_description}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{has\_description()}{has\_description()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_af2c8f58356a6962622ff62acd349fd3d} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+has\+\_\+description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+True if option has description. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05746}{5746}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 85
+\Hypertarget{class_c_l_i_1_1_option_a3906c06092f4c7c109c39fdc86183fd6}\index{CLI::Option@{CLI::Option}!ignore\_case@{ignore\_case}}
+\index{ignore\_case@{ignore\_case}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{ignore\_case()}{ignore\_case()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a3906c06092f4c7c109c39fdc86183fd6} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+ignore\+\_\+case (\begin{DoxyParamCaption}\item[{bool}]{value}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+Ignore case
+
+The template hides the fact that we don\textquotesingle{}t have the definition of \doxylink{class_c_l_i_1_1_app}{App} yet. You are never expected to add an argument to the template here. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06138}{6138}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 86
+\Hypertarget{class_c_l_i_1_1_option_ad02168c79c67a4b39e64b98d4cc39ca9}\index{CLI::Option@{CLI::Option}!ignore\_underscore@{ignore\_underscore}}
+\index{ignore\_underscore@{ignore\_underscore}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{ignore\_underscore()}{ignore\_underscore()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad02168c79c67a4b39e64b98d4cc39ca9} 
+template$<$typename T$>$ \\
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+ignore\+\_\+underscore (\begin{DoxyParamCaption}\item[{bool}]{value}{ = {\ttfamily true}}\end{DoxyParamCaption})}
+
+Ignore underscores in the option names
+
+The template hides the fact that we don\textquotesingle{}t have the definition of \doxylink{class_c_l_i_1_1_app}{App} yet. You are never expected to add an argument to the template here. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06158}{6158}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 87
+\Hypertarget{class_c_l_i_1_1_option_a8238350326df789724d4a8e422c1fa10}\index{CLI::Option@{CLI::Option}!inject\_separator@{inject\_separator}}
+\index{inject\_separator@{inject\_separator}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{inject\_separator()}{inject\_separator()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a8238350326df789724d4a8e422c1fa10} 
+void CLI::\+\+Option::\+inject\+\_\+separator (\begin{DoxyParamCaption}\item[{bool}]{value}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the value of the separator injection flag. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05893}{5893}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a67b1e51f9f873b265dac8122746fc2d7}\index{CLI::Option@{CLI::Option}!matching\_name@{matching\_name}}
+\index{matching\_name@{matching\_name}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{matching\_name()}{matching\_name()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a67b1e51f9f873b265dac8122746fc2d7} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} const std::\+string \& CLI::\+\+Option::\+matching\+\_\+name (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+
+
+If options share any of the same names, find it. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06275}{6275}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 88
+Here is the caller graph for this function:\+
+% FIG 89
+\Hypertarget{class_c_l_i_1_1_option_a849a0cf07784e81b514761722a0d9efc}\index{CLI::Option@{CLI::Option}!multi\_option\_policy@{multi\_option\_policy}}
+\index{multi\_option\_policy@{multi\_option\_policy}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{multi\_option\_policy()}{multi\_option\_policy()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a849a0cf07784e81b514761722a0d9efc} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+multi\+\_\+option\+\_\+policy (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{namespace_c_l_i_a991a3264d3459575fc7e83eb54d73d2b}{Multi\+Option\+Policy}}}]{value}{ = {\ttfamily \doxymbox{\hyperlink{namespace_c_l_i_a991a3264d3459575fc7e83eb54d73d2ba8ce61dd2505effd96f937fa743b6491f}{Multi\+Option\+Policy::\+\+Throw}}}}\end{DoxyParamCaption})}
+
+
+
+Take the last argument if given multiple times (or another policy). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06179}{6179}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 90
+Here is the caller graph for this function:\+
+% FIG 91
+\Hypertarget{class_c_l_i_1_1_option_ad9fb912d3f5fcf2b882cbb220412a3be}\index{CLI::Option@{CLI::Option}!needs@{needs}}
+\index{needs@{needs}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{needs()}{needs()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad9fb912d3f5fcf2b882cbb220412a3be} 
+template$<$typename A, typename B, typename... ARG$>$ \\
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+needs (\begin{DoxyParamCaption}\item[{A}]{opt}{, }\item[{B}]{opt1}{, }\item[{ARG...}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Any number supported, any mix of string and Opt. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05614}{5614}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 92
+\Hypertarget{class_c_l_i_1_1_option_ad81f0537b30d16f02a066473ef3ad5dc}\index{CLI::Option@{CLI::Option}!needs@{needs}}
+\index{needs@{needs}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{needs()}{needs()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad81f0537b30d16f02a066473ef3ad5dc} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+needs (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}}]{opt}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Sets required options. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05597}{5597}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 93
+Here is the caller graph for this function:\+
+% FIG 94
+\Hypertarget{class_c_l_i_1_1_option_aec2946d8cf9744bc55a3b8954df09999}\index{CLI::Option@{CLI::Option}!needs@{needs}}
+\index{needs@{needs}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{needs()}{needs()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aec2946d8cf9744bc55a3b8954df09999} 
+template$<$typename T = App$>$ \\
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+needs (\begin{DoxyParamCaption}\item[{std::\+string}]{opt\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Can find a string if needed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05605}{5605}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 95
+\Hypertarget{class_c_l_i_1_1_option_a6208cfc282d4029741775092a4e9c52d}\index{CLI::Option@{CLI::Option}!nonpositional@{nonpositional}}
+\index{nonpositional@{nonpositional}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{nonpositional()}{nonpositional()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a6208cfc282d4029741775092a4e9c52d} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Option::\+nonpositional (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+True if option has at least one non-\/positional name. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05743}{5743}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 96
+\Hypertarget{class_c_l_i_1_1_option_ab73e846fb3a78ac7eff8b6cd6afb24a1}\index{CLI::Option@{CLI::Option}!operator bool@{operator bool}}
+\index{operator bool@{operator bool}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{operator bool()}{operator bool()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ab73e846fb3a78ac7eff8b6cd6afb24a1} 
+CLI::\+\+Option::\+operator bool (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+This bool operator returns true if any arguments were passed or the option callback is forced. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05520}{5520}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 97
+\Hypertarget{class_c_l_i_1_1_option_a4c6bad0d2ed76477d603c6439d18184e}\index{CLI::Option@{CLI::Option}!operator=@{operator=}}
+\index{operator=@{operator=}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a4c6bad0d2ed76477d603c6439d18184e} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \& CLI::\+\+Option::\+operator= (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [delete]}}
+
+Here is the call graph for this function:\+
+% FIG 98
+\Hypertarget{class_c_l_i_1_1_option_ae72ff0b89bebb2987d548c186c577e50}\index{CLI::Option@{CLI::Option}!operator==@{operator==}}
+\index{operator==@{operator==}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{operator==()}{operator==()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ae72ff0b89bebb2987d548c186c577e50} 
+bool CLI::\+\+Option::\+operator== (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \&}]{other}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+If options share any of the same names, they are equal (not counting positional). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05787}{5787}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 99
+\Hypertarget{class_c_l_i_1_1_option_a5bdcc74efea965f6d440b03432df50e5}\index{CLI::Option@{CLI::Option}!option\_text@{option\_text}}
+\index{option\_text@{option\_text}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{option\_text()}{option\_text()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a5bdcc74efea965f6d440b03432df50e5} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+option\+\_\+text (\begin{DoxyParamCaption}\item[{std::\+string}]{text}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05757}{5757}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 100
+\Hypertarget{class_c_l_i_1_1_option_a2db0b397f74420d034944ce55d07509a}\index{CLI::Option@{CLI::Option}!reduced\_results@{reduced\_results}}
+\index{reduced\_results@{reduced\_results}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{reduced\_results()}{reduced\_results()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a2db0b397f74420d034944ce55d07509a} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} CLI::\+\+Option::\+reduced\+\_\+results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Get a copy of the results. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06408}{6408}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 101
+Here is the caller graph for this function:\+
+% FIG 102
+\Hypertarget{class_c_l_i_1_1_option_a7eb7a368736bd163a11f73d2b7d53883}\index{CLI::Option@{CLI::Option}!remove\_excludes@{remove\_excludes}}
+\index{remove\_excludes@{remove\_excludes}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{remove\_excludes()}{remove\_excludes()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a7eb7a368736bd163a11f73d2b7d53883} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} bool CLI::\+\+Option::\+remove\+\_\+excludes (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}}]{opt}{}\end{DoxyParamCaption})}
+
+
+
+Remove needs link from an option. Returns true if the option really was in the needs list. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06128}{6128}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 103
+\Hypertarget{class_c_l_i_1_1_option_ae6b5e58393e35d7ebb9348f29c7175ef}\index{CLI::Option@{CLI::Option}!remove\_needs@{remove\_needs}}
+\index{remove\_needs@{remove\_needs}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{remove\_needs()}{remove\_needs()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ae6b5e58393e35d7ebb9348f29c7175ef} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} bool CLI::\+\+Option::\+remove\+\_\+needs (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}}]{opt}{}\end{DoxyParamCaption})}
+
+
+
+Remove needs link from an option. Returns true if the option really was in the needs list. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06103}{6103}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 104
+\Hypertarget{class_c_l_i_1_1_option_a73fc56f3cd1a81fb029df35b033798a9}\index{CLI::Option@{CLI::Option}!results@{results}}
+\index{results@{results}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{results()}{results()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a73fc56f3cd1a81fb029df35b033798a9} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const \doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} \& CLI::\+\+Option::\+results (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current complete results set. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05824}{5824}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 105
+\Hypertarget{class_c_l_i_1_1_option_ac445a3a3ac14d7ec0f229887028bbbf7}\index{CLI::Option@{CLI::Option}!results@{results}}
+\index{results@{results}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{results()}{results()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ac445a3a3ac14d7ec0f229887028bbbf7} 
+template$<$typename T$>$ \\
+void CLI::\+\+Option::\+results (\begin{DoxyParamCaption}\item[{T \&}]{output}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the results as a specified type. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05830}{5830}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 106
+\Hypertarget{class_c_l_i_1_1_option_a3f124f1827ca11033d591b5673fc2ac2}\index{CLI::Option@{CLI::Option}!run\_callback@{run\_callback}}
+\index{run\_callback@{run\_callback}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{run\_callback()}{run\_callback()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a3f124f1827ca11033d591b5673fc2ac2} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} void CLI::\+\+Option::\+run\+\_\+callback (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Process the callback. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06245}{6245}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 107
+Here is the caller graph for this function:\+
+% FIG 108
+\Hypertarget{class_c_l_i_1_1_option_a81a26e9320e4ec616fbbd6fa3ad60ef7}\index{CLI::Option@{CLI::Option}!run\_callback\_for\_default@{run\_callback\_for\_default}}
+\index{run\_callback\_for\_default@{run\_callback\_for\_default}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{run\_callback\_for\_default()}{run\_callback\_for\_default()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a81a26e9320e4ec616fbbd6fa3ad60ef7} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+run\+\_\+callback\+\_\+for\+\_\+default (\begin{DoxyParamCaption}\item[{bool}]{value}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the value of run\+\_\+callback\+\_\+for\+\_\+default which controls whether the callback function should be called to set the default This is controlled automatically but could be manipulated by the user. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05564}{5564}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 109
+Here is the caller graph for this function:\+
+% FIG 110
+\Hypertarget{class_c_l_i_1_1_option_abcd86bbee5fad44445178a27d671ece3}\index{CLI::Option@{CLI::Option}!transform@{transform}}
+\index{transform@{transform}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_abcd86bbee5fad44445178a27d671ece3} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+transform (\begin{DoxyParamCaption}\item[{const std::\+function$<$ std::\+string(std::\+string)$>$ \&}]{func}{, }\item[{std::\+string}]{transform\+\_\+description}{ = {\ttfamily "{}"{}}, }\item[{std::\+string}]{transform\+\_\+name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Adds a Validator-\/like function that can change result. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06058}{6058}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 111
+\Hypertarget{class_c_l_i_1_1_option_addc5729386141a7a4c1b2f15a3b0c96a}\index{CLI::Option@{CLI::Option}!transform@{transform}}
+\index{transform@{transform}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{transform()}{transform()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_addc5729386141a7a4c1b2f15a3b0c96a} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+transform (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}}}]{Validator}{, }\item[{const std::\+string \&}]{Validator\+\_\+name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})}
+
+
+
+Adds a transforming \doxylink{class_c_l_i_1_1_validator}{Validator} with a built in type name. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06051}{6051}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 112
+Here is the caller graph for this function:\+
+% FIG 113
+\Hypertarget{class_c_l_i_1_1_option_a86d413992d2193c81db1ce250ddf2e26}\index{CLI::Option@{CLI::Option}!trigger\_on\_parse@{trigger\_on\_parse}}
+\index{trigger\_on\_parse@{trigger\_on\_parse}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{trigger\_on\_parse()}{trigger\_on\_parse()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a86d413992d2193c81db1ce250ddf2e26} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+trigger\+\_\+on\+\_\+parse (\begin{DoxyParamCaption}\item[{bool}]{value}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the value of trigger\+\_\+on\+\_\+parse which specifies that the option callback should be triggered on every parse. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05547}{5547}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 114
+\Hypertarget{class_c_l_i_1_1_option_a1fcb3c625eeca46ef953732a71403027}\index{CLI::Option@{CLI::Option}!type\_name@{type\_name}}
+\index{type\_name@{type\_name}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{type\_name()}{type\_name()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a1fcb3c625eeca46ef953732a71403027} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+type\+\_\+name (\begin{DoxyParamCaption}\item[{std::\+string}]{typeval}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set a custom option typestring. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05881}{5881}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 115
+Here is the caller graph for this function:\+
+% FIG 116
+\Hypertarget{class_c_l_i_1_1_option_ad4ff97f7911d552972c10771bcf488d7}\index{CLI::Option@{CLI::Option}!type\_name\_fn@{type\_name\_fn}}
+\index{type\_name\_fn@{type\_name\_fn}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{type\_name\_fn()}{type\_name\_fn()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad4ff97f7911d552972c10771bcf488d7} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+type\+\_\+name\+\_\+fn (\begin{DoxyParamCaption}\item[{std::\+function$<$ std::\+string()$>$}]{typefun}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the type function to run when displayed on this option. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05875}{5875}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 117
+Here is the caller graph for this function:\+
+% FIG 118
+\Hypertarget{class_c_l_i_1_1_option_a02b6f5518f72c1106319823633c5f518}\index{CLI::Option@{CLI::Option}!type\_size@{type\_size}}
+\index{type\_size@{type\_size}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{type\_size()}{type\_size()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a02b6f5518f72c1106319823633c5f518} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+type\+\_\+size (\begin{DoxyParamCaption}\item[{int}]{option\+\_\+type\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Set a custom option size. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06426}{6426}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 119
+Here is the caller graph for this function:\+
+% FIG 120
+\Hypertarget{class_c_l_i_1_1_option_aafe51763adc6345fa22258e22b037e4c}\index{CLI::Option@{CLI::Option}!type\_size@{type\_size}}
+\index{type\_size@{type\_size}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{type\_size()}{type\_size()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aafe51763adc6345fa22258e22b037e4c} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+type\+\_\+size (\begin{DoxyParamCaption}\item[{int}]{option\+\_\+type\+\_\+size\+\_\+min}{, }\item[{int}]{option\+\_\+type\+\_\+size\+\_\+max}{}\end{DoxyParamCaption})}
+
+
+
+Set a custom option type size range. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l06445}{6445}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 121
+
+
+\label{doc-variable-members}
+\Hypertarget{class_c_l_i_1_1_option_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_l_i_1_1_option_adb0563505e82a3932466a23700ce66ba}\index{CLI::Option@{CLI::Option}!allow\_extra\_args\_@{allow\_extra\_args\_}}
+\index{allow\_extra\_args\_@{allow\_extra\_args\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{allow\_extra\_args\_}{allow\_extra\_args\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_adb0563505e82a3932466a23700ce66ba} 
+bool CLI::\+\+Option::\+allow\+\_\+extra\+\_\+args\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Specify that extra args beyond type\+\_\+size\+\_\+max should be allowed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05483}{5483}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a8efb526a434cbcd7d019ee4a5703dbcd}\index{CLI::Option@{CLI::Option}!App@{App}}
+\index{App@{App}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{App}{App}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a8efb526a434cbcd7d019ee4a5703dbcd} 
+friend CLI::\+\+Option::\+\+App\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05385}{5385}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_ab79262b952902ff5e1cba6e3788aca54}\index{CLI::Option@{CLI::Option}!callback\_@{callback\_}}
+\index{callback\_@{callback\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{callback\_}{callback\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ab79262b952902ff5e1cba6e3788aca54} 
+\doxymbox{\hyperlink{namespace_c_l_i_aee5516e2fe4d7b0298d5491d73ccefe5}{callback\+\_\+t}} CLI::\+\+Option::\+callback\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Options store a callback to do all the work. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05463}{5463}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a239c3f2953f88bc9cf1a2bc99af39095}\index{CLI::Option@{CLI::Option}!current\_option\_state\_@{current\_option\_state\_}}
+\index{current\_option\_state\_@{current\_option\_state\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{current\_option\_state\_}{current\_option\_state\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a239c3f2953f88bc9cf1a2bc99af39095} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9}{option\+\_\+state}} CLI::\+\+Option::\+current\+\_\+option\+\_\+state\+\_\+ \{\doxymbox{\hyperlink{class_c_l_i_1_1_option_a21df1631a6f5ddb495b9ce9c940669b9adbc77665f51d780a776978e34f065af5}{option\+\_\+state::\+parsing}}\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Whether the callback has run (needed for INI parsing). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05481}{5481}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_ad2c7c8c939c6eacfb25ae7a83c0640af}\index{CLI::Option@{CLI::Option}!default\_flag\_values\_@{default\_flag\_values\_}}
+\index{default\_flag\_values\_@{default\_flag\_values\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{default\_flag\_values\_}{default\_flag\_values\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad2c7c8c939c6eacfb25ae7a83c0640af} 
+std::\+vector$<$std::\+pair$<$std::\+string, std::\+string$>$ $>$ CLI::\+\+Option::\+default\+\_\+flag\+\_\+values\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+A list of the flag names with the appropriate default value, the first part of the pair should be duplicates of what is in snames or lnames but will trigger a particular response on a flag 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05399}{5399}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_acc7769c9cd48d7c7302dd51aa8fd3bd2}\index{CLI::Option@{CLI::Option}!default\_function\_@{default\_function\_}}
+\index{default\_function\_@{default\_function\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{default\_function\_}{default\_function\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_acc7769c9cd48d7c7302dd51aa8fd3bd2} 
+std::\+function$<$std::\+string()$>$ CLI::\+\+Option::\+default\+\_\+function\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Run this function to capture a default (ignore if empty). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05429}{5429}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a169893983f2dd0dc840ebca98bb76698}\index{CLI::Option@{CLI::Option}!default\_str\_@{default\_str\_}}
+\index{default\_str\_@{default\_str\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{default\_str\_}{default\_str\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a169893983f2dd0dc840ebca98bb76698} 
+std::\+string CLI::\+\+Option::\+default\+\_\+str\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A human readable default value, either manually set, captured, or captured by default. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05418}{5418}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_aa6427b2f3303cc4469cacdc098b9d4bf}\index{CLI::Option@{CLI::Option}!description\_@{description\_}}
+\index{description\_@{description\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{description\_}{description\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa6427b2f3303cc4469cacdc098b9d4bf} 
+std::\+string CLI::\+\+Option::\+description\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The description for help strings. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05415}{5415}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_acac4bf11cbd933967ced9175946ffbe6}\index{CLI::Option@{CLI::Option}!envname\_@{envname\_}}
+\index{envname\_@{envname\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{envname\_}{envname\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_acac4bf11cbd933967ced9175946ffbe6} 
+std::\+string CLI::\+\+Option::\+envname\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+If given, check the environment for this option. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05408}{5408}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a49c5490dd092599c067833fd0f5c79d3}\index{CLI::Option@{CLI::Option}!excludes\_@{excludes\_}}
+\index{excludes\_@{excludes\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{excludes\_}{excludes\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a49c5490dd092599c067833fd0f5c79d3} 
+std::\+set$<$\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}$>$ CLI::\+\+Option::\+excludes\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A list of options that are excluded with this option. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05453}{5453}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a963ed9f9758d938c860bc14bf1db57b6}\index{CLI::Option@{CLI::Option}!expected\_max\_@{expected\_max\_}}
+\index{expected\_max\_@{expected\_max\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{expected\_max\_}{expected\_max\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a963ed9f9758d938c860bc14bf1db57b6} 
+int CLI::\+\+Option::\+expected\+\_\+max\+\_\+ \{1\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The maximum number of expected values. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05444}{5444}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a35e04622c4de2eab61a04421d0618741}\index{CLI::Option@{CLI::Option}!expected\_min\_@{expected\_min\_}}
+\index{expected\_min\_@{expected\_min\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{expected\_min\_}{expected\_min\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a35e04622c4de2eab61a04421d0618741} 
+int CLI::\+\+Option::\+expected\+\_\+min\+\_\+ \{1\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The minimum number of expected values. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05442}{5442}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a47712db860c1df802ff0ee51cbc2200e}\index{CLI::Option@{CLI::Option}!flag\_like\_@{flag\_like\_}}
+\index{flag\_like\_@{flag\_like\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{flag\_like\_}{flag\_like\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a47712db860c1df802ff0ee51cbc2200e} 
+bool CLI::\+\+Option::\+flag\+\_\+like\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Specify that the option should act like a flag vs regular option. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05485}{5485}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a56635c9d01c0fde66df3a5edf87b8a31}\index{CLI::Option@{CLI::Option}!fnames\_@{fnames\_}}
+\index{fnames\_@{fnames\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{fnames\_}{fnames\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a56635c9d01c0fde66df3a5edf87b8a31} 
+std::\+vector$<$std::\+string$>$ CLI::\+\+Option::\+fnames\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+a list of flag names with specified default values; 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05402}{5402}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a4b75830d792af9a8b7e0e19f5c26fa2e}\index{CLI::Option@{CLI::Option}!force\_callback\_@{force\_callback\_}}
+\index{force\_callback\_@{force\_callback\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{force\_callback\_}{force\_callback\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a4b75830d792af9a8b7e0e19f5c26fa2e} 
+bool CLI::\+\+Option::\+force\+\_\+callback\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+flag indicating that the option should force the callback regardless if any results present 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05493}{5493}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_aa95f089d19a4b14039261fd7e35e6223}\index{CLI::Option@{CLI::Option}!inject\_separator\_@{inject\_separator\_}}
+\index{inject\_separator\_@{inject\_separator\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{inject\_separator\_}{inject\_separator\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_aa95f089d19a4b14039261fd7e35e6223} 
+bool CLI::\+\+Option::\+inject\+\_\+separator\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+flag indicating a separator needs to be injected after each argument call 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05489}{5489}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_ae06feaf7ca62a5497514a09f44724430}\index{CLI::Option@{CLI::Option}!lnames\_@{lnames\_}}
+\index{lnames\_@{lnames\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{lnames\_}{lnames\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ae06feaf7ca62a5497514a09f44724430} 
+std::\+vector$<$std::\+string$>$ CLI::\+\+Option::\+lnames\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A list of the long names ({\ttfamily -\/-\/long}) without the leading dashes. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05395}{5395}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a3bd8d2ff461e8046b284cdbfcd741dce}\index{CLI::Option@{CLI::Option}!needs\_@{needs\_}}
+\index{needs\_@{needs\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{needs\_}{needs\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a3bd8d2ff461e8046b284cdbfcd741dce} 
+std::\+set$<$\doxymbox{\hyperlink{class_c_l_i_1_1_option_a577e99d3ea33598b4dc3605f544d14fc}{Option}} \texorpdfstring{$\ast$}{*}$>$ CLI::\+\+Option::\+needs\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A list of options that are required with this option. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05450}{5450}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a23dc529b1db815e7056750d671e29896}\index{CLI::Option@{CLI::Option}!option\_text\_@{option\_text\_}}
+\index{option\_text\_@{option\_text\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{option\_text\_}{option\_text\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a23dc529b1db815e7056750d671e29896} 
+std::\+string CLI::\+\+Option::\+option\+\_\+text\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+If given, replace the text that describes the option type and usage in the help text. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05421}{5421}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a9391ef1d3ed3f0607633b36faf72f5c0}\index{CLI::Option@{CLI::Option}!parent\_@{parent\_}}
+\index{parent\_@{parent\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{parent\_}{parent\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a9391ef1d3ed3f0607633b36faf72f5c0} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_option_a8efb526a434cbcd7d019ee4a5703dbcd}{App}}\texorpdfstring{$\ast$}{*} CLI::\+\+Option::\+parent\+\_\+ \{nullptr\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+link back up to the parent \doxylink{class_c_l_i_1_1_app}{App} for fallthrough 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05460}{5460}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a3599a92dde17b22551dcdfcb9798f0f3}\index{CLI::Option@{CLI::Option}!pname\_@{pname\_}}
+\index{pname\_@{pname\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{pname\_}{pname\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a3599a92dde17b22551dcdfcb9798f0f3} 
+std::\+string CLI::\+\+Option::\+pname\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A positional name. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05405}{5405}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a7e1e5e40353f296f4b1f0a5940dc7099}\index{CLI::Option@{CLI::Option}!proc\_results\_@{proc\_results\_}}
+\index{proc\_results\_@{proc\_results\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{proc\_results\_}{proc\_results\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a7e1e5e40353f296f4b1f0a5940dc7099} 
+\doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} CLI::\+\+Option::\+proc\+\_\+results\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+results after reduction 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05472}{5472}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_af45b214347a715edf92b1e3de5c4b938}\index{CLI::Option@{CLI::Option}!results\_@{results\_}}
+\index{results\_@{results\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{results\_}{results\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_af45b214347a715edf92b1e3de5c4b938} 
+\doxymbox{\hyperlink{namespace_c_l_i_af6f17295305147505ec3636151d35bbb}{results\+\_\+t}} CLI::\+\+Option::\+results\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+complete Results of parsing 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05470}{5470}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a16ff0fc34306cdd0c51379f16d61eeec}\index{CLI::Option@{CLI::Option}!run\_callback\_for\_default\_@{run\_callback\_for\_default\_}}
+\index{run\_callback\_for\_default\_@{run\_callback\_for\_default\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{run\_callback\_for\_default\_}{run\_callback\_for\_default\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a16ff0fc34306cdd0c51379f16d61eeec} 
+bool CLI::\+\+Option::\+run\+\_\+callback\+\_\+for\+\_\+default\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Control option to run the callback to set the default. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05487}{5487}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a7d8ef1d4012fde878668c943d9b197bc}\index{CLI::Option@{CLI::Option}!snames\_@{snames\_}}
+\index{snames\_@{snames\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{snames\_}{snames\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a7d8ef1d4012fde878668c943d9b197bc} 
+std::\+vector$<$std::\+string$>$ CLI::\+\+Option::\+snames\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A list of the short names ({\ttfamily -\/a}) without the leading dashes. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05392}{5392}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a4716e3d2f016a0a33580fc4981580e9d}\index{CLI::Option@{CLI::Option}!trigger\_on\_result\_@{trigger\_on\_result\_}}
+\index{trigger\_on\_result\_@{trigger\_on\_result\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{trigger\_on\_result\_}{trigger\_on\_result\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a4716e3d2f016a0a33580fc4981580e9d} 
+bool CLI::\+\+Option::\+trigger\+\_\+on\+\_\+result\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+flag indicating that the option should trigger the validation and callback chain on each result when loaded 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05491}{5491}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a2080c70a11f8935118dffc924824aa87}\index{CLI::Option@{CLI::Option}!type\_name\_@{type\_name\_}}
+\index{type\_name\_@{type\_name\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{type\_name\_}{type\_name\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a2080c70a11f8935118dffc924824aa87} 
+std::\+function$<$std::\+string()$>$ CLI::\+\+Option::\+type\+\_\+name\+\_\+ \{\+[$\,$]\+() \{ return std::\+string(); \}\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+A human readable type value, set when \doxylink{class_c_l_i_1_1_app}{App} creates this
+
+This is a lambda function so "{}types"{} can be dynamic, such as when a set prints its contents. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05426}{5426}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_ad9a5a55a8c3fdce89dbf5c167c183ca6}\index{CLI::Option@{CLI::Option}!type\_size\_max\_@{type\_size\_max\_}}
+\index{type\_size\_max\_@{type\_size\_max\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{type\_size\_max\_}{type\_size\_max\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad9a5a55a8c3fdce89dbf5c167c183ca6} 
+int CLI::\+\+Option::\+type\+\_\+size\+\_\+max\+\_\+ \{1\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+The number of arguments that make up one option. max is the nominal type size, min is the minimum number of strings 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05437}{5437}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_a23e5549e7c0490f15018ee84bc39d644}\index{CLI::Option@{CLI::Option}!type\_size\_min\_@{type\_size\_min\_}}
+\index{type\_size\_min\_@{type\_size\_min\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{type\_size\_min\_}{type\_size\_min\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_a23e5549e7c0490f15018ee84bc39d644} 
+int CLI::\+\+Option::\+type\+\_\+size\+\_\+min\+\_\+ \{1\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The minimum number of arguments an option should be expecting. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05439}{5439}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_option_ad406b8299fb243f0caa52a35863c82b7}\index{CLI::Option@{CLI::Option}!validators\_@{validators\_}}
+\index{validators\_@{validators\_}!CLI::Option@{CLI::Option}}
+\doxysubsubsection{\texorpdfstring{validators\_}{validators\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_option_ad406b8299fb243f0caa52a35863c82b7} 
+std::\+vector$<$\doxymbox{\hyperlink{class_c_l_i_1_1_validator}{Validator}}$>$ CLI::\+\+Option::\+validators\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A list of Validators to run on each value parsed. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l05447}{5447}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

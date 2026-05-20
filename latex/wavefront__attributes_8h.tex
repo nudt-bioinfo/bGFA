@@ -1,0 +1,152 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+attributes.h File Reference}
+\hypertarget{wavefront__attributes_8h}{}\label{wavefront__attributes_8h}\index{src/wfa/wavefront/wavefront\_attributes.h@{src/wfa/wavefront/wavefront\_attributes.h}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+cigar.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+affine\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+affine2p\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+linear\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+profiler\+\_\+timer.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+plot.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+display.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+heuristic.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+attributes.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structalignment__form__t}{alignment\+\_\+form\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{structalignment__system__t}{alignment\+\_\+system\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\+\_\+aligner\+\_\+attr\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36}{alignment\+\_\+scope\+\_\+t}} \{ \doxymbox{\hyperlink{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36accc28f7e258d4cacee45103ce5dc513b}{compute\+\_\+score}}
+, \doxymbox{\hyperlink{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36abffac3adb7bc82e62d2bbdedd0e62abc}{compute\+\_\+alignment}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6}{alignment\+\_\+span\+\_\+t}} \{ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a7634a74bff3a950f7b29003bc4fb425f}{alignment\+\_\+end2end}}
+, \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979}{alignment\+\_\+endsfree}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512}{wavefront\+\_\+memory\+\_\+t}} \{ \doxymbox{\hyperlink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aaf3a232794b95be9850778ea6bb5c1ed}{wavefront\+\_\+memory\+\_\+high}} = 0
+, \doxymbox{\hyperlink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aa735b0a2d4cfecadd2d9f590b9796dd2}{wavefront\+\_\+memory\+\_\+med}} = 1
+, \doxymbox{\hyperlink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ae4cc764b20f1a41bd391abd30c1271db}{wavefront\+\_\+memory\+\_\+low}} = 2
+, \doxymbox{\hyperlink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ad8d8b6029afccfe4a991db282f79b071}{wavefront\+\_\+memory\+\_\+ultralow}} = 3
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\+\_\+aligner\+\_\+attr\+\_\+t}} \doxymbox{\hyperlink{wavefront__attributes_8h_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\+\_\+aligner\+\_\+attr\+\_\+default}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-enum-members}
+\Hypertarget{wavefront__attributes_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36}\index{wavefront\_attributes.h@{wavefront\_attributes.h}!alignment\_scope\_t@{alignment\_scope\_t}}
+\index{alignment\_scope\_t@{alignment\_scope\_t}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\doxysubsubsection{\texorpdfstring{alignment\_scope\_t}{alignment\_scope\_t}}
+{\footnotesize\ttfamily \label{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36} 
+enum \doxymbox{\hyperlink{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36}{alignment\+\_\+scope\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{compute\_score@{compute\_score}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\index{wavefront\_attributes.h@{wavefront\_attributes.h}!compute\_score@{compute\_score}}
+}\Hypertarget{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36accc28f7e258d4cacee45103ce5dc513b}\label{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36accc28f7e258d4cacee45103ce5dc513b} 
+compute\+\_\+score&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{compute\_alignment@{compute\_alignment}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\index{wavefront\_attributes.h@{wavefront\_attributes.h}!compute\_alignment@{compute\_alignment}}
+}\Hypertarget{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36abffac3adb7bc82e62d2bbdedd0e62abc}\label{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36abffac3adb7bc82e62d2bbdedd0e62abc} 
+compute\+\_\+alignment&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__attributes_8h_source_l00051}{51}} of file \doxymbox{\hyperlink{wavefront__attributes_8h_source}{wavefront\+\_\+attributes.\+h}}.
+
+\Hypertarget{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6}\index{wavefront\_attributes.h@{wavefront\_attributes.h}!alignment\_span\_t@{alignment\_span\_t}}
+\index{alignment\_span\_t@{alignment\_span\_t}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\doxysubsubsection{\texorpdfstring{alignment\_span\_t}{alignment\_span\_t}}
+{\footnotesize\ttfamily \label{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6} 
+enum \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6}{alignment\+\_\+span\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{alignment\_end2end@{alignment\_end2end}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\index{wavefront\_attributes.h@{wavefront\_attributes.h}!alignment\_end2end@{alignment\_end2end}}
+}\Hypertarget{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a7634a74bff3a950f7b29003bc4fb425f}\label{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a7634a74bff3a950f7b29003bc4fb425f} 
+alignment\+\_\+end2end&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{alignment\_endsfree@{alignment\_endsfree}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\index{wavefront\_attributes.h@{wavefront\_attributes.h}!alignment\_endsfree@{alignment\_endsfree}}
+}\Hypertarget{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979}\label{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979} 
+alignment\+\_\+endsfree&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__attributes_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{wavefront__attributes_8h_source}{wavefront\+\_\+attributes.\+h}}.
+
+\Hypertarget{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512}\index{wavefront\_attributes.h@{wavefront\_attributes.h}!wavefront\_memory\_t@{wavefront\_memory\_t}}
+\index{wavefront\_memory\_t@{wavefront\_memory\_t}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_memory\_t}{wavefront\_memory\_t}}
+{\footnotesize\ttfamily \label{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512} 
+enum \doxymbox{\hyperlink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512}{wavefront\+\_\+memory\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wavefront\_memory\_high@{wavefront\_memory\_high}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\index{wavefront\_attributes.h@{wavefront\_attributes.h}!wavefront\_memory\_high@{wavefront\_memory\_high}}
+}\Hypertarget{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aaf3a232794b95be9850778ea6bb5c1ed}\label{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aaf3a232794b95be9850778ea6bb5c1ed} 
+wavefront\+\_\+memory\+\_\+high&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wavefront\_memory\_med@{wavefront\_memory\_med}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\index{wavefront\_attributes.h@{wavefront\_attributes.h}!wavefront\_memory\_med@{wavefront\_memory\_med}}
+}\Hypertarget{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aa735b0a2d4cfecadd2d9f590b9796dd2}\label{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aa735b0a2d4cfecadd2d9f590b9796dd2} 
+wavefront\+\_\+memory\+\_\+med&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wavefront\_memory\_low@{wavefront\_memory\_low}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\index{wavefront\_attributes.h@{wavefront\_attributes.h}!wavefront\_memory\_low@{wavefront\_memory\_low}}
+}\Hypertarget{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ae4cc764b20f1a41bd391abd30c1271db}\label{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ae4cc764b20f1a41bd391abd30c1271db} 
+wavefront\+\_\+memory\+\_\+low&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wavefront\_memory\_ultralow@{wavefront\_memory\_ultralow}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\index{wavefront\_attributes.h@{wavefront\_attributes.h}!wavefront\_memory\_ultralow@{wavefront\_memory\_ultralow}}
+}\Hypertarget{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ad8d8b6029afccfe4a991db282f79b071}\label{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ad8d8b6029afccfe4a991db282f79b071} 
+wavefront\+\_\+memory\+\_\+ultralow&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__attributes_8h_source_l00104}{104}} of file \doxymbox{\hyperlink{wavefront__attributes_8h_source}{wavefront\+\_\+attributes.\+h}}.
+
+
+
+\label{doc-var-members}
+\Hypertarget{wavefront__attributes_8h_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{wavefront__attributes_8h_a87e91d1e75a390a0d4e99b67855bdc72}\index{wavefront\_attributes.h@{wavefront\_attributes.h}!wavefront\_aligner\_attr\_default@{wavefront\_aligner\_attr\_default}}
+\index{wavefront\_aligner\_attr\_default@{wavefront\_aligner\_attr\_default}!wavefront\_attributes.h@{wavefront\_attributes.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_aligner\_attr\_default}{wavefront\_aligner\_attr\_default}}
+{\footnotesize\ttfamily \label{wavefront__attributes_8h_a87e91d1e75a390a0d4e99b67855bdc72} 
+\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\+\_\+aligner\+\_\+attr\+\_\+t}} wavefront\+\_\+aligner\+\_\+attr\+\_\+default\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__attributes_8c_source_l00038}{38}} of file \doxymbox{\hyperlink{wavefront__attributes_8c_source}{wavefront\+\_\+attributes.\+c}}.
+

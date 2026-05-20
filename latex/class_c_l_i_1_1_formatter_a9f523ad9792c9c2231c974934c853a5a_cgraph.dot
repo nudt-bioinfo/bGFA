@@ -1,0 +1,21 @@
+digraph "CLI::Formatter::make_subcommand"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="CLI::Formatter::make\l_subcommand",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="This prints out a subcommand."];
+  Node1 -> Node2 [id="edge7_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CLI::App::get_description",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#aea5b9c25368e0013c5e0e4ba96e42251",tooltip="Get the app or subcommand description."];
+  Node1 -> Node3 [id="edge8_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CLI::App::get_display_name",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#a736e63f491740246feb71216802ed4df",tooltip="Get a display name for an app."];
+  Node3 -> Node4 [id="edge9_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="CLI::App::get_group",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#ac1058e542c8b26a4246a77118d70aef5",tooltip="Get the group of this subcommand."];
+  Node1 -> Node5 [id="edge10_Node000001_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="CLI::FormatterBase\l::get_label",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_formatter_base.html#a54964b2d7823ac3f396c8c75c4c05fb6",tooltip="Get the current value of a name (REQUIRED, etc.)."];
+  Node1 -> Node6 [id="edge11_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="CLI::App::get_required",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#a9c23181aac9cc4f601e5212c6e7b3ad1",tooltip="Get the status of required."];
+  Node1 -> Node7 [id="edge12_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="CLI::detail::streamOutAs\lParagraph",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i_1_1detail.html#aba8acb69d3f42ae2270f4fba2d5deb44",tooltip=" "];
+}

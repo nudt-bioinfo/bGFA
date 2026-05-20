@@ -1,0 +1,81 @@
+\doxysection{score\+\_\+matrix.\+h}
+\hypertarget{score__matrix_8h_source}{}\label{score__matrix_8h_source}\index{src/wfa/alignment/score\_matrix.h@{src/wfa/alignment/score\_matrix.h}}
+\doxymbox{\hyperlink{score__matrix_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Score\ matrix\ for\ alignment\ using\ dynamic\ programming}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ SCORE\_MATRIX\_H\_}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ SCORE\_MATRIX\_H\_}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mm__allocator_8h}{system/mm\_allocator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{cigar_8h}{alignment/cigar.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00038}00038\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00039}00039\ \textcolor{comment}{\ *\ Constants}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00040}00040\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00041}\doxymbox{\hyperlink{score__matrix_8h_a01deca592d490bb28261283633b500c3}{00041}}\ \textcolor{preprocessor}{\#define\ SCORE\_MAX\ (10000000)}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00043}00043\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00044}00044\ \textcolor{comment}{\ *\ Score\ Matrix}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00045}00045\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00046}\doxymbox{\hyperlink{structscore__matrix__t}{00046}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00047}00047\ \ \ \textcolor{comment}{//\ Score\ Columns}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00048}\doxymbox{\hyperlink{structscore__matrix__t_a9823b04092909ba44209c056c7ab1e6a}{00048}}\ \ \ \textcolor{keywordtype}{int}**\ \doxymbox{\hyperlink{structscore__matrix__t_a9823b04092909ba44209c056c7ab1e6a}{columns}};}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00049}\doxymbox{\hyperlink{structscore__matrix__t_aef159571820500e710261b70e6b0a3e5}{00049}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structscore__matrix__t_aef159571820500e710261b70e6b0a3e5}{num\_rows}};}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00050}\doxymbox{\hyperlink{structscore__matrix__t_a2ebacce1f4a0152ad9279bc0a343f754}{00050}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structscore__matrix__t_a2ebacce1f4a0152ad9279bc0a343f754}{num\_columns}};}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00051}00051\ \ \ \textcolor{comment}{//\ MM}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00052}\doxymbox{\hyperlink{structscore__matrix__t_a590dc47717592ce3d136a45d7ec4c89e}{00052}}\ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \doxymbox{\hyperlink{structscore__matrix__t_a590dc47717592ce3d136a45d7ec4c89e}{mm\_allocator}};}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00053}00053\ \}\ \doxymbox{\hyperlink{structscore__matrix__t}{score\_matrix\_t}};}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00055}00055\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00056}00056\ \textcolor{comment}{\ *\ Setup}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00057}00057\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00058}00058\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{score__matrix_8h_a9a2116ac448a24c673395ee2b69bcd40}{score\_matrix\_allocate}}(}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00059}00059\ \ \ \ \ \doxymbox{\hyperlink{structscore__matrix__t}{score\_matrix\_t}}*\ \textcolor{keyword}{const}\ score\_matrix,}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_rows,}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_columns,}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00062}00062\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00063}00063\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{score__matrix_8h_ae6468a2087e305bcfa3882f58d8ee6b9}{score\_matrix\_free}}(}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00064}00064\ \ \ \ \ \doxymbox{\hyperlink{structscore__matrix__t}{score\_matrix\_t}}*\ \textcolor{keyword}{const}\ score\_matrix);}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00066}00066\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00067}00067\ \textcolor{comment}{\ *\ Display}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00068}00068\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00069}00069\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{score__matrix_8h_a0c80bdd29fbae8f33798d7ef351fddaf}{score\_matrix\_print}}(}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00070}00070\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structscore__matrix__t}{score\_matrix\_t}}*\ \textcolor{keyword}{const}\ score\_matrix,}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}});}
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{score__matrix_8h_source_l00075}00075\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SCORE\_MATRIX\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

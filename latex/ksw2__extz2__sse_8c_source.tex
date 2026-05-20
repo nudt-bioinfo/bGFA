@@ -1,0 +1,311 @@
+\doxysection{ksw2\+\_\+extz2\+\_\+sse.\+c}
+\hypertarget{ksw2__extz2__sse_8c_source}{}\label{ksw2__extz2__sse_8c_source}\index{src/ksw/ksw2\_extz2\_sse.c@{src/ksw/ksw2\_extz2\_sse.c}}
+\doxymbox{\hyperlink{ksw2__extz2__sse_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00001}00001\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <assert.h>}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00003}00003\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{ksw2_8h}{ksw2.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00004}00004\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00005}00005\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE2\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <emmintrin.h>}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00007}00007\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00008}00008\ \textcolor{preprocessor}{\#ifdef\ KSW\_SSE2\_ONLY}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00009}00009\ \textcolor{preprocessor}{\#undef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00010}00010\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00011}00011\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00012}00012\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <smmintrin.h>}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00014}00014\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00016}00016\ \textcolor{preprocessor}{\#ifdef\ KSW\_CPU\_DISPATCH}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00017}00017\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00018}00018\ \textcolor{keywordtype}{void}\ ksw\_extz2\_sse41(\textcolor{keywordtype}{void}\ *km,\ \textcolor{keywordtype}{int}\ qlen,\ \textcolor{keyword}{const}\ uint8\_t\ *query,\ \textcolor{keywordtype}{int}\ tlen,\ \textcolor{keyword}{const}\ uint8\_t\ *target,\ int8\_t\ m,\ \textcolor{keyword}{const}\ int8\_t\ *mat,\ int8\_t\ q,\ int8\_t\ e,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ zdrop,\ \textcolor{keywordtype}{int}\ end\_bonus,\ \textcolor{keywordtype}{int}\ flag,\ \doxymbox{\hyperlink{structksw__extz__t}{ksw\_extz\_t}}\ *ez)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00019}00019\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00020}00020\ \textcolor{keywordtype}{void}\ ksw\_extz2\_sse2(\textcolor{keywordtype}{void}\ *km,\ \textcolor{keywordtype}{int}\ qlen,\ \textcolor{keyword}{const}\ uint8\_t\ *query,\ \textcolor{keywordtype}{int}\ tlen,\ \textcolor{keyword}{const}\ uint8\_t\ *target,\ int8\_t\ m,\ \textcolor{keyword}{const}\ int8\_t\ *mat,\ int8\_t\ q,\ int8\_t\ e,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ zdrop,\ \textcolor{keywordtype}{int}\ end\_bonus,\ \textcolor{keywordtype}{int}\ flag,\ \doxymbox{\hyperlink{structksw__extz__t}{ksw\_extz\_t}}\ *ez)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00021}00021\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00022}00022\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00023}00023\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{ksw2_8h_a62b9c92cce7c36c28fa4bb85ed9f3dce}{ksw\_extz2\_sse}}(\textcolor{keywordtype}{void}\ *km,\ \textcolor{keywordtype}{int}\ qlen,\ \textcolor{keyword}{const}\ uint8\_t\ *query,\ \textcolor{keywordtype}{int}\ tlen,\ \textcolor{keyword}{const}\ uint8\_t\ *target,\ int8\_t\ m,\ \textcolor{keyword}{const}\ int8\_t\ *mat,\ int8\_t\ q,\ int8\_t\ e,\ \textcolor{keywordtype}{int}\ w,\ \textcolor{keywordtype}{int}\ zdrop,\ \textcolor{keywordtype}{int}\ end\_bonus,\ \textcolor{keywordtype}{int}\ flag,\ \doxymbox{\hyperlink{structksw__extz__t}{ksw\_extz\_t}}\ *ez)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00024}00024\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \string~KSW\_CPU\_DISPATCH}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00025}00025\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00026}00026\ \textcolor{preprocessor}{\#define\ \_\_dp\_code\_block1\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00027}00027\ \textcolor{preprocessor}{\ \ \ \ z\ =\ \_mm\_add\_epi8(\_mm\_load\_si128(\&s[t]),\ qe2\_);\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00028}00028\ \textcolor{preprocessor}{\ \ \ \ xt1\ =\ \_mm\_load\_si128(\&x[t]);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ xt1\ <-\/\ x[r-\/1][t..t+15]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00029}00029\ \textcolor{preprocessor}{\ \ \ \ tmp\ =\ \_mm\_srli\_si128(xt1,\ 15);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ tmp\ <-\/\ x[r-\/1][t+15]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00030}00030\ \textcolor{preprocessor}{\ \ \ \ xt1\ =\ \_mm\_or\_si128(\_mm\_slli\_si128(xt1,\ 1),\ x1\_);\ }\textcolor{comment}{/*\ xt1\ <-\/\ x[r-\/1][t-\/1..t+14]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00031}00031\ \textcolor{preprocessor}{\ \ \ \ x1\_\ =\ tmp;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00032}00032\ \textcolor{preprocessor}{\ \ \ \ vt1\ =\ \_mm\_load\_si128(\&v[t]);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ vt1\ <-\/\ v[r-\/1][t..t+15]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00033}00033\ \textcolor{preprocessor}{\ \ \ \ tmp\ =\ \_mm\_srli\_si128(vt1,\ 15);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ tmp\ <-\/\ v[r-\/1][t+15]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00034}00034\ \textcolor{preprocessor}{\ \ \ \ vt1\ =\ \_mm\_or\_si128(\_mm\_slli\_si128(vt1,\ 1),\ v1\_);\ }\textcolor{comment}{/*\ vt1\ <-\/\ v[r-\/1][t-\/1..t+14]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00035}00035\ \textcolor{preprocessor}{\ \ \ \ v1\_\ =\ tmp;\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00036}00036\ \textcolor{preprocessor}{\ \ \ \ a\ =\ \_mm\_add\_epi8(xt1,\ vt1);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ a\ <-\/\ x[r-\/1][t-\/1..t+14]\ +\ v[r-\/1][t-\/1..t+14]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00037}00037\ \textcolor{preprocessor}{\ \ \ \ ut\ =\ \_mm\_load\_si128(\&u[t]);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ ut\ <-\/\ u[t..t+15]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00038}00038\ \textcolor{preprocessor}{\ \ \ \ b\ =\ \_mm\_add\_epi8(\_mm\_load\_si128(\&y[t]),\ ut);\ \ \ \ \ }\textcolor{comment}{/*\ b\ <-\/\ y[r-\/1][t..t+15]\ +\ u[r-\/1][t..t+15]\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00039}00039\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00040}00040\ \textcolor{preprocessor}{\#define\ \_\_dp\_code\_block2\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00041}00041\ \textcolor{preprocessor}{\ \ \ \ z\ =\ \_mm\_max\_epu8(z,\ b);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{/*\ z\ =\ max(z,\ b);\ this\ works\ because\ both\ are\ non-\/negative\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00042}00042\ \textcolor{preprocessor}{\ \ \ \ z\ =\ \_mm\_min\_epu8(z,\ max\_sc\_);\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00043}00043\ \textcolor{preprocessor}{\ \ \ \ \_mm\_store\_si128(\&u[t],\ \_mm\_sub\_epi8(z,\ vt1));\ \ \ \ }\textcolor{comment}{/*\ u[r][t..t+15]\ <-\/\ z\ -\/\ v[r-\/1][t-\/1..t+14]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00044}00044\ \textcolor{preprocessor}{\ \ \ \ \_mm\_store\_si128(\&v[t],\ \_mm\_sub\_epi8(z,\ ut));\ \ \ \ \ }\textcolor{comment}{/*\ v[r][t..t+15]\ <-\/\ z\ -\/\ u[r-\/1][t..t+15]\ */}\textcolor{preprocessor}{\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00045}00045\ \textcolor{preprocessor}{\ \ \ \ z\ =\ \_mm\_sub\_epi8(z,\ q\_);\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00046}00046\ \textcolor{preprocessor}{\ \ \ \ a\ =\ \_mm\_sub\_epi8(a,\ z);\ \(\backslash\)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00047}00047\ \textcolor{preprocessor}{\ \ \ \ b\ =\ \_mm\_sub\_epi8(b,\ z);}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00048}00048\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00049}00049\ \ \ \ \ \textcolor{keywordtype}{int}\ r,\ t,\ qe\ =\ q\ +\ e,\ n\_col\_,\ *off\ =\ 0,\ *off\_end\ =\ 0,\ tlen\_,\ qlen\_,\ last\_st,\ last\_en,\ wl,\ wr,\ max\_sc,\ min\_sc;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00050}00050\ \ \ \ \ \textcolor{keywordtype}{int}\ with\_cigar\ =\ !(flag\&\doxymbox{\hyperlink{ksw2_8h_a22db7af83dc10199e3022ea9f67da998}{KSW\_EZ\_SCORE\_ONLY}}),\ approx\_max\ =\ !!(flag\&\doxymbox{\hyperlink{ksw2_8h_adaf20c2653ea67c516e8b5f68d74443b}{KSW\_EZ\_APPROX\_MAX}});}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00051}00051\ \ \ \ \ int32\_t\ *H\ =\ 0,\ H0\ =\ 0,\ last\_H0\_t\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00052}00052\ \ \ \ \ uint8\_t\ *qr,\ *sf,\ *mem,\ *mem2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00053}00053\ \ \ \ \ \_\_m128i\ q\_,\ qe2\_,\ zero\_,\ flag1\_,\ flag2\_,\ flag8\_,\ flag16\_,\ sc\_mch\_,\ sc\_mis\_,\ sc\_N\_,\ m1\_,\ max\_sc\_;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00054}00054\ \ \ \ \ \_\_m128i\ *u,\ *v,\ *x,\ *y,\ *s,\ *p\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00056}00056\ \ \ \ \ \doxymbox{\hyperlink{ksw2_8h_a9989ab81f487d14de0d572104c2af1b5}{ksw\_reset\_extz}}(ez);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00057}00057\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\ <=\ 0\ ||\ qlen\ <=\ 0\ ||\ tlen\ <=\ 0)\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00059}00059\ \ \ \ \ zero\_\ \ \ =\ \_mm\_set1\_epi8(0);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00060}00060\ \ \ \ \ q\_\ \ \ \ \ \ =\ \_mm\_set1\_epi8(q);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00061}00061\ \ \ \ \ qe2\_\ \ \ \ =\ \_mm\_set1\_epi8((q\ +\ e)\ *\ 2);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00062}00062\ \ \ \ \ flag1\_\ \ =\ \_mm\_set1\_epi8(1);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00063}00063\ \ \ \ \ flag2\_\ \ =\ \_mm\_set1\_epi8(2);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00064}00064\ \ \ \ \ flag8\_\ \ =\ \_mm\_set1\_epi8(0x08);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00065}00065\ \ \ \ \ flag16\_\ =\ \_mm\_set1\_epi8(0x10);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00066}00066\ \ \ \ \ sc\_mch\_\ =\ \_mm\_set1\_epi8(mat[0]);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00067}00067\ \ \ \ \ sc\_mis\_\ =\ \_mm\_set1\_epi8(mat[1]);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00068}00068\ \ \ \ \ sc\_N\_\ \ \ =\ mat[m*m-\/1]\ ==\ 0?\ \_mm\_set1\_epi8(-\/e)\ :\ \_mm\_set1\_epi8(mat[m*m-\/1]);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00069}00069\ \ \ \ \ m1\_\ \ \ \ \ =\ \_mm\_set1\_epi8(m\ -\/\ 1);\ \textcolor{comment}{//\ wildcard}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00070}00070\ \ \ \ \ max\_sc\_\ =\ \_mm\_set1\_epi8(mat[0]\ +\ (q\ +\ e)\ *\ 2);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00071}00071\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00072}00072\ \ \ \ \ \textcolor{keywordflow}{if}\ (w\ <\ 0)\ w\ =\ tlen\ >\ qlen?\ tlen\ :\ qlen;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00073}00073\ \ \ \ \ wl\ =\ wr\ =\ w;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00074}00074\ \ \ \ \ tlen\_\ =\ (tlen\ +\ 15)\ /\ 16;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00075}00075\ \ \ \ \ n\_col\_\ =\ qlen\ <\ tlen?\ qlen\ :\ tlen;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00076}00076\ \ \ \ \ n\_col\_\ =\ ((n\_col\_\ <\ w\ +\ 1?\ n\_col\_\ :\ w\ +\ 1)\ +\ 15)\ /\ 16\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00077}00077\ \ \ \ \ qlen\_\ =\ (qlen\ +\ 15)\ /\ 16;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00078}00078\ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ 1,\ max\_sc\ =\ mat[0],\ min\_sc\ =\ mat[1];\ t\ <\ m\ *\ m;\ ++t)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00079}00079\ \ \ \ \ \ \ \ \ max\_sc\ =\ max\_sc\ >\ mat[t]?\ max\_sc\ :\ mat[t];}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00080}00080\ \ \ \ \ \ \ \ \ min\_sc\ =\ min\_sc\ <\ mat[t]?\ min\_sc\ :\ mat[t];}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{if}\ (-\/min\_sc\ >\ 2\ *\ (q\ +\ e))\ \textcolor{keywordflow}{return};\ \textcolor{comment}{//\ otherwise,\ we\ won't\ see\ any\ mismatches}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00083}00083\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00084}00084\ \ \ \ \ mem\ =\ (uint8\_t*)\doxymbox{\hyperlink{ksw2_8h_a42a8bae29556840f665b45d2cbef065d}{kcalloc}}(km,\ tlen\_\ *\ 6\ +\ qlen\_\ +\ 1,\ 16);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00085}00085\ \ \ \ \ u\ =\ (\_\_m128i*)(((\textcolor{keywordtype}{size\_t})mem\ +\ 15)\ >>\ 4\ <<\ 4);\ \textcolor{comment}{//\ 16-\/byte\ aligned}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00086}00086\ \ \ \ \ v\ =\ u\ +\ tlen\_,\ x\ =\ v\ +\ tlen\_,\ y\ =\ x\ +\ tlen\_,\ s\ =\ y\ +\ tlen\_,\ sf\ =\ (uint8\_t*)(s\ +\ tlen\_),\ qr\ =\ sf\ +\ tlen\_\ *\ 16;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00087}00087\ \ \ \ \ \textcolor{keywordflow}{if}\ (!approx\_max)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00088}00088\ \ \ \ \ \ \ \ \ H\ =\ (int32\_t*)\doxymbox{\hyperlink{ksw2_8h_a52dcec8d7b16f5b7162788007dc32986}{kmalloc}}(km,\ tlen\_\ *\ 16\ *\ 4);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ 0;\ t\ <\ tlen\_\ *\ 16;\ ++t)\ H[t]\ =\ \doxymbox{\hyperlink{ksw2_8h_a078f74a21b80bf07417745a64cec0309}{KSW\_NEG\_INF}};}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00090}00090\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{if}\ (with\_cigar)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ mem2\ =\ (uint8\_t*)\doxymbox{\hyperlink{ksw2_8h_a52dcec8d7b16f5b7162788007dc32986}{kmalloc}}(km,\ ((\textcolor{keywordtype}{size\_t})(qlen\ +\ tlen\ -\/\ 1)\ *\ n\_col\_\ +\ 1)\ *\ 16);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ p\ =\ (\_\_m128i*)(((\textcolor{keywordtype}{size\_t})mem2\ +\ 15)\ >>\ 4\ <<\ 4);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ off\ =\ (\textcolor{keywordtype}{int}*)\doxymbox{\hyperlink{ksw2_8h_a52dcec8d7b16f5b7162788007dc32986}{kmalloc}}(km,\ (qlen\ +\ tlen\ -\/\ 1)\ *\ \textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int})\ *\ 2);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ off\_end\ =\ off\ +\ qlen\ +\ tlen\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00096}00096\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00098}00098\ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ 0;\ t\ <\ qlen;\ ++t)\ qr[t]\ =\ query[qlen\ -\/\ 1\ -\/\ t];}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00099}00099\ \ \ \ \ memcpy(sf,\ target,\ tlen);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00101}00101\ \ \ \ \ \textcolor{keywordflow}{for}\ (r\ =\ 0,\ last\_st\ =\ last\_en\ =\ -\/1;\ r\ <\ qlen\ +\ tlen\ -\/\ 1;\ ++r)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00102}00102\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ st\ =\ 0,\ en\ =\ tlen\ -\/\ 1,\ st0,\ en0,\ st\_,\ en\_;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00103}00103\ \ \ \ \ \ \ \ \ int8\_t\ x1,\ v1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00104}00104\ \ \ \ \ \ \ \ \ uint8\_t\ *qrr\ =\ qr\ +\ (qlen\ -\/\ 1\ -\/\ r),\ *u8\ =\ (uint8\_t*)u,\ *v8\ =\ (uint8\_t*)v;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00105}00105\ \ \ \ \ \ \ \ \ \_\_m128i\ x1\_,\ v1\_;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00106}00106\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ find\ the\ boundaries}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00107}00107\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (st\ <\ r\ -\/\ qlen\ +\ 1)\ st\ =\ r\ -\/\ qlen\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (en\ >\ r)\ en\ =\ r;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00109}00109\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (st\ <\ (r-\/wr+1)>>1)\ st\ =\ (r-\/wr+1)>>1;\ \textcolor{comment}{//\ take\ the\ ceil}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00110}00110\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (en\ >\ (r+wl)>>1)\ en\ =\ (r+wl)>>1;\ \textcolor{comment}{//\ take\ the\ floor}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (st\ >\ en)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_ad44ce333a6135c008a2aeac3abde897e}{zdropped}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00113}00113\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00114}00114\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00115}00115\ \ \ \ \ \ \ \ \ st0\ =\ st,\ en0\ =\ en;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00116}00116\ \ \ \ \ \ \ \ \ st\ =\ st\ /\ 16\ *\ 16,\ en\ =\ (en\ +\ 16)\ /\ 16\ *\ 16\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00117}00117\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ set\ boundary\ conditions}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00118}00118\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (st\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00119}00119\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (st\ -\/\ 1\ >=\ last\_st\ \&\&\ st\ -\/\ 1\ <=\ last\_en)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00120}00120\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ x1\ =\ ((uint8\_t*)x)[st\ -\/\ 1],\ v1\ =\ v8[st\ -\/\ 1];\ \textcolor{comment}{//\ (r-\/1,s-\/1)\ calculated\ in\ the\ last\ round}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00121}00121\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ x1\ =\ v1\ =\ 0;\ \textcolor{comment}{//\ not\ calculated;\ set\ to\ zeros}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00122}00122\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ x1\ =\ 0,\ v1\ =\ r?\ q\ :\ 0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00123}00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (en\ >=\ r)\ ((uint8\_t*)y)[r]\ =\ 0,\ u8[r]\ =\ r?\ q\ :\ 0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00124}00124\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ loop\ fission:\ set\ scores\ first}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00125}00125\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!(flag\ \&\ \doxymbox{\hyperlink{ksw2_8h_a53b6f2312cdb8106a6185d14da3ec225}{KSW\_EZ\_GENERIC\_SC}}))\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ st0;\ t\ <=\ en0;\ t\ +=\ 16)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00127}00127\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ sq,\ st,\ tmp,\ mask;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00128}00128\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ sq\ =\ \_mm\_loadu\_si128((\_\_m128i*)\&sf[t]);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00129}00129\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ st\ =\ \_mm\_loadu\_si128((\_\_m128i*)\&qrr[t]);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ mask\ =\ \_mm\_or\_si128(\_mm\_cmpeq\_epi8(sq,\ m1\_),\ \_mm\_cmpeq\_epi8(st,\ m1\_));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00131}00131\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpeq\_epi8(sq,\ st);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00132}00132\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00133}00133\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_blendv\_epi8(sc\_mis\_,\ sc\_mch\_,\ tmp);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_blendv\_epi8(tmp,\ \ \ \ \ sc\_N\_,\ \ \ mask);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00135}00135\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00136}00136\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_or\_si128(\_mm\_andnot\_si128(tmp,\ \ sc\_mis\_),\ \_mm\_and\_si128(tmp,\ \ sc\_mch\_));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00137}00137\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_or\_si128(\_mm\_andnot\_si128(mask,\ tmp),\ \ \ \ \ \_mm\_and\_si128(mask,\ sc\_N\_));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00138}00138\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00139}00139\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_storeu\_si128((\_\_m128i*)((uint8\_t*)s\ +\ t),\ tmp);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00140}00140\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00141}00141\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00142}00142\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ st0;\ t\ <=\ en0;\ ++t)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00143}00143\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((uint8\_t*)s)[t]\ =\ mat[sf[t]\ *\ m\ +\ qrr[t]];}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00144}00144\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00145}00145\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ core\ loop}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00146}00146\ \ \ \ \ \ \ \ \ x1\_\ =\ \_mm\_cvtsi32\_si128(x1);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00147}00147\ \ \ \ \ \ \ \ \ v1\_\ =\ \_mm\_cvtsi32\_si128(v1);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00148}00148\ \ \ \ \ \ \ \ \ st\_\ =\ st\ /\ 16,\ en\_\ =\ en\ /\ 16;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00149}00149\ \ \ \ \ \ \ \ \ assert(en\_\ -\/\ st\_\ +\ 1\ <=\ n\_col\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!with\_cigar)\ \{\ \textcolor{comment}{//\ score\ only}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ st\_;\ t\ <=\ en\_;\ ++t)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ z,\ a,\ b,\ xt1,\ vt1,\ ut,\ tmp;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_dp\_code\_block1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00154}00154\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_max\_epi8(z,\ a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ =\ z\ >\ a?\ z\ :\ a\ (signed)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00156}00156\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{//\ we\ need\ to\ emulate\ SSE4.1\ intrinsics\ \_mm\_max\_epi8()}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_and\_si128(z,\ \_mm\_cmpgt\_epi8(z,\ zero\_));\ \ \textcolor{comment}{//\ z\ =\ z\ >\ 0?\ z\ :\ 0;}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_max\_epu8(z,\ a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ =\ max(z,\ a);\ this\ works\ because\ both\ are\ non-\/negative}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00159}00159\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_dp\_code\_block2;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00161}00161\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&x[t],\ \_mm\_max\_epi8(a,\ zero\_));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00163}00163\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&y[t],\ \_mm\_max\_epi8(b,\ zero\_));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00164}00164\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(a,\ zero\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00166}00166\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&x[t],\ \_mm\_and\_si128(a,\ tmp));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(b,\ zero\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&y[t],\ \_mm\_and\_si128(b,\ tmp));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00169}00169\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00171}00171\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!(flag\&\doxymbox{\hyperlink{ksw2_8h_abd62588dcd071a31841f2b3e55b9f32b}{KSW\_EZ\_RIGHT}}))\ \{\ \textcolor{comment}{//\ gap\ left-\/alignment}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ *pr\ =\ p\ +\ (size\_t)r\ *\ n\_col\_\ -\/\ st\_;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00173}00173\ \ \ \ \ \ \ \ \ \ \ \ \ off[r]\ =\ st,\ off\_end[r]\ =\ en;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00174}00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ st\_;\ t\ <=\ en\_;\ ++t)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00175}00175\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ d,\ z,\ a,\ b,\ xt1,\ vt1,\ ut,\ tmp;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00176}00176\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_dp\_code\_block1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00177}00177\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_and\_si128(\_mm\_cmpgt\_epi8(a,\ z),\ flag1\_);\ \textcolor{comment}{//\ d\ =\ a\ >\ z?\ 1\ :\ 0}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00178}00178\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00179}00179\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_max\_epi8(z,\ a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ =\ z\ >\ a?\ z\ :\ a\ (signed)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00180}00180\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(b,\ z);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00181}00181\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_blendv\_epi8(d,\ flag2\_,\ tmp);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ d\ =\ b\ >\ z?\ 2\ :\ d}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00182}00182\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{//\ we\ need\ to\ emulate\ SSE4.1\ intrinsics\ \_mm\_max\_epi8()\ and\ \_mm\_blendv\_epi8()}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_and\_si128(z,\ \_mm\_cmpgt\_epi8(z,\ zero\_));\ \ \textcolor{comment}{//\ z\ =\ z\ >\ 0?\ z\ :\ 0;}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00184}00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_max\_epu8(z,\ a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ =\ max(z,\ a);\ this\ works\ because\ both\ are\ non-\/negative}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00185}00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(b,\ z);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00186}00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_or\_si128(\_mm\_andnot\_si128(tmp,\ d),\ \_mm\_and\_si128(tmp,\ flag2\_));\ \textcolor{comment}{//\ d\ =\ b\ >\ z?\ 2\ :\ d;\ emulating\ blendv}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00187}00187\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_dp\_code\_block2;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(a,\ zero\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&x[t],\ \_mm\_and\_si128(tmp,\ a));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00191}00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_or\_si128(d,\ \_mm\_and\_si128(tmp,\ flag8\_));\ \ \textcolor{comment}{//\ d\ =\ a\ >\ 0?\ 0x08\ :\ 0}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00192}00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(b,\ zero\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&y[t],\ \_mm\_and\_si128(tmp,\ b));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_or\_si128(d,\ \_mm\_and\_si128(tmp,\ flag16\_));\ \textcolor{comment}{//\ d\ =\ b\ >\ 0?\ 0x10\ :\ 0}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&pr[t],\ d);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00197}00197\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ gap\ right-\/alignment}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ *pr\ =\ p\ +\ (size\_t)r\ *\ n\_col\_\ -\/\ st\_;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ off[r]\ =\ st,\ off\_end[r]\ =\ en;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ st\_;\ t\ <=\ en\_;\ ++t)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ d,\ z,\ a,\ b,\ xt1,\ vt1,\ ut,\ tmp;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_dp\_code\_block1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00203}00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_andnot\_si128(\_mm\_cmpgt\_epi8(z,\ a),\ flag1\_);\ \textcolor{comment}{//\ d\ =\ z\ >\ a?\ 0\ :\ 1}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00204}00204\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_max\_epi8(z,\ a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ =\ z\ >\ a?\ z\ :\ a\ (signed)}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(z,\ b);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_blendv\_epi8(flag2\_,\ d,\ tmp);\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ d\ =\ z\ >\ b?\ d\ :\ 2}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00208}00208\ \textcolor{preprocessor}{\#else\ }\textcolor{comment}{//\ we\ need\ to\ emulate\ SSE4.1\ intrinsics\ \_mm\_max\_epi8()\ and\ \_mm\_blendv\_epi8()}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_and\_si128(z,\ \_mm\_cmpgt\_epi8(z,\ zero\_));\ \ \textcolor{comment}{//\ z\ =\ z\ >\ 0?\ z\ :\ 0;}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ z\ =\ \_mm\_max\_epu8(z,\ a);\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ z\ =\ max(z,\ a);\ this\ works\ because\ both\ are\ non-\/negative}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(z,\ b);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_or\_si128(\_mm\_andnot\_si128(tmp,\ flag2\_),\ \_mm\_and\_si128(tmp,\ d));\ \textcolor{comment}{//\ d\ =\ z\ >\ b?\ d\ :\ 2;\ emulating\ blendv}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00213}00213\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00214}00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_dp\_code\_block2;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00215}00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(zero\_,\ a);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00216}00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&x[t],\ \_mm\_andnot\_si128(tmp,\ a));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00217}00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_or\_si128(d,\ \_mm\_andnot\_si128(tmp,\ flag8\_));\ \ \textcolor{comment}{//\ d\ =\ 0\ >\ a?\ 0\ :\ 0x08}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi8(zero\_,\ b);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&y[t],\ \_mm\_andnot\_si128(tmp,\ b));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ d\ =\ \_mm\_or\_si128(d,\ \_mm\_andnot\_si128(tmp,\ flag16\_));\ \textcolor{comment}{//\ d\ =\ 0\ >\ b?\ 0\ :\ 0x10}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_store\_si128(\&pr[t],\ d);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00223}00223\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00224}00224\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!approx\_max)\ \{\ \textcolor{comment}{//\ find\ the\ exact\ max\ with\ a\ 32-\/bit\ score\ array}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ int32\_t\ max\_H,\ max\_t;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compute\ H[],\ max\_H\ and\ max\_t}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00227}00227\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00228}00228\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int32\_t\ HH[4],\ tt[4],\ en1\ =\ st0\ +\ (en0\ -\/\ st0)\ /\ 4\ *\ 4,\ i;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ max\_H\_,\ max\_t\_,\ qe\_;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_H\ =\ H[en0]\ =\ en0\ >\ 0?\ H[en0-\/1]\ +\ u8[en0]\ -\/\ qe\ :\ H[en0]\ +\ v8[en0]\ -\/\ qe;\ \textcolor{comment}{//\ special\ casing\ the\ last\ element}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_t\ =\ en0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_H\_\ =\ \_mm\_set1\_epi32(max\_H);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_t\_\ =\ \_mm\_set1\_epi32(max\_t);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ qe\_\ \ \ \ =\ \_mm\_set1\_epi32(q\ +\ e);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (t\ =\ st0;\ t\ <\ en1;\ t\ +=\ 4)\ \{\ \textcolor{comment}{//\ this\ implements:\ H[t]+=v8[t]-\/qe;\ if(H[t]>max\_H)\ max\_H=H[t],max\_t=t;}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_\_m128i\ H1,\ tmp,\ t\_;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ H1\ =\ \_mm\_loadu\_si128((\_\_m128i*)\&H[t]);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_\ =\ \_mm\_setr\_epi32(v8[t],\ v8[t+1],\ v8[t+2],\ v8[t+3]);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ H1\ =\ \_mm\_add\_epi32(H1,\ t\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ H1\ =\ \_mm\_sub\_epi32(H1,\ qe\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_storeu\_si128((\_\_m128i*)\&H[t],\ H1);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ t\_\ =\ \_mm\_set1\_epi32(t);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ tmp\ =\ \_mm\_cmpgt\_epi32(H1,\ max\_H\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00244}00244\ \textcolor{preprocessor}{\#ifdef\ \_\_SSE4\_1\_\_}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_H\_\ =\ \_mm\_blendv\_epi8(max\_H\_,\ H1,\ tmp);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_t\_\ =\ \_mm\_blendv\_epi8(max\_t\_,\ t\_,\ tmp);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00247}00247\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_H\_\ =\ \_mm\_or\_si128(\_mm\_and\_si128(tmp,\ H1),\ \_mm\_andnot\_si128(tmp,\ max\_H\_));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_t\_\ =\ \_mm\_or\_si128(\_mm\_and\_si128(tmp,\ t\_),\ \_mm\_andnot\_si128(tmp,\ max\_t\_));}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00250}00250\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_storeu\_si128((\_\_m128i*)HH,\ max\_H\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \_mm\_storeu\_si128((\_\_m128i*)tt,\ max\_t\_);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ 0;\ i\ <\ 4;\ ++i)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max\_H\ <\ HH[i])\ max\_H\ =\ HH[i],\ max\_t\ =\ tt[i]\ +\ i;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (;\ t\ <\ en0;\ ++t)\ \{\ \textcolor{comment}{//\ for\ the\ rest\ of\ values\ that\ haven't\ been\ computed\ with\ SSE}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ H[t]\ +=\ (int32\_t)v8[t]\ -\/\ qe;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (H[t]\ >\ max\_H)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00259}00259\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_H\ =\ H[t],\ max\_t\ =\ t;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00260}00260\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00261}00261\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ H[0]\ =\ v8[0]\ -\/\ qe\ -\/\ qe,\ max\_H\ =\ H[0],\ max\_t\ =\ 0;\ \textcolor{comment}{//\ special\ casing\ r==0}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00262}00262\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ update\ ez}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (en0\ ==\ tlen\ -\/\ 1\ \&\&\ H[en0]\ >\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a87e9b6620b143b631bc604e9bb39a1bb}{mte}})}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a87e9b6620b143b631bc604e9bb39a1bb}{mte}}\ =\ H[en0],\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a462e97f54235c34b52f84af8329679e5}{mte\_q}}\ =\ r\ -\/\ en;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ -\/\ st0\ ==\ qlen\ -\/\ 1\ \&\&\ H[st0]\ >\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a3dd8f48ce2b2fbfe83bc1e0a03cfd969}{mqe}})}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00266}00266\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a3dd8f48ce2b2fbfe83bc1e0a03cfd969}{mqe}}\ =\ H[st0],\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a9a10f92a69617a23cf010aab423fef08}{mqe\_t}}\ =\ st0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00267}00267\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{ksw2_8h_a892601c3d791100ae1a2dce89fc87e67}{ksw\_apply\_zdrop}}(ez,\ 1,\ max\_H,\ r,\ max\_t,\ zdrop,\ e))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ qlen\ +\ tlen\ -\/\ 2\ \&\&\ en0\ ==\ tlen\ -\/\ 1)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_af836e266dc5ba5df8b9cec1cafd923fc}{score}}\ =\ H[tlen\ -\/\ 1];}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00270}00270\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{\ \textcolor{comment}{//\ find\ approximate\ max;\ Z-\/drop\ might\ be\ inaccurate,\ too.}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ >\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (last\_H0\_t\ >=\ st0\ \&\&\ last\_H0\_t\ <=\ en0\ \&\&\ last\_H0\_t\ +\ 1\ >=\ st0\ \&\&\ last\_H0\_t\ +\ 1\ <=\ en0)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int32\_t\ d0\ =\ v8[last\_H0\_t]\ -\/\ qe;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ int32\_t\ d1\ =\ u8[last\_H0\_t\ +\ 1]\ -\/\ qe;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (d0\ >\ d1)\ H0\ +=\ d0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ H0\ +=\ d1,\ ++last\_H0\_t;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (last\_H0\_t\ >=\ st0\ \&\&\ last\_H0\_t\ <=\ en0)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ H0\ +=\ v8[last\_H0\_t]\ -\/\ qe;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++last\_H0\_t,\ H0\ +=\ u8[last\_H0\_t]\ -\/\ qe;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((flag\ \&\ \doxymbox{\hyperlink{ksw2_8h_acb0b55ffce45e447bb28be8ed98ce942}{KSW\_EZ\_APPROX\_DROP}})\ \&\&\ \doxymbox{\hyperlink{ksw2_8h_a892601c3d791100ae1a2dce89fc87e67}{ksw\_apply\_zdrop}}(ez,\ 1,\ H0,\ r,\ last\_H0\_t,\ zdrop,\ e))\ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ H0\ =\ v8[0]\ -\/\ qe\ -\/\ qe,\ last\_H0\_t\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00284}00284\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (r\ ==\ qlen\ +\ tlen\ -\/\ 2\ \&\&\ en0\ ==\ tlen\ -\/\ 1)}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00285}00285\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_af836e266dc5ba5df8b9cec1cafd923fc}{score}}\ =\ H0;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00286}00286\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00287}00287\ \ \ \ \ \ \ \ \ last\_st\ =\ st,\ last\_en\ =\ en;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{comment}{//for\ (t\ =\ st0;\ t\ <=\ en0;\ ++t)\ printf("{}(\%d,\%d)\(\backslash\)t(\%d,\%d,\%d,\%d)\(\backslash\)t\%d\(\backslash\)n"{},\ r,\ t,\ ((int8\_t*)u)[t],\ ((int8\_t*)v)[t],\ ((int8\_t*)x)[t],\ ((int8\_t*)y)[t],\ H[t]);\ //\ for\ debugging}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00289}00289\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00290}00290\ \ \ \ \ \doxymbox{\hyperlink{ksw2_8h_af6aede434c19024528e53c7d1b7029d1}{kfree}}(km,\ mem);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00291}00291\ \ \ \ \ \textcolor{keywordflow}{if}\ (!approx\_max)\ \doxymbox{\hyperlink{ksw2_8h_af6aede434c19024528e53c7d1b7029d1}{kfree}}(km,\ H);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00292}00292\ \ \ \ \ \textcolor{keywordflow}{if}\ (with\_cigar)\ \{\ \textcolor{comment}{//\ backtrack}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00293}00293\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ rev\_cigar\ =\ !!(flag\ \&\ \doxymbox{\hyperlink{ksw2_8h_ae0c5a9322c75dbd5edcfd834ec02def3}{KSW\_EZ\_REV\_CIGAR}});}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!ez-\/>\doxymbox{\hyperlink{structksw__extz__t_ad44ce333a6135c008a2aeac3abde897e}{zdropped}}\ \&\&\ !(flag\&\doxymbox{\hyperlink{ksw2_8h_ad9ae3ba509f1535692381972fa040cc2}{KSW\_EZ\_EXTZ\_ONLY}}))\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{ksw2_8h_a0622933f675165316e519bec76adedfc}{ksw\_backtrack}}(km,\ 1,\ rev\_cigar,\ 0,\ (uint8\_t*)p,\ off,\ off\_end,\ n\_col\_*16,\ tlen-\/1,\ qlen-\/1,\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a1a47b13561883f983a1e7f3505d9afed}{m\_cigar}},\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_ab3854da80b11959549af1c6a35a5a23a}{n\_cigar}},\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a310b57a5c74a860bb6f547f39a715480}{cigar}});}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00296}00296\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (!ez-\/>\doxymbox{\hyperlink{structksw__extz__t_ad44ce333a6135c008a2aeac3abde897e}{zdropped}}\ \&\&\ (flag\&\doxymbox{\hyperlink{ksw2_8h_ad9ae3ba509f1535692381972fa040cc2}{KSW\_EZ\_EXTZ\_ONLY}})\ \&\&\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a3dd8f48ce2b2fbfe83bc1e0a03cfd969}{mqe}}\ +\ end\_bonus\ >\ (\textcolor{keywordtype}{int})ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a2a24ae772d6caccb12ca1ebb85976ce0}{max}})\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00297}00297\ \ \ \ \ \ \ \ \ \ \ \ \ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a647da269e2dddbd75bd309cac89c4c10}{reach\_end}}\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00298}00298\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{ksw2_8h_a0622933f675165316e519bec76adedfc}{ksw\_backtrack}}(km,\ 1,\ rev\_cigar,\ 0,\ (uint8\_t*)p,\ off,\ off\_end,\ n\_col\_*16,\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a9a10f92a69617a23cf010aab423fef08}{mqe\_t}},\ qlen-\/1,\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a1a47b13561883f983a1e7f3505d9afed}{m\_cigar}},\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_ab3854da80b11959549af1c6a35a5a23a}{n\_cigar}},\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a310b57a5c74a860bb6f547f39a715480}{cigar}});}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00299}00299\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a572386a3467922e47a287d5428da97a9}{max\_t}}\ >=\ 0\ \&\&\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a6fafeeb2aa77b759682f2e371481d08c}{max\_q}}\ >=\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{ksw2_8h_a0622933f675165316e519bec76adedfc}{ksw\_backtrack}}(km,\ 1,\ rev\_cigar,\ 0,\ (uint8\_t*)p,\ off,\ off\_end,\ n\_col\_*16,\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a572386a3467922e47a287d5428da97a9}{max\_t}},\ ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a6fafeeb2aa77b759682f2e371481d08c}{max\_q}},\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a1a47b13561883f983a1e7f3505d9afed}{m\_cigar}},\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_ab3854da80b11959549af1c6a35a5a23a}{n\_cigar}},\ \&ez-\/>\doxymbox{\hyperlink{structksw__extz__t_a310b57a5c74a860bb6f547f39a715480}{cigar}});}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00301}00301\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00302}00302\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{ksw2_8h_af6aede434c19024528e53c7d1b7029d1}{kfree}}(km,\ mem2);\ \doxymbox{\hyperlink{ksw2_8h_af6aede434c19024528e53c7d1b7029d1}{kfree}}(km,\ off);}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00303}00303\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00304}00304\ \}}
+\DoxyCodeLine{\Hypertarget{ksw2__extz2__sse_8c_source_l00305}00305\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_\_SSE2\_\_}}
+
+\end{DoxyCode}

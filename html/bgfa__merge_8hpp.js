@@ -1,0 +1,25 @@
+var bgfa__merge_8hpp =
+[
+    [ "EXACT_MERGE_CLEAR_MASK", "bgfa__merge_8hpp.html#af95f48c71cc6081b10abdcdde2a0f3dd", null ],
+    [ "EXACT_MERGE_PLACEHOLDER", "bgfa__merge_8hpp.html#ad3366b2b760dc5fdee8ba3749ebbf0f4", null ],
+    [ "MERGE_MODE_EXACT", "bgfa__merge_8hpp.html#a0e590d5aec03cb33a0170678998f4f13", null ],
+    [ "MERGE_MODE_STRICT", "bgfa__merge_8hpp.html#af2d7373b67cd4ba4add36c7f339d2194", null ],
+    [ "MERGE_PLACEHOLDER", "bgfa__merge_8hpp.html#a57e8c9f956ca0e40a8ec138db8474f9a", null ],
+    [ "SCREEN_MODE_DIRECT", "bgfa__merge_8hpp.html#ab7d4103b221dc76e8480e710f5c817bc", null ],
+    [ "SCREEN_MODE_DISTANCE", "bgfa__merge_8hpp.html#ab676a082bbd1e27d7897bf359e9962e3", null ],
+    [ "SCREEN_MODE_MINIMIZER", "bgfa__merge_8hpp.html#ae10392c69766ab025875e15401a6dc63", null ],
+    [ "SCREEN_MODE_PATH", "bgfa__merge_8hpp.html#a2884d488d3fcf19912456aa400b19c98", null ],
+    [ "NewIdMap", "bgfa__merge_8hpp.html#a821355656807593072c54951745e409b", null ],
+    [ "ensureSegmentInMerged", "bgfa__merge_8hpp.html#a491928b6194fa72c3e5f72940f04ce58", null ],
+    [ "getMergeTargetbyMinimizers", "bgfa__merge_8hpp.html#aa9f36d38de004a8aff40657310e12b70", null ],
+    [ "getSimilarScore", "bgfa__merge_8hpp.html#aa7c48abe813e3dccdb7d8448a1ec05f3", null ],
+    [ "mergeExactCompare", "bgfa__merge_8hpp.html#abac2142dd51555991eec46dbcbedd1e1", null ],
+    [ "mergeGFAExact", "bgfa__merge_8hpp.html#a68f1a505a82a74d220ad6594e13ea657", null ],
+    [ "mergeGFAExactByDistance", "bgfa__merge_8hpp.html#a9162a950995ba45432b5a90c14147924", null ],
+    [ "mergeGFAExactByMinimize", "bgfa__merge_8hpp.html#a84056021bcf2c6f38ac06e6618792cbd", null ],
+    [ "mergeGFAStrict", "bgfa__merge_8hpp.html#a6b9f59cb69c32caa10b017d55f92585e", null ],
+    [ "mergeGFAStrictByDistance", "bgfa__merge_8hpp.html#a2488d7a7fc984dd8a180696d247222eb", null ],
+    [ "mergeGraphs", "bgfa__merge_8hpp.html#abbf4cc6196c12478dbaf3a70aa85fa3f", null ],
+    [ "updateLink", "bgfa__merge_8hpp.html#aafea1dcd664807d9d0b0872d7965e5d9", null ],
+    [ "updateSegmentSet", "bgfa__merge_8hpp.html#ab83bae8347d8d362aac82cd7b0aea18d", null ]
+];

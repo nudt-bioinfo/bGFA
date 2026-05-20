@@ -1,0 +1,14 @@
+digraph "src/wfa/bindings/cpp"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  subgraph clusterdir_bdaf0a6d00f70ad829c9604a5921b70e {
+    graph [ bgcolor="#edf0f7", pencolor="grey50", label="bindings", fontname=Helvetica,fontsize=10 style="filled,dashed", URL="dir_bdaf0a6d00f70ad829c9604a5921b70e.html",tooltip=""]
+  dir_88d3132ffd60485dddc65084c89b7dd9 [label="cpp", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_88d3132ffd60485dddc65084c89b7dd9.html",tooltip=""];
+  }
+  dir_960140de3ab75215d0d5dd02f243d0d0 [label="wavefront", fillcolor="#edf0f7", color="grey50", style="filled", URL="dir_960140de3ab75215d0d5dd02f243d0d0.html",tooltip=""];
+  dir_88d3132ffd60485dddc65084c89b7dd9->dir_960140de3ab75215d0d5dd02f243d0d0 [headlabel="2", labeldistance=1.5 headhref="dir_000005_000020.html" href="dir_000005_000020.html" color="steelblue1" fontcolor="steelblue1"];
+}

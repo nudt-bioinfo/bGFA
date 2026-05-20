@@ -1,0 +1,28 @@
+var wavefront__heuristic_8c =
+[
+    [ "wavefront_heuristic_banded_adaptive", "wavefront__heuristic_8c.html#a25467332e138f5ec7cc9abe9653846f7", null ],
+    [ "wavefront_heuristic_banded_static", "wavefront__heuristic_8c.html#ac65f63a77eb3036bb3cd186c3601ba78", null ],
+    [ "wavefront_heuristic_clear", "wavefront__heuristic_8c.html#a93430ca092518fb04ceca3ef13eb7362", null ],
+    [ "wavefront_heuristic_cufoff", "wavefront__heuristic_8c.html#a9e963e79ed6031b983d63487e3a84a38", null ],
+    [ "wavefront_heuristic_print", "wavefront__heuristic_8c.html#aa9c2e855584f96debe1769f889b8e050", null ],
+    [ "wavefront_heuristic_set_banded_adaptive", "wavefront__heuristic_8c.html#a2edbc9413ecab1e4d88af6a2fa4f7c2f", null ],
+    [ "wavefront_heuristic_set_banded_static", "wavefront__heuristic_8c.html#aa36e395cbacd8cb964b9f421902901ce", null ],
+    [ "wavefront_heuristic_set_none", "wavefront__heuristic_8c.html#af4930b7bd379dafaa4bcafcd0dbe6327", null ],
+    [ "wavefront_heuristic_set_wfadaptive", "wavefront__heuristic_8c.html#a723c04647a317f8deb8e5f22197643fc", null ],
+    [ "wavefront_heuristic_set_wfmash", "wavefront__heuristic_8c.html#aa45782b7f6c7d854b31684808cc642bc", null ],
+    [ "wavefront_heuristic_set_xdrop", "wavefront__heuristic_8c.html#ae1729ed7a091d01ade2a300406af9a2c", null ],
+    [ "wavefront_heuristic_set_zdrop", "wavefront__heuristic_8c.html#aec0c24d8b5b2d36e0b71caa757df83a5", null ],
+    [ "wavefront_heuristic_wfadaptive", "wavefront__heuristic_8c.html#aa58a572a8c6c8fee7baec40a1e80e1b0", null ],
+    [ "wavefront_heuristic_xdrop", "wavefront__heuristic_8c.html#a1a29c8da448d284560da3fbe2516dc66", null ],
+    [ "wavefront_heuristic_zdrop", "wavefront__heuristic_8c.html#a4cae8adb33ebcd5c1fef0067ed1e2c73", null ],
+    [ "wf_compute_distance_end2end", "wavefront__heuristic_8c.html#ab384d901523dd054ef98d3deafd939e5", null ],
+    [ "wf_compute_distance_end2end_weighted", "wavefront__heuristic_8c.html#ac7854730761725163e5e341af6aa6978", null ],
+    [ "wf_compute_distance_endsfree", "wavefront__heuristic_8c.html#ab5dea103dbe979c8105b2673e98d37f8", null ],
+    [ "wf_distance_end2end", "wavefront__heuristic_8c.html#a44d892cd4afe1b271fe5201e28303a60", null ],
+    [ "wf_distance_end2end_weighted", "wavefront__heuristic_8c.html#ac8d1327d72dd92cf97063f06db25fbd7", null ],
+    [ "wf_distance_endsfree", "wavefront__heuristic_8c.html#abd0a4d7d6e327abd90d98b5b0a9e74c5", null ],
+    [ "wf_heuristic_compute_sw_scores", "wavefront__heuristic_8c.html#a36487e0c541dcfe61cec04944f532360", null ],
+    [ "wf_heuristic_equate", "wavefront__heuristic_8c.html#a4706b30131215ecaa4986f38efbf5c0e", null ],
+    [ "wf_heuristic_wfadaptive_reduce", "wavefront__heuristic_8c.html#a367f45e34209685eb816f7aca315ad52", null ],
+    [ "wf_zdrop_gap_score", "wavefront__heuristic_8c.html#a576876e05b4c28fd92b98615e9275938", null ]
+];

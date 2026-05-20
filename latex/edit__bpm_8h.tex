@@ -1,0 +1,101 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+edit/\+edit\+\_\+bpm.h File Reference}
+\hypertarget{edit__bpm_8h}{}\label{edit__bpm_8h}\index{src/wfa/tools/align\_benchmark/edit/edit\_bpm.h@{src/wfa/tools/align\_benchmark/edit/edit\_bpm.h}}
+{\ttfamily \+\#include "{}alignment/\+cigar.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+Include dependency graph for edit\+\_\+bpm.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8h_ad37bcbb6ffda02f980271d7137067ad5}{edit\+\_\+bpm\+\_\+pattern\+\_\+compile}} (\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+pattern, char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8h_a2bd9a14e0a88b6e7dfe4300f1f282f3c}{edit\+\_\+bpm\+\_\+pattern\+\_\+free}} (\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+pattern, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8h_aeea020638f569db2ae70ac4525638e9e}{edit\+\_\+bpm\+\_\+matrix\+\_\+allocate}} (\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+matrix, const uint64\+\_\+t pattern\+\_\+length, const uint64\+\_\+t text\+\_\+length, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8h_a71336e1d762b5bea5f45703cb95e437f}{edit\+\_\+bpm\+\_\+matrix\+\_\+free}} (\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+matrix, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8h_a7290aee179f226bb331b9559d2427316}{edit\+\_\+bpm\+\_\+compute}} (\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+matrix, \doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+pattern, char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, const int max\+\_\+distance)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{edit__bpm_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{edit__bpm_8h_a7290aee179f226bb331b9559d2427316}\index{edit\_bpm.h@{edit\_bpm.h}!edit\_bpm\_compute@{edit\_bpm\_compute}}
+\index{edit\_bpm\_compute@{edit\_bpm\_compute}!edit\_bpm.h@{edit\_bpm.h}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_compute()}{edit\_bpm\_compute()}}
+{\footnotesize\ttfamily \label{edit__bpm_8h_a7290aee179f226bb331b9559d2427316} 
+void edit\+\_\+bpm\+\_\+compute (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+pattern}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{const int}]{max\+\_\+distance}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00318}{318}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{edit__bpm_8h_aeea020638f569db2ae70ac4525638e9e}\index{edit\_bpm.h@{edit\_bpm.h}!edit\_bpm\_matrix\_allocate@{edit\_bpm\_matrix\_allocate}}
+\index{edit\_bpm\_matrix\_allocate@{edit\_bpm\_matrix\_allocate}!edit\_bpm.h@{edit\_bpm.h}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_matrix\_allocate()}{edit\_bpm\_matrix\_allocate()}}
+{\footnotesize\ttfamily \label{edit__bpm_8h_aeea020638f569db2ae70ac4525638e9e} 
+void edit\+\_\+bpm\+\_\+matrix\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+matrix}{, }\item[{const uint64\+\_\+t}]{pattern\+\_\+length}{, }\item[{const uint64\+\_\+t}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00144}{144}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{edit__bpm_8h_a71336e1d762b5bea5f45703cb95e437f}\index{edit\_bpm.h@{edit\_bpm.h}!edit\_bpm\_matrix\_free@{edit\_bpm\_matrix\_free}}
+\index{edit\_bpm\_matrix\_free@{edit\_bpm\_matrix\_free}!edit\_bpm.h@{edit\_bpm.h}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_matrix\_free()}{edit\_bpm\_matrix\_free()}}
+{\footnotesize\ttfamily \label{edit__bpm_8h_a71336e1d762b5bea5f45703cb95e437f} 
+void edit\+\_\+bpm\+\_\+matrix\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00160}{160}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{edit__bpm_8h_ad37bcbb6ffda02f980271d7137067ad5}\index{edit\_bpm.h@{edit\_bpm.h}!edit\_bpm\_pattern\_compile@{edit\_bpm\_pattern\_compile}}
+\index{edit\_bpm\_pattern\_compile@{edit\_bpm\_pattern\_compile}!edit\_bpm.h@{edit\_bpm.h}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_pattern\_compile()}{edit\_bpm\_pattern\_compile()}}
+{\footnotesize\ttfamily \label{edit__bpm_8h_ad37bcbb6ffda02f980271d7137067ad5} 
+void edit\+\_\+bpm\+\_\+pattern\+\_\+compile (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+pattern}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00072}{72}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{edit__bpm_8h_a2bd9a14e0a88b6e7dfe4300f1f282f3c}\index{edit\_bpm.h@{edit\_bpm.h}!edit\_bpm\_pattern\_free@{edit\_bpm\_pattern\_free}}
+\index{edit\_bpm\_pattern\_free@{edit\_bpm\_pattern\_free}!edit\_bpm.h@{edit\_bpm.h}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_pattern\_free()}{edit\_bpm\_pattern\_free()}}
+{\footnotesize\ttfamily \label{edit__bpm_8h_a2bd9a14e0a88b6e7dfe4300f1f282f3c} 
+void edit\+\_\+bpm\+\_\+pattern\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+pattern}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00139}{139}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10

@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['sam_5fcigar_5fdel_0',['SAM_CIGAR_DEL',['../cigar_8c.html#aa80723c503b7fe337c2efb219f1f3758',1,'cigar.c']]],
+  ['sam_5fcigar_5feq_1',['SAM_CIGAR_EQ',['../cigar_8c.html#a92ab810874d2de0d9b18f2673e124985',1,'cigar.c']]],
+  ['sam_5fcigar_5fins_2',['SAM_CIGAR_INS',['../cigar_8c.html#a209a239fe718156d8d466df28ca61887',1,'cigar.c']]],
+  ['sam_5fcigar_5fmatch_3',['SAM_CIGAR_MATCH',['../cigar_8c.html#a0588b8462b5ff8fa2717d33bdcce64d9',1,'cigar.c']]],
+  ['sam_5fcigar_5fn_5fskip_4',['SAM_CIGAR_N_SKIP',['../cigar_8c.html#a4c0d5f5edf6518563bcba55a77278e32',1,'cigar.c']]],
+  ['sam_5fcigar_5fna_5',['SAM_CIGAR_NA',['../cigar_8c.html#a3be2e25a7b8d2e3320bb2042c1cd1ad8',1,'cigar.c']]],
+  ['sam_5fcigar_5fx_6',['SAM_CIGAR_X',['../cigar_8c.html#a9fa35857e33ddc3c5f1545b59d03dacd',1,'cigar.c']]],
+  ['score_5fmax_7',['SCORE_MAX',['../score__matrix_8h.html#a01deca592d490bb28261283633b500c3',1,'score_matrix.h']]],
+  ['screen_5fmode_5fdirect_8',['SCREEN_MODE_DIRECT',['../bgfa__merge_8hpp.html#ab7d4103b221dc76e8480e710f5c817bc',1,'bgfa_merge.hpp']]],
+  ['screen_5fmode_5fdistance_9',['SCREEN_MODE_DISTANCE',['../bgfa__merge_8hpp.html#ab676a082bbd1e27d7897bf359e9962e3',1,'bgfa_merge.hpp']]],
+  ['screen_5fmode_5fminimizer_10',['SCREEN_MODE_MINIMIZER',['../bgfa__merge_8hpp.html#ae10392c69766ab025875e15401a6dc63',1,'bgfa_merge.hpp']]],
+  ['screen_5fmode_5fpath_11',['SCREEN_MODE_PATH',['../bgfa__merge_8hpp.html#a2884d488d3fcf19912456aa400b19c98',1,'bgfa_merge.hpp']]],
+  ['segment_5fcompact_5fplaceholder_12',['SEGMENT_COMPACT_PLACEHOLDER',['../bgfa__graph_8hpp.html#a702da13e156cfc2c4a94444dbecd68dd',1,'bgfa_graph.hpp']]],
+  ['semicolon_13',['SEMICOLON',['../commons_8h.html#ae6402f35ea263d89cb367e0ab2b0f278',1,'commons.h']]],
+  ['slash_14',['SLASH',['../commons_8h.html#a69eb17477fd6f6af2c9ca2d5f4c7df3c',1,'commons.h']]],
+  ['sosr_5foffset_5fshift_15',['SOSR_OFFSET_SHIFT',['../bgfa__graph_8hpp.html#a88a6151c8d2c45b55762250d1609d769',1,'bgfa_graph.hpp']]],
+  ['space_16',['SPACE',['../commons_8h.html#a5ff6e798033f03e74730e99f01936f84',1,'commons.h']]],
+  ['sr_5fmask_17',['SR_MASK',['../bgfa__graph_8hpp.html#ae19099bf96dbd6f2cbc4a116a0054c5c',1,'bgfa_graph.hpp']]],
+  ['star_18',['STAR',['../commons_8h.html#a94c3dc9846edbbb70f678768633a4796',1,'commons.h']]],
+  ['string_5fcheck_19',['STRING_CHECK',['../_c_l_i11_8hpp.html#acbeaa164624f2ebf696c5779dbd4c12c',1,'CLI11.hpp']]],
+  ['stringify_20',['STRINGIFY',['../commons_8h.html#a51840e7e288c8d25587ce062de9d9515',1,'commons.h']]],
+  ['stringify_5f_21',['STRINGIFY_',['../commons_8h.html#a0dfecde8c77f5e43efed6498e69242c2',1,'commons.h']]],
+  ['swap_22',['SWAP',['../commons_8h.html#aac9153aee4bdb92701df902e06a74eb3',1,'commons.h']]]
+];

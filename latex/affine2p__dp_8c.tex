@@ -1,0 +1,43 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+gap\+\_\+affine2p/\+affine2p\+\_\+dp.c File Reference}
+\hypertarget{affine2p__dp_8c}{}\label{affine2p__dp_8c}\index{src/wfa/tools/align\_benchmark/gap\_affine2p/affine2p\_dp.c@{src/wfa/tools/align\_benchmark/gap\_affine2p/affine2p\_dp.c}}
+{\ttfamily \+\#include "{}affine2p\+\_\+dp.\+h"{}}\newline
+Include dependency graph for affine2p\+\_\+dp.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{affine2p__dp_8c_a74d3316a6b755090ce45679258d42048}{affine2p\+\_\+dp\+\_\+traceback}} (\doxymbox{\hyperlink{structaffine2p__matrix__t}{affine2p\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const matrix, \doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties, const int pattern\+\_\+length, const int text\+\_\+length, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+void \doxymbox{\hyperlink{affine2p__dp_8c_a1eb084ce5de31d063126e9b57cd6ca22}{affine2p\+\_\+dp\+\_\+align}} (\doxymbox{\hyperlink{structaffine2p__matrix__t}{affine2p\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const matrix, \doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{affine2p__dp_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{affine2p__dp_8c_a1eb084ce5de31d063126e9b57cd6ca22}\index{affine2p\_dp.c@{affine2p\_dp.c}!affine2p\_dp\_align@{affine2p\_dp\_align}}
+\index{affine2p\_dp\_align@{affine2p\_dp\_align}!affine2p\_dp.c@{affine2p\_dp.c}}
+\doxysubsubsection{\texorpdfstring{affine2p\_dp\_align()}{affine2p\_dp\_align()}}
+{\footnotesize\ttfamily \label{affine2p__dp_8c_a1eb084ce5de31d063126e9b57cd6ca22} 
+void affine2p\+\_\+dp\+\_\+align (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structaffine2p__matrix__t}{affine2p\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{matrix}{, }\item[{\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{affine2p__dp_8c_source_l00117}{117}} of file \doxymbox{\hyperlink{affine2p__dp_8c_source}{affine2p\+\_\+dp.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{affine2p__dp_8c_a74d3316a6b755090ce45679258d42048}\index{affine2p\_dp.c@{affine2p\_dp.c}!affine2p\_dp\_traceback@{affine2p\_dp\_traceback}}
+\index{affine2p\_dp\_traceback@{affine2p\_dp\_traceback}!affine2p\_dp.c@{affine2p\_dp.c}}
+\doxysubsubsection{\texorpdfstring{affine2p\_dp\_traceback()}{affine2p\_dp\_traceback()}}
+{\footnotesize\ttfamily \label{affine2p__dp_8c_a74d3316a6b755090ce45679258d42048} 
+void affine2p\+\_\+dp\+\_\+traceback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structaffine2p__matrix__t}{affine2p\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{matrix}{, }\item[{\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const int}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{affine2p__dp_8c_source_l00038}{38}} of file \doxymbox{\hyperlink{affine2p__dp_8c_source}{affine2p\+\_\+dp.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3

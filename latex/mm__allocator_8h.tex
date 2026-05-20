@@ -1,0 +1,266 @@
+\doxysection{src/\+wfa/\+system/\+mm\+\_\+allocator.h File Reference}
+\hypertarget{mm__allocator_8h}{}\label{mm__allocator_8h}\index{src/wfa/system/mm\_allocator.h@{src/wfa/system/mm\_allocator.h}}
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include "{}utils/\+vector.\+h"{}}\newline
+Include dependency graph for mm\+\_\+allocator.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{mm__allocator_8h_a7cd94c80b111e80d2d5f8dbd0074fe9a}{MM\+\_\+\+ALLOCATOR\+\_\+\+ALIGNMENT}}~8
+\item 
+\+\#define \doxymbox{\hyperlink{mm__allocator_8h_a6363263ad3dd2a567fbef80696f7b135}{mm\+\_\+allocator\+\_\+alloc}}(mm\+\_\+allocator,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{mm__allocator_8h_a9b5c25e96a0f51a1d4c7b139b41300c6}{mm\+\_\+allocator\+\_\+malloc}}(mm\+\_\+allocator,  num\+\_\+bytes)
+\item 
+\+\#define \doxymbox{\hyperlink{mm__allocator_8h_af03a94fc054925cae7933619e249712a}{mm\+\_\+allocator\+\_\+calloc}}(mm\+\_\+allocator,  num\+\_\+elements,  type,  clear\+\_\+mem)
+\item 
+\+\#define \doxymbox{\hyperlink{mm__allocator_8h_aa3d4ecb660bf82bafb9502fc2a63bea1}{mm\+\_\+allocator\+\_\+uint64}}(mm\+\_\+allocator)
+\item 
+\+\#define \doxymbox{\hyperlink{mm__allocator_8h_af9e0ef91a5e7dacd405ccf15a9e59230}{mm\+\_\+allocator\+\_\+uint32}}(mm\+\_\+allocator)
+\item 
+\+\#define \doxymbox{\hyperlink{mm__allocator_8h_a0d79b0abd544c307ed944df41457c39f}{mm\+\_\+allocator\+\_\+uint16}}(mm\+\_\+allocator)
+\item 
+\+\#define \doxymbox{\hyperlink{mm__allocator_8h_a691b69f128a952ef3ab0c3fcbd8e19e3}{mm\+\_\+allocator\+\_\+uint8}}(mm\+\_\+allocator)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{mm__allocator_8h_a88d0d229ad2eb882e34b33c347884907}{mm\+\_\+allocator\+\_\+new}} (const uint64\+\_\+t segment\+\_\+size)
+\item 
+void \doxymbox{\hyperlink{mm__allocator_8h_aed161b2464e7e0fe75f8695a3c4a60bb}{mm\+\_\+allocator\+\_\+clear}} (\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{mm__allocator_8h_a5a178f665979a8a66aa46d3479d4d221}{mm\+\_\+allocator\+\_\+delete}} (\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{mm__allocator_8h_a85b3a701730ab5b54b6fccd9399d7ee5}{mm\+\_\+allocator\+\_\+allocate}} (\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator, const uint64\+\_\+t num\+\_\+bytes, const bool zero\+\_\+mem, const uint64\+\_\+t align\+\_\+bytes)
+\item 
+void \doxymbox{\hyperlink{mm__allocator_8h_a2e6409a5effa914e7489bb4ec6db5188}{mm\+\_\+allocator\+\_\+free}} (\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator, void \texorpdfstring{$\ast$}{*}const memory)
+\item 
+void \doxymbox{\hyperlink{mm__allocator_8h_aeb25c11282d496d2537b547641738a7c}{mm\+\_\+allocator\+\_\+get\+\_\+occupation}} (\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator, uint64\+\_\+t \texorpdfstring{$\ast$}{*}const bytes\+\_\+used\+\_\+malloc, uint64\+\_\+t \texorpdfstring{$\ast$}{*}const bytes\+\_\+used\+\_\+allocator, uint64\+\_\+t \texorpdfstring{$\ast$}{*}const bytes\+\_\+free\+\_\+available, uint64\+\_\+t \texorpdfstring{$\ast$}{*}const bytes\+\_\+free\+\_\+fragmented)
+\item 
+void \doxymbox{\hyperlink{mm__allocator_8h_ae5ff25aef9cf1a1c79c4cbbc3bd3ca60}{mm\+\_\+allocator\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator, const bool display\+\_\+requests)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{mm__allocator_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{mm__allocator_8h_a7cd94c80b111e80d2d5f8dbd0074fe9a}\index{mm\_allocator.h@{mm\_allocator.h}!MM\_ALLOCATOR\_ALIGNMENT@{MM\_ALLOCATOR\_ALIGNMENT}}
+\index{MM\_ALLOCATOR\_ALIGNMENT@{MM\_ALLOCATOR\_ALIGNMENT}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{MM\_ALLOCATOR\_ALIGNMENT}{MM\_ALLOCATOR\_ALIGNMENT}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a7cd94c80b111e80d2d5f8dbd0074fe9a} 
+\+\#define MM\+\_\+\+ALLOCATOR\+\_\+\+ALIGNMENT~8}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8h_source_l00045}{45}} of file \doxymbox{\hyperlink{mm__allocator_8h_source}{mm\+\_\+allocator.\+h}}.
+
+\Hypertarget{mm__allocator_8h_a6363263ad3dd2a567fbef80696f7b135}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_alloc@{mm\_allocator\_alloc}}
+\index{mm\_allocator\_alloc@{mm\_allocator\_alloc}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_alloc}{mm\_allocator\_alloc}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a6363263ad3dd2a567fbef80696f7b135} 
+\+\#define mm\+\_\+allocator\+\_\+alloc(\begin{DoxyParamCaption}\item[{}]{mm\+\_\+allocator}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((type*)\doxymbox{\hyperlink{mm__allocator_8c_a85b3a701730ab5b54b6fccd9399d7ee5}{mm\_allocator\_allocate}}(mm\_allocator,\textcolor{keyword}{sizeof}(type),\textcolor{keyword}{false},\doxymbox{\hyperlink{mm__allocator_8h_a7cd94c80b111e80d2d5f8dbd0074fe9a}{MM\_ALLOCATOR\_ALIGNMENT}}))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8h_source_l00095}{95}} of file \doxymbox{\hyperlink{mm__allocator_8h_source}{mm\+\_\+allocator.\+h}}.
+
+\Hypertarget{mm__allocator_8h_af03a94fc054925cae7933619e249712a}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_calloc@{mm\_allocator\_calloc}}
+\index{mm\_allocator\_calloc@{mm\_allocator\_calloc}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_calloc}{mm\_allocator\_calloc}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_af03a94fc054925cae7933619e249712a} 
+\+\#define mm\+\_\+allocator\+\_\+calloc(\begin{DoxyParamCaption}\item[{}]{mm\+\_\+allocator}{, }\item[{}]{num\+\_\+elements}{, }\item[{}]{type}{, }\item[{}]{clear\+\_\+mem}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((type*)\doxymbox{\hyperlink{mm__allocator_8c_a85b3a701730ab5b54b6fccd9399d7ee5}{mm\_allocator\_allocate}}(mm\_allocator,(num\_elements)*\textcolor{keyword}{sizeof}(type),clear\_mem,\doxymbox{\hyperlink{mm__allocator_8h_a7cd94c80b111e80d2d5f8dbd0074fe9a}{MM\_ALLOCATOR\_ALIGNMENT}}))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8h_source_l00099}{99}} of file \doxymbox{\hyperlink{mm__allocator_8h_source}{mm\+\_\+allocator.\+h}}.
+
+\Hypertarget{mm__allocator_8h_a9b5c25e96a0f51a1d4c7b139b41300c6}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_malloc@{mm\_allocator\_malloc}}
+\index{mm\_allocator\_malloc@{mm\_allocator\_malloc}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_malloc}{mm\_allocator\_malloc}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a9b5c25e96a0f51a1d4c7b139b41300c6} 
+\+\#define mm\+\_\+allocator\+\_\+malloc(\begin{DoxyParamCaption}\item[{}]{mm\+\_\+allocator}{, }\item[{}]{num\+\_\+bytes}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\doxymbox{\hyperlink{mm__allocator_8c_a85b3a701730ab5b54b6fccd9399d7ee5}{mm\_allocator\_allocate}}(mm\_allocator,num\_bytes,\textcolor{keyword}{false},\doxymbox{\hyperlink{mm__allocator_8h_a7cd94c80b111e80d2d5f8dbd0074fe9a}{MM\_ALLOCATOR\_ALIGNMENT}}))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8h_source_l00097}{97}} of file \doxymbox{\hyperlink{mm__allocator_8h_source}{mm\+\_\+allocator.\+h}}.
+
+\Hypertarget{mm__allocator_8h_a0d79b0abd544c307ed944df41457c39f}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_uint16@{mm\_allocator\_uint16}}
+\index{mm\_allocator\_uint16@{mm\_allocator\_uint16}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_uint16}{mm\_allocator\_uint16}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a0d79b0abd544c307ed944df41457c39f} 
+\+\#define mm\+\_\+allocator\+\_\+uint16(\begin{DoxyParamCaption}\item[{}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{mm__allocator_8h_a9b5c25e96a0f51a1d4c7b139b41300c6}{mm\_allocator\_malloc}}(mm\_allocator,\textcolor{keyword}{sizeof}(uint16\_t))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8h_source_l00105}{105}} of file \doxymbox{\hyperlink{mm__allocator_8h_source}{mm\+\_\+allocator.\+h}}.
+
+\Hypertarget{mm__allocator_8h_af9e0ef91a5e7dacd405ccf15a9e59230}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_uint32@{mm\_allocator\_uint32}}
+\index{mm\_allocator\_uint32@{mm\_allocator\_uint32}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_uint32}{mm\_allocator\_uint32}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_af9e0ef91a5e7dacd405ccf15a9e59230} 
+\+\#define mm\+\_\+allocator\+\_\+uint32(\begin{DoxyParamCaption}\item[{}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{mm__allocator_8h_a9b5c25e96a0f51a1d4c7b139b41300c6}{mm\_allocator\_malloc}}(mm\_allocator,\textcolor{keyword}{sizeof}(uint32\_t))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8h_source_l00104}{104}} of file \doxymbox{\hyperlink{mm__allocator_8h_source}{mm\+\_\+allocator.\+h}}.
+
+\Hypertarget{mm__allocator_8h_aa3d4ecb660bf82bafb9502fc2a63bea1}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_uint64@{mm\_allocator\_uint64}}
+\index{mm\_allocator\_uint64@{mm\_allocator\_uint64}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_uint64}{mm\_allocator\_uint64}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_aa3d4ecb660bf82bafb9502fc2a63bea1} 
+\+\#define mm\+\_\+allocator\+\_\+uint64(\begin{DoxyParamCaption}\item[{}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{mm__allocator_8h_a9b5c25e96a0f51a1d4c7b139b41300c6}{mm\_allocator\_malloc}}(mm\_allocator,\textcolor{keyword}{sizeof}(uint64\_t))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8h_source_l00103}{103}} of file \doxymbox{\hyperlink{mm__allocator_8h_source}{mm\+\_\+allocator.\+h}}.
+
+\Hypertarget{mm__allocator_8h_a691b69f128a952ef3ab0c3fcbd8e19e3}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_uint8@{mm\_allocator\_uint8}}
+\index{mm\_allocator\_uint8@{mm\_allocator\_uint8}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_uint8}{mm\_allocator\_uint8}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a691b69f128a952ef3ab0c3fcbd8e19e3} 
+\+\#define mm\+\_\+allocator\+\_\+uint8(\begin{DoxyParamCaption}\item[{}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{mm__allocator_8h_a9b5c25e96a0f51a1d4c7b139b41300c6}{mm\_allocator\_malloc}}(mm\_allocator,\textcolor{keyword}{sizeof}(uint8\_t))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8h_source_l00106}{106}} of file \doxymbox{\hyperlink{mm__allocator_8h_source}{mm\+\_\+allocator.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{mm__allocator_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{mm__allocator_8h_a85b3a701730ab5b54b6fccd9399d7ee5}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_allocate@{mm\_allocator\_allocate}}
+\index{mm\_allocator\_allocate@{mm\_allocator\_allocate}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_allocate()}{mm\_allocator\_allocate()}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a85b3a701730ab5b54b6fccd9399d7ee5} 
+void \texorpdfstring{$\ast$}{*} mm\+\_\+allocator\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{, }\item[{const uint64\+\_\+t}]{num\+\_\+bytes}{, }\item[{const bool}]{zero\+\_\+mem}{, }\item[{const uint64\+\_\+t}]{align\+\_\+bytes}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8c_source_l00262}{262}} of file \doxymbox{\hyperlink{mm__allocator_8c_source}{mm\+\_\+allocator.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{mm__allocator_8h_aed161b2464e7e0fe75f8695a3c4a60bb}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_clear@{mm\_allocator\_clear}}
+\index{mm\_allocator\_clear@{mm\_allocator\_clear}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_clear()}{mm\_allocator\_clear()}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_aed161b2464e7e0fe75f8695a3c4a60bb} 
+void mm\+\_\+allocator\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8c_source_l00174}{174}} of file \doxymbox{\hyperlink{mm__allocator_8c_source}{mm\+\_\+allocator.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{mm__allocator_8h_a5a178f665979a8a66aa46d3479d4d221}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_delete@{mm\_allocator\_delete}}
+\index{mm\_allocator\_delete@{mm\_allocator\_delete}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_delete()}{mm\_allocator\_delete()}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a5a178f665979a8a66aa46d3479d4d221} 
+void mm\+\_\+allocator\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8c_source_l00190}{190}} of file \doxymbox{\hyperlink{mm__allocator_8c_source}{mm\+\_\+allocator.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{mm__allocator_8h_a2e6409a5effa914e7489bb4ec6db5188}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_free@{mm\_allocator\_free}}
+\index{mm\_allocator\_free@{mm\_allocator\_free}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_free()}{mm\_allocator\_free()}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a2e6409a5effa914e7489bb4ec6db5188} 
+void mm\+\_\+allocator\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{, }\item[{void \texorpdfstring{$\ast$}{*}const}]{memory}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8c_source_l00420}{420}} of file \doxymbox{\hyperlink{mm__allocator_8c_source}{mm\+\_\+allocator.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{mm__allocator_8h_aeb25c11282d496d2537b547641738a7c}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_get\_occupation@{mm\_allocator\_get\_occupation}}
+\index{mm\_allocator\_get\_occupation@{mm\_allocator\_get\_occupation}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_get\_occupation()}{mm\_allocator\_get\_occupation()}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_aeb25c11282d496d2537b547641738a7c} 
+void mm\+\_\+allocator\+\_\+get\+\_\+occupation (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{, }\item[{uint64\+\_\+t \texorpdfstring{$\ast$}{*}const}]{bytes\+\_\+used\+\_\+malloc}{, }\item[{uint64\+\_\+t \texorpdfstring{$\ast$}{*}const}]{bytes\+\_\+used\+\_\+allocator}{, }\item[{uint64\+\_\+t \texorpdfstring{$\ast$}{*}const}]{bytes\+\_\+free\+\_\+available}{, }\item[{uint64\+\_\+t \texorpdfstring{$\ast$}{*}const}]{bytes\+\_\+free\+\_\+fragmented}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8c_source_l00441}{441}} of file \doxymbox{\hyperlink{mm__allocator_8c_source}{mm\+\_\+allocator.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{mm__allocator_8h_a88d0d229ad2eb882e34b33c347884907}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_new@{mm\_allocator\_new}}
+\index{mm\_allocator\_new@{mm\_allocator\_new}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_new()}{mm\_allocator\_new()}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_a88d0d229ad2eb882e34b33c347884907} 
+\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*} mm\+\_\+allocator\+\_\+new (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{segment\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8c_source_l00152}{152}} of file \doxymbox{\hyperlink{mm__allocator_8c_source}{mm\+\_\+allocator.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 10
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{mm__allocator_8h_ae5ff25aef9cf1a1c79c4cbbc3bd3ca60}\index{mm\_allocator.h@{mm\_allocator.h}!mm\_allocator\_print@{mm\_allocator\_print}}
+\index{mm\_allocator\_print@{mm\_allocator\_print}!mm\_allocator.h@{mm\_allocator.h}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator\_print()}{mm\_allocator\_print()}}
+{\footnotesize\ttfamily \label{mm__allocator_8h_ae5ff25aef9cf1a1c79c4cbbc3bd3ca60} 
+void mm\+\_\+allocator\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{, }\item[{const bool}]{display\+\_\+requests}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__allocator_8c_source_l00583}{583}} of file \doxymbox{\hyperlink{mm__allocator_8c_source}{mm\+\_\+allocator.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 12

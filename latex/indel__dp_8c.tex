@@ -1,0 +1,43 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+indel/\+indel\+\_\+dp.c File Reference}
+\hypertarget{indel__dp_8c}{}\label{indel__dp_8c}\index{src/wfa/tools/align\_benchmark/indel/indel\_dp.c@{src/wfa/tools/align\_benchmark/indel/indel\_dp.c}}
+{\ttfamily \+\#include "{}indel/\+indel\+\_\+dp.\+h"{}}\newline
+Include dependency graph for indel\+\_\+dp.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{indel__dp_8c_a4192dddf362e8c2ef1dfcd643d92c7cf}{indel\+\_\+dp\+\_\+traceback}} (\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+void \doxymbox{\hyperlink{indel__dp_8c_a333d8b35374ce68a8b0b58a10013bf6a}{indel\+\_\+dp\+\_\+compute}} (\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{indel__dp_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{indel__dp_8c_a333d8b35374ce68a8b0b58a10013bf6a}\index{indel\_dp.c@{indel\_dp.c}!indel\_dp\_compute@{indel\_dp\_compute}}
+\index{indel\_dp\_compute@{indel\_dp\_compute}!indel\_dp.c@{indel\_dp.c}}
+\doxysubsubsection{\texorpdfstring{indel\_dp\_compute()}{indel\_dp\_compute()}}
+{\footnotesize\ttfamily \label{indel__dp_8c_a333d8b35374ce68a8b0b58a10013bf6a} 
+void indel\+\_\+dp\+\_\+compute (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{indel__dp_8c_source_l00069}{69}} of file \doxymbox{\hyperlink{indel__dp_8c_source}{indel\+\_\+dp.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{indel__dp_8c_a4192dddf362e8c2ef1dfcd643d92c7cf}\index{indel\_dp.c@{indel\_dp.c}!indel\_dp\_traceback@{indel\_dp\_traceback}}
+\index{indel\_dp\_traceback@{indel\_dp\_traceback}!indel\_dp.c@{indel\_dp.c}}
+\doxysubsubsection{\texorpdfstring{indel\_dp\_traceback()}{indel\_dp\_traceback()}}
+{\footnotesize\ttfamily \label{indel__dp_8c_a4192dddf362e8c2ef1dfcd643d92c7cf} 
+void indel\+\_\+dp\+\_\+traceback (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{indel__dp_8c_source_l00037}{37}} of file \doxymbox{\hyperlink{indel__dp_8c_source}{indel\+\_\+dp.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3

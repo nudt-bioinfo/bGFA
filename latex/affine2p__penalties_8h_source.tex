@@ -1,0 +1,65 @@
+\doxysection{affine2p\+\_\+penalties.\+h}
+\hypertarget{affine2p__penalties_8h_source}{}\label{affine2p__penalties_8h_source}\index{src/wfa/alignment/affine2p\_penalties.h@{src/wfa/alignment/affine2p\_penalties.h}}
+\doxymbox{\hyperlink{affine2p__penalties_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Gap-\/Affine\ 2-\/Pieces\ penalties}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ AFFINE2P\_PENALTIES\_H\_}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ AFFINE2P\_PENALTIES\_H\_}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00035}00035\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00036}00036\ \textcolor{comment}{\ *\ Affine\ 2-\/piece\ penalties}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00037}00037\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00038}\doxymbox{\hyperlink{structaffine2p__penalties__t}{00038}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00039}\doxymbox{\hyperlink{structaffine2p__penalties__t_a1edb7abf70a3b33f4a136247b213ca9b}{00039}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine2p__penalties__t_a1edb7abf70a3b33f4a136247b213ca9b}{match}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (Penalty\ representation;\ usually\ M\ <=\ 0)}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00040}\doxymbox{\hyperlink{structaffine2p__penalties__t_ada30e0c723a3f769833d166f28754297}{00040}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine2p__penalties__t_ada30e0c723a3f769833d166f28754297}{mismatch}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (Penalty\ representation;\ usually\ X\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00041}00041\ \ \ \textcolor{comment}{//\ Usually\ concave;\ Q1\ +\ E1\ <\ Q2\ +\ E2\ and\ E1\ >\ E2.}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00042}\doxymbox{\hyperlink{structaffine2p__penalties__t_a1edcee787d6bbd824a8a000d696fe97f}{00042}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine2p__penalties__t_a1edcee787d6bbd824a8a000d696fe97f}{gap\_opening1}};\ \ \ \ \ \ \textcolor{comment}{//\ (Penalty\ representation;\ usually\ O1\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00043}\doxymbox{\hyperlink{structaffine2p__penalties__t_abbf5a8d2715d816daff1f49393e0a221}{00043}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine2p__penalties__t_abbf5a8d2715d816daff1f49393e0a221}{gap\_extension1}};\ \ \ \ \textcolor{comment}{//\ (Penalty\ representation;\ usually\ E1\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00044}\doxymbox{\hyperlink{structaffine2p__penalties__t_a26e14def004a3b356a338ad302d694a6}{00044}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine2p__penalties__t_a26e14def004a3b356a338ad302d694a6}{gap\_opening2}};\ \ \ \ \ \ \textcolor{comment}{//\ (Penalty\ representation;\ usually\ O2\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00045}\doxymbox{\hyperlink{structaffine2p__penalties__t_aadb0f408d97e4157cc03e824669091ad}{00045}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structaffine2p__penalties__t_aadb0f408d97e4157cc03e824669091ad}{gap\_extension2}};\ \ \ \ \textcolor{comment}{//\ (Penalty\ representation;\ usually\ E2\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00046}00046\ \}\ \doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\_penalties\_t}};}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00048}00048\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00049}00049\ \textcolor{comment}{\ *\ Affine\ 2-\/piece\ matrix-\/type\ (for\ bcktrace)}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00050}00050\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00051}\doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{00051}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00052}\doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761ad0d14964dd1dfe71e71735cbd724ebc6}{00052}}\ \ \ \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761ad0d14964dd1dfe71e71735cbd724ebc6}{affine2p\_matrix\_M}},}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00053}\doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761a70a39e455885d7576717fd663c94665d}{00053}}\ \ \ \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761a70a39e455885d7576717fd663c94665d}{affine2p\_matrix\_I1}},}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00054}\doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761a74d5d344b3996bed8869b8cef8edea90}{00054}}\ \ \ \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761a74d5d344b3996bed8869b8cef8edea90}{affine2p\_matrix\_I2}},}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00055}\doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761ad4e95e1f2b666b8b1cc087b967228c18}{00055}}\ \ \ \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761ad4e95e1f2b666b8b1cc087b967228c18}{affine2p\_matrix\_D1}},}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00056}\doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761af58bdb9f834bcd2311e4a65a5c908618}{00056}}\ \ \ \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761af58bdb9f834bcd2311e4a65a5c908618}{affine2p\_matrix\_D2}}}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00057}00057\ \}\ \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\_matrix\_type}};}
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{affine2p__penalties_8h_source_l00059}00059\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ AFFINE2P\_PENALTIES\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

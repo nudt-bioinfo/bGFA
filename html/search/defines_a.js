@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['kcalloc_0',['kcalloc',['../ksw2_8h.html#a42a8bae29556840f665b45d2cbef065d',1,'ksw2.h']]],
+  ['kfree_1',['kfree',['../ksw2_8h.html#af6aede434c19024528e53c7d1b7029d1',1,'ksw2.h']]],
+  ['kmalloc_2',['kmalloc',['../ksw2_8h.html#a52dcec8d7b16f5b7162788007dc32986',1,'ksw2.h']]],
+  ['krealloc_3',['krealloc',['../ksw2_8h.html#a1f8aa21286567991e553ccd721dda5b5',1,'ksw2.h']]],
+  ['ksw_5fcigar_5fdel_4',['KSW_CIGAR_DEL',['../ksw2_8h.html#ad77f8c586520ac0c554df79a37a7355e',1,'ksw2.h']]],
+  ['ksw_5fcigar_5feq_5',['KSW_CIGAR_EQ',['../ksw2_8h.html#a580c9fef3f3532ac4ef48df07a0ce5da',1,'ksw2.h']]],
+  ['ksw_5fcigar_5fins_6',['KSW_CIGAR_INS',['../ksw2_8h.html#abc05644142c62c0a8de2fe1538a740dc',1,'ksw2.h']]],
+  ['ksw_5fcigar_5fmatch_7',['KSW_CIGAR_MATCH',['../ksw2_8h.html#a54c3488bfc8afccac1c6ea4bd5e56c3a',1,'ksw2.h']]],
+  ['ksw_5fcigar_5fn_5fskip_8',['KSW_CIGAR_N_SKIP',['../ksw2_8h.html#a6d5aeb5976ad4419c87024de87b75649',1,'ksw2.h']]],
+  ['ksw_5fcigar_5fx_9',['KSW_CIGAR_X',['../ksw2_8h.html#a40ea17e6d12f41c9ff30f05cf6f34d48',1,'ksw2.h']]],
+  ['ksw_5fez_5fapprox_5fdrop_10',['KSW_EZ_APPROX_DROP',['../ksw2_8h.html#acb0b55ffce45e447bb28be8ed98ce942',1,'ksw2.h']]],
+  ['ksw_5fez_5fapprox_5fmax_11',['KSW_EZ_APPROX_MAX',['../ksw2_8h.html#adaf20c2653ea67c516e8b5f68d74443b',1,'ksw2.h']]],
+  ['ksw_5fez_5feqx_12',['KSW_EZ_EQX',['../ksw2_8h.html#af8f617b54677df75d03ba1ea03ac94af',1,'ksw2.h']]],
+  ['ksw_5fez_5fextz_5fonly_13',['KSW_EZ_EXTZ_ONLY',['../ksw2_8h.html#ad9ae3ba509f1535692381972fa040cc2',1,'ksw2.h']]],
+  ['ksw_5fez_5fgeneric_5fsc_14',['KSW_EZ_GENERIC_SC',['../ksw2_8h.html#a53b6f2312cdb8106a6185d14da3ec225',1,'ksw2.h']]],
+  ['ksw_5fez_5frev_5fcigar_15',['KSW_EZ_REV_CIGAR',['../ksw2_8h.html#ae0c5a9322c75dbd5edcfd834ec02def3',1,'ksw2.h']]],
+  ['ksw_5fez_5fright_16',['KSW_EZ_RIGHT',['../ksw2_8h.html#abd62588dcd071a31841f2b3e55b9f32b',1,'ksw2.h']]],
+  ['ksw_5fez_5fscore_5fonly_17',['KSW_EZ_SCORE_ONLY',['../ksw2_8h.html#a22db7af83dc10199e3022ea9f67da998',1,'ksw2.h']]],
+  ['ksw_5fez_5fsplice_5fflank_18',['KSW_EZ_SPLICE_FLANK',['../ksw2_8h.html#af064084643e0eb90039de1d8f36ad401',1,'ksw2.h']]],
+  ['ksw_5fez_5fsplice_5ffor_19',['KSW_EZ_SPLICE_FOR',['../ksw2_8h.html#a5c5fb98accbd36d1e5bfe146fb8f7778',1,'ksw2.h']]],
+  ['ksw_5fez_5fsplice_5frev_20',['KSW_EZ_SPLICE_REV',['../ksw2_8h.html#a4ce5339a5c9d8e8e049084194ed0a13c',1,'ksw2.h']]],
+  ['ksw_5fneg_5finf_21',['KSW_NEG_INF',['../ksw2_8h.html#a078f74a21b80bf07417745a64cec0309',1,'ksw2.h']]]
+];

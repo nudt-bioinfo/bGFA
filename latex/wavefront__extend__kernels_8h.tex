@@ -1,0 +1,75 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+extend\+\_\+kernels.h File Reference}
+\hypertarget{wavefront__extend__kernels_8h}{}\label{wavefront__extend__kernels_8h}\index{src/wfa/wavefront/wavefront\_extend\_kernels.h@{src/wfa/wavefront/wavefront\_extend\_kernels.h}}
+{\ttfamily \+\#include "{}wavefront\+\_\+aligner.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+extend\+\_\+kernels.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{wavefront__extend__kernels_8h_ad6524d4a0b6b4e0c6826f72739aaf479}{wavefront\+\_\+extend\+\_\+matches\+\_\+packed\+\_\+end2end}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const mwavefront, const int lo, const int hi)
+\item 
+\doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}} \doxymbox{\hyperlink{wavefront__extend__kernels_8h_a390348038728ad02d3d148ec856d7bd0}{wavefront\+\_\+extend\+\_\+matches\+\_\+packed\+\_\+end2end\+\_\+max}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const mwavefront, const int lo, const int hi)
+\item 
+bool \doxymbox{\hyperlink{wavefront__extend__kernels_8h_aa076f82dc9aec867b176999d669df7f3}{wavefront\+\_\+extend\+\_\+matches\+\_\+packed\+\_\+endsfree}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const mwavefront, const int score, const int lo, const int hi)
+\item 
+bool \doxymbox{\hyperlink{wavefront__extend__kernels_8h_a3d5329371e2e6f8a55bde820ef29f963}{wavefront\+\_\+extend\+\_\+matches\+\_\+custom}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const mwavefront, const int score, const int lo, const int hi, const bool endsfree, \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}} \texorpdfstring{$\ast$}{*}const max\+\_\+antidiag)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__extend__kernels_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__extend__kernels_8h_a3d5329371e2e6f8a55bde820ef29f963}\index{wavefront\_extend\_kernels.h@{wavefront\_extend\_kernels.h}!wavefront\_extend\_matches\_custom@{wavefront\_extend\_matches\_custom}}
+\index{wavefront\_extend\_matches\_custom@{wavefront\_extend\_matches\_custom}!wavefront\_extend\_kernels.h@{wavefront\_extend\_kernels.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_extend\_matches\_custom()}{wavefront\_extend\_matches\_custom()}}
+{\footnotesize\ttfamily \label{wavefront__extend__kernels_8h_a3d5329371e2e6f8a55bde820ef29f963} 
+bool wavefront\+\_\+extend\+\_\+matches\+\_\+custom (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mwavefront}{, }\item[{const int}]{score}{, }\item[{const int}]{lo}{, }\item[{const int}]{hi}{, }\item[{const bool}]{endsfree}{, }\item[{\doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{max\+\_\+antidiag}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__extend__kernels_8c_source_l00169}{169}} of file \doxymbox{\hyperlink{wavefront__extend__kernels_8c_source}{wavefront\+\_\+extend\+\_\+kernels.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__extend__kernels_8h_ad6524d4a0b6b4e0c6826f72739aaf479}\index{wavefront\_extend\_kernels.h@{wavefront\_extend\_kernels.h}!wavefront\_extend\_matches\_packed\_end2end@{wavefront\_extend\_matches\_packed\_end2end}}
+\index{wavefront\_extend\_matches\_packed\_end2end@{wavefront\_extend\_matches\_packed\_end2end}!wavefront\_extend\_kernels.h@{wavefront\_extend\_kernels.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_extend\_matches\_packed\_end2end()}{wavefront\_extend\_matches\_packed\_end2end()}}
+{\footnotesize\ttfamily \label{wavefront__extend__kernels_8h_ad6524d4a0b6b4e0c6826f72739aaf479} 
+void wavefront\+\_\+extend\+\_\+matches\+\_\+packed\+\_\+end2end (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mwavefront}{, }\item[{const int}]{lo}{, }\item[{const int}]{hi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__extend__kernels_8c_source_l00098}{98}} of file \doxymbox{\hyperlink{wavefront__extend__kernels_8c_source}{wavefront\+\_\+extend\+\_\+kernels.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{wavefront__extend__kernels_8h_a390348038728ad02d3d148ec856d7bd0}\index{wavefront\_extend\_kernels.h@{wavefront\_extend\_kernels.h}!wavefront\_extend\_matches\_packed\_end2end\_max@{wavefront\_extend\_matches\_packed\_end2end\_max}}
+\index{wavefront\_extend\_matches\_packed\_end2end\_max@{wavefront\_extend\_matches\_packed\_end2end\_max}!wavefront\_extend\_kernels.h@{wavefront\_extend\_kernels.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_extend\_matches\_packed\_end2end\_max()}{wavefront\_extend\_matches\_packed\_end2end\_max()}}
+{\footnotesize\ttfamily \label{wavefront__extend__kernels_8h_a390348038728ad02d3d148ec856d7bd0} 
+\doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}} wavefront\+\_\+extend\+\_\+matches\+\_\+packed\+\_\+end2end\+\_\+max (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mwavefront}{, }\item[{const int}]{lo}{, }\item[{const int}]{hi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__extend__kernels_8c_source_l00113}{113}} of file \doxymbox{\hyperlink{wavefront__extend__kernels_8c_source}{wavefront\+\_\+extend\+\_\+kernels.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__extend__kernels_8h_aa076f82dc9aec867b176999d669df7f3}\index{wavefront\_extend\_kernels.h@{wavefront\_extend\_kernels.h}!wavefront\_extend\_matches\_packed\_endsfree@{wavefront\_extend\_matches\_packed\_endsfree}}
+\index{wavefront\_extend\_matches\_packed\_endsfree@{wavefront\_extend\_matches\_packed\_endsfree}!wavefront\_extend\_kernels.h@{wavefront\_extend\_kernels.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_extend\_matches\_packed\_endsfree()}{wavefront\_extend\_matches\_packed\_endsfree()}}
+{\footnotesize\ttfamily \label{wavefront__extend__kernels_8h_aa076f82dc9aec867b176999d669df7f3} 
+bool wavefront\+\_\+extend\+\_\+matches\+\_\+packed\+\_\+endsfree (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mwavefront}{, }\item[{const int}]{score}{, }\item[{const int}]{lo}{, }\item[{const int}]{hi}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__extend__kernels_8c_source_l00133}{133}} of file \doxymbox{\hyperlink{wavefront__extend__kernels_8c_source}{wavefront\+\_\+extend\+\_\+kernels.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7

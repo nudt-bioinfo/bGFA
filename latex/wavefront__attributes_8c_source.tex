@@ -1,0 +1,106 @@
+\doxysection{wavefront\+\_\+attributes.\+c}
+\hypertarget{wavefront__attributes_8c_source}{}\label{wavefront__attributes_8c_source}\index{src/wfa/wavefront/wavefront\_attributes.c@{src/wfa/wavefront/wavefront\_attributes.c}}
+\doxymbox{\hyperlink{wavefront__attributes_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ WaveFront\ aligner\ data\ structure\ attributes}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__attributes_8h}{wavefront\_attributes.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00035}00035\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00036}00036\ \textcolor{comment}{\ *\ Default\ parameters}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00037}00037\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00038}\doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{00038}}\ \doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}}\ =\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00039}00039\ \ \ \ \ \textcolor{comment}{//\ Distance\ model\ \&\ Penalties}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00040}00040\ \ \ \ \ .distance\_metric\ =\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{gap\_affine}},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00041}00041\ \ \ \ \ .alignment\_scope\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36abffac3adb7bc82e62d2bbdedd0e62abc}{compute\_alignment}},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00042}00042\ \ \ \ \ .alignment\_form\ =\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00043}00043\ \ \ \ \ \ \ \ \ .span\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a7634a74bff3a950f7b29003bc4fb425f}{alignment\_end2end}},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00044}00044\ \ \ \ \ \ \ \ \ .extension\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00045}00045\ \ \ \ \ \ \ \ \ .pattern\_begin\_free\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00046}00046\ \ \ \ \ \ \ \ \ .pattern\_end\_free\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00047}00047\ \ \ \ \ \ \ \ \ .text\_begin\_free\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00048}00048\ \ \ \ \ \ \ \ \ .text\_end\_free\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00049}00049\ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00050}00050\ \ \ \ \ \textcolor{comment}{//\ Penalties}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00051}00051\ \ \ \ \ .linear\_penalties\ =\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00052}00052\ \ \ \ \ \ \ \ \ .match\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00053}00053\ \ \ \ \ \ \ \ \ .mismatch\ =\ 4,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00054}00054\ \ \ \ \ \ \ \ \ .indel\ =\ 2,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00055}00055\ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00056}00056\ \ \ \ \ .affine\_penalties\ =\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00057}00057\ \ \ \ \ \ \ \ \ .match\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00058}00058\ \ \ \ \ \ \ \ \ .mismatch\ =\ 4,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00059}00059\ \ \ \ \ \ \ \ \ .gap\_opening\ =\ 6,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00060}00060\ \ \ \ \ \ \ \ \ .gap\_extension\ =\ 2,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00061}00061\ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00062}00062\ \ \ \ \ .affine2p\_penalties\ =\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00063}00063\ \ \ \ \ \ \ \ \ .match\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00064}00064\ \ \ \ \ \ \ \ \ .mismatch\ =\ 4,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00065}00065\ \ \ \ \ \ \ \ \ .gap\_opening1\ =\ 6,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00066}00066\ \ \ \ \ \ \ \ \ .gap\_extension1\ =\ 2,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00067}00067\ \ \ \ \ \ \ \ \ .gap\_opening2\ =\ 24,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00068}00068\ \ \ \ \ \ \ \ \ .gap\_extension2\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00069}00069\ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00070}00070\ \ \ \ \ \textcolor{comment}{//\ Heuristic}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00071}00071\ \ \ \ \ .heuristic\ =\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00072}00072\ \ \ \ \ \ \ \ \ .strategy\ =\ \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fadcf1c9917b9320485e81264e4aece70e}{wf\_heuristic\_wfadaptive}},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00073}00073\ \ \ \ \ \ \ \ \ .min\_wavefront\_length\ =\ 10,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00074}00074\ \ \ \ \ \ \ \ \ .max\_distance\_threshold\ =\ 50,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00075}00075\ \ \ \ \ \ \ \ \ .steps\_between\_cutoffs\ =\ 1,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00076}00076\ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ Memory\ model}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00078}00078\ \ \ \ \ .memory\_mode\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aaf3a232794b95be9850778ea6bb5c1ed}{wavefront\_memory\_high}},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00079}00079\ \ \ \ \ \textcolor{comment}{//\ MM}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00080}00080\ \ \ \ \ .mm\_allocator\ =\ NULL,\ \textcolor{comment}{//\ Use\ private\ MM}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00081}00081\ \ \ \ \ \textcolor{comment}{//\ Display}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00082}00082\ \ \ \ \ .plot\ =\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00083}00083\ \ \ \ \ \ \ \ \ .enabled\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00084}00084\ \ \ \ \ \ \ \ \ .resolution\_points\ =\ 2000,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00085}00085\ \ \ \ \ \ \ \ \ .align\_level\ =\ 0,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00086}00086\ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00087}00087\ \ \ \ \ \textcolor{comment}{//\ System}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00088}00088\ \ \ \ \ .system\ =\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00089}00089\ \ \ \ \ \ \ \ \ .max\_alignment\_steps\ =\ INT\_MAX,\ \textcolor{comment}{//\ Unlimited}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00090}00090\ \ \ \ \ \ \ \ \ .probe\_interval\_global\ =\ 3000,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00091}00091\ \ \ \ \ \ \ \ \ .probe\_interval\_compact\ =\ 6000,}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00092}00092\ \ \ \ \ \ \ \ \ .max\_memory\_compact\ =\ -\/1,\ \ \textcolor{comment}{//\ Automatically\ set\ based\ on\ memory-\/mode}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00093}00093\ \ \ \ \ \ \ \ \ .max\_memory\_resident\ =\ -\/1,\ \textcolor{comment}{//\ Automatically\ set\ based\ on\ memory-\/mode}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ .max\_memory\_abort\ =\ UINT64\_MAX,\ \textcolor{comment}{//\ Unlimited}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ .verbose\ =\ 0,\ \textcolor{comment}{//\ Quiet}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00096}00096\ \ \ \ \ \ \ \ \ .check\_alignment\_correct\ =\ \textcolor{keyword}{false},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00097}00097\ \ \ \ \ \ \ \ \ .max\_num\_threads\ =\ 1,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Single\ thread\ by\ default}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00098}00098\ \ \ \ \ \ \ \ \ .min\_offsets\_per\_thread\ =\ 500\ \ \ \textcolor{comment}{//\ Minimum\ WF-\/length\ to\ spawn\ a\ thread}}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00099}00099\ \ \ \ \ \},}
+\DoxyCodeLine{\Hypertarget{wavefront__attributes_8c_source_l00100}00100\ \};}
+
+\end{DoxyCode}

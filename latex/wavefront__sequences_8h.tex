@@ -1,0 +1,209 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+sequences.h File Reference}
+\hypertarget{wavefront__sequences_8h}{}\label{wavefront__sequences_8h}\index{src/wfa/wavefront/wavefront\_sequences.h@{src/wfa/wavefront/wavefront\_sequences.h}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+sequences.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef int(\texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b}{alignment\+\_\+match\+\_\+funct\+\_\+t}}) (int, int, void \texorpdfstring{$\ast$}{*})
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953}{wf\+\_\+sequences\+\_\+mode\+\_\+t}} \{ \doxymbox{\hyperlink{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953af0a89d59c1b7bad10400c824901a9f78}{wf\+\_\+sequences\+\_\+ascii}} = 0
+, \doxymbox{\hyperlink{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953aa1b04fa7ca74563021e7127920d1b18c}{wf\+\_\+sequences\+\_\+lambda}} = 1
+, \doxymbox{\hyperlink{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953ab6b5ce86961bb23f4a19f9e536e2d600}{wf\+\_\+sequences\+\_\+packed2bits}} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{wavefront__sequences_8h_a486b11c11236116a964cb91b611bef9c}{wavefront\+\_\+sequences\+\_\+allocate}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences)
+\item 
+void \doxymbox{\hyperlink{wavefront__sequences_8h_acff9dac8b62828d6bffda59c9260f3e5}{wavefront\+\_\+sequences\+\_\+free}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences)
+\item 
+void \doxymbox{\hyperlink{wavefront__sequences_8h_a600cc1372eaef409b8b6bb8116dde517}{wavefront\+\_\+sequences\+\_\+init\+\_\+ascii}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, const bool reverse)
+\item 
+void \doxymbox{\hyperlink{wavefront__sequences_8h_a758a80e59637b96c2292b0d7420440a7}{wavefront\+\_\+sequences\+\_\+init\+\_\+lambda}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences, \doxymbox{\hyperlink{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b}{alignment\+\_\+match\+\_\+funct\+\_\+t}} match\+\_\+funct, void \texorpdfstring{$\ast$}{*}match\+\_\+funct\+\_\+arguments, const int pattern\+\_\+length, const int text\+\_\+length, const bool reverse)
+\item 
+void \doxymbox{\hyperlink{wavefront__sequences_8h_aa543b453173219d6be5b4ad5e3b6f864}{wavefront\+\_\+sequences\+\_\+init\+\_\+packed2bits}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, const bool reverse)
+\item 
+bool \doxymbox{\hyperlink{wavefront__sequences_8h_a323908da9a6c932c1143f07be91531d6}{wavefront\+\_\+sequences\+\_\+cmp}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences, const int pattern\+\_\+pos, const int text\+\_\+pos)
+\item 
+char \doxymbox{\hyperlink{wavefront__sequences_8h_ae7f368a72656e6471839c631333f78be}{wavefront\+\_\+sequences\+\_\+get\+\_\+pattern}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences, const int position)
+\item 
+char \doxymbox{\hyperlink{wavefront__sequences_8h_a9c01024ccaadd5f1937c20b151a439d7}{wavefront\+\_\+sequences\+\_\+get\+\_\+text}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences, const int position)
+\item 
+void \doxymbox{\hyperlink{wavefront__sequences_8h_a7429368611c1e38874a9cc45f67ff67e}{wavefront\+\_\+sequences\+\_\+set\+\_\+bounds}} (\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+sequences, const int pattern\+\_\+begin, const int pattern\+\_\+end, const int text\+\_\+begin, const int text\+\_\+end)
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{wavefront__sequences_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!alignment\_match\_funct\_t@{alignment\_match\_funct\_t}}
+\index{alignment\_match\_funct\_t@{alignment\_match\_funct\_t}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{alignment\_match\_funct\_t}{alignment\_match\_funct\_t}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b} 
+typedef int(\texorpdfstring{$\ast$}{*} alignment\+\_\+match\+\_\+funct\+\_\+t) (int, int, void \texorpdfstring{$\ast$}{*})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{wavefront__sequences_8h_source}{wavefront\+\_\+sequences.\+h}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{wavefront__sequences_8h_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wf\_sequences\_mode\_t@{wf\_sequences\_mode\_t}}
+\index{wf\_sequences\_mode\_t@{wf\_sequences\_mode\_t}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wf\_sequences\_mode\_t}{wf\_sequences\_mode\_t}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953} 
+enum \doxymbox{\hyperlink{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953}{wf\+\_\+sequences\+\_\+mode\+\_\+t}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_sequences\_ascii@{wf\_sequences\_ascii}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wf\_sequences\_ascii@{wf\_sequences\_ascii}}
+}\Hypertarget{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953af0a89d59c1b7bad10400c824901a9f78}\label{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953af0a89d59c1b7bad10400c824901a9f78} 
+wf\+\_\+sequences\+\_\+ascii&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_sequences\_lambda@{wf\_sequences\_lambda}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wf\_sequences\_lambda@{wf\_sequences\_lambda}}
+}\Hypertarget{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953aa1b04fa7ca74563021e7127920d1b18c}\label{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953aa1b04fa7ca74563021e7127920d1b18c} 
+wf\+\_\+sequences\+\_\+lambda&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{wf\_sequences\_packed2bits@{wf\_sequences\_packed2bits}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wf\_sequences\_packed2bits@{wf\_sequences\_packed2bits}}
+}\Hypertarget{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953ab6b5ce86961bb23f4a19f9e536e2d600}\label{wavefront__sequences_8h_a33a504eae58e8400f5ad1caf0dead953ab6b5ce86961bb23f4a19f9e536e2d600} 
+wf\+\_\+sequences\+\_\+packed2bits&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8h_source_l00060}{60}} of file \doxymbox{\hyperlink{wavefront__sequences_8h_source}{wavefront\+\_\+sequences.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__sequences_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__sequences_8h_a486b11c11236116a964cb91b611bef9c}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_allocate@{wavefront\_sequences\_allocate}}
+\index{wavefront\_sequences\_allocate@{wavefront\_sequences\_allocate}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_allocate()}{wavefront\_sequences\_allocate()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_a486b11c11236116a964cb91b611bef9c} 
+void wavefront\+\_\+sequences\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{wavefront__sequences_8h_a323908da9a6c932c1143f07be91531d6}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_cmp@{wavefront\_sequences\_cmp}}
+\index{wavefront\_sequences\_cmp@{wavefront\_sequences\_cmp}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_cmp()}{wavefront\_sequences\_cmp()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_a323908da9a6c932c1143f07be91531d6} 
+bool wavefront\+\_\+sequences\+\_\+cmp (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{, }\item[{const int}]{pattern\+\_\+pos}{, }\item[{const int}]{text\+\_\+pos}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00225}{225}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__sequences_8h_acff9dac8b62828d6bffda59c9260f3e5}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_free@{wavefront\_sequences\_free}}
+\index{wavefront\_sequences\_free@{wavefront\_sequences\_free}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_free()}{wavefront\_sequences\_free()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_acff9dac8b62828d6bffda59c9260f3e5} 
+void wavefront\+\_\+sequences\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00056}{56}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{wavefront__sequences_8h_ae7f368a72656e6471839c631333f78be}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_get\_pattern@{wavefront\_sequences\_get\_pattern}}
+\index{wavefront\_sequences\_get\_pattern@{wavefront\_sequences\_get\_pattern}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_get\_pattern()}{wavefront\_sequences\_get\_pattern()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_ae7f368a72656e6471839c631333f78be} 
+char wavefront\+\_\+sequences\+\_\+get\+\_\+pattern (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{, }\item[{const int}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00253}{253}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+\Hypertarget{wavefront__sequences_8h_a9c01024ccaadd5f1937c20b151a439d7}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_get\_text@{wavefront\_sequences\_get\_text}}
+\index{wavefront\_sequences\_get\_text@{wavefront\_sequences\_get\_text}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_get\_text()}{wavefront\_sequences\_get\_text()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_a9c01024ccaadd5f1937c20b151a439d7} 
+char wavefront\+\_\+sequences\+\_\+get\+\_\+text (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{, }\item[{const int}]{position}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00262}{262}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+\Hypertarget{wavefront__sequences_8h_a600cc1372eaef409b8b6bb8116dde517}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_init\_ascii@{wavefront\_sequences\_init\_ascii}}
+\index{wavefront\_sequences\_init\_ascii@{wavefront\_sequences\_init\_ascii}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_init\_ascii()}{wavefront\_sequences\_init\_ascii()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_a600cc1372eaef409b8b6bb8116dde517} 
+void wavefront\+\_\+sequences\+\_\+init\+\_\+ascii (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{const bool}]{reverse}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00141}{141}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{wavefront__sequences_8h_a758a80e59637b96c2292b0d7420440a7}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_init\_lambda@{wavefront\_sequences\_init\_lambda}}
+\index{wavefront\_sequences\_init\_lambda@{wavefront\_sequences\_init\_lambda}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_init\_lambda()}{wavefront\_sequences\_init\_lambda()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_a758a80e59637b96c2292b0d7420440a7} 
+void wavefront\+\_\+sequences\+\_\+init\+\_\+lambda (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{, }\item[{\doxymbox{\hyperlink{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b}{alignment\+\_\+match\+\_\+funct\+\_\+t}}}]{match\+\_\+funct}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{match\+\_\+funct\+\_\+arguments}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const int}]{text\+\_\+length}{, }\item[{const bool}]{reverse}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00171}{171}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{wavefront__sequences_8h_aa543b453173219d6be5b4ad5e3b6f864}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_init\_packed2bits@{wavefront\_sequences\_init\_packed2bits}}
+\index{wavefront\_sequences\_init\_packed2bits@{wavefront\_sequences\_init\_packed2bits}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_init\_packed2bits()}{wavefront\_sequences\_init\_packed2bits()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_aa543b453173219d6be5b4ad5e3b6f864} 
+void wavefront\+\_\+sequences\+\_\+init\+\_\+packed2bits (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{const bool}]{reverse}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00192}{192}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{wavefront__sequences_8h_a7429368611c1e38874a9cc45f67ff67e}\index{wavefront\_sequences.h@{wavefront\_sequences.h}!wavefront\_sequences\_set\_bounds@{wavefront\_sequences\_set\_bounds}}
+\index{wavefront\_sequences\_set\_bounds@{wavefront\_sequences\_set\_bounds}!wavefront\_sequences.h@{wavefront\_sequences.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_sequences\_set\_bounds()}{wavefront\_sequences\_set\_bounds()}}
+{\footnotesize\ttfamily \label{wavefront__sequences_8h_a7429368611c1e38874a9cc45f67ff67e} 
+void wavefront\+\_\+sequences\+\_\+set\+\_\+bounds (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+sequences}{, }\item[{const int}]{pattern\+\_\+begin}{, }\item[{const int}]{pattern\+\_\+end}{, }\item[{const int}]{text\+\_\+begin}{, }\item[{const int}]{text\+\_\+end}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__sequences_8c_source_l00274}{274}} of file \doxymbox{\hyperlink{wavefront__sequences_8c_source}{wavefront\+\_\+sequences.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 10

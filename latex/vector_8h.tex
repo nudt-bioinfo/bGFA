@@ -1,0 +1,451 @@
+\doxysection{src/\+wfa/\+utils/\+vector.h File Reference}
+\hypertarget{vector_8h}{}\label{vector_8h}\index{src/wfa/utils/vector.h@{src/wfa/utils/vector.h}}
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+Include dependency graph for vector.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a4786de815d5637b2ee097263a582d1a0}{vector\+\_\+new}}(num\+\_\+initial\+\_\+elements,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_aaa7e86baaa12fb648e515991c8416017}{vector\+\_\+clear}}(vector)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_ac613476e6811c2ce39d50943993018f0}{vector\+\_\+reserve\+\_\+additional}}(vector,  additional)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a02b56d2c7f03acad0d5c1305aa493b14}{vector\+\_\+prepare}}(vector,  num\+\_\+elements,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a17cc88c4190c264965a1c780c504409f}{vector\+\_\+is\+\_\+empty}}(vector)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\+\_\+get\+\_\+mem}}(vector,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_adc191b8ef65b892416237b733ed0484a}{vector\+\_\+get\+\_\+last\+\_\+elm}}(vector,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a12deb5df153b804c8b9167d3a8ba1905}{vector\+\_\+get\+\_\+free\+\_\+elm}}(vector,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a12991ea6c2551ca675c6a979ab04a640}{vector\+\_\+set\+\_\+elm}}(vector,  position,  type,  elm)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\+\_\+get\+\_\+elm}}(vector,  position,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\+\_\+get\+\_\+used}}(vector)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a44866c41c3b4831b671a176fce9c0c67}{vector\+\_\+set\+\_\+used}}(vector,  total\+\_\+used)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a4a8cd9b0ea4c954907857b99f1581b09}{vector\+\_\+inc\+\_\+used}}(vector)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_af48538f2eaa5b5742ac30e756a8aa757}{vector\+\_\+dec\+\_\+used}}(vector)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a0c86920f1f59f32073707fc2a5dcc958}{vector\+\_\+add\+\_\+used}}(vector,  additional)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a77b7a9afa88a10ca886a84883b65a069}{vector\+\_\+alloc\+\_\+new}}(vector,  type,  return\+\_\+element\+\_\+pointer)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a04da31aeb07f7f2f981feb97a65730f4}{vector\+\_\+insert}}(vector,  element,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}{VECTOR\+\_\+\+ITERATE}}(vector,  element,  counter,  type)
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8h_a41a85fc337af621ea2a7e2592207cdd1}{VECTOR\+\_\+\+ITERATE\+\_\+\+OFFSET}}(vector,  element,  counter,  type,  offset)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{vector_8h_aa367bdc55bf2b1dfd9c31d3934315caf}{vector\+\_\+new\+\_\+}} (const uint64\+\_\+t num\+\_\+initial\+\_\+elements, const uint64\+\_\+t element\+\_\+size)
+\item 
+void \doxymbox{\hyperlink{vector_8h_a20a5c81de9d61719072d55eac137d3c0}{vector\+\_\+delete}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector)
+\item 
+void \doxymbox{\hyperlink{vector_8h_a5ab51cbbe1bc89961cbe255df60b61eb}{vector\+\_\+cast}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector, const uint64\+\_\+t element\+\_\+size)
+\item 
+void \doxymbox{\hyperlink{vector_8h_a9e80248c78d65dca99916d9965db6d79}{vector\+\_\+reserve}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector, const uint64\+\_\+t num\+\_\+elements, const bool zero\+\_\+mem)
+\item 
+void \doxymbox{\hyperlink{vector_8h_a4d854556c802995c74109df186ccc19b}{vector\+\_\+copy}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector\+\_\+to, \doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector\+\_\+from)
+\item 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{vector_8h_aaae9f5a121eca6804e533bf35ae9c41d}{vector\+\_\+dup}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector\+\_\+src)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{vector_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{vector_8h_a0c86920f1f59f32073707fc2a5dcc958}\index{vector.h@{vector.h}!vector\_add\_used@{vector\_add\_used}}
+\index{vector\_add\_used@{vector\_add\_used}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_add\_used}{vector\_add\_used}}
+{\footnotesize\ttfamily \label{vector_8h_a0c86920f1f59f32073707fc2a5dcc958} 
+\+\#define vector\+\_\+add\+\_\+used(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{additional}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{vector_8h_a44866c41c3b4831b671a176fce9c0c67}{vector\_set\_used}}(vector,\doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(vector)+additional)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00103}{103}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a77b7a9afa88a10ca886a84883b65a069}\index{vector.h@{vector.h}!vector\_alloc\_new@{vector\_alloc\_new}}
+\index{vector\_alloc\_new@{vector\_alloc\_new}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_alloc\_new}{vector\_alloc\_new}}
+{\footnotesize\ttfamily \label{vector_8h_a77b7a9afa88a10ca886a84883b65a069} 
+\+\#define vector\+\_\+alloc\+\_\+new(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{type}{, }\item[{}]{return\+\_\+element\+\_\+pointer}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ vector\_reserve\_additional(vector,1);\ \(\backslash\)}
+\DoxyCodeLine{\ \ return\_element\_pointer\ =\ \doxymbox{\hyperlink{vector_8h_a12deb5df153b804c8b9167d3a8ba1905}{vector\_get\_free\_elm}}(vector,type);\ \(\backslash\)}
+\DoxyCodeLine{\ \ vector\_inc\_used(vector);\ \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00108}{108}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_aaa7e86baaa12fb648e515991c8416017}\index{vector.h@{vector.h}!vector\_clear@{vector\_clear}}
+\index{vector\_clear@{vector\_clear}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_clear}{vector\_clear}}
+{\footnotesize\ttfamily \label{vector_8h_aaa7e86baaa12fb648e515991c8416017} 
+\+\#define vector\+\_\+clear(\begin{DoxyParamCaption}\item[{}]{vector}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(vector)-\/>used=0}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00061}{61}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_af48538f2eaa5b5742ac30e756a8aa757}\index{vector.h@{vector.h}!vector\_dec\_used@{vector\_dec\_used}}
+\index{vector\_dec\_used@{vector\_dec\_used}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_dec\_used}{vector\_dec\_used}}
+{\footnotesize\ttfamily \label{vector_8h_af48538f2eaa5b5742ac30e756a8aa757} 
+\+\#define vector\+\_\+dec\+\_\+used(\begin{DoxyParamCaption}\item[{}]{vector}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(-\/-\/((vector)-\/>used))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00102}{102}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_ac3fb564d756619b6200ed9a00d407824}\index{vector.h@{vector.h}!vector\_get\_elm@{vector\_get\_elm}}
+\index{vector\_get\_elm@{vector\_get\_elm}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_get\_elm}{vector\_get\_elm}}
+{\footnotesize\ttfamily \label{vector_8h_ac3fb564d756619b6200ed9a00d407824} 
+\+\#define vector\+\_\+get\+\_\+elm(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{position}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(vector,type)+position)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00087}{87}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a12deb5df153b804c8b9167d3a8ba1905}\index{vector.h@{vector.h}!vector\_get\_free\_elm@{vector\_get\_free\_elm}}
+\index{vector\_get\_free\_elm@{vector\_get\_free\_elm}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_get\_free\_elm}{vector\_get\_free\_elm}}
+{\footnotesize\ttfamily \label{vector_8h_a12deb5df153b804c8b9167d3a8ba1905} 
+\+\#define vector\+\_\+get\+\_\+free\+\_\+elm(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(vector,type)+(vector)-\/>used)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00084}{84}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_adc191b8ef65b892416237b733ed0484a}\index{vector.h@{vector.h}!vector\_get\_last\_elm@{vector\_get\_last\_elm}}
+\index{vector\_get\_last\_elm@{vector\_get\_last\_elm}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_get\_last\_elm}{vector\_get\_last\_elm}}
+{\footnotesize\ttfamily \label{vector_8h_adc191b8ef65b892416237b733ed0484a} 
+\+\#define vector\+\_\+get\+\_\+last\+\_\+elm(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(vector,type)+(vector)-\/>used-\/1)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00083}{83}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_ad1ff270f55a1482824c6690302977999}\index{vector.h@{vector.h}!vector\_get\_mem@{vector\_get\_mem}}
+\index{vector\_get\_mem@{vector\_get\_mem}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_get\_mem}{vector\_get\_mem}}
+{\footnotesize\ttfamily \label{vector_8h_ad1ff270f55a1482824c6690302977999} 
+\+\#define vector\+\_\+get\+\_\+mem(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((type*)((vector)-\/>memory))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00082}{82}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}\index{vector.h@{vector.h}!vector\_get\_used@{vector\_get\_used}}
+\index{vector\_get\_used@{vector\_get\_used}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_get\_used}{vector\_get\_used}}
+{\footnotesize\ttfamily \label{vector_8h_a878dd9a3d5465d694340166f2b2c47d9} 
+\+\#define vector\+\_\+get\+\_\+used(\begin{DoxyParamCaption}\item[{}]{vector}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((vector)-\/>used)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00099}{99}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a4a8cd9b0ea4c954907857b99f1581b09}\index{vector.h@{vector.h}!vector\_inc\_used@{vector\_inc\_used}}
+\index{vector\_inc\_used@{vector\_inc\_used}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_inc\_used}{vector\_inc\_used}}
+{\footnotesize\ttfamily \label{vector_8h_a4a8cd9b0ea4c954907857b99f1581b09} 
+\+\#define vector\+\_\+inc\+\_\+used(\begin{DoxyParamCaption}\item[{}]{vector}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(++((vector)-\/>used))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00101}{101}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a04da31aeb07f7f2f981feb97a65730f4}\index{vector.h@{vector.h}!vector\_insert@{vector\_insert}}
+\index{vector\_insert@{vector\_insert}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_insert}{vector\_insert}}
+{\footnotesize\ttfamily \label{vector_8h_a04da31aeb07f7f2f981feb97a65730f4} 
+\+\#define vector\+\_\+insert(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{element}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ vector\_reserve\_additional(vector,1);\ \(\backslash\)}
+\DoxyCodeLine{\ \ *(\doxymbox{\hyperlink{vector_8h_a12deb5df153b804c8b9167d3a8ba1905}{vector\_get\_free\_elm}}(vector,type))\ =\ element;\ \(\backslash\)}
+\DoxyCodeLine{\ \ vector\_inc\_used(vector);\ \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00113}{113}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a17cc88c4190c264965a1c780c504409f}\index{vector.h@{vector.h}!vector\_is\_empty@{vector\_is\_empty}}
+\index{vector\_is\_empty@{vector\_is\_empty}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_is\_empty}{vector\_is\_empty}}
+{\footnotesize\ttfamily \label{vector_8h_a17cc88c4190c264965a1c780c504409f} 
+\+\#define vector\+\_\+is\+\_\+empty(\begin{DoxyParamCaption}\item[{}]{vector}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(\doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(vector)==0)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00081}{81}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}\index{vector.h@{vector.h}!VECTOR\_ITERATE@{VECTOR\_ITERATE}}
+\index{VECTOR\_ITERATE@{VECTOR\_ITERATE}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{VECTOR\_ITERATE}{VECTOR\_ITERATE}}
+{\footnotesize\ttfamily \label{vector_8h_a23da00311dafe3b5b68ac26037bcaebf} 
+\+\#define VECTOR\+\_\+\+ITERATE(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{element}{, }\item[{}]{counter}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ uint64\_t\ vector\_\#\#element\#\#\_used\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(vector);\ \(\backslash\)}
+\DoxyCodeLine{type*\ element\ =\ \doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(vector,type);\ \(\backslash\)}
+\DoxyCodeLine{uint64\_t\ counter;\ \(\backslash\)}
+\DoxyCodeLine{for\ (counter=0;counter<vector\_\#\#element\#\#\_used;++element,++counter)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00125}{125}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a41a85fc337af621ea2a7e2592207cdd1}\index{vector.h@{vector.h}!VECTOR\_ITERATE\_OFFSET@{VECTOR\_ITERATE\_OFFSET}}
+\index{VECTOR\_ITERATE\_OFFSET@{VECTOR\_ITERATE\_OFFSET}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{VECTOR\_ITERATE\_OFFSET}{VECTOR\_ITERATE\_OFFSET}}
+{\footnotesize\ttfamily \label{vector_8h_a41a85fc337af621ea2a7e2592207cdd1} 
+\+\#define VECTOR\+\_\+\+ITERATE\+\_\+\+OFFSET(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{element}{, }\item[{}]{counter}{, }\item[{}]{type}{, }\item[{}]{offset}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{const}\ uint64\_t\ vector\_\#\#element\#\#\_used\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(vector);\ \(\backslash\)}
+\DoxyCodeLine{type*\ element\ =\ \doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(vector,type)+offset;\ \(\backslash\)}
+\DoxyCodeLine{uint64\_t\ counter;\ \(\backslash\)}
+\DoxyCodeLine{for\ (counter=offset;counter<vector\_\#\#element\#\#\_used;++counter,++element)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00130}{130}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a4786de815d5637b2ee097263a582d1a0}\index{vector.h@{vector.h}!vector\_new@{vector\_new}}
+\index{vector\_new@{vector\_new}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_new}{vector\_new}}
+{\footnotesize\ttfamily \label{vector_8h_a4786de815d5637b2ee097263a582d1a0} 
+\+\#define vector\+\_\+new(\begin{DoxyParamCaption}\item[{}]{num\+\_\+initial\+\_\+elements}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{vector_8c_aa367bdc55bf2b1dfd9c31d3934315caf}{vector\_new\_}}(num\_initial\_elements,\textcolor{keyword}{sizeof}(type))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00060}{60}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a02b56d2c7f03acad0d5c1305aa493b14}\index{vector.h@{vector.h}!vector\_prepare@{vector\_prepare}}
+\index{vector\_prepare@{vector\_prepare}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_prepare}{vector\_prepare}}
+{\footnotesize\ttfamily \label{vector_8h_a02b56d2c7f03acad0d5c1305aa493b14} 
+\+\#define vector\+\_\+prepare(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{num\+\_\+elements}{, }\item[{}]{type}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{vector_8c_a5ab51cbbe1bc89961cbe255df60b61eb}{vector\_cast}}(vector,\textcolor{keyword}{sizeof}(type));\ \(\backslash\)}
+\DoxyCodeLine{vector\_reserve(vector,num\_elements,\textcolor{keyword}{false});}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00074}{74}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_ac613476e6811c2ce39d50943993018f0}\index{vector.h@{vector.h}!vector\_reserve\_additional@{vector\_reserve\_additional}}
+\index{vector\_reserve\_additional@{vector\_reserve\_additional}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_reserve\_additional}{vector\_reserve\_additional}}
+{\footnotesize\ttfamily \label{vector_8h_ac613476e6811c2ce39d50943993018f0} 
+\+\#define vector\+\_\+reserve\+\_\+additional(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{additional}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{vector_8c_a9e80248c78d65dca99916d9965db6d79}{vector\_reserve}}(vector,\doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(vector)+(additional),\textcolor{keyword}{false})}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00072}{72}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a12991ea6c2551ca675c6a979ab04a640}\index{vector.h@{vector.h}!vector\_set\_elm@{vector\_set\_elm}}
+\index{vector\_set\_elm@{vector\_set\_elm}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_set\_elm}{vector\_set\_elm}}
+{\footnotesize\ttfamily \label{vector_8h_a12991ea6c2551ca675c6a979ab04a640} 
+\+\#define vector\+\_\+set\+\_\+elm(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{position}{, }\item[{}]{type}{, }\item[{}]{elm}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{*\doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(vector,position,type)\ =\ (elm)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00085}{85}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+\Hypertarget{vector_8h_a44866c41c3b4831b671a176fce9c0c67}\index{vector.h@{vector.h}!vector\_set\_used@{vector\_set\_used}}
+\index{vector\_set\_used@{vector\_set\_used}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_set\_used}{vector\_set\_used}}
+{\footnotesize\ttfamily \label{vector_8h_a44866c41c3b4831b671a176fce9c0c67} 
+\+\#define vector\+\_\+set\+\_\+used(\begin{DoxyParamCaption}\item[{}]{vector}{, }\item[{}]{total\+\_\+used}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(vector)-\/>used=(total\_used)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{vector_8h_source_l00100}{100}} of file \doxymbox{\hyperlink{vector_8h_source}{vector.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{vector_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{vector_8h_a5ab51cbbe1bc89961cbe255df60b61eb}\index{vector.h@{vector.h}!vector\_cast@{vector\_cast}}
+\index{vector\_cast@{vector\_cast}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_cast()}{vector\_cast()}}
+{\footnotesize\ttfamily \label{vector_8h_a5ab51cbbe1bc89961cbe255df60b61eb} 
+void vector\+\_\+cast (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector}{, }\item[{const uint64\+\_\+t}]{element\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00064}{64}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{vector_8h_a4d854556c802995c74109df186ccc19b}\index{vector.h@{vector.h}!vector\_copy@{vector\_copy}}
+\index{vector\_copy@{vector\_copy}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_copy()}{vector\_copy()}}
+{\footnotesize\ttfamily \label{vector_8h_a4d854556c802995c74109df186ccc19b} 
+void vector\+\_\+copy (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector\+\_\+to}{, }\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector\+\_\+from}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00108}{108}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{vector_8h_a20a5c81de9d61719072d55eac137d3c0}\index{vector.h@{vector.h}!vector\_delete@{vector\_delete}}
+\index{vector\_delete@{vector\_delete}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_delete()}{vector\_delete()}}
+{\footnotesize\ttfamily \label{vector_8h_a20a5c81de9d61719072d55eac137d3c0} 
+void vector\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00059}{59}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{vector_8h_aaae9f5a121eca6804e533bf35ae9c41d}\index{vector.h@{vector.h}!vector\_dup@{vector\_dup}}
+\index{vector\_dup@{vector\_dup}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_dup()}{vector\_dup()}}
+{\footnotesize\ttfamily \label{vector_8h_aaae9f5a121eca6804e533bf35ae9c41d} 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} vector\+\_\+dup (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector\+\_\+src}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00118}{118}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+\Hypertarget{vector_8h_aa367bdc55bf2b1dfd9c31d3934315caf}\index{vector.h@{vector.h}!vector\_new\_@{vector\_new\_}}
+\index{vector\_new\_@{vector\_new\_}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_new\_()}{vector\_new\_()}}
+{\footnotesize\ttfamily \label{vector_8h_aa367bdc55bf2b1dfd9c31d3934315caf} 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} vector\+\_\+new\+\_\+ (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{num\+\_\+initial\+\_\+elements}{, }\item[{const uint64\+\_\+t}]{element\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{vector_8h_a9e80248c78d65dca99916d9965db6d79}\index{vector.h@{vector.h}!vector\_reserve@{vector\_reserve}}
+\index{vector\_reserve@{vector\_reserve}!vector.h@{vector.h}}
+\doxysubsubsection{\texorpdfstring{vector\_reserve()}{vector\_reserve()}}
+{\footnotesize\ttfamily \label{vector_8h_a9e80248c78d65dca99916d9965db6d79} 
+void vector\+\_\+reserve (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector}{, }\item[{const uint64\+\_\+t}]{num\+\_\+elements}{, }\item[{const bool}]{zero\+\_\+mem}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00071}{71}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 7

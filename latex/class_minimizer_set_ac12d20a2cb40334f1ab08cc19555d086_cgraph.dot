@@ -1,0 +1,36 @@
+digraph "MinimizerSet::MinimizerSet"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="MinimizerSet::MinimizerSet",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="Constructor that extracts minimizers from a GFA graph."];
+  Node1 -> Node2 [id="edge17_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="MinimizerSet::getMinimizer\lFromGFA",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_minimizer_set.html#a7ae3c696c3190192397bfae20434fd9e",tooltip="Get minimizers from a graph."];
+  Node2 -> Node3 [id="edge18_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="GFA::getAllSegments",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_g_f_a.html#a2368cf1e7678827ac287e542ce85a727",tooltip="Get all segments in the GFA."];
+  Node2 -> Node4 [id="edge19_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="MinimizerSet::getMinimizer\lFromSegment",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_minimizer_set.html#a8da7253af1079acd28b88bf2b986be2e",tooltip="Get minimizers from a segment based on the specified mode."];
+  Node4 -> Node5 [id="edge20_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="MinimizerSet::getMinimizer\lOfNode_DoubleMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_minimizer_set.html#a6417ba26cd0e085531cd226b77bb5611",tooltip="Get minimizers of a node in double strand mode."];
+  Node5 -> Node6 [id="edge21_Node000005_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="MinimizerSet::getMinimizer\lOfNode_SingleMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_minimizer_set.html#a4e9d25ae18e65dd189dd30a985658f5f",tooltip="Get minimizers of a node in single strand mode."];
+  Node6 -> Node7 [id="edge22_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="Segment::getBinarySequence",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_segment.html#a554ebd20459c001033b541a83044e732",tooltip="Get the binary encoded Sequence of the Segment."];
+  Node6 -> Node8 [id="edge23_Node000006_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="Segment::getId",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_segment.html#a44d2763636bd56cecf70dda3f88377c6",tooltip="Get the Id of the Segment."];
+  Node6 -> Node9 [id="edge24_Node000006_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="Segment::getLength",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_segment.html#a811b62cf39d61b1bf05a02dc93bf3441",tooltip="Get the Length of the Segment."];
+  Node6 -> Node10 [id="edge25_Node000006_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="hash64",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bgfa__seed_8hpp.html#a19e4ca26c431ecd217fecfd056e2edcb",tooltip="64-bit hash function"];
+  Node4 -> Node6 [id="edge26_Node000004_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node4 -> Node11 [id="edge27_Node000004_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="MinimizerSet::getMinimizer\lOfNode_SingleReverseMode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_minimizer_set.html#a1d456e90e524d029b3286645fcababb4",tooltip="Get minimizers of a node in single strand reverse mode."];
+  Node11 -> Node7 [id="edge28_Node000011_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node11 -> Node8 [id="edge29_Node000011_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node11 -> Node9 [id="edge30_Node000011_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node11 -> Node10 [id="edge31_Node000011_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node12 [id="edge32_Node000001_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="MinimizerSet::MinimizerSet",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_minimizer_set.html#a8c262ec677df545d11b7dfb35dd3932d",tooltip="Default constructor initializes with default minimizer length and window size."];
+}

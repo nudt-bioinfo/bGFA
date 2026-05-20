@@ -1,0 +1,25 @@
+var bgfa__seed_8hpp =
+[
+    [ "Minimizer", "class_minimizer.html", "class_minimizer" ],
+    [ "MinimizerSet", "class_minimizer_set.html", "class_minimizer_set" ],
+    [ "MINIMIZER_DIR_MASK", "bgfa__seed_8hpp.html#aa8b069fddae4714971c43e3ccae76476", null ],
+    [ "MINIMIZER_DIR_SHITF", "bgfa__seed_8hpp.html#a8f5c21673b376e3663dfcd6df55279fc", null ],
+    [ "MINIMIZER_ID_MASK", "bgfa__seed_8hpp.html#aeba0151d218aba941d5ca79cdfec48d6", null ],
+    [ "MINIMIZER_ID_SHITF", "bgfa__seed_8hpp.html#adb6a8ece430207ef9943ff20039918e7", null ],
+    [ "MINIMIZER_MAX_LENGTH", "bgfa__seed_8hpp.html#a2923f2f672c461c1244064a0571ab022", null ],
+    [ "MINIMIZER_MODE_DOUBLE", "bgfa__seed_8hpp.html#a25647d21b1c19d55a7562afbadd9e20a", null ],
+    [ "MINIMIZER_MODE_SINGLE", "bgfa__seed_8hpp.html#ac96e857e1088bb05c41d61926dfcbe12", null ],
+    [ "MINIMIZER_MODE_SINGLE_REVERSE", "bgfa__seed_8hpp.html#afef9eb82c2584df75890f043cf44046c", null ],
+    [ "MINIMIZER_OFFSET_MSAK", "bgfa__seed_8hpp.html#a9d28c202b5c137d90b26e6805e9c66db", null ],
+    [ "MINIMIZER_OFFSET_SHITF", "bgfa__seed_8hpp.html#a359715b4218ebb86afac0412ee7369f6", null ],
+    [ "MinimizerSetVect", "bgfa__seed_8hpp.html#ade5eabc6a308900319bb63dfe8dcb4c7", null ],
+    [ "uhash_t", "bgfa__seed_8hpp.html#ae2b3b7063c95ed8ac4621db84b65aa40", null ],
+    [ "upos_t", "bgfa__seed_8hpp.html#a200ea9163152adab846e03ce6a87bdaf", null ],
+    [ "useq_t", "bgfa__seed_8hpp.html#a12e2e91166982850668fb385212aa750", null ],
+    [ "getMinimizerVect", "bgfa__seed_8hpp.html#a5923a84210ab80bb04ca3901da20ebe3", null ],
+    [ "getPosDir", "bgfa__seed_8hpp.html#ad0aa16567b68c3765f19c026b6331a5a", null ],
+    [ "getPosID", "bgfa__seed_8hpp.html#a5943b9d742a50c2e692dba88173d941b", null ],
+    [ "getPosOffset", "bgfa__seed_8hpp.html#a4e16d6781bdc320524ec6e85ecb070fa", null ],
+    [ "hash64", "bgfa__seed_8hpp.html#a19e4ca26c431ecd217fecfd056e2edcb", null ],
+    [ "testMinimizerSet", "bgfa__seed_8hpp.html#a14a379ec56a75b7f3f6484c94c1d20d1", null ]
+];

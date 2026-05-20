@@ -1,0 +1,244 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+bialigner.h File Reference}
+\hypertarget{wavefront__bialigner_8h}{}\label{wavefront__bialigner_8h}\index{src/wfa/wavefront/wavefront\_bialigner.h@{src/wfa/wavefront/wavefront\_bialigner.h}}
+{\ttfamily \+\#include "{}wavefront\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+attributes.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+heuristic.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+offset.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+sequences.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+bialigner.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structwf__bialign__breakpoint__t}{wf\+\_\+bialign\+\_\+breakpoint\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \doxymbox{\hyperlink{struct__wavefront__aligner__t}{\+\_\+wavefront\+\_\+aligner\+\_\+t}} \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{wavefront__bialigner_8h_a242b89b7bc2cd52e4f5d19ebfd41af7e}{wavefront\+\_\+bialigner\+\_\+new}} (\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\+\_\+aligner\+\_\+attr\+\_\+t}} \texorpdfstring{$\ast$}{*}const attributes, \doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}} \texorpdfstring{$\ast$}{*}const plot)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_aecb340a507fc25bdfc0a43f75292fdcb}{wavefront\+\_\+bialigner\+\_\+reap}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_ae40c16248fe542ecfc5485932282f7ec}{wavefront\+\_\+bialigner\+\_\+delete}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_add9214a07acc5714bdb7672321591d1a}{wavefront\+\_\+bialigner\+\_\+set\+\_\+sequences\+\_\+ascii}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_a11891a9675d059ef01e7999c665ed5b9}{wavefront\+\_\+bialigner\+\_\+set\+\_\+sequences\+\_\+lambda}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, \doxymbox{\hyperlink{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b}{alignment\+\_\+match\+\_\+funct\+\_\+t}} match\+\_\+funct, void \texorpdfstring{$\ast$}{*}match\+\_\+funct\+\_\+arguments, const int pattern\+\_\+length, const int text\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_a881ded852f4788d6cc1c6c8850f17dad}{wavefront\+\_\+bialigner\+\_\+set\+\_\+sequences\+\_\+packed2bits}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_a621caad505608cfbf9a2cd7b5a994cd3}{wavefront\+\_\+bialigner\+\_\+set\+\_\+sequences\+\_\+bounds}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, const int pattern\+\_\+begin, const int pattern\+\_\+end, const int text\+\_\+begin, const int text\+\_\+end)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{wavefront__bialigner_8h_a2698eb95e03f7206ce64733d1e1eaf75}{wavefront\+\_\+bialigner\+\_\+get\+\_\+size}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_afce78fafbc38c7d4f3edced54cdb203f}{wavefront\+\_\+bialigner\+\_\+set\+\_\+heuristic}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, \doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const heuristic)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_af29bc994496039dfc25bae9a2cf0fdc8}{wavefront\+\_\+bialigner\+\_\+set\+\_\+max\+\_\+alignment\+\_\+steps}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, const int max\+\_\+alignment\+\_\+steps)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_a25c1cbaf70de3eea028c5103223a613d}{wavefront\+\_\+bialigner\+\_\+set\+\_\+max\+\_\+memory}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, const uint64\+\_\+t max\+\_\+memory\+\_\+resident, const uint64\+\_\+t max\+\_\+memory\+\_\+abort)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_abbe8cb30b86c42f368c8039108740aaa}{wavefront\+\_\+bialigner\+\_\+set\+\_\+max\+\_\+num\+\_\+threads}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, const int max\+\_\+num\+\_\+threads)
+\item 
+void \doxymbox{\hyperlink{wavefront__bialigner_8h_afd4806bde8362761889f962e3847d874}{wavefront\+\_\+bialigner\+\_\+set\+\_\+min\+\_\+offsets\+\_\+per\+\_\+thread}} (\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+bialigner, const int min\+\_\+offsets\+\_\+per\+\_\+thread)
+\end{DoxyCompactItemize}
+
+
+\label{doc-typedef-members}
+\Hypertarget{wavefront__bialigner_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_aligner\_t@{wavefront\_aligner\_t}}
+\index{wavefront\_aligner\_t@{wavefront\_aligner\_t}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_aligner\_t}{wavefront\_aligner\_t}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2} 
+typedef struct \doxymbox{\hyperlink{struct__wavefront__aligner__t}{\+\_\+wavefront\+\_\+aligner\+\_\+t}} \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{wavefront__bialigner_8h_source}{wavefront\+\_\+bialigner.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__bialigner_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__bialigner_8h_ae40c16248fe542ecfc5485932282f7ec}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_delete@{wavefront\_bialigner\_delete}}
+\index{wavefront\_bialigner\_delete@{wavefront\_bialigner\_delete}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_delete()}{wavefront\_bialigner\_delete()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_ae40c16248fe542ecfc5485932282f7ec} 
+void wavefront\+\_\+bialigner\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00081}{81}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__bialigner_8h_a2698eb95e03f7206ce64733d1e1eaf75}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_get\_size@{wavefront\_bialigner\_get\_size}}
+\index{wavefront\_bialigner\_get\_size@{wavefront\_bialigner\_get\_size}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_get\_size()}{wavefront\_bialigner\_get\_size()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_a2698eb95e03f7206ce64733d1e1eaf75} 
+uint64\+\_\+t wavefront\+\_\+bialigner\+\_\+get\+\_\+size (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00155}{155}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__bialigner_8h_a242b89b7bc2cd52e4f5d19ebfd41af7e}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_new@{wavefront\_bialigner\_new}}
+\index{wavefront\_bialigner\_new@{wavefront\_bialigner\_new}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_new()}{wavefront\_bialigner\_new()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_a242b89b7bc2cd52e4f5d19ebfd41af7e} 
+\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*} wavefront\+\_\+bialigner\+\_\+new (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\+\_\+aligner\+\_\+attr\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{attributes}{, }\item[{\doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{plot}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00040}{40}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{wavefront__bialigner_8h_aecb340a507fc25bdfc0a43f75292fdcb}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_reap@{wavefront\_bialigner\_reap}}
+\index{wavefront\_bialigner\_reap@{wavefront\_bialigner\_reap}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_reap()}{wavefront\_bialigner\_reap()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_aecb340a507fc25bdfc0a43f75292fdcb} 
+void wavefront\+\_\+bialigner\+\_\+reap (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00075}{75}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{wavefront__bialigner_8h_afce78fafbc38c7d4f3edced54cdb203f}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_heuristic@{wavefront\_bialigner\_set\_heuristic}}
+\index{wavefront\_bialigner\_set\_heuristic@{wavefront\_bialigner\_set\_heuristic}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_heuristic()}{wavefront\_bialigner\_set\_heuristic()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_afce78fafbc38c7d4f3edced54cdb203f} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+heuristic (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{\doxymbox{\hyperlink{structwavefront__heuristic__t}{wavefront\+\_\+heuristic\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{heuristic}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00161}{161}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{wavefront__bialigner_8h_af29bc994496039dfc25bae9a2cf0fdc8}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_max\_alignment\_steps@{wavefront\_bialigner\_set\_max\_alignment\_steps}}
+\index{wavefront\_bialigner\_set\_max\_alignment\_steps@{wavefront\_bialigner\_set\_max\_alignment\_steps}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_max\_alignment\_steps()}{wavefront\_bialigner\_set\_max\_alignment\_steps()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_af29bc994496039dfc25bae9a2cf0fdc8} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+max\+\_\+alignment\+\_\+steps (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{const int}]{max\+\_\+alignment\+\_\+steps}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00168}{168}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{wavefront__bialigner_8h_a25c1cbaf70de3eea028c5103223a613d}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_max\_memory@{wavefront\_bialigner\_set\_max\_memory}}
+\index{wavefront\_bialigner\_set\_max\_memory@{wavefront\_bialigner\_set\_max\_memory}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_max\_memory()}{wavefront\_bialigner\_set\_max\_memory()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_a25c1cbaf70de3eea028c5103223a613d} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+max\+\_\+memory (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{const uint64\+\_\+t}]{max\+\_\+memory\+\_\+resident}{, }\item[{const uint64\+\_\+t}]{max\+\_\+memory\+\_\+abort}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00175}{175}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 12
+\Hypertarget{wavefront__bialigner_8h_abbe8cb30b86c42f368c8039108740aaa}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_max\_num\_threads@{wavefront\_bialigner\_set\_max\_num\_threads}}
+\index{wavefront\_bialigner\_set\_max\_num\_threads@{wavefront\_bialigner\_set\_max\_num\_threads}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_max\_num\_threads()}{wavefront\_bialigner\_set\_max\_num\_threads()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_abbe8cb30b86c42f368c8039108740aaa} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+max\+\_\+num\+\_\+threads (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{const int}]{max\+\_\+num\+\_\+threads}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00186}{186}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{wavefront__bialigner_8h_afd4806bde8362761889f962e3847d874}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_min\_offsets\_per\_thread@{wavefront\_bialigner\_set\_min\_offsets\_per\_thread}}
+\index{wavefront\_bialigner\_set\_min\_offsets\_per\_thread@{wavefront\_bialigner\_set\_min\_offsets\_per\_thread}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_min\_offsets\_per\_thread()}{wavefront\_bialigner\_set\_min\_offsets\_per\_thread()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_afd4806bde8362761889f962e3847d874} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+min\+\_\+offsets\+\_\+per\+\_\+thread (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{const int}]{min\+\_\+offsets\+\_\+per\+\_\+thread}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00193}{193}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 14
+\Hypertarget{wavefront__bialigner_8h_add9214a07acc5714bdb7672321591d1a}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_sequences\_ascii@{wavefront\_bialigner\_set\_sequences\_ascii}}
+\index{wavefront\_bialigner\_set\_sequences\_ascii@{wavefront\_bialigner\_set\_sequences\_ascii}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_sequences\_ascii()}{wavefront\_bialigner\_set\_sequences\_ascii()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_add9214a07acc5714bdb7672321591d1a} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+sequences\+\_\+ascii (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00091}{91}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 15
+Here is the caller graph for this function:\+
+% FIG 16
+\Hypertarget{wavefront__bialigner_8h_a621caad505608cfbf9a2cd7b5a994cd3}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_sequences\_bounds@{wavefront\_bialigner\_set\_sequences\_bounds}}
+\index{wavefront\_bialigner\_set\_sequences\_bounds@{wavefront\_bialigner\_set\_sequences\_bounds}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_sequences\_bounds()}{wavefront\_bialigner\_set\_sequences\_bounds()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_a621caad505608cfbf9a2cd7b5a994cd3} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+sequences\+\_\+bounds (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{const int}]{pattern\+\_\+begin}{, }\item[{const int}]{pattern\+\_\+end}{, }\item[{const int}]{text\+\_\+begin}{, }\item[{const int}]{text\+\_\+end}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00136}{136}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 17
+Here is the caller graph for this function:\+
+% FIG 18
+\Hypertarget{wavefront__bialigner_8h_a11891a9675d059ef01e7999c665ed5b9}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_sequences\_lambda@{wavefront\_bialigner\_set\_sequences\_lambda}}
+\index{wavefront\_bialigner\_set\_sequences\_lambda@{wavefront\_bialigner\_set\_sequences\_lambda}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_sequences\_lambda()}{wavefront\_bialigner\_set\_sequences\_lambda()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_a11891a9675d059ef01e7999c665ed5b9} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+sequences\+\_\+lambda (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{\doxymbox{\hyperlink{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b}{alignment\+\_\+match\+\_\+funct\+\_\+t}}}]{match\+\_\+funct}{, }\item[{void \texorpdfstring{$\ast$}{*}}]{match\+\_\+funct\+\_\+arguments}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const int}]{text\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00107}{107}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+Here is the caller graph for this function:\+
+% FIG 20
+\Hypertarget{wavefront__bialigner_8h_a881ded852f4788d6cc1c6c8850f17dad}\index{wavefront\_bialigner.h@{wavefront\_bialigner.h}!wavefront\_bialigner\_set\_sequences\_packed2bits@{wavefront\_bialigner\_set\_sequences\_packed2bits}}
+\index{wavefront\_bialigner\_set\_sequences\_packed2bits@{wavefront\_bialigner\_set\_sequences\_packed2bits}!wavefront\_bialigner.h@{wavefront\_bialigner.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_bialigner\_set\_sequences\_packed2bits()}{wavefront\_bialigner\_set\_sequences\_packed2bits()}}
+{\footnotesize\ttfamily \label{wavefront__bialigner_8h_a881ded852f4788d6cc1c6c8850f17dad} 
+void wavefront\+\_\+bialigner\+\_\+set\+\_\+sequences\+\_\+packed2bits (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__bialigner__t}{wavefront\+\_\+bialigner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+bialigner}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__bialigner_8c_source_l00120}{120}} of file \doxymbox{\hyperlink{wavefront__bialigner_8c_source}{wavefront\+\_\+bialigner.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 21
+Here is the caller graph for this function:\+
+% FIG 22

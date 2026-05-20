@@ -1,0 +1,103 @@
+\doxysection{wavefront\+\_\+plot.\+h}
+\hypertarget{wavefront__plot_8h_source}{}\label{wavefront__plot_8h_source}\index{src/wfa/wavefront/wavefront\_plot.h@{src/wfa/wavefront/wavefront\_plot.h}}
+\doxymbox{\hyperlink{wavefront__plot_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Wavefront\ alignment\ module\ for\ plot}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ WAVEFRONT\_PLOT\_H\_}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ WAVEFRONT\_PLOT\_H\_}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{heatmap_8h}{utils/heatmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{score__matrix_8h}{alignment/score\_matrix.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__penalties_8h}{wavefront/wavefront\_penalties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00039}00039\ \textcolor{comment}{//\ Wavefront\ ahead\ definition}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00040}00040\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct__wavefront__aligner__t}{\_wavefront\_aligner\_t}}\ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00042}00042\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00043}00043\ \textcolor{comment}{\ *\ Wavefront\ Display}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00044}00044\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00045}\doxymbox{\hyperlink{structwavefront__plot__attr__t}{00045}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00046}\doxymbox{\hyperlink{structwavefront__plot__attr__t_a4c3add4b56f2eda272d3914298ae8f1c}{00046}}\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structwavefront__plot__attr__t_a4c3add4b56f2eda272d3914298ae8f1c}{enabled}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Is\ plotting\ enabled}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00047}\doxymbox{\hyperlink{structwavefront__plot__attr__t_ae44634e7d2f3fcefd621cd249f31afe0}{00047}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__plot__attr__t_ae44634e7d2f3fcefd621cd249f31afe0}{resolution\_points}};\ \ \ \ \ \ \textcolor{comment}{//\ Total\ resolution\ points}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00048}\doxymbox{\hyperlink{structwavefront__plot__attr__t_a2d321d8846e9942f740457e46d01fe58}{00048}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__plot__attr__t_a2d321d8846e9942f740457e46d01fe58}{align\_level}};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Level\ of\ recursion\ to\ plot\ (-\/1\ ==\ final)}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00049}00049\ \}\ \doxymbox{\hyperlink{structwavefront__plot__attr__t}{wavefront\_plot\_attr\_t}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00050}\doxymbox{\hyperlink{structwavefront__plot__t}{00050}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00051}00051\ \ \ \textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00052}\doxymbox{\hyperlink{structwavefront__plot__t_a91a55a9672a5205e1031e1dfb1fee626}{00052}}\ \ \ \doxymbox{\hyperlink{structwavefront__plot__attr__t}{wavefront\_plot\_attr\_t}}\ \doxymbox{\hyperlink{structwavefront__plot__t_a91a55a9672a5205e1031e1dfb1fee626}{attributes}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00053}\doxymbox{\hyperlink{structwavefront__plot__t_abeaf47f9654d73ac428cd66f66f7d906}{00053}}\ \ \ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\_metric\_t}}\ \doxymbox{\hyperlink{structwavefront__plot__t_abeaf47f9654d73ac428cd66f66f7d906}{distance\_metric}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00054}\doxymbox{\hyperlink{structwavefront__plot__t_a18c27885286cce9f2a39332adde85751}{00054}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__plot__t_a18c27885286cce9f2a39332adde85751}{min\_v}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00055}\doxymbox{\hyperlink{structwavefront__plot__t_aca478b889ece2d83322a696e4373320d}{00055}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__plot__t_aca478b889ece2d83322a696e4373320d}{max\_v}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00056}\doxymbox{\hyperlink{structwavefront__plot__t_a9abafdaac85066f039552a809397bfb9}{00056}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__plot__t_a9abafdaac85066f039552a809397bfb9}{min\_h}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00057}\doxymbox{\hyperlink{structwavefront__plot__t_a866ce3d5abc4c770071669927233b69b}{00057}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__plot__t_a866ce3d5abc4c770071669927233b69b}{max\_h}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00058}00058\ \ \ \textcolor{comment}{//\ Wavefront\ Heatmaps}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00059}\doxymbox{\hyperlink{structwavefront__plot__t_a79fc2bb031b5b43fc582802ddc0c3e8d}{00059}}\ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \doxymbox{\hyperlink{structwavefront__plot__t_a79fc2bb031b5b43fc582802ddc0c3e8d}{m\_heatmap}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00060}\doxymbox{\hyperlink{structwavefront__plot__t_aa5a55fc6420141faec9b75fe18b743e8}{00060}}\ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \doxymbox{\hyperlink{structwavefront__plot__t_aa5a55fc6420141faec9b75fe18b743e8}{i1\_heatmap}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00061}\doxymbox{\hyperlink{structwavefront__plot__t_ac698fb44d39a208e9d6486b30741592d}{00061}}\ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \doxymbox{\hyperlink{structwavefront__plot__t_ac698fb44d39a208e9d6486b30741592d}{d1\_heatmap}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00062}\doxymbox{\hyperlink{structwavefront__plot__t_a565ed3097c21226bdcaf63a515b7e72b}{00062}}\ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \doxymbox{\hyperlink{structwavefront__plot__t_a565ed3097c21226bdcaf63a515b7e72b}{i2\_heatmap}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00063}\doxymbox{\hyperlink{structwavefront__plot__t_a89f4f5c73edb49b00d8a0332fd5b59ff}{00063}}\ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \doxymbox{\hyperlink{structwavefront__plot__t_a89f4f5c73edb49b00d8a0332fd5b59ff}{d2\_heatmap}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00064}\doxymbox{\hyperlink{structwavefront__plot__t_ae26dbc5d0b276f11a04a296b89d855dc}{00064}}\ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \doxymbox{\hyperlink{structwavefront__plot__t_ae26dbc5d0b276f11a04a296b89d855dc}{behavior\_heatmap}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00065}00065\ \}\ \doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\_plot\_t}};}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00067}00067\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00068}00068\ \textcolor{comment}{\ *\ Setup}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00069}00069\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00070}00070\ \doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\_plot\_t}}*\ \doxymbox{\hyperlink{wavefront__plot_8h_ae6fa51853afb8d19c4f1f2030e73a5f5}{wavefront\_plot\_new}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\_metric\_t}}\ distance\_metric,}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00074}00074\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__plot__attr__t}{wavefront\_plot\_attr\_t}}*\ \textcolor{keyword}{const}\ attributes);}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00075}00075\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__plot_8h_ae2a544711784dc35f0e75d8b4553ae8f}{wavefront\_plot\_resize}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00076}00076\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\_plot\_t}}*\ \textcolor{keyword}{const}\ wf\_plot,}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00078}00078\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length);}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00079}00079\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__plot_8h_a92592fbdd0a4c2172fffa97e852ea577}{wavefront\_plot\_delete}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00080}00080\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\_plot\_t}}*\ \textcolor{keyword}{const}\ wf\_plot);}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00082}00082\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00083}00083\ \textcolor{comment}{\ *\ Plot\ record\ state}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00084}00084\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00085}00085\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__plot_8h_a45d0182444cc2510da036329737a7a6c}{wavefront\_plot}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00086}00086\ \ \ \ \ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner,}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00087}00087\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ score,}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ align\_level);}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00090}00090\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00091}00091\ \textcolor{comment}{\ *\ Display/Dump}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00092}00092\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00093}00093\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__plot_8h_a4849c59d0be54cd2121ab2d767f900dc}{wavefront\_plot\_print}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00094}00094\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00095}00095\ \ \ \ \ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner);}
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{wavefront__plot_8h_source_l00097}00097\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ WAVEFRONT\_PLOT\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

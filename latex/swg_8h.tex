@@ -1,0 +1,63 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+gap\+\_\+affine/\+swg.h File Reference}
+\hypertarget{swg_8h}{}\label{swg_8h}\index{src/wfa/tools/align\_benchmark/gap\_affine/swg.h@{src/wfa/tools/align\_benchmark/gap\_affine/swg.h}}
+{\ttfamily \+\#include "{}gap\+\_\+affine/\+affine\+\_\+matrix.\+h"{}}\newline
+Include dependency graph for swg.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{swg_8h_aba702f285dc50288dfbd6a3c15810dd8}{swg\+\_\+align}} (\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const affine\+\_\+matrix, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+void \doxymbox{\hyperlink{swg_8h_a6b87422fd28d64ac0b4112b7b594d590}{swg\+\_\+align\+\_\+endsfree}} (\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const affine\+\_\+matrix, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, const int pattern\+\_\+begin\+\_\+free, const int pattern\+\_\+end\+\_\+free, const int text\+\_\+begin\+\_\+free, const int text\+\_\+end\+\_\+free, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+void \doxymbox{\hyperlink{swg_8h_a237d5a2b6af3646893a3fd7c32e4bd72}{swg\+\_\+align\+\_\+banded}} (\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const affine\+\_\+matrix, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, const int bandwidth, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{swg_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{swg_8h_aba702f285dc50288dfbd6a3c15810dd8}\index{swg.h@{swg.h}!swg\_align@{swg\_align}}
+\index{swg\_align@{swg\_align}!swg.h@{swg.h}}
+\doxysubsubsection{\texorpdfstring{swg\_align()}{swg\_align()}}
+{\footnotesize\ttfamily \label{swg_8h_aba702f285dc50288dfbd6a3c15810dd8} 
+void swg\+\_\+align (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{affine\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{swg_8c_source_l00107}{107}} of file \doxymbox{\hyperlink{swg_8c_source}{swg.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{swg_8h_a237d5a2b6af3646893a3fd7c32e4bd72}\index{swg.h@{swg.h}!swg\_align\_banded@{swg\_align\_banded}}
+\index{swg\_align\_banded@{swg\_align\_banded}!swg.h@{swg.h}}
+\doxysubsubsection{\texorpdfstring{swg\_align\_banded()}{swg\_align\_banded()}}
+{\footnotesize\ttfamily \label{swg_8h_a237d5a2b6af3646893a3fd7c32e4bd72} 
+void swg\+\_\+align\+\_\+banded (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{affine\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{const int}]{bandwidth}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{swg_8c_source_l00242}{242}} of file \doxymbox{\hyperlink{swg_8c_source}{swg.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{swg_8h_a6b87422fd28d64ac0b4112b7b594d590}\index{swg.h@{swg.h}!swg\_align\_endsfree@{swg\_align\_endsfree}}
+\index{swg\_align\_endsfree@{swg\_align\_endsfree}!swg.h@{swg.h}}
+\doxysubsubsection{\texorpdfstring{swg\_align\_endsfree()}{swg\_align\_endsfree()}}
+{\footnotesize\ttfamily \label{swg_8h_a6b87422fd28d64ac0b4112b7b594d590} 
+void swg\+\_\+align\+\_\+endsfree (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{affine\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{const int}]{pattern\+\_\+begin\+\_\+free}{, }\item[{const int}]{pattern\+\_\+end\+\_\+free}{, }\item[{const int}]{text\+\_\+begin\+\_\+free}{, }\item[{const int}]{text\+\_\+end\+\_\+free}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{swg_8c_source_l00161}{161}} of file \doxymbox{\hyperlink{swg_8c_source}{swg.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7

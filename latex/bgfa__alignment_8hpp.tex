@@ -1,0 +1,123 @@
+\doxysection{src/\+bgfa\+\_\+alignment.hpp File Reference}
+\hypertarget{bgfa__alignment_8hpp}{}\label{bgfa__alignment_8hpp}\index{src/bgfa\_alignment.hpp@{src/bgfa\_alignment.hpp}}
+{\ttfamily \+\#include "{}bgfa\+\_\+graph.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}ksw/\+ksw2.\+h"{}}\newline
+{\ttfamily \+\#include "{}wfa/\+bindings/\+cpp/\+\+WFAligner.\+hpp"{}}\newline
+Include dependency graph for bgfa\+\_\+alignment.\+hpp:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std::\+string \doxymbox{\hyperlink{bgfa__alignment_8hpp_aca2e8e3a5f99992474f8271d5cdb57dd}{convert\+Ksw\+Cigar2\+MX}} (const std::\+string \&cigar\+\_\+str\+\_\+in, const std::\+string \&tseq, const std::\+string \&qseq)
+\begin{DoxyCompactList}\small\item\em Convert KSW CIGAR string to MX format. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{bgfa__alignment_8hpp_aebfcb812dbdf9b39d436a89ae9a3fc1d}{alignment\+Sequence\+KSW}} (const std::\+string \&tseq, const std::\+string \&qseq)
+\begin{DoxyCompactList}\small\item\em :\+ Use KSW2 to perform sequence alignment and return the CIGAR string \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{bgfa__alignment_8hpp_a76e1691b98aaf4729e0228a57e7f46c9}{alignment\+Sequence\+WFA}} (const std::\+string \&tseq, const std::\+string \&qseq)
+\begin{DoxyCompactList}\small\item\em :\+ Use WFA to perform sequence alignment and return the CIGAR string \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{bgfa__alignment_8hpp_aebd9c65b4aa65b9e41e0416b6e6dbb45}{alignment\+Sequence}} (const std::\+string \&tseq, const std::\+string \&qseq, const uint8\+\_\+t kernel=1)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{bgfa__alignment_8hpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{bgfa__alignment_8hpp_aebd9c65b4aa65b9e41e0416b6e6dbb45}\index{bgfa\_alignment.hpp@{bgfa\_alignment.hpp}!alignmentSequence@{alignmentSequence}}
+\index{alignmentSequence@{alignmentSequence}!bgfa\_alignment.hpp@{bgfa\_alignment.hpp}}
+\doxysubsubsection{\texorpdfstring{alignmentSequence()}{alignmentSequence()}}
+{\footnotesize\ttfamily \label{bgfa__alignment_8hpp_aebd9c65b4aa65b9e41e0416b6e6dbb45} 
+std::\+string alignment\+Sequence (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{tseq}{, }\item[{const std::\+string \&}]{qseq}{, }\item[{const uint8\+\_\+t}]{kernel}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__alignment_8hpp_source_l00247}{247}} of file \doxymbox{\hyperlink{bgfa__alignment_8hpp_source}{bgfa\+\_\+alignment.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{bgfa__alignment_8hpp_aebfcb812dbdf9b39d436a89ae9a3fc1d}\index{bgfa\_alignment.hpp@{bgfa\_alignment.hpp}!alignmentSequenceKSW@{alignmentSequenceKSW}}
+\index{alignmentSequenceKSW@{alignmentSequenceKSW}!bgfa\_alignment.hpp@{bgfa\_alignment.hpp}}
+\doxysubsubsection{\texorpdfstring{alignmentSequenceKSW()}{alignmentSequenceKSW()}}
+{\footnotesize\ttfamily \label{bgfa__alignment_8hpp_aebfcb812dbdf9b39d436a89ae9a3fc1d} 
+std::\+string alignment\+Sequence\+KSW (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{tseq}{, }\item[{const std::\+string \&}]{qseq}{}\end{DoxyParamCaption})}
+
+
+
+:\+ Use KSW2 to perform sequence alignment and return the CIGAR string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & \&tseq -\/ Target sequence \\
+\hline
+{\em \{string\}} & \&qseq -\/ Query sequence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{string\} CIGAR string 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__alignment_8hpp_source_l00141}{141}} of file \doxymbox{\hyperlink{bgfa__alignment_8hpp_source}{bgfa\+\_\+alignment.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{bgfa__alignment_8hpp_a76e1691b98aaf4729e0228a57e7f46c9}\index{bgfa\_alignment.hpp@{bgfa\_alignment.hpp}!alignmentSequenceWFA@{alignmentSequenceWFA}}
+\index{alignmentSequenceWFA@{alignmentSequenceWFA}!bgfa\_alignment.hpp@{bgfa\_alignment.hpp}}
+\doxysubsubsection{\texorpdfstring{alignmentSequenceWFA()}{alignmentSequenceWFA()}}
+{\footnotesize\ttfamily \label{bgfa__alignment_8hpp_a76e1691b98aaf4729e0228a57e7f46c9} 
+std::\+string alignment\+Sequence\+WFA (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{tseq}{, }\item[{const std::\+string \&}]{qseq}{}\end{DoxyParamCaption})}
+
+
+
+:\+ Use WFA to perform sequence alignment and return the CIGAR string 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & \&tseq -\/ Target sequence \\
+\hline
+{\em \{string\}} & \&qseq -\/ Query sequence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{string\} CIGAR string 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__alignment_8hpp_source_l00211}{211}} of file \doxymbox{\hyperlink{bgfa__alignment_8hpp_source}{bgfa\+\_\+alignment.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{bgfa__alignment_8hpp_aca2e8e3a5f99992474f8271d5cdb57dd}\index{bgfa\_alignment.hpp@{bgfa\_alignment.hpp}!convertKswCigar2MX@{convertKswCigar2MX}}
+\index{convertKswCigar2MX@{convertKswCigar2MX}!bgfa\_alignment.hpp@{bgfa\_alignment.hpp}}
+\doxysubsubsection{\texorpdfstring{convertKswCigar2MX()}{convertKswCigar2MX()}}
+{\footnotesize\ttfamily \label{bgfa__alignment_8hpp_aca2e8e3a5f99992474f8271d5cdb57dd} 
+std::\+string convert\+Ksw\+Cigar2\+MX (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{cigar\+\_\+str\+\_\+in}{, }\item[{const std::\+string \&}]{tseq}{, }\item[{const std::\+string \&}]{qseq}{}\end{DoxyParamCaption})}
+
+
+
+Convert KSW CIGAR string to MX format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{string\}} & \&cigar\+\_\+str\+\_\+in -\/ Input CIGAR string from KSW \\
+\hline
+{\em \{string\}} & \&tseq -\/ Target sequence \\
+\hline
+{\em \{string\}} & \&qseq -\/ Query sequence \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{string\} Converted CIGAR string in MX format 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__alignment_8hpp_source_l00026}{26}} of file \doxymbox{\hyperlink{bgfa__alignment_8hpp_source}{bgfa\+\_\+alignment.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 8

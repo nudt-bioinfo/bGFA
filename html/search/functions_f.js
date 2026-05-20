@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['onecharname_0',['OneCharName',['../class_c_l_i_1_1_bad_name_string.html#a5c63c850d783ad2b132085266269bcdc',1,'CLI::BadNameString']]],
+  ['operation_1',['operation',['../class_c_l_i_1_1_validator.html#afc57c1bbaadbff4ce9c5772519818831',1,'CLI::Validator']]],
+  ['operator_20bool_2',['operator bool',['../class_c_l_i_1_1_option.html#ab73e846fb3a78ac7eff8b6cd6afb24a1',1,'CLI::Option::operator bool()'],['../class_c_l_i_1_1_app.html#a91720aaf4c92c867dc042c723503b74e',1,'CLI::App::operator bool()']]],
+  ['operator_21_3',['operator!',['../class_c_l_i_1_1_validator.html#ad1cebeb6f7f34b1405ddf85a9cb41c25',1,'CLI::Validator']]],
+  ['operator_21_3d_4',['operator!=',['../class_segment.html#a5281e7acb4c8a74d89dd26abb014fb8b',1,'Segment']]],
+  ['operator_26_5',['operator&amp;',['../class_c_l_i_1_1_validator.html#a21ad4ed1554ff2caef4bcb447e276d3b',1,'CLI::Validator']]],
+  ['operator_28_29_6',['operator()',['../class_c_l_i_1_1_validator.html#ad5af4b2a81e1171817bbe0aa32a1ff3f',1,'CLI::Validator::operator()(std::string &amp;str) const'],['../class_c_l_i_1_1_validator.html#a3e4e7670d82455a43c0d3f8c9cc1db4f',1,'CLI::Validator::operator()(const std::string &amp;str) const']]],
+  ['operator_3c_7',['operator&lt;',['../class_segment.html#a334d9343a0df8725471aa8f1fe3f785c',1,'Segment']]],
+  ['operator_3c_3c_8',['operator&lt;&lt;',['../namespace_c_l_i_1_1enums.html#a0d566286e31ca3fb0f2a97de03492e65',1,'CLI::enums::operator&lt;&lt;()'],['../namespace_c_l_i.html#a0d566286e31ca3fb0f2a97de03492e65',1,'CLI::operator&lt;&lt;()']]],
+  ['operator_3c_3d_9',['operator&lt;=',['../class_segment.html#a5e7979c67e29c6d77fa4641ec9f5aec1',1,'Segment']]],
+  ['operator_3d_10',['operator=',['../class_c_l_i_1_1_formatter_base.html#a7f6bc2dbfc2b3a904ca079d595fa4387',1,'CLI::FormatterBase::operator=(const FormatterBase &amp;)=default'],['../class_c_l_i_1_1_formatter_base.html#a64e0c60ebd7fed0a5d4d4eb4b53f19e8',1,'CLI::FormatterBase::operator=(FormatterBase &amp;&amp;)=default'],['../class_c_l_i_1_1_formatter.html#acf7effd10f0654f7c3ca624a057483ed',1,'CLI::Formatter::operator=(const Formatter &amp;)=default'],['../class_c_l_i_1_1_formatter.html#abff499cbb9b96d60e418f9dcab7b350f',1,'CLI::Formatter::operator=(Formatter &amp;&amp;)=default'],['../class_c_l_i_1_1_option.html#a4c6bad0d2ed76477d603c6439d18184e',1,'CLI::Option::operator=()'],['../class_c_l_i_1_1_app.html#aeb44de6d3b3216c28ef99ea04ab86f83',1,'CLI::App::operator=()']]],
+  ['operator_3d_3d_11',['operator==',['../class_segment.html#a737febf9a6e3b94348e021cf61cda8ff',1,'Segment::operator==()'],['../class_c_l_i_1_1_option.html#ae72ff0b89bebb2987d548c186c577e50',1,'CLI::Option::operator==()'],['../bgfa__graph_8hpp.html#af9909d442b809b4b5c1da685bd5ee114',1,'operator==():&#160;bgfa_graph.hpp']]],
+  ['operator_3e_12',['operator&gt;',['../class_segment.html#af0711420d3c79b4028550314d7963bc1',1,'Segment']]],
+  ['operator_3e_3d_13',['operator&gt;=',['../class_segment.html#a32e25120495691308ae1ef1650d2a1b8',1,'Segment']]],
+  ['operator_5b_5d_14',['operator[]',['../class_c_l_i_1_1_app.html#a05c1dbeb654a91b792889551656c0ab8',1,'CLI::App::operator[](const std::string &amp;option_name) const'],['../class_c_l_i_1_1_app.html#a443c945fd3d3f03d33ad24be91b0ccbb',1,'CLI::App::operator[](const char *option_name) const']]],
+  ['operator_7c_15',['operator|',['../class_c_l_i_1_1_validator.html#a4edf771c049626cf9df9e99fd1259441',1,'CLI::Validator::operator|()'],['../namespace_c_l_i.html#a53ae7496493c85b4d83f819cef686baa',1,'CLI::operator|()']]],
+  ['option_16',['Option',['../class_c_l_i_1_1_required_error.html#a1283b251494d088d860a89bc2a8bce7f',1,'CLI::RequiredError::Option()'],['../class_c_l_i_1_1_option.html#a577e99d3ea33598b4dc3605f544d14fc',1,'CLI::Option::Option(std::string option_name, std::string option_description, callback_t callback, App *parent, bool allow_non_standard=false)'],['../class_c_l_i_1_1_option.html#a72d6fb10f92fb81fc7a10327ce1a7da6',1,'CLI::Option::Option(const Option &amp;)=delete']]],
+  ['option_5fdefaults_17',['option_defaults',['../class_c_l_i_1_1_app.html#a4d49e9bf0fc5cc2a99aefd13c3ecd3bf',1,'CLI::App']]],
+  ['option_5fgroup_18',['Option_group',['../class_c_l_i_1_1_option__group.html#a4440d3849d0c46d01a37b84c301b148a',1,'CLI::Option_group']]],
+  ['option_5ftext_19',['option_text',['../class_c_l_i_1_1_option.html#a5bdcc74efea965f6d440b03432df50e5',1,'CLI::Option']]],
+  ['optionalreadyadded_20',['OptionAlreadyAdded',['../class_c_l_i_1_1_option_already_added.html#a2157496f3b017fa4894fd4950206101c',1,'CLI::OptionAlreadyAdded']]],
+  ['optiondefaults_21',['OptionDefaults',['../class_c_l_i_1_1_option_defaults.html#ab3b11a73b6f5ce805514b3f44cb9b079',1,'CLI::OptionDefaults']]],
+  ['optionnotfound_22',['OptionNotFound',['../class_c_l_i_1_1_option_not_found.html#a0abf448c748239711b5ed963f388ec1d',1,'CLI::OptionNotFound']]],
+  ['overflowcheck_23',['overflowCheck',['../namespace_c_l_i_1_1detail.html#a569135c6e266940a5f914698b9deef66',1,'CLI::detail::overflowCheck(const T &amp;a, const T &amp;b)'],['../namespace_c_l_i_1_1detail.html#a5e6108f5b3abd0b0d42123cef8a0dac0',1,'CLI::detail::overflowCheck(const T &amp;a, const T &amp;b)']]]
+];

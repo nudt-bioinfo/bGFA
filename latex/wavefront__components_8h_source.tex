@@ -1,0 +1,110 @@
+\doxysection{wavefront\+\_\+components.\+h}
+\hypertarget{wavefront__components_8h_source}{}\label{wavefront__components_8h_source}\index{src/wfa/wavefront/wavefront\_components.h@{src/wfa/wavefront/wavefront\_components.h}}
+\doxymbox{\hyperlink{wavefront__components_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ WaveFront\ components\ module}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ WAVEFRONT\_WAVEFRONT\_COMPONENTS\_H\_}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ WAVEFRONT\_WAVEFRONT\_COMPONENTS\_H\_}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront_8h}{wavefront/wavefront.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__backtrace__buffer_8h}{wavefront/wavefront\_backtrace\_buffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__penalties_8h}{wavefront/wavefront\_penalties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00039}00039\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00040}00040\ \textcolor{comment}{\ *\ Wavefront\ Components}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00041}00041\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00042}\doxymbox{\hyperlink{structwavefront__components__t}{00042}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00043}00043\ \ \ \textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00044}\doxymbox{\hyperlink{structwavefront__components__t_a6a54b39e984966640c239d93cfa9284c}{00044}}\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structwavefront__components__t_a6a54b39e984966640c239d93cfa9284c}{memory\_modular}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Memory\ strategy\ (modular\ wavefronts)}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00045}\doxymbox{\hyperlink{structwavefront__components__t_a841073f114286de326d886e7ef9057e0}{00045}}\ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{structwavefront__components__t_a841073f114286de326d886e7ef9057e0}{bt\_piggyback}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Backtrace\ Piggyback}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00046}00046\ \ \ \textcolor{comment}{//\ Wavefronts\ dimensions}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00047}\doxymbox{\hyperlink{structwavefront__components__t_a62ec8f7b7f3c848c43c802c064837bc0}{00047}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__components__t_a62ec8f7b7f3c848c43c802c064837bc0}{num\_wavefronts}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Total\ number\ of\ allocated\ wavefronts}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00048}\doxymbox{\hyperlink{structwavefront__components__t_a2e90955e5ca8d44cb46e2d9d184a4a2f}{00048}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__components__t_a2e90955e5ca8d44cb46e2d9d184a4a2f}{max\_score\_scope}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Maximum\ score-\/difference\ between\ dependent\ wavefronts}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00049}\doxymbox{\hyperlink{structwavefront__components__t_abf487b95da195b19860b35d70fe75d31}{00049}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__components__t_abf487b95da195b19860b35d70fe75d31}{historic\_max\_hi}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Maximum\ WF\ hi-\/limit\ seen\ during\ current\ alignment}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00050}\doxymbox{\hyperlink{structwavefront__components__t_af935f9eaa2c46e8ec0018f93afe7cd22}{00050}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__components__t_af935f9eaa2c46e8ec0018f93afe7cd22}{historic\_min\_lo}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Minimum\ WF\ lo-\/limit\ seen\ during\ current\ alignment}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00051}00051\ \ \ \textcolor{comment}{//\ Wavefronts}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00052}\doxymbox{\hyperlink{structwavefront__components__t_a041e810ed8b6faa8d7aec33bdcab05db}{00052}}\ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}**\ \doxymbox{\hyperlink{structwavefront__components__t_a041e810ed8b6faa8d7aec33bdcab05db}{mwavefronts}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ M-\/wavefronts}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00053}\doxymbox{\hyperlink{structwavefront__components__t_abc540d77dbd6332f12da80514fc6a04c}{00053}}\ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}**\ \doxymbox{\hyperlink{structwavefront__components__t_abc540d77dbd6332f12da80514fc6a04c}{i1wavefronts}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ I1-\/wavefronts}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00054}\doxymbox{\hyperlink{structwavefront__components__t_a4ac1439ad13a35224f207d50bc5822c5}{00054}}\ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}**\ \doxymbox{\hyperlink{structwavefront__components__t_a4ac1439ad13a35224f207d50bc5822c5}{i2wavefronts}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ I2-\/wavefronts}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00055}\doxymbox{\hyperlink{structwavefront__components__t_ab0c145528775595bdedb061a9a38d4c6}{00055}}\ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}**\ \doxymbox{\hyperlink{structwavefront__components__t_ab0c145528775595bdedb061a9a38d4c6}{d1wavefronts}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ D1-\/wavefronts}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00056}\doxymbox{\hyperlink{structwavefront__components__t_ad0f2f65430961da1f6666221b640d93b}{00056}}\ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}**\ \doxymbox{\hyperlink{structwavefront__components__t_ad0f2f65430961da1f6666221b640d93b}{d2wavefronts}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ D2-\/wavefronts}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00057}\doxymbox{\hyperlink{structwavefront__components__t_a5e1df7653289bf205a458221be0a365e}{00057}}\ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}*\ \doxymbox{\hyperlink{structwavefront__components__t_a5e1df7653289bf205a458221be0a365e}{wavefront\_null}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Null\ wavefront\ (orthogonal\ reading)}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00058}\doxymbox{\hyperlink{structwavefront__components__t_a39fee545f53e98a6e47b698bcaeed1f3}{00058}}\ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}*\ \doxymbox{\hyperlink{structwavefront__components__t_a39fee545f53e98a6e47b698bcaeed1f3}{wavefront\_victim}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Dummy\ wavefront\ (orthogonal\ writing)}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00059}00059\ \ \ \textcolor{comment}{//\ BT-\/Buffer}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00060}\doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{00060}}\ \ \ \doxymbox{\hyperlink{structwf__backtrace__buffer__t}{wf\_backtrace\_buffer\_t}}*\ \doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{bt\_buffer}};\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Backtrace\ Buffer}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00061}00061\ \ \ \textcolor{comment}{//\ MM}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00062}\doxymbox{\hyperlink{structwavefront__components__t_a12f63f16365e474c12b4206ddb1c3788}{00062}}\ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \doxymbox{\hyperlink{structwavefront__components__t_a12f63f16365e474c12b4206ddb1c3788}{mm\_allocator}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ MM-\/Allocator}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00063}00063\ \}\ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}};}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00064}00064\ }
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00065}00065\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00066}00066\ \textcolor{comment}{\ *\ Setup}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00067}00067\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00068}00068\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__components_8h_ac3465173296c2ead291145795c4fe8c5}{wavefront\_components\_allocate}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00069}00069\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_pattern\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00071}00071\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_text\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00072}00072\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}}*\ \textcolor{keyword}{const}\ penalties,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ memory\_modular,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ bt\_piggyback,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00075}00075\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator);}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00076}00076\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__components_8h_a0128cc45adab39874ff6775dd84f682c}{wavefront\_components\_reap}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00077}00077\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components);}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00078}00078\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__components_8h_a20868250d60690636c01a2a173273bc1}{wavefront\_components\_clear}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00079}00079\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components);}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00080}00080\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__components_8h_a074af4ed931325a83403f660194f0f5e}{wavefront\_components\_free}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00081}00081\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components);}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00083}00083\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00084}00084\ \textcolor{comment}{\ *\ Resize}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00085}00085\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00086}00086\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__components_8h_a3744a3fd674eac0d3f8ed7a6a254f427}{wavefront\_components\_resize}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00087}00087\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00088}00088\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_pattern\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_text\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00090}00090\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}}*\ \textcolor{keyword}{const}\ penalties);}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00091}00091\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__components_8h_a5b51c84d1016c5400c39c2a74af9c9f3}{wavefront\_components\_resize\_null\_\_victim}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00092}00092\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00093}00093\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ lo,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00094}00094\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ hi);}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00095}00095\ }
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00096}00096\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00097}00097\ \textcolor{comment}{\ *\ Compact}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00098}00098\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00099}00099\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__components_8h_a25c1b961b4ee9a70e6e6d84cc25b734e}{wavefront\_components\_compact\_bt\_buffer}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00100}00100\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ score,}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00102}00102\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ verbose);}
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00103}00103\ }
+\DoxyCodeLine{\Hypertarget{wavefront__components_8h_source_l00104}00104\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ WAVEFRONT\_WAVEFRONT\_COMPONENTS\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

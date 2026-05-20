@@ -1,0 +1,462 @@
+\doxysection{align\+\_\+input\+\_\+t Struct Reference}
+\hypertarget{structalign__input__t}{}\label{structalign__input__t}\index{align\_input\_t@{align\_input\_t}}
+
+
+{\ttfamily \+\#include $<$benchmark\+\_\+utils.\+h$>$}
+
+
+
+Collaboration diagram for align\+\_\+input\+\_\+t:\+
+% FIG 0
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_ad0a443e879ec5ca9eef6ed5ac5bf944c}{sequence\+\_\+id}}
+\item 
+char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_af03192f1c73d450d95a2a3474d051b53}{pattern}}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_ac56d88a4eb29ae4ea99c0f5386a61542}{pattern\+\_\+length}}
+\item 
+char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_a0392f7d1a0694ceac4e0ee8344bd2a2e}{text}}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_aa719e93d2a0c366ed8d9605ffc071eed}{text\+\_\+length}}
+\item 
+\doxymbox{\hyperlink{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b}{alignment\+\_\+match\+\_\+funct\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a4119fecfdc19b4736c041276553b0efd}{wfa\+\_\+match\+\_\+funct}}
+\item 
+void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_ac78b657b85342a853b6841b3eb075e35}{wfa\+\_\+match\+\_\+funct\+\_\+arguments}}
+\item 
+\doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a1bb50d31f212c654b729ef6c729a014b}{linear\+\_\+penalties}}
+\item 
+\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_ab5969ea60c2fc7c0f6b4ab3e211927ad}{affine\+\_\+penalties}}
+\item 
+\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a0450ac9ee58643a27380d8ac0f33ed3d}{affine2p\+\_\+penalties}}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_afe29fcd649caf295a6f258359f928f3c}{pattern\+\_\+begin\+\_\+free}}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_a5f27b26f7ccc1c959b82f175c5670033}{text\+\_\+begin\+\_\+free}}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_a5b26152f6f3d3dfa33e71ae5e878be7a}{pattern\+\_\+end\+\_\+free}}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_a6fc165c798e329d3f5e935f3084c027b}{text\+\_\+end\+\_\+free}}
+\item 
+FILE \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_adf45d3f94098d2f2e0f544d995654951}{output\+\_\+file}}
+\item 
+bool \doxymbox{\hyperlink{structalign__input__t_a02bc766a7738ec4d1ec088c621bb13d7}{output\+\_\+full}}
+\item 
+\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_a06602377d3816b79784d898df1836196}{wf\+\_\+aligner}}
+\item 
+\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_adb845559ab9e6d549f929f9d47f4d166}{mm\+\_\+allocator}}
+\item 
+\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a4eae00d16bc100d6f86061af40f044da}{timer}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_af4b69ad0f90791bae8a6141e83293ce6}{align}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a4512449f5e00f2c402dfb38a41ac08b9}{align\+\_\+correct}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a5750e81f9a28421b3cc3c0196d842771}{align\+\_\+score}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a0f2f0264db4935c44d3c3e51b8379ae0}{align\+\_\+score\+\_\+total}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a7c6a1b56c7a1095d11164564dd86696a}{align\+\_\+score\+\_\+diff}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a4994cf10b9ccb9193865b89a4f918942}{align\+\_\+cigar}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_ac7cd0298c2018a4a73839c847043fbe4}{align\+\_\+bases}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a339ede97970ec2bb12cd4e3e94116bed}{align\+\_\+matches}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_abec97d78f7ade68c79ccd897e2245461}{align\+\_\+mismatches}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_ab45ac240830eb8c3943924f993a7dad8}{align\+\_\+del}}
+\item 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} \doxymbox{\hyperlink{structalign__input__t_a1bd7aba4240ea0021d13a902125974e6}{align\+\_\+ins}}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_aa8414ea02c1dfdaaf0ddf5d0ec1e4abf}{debug\+\_\+flags}}
+\item 
+\doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_ab8fc1fe05e639d257abb5d43ee5cf7f5}{check\+\_\+linear\+\_\+penalties}}
+\item 
+\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_ae57c599a316ef53d9bfe84025c4a9b59}{check\+\_\+affine\+\_\+penalties}}
+\item 
+\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structalign__input__t_a64ec3da0c59f786f935466b1c2afbd1e}{check\+\_\+affine2p\+\_\+penalties}}
+\item 
+int \doxymbox{\hyperlink{structalign__input__t_a34bbbb486eacdd2bfc1366f8fa56056a}{check\+\_\+bandwidth}}
+\item 
+bool \doxymbox{\hyperlink{structalign__input__t_a3c4ab4d1fe4f1685fa4aa6224bd5dbbb}{verbose}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00058}{58}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structalign__input__t_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structalign__input__t_a0450ac9ee58643a27380d8ac0f33ed3d}\index{align\_input\_t@{align\_input\_t}!affine2p\_penalties@{affine2p\_penalties}}
+\index{affine2p\_penalties@{affine2p\_penalties}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{affine2p\_penalties}{affine2p\_penalties}}
+{\footnotesize\ttfamily \label{structalign__input__t_a0450ac9ee58643a27380d8ac0f33ed3d} 
+\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} align\+\_\+input\+\_\+t::\+affine2p\+\_\+penalties}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00070}{70}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_ab5969ea60c2fc7c0f6b4ab3e211927ad}\index{align\_input\_t@{align\_input\_t}!affine\_penalties@{affine\_penalties}}
+\index{affine\_penalties@{affine\_penalties}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{affine\_penalties}{affine\_penalties}}
+{\footnotesize\ttfamily \label{structalign__input__t_ab5969ea60c2fc7c0f6b4ab3e211927ad} 
+\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} align\+\_\+input\+\_\+t::\+affine\+\_\+penalties}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00069}{69}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_af4b69ad0f90791bae8a6141e83293ce6}\index{align\_input\_t@{align\_input\_t}!align@{align}}
+\index{align@{align}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align}{align}}
+{\footnotesize\ttfamily \label{structalign__input__t_af4b69ad0f90791bae8a6141e83293ce6} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00084}{84}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_ac7cd0298c2018a4a73839c847043fbe4}\index{align\_input\_t@{align\_input\_t}!align\_bases@{align\_bases}}
+\index{align\_bases@{align\_bases}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_bases}{align\_bases}}
+{\footnotesize\ttfamily \label{structalign__input__t_ac7cd0298c2018a4a73839c847043fbe4} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+bases}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00090}{90}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a4994cf10b9ccb9193865b89a4f918942}\index{align\_input\_t@{align\_input\_t}!align\_cigar@{align\_cigar}}
+\index{align\_cigar@{align\_cigar}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_cigar}{align\_cigar}}
+{\footnotesize\ttfamily \label{structalign__input__t_a4994cf10b9ccb9193865b89a4f918942} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+cigar}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00089}{89}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a4512449f5e00f2c402dfb38a41ac08b9}\index{align\_input\_t@{align\_input\_t}!align\_correct@{align\_correct}}
+\index{align\_correct@{align\_correct}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_correct}{align\_correct}}
+{\footnotesize\ttfamily \label{structalign__input__t_a4512449f5e00f2c402dfb38a41ac08b9} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+correct}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00085}{85}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_ab45ac240830eb8c3943924f993a7dad8}\index{align\_input\_t@{align\_input\_t}!align\_del@{align\_del}}
+\index{align\_del@{align\_del}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_del}{align\_del}}
+{\footnotesize\ttfamily \label{structalign__input__t_ab45ac240830eb8c3943924f993a7dad8} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+del}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00093}{93}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a1bd7aba4240ea0021d13a902125974e6}\index{align\_input\_t@{align\_input\_t}!align\_ins@{align\_ins}}
+\index{align\_ins@{align\_ins}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_ins}{align\_ins}}
+{\footnotesize\ttfamily \label{structalign__input__t_a1bd7aba4240ea0021d13a902125974e6} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+ins}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00094}{94}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a339ede97970ec2bb12cd4e3e94116bed}\index{align\_input\_t@{align\_input\_t}!align\_matches@{align\_matches}}
+\index{align\_matches@{align\_matches}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_matches}{align\_matches}}
+{\footnotesize\ttfamily \label{structalign__input__t_a339ede97970ec2bb12cd4e3e94116bed} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+matches}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00091}{91}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_abec97d78f7ade68c79ccd897e2245461}\index{align\_input\_t@{align\_input\_t}!align\_mismatches@{align\_mismatches}}
+\index{align\_mismatches@{align\_mismatches}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_mismatches}{align\_mismatches}}
+{\footnotesize\ttfamily \label{structalign__input__t_abec97d78f7ade68c79ccd897e2245461} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+mismatches}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00092}{92}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a5750e81f9a28421b3cc3c0196d842771}\index{align\_input\_t@{align\_input\_t}!align\_score@{align\_score}}
+\index{align\_score@{align\_score}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_score}{align\_score}}
+{\footnotesize\ttfamily \label{structalign__input__t_a5750e81f9a28421b3cc3c0196d842771} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+score}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00086}{86}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a7c6a1b56c7a1095d11164564dd86696a}\index{align\_input\_t@{align\_input\_t}!align\_score\_diff@{align\_score\_diff}}
+\index{align\_score\_diff@{align\_score\_diff}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_score\_diff}{align\_score\_diff}}
+{\footnotesize\ttfamily \label{structalign__input__t_a7c6a1b56c7a1095d11164564dd86696a} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+score\+\_\+diff}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00088}{88}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a0f2f0264db4935c44d3c3e51b8379ae0}\index{align\_input\_t@{align\_input\_t}!align\_score\_total@{align\_score\_total}}
+\index{align\_score\_total@{align\_score\_total}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{align\_score\_total}{align\_score\_total}}
+{\footnotesize\ttfamily \label{structalign__input__t_a0f2f0264db4935c44d3c3e51b8379ae0} 
+\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\+\_\+counter\+\_\+t}} align\+\_\+input\+\_\+t::\+align\+\_\+score\+\_\+total}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00087}{87}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a64ec3da0c59f786f935466b1c2afbd1e}\index{align\_input\_t@{align\_input\_t}!check\_affine2p\_penalties@{check\_affine2p\_penalties}}
+\index{check\_affine2p\_penalties@{check\_affine2p\_penalties}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{check\_affine2p\_penalties}{check\_affine2p\_penalties}}
+{\footnotesize\ttfamily \label{structalign__input__t_a64ec3da0c59f786f935466b1c2afbd1e} 
+\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}}\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+check\+\_\+affine2p\+\_\+penalties}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00099}{99}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_ae57c599a316ef53d9bfe84025c4a9b59}\index{align\_input\_t@{align\_input\_t}!check\_affine\_penalties@{check\_affine\_penalties}}
+\index{check\_affine\_penalties@{check\_affine\_penalties}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{check\_affine\_penalties}{check\_affine\_penalties}}
+{\footnotesize\ttfamily \label{structalign__input__t_ae57c599a316ef53d9bfe84025c4a9b59} 
+\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}}\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+check\+\_\+affine\+\_\+penalties}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00098}{98}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a34bbbb486eacdd2bfc1366f8fa56056a}\index{align\_input\_t@{align\_input\_t}!check\_bandwidth@{check\_bandwidth}}
+\index{check\_bandwidth@{check\_bandwidth}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{check\_bandwidth}{check\_bandwidth}}
+{\footnotesize\ttfamily \label{structalign__input__t_a34bbbb486eacdd2bfc1366f8fa56056a} 
+int align\+\_\+input\+\_\+t::\+check\+\_\+bandwidth}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00100}{100}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_ab8fc1fe05e639d257abb5d43ee5cf7f5}\index{align\_input\_t@{align\_input\_t}!check\_linear\_penalties@{check\_linear\_penalties}}
+\index{check\_linear\_penalties@{check\_linear\_penalties}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{check\_linear\_penalties}{check\_linear\_penalties}}
+{\footnotesize\ttfamily \label{structalign__input__t_ab8fc1fe05e639d257abb5d43ee5cf7f5} 
+\doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}}\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+check\+\_\+linear\+\_\+penalties}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00097}{97}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_aa8414ea02c1dfdaaf0ddf5d0ec1e4abf}\index{align\_input\_t@{align\_input\_t}!debug\_flags@{debug\_flags}}
+\index{debug\_flags@{debug\_flags}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{debug\_flags}{debug\_flags}}
+{\footnotesize\ttfamily \label{structalign__input__t_aa8414ea02c1dfdaaf0ddf5d0ec1e4abf} 
+int align\+\_\+input\+\_\+t::\+debug\+\_\+flags}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00096}{96}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a1bb50d31f212c654b729ef6c729a014b}\index{align\_input\_t@{align\_input\_t}!linear\_penalties@{linear\_penalties}}
+\index{linear\_penalties@{linear\_penalties}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{linear\_penalties}{linear\_penalties}}
+{\footnotesize\ttfamily \label{structalign__input__t_a1bb50d31f212c654b729ef6c729a014b} 
+\doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} align\+\_\+input\+\_\+t::\+linear\+\_\+penalties}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00068}{68}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_adb845559ab9e6d549f929f9d47f4d166}\index{align\_input\_t@{align\_input\_t}!mm\_allocator@{mm\_allocator}}
+\index{mm\_allocator@{mm\_allocator}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator}{mm\_allocator}}
+{\footnotesize\ttfamily \label{structalign__input__t_adb845559ab9e6d549f929f9d47f4d166} 
+\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}}\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+mm\+\_\+allocator}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00081}{81}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_adf45d3f94098d2f2e0f544d995654951}\index{align\_input\_t@{align\_input\_t}!output\_file@{output\_file}}
+\index{output\_file@{output\_file}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{output\_file}{output\_file}}
+{\footnotesize\ttfamily \label{structalign__input__t_adf45d3f94098d2f2e0f544d995654951} 
+FILE\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+output\+\_\+file}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00077}{77}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a02bc766a7738ec4d1ec088c621bb13d7}\index{align\_input\_t@{align\_input\_t}!output\_full@{output\_full}}
+\index{output\_full@{output\_full}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{output\_full}{output\_full}}
+{\footnotesize\ttfamily \label{structalign__input__t_a02bc766a7738ec4d1ec088c621bb13d7} 
+bool align\+\_\+input\+\_\+t::\+output\+\_\+full}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00078}{78}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_af03192f1c73d450d95a2a3474d051b53}\index{align\_input\_t@{align\_input\_t}!pattern@{pattern}}
+\index{pattern@{pattern}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{pattern}{pattern}}
+{\footnotesize\ttfamily \label{structalign__input__t_af03192f1c73d450d95a2a3474d051b53} 
+char\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+pattern}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00061}{61}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_afe29fcd649caf295a6f258359f928f3c}\index{align\_input\_t@{align\_input\_t}!pattern\_begin\_free@{pattern\_begin\_free}}
+\index{pattern\_begin\_free@{pattern\_begin\_free}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{pattern\_begin\_free}{pattern\_begin\_free}}
+{\footnotesize\ttfamily \label{structalign__input__t_afe29fcd649caf295a6f258359f928f3c} 
+int align\+\_\+input\+\_\+t::\+pattern\+\_\+begin\+\_\+free}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00072}{72}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a5b26152f6f3d3dfa33e71ae5e878be7a}\index{align\_input\_t@{align\_input\_t}!pattern\_end\_free@{pattern\_end\_free}}
+\index{pattern\_end\_free@{pattern\_end\_free}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{pattern\_end\_free}{pattern\_end\_free}}
+{\footnotesize\ttfamily \label{structalign__input__t_a5b26152f6f3d3dfa33e71ae5e878be7a} 
+int align\+\_\+input\+\_\+t::\+pattern\+\_\+end\+\_\+free}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00074}{74}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_ac56d88a4eb29ae4ea99c0f5386a61542}\index{align\_input\_t@{align\_input\_t}!pattern\_length@{pattern\_length}}
+\index{pattern\_length@{pattern\_length}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{pattern\_length}{pattern\_length}}
+{\footnotesize\ttfamily \label{structalign__input__t_ac56d88a4eb29ae4ea99c0f5386a61542} 
+int align\+\_\+input\+\_\+t::\+pattern\+\_\+length}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00062}{62}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_ad0a443e879ec5ca9eef6ed5ac5bf944c}\index{align\_input\_t@{align\_input\_t}!sequence\_id@{sequence\_id}}
+\index{sequence\_id@{sequence\_id}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{sequence\_id}{sequence\_id}}
+{\footnotesize\ttfamily \label{structalign__input__t_ad0a443e879ec5ca9eef6ed5ac5bf944c} 
+int align\+\_\+input\+\_\+t::\+sequence\+\_\+id}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00060}{60}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a0392f7d1a0694ceac4e0ee8344bd2a2e}\index{align\_input\_t@{align\_input\_t}!text@{text}}
+\index{text@{text}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{text}{text}}
+{\footnotesize\ttfamily \label{structalign__input__t_a0392f7d1a0694ceac4e0ee8344bd2a2e} 
+char\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+text}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00063}{63}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a5f27b26f7ccc1c959b82f175c5670033}\index{align\_input\_t@{align\_input\_t}!text\_begin\_free@{text\_begin\_free}}
+\index{text\_begin\_free@{text\_begin\_free}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{text\_begin\_free}{text\_begin\_free}}
+{\footnotesize\ttfamily \label{structalign__input__t_a5f27b26f7ccc1c959b82f175c5670033} 
+int align\+\_\+input\+\_\+t::\+text\+\_\+begin\+\_\+free}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00073}{73}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a6fc165c798e329d3f5e935f3084c027b}\index{align\_input\_t@{align\_input\_t}!text\_end\_free@{text\_end\_free}}
+\index{text\_end\_free@{text\_end\_free}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{text\_end\_free}{text\_end\_free}}
+{\footnotesize\ttfamily \label{structalign__input__t_a6fc165c798e329d3f5e935f3084c027b} 
+int align\+\_\+input\+\_\+t::\+text\+\_\+end\+\_\+free}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00075}{75}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_aa719e93d2a0c366ed8d9605ffc071eed}\index{align\_input\_t@{align\_input\_t}!text\_length@{text\_length}}
+\index{text\_length@{text\_length}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{text\_length}{text\_length}}
+{\footnotesize\ttfamily \label{structalign__input__t_aa719e93d2a0c366ed8d9605ffc071eed} 
+int align\+\_\+input\+\_\+t::\+text\+\_\+length}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00064}{64}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a4eae00d16bc100d6f86061af40f044da}\index{align\_input\_t@{align\_input\_t}!timer@{timer}}
+\index{timer@{timer}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{timer}{timer}}
+{\footnotesize\ttfamily \label{structalign__input__t_a4eae00d16bc100d6f86061af40f044da} 
+\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} align\+\_\+input\+\_\+t::\+timer}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00083}{83}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a3c4ab4d1fe4f1685fa4aa6224bd5dbbb}\index{align\_input\_t@{align\_input\_t}!verbose@{verbose}}
+\index{verbose@{verbose}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{verbose}{verbose}}
+{\footnotesize\ttfamily \label{structalign__input__t_a3c4ab4d1fe4f1685fa4aa6224bd5dbbb} 
+bool align\+\_\+input\+\_\+t::\+verbose}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00101}{101}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a06602377d3816b79784d898df1836196}\index{align\_input\_t@{align\_input\_t}!wf\_aligner@{wf\_aligner}}
+\index{wf\_aligner@{wf\_aligner}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{wf\_aligner}{wf\_aligner}}
+{\footnotesize\ttfamily \label{structalign__input__t_a06602377d3816b79784d898df1836196} 
+\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}}\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+wf\+\_\+aligner}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00080}{80}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_a4119fecfdc19b4736c041276553b0efd}\index{align\_input\_t@{align\_input\_t}!wfa\_match\_funct@{wfa\_match\_funct}}
+\index{wfa\_match\_funct@{wfa\_match\_funct}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{wfa\_match\_funct}{wfa\_match\_funct}}
+{\footnotesize\ttfamily \label{structalign__input__t_a4119fecfdc19b4736c041276553b0efd} 
+\doxymbox{\hyperlink{wavefront__sequences_8h_ac9bdc8651f4295cba078378914e40b3b}{alignment\+\_\+match\+\_\+funct\+\_\+t}} align\+\_\+input\+\_\+t::\+wfa\+\_\+match\+\_\+funct}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00065}{65}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{structalign__input__t_ac78b657b85342a853b6841b3eb075e35}\index{align\_input\_t@{align\_input\_t}!wfa\_match\_funct\_arguments@{wfa\_match\_funct\_arguments}}
+\index{wfa\_match\_funct\_arguments@{wfa\_match\_funct\_arguments}!align\_input\_t@{align\_input\_t}}
+\doxysubsubsection{\texorpdfstring{wfa\_match\_funct\_arguments}{wfa\_match\_funct\_arguments}}
+{\footnotesize\ttfamily \label{structalign__input__t_ac78b657b85342a853b6841b3eb075e35} 
+void\texorpdfstring{$\ast$}{*} align\+\_\+input\+\_\+t::\+wfa\+\_\+match\+\_\+funct\+\_\+arguments}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00066}{66}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+wfa/\+tools/\+align\+\_\+benchmark/\+benchmark/\+\doxymbox{\hyperlink{benchmark__utils_8h}{benchmark\+\_\+utils.\+h}}\end{DoxyCompactItemize}

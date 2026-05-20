@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="CLI::detail::type_count\l\< T, typename std::enable\l_if\<!is_wrapper\< T \>::value\l &&!is_tuple_like\< T \>::value\l &&!is_complex\< T \>::value &&!std\l::is_void\< T \>::value \>::type \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$struct_c_l_i_1_1detail_1_1type__count_3_01_t_00_01typename_01std_1_1enable__if_3_9is__wrapper_3_b01f5ffbc1be4715e41384ef05a4c2a6.html",tooltip="Type size for regular object types that do not look like a tuple."];
+}

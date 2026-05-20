@@ -1,0 +1,766 @@
+\doxysection{bgfa\+\_\+seed.\+hpp}
+\hypertarget{bgfa__seed_8hpp_source}{}\label{bgfa__seed_8hpp_source}\index{src/bgfa\_seed.hpp@{src/bgfa\_seed.hpp}}
+\doxymbox{\hyperlink{bgfa__seed_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \(\backslash\)bGFA\(\backslash\)src\(\backslash\)bgfa\_seed.hpp}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00004}00004\ \textcolor{comment}{\ *\ @details}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ @author\ grampart}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ @version}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00007}00007\ \textcolor{comment}{\ *\ @copyright:\ Copyright(c)\ 2025\ by\ grampart,\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00008}00008\ \textcolor{comment}{\ *\ @license:\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00009}00009\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#ifndef\ BGFA\_SEED\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#define\ BGFA\_SEED\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa_8hpp}{bgfa.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa__graph_8hpp}{bgfa\_graph.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00016}\doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{00016}}\ \textcolor{keyword}{typedef}\ uint64\_t\ \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\_t}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00017}\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{00017}}\ \textcolor{keyword}{typedef}\ uint64\_t\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\_t}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00018}\doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{00018}}\ \textcolor{keyword}{typedef}\ uint64\_t\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00020}\doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{00020}}\ \textcolor{keyword}{typedef}\ std::vector<std::pair<uword\_t,\ uhash\_t>>\ \doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{MinimizerSetVect}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00022}\doxymbox{\hyperlink{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022}{00022}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_MAX\_LENGTH\ 32\ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00024}\doxymbox{\hyperlink{bgfa__seed_8hpp_adb6a8ece430207ef9943ff20039918e7}{00024}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_ID\_SHITF\ 32\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00025}\doxymbox{\hyperlink{bgfa__seed_8hpp_aeba0151d218aba941d5ca79cdfec48d6}{00025}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_ID\_MASK\ 0xFFFFFFFF\ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00026}\doxymbox{\hyperlink{bgfa__seed_8hpp_a359715b4218ebb86afac0412ee7369f6}{00026}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_OFFSET\_SHITF\ 1\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00027}\doxymbox{\hyperlink{bgfa__seed_8hpp_a9d28c202b5c137d90b26e6805e9c66db}{00027}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_OFFSET\_MSAK\ 0x7FFFFFFF\ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00028}\doxymbox{\hyperlink{bgfa__seed_8hpp_a8f5c21673b376e3663dfcd6df55279fc}{00028}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_DIR\_SHITF\ 0\ \ \ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00029}\doxymbox{\hyperlink{bgfa__seed_8hpp_aa8b069fddae4714971c43e3ccae76476}{00029}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_DIR\_MASK\ 0x01\ \ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00031}\doxymbox{\hyperlink{bgfa__seed_8hpp_ac96e857e1088bb05c41d61926dfcbe12}{00031}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_MODE\_SINGLE\ 0\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00032}\doxymbox{\hyperlink{bgfa__seed_8hpp_afef9eb82c2584df75890f043cf44046c}{00032}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_MODE\_SINGLE\_REVERSE\ 1\ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00033}\doxymbox{\hyperlink{bgfa__seed_8hpp_a25647d21b1c19d55a7562afbadd9e20a}{00033}}\ \textcolor{preprocessor}{\#define\ MINIMIZER\_MODE\_DOUBLE\ 2\ \ \ \ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00044}\doxymbox{\hyperlink{bgfa__seed_8hpp_a19e4ca26c431ecd217fecfd056e2edcb}{00044}}\ uint64\_t\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a19e4ca26c431ecd217fecfd056e2edcb}{hash64}}(uint64\_t\ key,\ uint64\_t\ mask)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00045}00045\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00046}00046\ \ \ \ \ key\ =\ (\string~key\ +\ (key\ <<\ 21))\ \&\ mask;\ \textcolor{comment}{//\ key\ =\ (key\ <<\ 21)\ -\/\ key\ -\/\ 1;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00047}00047\ \ \ \ \ key\ =\ key\ \string^\ key\ >>\ 24;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00048}00048\ \ \ \ \ key\ =\ ((key\ +\ (key\ <<\ 3))\ +\ (key\ <<\ 8))\ \&\ mask;\ \textcolor{comment}{//\ key\ *\ 265}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00049}00049\ \ \ \ \ key\ =\ key\ \string^\ key\ >>\ 14;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00050}00050\ \ \ \ \ key\ =\ ((key\ +\ (key\ <<\ 2))\ +\ (key\ <<\ 4))\ \&\ mask;\ \textcolor{comment}{//\ key\ *\ 21}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00051}00051\ \ \ \ \ key\ =\ key\ \string^\ key\ >>\ 28;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00052}00052\ \ \ \ \ key\ =\ (key\ +\ (key\ <<\ 31))\ \&\ mask;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00053}00053\ \ \ \ \ \textcolor{keywordflow}{return}\ key;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00054}00054\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00056}00056\ \textcolor{comment}{//\ 似乎需要一个新的类表示Minimizer?}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00058}\doxymbox{\hyperlink{bgfa__seed_8hpp_a5943b9d742a50c2e692dba88173d941b}{00058}}\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a5943b9d742a50c2e692dba88173d941b}{getPosID}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\_t}}\ pos)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00059}00059\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00060}00060\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}})(pos\ >>\ \doxymbox{\hyperlink{bgfa__seed_8hpp_adb6a8ece430207ef9943ff20039918e7}{MINIMIZER\_ID\_SHITF}}\ \&\ \doxymbox{\hyperlink{bgfa__seed_8hpp_aeba0151d218aba941d5ca79cdfec48d6}{MINIMIZER\_ID\_MASK}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00061}00061\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00063}\doxymbox{\hyperlink{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa}{00063}}\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa}{getPosOffset}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\_t}}\ pos)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00064}00064\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}})((pos\ >>\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a359715b4218ebb86afac0412ee7369f6}{MINIMIZER\_OFFSET\_SHITF}})\ \&\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a9d28c202b5c137d90b26e6805e9c66db}{MINIMIZER\_OFFSET\_MSAK}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00066}00066\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00068}\doxymbox{\hyperlink{bgfa__seed_8hpp_ad0aa16567b68c3765f19c026b6331a5a}{00068}}\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_ad0aa16567b68c3765f19c026b6331a5a}{getPosDir}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\_t}}\ pos)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00069}00069\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00070}00070\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}})((pos\ >>\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a8f5c21673b376e3663dfcd6df55279fc}{MINIMIZER\_DIR\_SHITF}})\ \&\ \doxymbox{\hyperlink{bgfa__seed_8hpp_aa8b069fddae4714971c43e3ccae76476}{MINIMIZER\_DIR\_MASK}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00073}\doxymbox{\hyperlink{class_minimizer}{00073}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_minimizer_a6954aac8325fa56845db3074b4a552d2}{Minimizer}}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00074}00074\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00075}00075\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00076}\doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{00076}}\ \ \ \ \ \doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}}\ \doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{sequence\_}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00077}\doxymbox{\hyperlink{class_minimizer_af4911ad5c049cb631dc40aa306d84eba}{00077}}\ \ \ \ \ std::vector<upos\_t>\ \doxymbox{\hyperlink{class_minimizer_af4911ad5c049cb631dc40aa306d84eba}{positions\_}};\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00079}00079\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00083}\doxymbox{\hyperlink{class_minimizer_a6954aac8325fa56845db3074b4a552d2}{00083}}\ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_a6954aac8325fa56845db3074b4a552d2}{Minimizer}}()\ :\ \doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{sequence\_}}(0)\ \{\}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00085}\doxymbox{\hyperlink{class_minimizer_ad360e99257ec276f8a8b6bbde36830ca}{00085}}\ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_ad360e99257ec276f8a8b6bbde36830ca}{Minimizer}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}}\ seq)\ :\ \doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{sequence\_}}(seq)\ \{\}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00087}\doxymbox{\hyperlink{class_minimizer_a6751e8ab9693c817f666148a843582d8}{00087}}\ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_a6751e8ab9693c817f666148a843582d8}{Minimizer}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}}\ seq,\ \textcolor{keyword}{const}\ std::vector<upos\_t>\ \&pos)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00088}00088\ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{sequence\_}}(seq),\ \doxymbox{\hyperlink{class_minimizer_af4911ad5c049cb631dc40aa306d84eba}{positions\_}}(pos)\ \{\}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00089}00089\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00090}\doxymbox{\hyperlink{class_minimizer_a52218b9aabc5f4b077a49d76b4944237}{00090}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_a52218b9aabc5f4b077a49d76b4944237}{addPosition}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\_t}}\ pos)\ \{\ \doxymbox{\hyperlink{class_minimizer_af4911ad5c049cb631dc40aa306d84eba}{positions\_}}.push\_back(pos);\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00092}\doxymbox{\hyperlink{class_minimizer_a06183ed4eb6039dfcda2aeab2f057397}{00092}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_a06183ed4eb6039dfcda2aeab2f057397}{setSequence}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}}\ seq)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00093}00093\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_minimizer_af4911ad5c049cb631dc40aa306d84eba}{positions\_}}.size()\ >\ 0\ \&\&\ \doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{sequence\_}}\ !=\ seq)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00095}00095\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}[Minimizer\ Set\ Sequence]\ Error:\ Cannot\ change\ sequence\ of\ existing\ minimizer."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{sequence\_}}\ =\ seq;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00099}00099\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00101}\doxymbox{\hyperlink{class_minimizer_a989a47ce8fe6048f417dc917b9a8fa93}{00101}}\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}}\ \&\doxymbox{\hyperlink{class_minimizer_a989a47ce8fe6048f417dc917b9a8fa93}{getSequence}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{sequence\_}};\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00102}00102\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00103}\doxymbox{\hyperlink{class_minimizer_a37af04722f4ec41f76c1d9ce0f689341}{00103}}\ \ \ \ \ \textcolor{keyword}{const}\ std::vector<upos\_t>\ \&\doxymbox{\hyperlink{class_minimizer_a37af04722f4ec41f76c1d9ce0f689341}{getPositions}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_minimizer_af4911ad5c049cb631dc40aa306d84eba}{positions\_}};\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00104}00104\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00105}\doxymbox{\hyperlink{class_minimizer_a32c7383ec12411887aff862727c1f752}{00105}}\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\doxymbox{\hyperlink{class_minimizer_a32c7383ec12411887aff862727c1f752}{operator<<}}(std::ostream\ \&os,\ \doxymbox{\hyperlink{class_minimizer_a6954aac8325fa56845db3074b4a552d2}{Minimizer}}\ \&ms)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00106}00106\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00107}00107\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Minimizer\ Sequence:\ "{}}\ <<\ ms.\doxymbox{\hyperlink{class_minimizer_a4c08a33866de6c6a0f127cfa03322ad7}{sequence\_}}\ <<\ \textcolor{stringliteral}{"{},\ Positions:\ "{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pos\ :\ ms.\doxymbox{\hyperlink{class_minimizer_af4911ad5c049cb631dc40aa306d84eba}{positions\_}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t\ id:\ "{}}\ <<\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a5943b9d742a50c2e692dba88173d941b}{getPosID}}(pos)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ offset:\ "{}}\ <<\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa}{getPosOffset}}(pos)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{},\ dir::\ "{}}\ <<\ \doxymbox{\hyperlink{bgfa__seed_8hpp_ad0aa16567b68c3765f19c026b6331a5a}{getPosDir}}(pos)\ <<\ \textcolor{stringliteral}{"{};\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ os;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00115}00115\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00116}00116\ \};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00117}00117\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00122}\doxymbox{\hyperlink{class_minimizer_set}{00122}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{MinimizerSet}}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00123}00123\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00124}00124\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00125}\doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{00125}}\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}};\ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00126}\doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{00126}}\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}};\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00127}\doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{00127}}\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{mode\_}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00134}\doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{00134}}\ \ \ \ \ std::unordered\_map<uhash\_t,\ Minimizer>\ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00135}00135\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00136}00136\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00141}\doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{00141}}\ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{MinimizerSet}}()\ :\ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}}(15),\ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}}(20),\ \doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{mode\_}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_ac96e857e1088bb05c41d61926dfcbe12}{MINIMIZER\_MODE\_SINGLE}})\ \{\}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00142}00142\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00148}\doxymbox{\hyperlink{class_minimizer_set_a162f794326a3d99321446257e1892ee2}{00148}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_minimizer_set_a162f794326a3d99321446257e1892ee2}{MinimizerSet}}(\textcolor{keywordtype}{int}\ length,\ \textcolor{keywordtype}{int}\ window\_size)\ :\ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}}(length),\ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}}(window\_size),\ \doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{mode\_}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_ac96e857e1088bb05c41d61926dfcbe12}{MINIMIZER\_MODE\_SINGLE}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00149}00149\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (length\ >\ 32)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}[MinimizerSet\ Constructor]\ Error:\ length\ exceeds\ 32."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00154}00154\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00155}00155\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00162}\doxymbox{\hyperlink{class_minimizer_set_a4e697236e8be3d8525967b7c46467796}{00162}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_minimizer_set_a4e697236e8be3d8525967b7c46467796}{MinimizerSet}}(\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ length,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ window\_size,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ mode)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00163}00163\ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}}(length),\ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}}(window\_size),\ \doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{mode\_}}(mode)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00164}00164\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (length\ >\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022}{MINIMIZER\_MAX\_LENGTH}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00166}00166\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}[MinimizerSet\ Constructor]\ Error:\ length\ exceeds"{}}\ +\ std::to\_string(\doxymbox{\hyperlink{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022}{MINIMIZER\_MAX\_LENGTH}})\ +\ \textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00169}00169\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00170}00170\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00177}\doxymbox{\hyperlink{class_minimizer_set_ac12d20a2cb40334f1ab08cc19555d086}{00177}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_minimizer_set_ac12d20a2cb40334f1ab08cc19555d086}{MinimizerSet}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ gfa,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ length,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ window\_size)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00178}00178\ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{MinimizerSet}}(length,\ window\_size)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00179}00179\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00180}00180\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a7ae3c696c3190192397bfae20434fd9e}{getMinimizerFromGFA}}(gfa);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00181}00181\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00182}00182\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00189}\doxymbox{\hyperlink{class_minimizer_set_a0889daf4707fbed536dc3583ffa45836}{00189}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_minimizer_set_a0889daf4707fbed536dc3583ffa45836}{MinimizerSet}}(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00190}00190\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_g_f_a}{GFA}}\ gfa,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ length,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ window\_size,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ mode)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00191}00191\ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{MinimizerSet}}(length,\ window\_size,\ mode)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00192}00192\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a7ae3c696c3190192397bfae20434fd9e}{getMinimizerFromGFA}}(gfa);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00194}00194\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00202}\doxymbox{\hyperlink{class_minimizer_set_a6e5b11efc34e5a739f4c15b7c1451649}{00202}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_minimizer_set_a6e5b11efc34e5a739f4c15b7c1451649}{MinimizerSet}}(\doxymbox{\hyperlink{class_segment}{Segment}}\ segment,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ length,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ window\_size)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00203}00203\ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{MinimizerSet}}(length,\ window\_size)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00204}00204\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a8da7253af1079acd28b88bf2b986be2e}{getMinimizerFromSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00206}00206\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00207}00207\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00214}\doxymbox{\hyperlink{class_minimizer_set_a01a7fbadc4fcc9bcb06824f2fa572156}{00214}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_minimizer_set_a01a7fbadc4fcc9bcb06824f2fa572156}{MinimizerSet}}(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00215}00215\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ segment,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ length,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ window\_size,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ mode)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00216}00216\ \ \ \ \ \ \ \ \ :\ \doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{MinimizerSet}}(length,\ window\_size,\ mode)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00217}00217\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00218}00218\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a8da7253af1079acd28b88bf2b986be2e}{getMinimizerFromSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00219}00219\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00220}00220\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00225}\doxymbox{\hyperlink{class_minimizer_set_a02826c035cac4307033da9c26d83c4fd}{00225}}\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_minimizer_set_a02826c035cac4307033da9c26d83c4fd}{MinimizerSet}}(\textcolor{keyword}{const}\ std::string\ \&filename)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00226}00226\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00227}00227\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (filename.size()\ <\ 5\ ||\ filename.substr(filename.size()\ -\/\ 5)\ !=\ \textcolor{stringliteral}{"{}.bmin"{}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[MinimizerSet\ Constructor]\ Filename\ is\ not\ a\ .bmin\ file:\ "{}}\ +}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ filename);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00232}00232\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00233}00233\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a07a402b5e207dcb7836c7c4b3eac6618}{getMinimizerFrombmin}}(filename);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00235}00235\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00241}\doxymbox{\hyperlink{class_minimizer_set_ab35f67b6420b03e4c5f6cd637eb4cf3b}{00241}}\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{class_minimizer_set_ab35f67b6420b03e4c5f6cd637eb4cf3b}{getMinimizerNum}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}.size();\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00242}00242\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00247}\doxymbox{\hyperlink{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e}{00247}}\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e}{getLength}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}};\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00253}\doxymbox{\hyperlink{class_minimizer_set_a21678694eb637e1989367d7390290227}{00253}}\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{class_minimizer_set_a21678694eb637e1989367d7390290227}{getWindowSize}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}};\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00254}00254\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00259}\doxymbox{\hyperlink{class_minimizer_set_a017be930961cc6b2045ad052c52c0159}{00259}}\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{class_minimizer_set_a017be930961cc6b2045ad052c52c0159}{getMode}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{mode\_}};\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00260}00260\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00265}\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{00265}}\ \ \ \ \ \textcolor{keyword}{const}\ std::unordered\_map<uhash\_t,\ Minimizer>\ \&\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{getMinimizerTable}}()\textcolor{keyword}{\ const}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00266}00266\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00268}00268\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00274}\doxymbox{\hyperlink{class_minimizer_set_acd67243f2d4b8a0bc27ba4ad46b5521b}{00274}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_acd67243f2d4b8a0bc27ba4ad46b5521b}{setLength}}(\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ length)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00275}00275\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00276}00276\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}.size()\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00277}00277\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}[Set\ Minimizer\ Length]\ Error:\ Cannot\ set\ length\ when\ minimizer\ table\ is\ not\ empty."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (length\ >\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022}{MINIMIZER\_MAX\_LENGTH}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}[Set\ Minimizer\ Length]\ Error:\ length\ exceeds"{}}\ +\ std::to\_string(\doxymbox{\hyperlink{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022}{MINIMIZER\_MAX\_LENGTH}})\ +\ \textcolor{stringliteral}{"{}."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00284}00284\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}}\ =\ length;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00285}00285\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00286}00286\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00291}\doxymbox{\hyperlink{class_minimizer_set_a8d680e1d7fd2f5a0d45c5f99025c2778}{00291}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_a8d680e1d7fd2f5a0d45c5f99025c2778}{setWindowSize}}(\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ window\_size)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00292}00292\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00293}00293\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}.size()\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}[Set\ Minimizer\ Window\ Size]\ Error:\ Cannot\ set\ window\ size\ when\ minimizer\ table\ is\ not\ empty."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}}\ =\ window\_size;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00298}00298\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00299}00299\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00304}\doxymbox{\hyperlink{class_minimizer_set_ab28a65c454e8e804b6905306856371a2}{00304}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_ab28a65c454e8e804b6905306856371a2}{setMode}}(\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ mode)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00305}00305\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}.size()\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(\textcolor{stringliteral}{"{}[Set\ Minimizer\ Mode]\ Error:\ Cannot\ set\ mode\ when\ minimizer\ table\ is\ not\ empty."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{mode\_}}\ =\ mode;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00311}00311\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00312}00312\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00316}\doxymbox{\hyperlink{class_minimizer_set_a7c03713b78e3526c028169d3f73bbafa}{00316}}\ \ \ \ \ \textcolor{keyword}{friend}\ std::ostream\ \&\doxymbox{\hyperlink{class_minimizer_set_a7c03713b78e3526c028169d3f73bbafa}{operator<<}}(std::ostream\ \&os,\ \doxymbox{\hyperlink{class_minimizer_set_a8c262ec677df545d11b7dfb35dd3932d}{MinimizerSet}}\ \&ms)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00317}00317\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00318}00318\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Minimizer\ Length:\ "{}}\ <<\ std::dec\ <<\ ms.\doxymbox{\hyperlink{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e}{getLength}}()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00319}00319\ \ \ \ \ \ \ \ \ os\ <<\ \textcolor{stringliteral}{"{}Minimizer\ Window\ Size:\ "{}}\ <<\ std::dec\ <<\ ms.\doxymbox{\hyperlink{class_minimizer_set_a21678694eb637e1989367d7390290227}{getWindowSize}}()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00320}00320\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&it\ :\ ms.\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{getMinimizerTable}}())}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)tHash\ Value:\ 0x"{}}\ <<\ std::hex\ <<\ it.first;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)tSequence:\ "{}}\ <<\ ms.\doxymbox{\hyperlink{class_minimizer_set_a06193efad39c7c590593a104acfd50f5}{bin2sequence}}(it.second.getSequence(),\ ms.\doxymbox{\hyperlink{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e}{getLength}}())\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ it.second.getPositions().size();\ i++)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)tid:0x"{}}\ <<\ std::hex}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(8)\ <<\ std::setfill(\textcolor{charliteral}{'0'})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a5943b9d742a50c2e692dba88173d941b}{getPosID}}(it.second.getPositions()[i]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)toffset:0x"{}}\ <<\ std::hex}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::setw(8)\ <<\ std::setfill(\textcolor{charliteral}{'0'})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa}{getPosOffset}}(it.second.getPositions()[i]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00333}00333\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)tdir:"{}}\ <<\ std::hex}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00334}00334\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ ((\doxymbox{\hyperlink{bgfa__seed_8hpp_ad0aa16567b68c3765f19c026b6331a5a}{getPosDir}}((it.second.getPositions()[i]))\ ==\ 0)\ ?\ \textcolor{charliteral}{'+'}\ :\ \textcolor{charliteral}{'-\/'})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00335}00335\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00337}00337\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00338}00338\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00339}00339\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00345}\doxymbox{\hyperlink{class_minimizer_set_a7b687a54acbe06f0dab19a6c8c71efb1}{00345}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_a7b687a54acbe06f0dab19a6c8c71efb1}{print2bin}}()}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00346}00346\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00347}00347\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0x"{}}\ <<\ std::hex\ <<\ std::setw(8)\ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}}\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00348}00348\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0x"{}}\ <<\ std::hex\ <<\ std::setw(8)\ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ :\ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00350}00350\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ it.second.getPositions().size();\ i++)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0x"{}}\ <<\ std::hex\ <<\ std::setw(16)\ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ it.first\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0x"{}}\ <<\ std::hex\ <<\ std::setw(16)\ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ it.second.getSequence()\ <<\ \textcolor{stringliteral}{"{}\ "{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00355}00355\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}0x"{}}\ <<\ std::hex\ <<\ std::setw(16)\ <<\ std::setfill(\textcolor{charliteral}{'0'})\ <<\ it.second.getPositions()[i]\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ std::cout\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00358}00358\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00359}00359\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00361}\doxymbox{\hyperlink{class_minimizer_set_ade4c7986f06ca078bf0e16c467f5c86f}{00361}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_ade4c7986f06ca078bf0e16c467f5c86f}{writeSeed2bmin}}(\textcolor{keyword}{const}\ std::string\ \&filename)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00362}00362\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00363}00363\ \ \ \ \ \ \ \ \ std::ofstream\ output\_file(filename,\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!output\_file.is\_open())}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ file:\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00369}00369\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00370}00370\ \ \ \ \ \ \ \ \ output\_file.write(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&\doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}}),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00372}00372\ \ \ \ \ \ \ \ \ output\_file.write(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&\doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}}),\ \textcolor{keyword}{sizeof}(uint32\_t));}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ it\ :\ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ it.second.getPositions().size();\ i++)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00378}00378\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\_file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&(it.first)),\ \textcolor{keyword}{sizeof}(uint64\_t));}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\_file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&(it.second.getSequence())),\ \textcolor{keyword}{sizeof}(uint64\_t));}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ output\_file.write(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keyword}{const\ }\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&(it.second.getPositions()[i])),\ \textcolor{keyword}{sizeof}(uint64\_t));}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00381}00381\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00383}00383\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00384}00384\ \ \ \ \ \ \ \ \ output\_file.close();}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00385}00385\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00386}00386\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00387}00387\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00392}\doxymbox{\hyperlink{class_minimizer_set_a7ae3c696c3190192397bfae20434fd9e}{00392}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_a7ae3c696c3190192397bfae20434fd9e}{getMinimizerFromGFA}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ gfa)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00393}00393\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00394}00394\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ segment\ :\ gfa.\doxymbox{\hyperlink{class_g_f_a_a2368cf1e7678827ac287e542ce85a727}{getAllSegments}}())}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cout\ <<\ "{}node:"{}\ <<\ node[0]\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a8da7253af1079acd28b88bf2b986be2e}{getMinimizerFromSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00399}00399\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00400}00400\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00405}\doxymbox{\hyperlink{class_minimizer_set_a07a402b5e207dcb7836c7c4b3eac6618}{00405}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_a07a402b5e207dcb7836c7c4b3eac6618}{getMinimizerFrombmin}}(\textcolor{keyword}{const}\ std::string\ \&filename)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00406}00406\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00407}00407\ \ \ \ \ \ \ \ \ std::ifstream\ input\_file(filename,\ std::ios::binary);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00408}00408\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!input\_file.is\_open())}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Failed\ to\ open\ file:\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00412}00412\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00413}00413\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 读取length\_和window\_size\_}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ read\_length,\ read\_window;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00416}00416\ \ \ \ \ \ \ \ \ input\_file.read(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&read\_length),\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}));}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00418}00418\ \ \ \ \ \ \ \ \ input\_file.read(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&read\_window),\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}));}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}}\ =\ read\_length;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}}\ =\ read\_window;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00422}00422\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}}\ >\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022}{MINIMIZER\_MAX\_LENGTH}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[Load\ From\ bmin\ File]\ Error:\ length\_\ exceeds\ 32."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cerr\ <<\ "{}Error:\ length\_\ exceeds\ 32."{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ input\_file.close();}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00431}00431\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00432}00432\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\_t}}\ hash;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}}\ seq;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\_t}}\ pos;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00435}00435\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00436}00436\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (input\_file.read(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&hash),\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\_t}})))}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00438}00438\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00439}00439\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!input\_file.read(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&seq),\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}})))}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00442}00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[Load\ From\ bmin\ File]\ Error\ reading\ sequence."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!input\_file.read(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00446}00446\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}\ *\textcolor{keyword}{>}(\&pos),\ \textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\_t}})))}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[Load\ From\ bmin\ File]\ Error\ reading\ position."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00451}00451\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00452}00452\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ \&entry\ =\ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[hash];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (entry.getPositions().empty())}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ entry.setSequence(seq);\ \textcolor{comment}{//\ 首次遇到该哈希，设置序列}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ entry.first\ =\ seq;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (entry.getSequence()\ !=\ seq)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::runtime\_error(}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[Load\ From\ bmin\ File]\ Conflict:\ Hash\ 0x"{}}\ +}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string(hash)\ +\ \textcolor{stringliteral}{"{}\ has\ inconsistent\ sequences\ (0x"{}}\ +}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string(entry.getSequence())\ +\ \textcolor{stringliteral}{"{}\ vs\ 0x"{}}\ +}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::to\_string(seq)\ +\ \textcolor{stringliteral}{"{})"{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::cerr\ <<\ "{}Conflict:\ Hash\ 0x"{}\ <<\ std::hex\ <<\ hash}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ has\ inconsistent\ sequences\ (0x"{}\ <<\ entry.first}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00467}00467\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ \ \ \ \ \ <<\ "{}\ vs\ 0x"{}\ <<\ seq\ <<\ "{})"{}\ <<\ std::endl;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ continue;\ //\ 跳过不一致的条目}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ entry.addPosition(pos);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ entry.second.push\_back(pos);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00474}00474\ \ \ \ \ \ \ \ \ input\_file.close();}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00475}00475\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Loaded\ "{}}\ <<\ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}.size()\ <<\ \textcolor{stringliteral}{"{}\ minimizers\ from\ "{}}\ <<\ filename\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00476}00476\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00477}00477\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00484}\doxymbox{\hyperlink{class_minimizer_set_a06193efad39c7c590593a104acfd50f5}{00484}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{class_minimizer_set_a06193efad39c7c590593a104acfd50f5}{bin2sequence}}(\doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\_t}}\ bin\_strm,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ l\_str)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00485}00485\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ bit\_number\ =\ 2\ *\ l\_str;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00487}00487\ \ \ \ \ \ \ \ \ std::string\ sequence;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ l\_str;\ ++i)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00490}00490\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ baseBinary\ =\ (bin\_strm\ >>\ (bit\_number\ -\/\ 2\ *\ i\ -\/\ 2))\ \&\ 0x03;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \ \ \ \ sequence\ +=\ \doxymbox{\hyperlink{namespace_global_variant_a8ba36694bdb25ccfd3e6bb16586c38ba}{GlobalVariant::bin2char}}[baseBinary];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ sequence;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00494}00494\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00495}00495\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00500}\doxymbox{\hyperlink{class_minimizer_set_a8da7253af1079acd28b88bf2b986be2e}{00500}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_a8da7253af1079acd28b88bf2b986be2e}{getMinimizerFromSegment}}(\doxymbox{\hyperlink{class_segment}{Segment}}\ segment)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00501}00501\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{switch}\ (\doxymbox{\hyperlink{class_minimizer_set_a5f58d0aaa753bf8ce8099f56aaabce0f}{mode\_}})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_ac96e857e1088bb05c41d61926dfcbe12}{MINIMIZER\_MODE\_SINGLE}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a4e9d25ae18e65dd189dd30a985658f5f}{getMinimizerOfNode\_SingleMode}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_afef9eb82c2584df75890f043cf44046c}{MINIMIZER\_MODE\_SINGLE\_REVERSE}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a1d456e90e524d029b3286645fcababb4}{getMinimizerOfNode\_SingleReverseMode}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a25647d21b1c19d55a7562afbadd9e20a}{MINIMIZER\_MODE\_DOUBLE}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a6417ba26cd0e085531cd226b77bb5611}{getMinimizerOfNode\_DoubleMode}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00513}00513\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ Invalid\ minimizer\ mode."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00517}00517\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00518}00518\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00526}\doxymbox{\hyperlink{class_minimizer_set_a4e9d25ae18e65dd189dd30a985658f5f}{00526}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_a4e9d25ae18e65dd189dd30a985658f5f}{getMinimizerOfNode\_SingleMode}}(\doxymbox{\hyperlink{class_segment}{Segment}}\ node,\ \textcolor{keywordtype}{bool}\ is\_reverse\ =\ \textcolor{keyword}{false})}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00527}00527\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ k\ =\ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ w\ =\ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00530}00530\ \ \ \ \ \ \ \ \ uint64\_t\ shift1\ =\ 2\ *\ (k\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00531}00531\ \ \ \ \ \ \ \ \ uint64\_t\ mask\ =\ (1ULL\ <<\ 2\ *\ k)\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00532}00532\ \ \ \ \ \ \ \ \ uint64\_t\ kmer\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ l,\ buf\_pos,\ min\_pos;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ kmer\_span\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00535}00535\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ index信息,\ [0]:hash,\ [1]:node\_id(32),offset(31),direction(1),\ [2]:sequence}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00537}00537\ \ \ \ \ \ \ \ \ uint64\_t\ min[3]\ =\ \{UINT64\_MAX,\ UINT64\_MAX,\ 0\};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00538}00538\ \ \ \ \ \ \ \ \ uint64\_t\ buf[256][3];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00539}00539\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ l\_str\ =\ node.\doxymbox{\hyperlink{class_segment_a811b62cf39d61b1bf05a02dc93bf3441}{getLength}}();}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00541}00541\ \ \ \ \ \ \ \ \ uint8\_t\ baseinElement\ =\ \doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00542}00542\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ l\ =\ buf\_pos\ =\ min\_pos\ =\ 0;\ i\ <\ l\_str;\ ++i)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00544}00544\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_seq\_element\ =\ i\ /\ baseinElement;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_base\ =\ i\ \%\ baseinElement;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00547}00547\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ assert(index\_seq\_element\ <\ node.\doxymbox{\hyperlink{class_segment_a554ebd20459c001033b541a83044e732}{getBinarySequence}}().size());}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00549}00549\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ c\ =\ (node.\doxymbox{\hyperlink{class_segment_a554ebd20459c001033b541a83044e732}{getBinarySequence}}()[index\_seq\_element]\ >>\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ 2\ *\ index\_base\ -\/\ 2))\ \&\ 0x03;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ hashinfo[3]\ =\ \{UINT64\_MAX,\ UINT64\_MAX,\ 0\};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00552}00552\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00553}00553\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_reverse)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00554}00554\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kmer\ =\ (kmer\ >>\ 2)\ |\ (3ULL\ \string^\ c)\ <<\ shift1;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00555}00555\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00556}00556\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ kmer\ =\ (kmer\ <<\ 2\ |\ c)\ \&\ mask;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00557}00557\ \ \ \ \ \ \ \ \ \ \ \ \ ++l;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00558}00558\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00559}00559\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ k)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hashinfo[0]\ =\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a19e4ca26c431ecd217fecfd056e2edcb}{hash64}}(kmer,\ mask);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_reverse)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hashinfo[1]\ =\ (uint64\_t)node.\doxymbox{\hyperlink{class_segment_a44d2763636bd56cecf70dda3f88377c6}{getId}}()\ <<\ 32\ |\ (l\_str\ +\ k\ -\/\ 2\ -\/\ (uint32\_t)i)\ <<\ 1\ |\ 1;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00565}00565\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hashinfo[1]\ =\ (uint64\_t)node.\doxymbox{\hyperlink{class_segment_a44d2763636bd56cecf70dda3f88377c6}{getId}}()\ <<\ 32\ |\ (uint32\_t)i\ <<\ 1\ |\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hashinfo[2]\ =\ kmer;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00568}00568\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ buf[buf\_pos][0]\ =\ hashinfo[0];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ buf[buf\_pos][1]\ =\ hashinfo[1];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00571}00571\ \ \ \ \ \ \ \ \ \ \ \ \ buf[buf\_pos][2]\ =\ hashinfo[2];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00572}00572\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00573}00573\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ ==\ w\ +\ k\ -\/\ 1\ \&\&\ min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00575}00575\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ buf\_pos\ +\ 1;\ j\ <\ w;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00576}00576\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00577}00577\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ ==\ buf[j][0]\ \&\&\ buf[j][1]\ !=\ min[1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00578}00578\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00579}00579\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].setSequence(buf[j][2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00580}00580\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].addPosition(buf[j][1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00581}00581\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].first\ =\ buf[j][2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00582}00582\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].second.emplace\_back(buf[j][1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00583}00583\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ info\_table[buf[j][0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00584}00584\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00585}00585\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00586}00586\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ buf\_pos;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00587}00587\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00588}00588\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ ==\ buf[j][0]\ \&\&\ buf[j][1]\ !=\ min[1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00589}00589\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00590}00590\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].setSequence(buf[j][2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00591}00591\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].addPosition(buf[j][1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00592}00592\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00593}00593\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].first\ =\ buf[j][2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00594}00594\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].second.emplace\_back(buf[j][1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00595}00595\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00596}00596\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00597}00597\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00598}00598\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00599}00599\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hashinfo[0]\ <=\ min[0])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00600}00600\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ w\ +\ k\ \&\&\ min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].setSequence(min[2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00604}00604\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].addPosition(min[1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00605}00605\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00606}00606\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].first\ =\ min[2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].second.emplace\_back(min[1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00609}00609\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[0]\ =\ hashinfo[0];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[1]\ =\ hashinfo[1];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[2]\ =\ hashinfo[2];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_pos\ =\ buf\_pos;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (buf\_pos\ ==\ min\_pos)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00616}00616\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00617}00617\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ w\ +\ k\ -\/\ 1\ \&\&\ min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00618}00618\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00619}00619\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].setSequence(min[2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00620}00620\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].addPosition(min[1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00621}00621\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00622}00622\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].first\ =\ min[2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00623}00623\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].second.emplace\_back(min[1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[0]\ =\ UINT64\_MAX;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00627}00627\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ buf\_pos\ +\ 1;\ j\ <\ w;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00628}00628\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00629}00629\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ >=\ buf[j][0])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00630}00630\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00631}00631\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[0]\ =\ buf[j][0];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00632}00632\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[1]\ =\ buf[j][1];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00633}00633\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[2]\ =\ buf[j][2];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_pos\ =\ j;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00636}00636\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00637}00637\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <=\ buf\_pos;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00638}00638\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00639}00639\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ >=\ buf[j][0])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00640}00640\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00641}00641\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[0]\ =\ buf[j][0];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00642}00642\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[1]\ =\ buf[j][1];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00643}00643\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[2]\ =\ buf[j][2];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_pos\ =\ j;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00647}00647\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ w\ +\ k\ -\/\ 1\ \&\&\ min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ buf\_pos\ +\ 1;\ j\ <\ w;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00651}00651\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ ==\ buf[j][0]\ \&\&\ min[1]\ !=\ buf[j][1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00654}00654\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].setSequence(buf[j][2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].addPosition(buf[j][1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00656}00656\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00657}00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].first\ =\ buf[j][2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].second.emplace\_back(buf[j][1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <=\ buf\_pos;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ ==\ buf[j][0]\ \&\&\ min[1]\ !=\ buf[j][1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00665}00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00666}00666\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].setSequence(buf[j][2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00667}00667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].addPosition(buf[j][1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00668}00668\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00669}00669\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].first\ =\ buf[j][2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].second.emplace\_back(buf[j][1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00675}00675\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (++buf\_pos\ ==\ w)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buf\_pos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00678}00678\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00679}00679\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00680}00680\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00681}00681\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].setSequence(min[2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].addPosition(min[1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00684}00684\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].first\ =\ min[2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].second.emplace\_back(min[1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00688}00688\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00689}00689\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00690}00690\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00697}\doxymbox{\hyperlink{class_minimizer_set_a1d456e90e524d029b3286645fcababb4}{00697}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_a1d456e90e524d029b3286645fcababb4}{getMinimizerOfNode\_SingleReverseMode}}(\doxymbox{\hyperlink{class_segment}{Segment}}\ node)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00698}00698\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00699}00699\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ k\ =\ \doxymbox{\hyperlink{class_minimizer_set_ad487efdba43ec70054bb5205a14e839d}{length\_}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00700}00700\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ w\ =\ \doxymbox{\hyperlink{class_minimizer_set_a8d43bc7090481e2f817af9ae7e7ab758}{window\_size\_}};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00701}00701\ \ \ \ \ \ \ \ \ uint64\_t\ shift1\ =\ 2\ *\ (k\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00702}00702\ \ \ \ \ \ \ \ \ uint64\_t\ mask\ =\ (1ULL\ <<\ 2\ *\ k)\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00703}00703\ \ \ \ \ \ \ \ \ uint64\_t\ kmer[2]\ =\ \{0,\ 0\};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00704}00704\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ i,\ j,\ l,\ buf\_pos,\ min\_pos;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00705}00705\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ int\ kmer\_span\ =\ 0;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00706}00706\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00707}00707\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ index信息,\ [0]:hash,\ [1]:node\_id(32),offset(31),direction(1),\ [2]:sequence}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00708}00708\ \ \ \ \ \ \ \ \ uint64\_t\ min[3]\ =\ \{UINT64\_MAX,\ UINT64\_MAX,\ 0\};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00709}00709\ \ \ \ \ \ \ \ \ uint64\_t\ buf[256][3];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00710}00710\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00711}00711\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ l\_str\ =\ node.\doxymbox{\hyperlink{class_segment_a811b62cf39d61b1bf05a02dc93bf3441}{getLength}}();}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00712}00712\ \ \ \ \ \ \ \ \ uint8\_t\ baseinElement\ =\ \doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ /\ 2;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00713}00713\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00714}00714\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (i\ =\ l\ =\ buf\_pos\ =\ min\_pos\ =\ 0;\ i\ <\ l\_str;\ ++i)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00715}00715\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00716}00716\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_seq\_element\ =\ i\ /\ baseinElement;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00717}00717\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ index\_base\ =\ i\ \%\ baseinElement;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00718}00718\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00719}00719\ \ \ \ \ \ \ \ \ \ \ \ \ assert(index\_seq\_element\ <\ node.\doxymbox{\hyperlink{class_segment_a554ebd20459c001033b541a83044e732}{getBinarySequence}}().size());}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00720}00720\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00721}00721\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ c\ =\ (node.\doxymbox{\hyperlink{class_segment_a554ebd20459c001033b541a83044e732}{getBinarySequence}}()[index\_seq\_element]\ >>\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ 2\ *\ index\_base\ -\/\ 2))\ \&\ 0x03;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00722}00722\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ hashinfo[3]\ =\ \{UINT64\_MAX,\ UINT64\_MAX,\ 0\};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00723}00723\ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ kmer\_dir;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00724}00724\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00725}00725\ \ \ \ \ \ \ \ \ \ \ \ \ kmer[0]\ =\ (kmer[0]\ <<\ 2\ |\ c)\ \&\ mask;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ kmer[1]\ =\ (kmer[1]\ >>\ 2)\ |\ (3ULL\ \string^\ c)\ <<\ shift1;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00727}00727\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (kmer[0]\ ==\ kmer[1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00728}00728\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00729}00729\ \ \ \ \ \ \ \ \ \ \ \ \ kmer\_dir\ =\ kmer[0]\ <\ kmer[1]\ ?\ 0\ :\ 1;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00730}00730\ \ \ \ \ \ \ \ \ \ \ \ \ ++l;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00731}00731\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ k)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00733}00733\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00734}00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hashinfo[0]\ =\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a19e4ca26c431ecd217fecfd056e2edcb}{hash64}}(kmer[kmer\_dir],\ mask);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00735}00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hashinfo[1]\ =\ (uint64\_t)node.\doxymbox{\hyperlink{class_segment_a44d2763636bd56cecf70dda3f88377c6}{getId}}()\ <<\ 32\ |\ (uint32\_t)i\ <<\ 1\ |\ kmer\_dir;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00736}00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ hashinfo[2]\ =\ kmer[kmer\_dir];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00737}00737\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00738}00738\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00739}00739\ \ \ \ \ \ \ \ \ \ \ \ \ buf[buf\_pos][0]\ =\ hashinfo[0];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ buf[buf\_pos][1]\ =\ hashinfo[1];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00741}00741\ \ \ \ \ \ \ \ \ \ \ \ \ buf[buf\_pos][2]\ =\ hashinfo[2];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00742}00742\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00743}00743\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ ==\ w\ +\ k\ -\/\ 1\ \&\&\ min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00744}00744\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ buf\_pos\ +\ 1;\ j\ <\ w;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00746}00746\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00747}00747\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ ==\ buf[j][0]\ \&\&\ buf[j][1]\ !=\ min[1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00749}00749\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].setSequence(buf[j][2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00750}00750\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].addPosition(buf[j][1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00751}00751\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00752}00752\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].first\ =\ buf[j][2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00753}00753\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].second.emplace\_back(buf[j][1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00754}00754\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ info\_table[buf[j][0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00755}00755\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00756}00756\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00757}00757\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <\ buf\_pos;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ ==\ buf[j][0]\ \&\&\ buf[j][1]\ !=\ min[1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00761}00761\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].setSequence(buf[j][2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00762}00762\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].addPosition(buf[j][1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00763}00763\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00764}00764\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].first\ =\ buf[j][2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00765}00765\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].second.emplace\_back(buf[j][1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00766}00766\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00767}00767\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00768}00768\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00769}00769\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00770}00770\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hashinfo[0]\ <=\ min[0])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00771}00771\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00772}00772\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ w\ +\ k\ \&\&\ min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00773}00773\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00774}00774\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].setSequence(min[2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00775}00775\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].addPosition(min[1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00776}00776\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00777}00777\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].first\ =\ min[2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00778}00778\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].second.emplace\_back(min[1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00779}00779\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ //\ hash\_minimizer\_map\_[min[0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00780}00780\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00781}00781\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[0]\ =\ hashinfo[0];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00782}00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[1]\ =\ hashinfo[1];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[2]\ =\ hashinfo[2];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_pos\ =\ buf\_pos;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00785}00785\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00786}00786\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (buf\_pos\ ==\ min\_pos)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ w\ +\ k\ -\/\ 1\ \&\&\ min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00790}00790\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].setSequence(min[2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00791}00791\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].addPosition(min[1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00792}00792\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00793}00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].first\ =\ min[2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].second.emplace\_back(min[1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00797}00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[0]\ =\ UINT64\_MAX;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00798}00798\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ buf\_pos\ +\ 1;\ j\ <\ w;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00799}00799\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00800}00800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ >=\ buf[j][0])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00801}00801\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00802}00802\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[0]\ =\ buf[j][0];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00803}00803\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[1]\ =\ buf[j][1];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00804}00804\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[2]\ =\ buf[j][2];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00805}00805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_pos\ =\ j;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00806}00806\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00807}00807\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00808}00808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <=\ buf\_pos;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00809}00809\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00810}00810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ >=\ buf[j][0])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00811}00811\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00812}00812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[0]\ =\ buf[j][0];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00813}00813\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[1]\ =\ buf[j][1];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00814}00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min[2]\ =\ buf[j][2];}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00815}00815\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ min\_pos\ =\ j;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00816}00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00817}00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00818}00818\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00819}00819\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (l\ >=\ w\ +\ k\ -\/\ 1\ \&\&\ min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00820}00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00821}00821\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ buf\_pos\ +\ 1;\ j\ <\ w;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00822}00822\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00823}00823\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ ==\ buf[j][0]\ \&\&\ min[1]\ !=\ buf[j][1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00824}00824\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].setSequence(buf[j][2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00826}00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].addPosition(buf[j][1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00827}00827\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00828}00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].first\ =\ buf[j][2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].second.emplace\_back(buf[j][1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00830}00830\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00831}00831\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00832}00832\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00833}00833\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j\ =\ 0;\ j\ <=\ buf\_pos;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00834}00834\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00835}00835\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ ==\ buf[j][0]\ \&\&\ min[1]\ !=\ buf[j][1])}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00836}00836\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00837}00837\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].setSequence(buf[j][2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00838}00838\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[buf[j][0]].addPosition(buf[j][1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00839}00839\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].first\ =\ buf[j][2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00840}00840\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]].second.emplace\_back(buf[j][1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00841}00841\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[buf[j][0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00842}00842\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00843}00843\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00844}00844\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00845}00845\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00846}00846\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (++buf\_pos\ ==\ w)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00847}00847\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ buf\_pos\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00848}00848\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00849}00849\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00850}00850\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (min[0]\ !=\ UINT64\_MAX)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00851}00851\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00852}00852\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].setSequence(min[2]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00853}00853\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_ab928688c25a5fdd6e962d583e8cc2c2f}{hash\_minimizer\_map\_}}[min[0]].addPosition(min[1]);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00854}00854\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00855}00855\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].first\ =\ min[2];}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00856}00856\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]].second.emplace\_back(min[1]);}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00857}00857\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ hash\_minimizer\_map\_[min[0]][1]++;}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00858}00858\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00859}00859\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00860}00860\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00867}\doxymbox{\hyperlink{class_minimizer_set_a6417ba26cd0e085531cd226b77bb5611}{00867}}\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_minimizer_set_a6417ba26cd0e085531cd226b77bb5611}{getMinimizerOfNode\_DoubleMode}}(\doxymbox{\hyperlink{class_segment}{Segment}}\ node)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00868}00868\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00869}00869\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a4e9d25ae18e65dd189dd30a985658f5f}{getMinimizerOfNode\_SingleMode}}(node,\ \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00870}00870\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set_a4e9d25ae18e65dd189dd30a985658f5f}{getMinimizerOfNode\_SingleMode}}(node,\ \textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00871}00871\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00872}00872\ \};}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00873}00873\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00874}\doxymbox{\hyperlink{bgfa__seed_8hpp_a14a379ec56a75b7f3f6484c94c1d20d1}{00874}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a14a379ec56a75b7f3f6484c94c1d20d1}{testMinimizerSet}}(\doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ ms)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00875}00875\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00876}00876\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Minimizer\ Total\ number:\ "{}}\ <<\ std::dec\ <<\ ms.\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{getMinimizerTable}}().size()\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00877}00877\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}txt"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00878}00878\ \ \ \ \ std::cout\ <<\ ms;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00879}00879\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}bin"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00880}00880\ \ \ \ \ ms.\doxymbox{\hyperlink{class_minimizer_set_a7b687a54acbe06f0dab19a6c8c71efb1}{print2bin}}();}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00881}00881\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00882}00882\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00883}\doxymbox{\hyperlink{bgfa__seed_8hpp_a5923a84210ab80bb04ca3901da20ebe3}{00883}}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{MinimizerSetVect}}\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a5923a84210ab80bb04ca3901da20ebe3}{getMinimizerVect}}(\doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ \&ms)}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00884}00884\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00885}00885\ \ \ \ \ \doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{MinimizerSetVect}}\ minimizer\_vect;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00886}00886\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&it\ :\ ms.\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{getMinimizerTable}}())}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00887}00887\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00888}00888\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\_t}}\ hash\ =\ it.first;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00889}00889\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{auto}\ pos\ :\ it.second.getPositions())}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00890}00890\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00891}00891\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ node\_offset\ =\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa}{getPosOffset}}(pos);}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00892}00892\ \ \ \ \ \ \ \ \ \ \ \ \ minimizer\_vect.emplace\_back(std::make\_pair(node\_offset,\ hash));}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00893}00893\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00894}00894\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00895}00895\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00896}00896\ \ \ \ \ std::sort(minimizer\_vect.begin(),\ minimizer\_vect.end());}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00897}00897\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00898}00898\ \ \ \ \ \textcolor{keywordflow}{return}\ minimizer\_vect;}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00899}00899\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00900}00900\ }
+\DoxyCodeLine{\Hypertarget{bgfa__seed_8hpp_source_l00901}00901\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ SEED\_HPP\_}}
+
+\end{DoxyCode}

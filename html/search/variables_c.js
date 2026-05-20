@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['n_5fcigar_0',['n_cigar',['../structksw__extz__t.html#ab3854da80b11959549af1c6a35a5a23a',1,'ksw_extz_t']]],
+  ['name_1',['name',['../struct_c_l_i_1_1_config_item.html#aaf499b8c32cef0f5c8d7271fa0d10b93',1,'CLI::ConfigItem']]],
+  ['name_5f_2',['name_',['../class_c_l_i_1_1_validator.html#ac97b23ee16e15ae0b31253feb39706bf',1,'CLI::Validator::name_'],['../class_c_l_i_1_1_app.html#a61a36f7297a3199b9e789887510fa3fa',1,'CLI::App::name_']]],
+  ['name_5fto_5fid_5f_3',['name_to_id_',['../class_g_f_a.html#a2b434354966f84798d7ef427cbfc3004',1,'GFA']]],
+  ['need_5foptions_5f_4',['need_options_',['../class_c_l_i_1_1_app.html#ad375a844780daa83420f9821434e187d',1,'CLI::App']]],
+  ['need_5fsubcommands_5f_5',['need_subcommands_',['../class_c_l_i_1_1_app.html#ad8d1f603e89a28555a09b754420054ca',1,'CLI::App']]],
+  ['needs_5f_6',['needs_',['../class_c_l_i_1_1_option.html#a3bd8d2ff461e8046b284cdbfcd741dce',1,'CLI::Option']]],
+  ['nodes_5f_7',['nodes_',['../class_path.html#acf9fc19a6f87fc78ffcc4088462f95bb',1,'Path']]],
+  ['non_5fmodifying_5f_8',['non_modifying_',['../class_c_l_i_1_1_validator.html#a60df532d1d80afc040ec0e8ed2736200',1,'CLI::Validator']]],
+  ['nonexistentpath_9',['NonexistentPath',['../namespace_c_l_i.html#a790f9bb552cf96ab9ca2d6c9749adba1',1,'CLI']]],
+  ['nonnegativenumber_10',['NonNegativeNumber',['../namespace_c_l_i.html#ac63dde78c4b53d214ed36e19344a05b0',1,'CLI']]],
+  ['normalized_11',['normalized',['../struct_convert_args.html#afb66799fff708642e602f30526658b29',1,'ConvertArgs']]],
+  ['null_12',['null',['../structwavefront__t.html#ae8b45e50fd644f971122366ea33c6f0a',1,'wavefront_t']]],
+  ['num_5fblocks_13',['num_blocks',['../structbitmap__t.html#abc7d1987ef47bf576aaee471ea088ffc',1,'bitmap_t']]],
+  ['num_5fcolumns_14',['num_columns',['../structscore__matrix__t.html#a2ebacce1f4a0152ad9279bc0a343f754',1,'score_matrix_t::num_columns'],['../structaffine__matrix__t.html#a36fdbc8e084735949a582083b54389f5',1,'affine_matrix_t::num_columns'],['../structaffine2p__matrix__t.html#aba221afa163e5f892906b256a488954d',1,'affine2p_matrix_t::num_columns'],['../structheatmap__t.html#af80244eff05c11cadf6120a64a8cc5a7',1,'heatmap_t::num_columns']]],
+  ['num_5fcompacted_5fblocks_15',['num_compacted_blocks',['../structwf__backtrace__buffer__t.html#a32bb586fc2b10c6742407b64e08769c2',1,'wf_backtrace_buffer_t']]],
+  ['num_5fcompactions_16',['num_compactions',['../structwf__backtrace__buffer__t.html#ade48f8320b17a43af059deae0dbfda3e',1,'wf_backtrace_buffer_t']]],
+  ['num_5fmalloc_5frequests_17',['num_malloc_requests',['../structmm__stack__state__t.html#a04d6d05cba0758a20716592419217cd1',1,'mm_stack_state_t']]],
+  ['num_5fnull_5fsteps_18',['num_null_steps',['../structwavefront__align__status__t.html#a0e198d28c9bf828a86cbba7ff8f8f546',1,'wavefront_align_status_t']]],
+  ['num_5freads_19',['num_reads',['../structcountour__bench__args.html#aa956a82cf95ca86aaaf9b7bc5f4c625e',1,'countour_bench_args']]],
+  ['num_5frows_20',['num_rows',['../structscore__matrix__t.html#aef159571820500e710261b70e6b0a3e5',1,'score_matrix_t::num_rows'],['../structaffine__matrix__t.html#a3a61678c5be9c8c669b58b7b502cfb42',1,'affine_matrix_t::num_rows'],['../structaffine2p__matrix__t.html#ada522654b985bad43422ff783be069bc',1,'affine2p_matrix_t::num_rows'],['../structheatmap__t.html#a947e86926fb26650274a21cb00c422e3',1,'heatmap_t::num_rows']]],
+  ['num_5fthreads_21',['num_threads',['../structalign__bench__params__t.html#ae4621080f71a7f58afc7728845df8ce2',1,'align_bench_params_t']]],
+  ['num_5fwavefronts_22',['num_wavefronts',['../structwavefront__components__t.html#a62ec8f7b7f3c848c43c802c064837bc0',1,'wavefront_components_t']]],
+  ['number_23',['Number',['../namespace_c_l_i.html#ad26eb8a490b25b301412d98b055691be',1,'CLI']]]
+];

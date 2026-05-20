@@ -1,0 +1,29 @@
+\doxysection{src/\+test/\+script/\+gen\+\_\+graph.py File Reference}
+\hypertarget{gen__graph_8py}{}\label{gen__graph_8py}\index{src/test/script/gen\_graph.py@{src/test/script/gen\_graph.py}}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \doxymbox{\hyperlink{namespacegen__graph}{gen\+\_\+graph}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacegen__graph_a44cc4c0593dc212e80d34151586006f1}{gen\+\_\+graph.\+random\+\_\+dna}} (int length, random.\+Random rng)
+\item 
+List\+[Tuple\+[int, int, str, str]\+]\+ \doxymbox{\hyperlink{namespacegen__graph_a8936cb4754cfb812ad74be21049cff91}{gen\+\_\+graph.\+make\+\_\+edges}} (int num\+\_\+nodes, int complexity, float loop\+\_\+prob, random.\+Random rng)
+\item 
+bool \doxymbox{\hyperlink{namespacegen__graph_a9387068e739e07c90ae75f1e8e0f63a0}{gen\+\_\+graph.\+\_\+is\+\_\+strict\+\_\+linear}} (int num\+\_\+nodes, List\+[Tuple\+[int, int, str, str]\+]\+ edges)
+\item 
+None \doxymbox{\hyperlink{namespacegen__graph_aa580740b06a8f4ab01eb590ecb0e8e2f}{gen\+\_\+graph.\+write\+\_\+gfa}} (str output\+\_\+path, List\+[str]\+ sequences, List\+[Tuple\+[int, int, str, str]\+]\+ edges)
+\item 
+Tuple\+[List\+[str]\+, List\+[Tuple\+[int, int, str, str]\+]\+, Dict\+[int, int]\+]\+ \doxymbox{\hyperlink{namespacegen__graph_aa4c8645ae16ebe7ffc0ab2c7b41a5284}{gen\+\_\+graph.\+compress\+\_\+linear}} (List\+[str]\+ sequences, List\+[Tuple\+[int, int, str, str]\+]\+ edges)
+\item 
+argparse.\+Namespace \doxymbox{\hyperlink{namespacegen__graph_a6e58c0f46f4acfc0f9d7affd51cfbdb6}{gen\+\_\+graph.\+parse\+\_\+args}} (List\+[str]\+ argv)
+\item 
+int \doxymbox{\hyperlink{namespacegen__graph_a33581113e7691305c1e360ea83a87b83}{gen\+\_\+graph.\+main}} (List\+[str]\+ argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacegen__graph_ac8a4f34098ed24be47e7181e11ffc63c}{gen\+\_\+graph.\+DNA\+\_\+\+ALPHABET}} = "{}ACGT"{}
+\end{DoxyCompactItemize}

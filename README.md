@@ -4,6 +4,8 @@ bGFA is a genome graph toolkit for converting between GFA and BGFA, building min
 
 This document focuses on how to use the commands and how BGFA data is laid out.
 
+Detailed Usage is in 
+
 ## Fast Start
 
 ### Compilation
@@ -114,145 +116,6 @@ Use this to print summary statistics for a graph.
 ```bash
 ./bgfatools stats -g merged.bgfa
 ```
-
-## Directory Snapshot
-
-- `src/`: Main implementation for graph storage, conversion, indexing, merge, alignment, and CLI.
-- `test/`: Regression and behavior tests.
-- `case/`: Adapted code for Bandage, gfatools, and GraphAligner.
-- `build/`: Optional build artifacts.
-- `data/`: Example inputs and outputs.
-
-## `case/` Adaptation Notes
-
-The `case/` directory contains code adapted from external projects so they can work with the current bGFA library and tools. These files are intended to replace the original project files after adaptation.
-
-- `case/Bandage/`: Bandage-side adaptation files such as `assemblygraph.cpp`, `assemblygraph.h`, `bgfa.hpp`, and `bgfa_graph.hpp`.
-- `case/gfatools/`: gfatools-side adaptation files such as `gfa-io.c`, `bgfa.hpp`, and `bgfa_graph.hpp`.
-- `case/GraphAligner/`: GraphAligner-side adaptation files such as `Aligner.cpp`, `AlignerMain.cpp`, `GfaGraph.cpp`, `GfaGraph.h`, `bgfa.hpp`, and `bgfa_graph.hpp`.
-
-## `src/` Layout
-
-The main source directory is organized around the CLI and graph pipeline:
-
-- `main.cpp`: CLI entry point.
-- `bgfa_args.hpp`: Argument structures and option mappings.
-- `bgfa_subcommand.hpp`: Command handlers.
-- `bgfa_graph.hpp`: Graph, segment, link, path, and walk data structures.
-- `bgfa_merge.hpp`: Merge logic.
-- `bgfa_alignment.hpp`: Alignment wrappers.
-- `bgfa_seed.hpp`: Minimizer indexing and `.bmin` IO.
-- `compress.hpp`: Packing helpers.
-- `ksw/`, `wfa/`: Vendored alignment dependencies.
-
-## BGFA Binary Layout
-
-The BGFA file starts with a small header, then stores segment data, link data, path data, and optional walk data.
-
-### Header
-
-The first words record offsets so the reader can jump to each block quickly.
-
-```text
-pre_info    -> flags for path mode and segment-id storage
-s_offset    -> start of segment block
-l_offset    -> start of link block
-p_offset    -> start of path block
-w_offset    -> start of walk block
-```
-
-### Segment block
-
-Segment records store one graph node's sequence and a small amount of metadata. In practice, a segment is the binary form of `Segment` in `src/bgfa_graph.hpp`.
-
-What is stored for each segment:
-
-- `id`: segment ID.
-- `dis`: graph distance used by some merge and screening paths.
-- `length`: sequence length.
-- `sequence`: bases encoded in binary form.
-- optional storage flags: whether the segment ID is written explicitly and how the sequence is packed.
-
-How to understand the packed content:
-
-- The sequence itself is encoded with the internal base mapping `A/C/G/T -> 0/1/2/3`.
-- Short segments may use a compact representation to save space.
-- Longer segments use a full representation with explicit length information and packed base words.
-- The reader and writer follow the same segment packing contract through `GFA::write2Bgfa` and `GFA::loadFromFileBgfa`.
-
-Practical reading tips:
-
-- Treat the segment block as the canonical node table of the graph.
-- If you only need graph topology, segment IDs and lengths are usually enough to inspect first.
-- If you need sequence validation, read the stored binary bases back to a string and compare the original sequence.
-- When `--segment-no-id` is enabled in `convert`, the segment ID is not stored explicitly in the record and is reconstructed by read order.
-
-In short, the segment block is the place where BGFA keeps the graph's node sequences, lengths, and the metadata needed to rebuild the graph later.
-
-### Link block
-
-Links are stored as a compressed adjacency list.
-
-```text
-link_num
-n_rows
-indptr[0..n_rows]
-link_values...
-```
-
-Interpretation:
-
-- `link_num`: total number of links.
-- `n_rows`: number of source nodes with outgoing links.
-- `indptr`: prefix sum array that marks the start of each source node's link list.
-- `link_values`: each link is packed as `(to_id << 2) | dir_bits`.
-
-Direction bits:
-
-- Low 2 bits encode the edge orientation.
-- `dir_bits = (from_dir << 1) | to_dir`.
-- `dir` values are mapped from `+` and `-` through `GlobalVariant::dir2bin`.
-
-Practical reading rule:
-
-- Shift right by `2` to get the target segment ID.
-- Mask with `0x03` to get the direction bits.
-
-### Path block
-
-`Path` stores an ordered node list.
-
-```text
-n_nodes
-node_0
-node_1
-...
-node_(n-1)
-```
-
-Notes:
-
-- Each node is encoded as a `uword_t` value.
-- In direct mode, a node is stored as `(node_id << 1) | dir_bit`.
-- In increment mode, the internal node list can use a compact increment-based representation.
-- When converting to text, the path is printed as an ordered sequence of oriented nodes.
-
-### Walk block
-
-`Walk` extends `Path` with sample-level metadata.
-
-```text
-sample_id
-haplotype_id
-sequence_id
-path data...
-```
-
-Notes:
-
-- Walk records are useful when the graph keeps sample, haplotype, or sequence identifiers.
-- The embedded path is serialized immediately after the three IDs.
-- Walk text output is formatted like a GFA `W` record.
 
 ### Merging-related flags
 

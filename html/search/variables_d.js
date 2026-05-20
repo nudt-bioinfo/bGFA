@@ -1,0 +1,27 @@
+var searchData=
+[
+  ['offset_0',['offset',['../structmm__allocator__request__t.html#abd8eb01c8b700c9f9307c62f09dcd7eb',1,'mm_allocator_request_t::offset'],['../structwavefront__pos__t.html#a01f9fba940de4fe87d759593af6ce33d',1,'wavefront_pos_t::offset']]],
+  ['offset_5fforward_1',['offset_forward',['../structwf__bialign__breakpoint__t.html#a2ab5df310c7124d9909ab570100d94f1',1,'wf_bialign_breakpoint_t']]],
+  ['offset_5freverse_2',['offset_reverse',['../structwf__bialign__breakpoint__t.html#a4d70f2dc8da981e3c1b4229cc6e55308',1,'wf_bialign_breakpoint_t']]],
+  ['offsets_3',['offsets',['../structsequence__buffer__t.html#a8d7a760c98e600b8ddd9ba91ca1e607a',1,'sequence_buffer_t::offsets'],['../structwavefront__t.html#ac282a183f576258527ce2768384cd3d1',1,'wavefront_t::offsets']]],
+  ['offsets_5fallocated_4',['offsets_allocated',['../structsequence__buffer__t.html#a257da7fa89298bb123d697fbec44aebb',1,'sequence_buffer_t']]],
+  ['offsets_5fmem_5',['offsets_mem',['../structwavefront__t.html#a38a482e98b06bd0e91a191a2a5f950c8',1,'wavefront_t']]],
+  ['offsets_5fused_6',['offsets_used',['../structsequence__buffer__t.html#a4f559592dfe7eb7326671ca4ae0069b2',1,'sequence_buffer_t']]],
+  ['operation_7',['operation',['../structseq__error__t.html#a934b5163385d914f63f89ae4e4da0d82',1,'seq_error_t::operation'],['../structpcigar__op__t.html#ac767ca1711b80152b4e6146b16d66f93',1,'pcigar_op_t::operation']]],
+  ['operations_8',['operations',['../structcigar__t.html#af5a274222afea8efdfcf6ae6dea11301',1,'cigar_t']]],
+  ['option_9',['Option',['../class_c_l_i_1_1_app.html#a19db92c5717d79ab19de59daf455cdbb',1,'CLI::App']]],
+  ['option_5fdefaults_5f_10',['option_defaults_',['../class_c_l_i_1_1_app.html#a34da062f6cc255048384b72e0ec6c276',1,'CLI::App']]],
+  ['option_5ftext_5f_11',['option_text_',['../class_c_l_i_1_1_option.html#a23dc529b1db815e7056750d671e29896',1,'CLI::Option']]],
+  ['options_5f_12',['options_',['../class_c_l_i_1_1_app.html#a862e55a8c1fe3676452aadc6a222f865',1,'CLI::App']]],
+  ['out_5fd1wavefront_13',['out_d1wavefront',['../structwavefront__set__t.html#ad45c2f503338657c6b7ff785ac1c64d9',1,'wavefront_set_t']]],
+  ['out_5fd2wavefront_14',['out_d2wavefront',['../structwavefront__set__t.html#a01c448c5fe8b0743a395614e852c3b4d',1,'wavefront_set_t']]],
+  ['out_5fi1wavefront_15',['out_i1wavefront',['../structwavefront__set__t.html#a4d73ee23393a127a32950119a7cf7970',1,'wavefront_set_t']]],
+  ['out_5fi2wavefront_16',['out_i2wavefront',['../structwavefront__set__t.html#a10c3a1ec3f472441eb555a27d99bac08',1,'wavefront_set_t']]],
+  ['out_5fmwavefront_17',['out_mwavefront',['../structwavefront__set__t.html#ac847561e10d7e42c061bc33f9eadd5a4',1,'wavefront_set_t']]],
+  ['output_18',['output',['../structcountour__bench__args.html#ab2c504891be4a1cd35ab399714326eba',1,'countour_bench_args']]],
+  ['output_5ffile_19',['output_file',['../structalign__bench__params__t.html#ad6240c4924126957c907ba70fa730fa7',1,'align_bench_params_t::output_file'],['../structalign__input__t.html#adf45d3f94098d2f2e0f544d995654951',1,'align_input_t::output_file']]],
+  ['output_5ffilename_20',['output_filename',['../structalign__bench__params__t.html#a1ab55dbdf5ca9d54d87485763a577054',1,'align_bench_params_t']]],
+  ['output_5ffull_21',['output_full',['../structalign__bench__params__t.html#a0c2ed6875691639409402ae0afd72d38',1,'align_bench_params_t::output_full'],['../structalign__input__t.html#a02bc766a7738ec4d1ec088c621bb13d7',1,'align_input_t::output_full']]],
+  ['output_5fmode_22',['output_mode',['../struct_convert_args.html#ada09d12b6b5411eba9017f422565bfbb',1,'ConvertArgs']]],
+  ['output_5fpath_23',['output_path',['../struct_convert_args.html#a7b2cd81a12c7833ff9f92044dd2507a5',1,'ConvertArgs::output_path'],['../struct_index_args.html#accbad4f05677390092dedf58ca2a0c5d',1,'IndexArgs::output_path'],['../struct_merge_args.html#a2b6c357c886c30081c0e9c9f8d2f1f0f',1,'MergeArgs::output_path']]]
+];

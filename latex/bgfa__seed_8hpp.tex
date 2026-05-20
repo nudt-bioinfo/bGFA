@@ -1,0 +1,347 @@
+\doxysection{src/\+bgfa\+\_\+seed.hpp File Reference}
+\hypertarget{bgfa__seed_8hpp}{}\label{bgfa__seed_8hpp}\index{src/bgfa\_seed.hpp@{src/bgfa\_seed.hpp}}
+{\ttfamily \+\#include "{}bgfa.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}bgfa\+\_\+graph.\+hpp"{}}\newline
+Include dependency graph for bgfa\+\_\+seed.\+hpp:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \doxymbox{\hyperlink{class_minimizer}{Minimizer}}
+\item 
+class \doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}}
+\begin{DoxyCompactList}\small\item\em Class for managing minimizers in a graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022}{MINIMIZER\+\_\+\+MAX\+\_\+\+LENGTH}}~32
+\begin{DoxyCompactList}\small\item\em Maximum length of minimizer. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_adb6a8ece430207ef9943ff20039918e7}{MINIMIZER\+\_\+\+ID\+\_\+\+SHITF}}~32
+\begin{DoxyCompactList}\small\item\em Bits for segment ID. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_aeba0151d218aba941d5ca79cdfec48d6}{MINIMIZER\+\_\+\+ID\+\_\+\+MASK}}~0x\+FFFFFFFF
+\begin{DoxyCompactList}\small\item\em Mask for segment ID. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_a359715b4218ebb86afac0412ee7369f6}{MINIMIZER\+\_\+\+OFFSET\+\_\+\+SHITF}}~1
+\begin{DoxyCompactList}\small\item\em Bits for offset. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_a9d28c202b5c137d90b26e6805e9c66db}{MINIMIZER\+\_\+\+OFFSET\+\_\+\+MSAK}}~0x7\+FFFFFFF
+\begin{DoxyCompactList}\small\item\em Mask for offset. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_a8f5c21673b376e3663dfcd6df55279fc}{MINIMIZER\+\_\+\+DIR\+\_\+\+SHITF}}~0
+\begin{DoxyCompactList}\small\item\em Bits for direction. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_aa8b069fddae4714971c43e3ccae76476}{MINIMIZER\+\_\+\+DIR\+\_\+\+MASK}}~0x01
+\begin{DoxyCompactList}\small\item\em Mask for direction. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_ac96e857e1088bb05c41d61926dfcbe12}{MINIMIZER\+\_\+\+MODE\+\_\+\+SINGLE}}~0
+\begin{DoxyCompactList}\small\item\em Single strand minimizer mode. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_afef9eb82c2584df75890f043cf44046c}{MINIMIZER\+\_\+\+MODE\+\_\+\+SINGLE\+\_\+\+REVERSE}}~1
+\begin{DoxyCompactList}\small\item\em Single strand with reverse complement minimizer mode. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__seed_8hpp_a25647d21b1c19d55a7562afbadd9e20a}{MINIMIZER\+\_\+\+MODE\+\_\+\+DOUBLE}}~2
+\begin{DoxyCompactList}\small\item\em Double strand minimizer mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint64\+\_\+t \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\+\_\+t}}
+\item 
+typedef uint64\+\_\+t \doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\+\_\+t}}
+\item 
+typedef uint64\+\_\+t \doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\+\_\+t}}
+\item 
+typedef std::\+vector$<$ std::\+pair$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}, \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\+\_\+t}} $>$ $>$ \doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{Minimizer\+Set\+Vect}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{bgfa__seed_8hpp_a19e4ca26c431ecd217fecfd056e2edcb}{hash64}} (uint64\+\_\+t key, uint64\+\_\+t mask)
+\begin{DoxyCompactList}\small\item\em 64-\/bit hash function \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{bgfa__seed_8hpp_a5943b9d742a50c2e692dba88173d941b}{get\+Pos\+ID}} (\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\+\_\+t}} pos)
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa}{get\+Pos\+Offset}} (\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\+\_\+t}} pos)
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{bgfa__seed_8hpp_ad0aa16567b68c3765f19c026b6331a5a}{get\+Pos\+Dir}} (\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\+\_\+t}} pos)
+\item 
+void \doxymbox{\hyperlink{bgfa__seed_8hpp_a14a379ec56a75b7f3f6484c94c1d20d1}{test\+Minimizer\+Set}} (\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} ms)
+\item 
+\doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{Minimizer\+Set\+Vect}} \doxymbox{\hyperlink{bgfa__seed_8hpp_a5923a84210ab80bb04ca3901da20ebe3}{get\+Minimizer\+Vect}} (\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&ms)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{bgfa__seed_8hpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{bgfa__seed_8hpp_aa8b069fddae4714971c43e3ccae76476}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_DIR\_MASK@{MINIMIZER\_DIR\_MASK}}
+\index{MINIMIZER\_DIR\_MASK@{MINIMIZER\_DIR\_MASK}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_DIR\_MASK}{MINIMIZER\_DIR\_MASK}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_aa8b069fddae4714971c43e3ccae76476} 
+\+\#define MINIMIZER\+\_\+\+DIR\+\_\+\+MASK~0x01}
+
+
+
+Mask for direction. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00029}{29}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_a8f5c21673b376e3663dfcd6df55279fc}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_DIR\_SHITF@{MINIMIZER\_DIR\_SHITF}}
+\index{MINIMIZER\_DIR\_SHITF@{MINIMIZER\_DIR\_SHITF}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_DIR\_SHITF}{MINIMIZER\_DIR\_SHITF}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a8f5c21673b376e3663dfcd6df55279fc} 
+\+\#define MINIMIZER\+\_\+\+DIR\+\_\+\+SHITF~0}
+
+
+
+Bits for direction. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00028}{28}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_aeba0151d218aba941d5ca79cdfec48d6}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_ID\_MASK@{MINIMIZER\_ID\_MASK}}
+\index{MINIMIZER\_ID\_MASK@{MINIMIZER\_ID\_MASK}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_ID\_MASK}{MINIMIZER\_ID\_MASK}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_aeba0151d218aba941d5ca79cdfec48d6} 
+\+\#define MINIMIZER\+\_\+\+ID\+\_\+\+MASK~0x\+FFFFFFFF}
+
+
+
+Mask for segment ID. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00025}{25}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_adb6a8ece430207ef9943ff20039918e7}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_ID\_SHITF@{MINIMIZER\_ID\_SHITF}}
+\index{MINIMIZER\_ID\_SHITF@{MINIMIZER\_ID\_SHITF}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_ID\_SHITF}{MINIMIZER\_ID\_SHITF}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_adb6a8ece430207ef9943ff20039918e7} 
+\+\#define MINIMIZER\+\_\+\+ID\+\_\+\+SHITF~32}
+
+
+
+Bits for segment ID. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00024}{24}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_MAX\_LENGTH@{MINIMIZER\_MAX\_LENGTH}}
+\index{MINIMIZER\_MAX\_LENGTH@{MINIMIZER\_MAX\_LENGTH}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_MAX\_LENGTH}{MINIMIZER\_MAX\_LENGTH}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a2923f2f672c461c1244064a0571ab022} 
+\+\#define MINIMIZER\+\_\+\+MAX\+\_\+\+LENGTH~32}
+
+
+
+Maximum length of minimizer. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00022}{22}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_a25647d21b1c19d55a7562afbadd9e20a}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_MODE\_DOUBLE@{MINIMIZER\_MODE\_DOUBLE}}
+\index{MINIMIZER\_MODE\_DOUBLE@{MINIMIZER\_MODE\_DOUBLE}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_MODE\_DOUBLE}{MINIMIZER\_MODE\_DOUBLE}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a25647d21b1c19d55a7562afbadd9e20a} 
+\+\#define MINIMIZER\+\_\+\+MODE\+\_\+\+DOUBLE~2}
+
+
+
+Double strand minimizer mode. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00033}{33}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_ac96e857e1088bb05c41d61926dfcbe12}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_MODE\_SINGLE@{MINIMIZER\_MODE\_SINGLE}}
+\index{MINIMIZER\_MODE\_SINGLE@{MINIMIZER\_MODE\_SINGLE}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_MODE\_SINGLE}{MINIMIZER\_MODE\_SINGLE}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_ac96e857e1088bb05c41d61926dfcbe12} 
+\+\#define MINIMIZER\+\_\+\+MODE\+\_\+\+SINGLE~0}
+
+
+
+Single strand minimizer mode. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00031}{31}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_afef9eb82c2584df75890f043cf44046c}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_MODE\_SINGLE\_REVERSE@{MINIMIZER\_MODE\_SINGLE\_REVERSE}}
+\index{MINIMIZER\_MODE\_SINGLE\_REVERSE@{MINIMIZER\_MODE\_SINGLE\_REVERSE}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_MODE\_SINGLE\_REVERSE}{MINIMIZER\_MODE\_SINGLE\_REVERSE}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_afef9eb82c2584df75890f043cf44046c} 
+\+\#define MINIMIZER\+\_\+\+MODE\+\_\+\+SINGLE\+\_\+\+REVERSE~1}
+
+
+
+Single strand with reverse complement minimizer mode. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00032}{32}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_a9d28c202b5c137d90b26e6805e9c66db}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_OFFSET\_MSAK@{MINIMIZER\_OFFSET\_MSAK}}
+\index{MINIMIZER\_OFFSET\_MSAK@{MINIMIZER\_OFFSET\_MSAK}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_OFFSET\_MSAK}{MINIMIZER\_OFFSET\_MSAK}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a9d28c202b5c137d90b26e6805e9c66db} 
+\+\#define MINIMIZER\+\_\+\+OFFSET\+\_\+\+MSAK~0x7\+FFFFFFF}
+
+
+
+Mask for offset. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00027}{27}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_a359715b4218ebb86afac0412ee7369f6}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MINIMIZER\_OFFSET\_SHITF@{MINIMIZER\_OFFSET\_SHITF}}
+\index{MINIMIZER\_OFFSET\_SHITF@{MINIMIZER\_OFFSET\_SHITF}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MINIMIZER\_OFFSET\_SHITF}{MINIMIZER\_OFFSET\_SHITF}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a359715b4218ebb86afac0412ee7369f6} 
+\+\#define MINIMIZER\+\_\+\+OFFSET\+\_\+\+SHITF~1}
+
+
+
+Bits for offset. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00026}{26}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{bgfa__seed_8hpp_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!MinimizerSetVect@{MinimizerSetVect}}
+\index{MinimizerSetVect@{MinimizerSetVect}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{MinimizerSetVect}{MinimizerSetVect}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7} 
+typedef std::\+vector$<$std::\+pair$<$\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}, \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\+\_\+t}}$>$ $>$ \doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{Minimizer\+Set\+Vect}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00020}{20}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!uhash\_t@{uhash\_t}}
+\index{uhash\_t@{uhash\_t}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{uhash\_t}{uhash\_t}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40} 
+typedef uint64\+\_\+t \doxymbox{\hyperlink{bgfa__seed_8hpp_ae2b3b7063c95ed8ac4621db84b65aa40}{uhash\+\_\+t}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00016}{16}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!upos\_t@{upos\_t}}
+\index{upos\_t@{upos\_t}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{upos\_t}{upos\_t}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf} 
+typedef uint64\+\_\+t \doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\+\_\+t}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00017}{17}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+\Hypertarget{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!useq\_t@{useq\_t}}
+\index{useq\_t@{useq\_t}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{useq\_t}{useq\_t}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750} 
+typedef uint64\+\_\+t \doxymbox{\hyperlink{bgfa__seed_8hpp_a12e2e91166982850668fb385212aa750}{useq\+\_\+t}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00018}{18}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{bgfa__seed_8hpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{bgfa__seed_8hpp_a5923a84210ab80bb04ca3901da20ebe3}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!getMinimizerVect@{getMinimizerVect}}
+\index{getMinimizerVect@{getMinimizerVect}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{getMinimizerVect()}{getMinimizerVect()}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a5923a84210ab80bb04ca3901da20ebe3} 
+\doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{Minimizer\+Set\+Vect}} get\+Minimizer\+Vect (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&}]{ms}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00883}{883}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{bgfa__seed_8hpp_ad0aa16567b68c3765f19c026b6331a5a}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!getPosDir@{getPosDir}}
+\index{getPosDir@{getPosDir}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{getPosDir()}{getPosDir()}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_ad0aa16567b68c3765f19c026b6331a5a} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} get\+Pos\+Dir (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\+\_\+t}}}]{pos}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00068}{68}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{bgfa__seed_8hpp_a5943b9d742a50c2e692dba88173d941b}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!getPosID@{getPosID}}
+\index{getPosID@{getPosID}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{getPosID()}{getPosID()}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a5943b9d742a50c2e692dba88173d941b} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} get\+Pos\+ID (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\+\_\+t}}}]{pos}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00058}{58}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!getPosOffset@{getPosOffset}}
+\index{getPosOffset@{getPosOffset}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{getPosOffset()}{getPosOffset()}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} get\+Pos\+Offset (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa__seed_8hpp_a200ea9163152adab846e03ce6a87bdaf}{upos\+\_\+t}}}]{pos}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00063}{63}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{bgfa__seed_8hpp_a19e4ca26c431ecd217fecfd056e2edcb}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!hash64@{hash64}}
+\index{hash64@{hash64}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{hash64()}{hash64()}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a19e4ca26c431ecd217fecfd056e2edcb} 
+uint64\+\_\+t hash64 (\begin{DoxyParamCaption}\item[{uint64\+\_\+t}]{key}{, }\item[{uint64\+\_\+t}]{mask}{}\end{DoxyParamCaption})}
+
+
+
+64-\/bit hash function 
+
+Implements a simple 64-\/bit hash function for generating hash values from keys. The original source of this code is \href{https://github.com/lh3/minigraph/blob/master/sketch.c}{\texttt{https:\+/\+/\+github.\+com/\+lh3/\+minigraph/\+blob/\+master/\+sketch.\+c}} 
+\begin{DoxyParams}{Parameters}
+{\em \{uint64\+\_\+t\}} & key \\
+\hline
+{\em \{uint64\+\_\+t\}} & mask \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{uint64\+\_\+t\} Hashed value 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00044}{44}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{bgfa__seed_8hpp_a14a379ec56a75b7f3f6484c94c1d20d1}\index{bgfa\_seed.hpp@{bgfa\_seed.hpp}!testMinimizerSet@{testMinimizerSet}}
+\index{testMinimizerSet@{testMinimizerSet}!bgfa\_seed.hpp@{bgfa\_seed.hpp}}
+\doxysubsubsection{\texorpdfstring{testMinimizerSet()}{testMinimizerSet()}}
+{\footnotesize\ttfamily \label{bgfa__seed_8hpp_a14a379ec56a75b7f3f6484c94c1d20d1} 
+void test\+Minimizer\+Set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}}}]{ms}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__seed_8hpp_source_l00874}{874}} of file \doxymbox{\hyperlink{bgfa__seed_8hpp_source}{bgfa\+\_\+seed.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 8

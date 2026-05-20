@@ -1,0 +1,165 @@
+\doxysection{main.\+cpp}
+\hypertarget{main_8cpp_source}{}\label{main_8cpp_source}\index{src/main.cpp@{src/main.cpp}}
+\doxymbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002\ \textcolor{comment}{\ *\ @Author:\ grampart\ guo018248@163.com}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003\ \textcolor{comment}{\ *\ @Date:\ 2025-\/03-\/25\ 15:59:20}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004\ \textcolor{comment}{\ *\ @LastEditors\ Please\ set\ LastEditors}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005\ \textcolor{comment}{\ *\ @LastEditTime\ 2026-\/03-\/10\ 15:29:49}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}00006\ \textcolor{comment}{\ *\ @FilePath:\ \(\backslash\)bgfa\(\backslash\)src\(\backslash\)main.cpp}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa__subcommand_8hpp}{bgfa\_subcommand.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}\doxymbox{\hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{00010}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{test__bgfa_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(\textcolor{keywordtype}{int}\ argc,\ \textcolor{keywordtype}{char}\ *argv[])}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011\ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013\ \textcolor{preprocessor}{\#ifdef\ INFO\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}DEBUG\ INFO\ is\ ON"{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015\ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}THE\ BASIC\ SIZE\ IS\ "{}}\ <<\ \doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018\ \ \ \ \ \doxymbox{\hyperlink{class_command_parser}{CommandParser}}\ parse;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020\ \ \ \ \ \textcolor{keywordtype}{double}\ time\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022\ \ \ \ \ \doxymbox{\hyperlink{class_c_l_i_1_1_app}{CLI::App}}\ app\{\textcolor{stringliteral}{"{}bGFA\ —\ a\ small\ genomics\ graph\ toolkit"{}}\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023\ \ \ \ \ app.\doxymbox{\hyperlink{class_c_l_i_1_1_app_a42a8d8b393e3c7d3d48fa8dc5590bd54}{set\_version\_flag}}(\textcolor{stringliteral}{"{}-\/v,\ -\/-\/version"{}},\ \textcolor{stringliteral}{"{}1.0.0"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024\ \ \ \ \ app.\doxymbox{\hyperlink{class_c_l_i_1_1_app_a5fef22317a182fa5db1d7b1af4c89c68}{add\_flag}}(\textcolor{stringliteral}{"{}-\/t,\ -\/-\/time"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_ae7e38311383b071803e325df5cb9b142}{time}},\ \textcolor{stringliteral}{"{}Enable\ time\ info\ output"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}00026\ \ \ \ \ \textcolor{comment}{//\ convert}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027\ \ \ \ \ \textcolor{keyword}{auto}\ \&convert\ =\ *app.\doxymbox{\hyperlink{class_c_l_i_1_1_app_a910b44722a63d744bee0ccb586d36b19}{add\_subcommand}}(\textcolor{stringliteral}{"{}convert"{}},\ \textcolor{stringliteral}{"{}Convert\ GFA\ to\ BGFA"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028\ \ \ \ \ convert.\doxymbox{\hyperlink{class_c_l_i_1_1_app_adb68306d25a26400399d11efe7211dc4}{add\_option}}(\textcolor{stringliteral}{"{}-\/g,-\/-\/gfa"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_aa1d7a2b8332b6995f4d3cf1887e54531}{convert\_args}}.\doxymbox{\hyperlink{struct_convert_args_a581a42375758cb3b55e1cb73c67d395e}{gfa\_path}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Input\ GFA\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_base_af18d4c8d8c2392b6947db9179110289a}{required}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{namespace_c_l_i_ab60cbe0bb76c7b2e00d63f48a573e322}{CLI::ExistingFile}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032\ \ \ \ \ convert.add\_option(\textcolor{stringliteral}{"{}-\/o,-\/-\/output"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_aa1d7a2b8332b6995f4d3cf1887e54531}{convert\_args}}.\doxymbox{\hyperlink{struct_convert_args_a7b2cd81a12c7833ff9f92044dd2507a5}{output\_path}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Output\ BGFA\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_ac742a336add6ee44ce61dc3dd196fd23}{default\_str}}(\textcolor{stringliteral}{"{}auto"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035\ \ \ \ \ convert.add\_option(\textcolor{stringliteral}{"{}-\/-\/output-\/mode"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_aa1d7a2b8332b6995f4d3cf1887e54531}{convert\_args}}.\doxymbox{\hyperlink{struct_convert_args_ada09d12b6b5411eba9017f422565bfbb}{output\_mode}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Conversion\ mode\ (all,\ split)"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_ac742a336add6ee44ce61dc3dd196fd23}{default\_str}}(\textcolor{stringliteral}{"{}all"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{class_c_l_i_1_1_is_member}{CLI::IsMember}}(\{\textcolor{stringliteral}{"{}all"{}},\ \textcolor{stringliteral}{"{}split"{}}\},\ \doxymbox{\hyperlink{namespace_c_l_i_a0c52326d2681814c22aa1a93ce43375e}{CLI::ignore\_case}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039\ \ \ \ \ convert.add\_option(\textcolor{stringliteral}{"{}-\/-\/path-\/mode"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_aa1d7a2b8332b6995f4d3cf1887e54531}{convert\_args}}.\doxymbox{\hyperlink{struct_convert_args_aac93cb8b65be06efb849a745b860da71}{path\_mode}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Path\ encoding\ mode\ (direct,\ inc)"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_ac742a336add6ee44ce61dc3dd196fd23}{default\_str}}(\textcolor{stringliteral}{"{}inc"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{class_c_l_i_1_1_is_member}{CLI::IsMember}}(\{\textcolor{stringliteral}{"{}direct"{}},\ \textcolor{stringliteral}{"{}inc"{}}\},\ \doxymbox{\hyperlink{namespace_c_l_i_a0c52326d2681814c22aa1a93ce43375e}{CLI::ignore\_case}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043\ \ \ \ \ convert.add\_flag(\textcolor{stringliteral}{"{}-\/-\/normalized"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_aa1d7a2b8332b6995f4d3cf1887e54531}{convert\_args}}.\doxymbox{\hyperlink{struct_convert_args_afb66799fff708642e602f30526658b29}{normalized}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Normalize\ linear\ 1-\/in-\/1-\/out\ segments\ once\ after\ loading\ GFA"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045\ \ \ \ \ convert.add\_flag(\textcolor{stringliteral}{"{}-\/-\/segment-\/no-\/id"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_aa1d7a2b8332b6995f4d3cf1887e54531}{convert\_args}}.\doxymbox{\hyperlink{struct_convert_args_acaf7701fe46979cb23f69033a44903f6}{segment\_no\_id}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Store\ BGFA\ segments\ without\ explicit\ segment\ id\ (id\ assigned\ by\ read\ order)"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ merge}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{auto}\ \&merge\ =\ *app.\doxymbox{\hyperlink{class_c_l_i_1_1_app_a910b44722a63d744bee0ccb586d36b19}{add\_subcommand}}(\textcolor{stringliteral}{"{}merge"{}},\ \textcolor{stringliteral}{"{}merge\ some\ gfas/bgfas\ to\ one"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050\ \ \ \ \ merge.\doxymbox{\hyperlink{class_c_l_i_1_1_app_adb68306d25a26400399d11efe7211dc4}{add\_option}}(\textcolor{stringliteral}{"{}-\/g,-\/-\/graph"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a2c36be7b333fccbeb568fecbecf9f322}{merge\_args}}.\doxymbox{\hyperlink{struct_merge_args_a620860fe8b72a1be1fb193c95f9c4b4e}{graph\_path}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Input\ GFA/BGFA\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_a0b7cf6e62c1800a53ad314772eef6ed1}{expected}}(-\/1)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_base_af18d4c8d8c2392b6947db9179110289a}{required}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{namespace_c_l_i_ab60cbe0bb76c7b2e00d63f48a573e322}{CLI::ExistingFile}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055\ \ \ \ \ merge.add\_option(\textcolor{stringliteral}{"{}-\/o,-\/-\/output"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a2c36be7b333fccbeb568fecbecf9f322}{merge\_args}}.\doxymbox{\hyperlink{struct_merge_args_a2b6c357c886c30081c0e9c9f8d2f1f0f}{output\_path}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Output\ file\ name"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_ac742a336add6ee44ce61dc3dd196fd23}{default\_str}}(\textcolor{stringliteral}{"{}merged.bgfa"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058\ \ \ \ \ merge.add\_option(\textcolor{stringliteral}{"{}-\/t,-\/-\/type"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a2c36be7b333fccbeb568fecbecf9f322}{merge\_args}}.\doxymbox{\hyperlink{struct_merge_args_a62577a94bcbf04120e70fc02f689782a}{merge\_type}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Merge\ type\ (0:\ strict,\ 1:\ exactly)"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_ad54a6c2a78d84970977f84212a7a6a7b}{default\_val}}(0)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{class_c_l_i_1_1_range}{CLI::Range}}(0,\ 1));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062\ \ \ \ \ merge.add\_option(\textcolor{stringliteral}{"{}-\/l,-\/-\/merge-\/limited"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a2c36be7b333fccbeb568fecbecf9f322}{merge\_args}}.\doxymbox{\hyperlink{struct_merge_args_afff283a0f6f6f79233093468ca377e0a}{merge\_limited}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Merge\ similarity\ threshold\ for\ exact\ merge\ (1-\/100)"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_ad54a6c2a78d84970977f84212a7a6a7b}{default\_val}}(90)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{class_c_l_i_1_1_range}{CLI::Range}}(1,\ 100));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066\ \ \ \ \ \textcolor{comment}{//\ new\ options}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067\ \ \ \ \ merge.add\_option(\textcolor{stringliteral}{"{}-\/k,-\/-\/alignment-\/kernel"{}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ parse.\doxymbox{\hyperlink{class_command_parser_a2c36be7b333fccbeb568fecbecf9f322}{merge\_args}}.\doxymbox{\hyperlink{struct_merge_args_a9c1955fb596d4e107421db5ce508ad17}{alignment\_kernel}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Alignment\ kernel\ (wfa,\ ksw)"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_ac742a336add6ee44ce61dc3dd196fd23}{default\_str}}(\textcolor{stringliteral}{"{}wfa"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_addc5729386141a7a4c1b2f15a3b0c96a}{transform}}(\doxymbox{\hyperlink{class_c_l_i_1_1_checked_transformer}{CLI::CheckedTransformer}}(\doxymbox{\hyperlink{bgfa__args_8hpp_acaec4764ccc1b01a53cb52466bdd931a}{merge\_alig\_map}},\ \doxymbox{\hyperlink{namespace_c_l_i_a0c52326d2681814c22aa1a93ce43375e}{CLI::ignore\_case}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072\ \ \ \ \ merge.add\_option(\textcolor{stringliteral}{"{}-\/d,-\/-\/details-\/type"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a2c36be7b333fccbeb568fecbecf9f322}{merge\_args}}.\doxymbox{\hyperlink{struct_merge_args_ae512e9418e0f7dee419b2350755f0af9}{details\_type}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Auxiliary\ method\ (0:none,\ 1:distance,\ 2:minimizer)"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_ad54a6c2a78d84970977f84212a7a6a7b}{default\_val}}(0)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{class_c_l_i_1_1_range}{CLI::Range}}(0,\ 2));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077\ \ \ \ \ \textcolor{comment}{//\ index}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078\ \ \ \ \ \textcolor{keyword}{auto}\ \&index\ =\ *app.\doxymbox{\hyperlink{class_c_l_i_1_1_app_a910b44722a63d744bee0ccb586d36b19}{add\_subcommand}}(\textcolor{stringliteral}{"{}index"{}},\ \textcolor{stringliteral}{"{}Create\ index\ for\ GFA/BGFA"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{auto}\ index\_group\ =\ index.\doxymbox{\hyperlink{class_c_l_i_1_1_app_a5e114076a7cfa20a5895e9f6e8fd7dd5}{add\_option\_group}}(\textcolor{stringliteral}{"{}Input\ file"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080\ \ \ \ \ index\_group-\/>add\_option(\textcolor{stringliteral}{"{}-\/g,-\/-\/gfa"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{index\_args}}.\doxymbox{\hyperlink{struct_index_args_a40873124cf9b7e61e2c3c3623a1c299a}{input\_path}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Input\ GFA\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082\ \ \ \ \ \ \ \ \ -\/>check(\doxymbox{\hyperlink{namespace_c_l_i_ab60cbe0bb76c7b2e00d63f48a573e322}{CLI::ExistingFile}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083\ \ \ \ \ index\_group-\/>add\_option(\textcolor{stringliteral}{"{}-\/b,-\/-\/bgfa"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{index\_args}}.\doxymbox{\hyperlink{struct_index_args_a40873124cf9b7e61e2c3c3623a1c299a}{input\_path}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Input\ BGFA\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085\ \ \ \ \ \ \ \ \ -\/>check(\doxymbox{\hyperlink{namespace_c_l_i_ab60cbe0bb76c7b2e00d63f48a573e322}{CLI::ExistingFile}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086\ \ \ \ \ index\_group-\/>require\_option(1);\ \textcolor{comment}{//\ 必须指定其中一个选项}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087\ \ \ \ \ index.add\_option(\textcolor{stringliteral}{"{}-\/m,\ -\/-\/mode"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{index\_args}}.\doxymbox{\hyperlink{struct_index_args_a5f66c0ded1f60a0ad45b93b794cf89ef}{seed\_mode}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Seed\ mode\ (kmer,\ minimizer)"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089\ \ \ \ \ \ \ \ \ -\/>default\_str(\textcolor{stringliteral}{"{}minimizer"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090\ \ \ \ \ \ \ \ \ -\/>check(\doxymbox{\hyperlink{class_c_l_i_1_1_is_member}{CLI::IsMember}}(\{\textcolor{stringliteral}{"{}kmer"{}},\ \textcolor{stringliteral}{"{}minimizer"{}}\}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091\ \ \ \ \ index.add\_option(\textcolor{stringliteral}{"{}-\/-\/minimizer-\/mode"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{index\_args}}.\doxymbox{\hyperlink{struct_index_args_a1cdb092dc1fe78d878d6682ce29a0839}{iterate\_mode}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Indexing\ mode:\ (single,\ single-\/reverse,\ double)\(\backslash\)n\(\backslash\)t\(\backslash\)tsingle:\ Iterate\ over\ all\ nodes\ in\ the\ graph\ only,\ without\ considering\ any\ base\ complementary\ sequences\(\backslash\)n\(\backslash\)t\(\backslash\)tsingle-\/reverse:\ Iterate\ over\ all\ nodes\ in\ the\ graph\ and\ each\ k-\/mer\ will\ prefer\ the\ kmer\ with\ the\ smallest\ hash\ in\ its\ and\ its\ base\ complementary\ sequences\(\backslash\)n\(\backslash\)t\(\backslash\)tdouble:\ Iterate\ over\ all\ nodes\ and\ their\ base\ complements"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093\ \ \ \ \ \ \ \ \ -\/>default\_str(\textcolor{stringliteral}{"{}double"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094\ \ \ \ \ \ \ \ \ -\/>check(\doxymbox{\hyperlink{class_c_l_i_1_1_is_member}{CLI::IsMember}}(\{0,\ 1,\ 2\}))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095\ \ \ \ \ \ \ \ \ -\/>transform(\doxymbox{\hyperlink{class_c_l_i_1_1_checked_transformer}{CLI::CheckedTransformer}}(\doxymbox{\hyperlink{bgfa__args_8hpp_ac3acfb7d645df58812ea484384c955b9}{index\_itrmode\_map}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{namespace_c_l_i_a0c52326d2681814c22aa1a93ce43375e}{CLI::ignore\_case}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097\ \ \ \ \ index.add\_option(\textcolor{stringliteral}{"{}-\/w,-\/-\/window"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{index\_args}}.\doxymbox{\hyperlink{struct_index_args_a9795d4a0262a3e7fc15d54521efb00c6}{window\_size}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Minimizer\ Window\ size"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099\ \ \ \ \ \ \ \ \ -\/>default\_val(5)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100\ \ \ \ \ \ \ \ \ -\/>check(\doxymbox{\hyperlink{class_c_l_i_1_1_range}{CLI::Range}}(1,\ 100));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101\ \ \ \ \ index.add\_option(\textcolor{stringliteral}{"{}-\/k,-\/-\/kmer-\/length"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{index\_args}}.\doxymbox{\hyperlink{struct_index_args_a887d2d6827a8eeed40551338ddaaf1ae}{minimizer\_length}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}k-\/mer\ length"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103\ \ \ \ \ \ \ \ \ -\/>default\_val(15)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104\ \ \ \ \ \ \ \ \ -\/>check(\doxymbox{\hyperlink{class_c_l_i_1_1_range}{CLI::Range}}(1,\ 32));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105\ \ \ \ \ index.add\_option(\textcolor{stringliteral}{"{}-\/o,-\/-\/output"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{index\_args}}.\doxymbox{\hyperlink{struct_index_args_accbad4f05677390092dedf58ca2a0c5d}{output\_path}},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Output\ BMIN\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107\ \ \ \ \ \ \ \ \ -\/>default\_str(\textcolor{stringliteral}{"{}auto"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109\ \ \ \ \ \textcolor{comment}{//\ view}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{auto}\ \&view\ =\ *app.\doxymbox{\hyperlink{class_c_l_i_1_1_app_a910b44722a63d744bee0ccb586d36b19}{add\_subcommand}}(\textcolor{stringliteral}{"{}view"{}},\ \textcolor{stringliteral}{"{}Show\ information"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111\ \ \ \ \ view.\doxymbox{\hyperlink{class_c_l_i_1_1_app_adb68306d25a26400399d11efe7211dc4}{add\_option}}(\textcolor{stringliteral}{"{}-\/g,-\/-\/bgfa"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a66e65a5d293ec97f2486cc18331edb93}{view\_args}}.\doxymbox{\hyperlink{struct_view_args_a53ab44b50f0f1460832c5ed47472c5ed}{graph\_path}},\ \textcolor{stringliteral}{"{}bGFA\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{namespace_c_l_i_ab60cbe0bb76c7b2e00d63f48a573e322}{CLI::ExistingFile}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113\ \ \ \ \ view.add\_option(\textcolor{stringliteral}{"{}-\/m,-\/-\/bmin"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a66e65a5d293ec97f2486cc18331edb93}{view\_args}}.\doxymbox{\hyperlink{struct_view_args_a2cc0821b8f6d53fcec166c764a966e0a}{minimizer\_path}},\ \textcolor{stringliteral}{"{}bMIN\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{namespace_c_l_i_ab60cbe0bb76c7b2e00d63f48a573e322}{CLI::ExistingFile}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116\ \ \ \ \ \textcolor{comment}{//\ stats}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117\ \ \ \ \ \textcolor{keyword}{auto}\ \&stats\ =\ *app.\doxymbox{\hyperlink{class_c_l_i_1_1_app_a910b44722a63d744bee0ccb586d36b19}{add\_subcommand}}(\textcolor{stringliteral}{"{}stats"{}},\ \textcolor{stringliteral}{"{}Show\ graph\ statistics"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118\ \ \ \ \ stats.\doxymbox{\hyperlink{class_c_l_i_1_1_app_adb68306d25a26400399d11efe7211dc4}{add\_option}}(\textcolor{stringliteral}{"{}-\/g,-\/-\/bgfa"{}},\ parse.\doxymbox{\hyperlink{class_command_parser_a66e65a5d293ec97f2486cc18331edb93}{view\_args}}.\doxymbox{\hyperlink{struct_view_args_a53ab44b50f0f1460832c5ed47472c5ed}{graph\_path}},\ \textcolor{stringliteral}{"{}GFA/BGFA\ file"{}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_base_af18d4c8d8c2392b6947db9179110289a}{required}}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120\ \ \ \ \ \ \ \ \ -\/>\doxymbox{\hyperlink{class_c_l_i_1_1_option_aacaa8668acf4ef1acd08369404bd2be0}{check}}(\doxymbox{\hyperlink{namespace_c_l_i_ab60cbe0bb76c7b2e00d63f48a573e322}{CLI::ExistingFile}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122\ \ \ \ \ \doxymbox{\hyperlink{_c_l_i11_8hpp_aff002944bde4d025a6f2bd2e784af37b}{CLI11\_PARSE}}(app,\ argc,\ argv);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordflow}{if}\ (convert)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126\ \ \ \ \ \ \ \ \ time\ =\ \doxymbox{\hyperlink{bgfa__subcommand_8hpp_a27c4294f3ee7f1a6349c63de0562a562}{ConvertProcess}}(parse);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (index)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ (index.count("{}-\/-\/gfa"{}))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ parse.index\_args.is\_bgfa\ =\ false;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ else\ if\ (index.count("{}-\/-\/bgfa"{}))}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ parse.index\_args.is\_bgfa\ =\ true;}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134\ \ \ \ \ \ \ \ \ time\ =\ \doxymbox{\hyperlink{bgfa__subcommand_8hpp_a6eead37379e9da01cc8251c8fd50c7e8}{IndexProcess}}(parse);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (view)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138\ \ \ \ \ \ \ \ \ time\ =\ \doxymbox{\hyperlink{bgfa__subcommand_8hpp_a9d37f36b941976b8ed8d740137ad24e6}{ViewProcess}}(parse);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (merge)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142\ \ \ \ \ \ \ \ \ time\ =\ \doxymbox{\hyperlink{bgfa__subcommand_8hpp_a08d97d91c5f2cd5e7f7a9950c0b6a1ea}{MergeProcess}}(parse);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stats)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146\ \ \ \ \ \ \ \ \ time\ =\ \doxymbox{\hyperlink{bgfa__subcommand_8hpp_ab5b99723c40809d0e66921ed95641d65}{StatsProcess}}(parse);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148\ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00149}00149\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00150}00150\ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}Error:\ No\ valid\ command\ provided."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00152}00152\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00153}00153\ \ \ \ \ \textcolor{keywordflow}{if}\ (parse.\doxymbox{\hyperlink{class_command_parser_ae7e38311383b071803e325df5cb9b142}{time}})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}00154\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Total\ time:\ "{}}\ <<\ time\ <<\ \textcolor{stringliteral}{"{}\ seconds."{}}\ <<\ std::endl;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159\ \}}
+
+\end{DoxyCode}

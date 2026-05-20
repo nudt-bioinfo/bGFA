@@ -1,0 +1,80 @@
+\doxysection{src/\+wfa/\+utils/\+sequence\+\_\+buffer.h File Reference}
+\hypertarget{sequence__buffer_8h}{}\label{sequence__buffer_8h}\index{src/wfa/utils/sequence\_buffer.h@{src/wfa/utils/sequence\_buffer.h}}
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+Include dependency graph for sequence\+\_\+buffer.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structsequence__offset__t}{sequence\+\_\+offset\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{sequence__buffer_8h_a2618479f6e12b75dfd68541e7a743fd2}{sequence\+\_\+buffer\+\_\+new}} (const uint64\+\_\+t num\+\_\+sequences\+\_\+hint, const uint64\+\_\+t sequence\+\_\+length\+\_\+hint)
+\item 
+void \doxymbox{\hyperlink{sequence__buffer_8h_a4de88ed72e43b0012e617ac3eebdb2d8}{sequence\+\_\+buffer\+\_\+clear}} (\doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}} \texorpdfstring{$\ast$}{*}const sequence\+\_\+buffer)
+\item 
+void \doxymbox{\hyperlink{sequence__buffer_8h_a9fb6005f8459057a99cb1bb8a6dbd667}{sequence\+\_\+buffer\+\_\+delete}} (\doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}} \texorpdfstring{$\ast$}{*}const sequence\+\_\+buffer)
+\item 
+void \doxymbox{\hyperlink{sequence__buffer_8h_a606c932446d255e5ac8df621477f6b78}{sequence\+\_\+buffer\+\_\+add\+\_\+pair}} (\doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}} \texorpdfstring{$\ast$}{*}const sequence\+\_\+buffer, char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const uint64\+\_\+t pattern\+\_\+length, char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const uint64\+\_\+t text\+\_\+length)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{sequence__buffer_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{sequence__buffer_8h_a606c932446d255e5ac8df621477f6b78}\index{sequence\_buffer.h@{sequence\_buffer.h}!sequence\_buffer\_add\_pair@{sequence\_buffer\_add\_pair}}
+\index{sequence\_buffer\_add\_pair@{sequence\_buffer\_add\_pair}!sequence\_buffer.h@{sequence\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{sequence\_buffer\_add\_pair()}{sequence\_buffer\_add\_pair()}}
+{\footnotesize\ttfamily \label{sequence__buffer_8h_a606c932446d255e5ac8df621477f6b78} 
+void sequence\+\_\+buffer\+\_\+add\+\_\+pair (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{sequence\+\_\+buffer}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const uint64\+\_\+t}]{pattern\+\_\+length}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const uint64\+\_\+t}]{text\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{sequence__buffer_8c_source_l00097}{97}} of file \doxymbox{\hyperlink{sequence__buffer_8c_source}{sequence\+\_\+buffer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{sequence__buffer_8h_a4de88ed72e43b0012e617ac3eebdb2d8}\index{sequence\_buffer.h@{sequence\_buffer.h}!sequence\_buffer\_clear@{sequence\_buffer\_clear}}
+\index{sequence\_buffer\_clear@{sequence\_buffer\_clear}!sequence\_buffer.h@{sequence\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{sequence\_buffer\_clear()}{sequence\_buffer\_clear()}}
+{\footnotesize\ttfamily \label{sequence__buffer_8h_a4de88ed72e43b0012e617ac3eebdb2d8} 
+void sequence\+\_\+buffer\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{sequence\+\_\+buffer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{sequence__buffer_8c_source_l00060}{60}} of file \doxymbox{\hyperlink{sequence__buffer_8c_source}{sequence\+\_\+buffer.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{sequence__buffer_8h_a9fb6005f8459057a99cb1bb8a6dbd667}\index{sequence\_buffer.h@{sequence\_buffer.h}!sequence\_buffer\_delete@{sequence\_buffer\_delete}}
+\index{sequence\_buffer\_delete@{sequence\_buffer\_delete}!sequence\_buffer.h@{sequence\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{sequence\_buffer\_delete()}{sequence\_buffer\_delete()}}
+{\footnotesize\ttfamily \label{sequence__buffer_8h_a9fb6005f8459057a99cb1bb8a6dbd667} 
+void sequence\+\_\+buffer\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{sequence\+\_\+buffer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{sequence__buffer_8c_source_l00068}{68}} of file \doxymbox{\hyperlink{sequence__buffer_8c_source}{sequence\+\_\+buffer.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{sequence__buffer_8h_a2618479f6e12b75dfd68541e7a743fd2}\index{sequence\_buffer.h@{sequence\_buffer.h}!sequence\_buffer\_new@{sequence\_buffer\_new}}
+\index{sequence\_buffer\_new@{sequence\_buffer\_new}!sequence\_buffer.h@{sequence\_buffer.h}}
+\doxysubsubsection{\texorpdfstring{sequence\_buffer\_new()}{sequence\_buffer\_new()}}
+{\footnotesize\ttfamily \label{sequence__buffer_8h_a2618479f6e12b75dfd68541e7a743fd2} 
+\doxymbox{\hyperlink{structsequence__buffer__t}{sequence\+\_\+buffer\+\_\+t}} \texorpdfstring{$\ast$}{*} sequence\+\_\+buffer\+\_\+new (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{num\+\_\+sequences\+\_\+hint}{, }\item[{const uint64\+\_\+t}]{sequence\+\_\+length\+\_\+hint}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{sequence__buffer_8c_source_l00038}{38}} of file \doxymbox{\hyperlink{sequence__buffer_8c_source}{sequence\+\_\+buffer.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6

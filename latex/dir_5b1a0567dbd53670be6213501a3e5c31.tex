@@ -1,0 +1,775 @@
+\doxysection{src/\+wfa Directory Reference}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31}{}\label{dir_5b1a0567dbd53670be6213501a3e5c31}\index{src/wfa Directory Reference@{src/wfa Directory Reference}}
+Directory dependency graph for wfa:\+
+% FIG 0
+\doxysubsubsection*{Directories}
+\begin{DoxyCompactItemize}
+\item 
+directory \doxymbox{\hyperlink{dir_e0867126aa9a54d7e4e655f23f6c30a9}{alignment}}
+\item 
+directory \doxymbox{\hyperlink{dir_bdaf0a6d00f70ad829c9604a5921b70e}{bindings}}
+\item 
+directory \doxymbox{\hyperlink{dir_2a670b8e78919c646490d7eb5d372f1a}{examples}}
+\item 
+directory \doxymbox{\hyperlink{dir_666db642dd7ca6d470c7d1824524b26a}{system}}
+\item 
+directory \doxymbox{\hyperlink{dir_f858fa0df565ccd1ee97085615bcf192}{tools}}
+\item 
+directory \doxymbox{\hyperlink{dir_9825e132bd6d386e43b5362bd7ca0017}{utils}}
+\item 
+directory \doxymbox{\hyperlink{dir_960140de3ab75215d0d5dd02f243d0d0}{wavefront}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md7}{}\doxysubsection{\texorpdfstring{WFA2-\/lib}{WFA2-\/lib}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md7}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md8}{}\doxysubsection{\texorpdfstring{1. INTRODUCTION}{1. INTRODUCTION}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md8}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md9}{}\doxysubsubsection{\texorpdfstring{1.\+1 What is WFA?}{1.\+1 What is WFA?}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md9}
+The wavefront alignment (WFA) algorithm is an {\bfseries{exact}} gap-\/affine algorithm that takes advantage of homologous regions between the sequences to accelerate the alignment process. Unlike to traditional dynamic programming algorithms that run in quadratic time, the WFA runs in time {\ttfamily O(ns+s\texorpdfstring{$^\wedge$}{\string^}2)}, proportional to the sequence length {\ttfamily n} and the alignment score {\ttfamily s}, using {\ttfamily O(s\texorpdfstring{$^\wedge$}{\string^}2)} memory (or {\ttfamily O(s)} using the ultralow/\+\+Bi\+WFA mode). Moreover, the WFA algorithm exhibits simple computational patterns that the modern compilers can automatically vectorize for different architectures without adapting the code. To intuitively illustrate why the WFA algorithm is so interesting, look at the following figure. The left panel shows the cells computed by a classical dynamic programming based algorithm (like Smith-\/\+Waterman or Needleman Wunsch). In contrast, the right panel shows the cells computed by the WFA algorithm to obtain the same result (i.\+e., the optimal alignment).
+
+ \hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md10}{}\doxysubsubsection{\texorpdfstring{1.\+2 What is WFA2-\/lib?}{1.\+2 What is WFA2-\/lib?}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md10}
+The WFA2 library implements the WFA algorithm for different distance metrics and alignment modes. It supports various distance functions:\+ indel, edit, gap-\/linear, gap-\/affine, and dual-\/gap gap-\/affine distances. The library allows computing only the score or the complete alignment (i.\+e., CIGAR) (see Alignment Scope). Also, the WFA2 library supports computing end-\/to-\/end alignments (a.\+k.\+a. global-\/alignment) and ends-\/free alignments (including semi-\/global, glocal, and extension alignment) (see Alignment Span). In the case of long and noisy alignments, the library provides different low-\/memory modes that significantly reduce the memory usage of the naive WFA algorithm implementation. Beyond the exact-\/alignment modes, the WFA2 library implements heuristic modes that dramatically accelerate the alignment computation. Additionally, the library provides many other support functions to display and verify alignment results, control the overall memory usage, and more.\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md11}{}\doxysubsubsection{\texorpdfstring{1.\+3 Getting started}{1.\+3 Getting started}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md11}
+Git clone and compile the library, tools, and examples (by default, use cmake for the library and benchmark build).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{git\ clone\ https://github.com/smarco/WFA2-\/lib}
+\DoxyCodeLine{cd\ WFA2-\/lib}
+\DoxyCodeLine{mkdir\ build\ \&\&\ cd\ build}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release}
+\DoxyCodeLine{cmake\ -\/-\/build\ .\ -\/-\/verbose}
+\DoxyCodeLine{ctest\ .\ -\/-\/verbose}
+
+\end{DoxyCode}
+
+
+There are some flags that can be used. For instance:\+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ ..\ -\/DOPENMP=TRUE}
+\DoxyCodeLine{cmake\ ..\ -\/DCMAKE\_BUILD\_TYPE=Release\ -\/DEXTRA\_FLAGS="{}-\/ftree-\/vectorizer-\/verbose=5"{}}
+
+\end{DoxyCode}
+
+
+Alternatively, the simple Makefile build system can be used.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$>\ git\ clone\ https://github.com/smarco/WFA2-\/lib}
+\DoxyCodeLine{\$>\ cd\ WFA2-\/lib}
+\DoxyCodeLine{\$>\ make\ clean\ all}
+
+\end{DoxyCode}
+
+
+Also, it is possible to build WFA2-\/lib in a GNU Guix container, for more information see \href{./guix.scm}{\texttt{guix.\+scm}}.\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md12}{}\doxysubsubsection{\texorpdfstring{1.\+4 Contents (where to go from here)}{1.\+4 Contents (where to go from here)}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md12}
+Section WFA2-\/lib features explores the most relevant options and features of the library. Then, the folder \doxylink{dir_f858fa0df565ccd1ee97085615bcf192}{tools/\+} contains tools that can be used to execute and understand the WFA2 library capabilities. Additionally, the folder \doxylink{dir_2a670b8e78919c646490d7eb5d372f1a}{examples/\+} contains simple examples illustrating how to integrate the WFA2 code into any tool.
+
+
+\begin{DoxyItemize}
+\item Using WFA2-\/lib in your project
+\begin{DoxyItemize}
+\item Simple C example
+\item Simple C++ example
+\end{DoxyItemize}
+\item WFA2-\/lib Features
+\begin{DoxyItemize}
+\item Distance Metrics
+\item Alignment Scope
+\item Alignment Span
+\item Memory modes
+\item Heuristic modes
+\item Technical notes
+\end{DoxyItemize}
+\item Reporting Bugs and Feature Request
+\item License
+\item Citation
+\end{DoxyItemize}\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md13}{}\doxysubsubsection{\texorpdfstring{1.\+5 Important notes and clarifications}{1.\+5 Important notes and clarifications}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md13}
+
+\begin{DoxyItemize}
+\item The WFA algorithm is an {\bfseries{exact algorithm}}. If no heuristic is applied (e.\+g., band or adaptive pruning), the core algorithm guarantees to always find the optimal solution (i.\+e., best alignment score). Since its first release, some authors have referenced the WFA as approximated or heuristic, which is NOT the case.
+\item Given two sequences of length {\ttfamily n}, traditional dynamic-\/programming (DP) based methods (like Smith-\/\+Waterman or Needleman-\/\+Wunsch) compute the optimal alignment in {\ttfamily O(n\texorpdfstring{$^\wedge$}{\string^}2)} time, using {\ttfamily O(n\texorpdfstring{$^\wedge$}{\string^}2)} memory. In contrast, the WFA algorithm requires {\ttfamily O(ns+s\texorpdfstring{$^\wedge$}{\string^}2)} time and {\ttfamily O(s\texorpdfstring{$^\wedge$}{\string^}2)} memory (being {\ttfamily s} the optimal alignment score). Therefore, {\bfseries{the memory consumption of the WFA algorithm is not intrinsically higher than that of other methods}}. Most DP-\/based methods can use heuristics (like banded, X-\/drop, or Z-\/drop) to reduce the execution time and the memory usage at the expense of losing accuracy. Likewise, {\bfseries{the WFA algorithm can also use heuristics to reduce the execution time and memory usage}}. Moreover, the memory mode {\ttfamily ultralow} uses the Bi\+WFA algorithm to execute in {\ttfamily O(ns+s\texorpdfstring{$^\wedge$}{\string^}2)} time and linear {\ttfamily O(s)} memory.
+\item {\bfseries{A note for the fierce competitors.}} I can understand that science and publishing have become a fierce competition these days. Many researchers want their methods to be successful and popular, seeking funding, tenure, or even fame. If you are going to benchmark the WFA using the least favourable configuration, careless programming, and a disadvantageous setup, please, go ahead. But remember, researchers like you have put a lot of effort into developing the WFA. We all joined this "{}competition"{} because we sought to find better methods that could truly help other researchers. So, try to be nice, tone down the marketing, and produce fair evaluations and honest publications.
+\end{DoxyItemize}\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md14}{}\doxysubsection{\texorpdfstring{\label{_wfa2.programming}%
+ 2. USING WFA2-\/\+LIB IN YOUR PROJECT}{\label{_wfa2.programming}%
+ 2. USING WFA2-\/\+LIB IN YOUR PROJECT}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md14}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md15}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.programming.c}%
+ 2.\+1 Simple C example}{\label{_wfa2.programming.c}%
+ 2.\+1 Simple C example}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md15}
+This simple example illustrates how to align two sequences using the WFA2 library. First, include the WFA2 alignment headers.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__align_8h}{wavefront/wavefront\_align.h}}"{}}}
+
+\end{DoxyCode}
+
+
+Next, create and configure the WFA alignment object. The following example uses the defaults configuration and sets custom {\ttfamily \doxylink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{gap\+\_\+affine}} penalties. Note that mismatch, gap-\/opening, and gap-\/extension must be positive values.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Configure\ alignment\ attributes}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ab50d07405667d22e50e875668c0adcfa}{distance\_metric}}\ =\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{gap\_affine}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_a5efb3471e7c6f46820644556e9b53bdd}{mismatch}}\ =\ 4;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_a515f12e47d1db00305757720b4311518}{gap\_opening}}\ =\ 6;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_af486bb6869aecaebd8de26ecafe15223}{gap\_extension}}\ =\ 2;}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialize\ Wavefront\ Aligner}}
+\DoxyCodeLine{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner\ =\ \doxymbox{\hyperlink{wavefront__aligner_8c_aa05e9e72839f4a3295b16d9b7a3d16a4}{wavefront\_aligner\_new}}(\&attributes);}
+
+\end{DoxyCode}
+
+
+Finally, call the {\ttfamily \doxylink{wavefront__align_8c_ae1881b46dea77aecf2f6df61247ffc30}{wavefront\+\_\+align}} function.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}\ =\ \textcolor{stringliteral}{"{}TCTTTACTCGCGCGTTGGAGAAATACAATAGT"{}};}
+\DoxyCodeLine{\textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}\ \ \ \ =\ \textcolor{stringliteral}{"{}TCTATACTGCGCGTTTGGAGAAATAAAATAGT"{}};}
+\DoxyCodeLine{\doxymbox{\hyperlink{wavefront__align_8c_ae1881b46dea77aecf2f6df61247ffc30}{wavefront\_align}}(wf\_aligner,\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},strlen(\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}),\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},strlen(\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}));\ \textcolor{comment}{//\ Align}}
+
+\end{DoxyCode}
+
+
+Afterwards, we can use the library to display the alignment result (e.\+g., the alignment score and CIGAR).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Display\ CIGAR\ \&\ score}}
+\DoxyCodeLine{\doxymbox{\hyperlink{cigar_8c_abeec4a2a2ef07007631c35bc19edcf32}{cigar\_print\_pretty}}(stderr,\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},strlen(\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}),\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},strlen(\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}),}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_adabef95752917cdf665424403f6bae43}{cigar}},wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a0dd5814f0ec13b0dacc954bb86e4a288}{mm\_allocator}});}
+\DoxyCodeLine{fprintf(stderr,\textcolor{stringliteral}{"{}Alignment\ Score\ \%d\(\backslash\)n"{}},wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_adabef95752917cdf665424403f6bae43}{cigar}}.\doxymbox{\hyperlink{structcigar__t_a13dbad79ec3fab5c1bee14d7a7b08399}{score}});}
+
+\end{DoxyCode}
+
+
+At the end of the program, it is polite to release the memory used.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{wavefront__aligner_8c_aecff0b68c52e3248237f6066eae0a6dc}{wavefront\_aligner\_delete}}(wf\_aligner);\ \textcolor{comment}{//\ Free}}
+
+\end{DoxyCode}
+
+
+To compile and run this example, you need to link against the WFA library (-\/lwfa).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\$>\ gcc\ -\/O3\ wfa\_example.c\ -\/o\ wfa\_example\ -\/lwfa}
+\DoxyCodeLine{\$>\ ./wfa\_example}
+
+\end{DoxyCode}
+
+
+{\bfseries{IMPORTANT.}} Once an alignment object is created, {\bfseries{it is strongly recommended to reuse it to compute multiple alignments}}. Creating and destroying the alignment object for every alignment computed can have a significant overhead. Reusing the alignment object allows repurposing internal data structures, minimising the cost of memory allocations, and avoiding multiple alignment setups and precomputations.\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md16}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.programming.cpp}%
+ 2.\+2 Simple C++ example}{\label{_wfa2.programming.cpp}%
+ 2.\+2 Simple C++ example}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md16}
+The WFA2 library can be used from C++ code using the C++ bindings. This example is similar to the previous one but uses C++ bindings. First, include the C++ bindings and remember to use the WFA namespace.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_w_f_aligner_8hpp}{bindings/cpp/WFAligner.hpp}}"{}}}
+\DoxyCodeLine{\textcolor{keyword}{using\ namespace\ }\doxymbox{\hyperlink{namespacewfa}{wfa}};}
+
+\end{DoxyCode}
+
+
+Configure and create the WFA alignment object. In this case, gap-\/affine distance using custom penalties and the standard memory-\/usage algorithm (i.\+e., standard WFA algorithm).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Create\ a\ WFAligner}}
+\DoxyCodeLine{WFAlignerGapAffine\ aligner(4,6,2,WFAligner::Alignment,WFAligner::MemoryHigh);}
+
+\end{DoxyCode}
+
+
+Align two sequences (in this case, given as strings).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}\ =\ \textcolor{stringliteral}{"{}TCTTTACTCGCGCGTTGGAGAAATACAATAGT"{}};}
+\DoxyCodeLine{\textcolor{keywordtype}{string}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}\ \ \ \ =\ \textcolor{stringliteral}{"{}TCTATACTGCGCGTTTGGAGAAATAAAATAGT"{}};}
+\DoxyCodeLine{aligner.alignEnd2End(\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}});\ \textcolor{comment}{//\ Align}}
+
+\end{DoxyCode}
+
+
+Display the result of the alignment.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Display\ CIGAR\ \&\ score}}
+\DoxyCodeLine{\textcolor{keywordtype}{string}\ cigar\ =\ aligner.getAlignmentCigar();}
+\DoxyCodeLine{cout\ <<\ \textcolor{stringliteral}{"{}CIGAR:\ "{}}\ <<\ cigar\ \ <<\ endl;}
+\DoxyCodeLine{cout\ <<\ \textcolor{stringliteral}{"{}Alignment\ score\ "{}}\ <<\ aligner.getAlignmentScore()\ <<\ endl;}
+
+\end{DoxyCode}
+
+
+{\bfseries{IMPORTANT.}} Once an alignment object is created, {\bfseries{it is strongly recommended to reuse it to compute multiple alignments}}. Creating and destroying the alignment object for every alignment computed can have a significant overhead. Reusing the alignment object allows repurposing internal data structures, minimising the cost of memory allocations, and avoiding multiple alignment setups and precomputations.\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md17}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.programming.rust}%
+ 2.\+3 Rust bindings}{\label{_wfa2.programming.rust}%
+ 2.\+3 Rust bindings}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md17}
+Rust bindings can be generated automatically using {\ttfamily bindgen}, see \href{bindings/rust/build.rs}{\texttt{bindings/\+rust/\+build.\+rs}}. An example of how to use them is \href{./bindings/rust/example.rs}{\texttt{here}}.\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md18}{}\doxysubsection{\texorpdfstring{\label{_wfa2.features}%
+ 3. WFA2-\/\+LIB FEATURES}{\label{_wfa2.features}%
+ 3. WFA2-\/\+LIB FEATURES}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md18}
+
+\begin{DoxyItemize}
+\item {\bfseries{Exact alignment}} method that computes the optimal {\bfseries{alignment score}} and/\+or {\bfseries{alignment CIGAR}}.
+\item Supports {\bfseries{multiple distance metrics}} (i.\+e., indel, edit, gap-\/linear, gap-\/affine, and dual-\/gap gap-\/affine).
+\item Allows performing {\bfseries{end-\/to-\/end}} (a.\+k.\+a. global) and {\bfseries{ends-\/free}} (e.\+g., semi-\/global, extension, overlap) alignment.
+\item Implements {\bfseries{low-\/memory modes}} to reduce and control memory consumption (down to {\ttfamily O(s)} using the {\ttfamily ultralow} mode).
+\item Supports various {\bfseries{heuristic strategies}} to use on top of the core WFA algorithm.
+\item WFA2-\/lib {\bfseries{operates with plain ASCII strings}}. Although we mainly focus on aligning DNA/\+\+RNA sequences, the WFA algorithm and the WFA2-\/lib implementation work with any pair of strings. Moreover, these sequences do not have to be pre-\/processed (e.\+g., packed or profiled), nor any table must be precomputed (like the query profile, used within some Smith-\/\+Waterman implementations).
+\item Due to its simplicity, the WFA algorithm can be automatically vectorized for any SIMD-\/compliant CPU supported by the compiler. For this reason, {\bfseries{the WFA2-\/lib implementation is independent of any specific ISA or processor model}}. Unlike other hardware-\/dependent libraries, we aim to offer a multiplatform pairwise-\/alignment library that can be executed on different processors and models (e.\+g., SSE, AVX2, AVX512, POWER-\/\+ISA, ARM, NEON, SVE, SVE2, RISCV-\/\+RVV, ...).
+\end{DoxyItemize}\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md19}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.distances}%
+ 3.\+1 Distance Metrics}{\label{_wfa2.distances}%
+ 3.\+1 Distance Metrics}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md19}
+The WFA2 library implements the wavefront algorithm for the most widely used distance metrics. The practical alignment time can change depending on the distance function, although the computational complexity always remains proportional to the alignment score or distance. The WFA2 library offers the following distance metrics or functions:\+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Indel (or LCS).}} Produces alignments allowing matches, insertions, and deletions with unitary cost (i.\+e., \{M,I,D\} = \{0,1,1\}) but not mismatches. Also known as the longest common subsequence (LCS) problem. The LCS is defined as the longest subsequence common to both sequences, provided that the characters of the subsequence are not required to occupy consecutive positions within the original sequences.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PATTERN\ \ \ \ A-\/GCTA-\/GTGTC-\/-\/AATGGCTACT-\/T-\/T-\/TCAGGTCCT}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ |\ \ |||\ |||||\ \ \ \ ||||||||\ |\ |\ |||||||||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ AA-\/CTAAGTGTCGG-\/-\/TGGCTACTATATATCAGGTCCT}
+\DoxyCodeLine{ALIGNMENT\ \ 1M1I1D3M1I5M2I2D8M1I1M1I1M1I9M}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ab50d07405667d22e50e875668c0adcfa}{distance\_metric}}\ =\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9}{indel}};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Edit (a.\+k.\+a. Levenshtein).}} Produces alignments allowing matches, mismatches, insertions, and deletions with unitary cost (i.\+e., \{M,X,I,D\} = \{0,1,1,1\}). Edit or Levenshtein distance between two sequences is the minimum number of single-\/character edits (i.\+e., insertions, deletions, or mismatches) required to transform one sequence into the other.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PATTERN\ \ \ \ AGCTA-\/GTGTCAATGGCTACT-\/T-\/T-\/TCAGGTCCT}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ |\ |||\ |||||\ \ ||||||||\ |\ |\ |||||||||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ AACTAAGTGTCGGTGGCTACTATATATCAGGTCCT}
+\DoxyCodeLine{ALIGNMENT\ \ 1M1X3M1I5M2X8M1I1M1I1M1I9M}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ab50d07405667d22e50e875668c0adcfa}{distance\_metric}}\ =\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab9973bd80402101013fe9b4e66c7e64f}{edit}};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Gap-\/linear (as in Needleman-\/\+Wunsch).}} Produces alignments allowing matches, mismatches, insertions, and deletions. Allows assigning a penalty (a.\+k.\+a. cost or weight) to each alignment operation. It computes the optimal alignment, minimizing the overall cost to transform one sequence into the other. Under the gap-\/linear model, the alignment score is computed based on \{X,I\}⁠, where X corresponds to the mismatch penalty and the gap penalty is expressed as the function l(\+N)=N·I (given the length of the gap N and the gap penalty I).
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PATTERN\ \ \ \ A-\/GCTA-\/GTGTC-\/-\/AATGGCTACT-\/T-\/T-\/TCAGGTCCT}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ |\ \ |||\ |||||\ \ \ \ ||||||||\ |\ |\ |||||||||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ AA-\/CTAAGTGTCGG-\/-\/TGGCTACTATATATCAGGTCCT}
+\DoxyCodeLine{ALIGNMENT\ \ 1M1I1D3M1I5M2I2D8M1I1M1I1M1I9M}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ab50d07405667d22e50e875668c0adcfa}{distance\_metric}}\ =\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaae71387ff7cf210d857caee413c21582}{gap\_linear}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad47ec64a22e3c8b67bd8023ae83959db}{linear\_penalties}}.\doxymbox{\hyperlink{structlinear__penalties__t_ac5885424b635088c4fe9870a75bbd66d}{mismatch}}\ =\ 6;\ \textcolor{comment}{//\ X\ >\ 0}}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad47ec64a22e3c8b67bd8023ae83959db}{linear\_penalties}}.\doxymbox{\hyperlink{structlinear__penalties__t_ac99e6c17a55f94df1c17e5d7f3c48079}{indel}}\ =\ 2;\ \ \ \ \textcolor{comment}{//\ I\ >\ 0}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Gap-\/affine (as in Smith-\/\+Waterman-\/\+Gotoh).}} Linear gap cost functions can lead to alignments populated with small gaps. Long gaps are preferred in certain scenarios, like genomics or evolutionary studies (understood as a single event). Under the gap-\/affine model, the alignment score is computed based on \{X,O,E\}⁠, where X corresponds to the mismatch penalty and the gap penalty is expressed as the function g(\+N)=O+\+N·E (given the length of the gap N, the gap opening penalty O, and the gap extension penalty E).
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PATTERN\ \ \ \ AGCTA-\/GTGTCAATGGCTACT-\/-\/-\/TTTCAGGTCCT}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ |\ |||\ |||||\ \ ||||||||\ \ \ |\ |||||||||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ AACTAAGTGTCGGTGGCTACTATATATCAGGTCCT}
+\DoxyCodeLine{ALIGNMENT\ \ 1M1X3M1I5M2X8M3I1M1X9M}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Configuration}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ab50d07405667d22e50e875668c0adcfa}{distance\_metric}}\ =\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{gap\_affine}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_a5efb3471e7c6f46820644556e9b53bdd}{mismatch}}\ =\ 6;\ \ \ \ \ \ \textcolor{comment}{//\ X\ >\ 0}}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_a515f12e47d1db00305757720b4311518}{gap\_opening}}\ =\ 4;\ \ \ \textcolor{comment}{//\ O\ >=\ 0}}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_af486bb6869aecaebd8de26ecafe15223}{gap\_extension}}\ =\ 2;\ \textcolor{comment}{//\ E\ >\ 0}}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Dual-\/cost gap-\/affine distances.}} Also known as piece-\/wise gap-\/affine cost, this distance metric addresses some issues that the regular gap-\/affine distance has with long gaps. In a nutshell, the regular gap-\/affine distance can occasionally split long gaps by sporadic mismatches (often when aligning long and noisy sequences). Instead, many users would prefer to increase the open gap cost to produce a single long gap. For that, the dual-\/cost gap-\/affine distance (p=2) defines two affine cost functions (i.\+e., for short and long gaps). Then, the alignment score is computed based on \{X,O1,E1,O2,E2\}⁠, where X corresponds to the mismatch penalty and the gap penalty is expressed as the function g(\+N)=min\{O1+\+N·\+E1,O2+\+N·\+E2\} (given the length of the gap N, the gap opening penalties O1 and O2, and the gap extension penalties E1 and E2).
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ab50d07405667d22e50e875668c0adcfa}{distance\_metric}}\ =\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab2dc11ac0ec88c88ab4999ea27460322}{gap\_affine\_2p}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_adee611768b60b1bd48ff0a7a7830b907}{affine2p\_penalties}}.\doxymbox{\hyperlink{structaffine2p__penalties__t_ada30e0c723a3f769833d166f28754297}{mismatch}}\ =\ 6;\ \ \ \ \ \ \ \textcolor{comment}{//\ X\ >\ 0}}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_adee611768b60b1bd48ff0a7a7830b907}{affine2p\_penalties}}.\doxymbox{\hyperlink{structaffine2p__penalties__t_a1edcee787d6bbd824a8a000d696fe97f}{gap\_opening1}}\ =\ 4;\ \ \ \textcolor{comment}{//\ O1\ >=\ 0}}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_adee611768b60b1bd48ff0a7a7830b907}{affine2p\_penalties}}.\doxymbox{\hyperlink{structaffine2p__penalties__t_abbf5a8d2715d816daff1f49393e0a221}{gap\_extension1}}\ =\ 2;\ \textcolor{comment}{//\ E1\ >\ 0}}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_adee611768b60b1bd48ff0a7a7830b907}{affine2p\_penalties}}.\doxymbox{\hyperlink{structaffine2p__penalties__t_a26e14def004a3b356a338ad302d694a6}{gap\_opening2}}\ =\ 12;\ \ \textcolor{comment}{//\ O2\ >=\ 0}}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_adee611768b60b1bd48ff0a7a7830b907}{affine2p\_penalties}}.\doxymbox{\hyperlink{structaffine2p__penalties__t_aadb0f408d97e4157cc03e824669091ad}{gap\_extension2}}\ =\ 1;\ \textcolor{comment}{//\ E2\ >\ 0}}
+
+\end{DoxyCode}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md20}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.scope}%
+ 3.\+2 Alignment Scope}{\label{_wfa2.scope}%
+ 3.\+2 Alignment Scope}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md20}
+Depending on the use case, it is often the case that an application is only required to compute the alignment score, not the complete alignment (i.\+e., CIGAR). As it happens with traditional dynamic programming algorithms, the WFA algorithm requires less memory (i.\+e., {\ttfamily O(s)}) to compute the alignment score. In turn, this results in slighter faster alignment executions. For this reason, the WFA2 library implements two different modes depending on the alignment scope:\+ score-\/only and full-\/\+CIGAR alignment.
+
+The \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} score-\/only alignment \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} mode computes only the alignment score. This mode utilizes only the front-\/wavefronts of the WFA algorithm to keep track of the optimal alignment score. As a result, it requires {\ttfamily O(s)} memory and, in practice, performs slighter faster than the standard full-\/\+CIGAR mode.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a0f8af0956cf8c0e9dae1cb7b136a8f4a}{alignment\_scope}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36accc28f7e258d4cacee45103ce5dc513b}{compute\_score}};}
+
+\end{DoxyCode}
+
+
+The \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} full-\/\+CIGAR alignment \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*} computes the sequence of alignment operations (i.\+e., \{\textquotesingle{}M\textquotesingle{},\textquotesingle{}X\textquotesingle{},\textquotesingle{}D\textquotesingle{},\textquotesingle{}I\textquotesingle{}\}) that transforms one sequence into the other (i.\+e., alignment CIGAR). The alignment score can be obtained as a by-\/product of the alignment process, evaluating the score of the alignment CIGAR. This mode requires {\ttfamily O(s\texorpdfstring{$^\wedge$}{\string^}2)} memory (using the default memory mode, wavefront\+\_\+memory\+\_\+high) or less (using the low-\/memory modes).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a0f8af0956cf8c0e9dae1cb7b136a8f4a}{alignment\_scope}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36abffac3adb7bc82e62d2bbdedd0e62abc}{compute\_alignment}};}
+
+\end{DoxyCode}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md21}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.span}%
+ 3.\+3 Alignment Span}{\label{_wfa2.span}%
+ 3.\+3 Alignment Span}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md21}
+The WFA2 library allows computing alignments with different spans or shapes. Although there is certain ambiguity and confusion in the terminology, we have tried to generalize the different options available to offer flexible parameters that can capture multiple alignment scenarios. During the development of the WFA we decided to adhere to the classical approximate string matching terminology where we align a {\bfseries{pattern (a.\+k.\+a. query or sequence)}} against a {\bfseries{text (a.\+k.\+a. target, database, or reference)}}.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{End-\/to-\/end alignment.}} Also known as global alignment, this alignment mode forces aligning the two sequences from the beginning to end of both.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PATTERN\ \ \ \ AATTAATTTAAGTCTAGGCTACTTTCGGTACTTTGTTCTT}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ ||||\ \ \ \ ||||||||||||||||||||||||||\ \ \ |||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ AATT-\/-\/-\/-\/TAAGTCTAGGCTACTTTCGGTACTTT-\/-\/-\/CTT}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a5b907ba86b7c8a8930ef54d17d21d346}{span}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a7634a74bff3a950f7b29003bc4fb425f}{alignment\_end2end}};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Ends-\/free alignment.}} This alignment mode allows leading and trailing insertions or deletions for "{}free"{} (i.\+e., no penalty/\+cost on the overall alignment score). Moreover, this alignment mode allows determining the maximum gap length allowed for free at the beginning and end of the sequences. Note that this mode does not implement local alignment as it does not allow free insertions and deletions at the beginning/\+end of the sequences at the same time. However, it allows many different configurations used across different analyses, methods, and tools.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PATTERN\ \ \ \ AATTAATTTAAGTCTAGGCTACTTTCGGTACTTTGTTCTT}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ||||||||||||||||||||||||||||||\ ||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ -\/-\/-\/-\/AATTTAAGTCTAGGCTACTTTCGGTACTTTCTT-\/-\/-\/}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a5b907ba86b7c8a8930ef54d17d21d346}{span}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979}{alignment\_endsfree}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae87e68ea21960fdd4c0137dd670674a9}{pattern\_begin\_free}}\ =\ pattern\_begin\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a0061158705e9d7c3305fe2b260d63a30}{pattern\_end\_free}}\ =\ pattern\_end\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae2a1ef2bfaa13d91847a710e307b7661}{text\_begin\_free}}\ =\ text\_begin\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a9b2615d555e6226c51eb921d5d52b0a4}{text\_end\_free}}\ =\ text\_end\_free;}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Other}}
+\end{DoxyItemize}
+
+
+
+{\bfseries{Glocal alignment (a.k.a. semi-\/global or fitting)}}\begin{adjustwidth}{1em}{0em}
+
+
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Glocal alignment (a.\+k.\+a. semi-\/global or fitting).}} Alignment mode where the pattern is globally aligned and the text is locally aligned. Often due to the large size of one of the sequences (e.\+g., the text sequence being a genomic reference), this alignment mode forces one sequence (i.\+e., pattern) to align globally to a substring of the other (i.\+e., text).
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{PATTERN\ \ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/AATTTAAGTCTAGGCTACTTTC-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |||||||||\ ||||||||||||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ ACGACTACTACGAAATTTAAGTATAGGCTACTTTCCGTACGTACGTACGT}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a5b907ba86b7c8a8930ef54d17d21d346}{span}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979}{alignment\_endsfree}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae87e68ea21960fdd4c0137dd670674a9}{pattern\_begin\_free}}\ =\ 0;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a0061158705e9d7c3305fe2b260d63a30}{pattern\_end\_free}}\ =\ 0;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae2a1ef2bfaa13d91847a710e307b7661}{text\_begin\_free}}\ =\ text\_begin\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a9b2615d555e6226c51eb921d5d52b0a4}{text\_end\_free}}\ =\ text\_end\_free;}
+
+\end{DoxyCode}
+
+
+
+
+\end{adjustwidth}
+
+
+
+
+{\bfseries{Extension alignment}}\begin{adjustwidth}{1em}{0em}
+
+
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Extension alignment.}} Alignment mode where the start of both pattern and text sequences are forced to be aligned. However, the ends of both are free. This alignment mode is typically used within seed-\/and-\/extend algorithms.
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Right\ extension}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a5b907ba86b7c8a8930ef54d17d21d346}{span}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979}{alignment\_endsfree}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae87e68ea21960fdd4c0137dd670674a9}{pattern\_begin\_free}}\ =\ 0;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a0061158705e9d7c3305fe2b260d63a30}{pattern\_end\_free}}\ =\ pattern\_end\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae2a1ef2bfaa13d91847a710e307b7661}{text\_begin\_free}}\ =\ 0;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a9b2615d555e6226c51eb921d5d52b0a4}{text\_end\_free}}\ =\ text\_end\_free;}
+\DoxyCodeLine{}
+\DoxyCodeLine{PATTERN\ \ \ \ AATTTAAGTCTG-\/CTACTTTCACGCA-\/GCT-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ |||||\ ||||||\ |||||||||||\ |\ |\ |}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ AATTTCAGTCTGGCTACTTTCACGTACGATGACAGACTCT}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Left\ extension}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a5b907ba86b7c8a8930ef54d17d21d346}{span}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979}{alignment\_endsfree}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae87e68ea21960fdd4c0137dd670674a9}{pattern\_begin\_free}}\ =\ pattern\_begin\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a0061158705e9d7c3305fe2b260d63a30}{pattern\_end\_free}}\ =\ 0;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae2a1ef2bfaa13d91847a710e307b7661}{text\_begin\_free}}\ =\ text\_begin\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a9b2615d555e6226c51eb921d5d52b0a4}{text\_end\_free}}\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{PATTERN\ \ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/AAACTTTCACGTACG-\/TGACAGTCTCT}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |||||||||||||\ ||||||\ ||||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ AATTTCAGTCTGGCTACTTTCACGTACGATGACAGACTCT}
+
+\end{DoxyCode}
+
+
+
+
+\end{adjustwidth}
+
+
+
+
+{\bfseries{Overlapped alignment}}\begin{adjustwidth}{1em}{0em}
+
+
+
+
+
+\begin{DoxyItemize}
+\item {\bfseries{Overlapped alignment (a.\+k.\+a. dovetail).}}
+\end{DoxyItemize}
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Overlapped\ (Right-\/Left)}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a5b907ba86b7c8a8930ef54d17d21d346}{span}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979}{alignment\_endsfree}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae87e68ea21960fdd4c0137dd670674a9}{pattern\_begin\_free}}\ =\ pattern\_begin\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a0061158705e9d7c3305fe2b260d63a30}{pattern\_end\_free}}\ =\ 0;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae2a1ef2bfaa13d91847a710e307b7661}{text\_begin\_free}}\ =\ 0;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a9b2615d555e6226c51eb921d5d52b0a4}{text\_end\_free}}\ =\ text\_end\_free;}
+\DoxyCodeLine{}
+\DoxyCodeLine{PATTERN\ \ \ \ ACGCGTCTGACTGACTGACTAAACTTTCATGTAC-\/TGACA-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |||||||||\ ||||\ |||||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/AAACTTTCACGTACGTGACATATAGCGATCGATGACT}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Overlapped\ (Left-\/Right)}}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a5b907ba86b7c8a8930ef54d17d21d346}{span}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a231095960105f8e413ff3271616a6979}{alignment\_endsfree}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae87e68ea21960fdd4c0137dd670674a9}{pattern\_begin\_free}}\ =\ 0;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a0061158705e9d7c3305fe2b260d63a30}{pattern\_end\_free}}\ =\ pattern\_end\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_ae2a1ef2bfaa13d91847a710e307b7661}{text\_begin\_free}}\ =\ text\_begin\_free;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_aa51420b2b58d42c02ee5cdcf8f09524c}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_a9b2615d555e6226c51eb921d5d52b0a4}{text\_end\_free}}\ =\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{PATTERN\ \ \ \ -\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/ACGCGTCTGACTGACTACGACTACGACTGACTAGCAT}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |||||||||\ ||\ ||}
+\DoxyCodeLine{TEXT\ \ \ \ \ \ \ ACATGCATCGATCAGACTGACTACGCGTCTG-\/CTAAC-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/}
+
+\end{DoxyCode}
+
+
+
+
+\end{adjustwidth}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md22}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.mem}%
+ 3.\+4 Memory modes}{\label{_wfa2.mem}%
+ 3.\+4 Memory modes}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md22}
+The WFA2 library implements various memory modes:\+ {\ttfamily \doxylink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aaf3a232794b95be9850778ea6bb5c1ed}{wavefront\+\_\+memory\+\_\+high}}, {\ttfamily \doxylink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aa735b0a2d4cfecadd2d9f590b9796dd2}{wavefront\+\_\+memory\+\_\+med}}, {\ttfamily \doxylink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ae4cc764b20f1a41bd391abd30c1271db}{wavefront\+\_\+memory\+\_\+low}}, and , {\ttfamily \doxylink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ad8d8b6029afccfe4a991db282f79b071}{wavefront\+\_\+memory\+\_\+ultralow}}. These modes allow regulating the overall memory consumption at the expense of execution time. The standard WFA algorithm, which stores explicitly all wavefronts in memory, correspond to the mode {\ttfamily \doxylink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512aaf3a232794b95be9850778ea6bb5c1ed}{wavefront\+\_\+memory\+\_\+high}}. The other methods progressively reduce memory usage at the expense of slightly larger alignment times. These memory modes can be used transparently with other alignment options and generate identical results. Note that this option does not affect the score-\/only alignment mode (it already uses a minimal memory footprint of {\ttfamily O(s)}).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ab1d6c421ae9df7ee8e497970b20ff2b7}{memory\_mode}}\ =\ \doxymbox{\hyperlink{wavefront__attributes_8h_a03c23e3ebdc03094a37953fc9ce0d512ad8d8b6029afccfe4a991db282f79b071}{wavefront\_memory\_ultralow}};}
+
+\end{DoxyCode}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md23}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.heuristics}%
+ 3.\+5 Heuristic modes}{\label{_wfa2.heuristics}%
+ 3.\+5 Heuristic modes}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md23}
+The WFA algorithm can be used combined with many heuristics to reduce the alignment time and memory used. As it happens to other alignment methods, heuristics can result in suboptimal solutions and loss of accuracy. Moreover, some heuristics may drop the alignment if the sequences exceed certain divergence thresholds (i.\+e., x-\/drop/\+z-\/drop). Due to the popularity and efficiency of these methods, the WFA2 library implements many of these heuristics. Note, {\bfseries{it is not about how little DP-\/matrix you compute, but about how good/\+accurate the resulting alignments are.}}
+
+WFA2\textquotesingle{}s heuristics are classified into the following categories:\+ \textquotesingle{}wf-\/adaptive\textquotesingle{}, \textquotesingle{}drops\textquotesingle{}, and \textquotesingle{}bands\textquotesingle{}. It is possible to combine a maximum of one heuristic from each category (OR-\/ing the strategy values or using the API). In the case of using multiple heuristics, these will applied in cascade, starting with \textquotesingle{}wf-\/adaptive\textquotesingle{}, then \textquotesingle{}drops\textquotesingle{}, and finally \textquotesingle{}bands\textquotesingle{}.
+
+
+\begin{DoxyItemize}
+\item {\bfseries{None (for comparison)}}. If no heuristic is used, the WFA behaves exploring cells of the DP-\/matrix in increasing score order (increasing scores correspond to colours from blue to red).
+\end{DoxyItemize}
+
+
+\begin{DoxyTable}{1}{}{}{0}
+~\newline
+Full-\/\+WFA~\newline
+\\
+\\
+\end{DoxyTable}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_ae4c607042112bb1cec3181c1c953a84a}{strategy}}\ =\ \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa5655ae76980f1c963968bc609efcebaf}{wf\_heuristic\_none}};}
+
+\end{DoxyCode}
+
+
+
+\begin{DoxyItemize}
+\item \label{_wfa2.wfadaptive}%
+
+\end{DoxyItemize}{\bfseries{Heuristic wf-\/adaptive.}} This WFA heuristic removes outer diagonals that are extremely far behind compared to other ones in the same wavefront. Unlike other methods, the adaptive-\/wavefront reduction heuristic prunes based on the potential of the diagonal to lead to the optimal solution without previous knowledge of the error between the sequences.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_ae4c607042112bb1cec3181c1c953a84a}{strategy}}\ =\ \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fadcf1c9917b9320485e81264e4aece70e}{wf\_heuristic\_wfadaptive}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a4d3e36f10966dff1474f59130423f8dc}{min\_wavefront\_length}}\ =\ 10;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_ad22d7717a1ec33f7a749b51c023c6557}{max\_distance\_threshold}}\ =\ 50;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a994687ab4391781bee94345840d07480}{steps\_between\_cutoffs}}\ =\ 1;}
+
+\end{DoxyCode}
+
+
+~~~~~~~~{\bfseries{Graphical examples:\+}}
+
+
+\begin{DoxyTable}{2}{}{}{0}
+~\newline
+Adaptive-\/\+WF(10,50)~\newline
+&~\newline
+Adaptive-\/\+WF(10,50,10)~\newline
+\\
+&\\
+\end{DoxyTable}
+
+
+
+\begin{DoxyItemize}
+\item \label{_wfa2.drops}%
+
+\end{DoxyItemize}{\bfseries{Heuristic drops.}} This heuristic compares the maximum score computed so far with the score of the last computed cells. Depending on the score difference, these heuristic strategies can reduce the size of the wavefront computed or even abandon the alignment process. In the case of zero-\/match alignment, \$M=1\$ will be assumed just for computation of the score drop. Also note that this heuristic is not compatible with distances \textquotesingle{}edit\textquotesingle{} or \textquotesingle{}indel\textquotesingle{}. In this category, WFA2 implements \textquotesingle{}X-\/drop\textquotesingle{} and \textquotesingle{}Z-\/drop\textquotesingle{}.
+
+~~~~~~~~{\bfseries{X-\/drop}} implements the classical X-\/drop heuristic. For each diagonal \$k\$, the X-\/drop heuristic compares the current score \$sw\+\_\+k\$ with the maximum observed score so far \$sw\+\_\+\{max\}\$. If the difference drops more than the \$xdrop\$ parameter (i.\+e., \$sw\+\_\+\{max\} -\/ sw\+\_\+k \texorpdfstring{$>$}{>} xdrop\$), the heuristic prunes the diagonal \$k\$ as it is unlikely to lead to the optimum alignment. If all the diagonals are pruned under this criteria, the alignment process is abandoned.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_ae4c607042112bb1cec3181c1c953a84a}{strategy}}\ =\ \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa7b97818260bed4627131dc5b04ae42f9}{wf\_heuristic\_xdrop}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a19b27c8b491466a7b9a9639697d50405}{xdrop}}\ =\ 100;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a994687ab4391781bee94345840d07480}{steps\_between\_cutoffs}}\ =\ 100;}
+
+\end{DoxyCode}
+
+
+~~~~~~~~{\bfseries{Z-\/drop}} implements the Z-\/drop heuristic (as described in Minimap2). This heuristic halts the alignment process if the score drops too fast in the diagonal direction. Let \$sw\+\_\+\{max\}\$ be the maximum observed score so far, computed at cell \$(i\textquotesingle{},j\textquotesingle{})\$. Then, let \$sw\$ be the maximum score found in the last computed wavefront, computed at cell \$(i,j)\$. The Z-\/drop heuristic stops the alignment process if \$sw\+\_\+\{max\} -\/ sw \texorpdfstring{$>$}{>} zdrop + gap\+\_\+e·\texorpdfstring{$\vert$}{|}(i-\/i\textquotesingle{})-\/(j-\/j\textquotesingle{})\texorpdfstring{$\vert$}{|}\$, being \$gap\+\_\+e\$ the gap-\/extension penalty and \$zdrop\$ a parameter of the heuristic.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_ae4c607042112bb1cec3181c1c953a84a}{strategy}}\ =\ \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fade8bbbd7e14e3f4e71f5dcdd85671d26}{wf\_heuristic\_zdrop}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a433af601e4079e512d29f5e022803caf}{zdrop}}\ =\ 100;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a994687ab4391781bee94345840d07480}{steps\_between\_cutoffs}}\ =\ 100;}
+
+\end{DoxyCode}
+
+
+~~~~~~~~{\bfseries{Graphical examples:\+}}
+
+
+\begin{DoxyTable}{3}{}{}{0}
+~\newline
+None~\newline
+&~\newline
+X-\/drop(200,1)~\newline
+&~\newline
+Z-\/drop(200,1)~\newline
+\\
+&&\\
+\end{DoxyTable}
+
+
+
+\begin{DoxyItemize}
+\item \label{_wfa2.bands}%
+
+\end{DoxyItemize}{\bfseries{Heuristic bands.}} These heuristics set a band in the diagonals preventing the wavefront from growing beyond those limits. It allows setting the minimum diagonal (i.\+e., min\+\_\+k) and maximum diagonal (i.\+e., max\+\_\+k). These heuristics are the most restrictive but the fastest and simplest to compute. In this category, WFA2 implements \textquotesingle{}static-\/band\textquotesingle{} and \textquotesingle{}adaptive-\/band\textquotesingle{}.
+
+~~~~~~~~{\bfseries{Static-\/band}} sets a fixed band in the diagonals preventing the wavefront from growing beyond those limits. It allows setting the minimum diagonal (i.\+e., min\+\_\+k) and maximum diagonal (i.\+e., max\+\_\+k).
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_ae4c607042112bb1cec3181c1c953a84a}{strategy}}\ =\ \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170faa216d3dfec11873135bb0dbba85aaf6e}{wf\_heuristic\_banded\_static}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_acd5a1d014610014965e518f7df447cf3}{min\_k}}\ =\ -\/10;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a803d33d455cd4bb66cf38a8c6f757ae0}{max\_k}}\ =\ +10;}
+
+\end{DoxyCode}
+
+
+~~~~~~~~{\bfseries{Adaptive-\/band}} is similar to the static-\/band heuristic; however, it allows the band to move towards the diagonals closer to the end of the alignment. Unlike the static-\/band that is performed on each step, the adaptive-\/band heuristics allows configuring the number of steps between heuristic band cut-\/offs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_ae4c607042112bb1cec3181c1c953a84a}{strategy}}\ =\ \doxymbox{\hyperlink{wavefront__heuristic_8h_a5dae5f178dcd086e6216d2bd4b85170fa2823a1549f80f70901d0b37396f7cd38}{wf\_heuristic\_banded\_adaptive}};}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_acd5a1d014610014965e518f7df447cf3}{min\_k}}\ =\ -\/10;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a803d33d455cd4bb66cf38a8c6f757ae0}{max\_k}}\ =\ +10;}
+\DoxyCodeLine{attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ad31b2dff7f3a8894df280f67c4f59e26}{heuristic}}.\doxymbox{\hyperlink{structwavefront__heuristic__t_a994687ab4391781bee94345840d07480}{steps\_between\_cutoffs}}\ =\ 1;}
+
+\end{DoxyCode}
+
+
+~~~~~~~~{\bfseries{Graphical examples:\+}}
+
+
+\begin{DoxyTable}{2}{}{}{0}
+~\newline
+Banded(10,10)~\newline
+&~\newline
+Banded(10,150)~\newline
+\\
+&\\
+~\newline
+Adaptive-\/\+Band(10,10,1)~\newline
+&~\newline
+Adaptive-\/\+Band(50,50,1)~\newline
+\\
+&\\
+\end{DoxyTable}
+\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md24}{}\doxysubsubsection{\texorpdfstring{\label{_wfa2.other.notes}%
+ 3.\+6 Some technical notes}{\label{_wfa2.other.notes}%
+ 3.\+6 Some technical notes}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md24}
+
+\begin{DoxyItemize}
+\item Thanks to Eizenga\textquotesingle{}s formulation, WFA2-\/lib can operate with any match score. In practice, M=0 is often the most efficient choice.
+\item Note that edit and LCS are distance metrics and, thus, the score computed is always positive. However, using weighted distances (e.\+g., gap-\/linear and gap-\/affine) the alignment score is computed using the selected penalties (i.\+e., the alignment score can be positive or negative). For instance, if WFA2-\/lib is executed using \$M=0\$, the final score is expected to be negative.
+\item All WFA2-\/lib algorithms/\+variants are stable. That is, for alignments having the same score, the all alignment modes always resolve ties (between M, X, I,and D) using the same criteria:\+ M (highest prio) \texorpdfstring{$>$}{>} X \texorpdfstring{$>$}{>} D \texorpdfstring{$>$}{>} I (lowest prio). Only the memory mode {\ttfamily ultralow} (Bi\+WFA) resolves ties differently (although the results are still optimal).
+\item WFA2lib follows the convention that describes how to transform the (1) Pattern/\+\+Query into the (2) Text/\+\+Database/\+\+Reference used in classic pattern matching papers. However, the SAM CIGAR specification describes the transformation from (2) Reference to (1) Query. If you want CIGAR-\/compliant alignments, swap the pattern and text sequences argument when calling the WFA2lib\textquotesingle{}s align functions (to convert all the Ds into Is and vice-\/versa).
+\end{DoxyItemize}\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md25}{}\doxysubsection{\texorpdfstring{\label{_wfa2.complains}%
+ 4. REPORTING BUGS AND FEATURE REQUEST}{\label{_wfa2.complains}%
+ 4. REPORTING BUGS AND FEATURE REQUEST}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md25}
+Feedback and bug reporting is highly appreciated. Please report any issue or suggestion on github or email to the main developer (\href{mailto:santiagomsola@gmail.com}{\texttt{santiagomsola@gmail.\+com}}). Don\textquotesingle{}t hesitate to contact us if:\+
+\begin{DoxyItemize}
+\item You experience any bug or crash.
+\item You want to request a feature or have any suggestion.
+\item Your application using the library is running slower than it should or you expected.
+\item Need help integrating the library into your tool.
+\end{DoxyItemize}\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md26}{}\doxysubsection{\texorpdfstring{\label{_wfa2.licence}%
+ 5. LICENSE}{\label{_wfa2.licence}%
+ 5. LICENSE}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md26}
+WFA2-\/lib is distributed under MIT licence.\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md27}{}\doxysubsection{\texorpdfstring{\label{_wfa2.complains}%
+ 6. AUTHORS}{\label{_wfa2.complains}%
+ 6. AUTHORS}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md27}
+\href{https://github.com/smarco}{\texttt{Santiago Marco-\/\+Sola}} (\href{mailto:santiagomsola@gmail.com}{\texttt{santiagomsola@gmail.\+com}}) is the main developer and the person you should address your complaints.
+
+\href{https://github.com/AndreaGuarracino}{\texttt{Andrea Guarracino}} and \href{https://github.com/ekg}{\texttt{Erik Garrison}} have contributed to the design of new features and intensive testing of the library.
+
+\href{https://thebird.nl/}{\texttt{Pjotr Prins}} contributed the CMake build system, preventing of leaking variables in include headers and other tweaks.
+
+Miquel Moretó has contributed with fruitful technical discussions and tireless efforts seeking funding, so we could keep working on this project.\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md28}{}\doxysubsection{\texorpdfstring{\label{_wfa2.complains}%
+ 7. ACKNOWLEDGEMENTS}{\label{_wfa2.complains}%
+ 7. ACKNOWLEDGEMENTS}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md28}
+
+\begin{DoxyItemize}
+\item Baoxing Song and Buckler\textquotesingle{}s lab for their interest and help promoting the WFA and pushing for the inclusion of new features.
+\item Juan Carlos Moure and Antonio Espinosa for their collaboration and support of this project.
+\end{DoxyItemize}\hypertarget{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md29}{}\doxysubsection{\texorpdfstring{\label{_wfa2.cite}%
+ 8. CITATION}{\label{_wfa2.cite}%
+ 8. CITATION}}\label{dir_5b1a0567dbd53670be6213501a3e5c31_autotoc_md29}
+{\bfseries{Santiago Marco-\/\+Sola, Juan Carlos Moure, Miquel Moreto, Antonio Espinosa}}. \href{https://doi.org/10.1093/bioinformatics/btaa777}{\texttt{"{}\+Fast gap-\/affine pairwise alignment using the wavefront algorithm."{}}}. Bioinformatics, 2020.
+
+{\bfseries{Santiago Marco-\/\+Sola, Jordan M Eizenga, Andrea Guarracino, Benedict Paten, Erik Garrison, Miquel Moreto}}. \href{https://doi.org/10.1093/bioinformatics/btad074}{\texttt{"{}\+Optimal gap-\/affine alignment in O(s) space"{}}}. Bioinformatics, 2023. 

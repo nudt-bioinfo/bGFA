@@ -1,0 +1,41 @@
+digraph "wavefront_debug_end"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="wavefront_debug_end",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge18_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="timer_stop",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$profiler__timer_8c.html#a3cca768cb023ecf376820e28e70ce209",tooltip=" "];
+  Node2 -> Node3 [id="edge19_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="counter_add",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$profiler__counter_8c.html#acbd71bfd6af600aad54f743f8331a9a3",tooltip=" "];
+  Node2 -> Node4 [id="edge20_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="timer_pause",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$profiler__timer_8c.html#a0887aebfbe62769d5d88c36b909681a7",tooltip=" "];
+  Node4 -> Node5 [id="edge21_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="timer_get_system_time",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$profiler__timer_8c.html#a2a551ff23f53da11d3cf4a7cea945ebb",tooltip=" "];
+  Node1 -> Node6 [id="edge22_Node000001_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="wavefront_report_lite",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__debug_8c.html#a9a5b949c2c467ac765c6e24008d5f8a1",tooltip=" "];
+  Node6 -> Node7 [id="edge23_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="cigar_is_null",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a78aa773a3aad27c5a8a0ce8babff2ebd",tooltip=" "];
+  Node6 -> Node8 [id="edge24_Node000006_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="cigar_print",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a69e9ddcae18d2607a60b7d0db7c024a1",tooltip=" "];
+  Node8 -> Node7 [id="edge25_Node000008_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node8 -> Node9 [id="edge26_Node000008_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="cigar_sprint",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a8790a6d4ff1303b641510ce9110fb754",tooltip=" "];
+  Node9 -> Node7 [id="edge27_Node000009_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node10 [id="edge28_Node000006_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="cigar_score_edit",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a40bf43b056b66137f07a9ed4b0f940be",tooltip=" "];
+  Node6 -> Node11 [id="edge29_Node000006_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="wavefront_align_strerror\l_short",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__aligner_8c.html#a609d6f3ffc2646f5bf10eb0af9853a28",tooltip=" "];
+  Node6 -> Node12 [id="edge30_Node000006_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="wavefront_aligner_print_conf",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__aligner_8c.html#a70ea3f0dc5ba15ab6a6ff2b647495f55",tooltip=" "];
+  Node6 -> Node13 [id="edge31_Node000006_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="wavefront_aligner_print_mode",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__aligner_8c.html#a297e5d90e31a78738f33073b219a2024",tooltip=" "];
+  Node6 -> Node14 [id="edge32_Node000006_Node000014",color="steelblue1",style="solid",tooltip=" "];
+  Node14 [id="Node000014",label="wavefront_aligner_print\l_scope",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__aligner_8c.html#a0a7fff3b18df97f41b3b09c70128cd6c",tooltip=" "];
+  Node6 -> Node15 [id="edge33_Node000006_Node000015",color="steelblue1",style="solid",tooltip=" "];
+  Node15 [id="Node000015",label="wavefront_heuristic\l_print",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__heuristic_8c.html#aa9c2e855584f96debe1769f889b8e050",tooltip=" "];
+  Node6 -> Node16 [id="edge34_Node000006_Node000016",color="steelblue1",style="solid",tooltip=" "];
+  Node16 [id="Node000016",label="wavefront_penalties\l_print",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__penalties_8c.html#acd5fd4ead9f4ec04aad132b1124c2046",tooltip=" "];
+}

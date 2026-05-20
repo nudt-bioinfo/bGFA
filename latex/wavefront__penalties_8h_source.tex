@@ -1,0 +1,105 @@
+\doxysection{wavefront\+\_\+penalties.\+h}
+\hypertarget{wavefront__penalties_8h_source}{}\label{wavefront__penalties_8h_source}\index{src/wfa/wavefront/wavefront\_penalties.h@{src/wfa/wavefront/wavefront\_penalties.h}}
+\doxymbox{\hyperlink{wavefront__penalties_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ WaveFront\ penalties\ handling\ module}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ WAVEFRONT\_WAVEFRONT\_PENALTIES\_H\_}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ WAVEFRONT\_WAVEFRONT\_PENALTIES\_H\_}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{linear__penalties_8h}{alignment/linear\_penalties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{affine__penalties_8h}{alignment/affine\_penalties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{affine2p__penalties_8h}{alignment/affine2p\_penalties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00039}00039\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00040}00040\ \textcolor{comment}{\ *\ Distance\ metrics}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00041}00041\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00042}\doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{00042}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00043}\doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9}{00043}}\ \ \ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9}{indel}}\ \ \ \ \ \ \ \ \ =\ 0,\ \textcolor{comment}{//\ Longest\ Common\ Subsequence\ -\/\ LCS}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00044}\doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab9973bd80402101013fe9b4e66c7e64f}{00044}}\ \ \ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab9973bd80402101013fe9b4e66c7e64f}{edit}}\ \ \ \ \ \ \ \ \ \ =\ 1,\ \textcolor{comment}{//\ Levenshtein}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00045}\doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaae71387ff7cf210d857caee413c21582}{00045}}\ \ \ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaae71387ff7cf210d857caee413c21582}{gap\_linear}}\ \ \ \ =\ 2,\ \textcolor{comment}{//\ Needleman-\/Wunsch}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00046}\doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{00046}}\ \ \ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{gap\_affine}}\ \ \ \ =\ 3,\ \textcolor{comment}{//\ Smith-\/Waterman-\/Gotoh}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00047}\doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab2dc11ac0ec88c88ab4999ea27460322}{00047}}\ \ \ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab2dc11ac0ec88c88ab4999ea27460322}{gap\_affine\_2p}}\ =\ 4\ \ \textcolor{comment}{//\ Gap-\/Affine\ 2-\/pieces}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00048}00048\ \}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\_metric\_t}};}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00050}00050\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00051}00051\ \textcolor{comment}{\ *\ Wavefront\ Penalties}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00052}00052\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00053}\doxymbox{\hyperlink{structwavefront__penalties__t}{00053}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00054}00054\ \ \ \textcolor{comment}{//\ Alignment\ metric/distance\ used}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00055}\doxymbox{\hyperlink{structwavefront__penalties__t_a0aa2c16460611a4b5a18f55efb984e5c}{00055}}\ \ \ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\_metric\_t}}\ \doxymbox{\hyperlink{structwavefront__penalties__t_a0aa2c16460611a4b5a18f55efb984e5c}{distance\_metric}};}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00056}00056\ \ \ \textcolor{comment}{//\ Penalty\ values}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00057}\doxymbox{\hyperlink{structwavefront__penalties__t_af92598f21bd0b4c74637d0dabd8b56e0}{00057}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__penalties__t_af92598f21bd0b4c74637d0dabd8b56e0}{match}};\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (M\ <=\ 0)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00058}\doxymbox{\hyperlink{structwavefront__penalties__t_ae239fa60480118dcf5badb0bb484be91}{00058}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__penalties__t_ae239fa60480118dcf5badb0bb484be91}{mismatch}};\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ (X\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00059}\doxymbox{\hyperlink{structwavefront__penalties__t_a4e420947216e0346b6f470ac1dbdb29f}{00059}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__penalties__t_a4e420947216e0346b6f470ac1dbdb29f}{gap\_opening1}};\ \ \ \ \ \ \textcolor{comment}{//\ (O1\ >=\ 0)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00060}\doxymbox{\hyperlink{structwavefront__penalties__t_ab550c269b7ae8ed13f0af61905ece99e}{00060}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__penalties__t_ab550c269b7ae8ed13f0af61905ece99e}{gap\_extension1}};\ \ \ \ \textcolor{comment}{//\ (E1\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00061}\doxymbox{\hyperlink{structwavefront__penalties__t_a5e559bc030265da01f16ab9e28db2acb}{00061}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__penalties__t_a5e559bc030265da01f16ab9e28db2acb}{gap\_opening2}};\ \ \ \ \ \ \textcolor{comment}{//\ (O2\ >=\ 0)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00062}\doxymbox{\hyperlink{structwavefront__penalties__t_a5ab5604296d70a1e4c876e47265b2eca}{00062}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__penalties__t_a5ab5604296d70a1e4c876e47265b2eca}{gap\_extension2}};\ \ \ \ \textcolor{comment}{//\ (E2\ >\ 0)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00063}00063\ \ \ \textcolor{comment}{//\ Internals}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00064}\doxymbox{\hyperlink{structwavefront__penalties__t_ad7245b9241f7c6c8e7b19d0650d4496b}{00064}}\ \ \ \doxymbox{\hyperlink{structlinear__penalties__t}{linear\_penalties\_t}}\ \doxymbox{\hyperlink{structwavefront__penalties__t_ad7245b9241f7c6c8e7b19d0650d4496b}{linear\_penalties}};\ \ \ \ \ \textcolor{comment}{//\ Original\ gap-\/linear\ penalties}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00065}\doxymbox{\hyperlink{structwavefront__penalties__t_a787dfe83641307877413075bd66d5a9b}{00065}}\ \ \ \doxymbox{\hyperlink{structaffine__penalties__t}{affine\_penalties\_t}}\ \doxymbox{\hyperlink{structwavefront__penalties__t_a787dfe83641307877413075bd66d5a9b}{affine\_penalties}};\ \ \ \ \ \textcolor{comment}{//\ Original\ gap-\/affine\ penalties}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00066}\doxymbox{\hyperlink{structwavefront__penalties__t_aeffa6849b66f706db847162b2728b71f}{00066}}\ \ \ \doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\_penalties\_t}}\ \doxymbox{\hyperlink{structwavefront__penalties__t_aeffa6849b66f706db847162b2728b71f}{affine2p\_penalties}};\ \textcolor{comment}{//\ Original\ gap-\/affine2p\ penalties}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00067}\doxymbox{\hyperlink{structwavefront__penalties__t_a8baaccf2bfea69845a1450d277b045cd}{00067}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structwavefront__penalties__t_a8baaccf2bfea69845a1450d277b045cd}{internal\_gap\_e}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Original\ gap-\/extension\ value\ (used\ for\ z-\/drop)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00068}00068\ \}\ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}};}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00070}00070\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00071}00071\ \textcolor{comment}{\ *\ Compute\ SW-\/score\ equivalent\ (thanks\ to\ Eizenga's\ formula)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00072}00072\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00073}\doxymbox{\hyperlink{wavefront__penalties_8h_ae286dd63e4dcd4da43091cfba9a31c1b}{00073}}\ \textcolor{preprocessor}{\#define\ WF\_SCORE\_TO\_SW\_SCORE(swg\_match,plen,tlen,wf\_score)\ ((swg\_match*(plen+tlen)\ -\/\ wf\_score)/2)}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00074}00074\ }
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00075}00075\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00076}00076\ \textcolor{comment}{\ *\ Penalties\ adjustment}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00077}00077\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00078}00078\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a4e5940a30f585534a38549f0aa5b3424}{wavefront\_penalties\_set\_indel}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00079}00079\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}}*\ \textcolor{keyword}{const}\ wf\_penalties);}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00080}00080\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__penalties_8h_af27cb4c0f06ddeeb93ee6b9a74f451e8}{wavefront\_penalties\_set\_edit}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00081}00081\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}}*\ \textcolor{keyword}{const}\ wf\_penalties);}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00082}00082\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a8eed9d249e1262456637045435803eb7}{wavefront\_penalties\_set\_linear}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00083}00083\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}}*\ \textcolor{keyword}{const}\ wf\_penalties,}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00084}00084\ \ \ \ \ \doxymbox{\hyperlink{structlinear__penalties__t}{linear\_penalties\_t}}*\ \textcolor{keyword}{const}\ linear\_penalties);}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00085}00085\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a087daf549444df41e0cba03cab63db19}{wavefront\_penalties\_set\_affine}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00086}00086\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}}*\ \textcolor{keyword}{const}\ wf\_penalties,}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00087}00087\ \ \ \ \ \doxymbox{\hyperlink{structaffine__penalties__t}{affine\_penalties\_t}}*\ \textcolor{keyword}{const}\ affine\_penalties);}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00088}00088\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a1707be9e0763d6117f161a4f49e3d24e}{wavefront\_penalties\_set\_affine2p}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00089}00089\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}}*\ \textcolor{keyword}{const}\ wf\_penalties,}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00090}00090\ \ \ \ \ \doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\_penalties\_t}}*\ \textcolor{keyword}{const}\ affine2p\_penalties);}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00092}00092\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00093}00093\ \textcolor{comment}{\ *\ Display}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00094}00094\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00095}00095\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__penalties_8h_acd5fd4ead9f4ec04aad132b1124c2046}{wavefront\_penalties\_print}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00096}00096\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00097}00097\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__penalties__t}{wavefront\_penalties\_t}}*\ \textcolor{keyword}{const}\ wf\_penalties);}
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00098}00098\ }
+\DoxyCodeLine{\Hypertarget{wavefront__penalties_8h_source_l00099}00099\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ WAVEFRONT\_WAVEFRONT\_PENALTIES\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

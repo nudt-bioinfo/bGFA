@@ -1,0 +1,85 @@
+\doxysection{src/\+wfa/\+alignment/\+score\+\_\+matrix.h File Reference}
+\hypertarget{score__matrix_8h}{}\label{score__matrix_8h}\index{src/wfa/alignment/score\_matrix.h@{src/wfa/alignment/score\_matrix.h}}
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+cigar.\+h"{}}\newline
+Include dependency graph for score\+\_\+matrix.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{score__matrix_8h_a01deca592d490bb28261283633b500c3}{SCORE\+\_\+\+MAX}}~(10000000)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{score__matrix_8h_a9a2116ac448a24c673395ee2b69bcd40}{score\+\_\+matrix\+\_\+allocate}} (\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix, const int num\+\_\+rows, const int num\+\_\+columns, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{score__matrix_8h_ae6468a2087e305bcfa3882f58d8ee6b9}{score\+\_\+matrix\+\_\+free}} (\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix)
+\item 
+void \doxymbox{\hyperlink{score__matrix_8h_a0c80bdd29fbae8f33798d7ef351fddaf}{score\+\_\+matrix\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{score__matrix_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{score__matrix_8h_a01deca592d490bb28261283633b500c3}\index{score\_matrix.h@{score\_matrix.h}!SCORE\_MAX@{SCORE\_MAX}}
+\index{SCORE\_MAX@{SCORE\_MAX}!score\_matrix.h@{score\_matrix.h}}
+\doxysubsubsection{\texorpdfstring{SCORE\_MAX}{SCORE\_MAX}}
+{\footnotesize\ttfamily \label{score__matrix_8h_a01deca592d490bb28261283633b500c3} 
+\+\#define SCORE\+\_\+\+MAX~(10000000)}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{score__matrix_8h_source}{score\+\_\+matrix.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{score__matrix_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{score__matrix_8h_a9a2116ac448a24c673395ee2b69bcd40}\index{score\_matrix.h@{score\_matrix.h}!score\_matrix\_allocate@{score\_matrix\_allocate}}
+\index{score\_matrix\_allocate@{score\_matrix\_allocate}!score\_matrix.h@{score\_matrix.h}}
+\doxysubsubsection{\texorpdfstring{score\_matrix\_allocate()}{score\_matrix\_allocate()}}
+{\footnotesize\ttfamily \label{score__matrix_8h_a9a2116ac448a24c673395ee2b69bcd40} 
+void score\+\_\+matrix\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{, }\item[{const int}]{num\+\_\+rows}{, }\item[{const int}]{num\+\_\+columns}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8c_source_l00038}{38}} of file \doxymbox{\hyperlink{score__matrix_8c_source}{score\+\_\+matrix.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{score__matrix_8h_ae6468a2087e305bcfa3882f58d8ee6b9}\index{score\_matrix.h@{score\_matrix.h}!score\_matrix\_free@{score\_matrix\_free}}
+\index{score\_matrix\_free@{score\_matrix\_free}!score\_matrix.h@{score\_matrix.h}}
+\doxysubsubsection{\texorpdfstring{score\_matrix\_free()}{score\_matrix\_free()}}
+{\footnotesize\ttfamily \label{score__matrix_8h_ae6468a2087e305bcfa3882f58d8ee6b9} 
+void score\+\_\+matrix\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8c_source_l00054}{54}} of file \doxymbox{\hyperlink{score__matrix_8c_source}{score\+\_\+matrix.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{score__matrix_8h_a0c80bdd29fbae8f33798d7ef351fddaf}\index{score\_matrix.h@{score\_matrix.h}!score\_matrix\_print@{score\_matrix\_print}}
+\index{score\_matrix\_print@{score\_matrix\_print}!score\_matrix.h@{score\_matrix.h}}
+\doxysubsubsection{\texorpdfstring{score\_matrix\_print()}{score\_matrix\_print()}}
+{\footnotesize\ttfamily \label{score__matrix_8h_a0c80bdd29fbae8f33798d7ef351fddaf} 
+void score\+\_\+matrix\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8c_source_l00083}{83}} of file \doxymbox{\hyperlink{score__matrix_8c_source}{score\+\_\+matrix.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 5

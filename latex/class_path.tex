@@ -1,0 +1,537 @@
+\doxysection{Path Class Reference}
+\hypertarget{class_path}{}\label{class_path}\index{Path@{Path}}
+
+
+{\ttfamily \+\#include $<$bgfa\+\_\+graph.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_path_a6ae58f503394f12a90ff7d059d30d26c}{Path}} ()=default
+\item 
+\doxymbox{\hyperlink{class_path_a464494077a1ebc229f7330f92da2fbf2}{Path}} (const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&nodes)
+\item 
+\doxymbox{\hyperlink{class_path_ad887e837b777e3d73c19b4fbdc564f2f}{Path}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} id, const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&nodes)
+\item 
+\doxymbox{\hyperlink{class_path_a23fcd89af77d94ea46d8f2fd8d11df93}{Path}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} path\+\_\+id, std::\+string path\+\_\+str, \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&id\+\_\+to\+\_\+id, \doxymbox{\hyperlink{bgfa__graph_8hpp_a13b6c9d68394a38d8f60c7cbfadd499e}{Path\+Mode}} mode)
+\item 
+\doxymbox{\hyperlink{class_path_afbea68328efb3daaf5e043bc0278c1f8}{Path}} (std::\+string walk\+\_\+str, \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&id\+\_\+to\+\_\+id, \doxymbox{\hyperlink{bgfa__graph_8hpp_a13b6c9d68394a38d8f60c7cbfadd499e}{Path\+Mode}} mode)
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_a74f0872a9bb0d00c1f8403fed310756a}{get\+From\+Node}} () const
+\begin{DoxyCompactList}\small\item\em Get the from node of the \doxylink{class_path}{Path}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_a84c5eec7a56295bf9edf024b42ab3004}{get\+End\+Node}} () const
+\begin{DoxyCompactList}\small\item\em Get the end node of the \doxylink{class_path}{Path}. \end{DoxyCompactList}\item 
+const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \& \doxymbox{\hyperlink{class_path_a4f895a265dadee6505718231beeca22f}{get\+All\+Nodes}} () const
+\begin{DoxyCompactList}\small\item\em Get all nodes in the \doxylink{class_path}{Path}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_ae592773c17304c3b8438aa12872063a7}{get\+Id}} () const
+\item 
+\doxymbox{\hyperlink{bgfa__graph_8hpp_a13b6c9d68394a38d8f60c7cbfadd499e}{Path\+Mode}} \doxymbox{\hyperlink{class_path_a65513d3dec482180be0bcfe61c8c8ae1}{get\+Mode}} () const
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_abc6985dfd6d8ad1d4b0e9c533edc3a8c}{get\+Store\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the storage size of the \doxylink{class_path}{Path} in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_path_a7e673b339616b9380ad789bf82c9910b}{set\+Mode}} (\doxymbox{\hyperlink{bgfa__graph_8hpp_a13b6c9d68394a38d8f60c7cbfadd499e}{Path\+Mode}} mode)
+\item 
+std::\+string \doxymbox{\hyperlink{class_path_adb4525a4b669817c8819a3d560c3ba63}{to\+Gfa\+Txt}} () const
+\begin{DoxyCompactList}\small\item\em Convert the \doxylink{class_path}{Path} to \doxylink{class_g_f_a}{GFA} text format. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_path_ad12076015c2fce8fa5d783583c5f5646}{to\+Bgfa\+Bin}} (std::\+ofstream \&output\+\_\+file) const
+\begin{DoxyCompactList}\small\item\em Convert the \doxylink{class_path}{Path} to b\+GFA binary format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \doxymbox{\hyperlink{class_path_aaa84a68b3d905752948179f622b1b6f9}{is\+Not\+Unique\+Successor}} (\doxymbox{\hyperlink{class_links_set}{Links\+Set}} \&links\+\_\+set, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} from\+\_\+id, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} to\+\_\+id, char from\+\_\+dir, char to\+\_\+dir) const
+\begin{DoxyCompactList}\small\item\em Check if the link from from\+\_\+id to to\+\_\+id with specified directions is not unique. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_path_a5b6a0e7ceb6d7f8063ce47f8498537e6}{parse\+Path\+Direct}} (std::\+string path\+\_\+str, \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&id\+\_\+to\+\_\+id)
+\item 
+void \doxymbox{\hyperlink{class_path_ac80604b7f35b904befcb994f8282b119}{parse\+Path\+Increment}} (std::\+vector$<$ std::\+pair$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}, char $>$ $>$ tokens)
+\item 
+std::\+string \doxymbox{\hyperlink{class_path_a0024ffcacec568281a589a4a3729323e}{to\+Gfa\+Txt\+Direct}} () const
+\item 
+std::\+string \doxymbox{\hyperlink{class_path_a6aad6e1df5654d25a091b1784d15982c}{to\+Gfa\+Txt\+Increment}} () const
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_a0dbbcf255fd1cf1fb83cb9cd72c9abc5}{pack\+Id\+With\+Dir}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} id, char dir)
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_a07af5ca9782919362f8a7e440163480f}{pack\+Id\+Dir\+Flag}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} id, char dir, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} flag)
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_ac4225860946aff275ef523777c545785}{set\+Dir\+Word}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} word, char dir, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} pos)
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_ae6155a72ee3975a39531ab3131b9e958}{set\+Inc\+Word}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} word, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} inc, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} slot)
+\item 
+void \doxymbox{\hyperlink{class_path_a99dd76ba7c3e59c2a1964b1578576414}{set\+Store\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Set the storage size of the \doxylink{class_path}{Path} in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_ad7a696e098e3935fbaa414a84fb1f51f}{id\+\_\+}}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \doxymbox{\hyperlink{class_path_acf9fc19a6f87fc78ffcc4088462f95bb}{nodes\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Nodes in the \doxylink{class_path}{Path}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_ac2330c7e1ad0f3caf0547eea88da115a}{mode\+\_\+}}
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_path_a0245d44e3ae9f0deac228a8485dbbbae}{store\+\_\+size\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Size in storage (in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std::\+ostream \& \doxymbox{\hyperlink{class_path_aa6617d5e2229065e35e91dafcae78646}{operator$<$$<$}} (std::\+ostream \&os, const \doxymbox{\hyperlink{class_path}{Path}} \&path)
+\begin{DoxyCompactList}\small\item\em Output stream operator for \doxylink{class_path}{Path}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01069}{1069}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_path_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_path_a6ae58f503394f12a90ff7d059d30d26c}\index{Path@{Path}!Path@{Path}}
+\index{Path@{Path}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily \label{class_path_a6ae58f503394f12a90ff7d059d30d26c} 
+Path::\+\+Path (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Here is the caller graph for this function:\+
+% FIG 0
+\Hypertarget{class_path_a464494077a1ebc229f7330f92da2fbf2}\index{Path@{Path}!Path@{Path}}
+\index{Path@{Path}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily \label{class_path_a464494077a1ebc229f7330f92da2fbf2} 
+Path::\+\+Path (\begin{DoxyParamCaption}\item[{const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&}]{nodes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01089}{1089}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+\Hypertarget{class_path_ad887e837b777e3d73c19b4fbdc564f2f}\index{Path@{Path}!Path@{Path}}
+\index{Path@{Path}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily \label{class_path_ad887e837b777e3d73c19b4fbdc564f2f} 
+Path::\+\+Path (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{id}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&}]{nodes}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01094}{1094}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{class_path_a23fcd89af77d94ea46d8f2fd8d11df93}\index{Path@{Path}!Path@{Path}}
+\index{Path@{Path}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily \label{class_path_a23fcd89af77d94ea46d8f2fd8d11df93} 
+Path::\+\+Path (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{path\+\_\+id}{, }\item[{std::\+string}]{path\+\_\+str}{, }\item[{\doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&}]{id\+\_\+to\+\_\+id}{, }\item[{\doxymbox{\hyperlink{bgfa__graph_8hpp_a13b6c9d68394a38d8f60c7cbfadd499e}{Path\+Mode}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01099}{1099}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{class_path_afbea68328efb3daaf5e043bc0278c1f8}\index{Path@{Path}!Path@{Path}}
+\index{Path@{Path}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{Path()}{Path()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily \label{class_path_afbea68328efb3daaf5e043bc0278c1f8} 
+Path::\+\+Path (\begin{DoxyParamCaption}\item[{std::\+string}]{walk\+\_\+str}{, }\item[{\doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&}]{id\+\_\+to\+\_\+id}{, }\item[{\doxymbox{\hyperlink{bgfa__graph_8hpp_a13b6c9d68394a38d8f60c7cbfadd499e}{Path\+Mode}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01126}{1126}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+
+
+\label{doc-func-members}
+\Hypertarget{class_path_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_path_a4f895a265dadee6505718231beeca22f}\index{Path@{Path}!getAllNodes@{getAllNodes}}
+\index{getAllNodes@{getAllNodes}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{getAllNodes()}{getAllNodes()}}
+{\footnotesize\ttfamily \label{class_path_a4f895a265dadee6505718231beeca22f} 
+const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \& Path::\+get\+All\+Nodes (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get all nodes in the \doxylink{class_path}{Path}. 
+
+\begin{DoxyReturn}{Returns}
+\{const vector$<$uword\+\_\+t$>$\&\} Vector of all nodes 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01223}{1223}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{class_path_a84c5eec7a56295bf9edf024b42ab3004}\index{Path@{Path}!getEndNode@{getEndNode}}
+\index{getEndNode@{getEndNode}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{getEndNode()}{getEndNode()}}
+{\footnotesize\ttfamily \label{class_path_a84c5eec7a56295bf9edf024b42ab3004} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+get\+End\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the end node of the \doxylink{class_path}{Path}. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} End node 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01217}{1217}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_path_a74f0872a9bb0d00c1f8403fed310756a}\index{Path@{Path}!getFromNode@{getFromNode}}
+\index{getFromNode@{getFromNode}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{getFromNode()}{getFromNode()}}
+{\footnotesize\ttfamily \label{class_path_a74f0872a9bb0d00c1f8403fed310756a} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+get\+From\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the from node of the \doxylink{class_path}{Path}. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} From node 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01208}{1208}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_path_ae592773c17304c3b8438aa12872063a7}\index{Path@{Path}!getId@{getId}}
+\index{getId@{getId}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily \label{class_path_ae592773c17304c3b8438aa12872063a7} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+get\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01225}{1225}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_path_a65513d3dec482180be0bcfe61c8c8ae1}\index{Path@{Path}!getMode@{getMode}}
+\index{getMode@{getMode}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{class_path_a65513d3dec482180be0bcfe61c8c8ae1} 
+\doxymbox{\hyperlink{bgfa__graph_8hpp_a13b6c9d68394a38d8f60c7cbfadd499e}{Path\+Mode}} Path::\+get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01227}{1227}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{class_path_abc6985dfd6d8ad1d4b0e9c533edc3a8c}\index{Path@{Path}!getStoreSize@{getStoreSize}}
+\index{getStoreSize@{getStoreSize}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{getStoreSize()}{getStoreSize()}}
+{\footnotesize\ttfamily \label{class_path_abc6985dfd6d8ad1d4b0e9c533edc3a8c} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+get\+Store\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the storage size of the \doxylink{class_path}{Path} in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} Storage size 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01233}{1233}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{class_path_aaa84a68b3d905752948179f622b1b6f9}\index{Path@{Path}!isNotUniqueSuccessor@{isNotUniqueSuccessor}}
+\index{isNotUniqueSuccessor@{isNotUniqueSuccessor}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{isNotUniqueSuccessor()}{isNotUniqueSuccessor()}}
+{\footnotesize\ttfamily \label{class_path_aaa84a68b3d905752948179f622b1b6f9} 
+bool Path::\+is\+Not\+Unique\+Successor (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_links_set}{Links\+Set}} \&}]{links\+\_\+set}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{from\+\_\+id}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{to\+\_\+id}{, }\item[{char}]{from\+\_\+dir}{, }\item[{char}]{to\+\_\+dir}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Check if the link from from\+\_\+id to to\+\_\+id with specified directions is not unique. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Links\+Set\}} & \&links\+\_\+set -\/ \doxylink{class_links_set}{Links\+Set} to check \\
+\hline
+{\em \{uword\+\_\+t\}} & from\+\_\+id -\/ Source node index \\
+\hline
+{\em \{uword\+\_\+t\}} & to\+\_\+id -\/ Target node index \\
+\hline
+{\em \{char\}} & from\+\_\+dir -\/ Direction from source node (\textquotesingle{}+\textquotesingle{} or \textquotesingle{}-\/\textquotesingle{}) \\
+\hline
+{\em \{char\}} & to\+\_\+dir -\/ Direction to target node (\textquotesingle{}+\textquotesingle{} or \textquotesingle{}-\/\textquotesingle{}) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{bool\} True if the link is not unique, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01341}{1341}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+\Hypertarget{class_path_a07af5ca9782919362f8a7e440163480f}\index{Path@{Path}!packIdDirFlag@{packIdDirFlag}}
+\index{packIdDirFlag@{packIdDirFlag}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{packIdDirFlag()}{packIdDirFlag()}}
+{\footnotesize\ttfamily \label{class_path_a07af5ca9782919362f8a7e440163480f} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+pack\+Id\+Dir\+Flag (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{id}{, }\item[{char}]{dir}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{flag}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01687}{1687}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{class_path_a0dbbcf255fd1cf1fb83cb9cd72c9abc5}\index{Path@{Path}!packIdWithDir@{packIdWithDir}}
+\index{packIdWithDir@{packIdWithDir}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{packIdWithDir()}{packIdWithDir()}}
+{\footnotesize\ttfamily \label{class_path_a0dbbcf255fd1cf1fb83cb9cd72c9abc5} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+pack\+Id\+With\+Dir (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{id}{, }\item[{char}]{dir}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01681}{1681}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{class_path_a5b6a0e7ceb6d7f8063ce47f8498537e6}\index{Path@{Path}!parsePathDirect@{parsePathDirect}}
+\index{parsePathDirect@{parsePathDirect}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{parsePathDirect()}{parsePathDirect()}}
+{\footnotesize\ttfamily \label{class_path_a5b6a0e7ceb6d7f8063ce47f8498537e6} 
+void Path::\+parse\+Path\+Direct (\begin{DoxyParamCaption}\item[{std::\+string}]{path\+\_\+str}{, }\item[{\doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&}]{id\+\_\+to\+\_\+id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01377}{1377}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{class_path_ac80604b7f35b904befcb994f8282b119}\index{Path@{Path}!parsePathIncrement@{parsePathIncrement}}
+\index{parsePathIncrement@{parsePathIncrement}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{parsePathIncrement()}{parsePathIncrement()}}
+{\footnotesize\ttfamily \label{class_path_ac80604b7f35b904befcb994f8282b119} 
+void Path::\+parse\+Path\+Increment (\begin{DoxyParamCaption}\item[{std::\+vector$<$ std::\+pair$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}, char $>$ $>$}]{tokens}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01417}{1417}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 14
+Here is the caller graph for this function:\+
+% FIG 15
+\Hypertarget{class_path_ac4225860946aff275ef523777c545785}\index{Path@{Path}!setDirWord@{setDirWord}}
+\index{setDirWord@{setDirWord}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{setDirWord()}{setDirWord()}}
+{\footnotesize\ttfamily \label{class_path_ac4225860946aff275ef523777c545785} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+set\+Dir\+Word (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{word}{, }\item[{char}]{dir}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{pos}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01693}{1693}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 16
+\Hypertarget{class_path_ae6155a72ee3975a39531ab3131b9e958}\index{Path@{Path}!setIncWord@{setIncWord}}
+\index{setIncWord@{setIncWord}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{setIncWord()}{setIncWord()}}
+{\footnotesize\ttfamily \label{class_path_ae6155a72ee3975a39531ab3131b9e958} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+set\+Inc\+Word (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{word}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{inc}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{slot}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01700}{1700}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 17
+\Hypertarget{class_path_a7e673b339616b9380ad789bf82c9910b}\index{Path@{Path}!setMode@{setMode}}
+\index{setMode@{setMode}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily \label{class_path_a7e673b339616b9380ad789bf82c9910b} 
+void Path::\+set\+Mode (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa__graph_8hpp_a13b6c9d68394a38d8f60c7cbfadd499e}{Path\+Mode}}}]{mode}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01239}{1239}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 18
+\Hypertarget{class_path_a99dd76ba7c3e59c2a1964b1578576414}\index{Path@{Path}!setStoreSize@{setStoreSize}}
+\index{setStoreSize@{setStoreSize}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{setStoreSize()}{setStoreSize()}}
+{\footnotesize\ttfamily \label{class_path_a99dd76ba7c3e59c2a1964b1578576414} 
+void Path::\+set\+Store\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Set the storage size of the \doxylink{class_path}{Path} in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01709}{1709}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 19
+\Hypertarget{class_path_ad12076015c2fce8fa5d783583c5f5646}\index{Path@{Path}!toBgfaBin@{toBgfaBin}}
+\index{toBgfaBin@{toBgfaBin}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{toBgfaBin()}{toBgfaBin()}}
+{\footnotesize\ttfamily \label{class_path_ad12076015c2fce8fa5d783583c5f5646} 
+void Path::\+to\+Bgfa\+Bin (\begin{DoxyParamCaption}\item[{std::\+ofstream \&}]{output\+\_\+file}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert the \doxylink{class_path}{Path} to b\+GFA binary format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{ofstream\}} & \&output\+\_\+file -\/ Output binary file stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01274}{1274}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_path_adb4525a4b669817c8819a3d560c3ba63}\index{Path@{Path}!toGfaTxt@{toGfaTxt}}
+\index{toGfaTxt@{toGfaTxt}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{toGfaTxt()}{toGfaTxt()}}
+{\footnotesize\ttfamily \label{class_path_adb4525a4b669817c8819a3d560c3ba63} 
+std::\+string Path::\+to\+Gfa\+Txt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert the \doxylink{class_path}{Path} to \doxylink{class_g_f_a}{GFA} text format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Links\+Set\}} & \&links\+\_\+set -\/ \doxylink{class_links_set}{Links\+Set} for reference \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{string\} \doxylink{class_g_f_a}{GFA} text representation of the path 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01254}{1254}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 20
+Here is the caller graph for this function:\+
+% FIG 21
+\Hypertarget{class_path_a0024ffcacec568281a589a4a3729323e}\index{Path@{Path}!toGfaTxtDirect@{toGfaTxtDirect}}
+\index{toGfaTxtDirect@{toGfaTxtDirect}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{toGfaTxtDirect()}{toGfaTxtDirect()}}
+{\footnotesize\ttfamily \label{class_path_a0024ffcacec568281a589a4a3729323e} 
+std::\+string Path::\+to\+Gfa\+Txt\+Direct (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01581}{1581}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 22
+\Hypertarget{class_path_a6aad6e1df5654d25a091b1784d15982c}\index{Path@{Path}!toGfaTxtIncrement@{toGfaTxtIncrement}}
+\index{toGfaTxtIncrement@{toGfaTxtIncrement}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{toGfaTxtIncrement()}{toGfaTxtIncrement()}}
+{\footnotesize\ttfamily \label{class_path_a6aad6e1df5654d25a091b1784d15982c} 
+std::\+string Path::\+to\+Gfa\+Txt\+Increment (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01599}{1599}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 23
+
+
+\label{doc-related-members}
+\Hypertarget{class_path_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_path_aa6617d5e2229065e35e91dafcae78646}\index{Path@{Path}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_path_aa6617d5e2229065e35e91dafcae78646} 
+std::\+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{, }\item[{const \doxymbox{\hyperlink{class_path}{Path}} \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Output stream operator for \doxylink{class_path}{Path}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{ostream\}} & \&os -\/ Output stream \\
+\hline
+{\em \{\+Path\}} & \&path -\/ \doxylink{class_path}{Path} to output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{ostream\&\} Reference to the output stream 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01300}{1300}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_path_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_path_ad7a696e098e3935fbaa414a84fb1f51f}\index{Path@{Path}!id\_@{id\_}}
+\index{id\_@{id\_}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{id\_}{id\_}}
+{\footnotesize\ttfamily \label{class_path_ad7a696e098e3935fbaa414a84fb1f51f} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+id\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01072}{1072}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_path_ac2330c7e1ad0f3caf0547eea88da115a}\index{Path@{Path}!mode\_@{mode\_}}
+\index{mode\_@{mode\_}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{mode\_}{mode\_}}
+{\footnotesize\ttfamily \label{class_path_ac2330c7e1ad0f3caf0547eea88da115a} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+mode\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01084}{1084}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_path_acf9fc19a6f87fc78ffcc4088462f95bb}\index{Path@{Path}!nodes\_@{nodes\_}}
+\index{nodes\_@{nodes\_}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{nodes\_}{nodes\_}}
+{\footnotesize\ttfamily \label{class_path_acf9fc19a6f87fc78ffcc4088462f95bb} 
+std::\+vector$<$\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}$>$ Path::\+nodes\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Nodes in the \doxylink{class_path}{Path}. 
+
+If Direct Mode, stored as encoded (node\+\_\+id \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1) \texorpdfstring{$\vert$}{|} dir If Increment Mode:\+ flag\+\_\+seg, head\+\_\+seg, inc\+\_\+seg, inc\+\_\+seg, ... flag:\+ \+[31 bits unused(max 15 dirs)]\+\+[1bit flag]\+ 2bits-\/\texorpdfstring{$>$}{>}dir:\+ 00:\+终止, 10:\+-\/, 11:\++ 1bit-\/\texorpdfstring{$>$}{>}flag:\+ 0:\+ seg\+\_\+mode, 1:\+ inc\+\_\+mode head\+\_\+seg:\+ encoded (node\+\_\+id \texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<} 1) \texorpdfstring{$\vert$}{|} dir inc\+\_\+seg:\+ 4 x inc(8bits, max 255) 
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01083}{1083}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_path_a0245d44e3ae9f0deac228a8485dbbbae}\index{Path@{Path}!store\_size\_@{store\_size\_}}
+\index{store\_size\_@{store\_size\_}!Path@{Path}}
+\doxysubsubsection{\texorpdfstring{store\_size\_}{store\_size\_}}
+{\footnotesize\ttfamily \label{class_path_a0245d44e3ae9f0deac228a8485dbbbae} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Path::\+store\+\_\+size\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Size in storage (in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units). 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01085}{1085}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\doxymbox{\hyperlink{bgfa__graph_8hpp}{bgfa\+\_\+graph.\+hpp}}\end{DoxyCompactItemize}

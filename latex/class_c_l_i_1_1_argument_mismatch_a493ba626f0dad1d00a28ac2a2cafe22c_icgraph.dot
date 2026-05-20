@@ -1,0 +1,24 @@
+digraph "CLI::ArgumentMismatch::PartialType"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="CLI::ArgumentMismatch\l::PartialType",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge9_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CLI::App::_parse_arg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#ac1966d7e1f86fa5d6b69fd4756b0447d",tooltip=" "];
+  Node2 -> Node2 [id="edge10_Node000002_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 -> Node3 [id="edge11_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CLI::App::_parse_single",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#a9a53cbb3f5030e71fad7aab0d60cff76",tooltip=" "];
+  Node3 -> Node4 [id="edge12_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="CLI::App::_parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#a8e09acb3e91a9e8a5566bf119e4d477f",tooltip="Internal parse function."];
+  Node3 -> Node5 [id="edge13_Node000003_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="CLI::App::_parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#ae017c582b518c0a5638fabae57390680",tooltip="Internal parse function."];
+  Node5 -> Node6 [id="edge14_Node000005_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="CLI::App::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#a6534f2d56e74a6b9857a1b9693b89936",tooltip="The real work is done here. Expects a reversed vector."];
+  Node5 -> Node7 [id="edge15_Node000005_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="CLI::App::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#ac9cdd21ae370d0d7957f2418f04ed96f",tooltip=" "];
+  Node2 -> Node8 [id="edge16_Node000002_Node000008",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="CLI::detail::AppFriend\l::parse_arg",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$struct_c_l_i_1_1detail_1_1_app_friend.html#ac66cce5a6369dc642c31362a9abecc9f",tooltip="Wrap _parse_short, perfectly forward arguments and return."];
+}

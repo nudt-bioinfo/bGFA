@@ -1,0 +1,28 @@
+\doxysection{CLI::\+detail::\+is\+\_\+mutable\+\_\+container\texorpdfstring{$<$}{<} T, conditional\+\_\+t\texorpdfstring{$<$}{<} false, void\+\_\+t\texorpdfstring{$<$}{<} typename T::\+value\+\_\+type, decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().end()), decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().clear()), decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().insert(std::\+declval\texorpdfstring{$<$}{<} decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().end())\texorpdfstring{$>$}{>}(), std::\+declval\texorpdfstring{$<$}{<} const typename T::\+value\+\_\+type \& \texorpdfstring{$>$}{>}()))\texorpdfstring{$>$}{>}, void \texorpdfstring{$>$}{>} \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{struct_c_l_i_1_1detail_1_1is__mutable__container_3_01_t_00_01conditional__t_3_01false_00_01void_9711c92f16061f5742bb50eefb1b0c0c}{}\label{struct_c_l_i_1_1detail_1_1is__mutable__container_3_01_t_00_01conditional__t_3_01false_00_01void_9711c92f16061f5742bb50eefb1b0c0c}\index{CLI::detail::is\_mutable\_container$<$ T, conditional\_t$<$ false, void\_t$<$ typename T::value\_type, decltype(std::declval$<$ T $>$().end()), decltype(std::declval$<$ T $>$().clear()), decltype(std::declval$<$ T $>$().insert(std::declval$<$ decltype(std::declval$<$ T $>$().end())$>$(), std::declval$<$ const typename T::value\_type \& $>$()))$>$, void $>$ $>$@{CLI::detail::is\_mutable\_container$<$ T, conditional\_t$<$ false, void\_t$<$ typename T::value\_type, decltype(std::declval$<$ T $>$().end()), decltype(std::declval$<$ T $>$().clear()), decltype(std::declval$<$ T $>$().insert(std::declval$<$ decltype(std::declval$<$ T $>$().end())$>$(), std::declval$<$ const typename T::value\_type \& $>$()))$>$, void $>$ $>$}}
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+detail::\+is\+\_\+mutable\+\_\+container\texorpdfstring{$<$}{<} T, conditional\+\_\+t\texorpdfstring{$<$}{<} false, void\+\_\+t\texorpdfstring{$<$}{<} typename T::\+value\+\_\+type, decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().end()), decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().clear()), decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().insert(std::\+declval\texorpdfstring{$<$}{<} decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().end())\texorpdfstring{$>$}{>}(), std::\+declval\texorpdfstring{$<$}{<} const typename T::\+value\+\_\+type \& \texorpdfstring{$>$}{>}()))\texorpdfstring{$>$}{>}, void \texorpdfstring{$>$}{>} \texorpdfstring{$>$}{>}:\+
+% FIG 0
+
+
+Collaboration diagram for CLI::\+detail::\+is\+\_\+mutable\+\_\+container\texorpdfstring{$<$}{<} T, conditional\+\_\+t\texorpdfstring{$<$}{<} false, void\+\_\+t\texorpdfstring{$<$}{<} typename T::\+value\+\_\+type, decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().end()), decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().clear()), decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().insert(std::\+declval\texorpdfstring{$<$}{<} decltype(std::\+declval\texorpdfstring{$<$}{<} T \texorpdfstring{$>$}{>}().end())\texorpdfstring{$>$}{>}(), std::\+declval\texorpdfstring{$<$}{<} const typename T::\+value\+\_\+type \& \texorpdfstring{$>$}{>}()))\texorpdfstring{$>$}{>}, void \texorpdfstring{$>$}{>} \texorpdfstring{$>$}{>}:\+
+% FIG 1
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$\newline
+struct CLI::\+detail::\+is\+\_\+mutable\+\_\+container$<$ T, conditional\+\_\+t$<$ false, void\+\_\+t$<$ typename T::\+value\+\_\+type, decltype(std::\+declval$<$ T $>$().\+end()), decltype(std::\+declval$<$ T $>$().\+clear()), decltype(std::\+declval$<$ T $>$().\+insert(std::\+declval$<$ decltype(std::\+declval$<$ T $>$().\+end())$>$(), std::\+declval$<$ const typename T::\+value\+\_\+type \& $>$()))$>$, void $>$ $>$}
+type trait to test if a type is a mutable container meaning it has a value\+\_\+type, it has an iterator, a clear, and end methods and an insert function. And for our purposes we exclude std::\+string and types that can be constructed from a std::\+string 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01877}{1877}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

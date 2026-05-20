@@ -1,0 +1,104 @@
+\doxysection{profiler\+\_\+timer.\+h}
+\hypertarget{profiler__timer_8h_source}{}\label{profiler__timer_8h_source}\index{src/wfa/system/profiler\_timer.h@{src/wfa/system/profiler\_timer.h}}
+\doxymbox{\hyperlink{profiler__timer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00029}00029\ \textcolor{comment}{\ *\ VERSION:\ v20.08.25}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00030}00030\ \textcolor{comment}{\ *\ DESCRIPTION:\ Simple\ time\ profiler}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00031}00031\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00033}00033\ \textcolor{preprocessor}{\#ifndef\ PROFILER\_TIMER\_H}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ PROFILER\_TIMER\_H}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ <sys/time.h>}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{profiler__counter_8h}{profiler\_counter.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00038}00038\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00039}00039\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00040}00040\ \textcolor{comment}{\ *\ Time\ Conversions}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00041}00041\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00042}\doxymbox{\hyperlink{profiler__timer_8h_a9d3eabc59bfe3e05b715697a32e1ba15}{00042}}\ \textcolor{preprocessor}{\#define\ TIME\_DIFF\_NS(start,end)\ ((end.tv\_sec*1000000000\ +\ end.tv\_nsec)\ -\/\ (start.tv\_sec*1000000000\ +\ start.tv\_nsec))}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00043}\doxymbox{\hyperlink{profiler__timer_8h_abf51df9b84518448a0d617da34aed679}{00043}}\ \textcolor{preprocessor}{\#define\ TIME\_DIFF\_S(start,end)\ ((end.tv\_sec\ +\ end.tv\_nsec/1E9)\ -\/\ (start.tv\_sec\ +\ start.tv\_nsec/1E9))}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00044}00044\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00045}\doxymbox{\hyperlink{profiler__timer_8h_a6d20a94825eb467e045b1e2bde52511f}{00045}}\ \textcolor{preprocessor}{\#define\ TIMER\_CONVERT\_NS\_TO\_US(time\_ns)\ ((double)(time\_ns)/1E3)}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00046}\doxymbox{\hyperlink{profiler__timer_8h_ad2f78b81d82b927ee4f36dbcf42f9bc1}{00046}}\ \textcolor{preprocessor}{\#define\ TIMER\_CONVERT\_NS\_TO\_MS(time\_ns)\ ((double)(time\_ns)/1E6)}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00047}\doxymbox{\hyperlink{profiler__timer_8h_a88b03cca57218c54e3d734c72304dec3}{00047}}\ \textcolor{preprocessor}{\#define\ TIMER\_CONVERT\_NS\_TO\_S(time\_ns)\ \ ((double)(time\_ns)/1E9)}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00048}\doxymbox{\hyperlink{profiler__timer_8h_a2a5fa33d53cf02b98cea786f3a05b137}{00048}}\ \textcolor{preprocessor}{\#define\ TIMER\_CONVERT\_NS\_TO\_M(time\_ns)\ \ ((double)(time\_ns)/1E9/60.0)}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00049}\doxymbox{\hyperlink{profiler__timer_8h_aa62e529f5b02f0f0bf69e1c9c2a4aabf}{00049}}\ \textcolor{preprocessor}{\#define\ TIMER\_CONVERT\_NS\_TO\_H(time\_ns)\ \ ((double)(time\_ns)/1E9/3600.0)}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00051}00051\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00052}00052\ \textcolor{comment}{\ *\ System\ time}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00053}00053\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00054}00054\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__timer_8h_a2a551ff23f53da11d3cf4a7cea945ebb}{timer\_get\_system\_time}}(\textcolor{keyword}{struct}\ timespec\ *ts);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00055}00055\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00056}00056\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00057}00057\ \textcolor{comment}{\ *\ Timers}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00058}00058\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00059}\doxymbox{\hyperlink{structprofiler__timer__t}{00059}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00060}00060\ \ \ \textcolor{comment}{/*\ Timer\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00061}\doxymbox{\hyperlink{structprofiler__timer__t_a20b67428de4511bed51cc3e440cd61a0}{00061}}\ \ \ \textcolor{keyword}{struct\ }timespec\ \doxymbox{\hyperlink{structprofiler__timer__t_a20b67428de4511bed51cc3e440cd61a0}{begin\_timer}};\ \ \ \ \ \textcolor{comment}{//\ Timer\ begin}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00062}00062\ \ \ \textcolor{comment}{/*\ Total\ time\ \&\ samples\ taken\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00063}\doxymbox{\hyperlink{structprofiler__timer__t_a488e825113d1886e61f4ed2e09cf7158}{00063}}\ \ \ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}\ \doxymbox{\hyperlink{structprofiler__timer__t_a488e825113d1886e61f4ed2e09cf7158}{time\_ns}};}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00064}\doxymbox{\hyperlink{structprofiler__timer__t_ad194328446e0e5158c4d6dbf61458bac}{00064}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structprofiler__timer__t_ad194328446e0e5158c4d6dbf61458bac}{accumulated}};}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00065}00065\ \}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}};}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00067}00067\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__timer_8h_aaaff18fe50e77430f52228077a516e98}{timer\_start}}(\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00068}00068\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__timer_8h_a3cca768cb023ecf376820e28e70ce209}{timer\_stop}}(\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00069}00069\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__timer_8h_a0887aebfbe62769d5d88c36b909681a7}{timer\_pause}}(\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00070}00070\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__timer_8h_a20c6c37c145c37a7c0b227fe08e75dcc}{timer\_continue}}(\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00071}00071\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__timer_8h_a23fbf5f5024c3d913abc6be40c673fba}{timer\_reset}}(\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00072}00072\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00073}00073\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_ac294a1cf6ecaf095f905efc332705d88}{timer\_get\_current\_lap\_ns}}(\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00074}00074\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_a9adea764b7d3e72e0c4749abce304f1c}{timer\_get\_current\_total\_ns}}(\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00075}00075\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_a4cedd89d66bdbe85563a7a96178db96c}{timer\_get\_total\_ns}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00076}00076\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_a16a66f28a5265619c5b13acb66dd20c0}{timer\_get\_num\_samples}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00077}00077\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_a58bec7c3db500fb73b77bccc22a30bed}{timer\_get\_min\_ns}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00078}00078\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_ab79f7d85d15f3a4f40f488bb49e46e00}{timer\_get\_max\_ns}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00079}00079\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_a6977a7508aea4a3e532d083c6421866d}{timer\_get\_mean}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00080}00080\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_af2ffb38f19a91872c73a12f45fa65d14}{timer\_get\_variance}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00081}00081\ uint64\_t\ \doxymbox{\hyperlink{profiler__timer_8h_ae42df4937ca7a32c0ad748de58a9c09b}{timer\_get\_stddev}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00083}00083\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__timer_8h_ac3548b30409a2bb7671ac51e6c3b837f}{timer\_print\_total}}(}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00084}00084\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00086}00086\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00087}00087\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__timer_8h_a9d2c1ef30a35e4d5d9371326cec30e00}{timer\_print}}(}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00088}00088\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00089}00089\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ timer,}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00090}00090\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\_timer\_t}}*\ \textcolor{keyword}{const}\ ref\_timer);}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00091}00091\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00092}\doxymbox{\hyperlink{profiler__timer_8h_a14b2f7d38930d50bbea12c5092bc46e0}{00092}}\ \textcolor{preprocessor}{\#define\ TIMER\_GET\_TOTAL\_US(timer)\ TIMER\_CONVERT\_NS\_TO\_US(timer\_get\_total\_ns(timer))}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00093}\doxymbox{\hyperlink{profiler__timer_8h_a9cf0d9ab322b4cd7caa12919f77193ea}{00093}}\ \textcolor{preprocessor}{\#define\ TIMER\_GET\_TOTAL\_MS(timer)\ TIMER\_CONVERT\_NS\_TO\_MS(timer\_get\_total\_ns(timer))}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00094}\doxymbox{\hyperlink{profiler__timer_8h_aa3fddf9f3cfe63ee17996e9a5baba632}{00094}}\ \textcolor{preprocessor}{\#define\ TIMER\_GET\_TOTAL\_S(timer)\ \ TIMER\_CONVERT\_NS\_TO\_S(timer\_get\_total\_ns(timer))}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00095}\doxymbox{\hyperlink{profiler__timer_8h_a31af4c08b64e918aba43abb759fba400}{00095}}\ \textcolor{preprocessor}{\#define\ TIMER\_GET\_TOTAL\_M(timer)\ \ TIMER\_CONVERT\_NS\_TO\_M(timer\_get\_total\_ns(timer))}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00096}\doxymbox{\hyperlink{profiler__timer_8h_a1bc25ddff0b4f144a732705f592a4219}{00096}}\ \textcolor{preprocessor}{\#define\ TIMER\_GET\_TOTAL\_H(timer)\ \ TIMER\_CONVERT\_NS\_TO\_H(timer\_get\_total\_ns(timer))}}
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00097}00097\ }
+\DoxyCodeLine{\Hypertarget{profiler__timer_8h_source_l00098}00098\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ PROFILER\_TIMER\_H\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

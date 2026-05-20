@@ -1,0 +1,28 @@
+var profiler__counter_8c =
+[
+    [ "counter_add", "profiler__counter_8c.html#acbd71bfd6af600aad54f743f8331a9a3", null ],
+    [ "counter_combine_sum", "profiler__counter_8c.html#a3309eb329061c41266f6370b32dfd5cb", null ],
+    [ "counter_get_max", "profiler__counter_8c.html#ada86ab55cf8736111cb3b83c7c373ad8", null ],
+    [ "counter_get_mean", "profiler__counter_8c.html#a72ecf068a2080857bc7b51b063df9cb3", null ],
+    [ "counter_get_min", "profiler__counter_8c.html#ad5bddf9cac868302d023381062ab6048", null ],
+    [ "counter_get_num_samples", "profiler__counter_8c.html#a1b78cde9eb8f3e06ae3b9421c840ada6", null ],
+    [ "counter_get_stddev", "profiler__counter_8c.html#aab5759c91be55e4e2537fbb3eff70437", null ],
+    [ "counter_get_total", "profiler__counter_8c.html#acb0c93ba8c01b19003497dc036340c98", null ],
+    [ "counter_get_variance", "profiler__counter_8c.html#a6e6478d24d6de855fba8a1bba4d39c7b", null ],
+    [ "counter_print", "profiler__counter_8c.html#a6225bcddb2fc8f77c06f3cf650ab96d4", null ],
+    [ "counter_print_stats", "profiler__counter_8c.html#a62be5bc271f3830d6075ed26aa2ce4cf", null ],
+    [ "counter_reset", "profiler__counter_8c.html#a7205b8c2c72f2c54aeb0029ccd16a80a", null ],
+    [ "percentage_print", "profiler__counter_8c.html#ad35f0ab207433fb713a822fcf09feaaa", null ],
+    [ "rcounter_get_max", "profiler__counter_8c.html#a07cc4c219e47211abc9ca1ebbca9f138", null ],
+    [ "rcounter_get_mean", "profiler__counter_8c.html#a402450f04be131232c857460d14fd165", null ],
+    [ "rcounter_get_min", "profiler__counter_8c.html#aa3df72c58258bf23c5af9f32aa599a8a", null ],
+    [ "rcounter_get_num_samples", "profiler__counter_8c.html#ac60e1659e157970793009403eeeb593a", null ],
+    [ "rcounter_get_stddev", "profiler__counter_8c.html#acd902a517858b41541e76dcf7d6a92b6", null ],
+    [ "rcounter_get_total", "profiler__counter_8c.html#a69941ec7136d3966c457043a9f5f8c2a", null ],
+    [ "rcounter_get_variance", "profiler__counter_8c.html#a0e3355f39547706561dda0fbe3929b9f", null ],
+    [ "rcounter_pause", "profiler__counter_8c.html#aac66016e9e8fa8e3958123faff280535", null ],
+    [ "rcounter_reset", "profiler__counter_8c.html#a0b2f49dd29bc1f614533937c48a4a37c", null ],
+    [ "rcounter_restart", "profiler__counter_8c.html#a853f160bccf6f9b1bf72c4770373392d", null ],
+    [ "rcounter_start", "profiler__counter_8c.html#a8e16c8a17f44dc1f548f68172c8d77db", null ],
+    [ "rcounter_stop", "profiler__counter_8c.html#a1eb117bd38a4e2de28990379b5f5ca77", null ]
+];

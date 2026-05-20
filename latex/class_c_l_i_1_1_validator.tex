@@ -1,0 +1,570 @@
+\doxysection{CLI::\+Validator Class Reference}
+\hypertarget{class_c_l_i_1_1_validator}{}\label{class_c_l_i_1_1_validator}\index{CLI::Validator@{CLI::Validator}}
+
+
+Some validators that are provided.  
+
+
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+Validator:\+
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a918d82662319f6dc9dad53d580741569}{Validator}} ()=default
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a71df7c1c94c4abceee930eef957f5b76}{Validator}} (std::\+string validator\+\_\+desc)
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{class_c_l_i_1_1_validator}{Validator} with just the description string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_aede1b1a51a7f924342a92cbbd3ee41be}{Validator}} (std::\+function$<$ std::\+string(std::\+string \&)$>$ op, std::\+string validator\+\_\+desc, std::\+string validator\+\_\+name="{}"{})
+\begin{DoxyCompactList}\small\item\em Construct \doxylink{class_c_l_i_1_1_validator}{Validator} from basic information. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_afc57c1bbaadbff4ce9c5772519818831}{operation}} (std::\+function$<$ std::\+string(std::\+string \&)$>$ op)
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{class_c_l_i_1_1_validator}{Validator} operation function. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ad5af4b2a81e1171817bbe0aa32a1ff3f}{operator()}} (std::\+string \&str) const
+\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a3e4e7670d82455a43c0d3f8c9cc1db4f}{operator()}} (const std::\+string \&str) const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a35930c9b193bb0f7c5b7597dfe002e1f}{description}} (std::\+string validator\+\_\+desc)
+\begin{DoxyCompactList}\small\item\em Specify the type string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a26bde53346b0d7e84b1a8a9a6dddcb2c}{description}} (std::\+string validator\+\_\+desc) const
+\begin{DoxyCompactList}\small\item\em Specify the type string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_validator_aafca1f37669930a6233da74033078851}{get\+\_\+description}} () const
+\begin{DoxyCompactList}\small\item\em Generate type description information for the \doxylink{class_c_l_i_1_1_validator}{Validator}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8fc0ddaaa61f5dc5a7fa527d697991da}{name}} (std::\+string validator\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Specify the type string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_acb5ba8d1f332769ed85efa7ff6d90218}{name}} (std::\+string validator\+\_\+name) const
+\begin{DoxyCompactList}\small\item\em Specify the type string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_abf70035d0b958609333688c61fd39b89}{get\+\_\+name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of the \doxylink{class_c_l_i_1_1_validator}{Validator}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ac8f0bd247c6cca15729c2f0f5b822fe4}{active}} (bool active\+\_\+val=true)
+\begin{DoxyCompactList}\small\item\em Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} is active or not. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ab449787dbb355fafc3ad7ef95f36822e}{active}} (bool active\+\_\+val=true) const
+\begin{DoxyCompactList}\small\item\em Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} is active or not. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a356d979d984dffff3489caf4baca9160}{non\+\_\+modifying}} (bool no\+\_\+modify=true)
+\begin{DoxyCompactList}\small\item\em Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} can be modifying or not. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ae24fb3eedf62301b733b3a20d2b93757}{application\+\_\+index}} (int app\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Specify the application index of a validator. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a4b9f06e319d6b366f9fb713944ff2dfa}{application\+\_\+index}} (int app\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Specify the application index of a validator. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a232e6d9a2742b614418073aa886fdb15}{get\+\_\+application\+\_\+index}} () const
+\begin{DoxyCompactList}\small\item\em Get the current value of the application index. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a4f8d6d12b6e4ddfa7326d2b9f25b4116}{get\+\_\+active}} () const
+\begin{DoxyCompactList}\small\item\em Get a boolean if the validator is active. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_validator_acaa0fe79dce823acbae97e70f23fcd12}{get\+\_\+modifying}} () const
+\begin{DoxyCompactList}\small\item\em Get a boolean if the validator is allowed to modify the input returns true if it can modify the input. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a21ad4ed1554ff2caef4bcb447e276d3b}{operator\&}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&other) const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a4edf771c049626cf9df9e99fd1259441}{operator\texorpdfstring{$\vert$}{|}}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&other) const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ad1cebeb6f7f34b1405ddf85a9cb41c25}{operator!}} () const
+\begin{DoxyCompactList}\small\item\em Create a validator that fails when a given validator succeeds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} (std::\+string validator\+\_\+desc, std::\+function$<$ std::\+string(std::\+string \&)$>$ func)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+function$<$ std::\+string()$>$ \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a9f00a86d01b79facfc300be76b7463d7}{desc\+\_\+function\+\_\+}} \{\+[$\,$]\+() \{ return std::\+string\{\}; \}\}
+\begin{DoxyCompactList}\small\item\em This is the description function, if empty the description\+\_\+ will be used. \end{DoxyCompactList}\item 
+std::\+function$<$ std::\+string(std::\+string \&)$>$ \doxymbox{\hyperlink{class_c_l_i_1_1_validator_aa6c1eedd7839b91d88246539f2305ef3}{func\+\_\+}} \{\+[$\,$]\+(std::\+string \&) \{ return std::\+string\{\}; \}\}
+\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ac97b23ee16e15ae0b31253feb39706bf}{name\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em The name for search purposes of the \doxylink{class_c_l_i_1_1_validator}{Validator}. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a301ecf2851e4a7cdcad7c9b774598320}{application\+\_\+index\+\_\+}} = -\/1
+\begin{DoxyCompactList}\small\item\em A \doxylink{class_c_l_i_1_1_validator}{Validator} will only apply to an indexed value (-\/1 is all elements). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a558776377513d88bf637b5d775c4e31b}{active\+\_\+}} \{true\}
+\begin{DoxyCompactList}\small\item\em Enable for \doxylink{class_c_l_i_1_1_validator}{Validator} to allow it to be disabled if need be. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a60df532d1d80afc040ec0e8ed2736200}{non\+\_\+modifying\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em specify that a validator should not modify the input \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a23000209d9007a1e17c2a9dee46aa2bc}{\+\_\+merge\+\_\+description}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&val1, const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&val2, const std::\+string \&merger)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Some validators that are provided. 
+
+These are simple {\ttfamily std::\+string(const std::\+string\&)} validators that are useful. They return a string if the validation fails. A custom struct is provided, as well, with the same user semantics, but with the ability to provide a new type name. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03808}{3808}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_c_l_i_1_1_validator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}\index{CLI::Validator@{CLI::Validator}!Validator@{Validator}}
+\index{Validator@{Validator}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{Validator()}{Validator()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1} 
+CLI::\+\+Validator::\+\+Validator (\begin{DoxyParamCaption}\item[{std::\+string}]{validator\+\_\+desc}{, }\item[{std::\+function$<$ std::\+string(std::\+string \&)$>$}]{func}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03825}{3825}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{class_c_l_i_1_1_validator_a918d82662319f6dc9dad53d580741569}\index{CLI::Validator@{CLI::Validator}!Validator@{Validator}}
+\index{Validator@{Validator}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{Validator()}{Validator()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a918d82662319f6dc9dad53d580741569} 
+CLI::\+\+Validator::\+\+Validator (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\Hypertarget{class_c_l_i_1_1_validator_a71df7c1c94c4abceee930eef957f5b76}\index{CLI::Validator@{CLI::Validator}!Validator@{Validator}}
+\index{Validator@{Validator}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{Validator()}{Validator()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a71df7c1c94c4abceee930eef957f5b76} 
+CLI::\+\+Validator::\+\+Validator (\begin{DoxyParamCaption}\item[{std::\+string}]{validator\+\_\+desc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Construct a \doxylink{class_c_l_i_1_1_validator}{Validator} with just the description string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03831}{3831}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_aede1b1a51a7f924342a92cbbd3ee41be}\index{CLI::Validator@{CLI::Validator}!Validator@{Validator}}
+\index{Validator@{Validator}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{Validator()}{Validator()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_aede1b1a51a7f924342a92cbbd3ee41be} 
+CLI::\+\+Validator::\+\+Validator (\begin{DoxyParamCaption}\item[{std::\+function$<$ std::\+string(std::\+string \&)$>$}]{op}{, }\item[{std::\+string}]{validator\+\_\+desc}{, }\item[{std::\+string}]{validator\+\_\+name}{ = {\ttfamily "{}"{}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construct \doxylink{class_c_l_i_1_1_validator}{Validator} from basic information. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03833}{3833}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1_validator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1_validator_a23000209d9007a1e17c2a9dee46aa2bc}\index{CLI::Validator@{CLI::Validator}!\_merge\_description@{\_merge\_description}}
+\index{\_merge\_description@{\_merge\_description}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{\_merge\_description()}{\_merge\_description()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a23000209d9007a1e17c2a9dee46aa2bc} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} void CLI::\+\+Validator::\+\+\_\+merge\+\_\+description (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&}]{val1}{, }\item[{const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&}]{val2}{, }\item[{const std::\+string \&}]{merger}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04735}{4735}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{class_c_l_i_1_1_validator_ac8f0bd247c6cca15729c2f0f5b822fe4}\index{CLI::Validator@{CLI::Validator}!active@{active}}
+\index{active@{active}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{active()}{active()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_ac8f0bd247c6cca15729c2f0f5b822fe4} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& CLI::\+\+Validator::\+active (\begin{DoxyParamCaption}\item[{bool}]{active\+\_\+val}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} is active or not. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03881}{3881}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+\Hypertarget{class_c_l_i_1_1_validator_ab449787dbb355fafc3ad7ef95f36822e}\index{CLI::Validator@{CLI::Validator}!active@{active}}
+\index{active@{active}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{active()}{active()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_ab449787dbb355fafc3ad7ef95f36822e} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} CLI::\+\+Validator::\+active (\begin{DoxyParamCaption}\item[{bool}]{active\+\_\+val}{ = {\ttfamily true}}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} is active or not. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03886}{3886}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+\Hypertarget{class_c_l_i_1_1_validator_ae24fb3eedf62301b733b3a20d2b93757}\index{CLI::Validator@{CLI::Validator}!application\_index@{application\_index}}
+\index{application\_index@{application\_index}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{application\_index()}{application\_index()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_ae24fb3eedf62301b733b3a20d2b93757} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& CLI::\+\+Validator::\+application\+\_\+index (\begin{DoxyParamCaption}\item[{int}]{app\+\_\+index}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify the application index of a validator. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03898}{3898}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{class_c_l_i_1_1_validator_a4b9f06e319d6b366f9fb713944ff2dfa}\index{CLI::Validator@{CLI::Validator}!application\_index@{application\_index}}
+\index{application\_index@{application\_index}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{application\_index()}{application\_index()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a4b9f06e319d6b366f9fb713944ff2dfa} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} CLI::\+\+Validator::\+application\+\_\+index (\begin{DoxyParamCaption}\item[{int}]{app\+\_\+index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify the application index of a validator. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03903}{3903}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+\Hypertarget{class_c_l_i_1_1_validator_a35930c9b193bb0f7c5b7597dfe002e1f}\index{CLI::Validator@{CLI::Validator}!description@{description}}
+\index{description@{description}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a35930c9b193bb0f7c5b7597dfe002e1f} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& CLI::\+\+Validator::\+description (\begin{DoxyParamCaption}\item[{std::\+string}]{validator\+\_\+desc}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify the type string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03853}{3853}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{class_c_l_i_1_1_validator_a26bde53346b0d7e84b1a8a9a6dddcb2c}\index{CLI::Validator@{CLI::Validator}!description@{description}}
+\index{description@{description}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{description()}{description()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a26bde53346b0d7e84b1a8a9a6dddcb2c} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} CLI::\+\+Validator::\+description (\begin{DoxyParamCaption}\item[{std::\+string}]{validator\+\_\+desc}{}\end{DoxyParamCaption}) const}
+
+
+
+Specify the type string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04662}{4662}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 11
+\Hypertarget{class_c_l_i_1_1_validator_a4f8d6d12b6e4ddfa7326d2b9f25b4116}\index{CLI::Validator@{CLI::Validator}!get\_active@{get\_active}}
+\index{get\_active@{get\_active}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{get\_active()}{get\_active()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a4f8d6d12b6e4ddfa7326d2b9f25b4116} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Validator::\+get\+\_\+active (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a boolean if the validator is active. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03911}{3911}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_a232e6d9a2742b614418073aa886fdb15}\index{CLI::Validator@{CLI::Validator}!get\_application\_index@{get\_application\_index}}
+\index{get\_application\_index@{get\_application\_index}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{get\_application\_index()}{get\_application\_index()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a232e6d9a2742b614418073aa886fdb15} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Validator::\+get\+\_\+application\+\_\+index (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the current value of the application index. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03909}{3909}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_aafca1f37669930a6233da74033078851}\index{CLI::Validator@{CLI::Validator}!get\_description@{get\_description}}
+\index{get\_description@{get\_description}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{get\_description()}{get\_description()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_aafca1f37669930a6233da74033078851} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string CLI::\+\+Validator::\+get\+\_\+description (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Generate type description information for the \doxylink{class_c_l_i_1_1_validator}{Validator}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03861}{3861}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 12
+\Hypertarget{class_c_l_i_1_1_validator_acaa0fe79dce823acbae97e70f23fcd12}\index{CLI::Validator@{CLI::Validator}!get\_modifying@{get\_modifying}}
+\index{get\_modifying@{get\_modifying}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{get\_modifying()}{get\_modifying()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_acaa0fe79dce823acbae97e70f23fcd12} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool CLI::\+\+Validator::\+get\+\_\+modifying (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a boolean if the validator is allowed to modify the input returns true if it can modify the input. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03914}{3914}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_abf70035d0b958609333688c61fd39b89}\index{CLI::Validator@{CLI::Validator}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_abf70035d0b958609333688c61fd39b89} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& CLI::\+\+Validator::\+get\+\_\+name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the name of the \doxylink{class_c_l_i_1_1_validator}{Validator}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03879}{3879}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{class_c_l_i_1_1_validator_a8fc0ddaaa61f5dc5a7fa527d697991da}\index{CLI::Validator@{CLI::Validator}!name@{name}}
+\index{name@{name}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a8fc0ddaaa61f5dc5a7fa527d697991da} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& CLI::\+\+Validator::\+name (\begin{DoxyParamCaption}\item[{std::\+string}]{validator\+\_\+name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify the type string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03868}{3868}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 14
+Here is the caller graph for this function:\+
+% FIG 15
+\Hypertarget{class_c_l_i_1_1_validator_acb5ba8d1f332769ed85efa7ff6d90218}\index{CLI::Validator@{CLI::Validator}!name@{name}}
+\index{name@{name}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{name()}{name()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_acb5ba8d1f332769ed85efa7ff6d90218} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} CLI::\+\+Validator::\+name (\begin{DoxyParamCaption}\item[{std::\+string}]{validator\+\_\+name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify the type string. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03873}{3873}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 16
+\Hypertarget{class_c_l_i_1_1_validator_a356d979d984dffff3489caf4baca9160}\index{CLI::Validator@{CLI::Validator}!non\_modifying@{non\_modifying}}
+\index{non\_modifying@{non\_modifying}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{non\_modifying()}{non\_modifying()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a356d979d984dffff3489caf4baca9160} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& CLI::\+\+Validator::\+non\+\_\+modifying (\begin{DoxyParamCaption}\item[{bool}]{no\+\_\+modify}{ = {\ttfamily true}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} can be modifying or not. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03893}{3893}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 17
+Here is the caller graph for this function:\+
+% FIG 18
+\Hypertarget{class_c_l_i_1_1_validator_afc57c1bbaadbff4ce9c5772519818831}\index{CLI::Validator@{CLI::Validator}!operation@{operation}}
+\index{operation@{operation}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{operation()}{operation()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_afc57c1bbaadbff4ce9c5772519818831} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& CLI::\+\+Validator::\+operation (\begin{DoxyParamCaption}\item[{std::\+function$<$ std::\+string(std::\+string \&)$>$}]{op}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Set the \doxylink{class_c_l_i_1_1_validator}{Validator} operation function. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03837}{3837}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+\Hypertarget{class_c_l_i_1_1_validator_ad1cebeb6f7f34b1405ddf85a9cb41c25}\index{CLI::Validator@{CLI::Validator}!operator"!@{operator"!}}
+\index{operator"!@{operator"!}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{operator"!()}{operator!()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_ad1cebeb6f7f34b1405ddf85a9cb41c25} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} CLI::\+\+Validator::\+operator! (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Create a validator that fails when a given validator succeeds. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04712}{4712}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 20
+Here is the caller graph for this function:\+
+% FIG 21
+\Hypertarget{class_c_l_i_1_1_validator_a21ad4ed1554ff2caef4bcb447e276d3b}\index{CLI::Validator@{CLI::Validator}!operator\&@{operator\&}}
+\index{operator\&@{operator\&}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{operator\&()}{operator\&()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a21ad4ed1554ff2caef4bcb447e276d3b} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} CLI::\+\+Validator::\+operator\& (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+Combining validators is a new validator. Type comes from left validator if function, otherwise only set if the same. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04668}{4668}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 22
+Here is the caller graph for this function:\+
+% FIG 23
+\Hypertarget{class_c_l_i_1_1_validator_a3e4e7670d82455a43c0d3f8c9cc1db4f}\index{CLI::Validator@{CLI::Validator}!operator()@{operator()}}
+\index{operator()@{operator()}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a3e4e7670d82455a43c0d3f8c9cc1db4f} 
+std::\+string CLI::\+\+Validator::\+operator() (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{str}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+This is the required operator for a \doxylink{class_c_l_i_1_1_validator}{Validator} -\/ provided to help users (CLI11 uses the member {\ttfamily func} directly) 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03847}{3847}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_ad5af4b2a81e1171817bbe0aa32a1ff3f}\index{CLI::Validator@{CLI::Validator}!operator()@{operator()}}
+\index{operator()@{operator()}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_ad5af4b2a81e1171817bbe0aa32a1ff3f} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} std::\+string CLI::\+\+Validator::\+operator() (\begin{DoxyParamCaption}\item[{std::\+string \&}]{str}{}\end{DoxyParamCaption}) const}
+
+This is the required operator for a \doxylink{class_c_l_i_1_1_validator}{Validator} -\/ provided to help users (CLI11 uses the member {\ttfamily func} directly) 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04649}{4649}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 24
+Here is the caller graph for this function:\+
+% FIG 25
+\Hypertarget{class_c_l_i_1_1_validator_a4edf771c049626cf9df9e99fd1259441}\index{CLI::Validator@{CLI::Validator}!operator\texttt{"|}@{operator\texttt{"|}}}
+\index{operator\texttt{"|}@{operator\texttt{"|}}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{operator\texttt{"|}()}{operator|()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a4edf771c049626cf9df9e99fd1259441} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} CLI::\+\+Validator::\+operator\texorpdfstring{$\vert$}{|} (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&}]{other}{}\end{DoxyParamCaption}) const}
+
+Combining validators is a new validator. Type comes from left validator if function, otherwise only set if the same. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04690}{4690}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 26
+Here is the caller graph for this function:\+
+% FIG 27
+
+
+\label{doc-variable-members}
+\Hypertarget{class_c_l_i_1_1_validator_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_l_i_1_1_validator_a558776377513d88bf637b5d775c4e31b}\index{CLI::Validator@{CLI::Validator}!active\_@{active\_}}
+\index{active\_@{active\_}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{active\_}{active\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a558776377513d88bf637b5d775c4e31b} 
+bool CLI::\+\+Validator::\+active\+\_\+ \{true\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Enable for \doxylink{class_c_l_i_1_1_validator}{Validator} to allow it to be disabled if need be. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03821}{3821}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_a301ecf2851e4a7cdcad7c9b774598320}\index{CLI::Validator@{CLI::Validator}!application\_index\_@{application\_index\_}}
+\index{application\_index\_@{application\_index\_}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{application\_index\_}{application\_index\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a301ecf2851e4a7cdcad7c9b774598320} 
+int CLI::\+\+Validator::\+application\+\_\+index\+\_\+ = -\/1\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+A \doxylink{class_c_l_i_1_1_validator}{Validator} will only apply to an indexed value (-\/1 is all elements). 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03819}{3819}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_a9f00a86d01b79facfc300be76b7463d7}\index{CLI::Validator@{CLI::Validator}!desc\_function\_@{desc\_function\_}}
+\index{desc\_function\_@{desc\_function\_}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{desc\_function\_}{desc\_function\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a9f00a86d01b79facfc300be76b7463d7} 
+std::\+function$<$std::\+string()$>$ CLI::\+\+Validator::\+desc\+\_\+function\+\_\+ \{\+[$\,$]\+() \{ return std::\+string\{\}; \}\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+This is the description function, if empty the description\+\_\+ will be used. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03811}{3811}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_aa6c1eedd7839b91d88246539f2305ef3}\index{CLI::Validator@{CLI::Validator}!func\_@{func\_}}
+\index{func\_@{func\_}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{func\_}{func\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_aa6c1eedd7839b91d88246539f2305ef3} 
+std::\+function$<$std::\+string(std::\+string \&)$>$ CLI::\+\+Validator::\+func\+\_\+ \{\+[$\,$]\+(std::\+string \&) \{ return std::\+string\{\}; \}\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+This is the base function that is to be called. Returns a string error message if validation fails. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03815}{3815}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_ac97b23ee16e15ae0b31253feb39706bf}\index{CLI::Validator@{CLI::Validator}!name\_@{name\_}}
+\index{name\_@{name\_}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{name\_}{name\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_ac97b23ee16e15ae0b31253feb39706bf} 
+std::\+string CLI::\+\+Validator::\+name\+\_\+ \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+The name for search purposes of the \doxylink{class_c_l_i_1_1_validator}{Validator}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03817}{3817}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_validator_a60df532d1d80afc040ec0e8ed2736200}\index{CLI::Validator@{CLI::Validator}!non\_modifying\_@{non\_modifying\_}}
+\index{non\_modifying\_@{non\_modifying\_}!CLI::Validator@{CLI::Validator}}
+\doxysubsubsection{\texorpdfstring{non\_modifying\_}{non\_modifying\_}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_validator_a60df532d1d80afc040ec0e8ed2736200} 
+bool CLI::\+\+Validator::\+non\+\_\+modifying\+\_\+ \{false\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+specify that a validator should not modify the input 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03823}{3823}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

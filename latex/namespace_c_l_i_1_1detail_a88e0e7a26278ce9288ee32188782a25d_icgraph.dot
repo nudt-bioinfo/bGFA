@@ -1,0 +1,19 @@
+digraph "CLI::detail::narrow_impl"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="CLI::detail::narrow_impl",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge6_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CLI::narrow",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i.html#ae154d55532496793b75c692360c209eb",tooltip="Convert a wide string to a narrow string."];
+  Node2 -> Node3 [id="edge7_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CLI::detail::maybe\l_narrow",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i_1_1detail.html#a59c187d3e8b5e9a3e3f2f8581876d698",tooltip=" "];
+  Node2 -> Node4 [id="edge8_Node000002_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="CLI::App::parse",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_app.html#ae71339bc9ea1709bac32ffe2d7049afc",tooltip=" "];
+  Node1 -> Node5 [id="edge9_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="CLI::narrow",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i.html#a9a35ab56efa7d6f1a97654e5e4d34170",tooltip=" "];
+  Node1 -> Node6 [id="edge10_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="CLI::narrow",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i.html#a2e7c0d3262a35a2e339d3a0343a00750",tooltip=" "];
+}

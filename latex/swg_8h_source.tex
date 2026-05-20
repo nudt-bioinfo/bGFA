@@ -1,0 +1,85 @@
+\doxysection{swg.\+h}
+\hypertarget{swg_8h_source}{}\label{swg_8h_source}\index{src/wfa/tools/align\_benchmark/gap\_affine/swg.h@{src/wfa/tools/align\_benchmark/gap\_affine/swg.h}}
+\doxymbox{\hyperlink{swg_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Dynamic-\/programming\ algorithm\ for\ computing\ gap-\/affine}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00030}00030\ \textcolor{comment}{\ *\ \ \ pairwise\ alignment\ (Smith-\/Waterman-\/Gotoh\ -\/\ SWG)}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00031}00031\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00033}00033\ \textcolor{preprocessor}{\#ifndef\ SWG\_H\_}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00034}00034\ \textcolor{preprocessor}{\#define\ SWG\_H\_}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{affine__matrix_8h}{gap\_affine/affine\_matrix.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00038}00038\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00039}00039\ \textcolor{comment}{\ *\ SWG\ alignment}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00040}00040\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00041}00041\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{swg_8h_aba702f285dc50288dfbd6a3c15810dd8}{swg\_align}}(}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00042}00042\ \ \ \ \ \doxymbox{\hyperlink{structaffine__matrix__t}{affine\_matrix\_t}}*\ \textcolor{keyword}{const}\ affine\_matrix,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00043}00043\ \ \ \ \ \doxymbox{\hyperlink{structaffine__penalties__t}{affine\_penalties\_t}}*\ \textcolor{keyword}{const}\ penalties,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00044}00044\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00048}00048\ \ \ \ \ \doxymbox{\hyperlink{structcigar__t}{cigar\_t}}*\ \textcolor{keyword}{const}\ cigar);}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00050}00050\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00051}00051\ \textcolor{comment}{\ *\ SWG\ alignment\ (ends-\/free)}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00052}00052\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00053}00053\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{swg_8h_a6b87422fd28d64ac0b4112b7b594d590}{swg\_align\_endsfree}}(}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00054}00054\ \ \ \ \ \doxymbox{\hyperlink{structaffine__matrix__t}{affine\_matrix\_t}}*\ \textcolor{keyword}{const}\ affine\_matrix,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00055}00055\ \ \ \ \ \doxymbox{\hyperlink{structaffine__penalties__t}{affine\_penalties\_t}}*\ \textcolor{keyword}{const}\ penalties,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00058}00058\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00059}00059\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00060}00060\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_begin\_free,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00061}00061\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_end\_free,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_begin\_free,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_end\_free,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00064}00064\ \ \ \ \ \doxymbox{\hyperlink{structcigar__t}{cigar\_t}}*\ \textcolor{keyword}{const}\ cigar);}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00065}00065\ }
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00066}00066\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00067}00067\ \textcolor{comment}{\ *\ SWG\ alignment\ (banded)}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00068}00068\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00069}00069\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{swg_8h_a237d5a2b6af3646893a3fd7c32e4bd72}{swg\_align\_banded}}(}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00070}00070\ \ \ \ \ \doxymbox{\hyperlink{structaffine__matrix__t}{affine\_matrix\_t}}*\ \textcolor{keyword}{const}\ affine\_matrix,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00071}00071\ \ \ \ \ \doxymbox{\hyperlink{structaffine__penalties__t}{affine\_penalties\_t}}*\ \textcolor{keyword}{const}\ penalties,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00072}00072\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00073}00073\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00074}00074\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00076}00076\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ bandwidth,}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00077}00077\ \ \ \ \ \doxymbox{\hyperlink{structcigar__t}{cigar\_t}}*\ \textcolor{keyword}{const}\ cigar);}
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{swg_8h_source_l00079}00079\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SWG\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

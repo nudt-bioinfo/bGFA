@@ -1,0 +1,86 @@
+\doxysection{src/\+wfa/\+alignment/\+score\+\_\+matrix.c File Reference}
+\hypertarget{score__matrix_8c}{}\label{score__matrix_8c}\index{src/wfa/alignment/score\_matrix.c@{src/wfa/alignment/score\_matrix.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}score\+\_\+matrix.\+h"{}}\newline
+Include dependency graph for score\+\_\+matrix.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{score__matrix_8c_a9a2116ac448a24c673395ee2b69bcd40}{score\+\_\+matrix\+\_\+allocate}} (\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix, const int num\+\_\+rows, const int num\+\_\+columns, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{score__matrix_8c_ae6468a2087e305bcfa3882f58d8ee6b9}{score\+\_\+matrix\+\_\+free}} (\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix)
+\item 
+void \doxymbox{\hyperlink{score__matrix_8c_ab3e2c7ce74144074444b9b1a22e014ad}{score\+\_\+matrix\+\_\+print\+\_\+score}} (FILE \texorpdfstring{$\ast$}{*}const stream, const int score)
+\item 
+void \doxymbox{\hyperlink{score__matrix_8c_ae3079f20e139f30e8bbcde09085d4722}{score\+\_\+matrix\+\_\+print\+\_\+char}} (FILE \texorpdfstring{$\ast$}{*}const stream, const char c)
+\item 
+void \doxymbox{\hyperlink{score__matrix_8c_a0c80bdd29fbae8f33798d7ef351fddaf}{score\+\_\+matrix\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{score__matrix_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{score__matrix_8c_a9a2116ac448a24c673395ee2b69bcd40}\index{score\_matrix.c@{score\_matrix.c}!score\_matrix\_allocate@{score\_matrix\_allocate}}
+\index{score\_matrix\_allocate@{score\_matrix\_allocate}!score\_matrix.c@{score\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{score\_matrix\_allocate()}{score\_matrix\_allocate()}}
+{\footnotesize\ttfamily \label{score__matrix_8c_a9a2116ac448a24c673395ee2b69bcd40} 
+void score\+\_\+matrix\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{, }\item[{const int}]{num\+\_\+rows}{, }\item[{const int}]{num\+\_\+columns}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8c_source_l00038}{38}} of file \doxymbox{\hyperlink{score__matrix_8c_source}{score\+\_\+matrix.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{score__matrix_8c_ae6468a2087e305bcfa3882f58d8ee6b9}\index{score\_matrix.c@{score\_matrix.c}!score\_matrix\_free@{score\_matrix\_free}}
+\index{score\_matrix\_free@{score\_matrix\_free}!score\_matrix.c@{score\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{score\_matrix\_free()}{score\_matrix\_free()}}
+{\footnotesize\ttfamily \label{score__matrix_8c_ae6468a2087e305bcfa3882f58d8ee6b9} 
+void score\+\_\+matrix\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8c_source_l00054}{54}} of file \doxymbox{\hyperlink{score__matrix_8c_source}{score\+\_\+matrix.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{score__matrix_8c_a0c80bdd29fbae8f33798d7ef351fddaf}\index{score\_matrix.c@{score\_matrix.c}!score\_matrix\_print@{score\_matrix\_print}}
+\index{score\_matrix\_print@{score\_matrix\_print}!score\_matrix.c@{score\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{score\_matrix\_print()}{score\_matrix\_print()}}
+{\footnotesize\ttfamily \label{score__matrix_8c_a0c80bdd29fbae8f33798d7ef351fddaf} 
+void score\+\_\+matrix\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8c_source_l00083}{83}} of file \doxymbox{\hyperlink{score__matrix_8c_source}{score\+\_\+matrix.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+\Hypertarget{score__matrix_8c_ae3079f20e139f30e8bbcde09085d4722}\index{score\_matrix.c@{score\_matrix.c}!score\_matrix\_print\_char@{score\_matrix\_print\_char}}
+\index{score\_matrix\_print\_char@{score\_matrix\_print\_char}!score\_matrix.c@{score\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{score\_matrix\_print\_char()}{score\_matrix\_print\_char()}}
+{\footnotesize\ttfamily \label{score__matrix_8c_ae3079f20e139f30e8bbcde09085d4722} 
+void score\+\_\+matrix\+\_\+print\+\_\+char (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const char}]{c}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8c_source_l00078}{78}} of file \doxymbox{\hyperlink{score__matrix_8c_source}{score\+\_\+matrix.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{score__matrix_8c_ab3e2c7ce74144074444b9b1a22e014ad}\index{score\_matrix.c@{score\_matrix.c}!score\_matrix\_print\_score@{score\_matrix\_print\_score}}
+\index{score\_matrix\_print\_score@{score\_matrix\_print\_score}!score\_matrix.c@{score\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{score\_matrix\_print\_score()}{score\_matrix\_print\_score()}}
+{\footnotesize\ttfamily \label{score__matrix_8c_ab3e2c7ce74144074444b9b1a22e014ad} 
+void score\+\_\+matrix\+\_\+print\+\_\+score (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{score__matrix_8c_source_l00069}{69}} of file \doxymbox{\hyperlink{score__matrix_8c_source}{score\+\_\+matrix.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6

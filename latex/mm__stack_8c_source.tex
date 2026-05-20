@@ -1,0 +1,276 @@
+\doxysection{mm\+\_\+stack.\+c}
+\hypertarget{mm__stack_8c_source}{}\label{mm__stack_8c_source}\index{src/wfa/system/mm\_stack.c@{src/wfa/system/mm\_stack.c}}
+\doxymbox{\hyperlink{mm__stack_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00029}00029\ \textcolor{comment}{\ *\ VERSION:\ v21.02.15}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00030}00030\ \textcolor{comment}{\ *\ DESCRIPTION:\ Simple\ managed-\/memory\ stack\ that\ reduces\ memory\ allocation}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00031}00031\ \textcolor{comment}{\ *\ \ \ overheads.\ Serves\ memory\ from\ large\ memory\ segments\ and\ frees\ all\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00032}00032\ \textcolor{comment}{\ *\ \ \ requested\ at\ once.}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00033}00033\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mm__stack_8h}{mm\_stack.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00038}00038\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00039}00039\ \textcolor{comment}{\ *\ Debug}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00040}00040\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00041}00041\ \textcolor{comment}{//\#define\ MM\_STACK\_FORCE\_MALLOC}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00042}00042\ }
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00043}00043\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00044}00044\ \textcolor{comment}{\ *\ Constants}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00045}00045\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00046}\doxymbox{\hyperlink{mm__stack_8c_a4061ebaafc62a80b16920067d5544ea3}{00046}}\ \textcolor{preprocessor}{\#define\ MM\_STACK\_INITIAL\_SEGMENTS\ \ \ \ \ \ \ \ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00047}\doxymbox{\hyperlink{mm__stack_8c_ad18539dd7447549503639842ef1251e3}{00047}}\ \textcolor{preprocessor}{\#define\ MM\_STACK\_INITIAL\_MALLOC\_REQUESTS\ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00048}\doxymbox{\hyperlink{mm__stack_8c_a8d0970de5c656592098d1c627f1fb71e}{00048}}\ \textcolor{preprocessor}{\#define\ MM\_STACK\_INITIAL\_STATES\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 10}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00050}00050\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00051}00051\ \textcolor{comment}{\ *\ Stack\ state}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00052}00052\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00053}\doxymbox{\hyperlink{structmm__stack__state__t}{00053}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00054}\doxymbox{\hyperlink{structmm__stack__state__t_a1769bb9b9ab0ef1592c49ddeeec775a0}{00054}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__stack__state__t_a1769bb9b9ab0ef1592c49ddeeec775a0}{segment\_idx}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00055}\doxymbox{\hyperlink{structmm__stack__state__t_a48167c72a333a5613fe81dcf362a20e5}{00055}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__stack__state__t_a48167c72a333a5613fe81dcf362a20e5}{segment\_used}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00056}\doxymbox{\hyperlink{structmm__stack__state__t_a04d6d05cba0758a20716592419217cd1}{00056}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__stack__state__t_a04d6d05cba0758a20716592419217cd1}{num\_malloc\_requests}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00057}00057\ \}\ \doxymbox{\hyperlink{structmm__stack__state__t}{mm\_stack\_state\_t}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00059}00059\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00060}00060\ \textcolor{comment}{\ *\ Memory\ Segments}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00061}00061\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00062}\doxymbox{\hyperlink{structmm__stack__segment__t}{00062}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00063}\doxymbox{\hyperlink{structmm__stack__segment__t_a3b3b4c9f1ef56ecf8d87eedb3d8fd44f}{00063}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__stack__segment__t_a3b3b4c9f1ef56ecf8d87eedb3d8fd44f}{size}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Total\ memory\ available}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00064}\doxymbox{\hyperlink{structmm__stack__segment__t_a1b7ba8066c8035fdc33fcdb50b6f2811}{00064}}\ \ \ \textcolor{keywordtype}{void}*\ \doxymbox{\hyperlink{structmm__stack__segment__t_a1b7ba8066c8035fdc33fcdb50b6f2811}{memory}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00065}\doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{00065}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{used}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bytes\ used\ (offset\ to\ memory\ next\ free\ byte)}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00066}00066\ \}\ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00067}00067\ }
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00068}00068\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00069}00069\ \textcolor{comment}{\ *\ Segments}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00070}00070\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00071}\doxymbox{\hyperlink{mm__stack_8c_aba1cb87a78cde2a2764be9150c032bdf}{00071}}\ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \doxymbox{\hyperlink{mm__stack_8c_aba1cb87a78cde2a2764be9150c032bdf}{mm\_stack\_segment\_new}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00072}00072\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00073}00073\ \ \ \textcolor{comment}{//\ Allocate\ handler}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00074}00074\ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ (\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*)\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}));}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00075}00075\ \ \ \textcolor{comment}{//\ Memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00076}00076\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_a3b3b4c9f1ef56ecf8d87eedb3d8fd44f}{size}}\ =\ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a44e9d8acdfa5788add51531f9ccf464a}{segment\_size}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00077}00077\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_a1b7ba8066c8035fdc33fcdb50b6f2811}{memory}}\ =\ malloc(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a44e9d8acdfa5788add51531f9ccf464a}{segment\_size}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00078}00078\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{used}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00079}00079\ \ \ \textcolor{comment}{//\ Add\ to\ segments}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00080}00080\ \ \ \doxymbox{\hyperlink{vector_8h_a04da31aeb07f7f2f981feb97a65730f4}{vector\_insert}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}},segment,\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00081}00081\ \ \ \textcolor{comment}{//\ Return}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00082}00082\ \ \ \textcolor{keywordflow}{return}\ segment;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00084}\doxymbox{\hyperlink{mm__stack_8c_af5d944d6d2e0ce628e37039e4176160f}{00084}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__stack_8c_af5d944d6d2e0ce628e37039e4176160f}{mm\_stack\_segment\_clear}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00085}00085\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ segment)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00086}00086\ \ \ segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{used}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00087}00087\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00088}\doxymbox{\hyperlink{mm__stack_8c_a15612db77c45e0c889ee97897254891e}{00088}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__stack_8c_a15612db77c45e0c889ee97897254891e}{mm\_stack\_segment\_delete}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00089}00089\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ segment)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00090}00090\ \ \ free(segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_a1b7ba8066c8035fdc33fcdb50b6f2811}{memory}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00091}00091\ \ \ free(segment);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00092}00092\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00093}00093\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00094}00094\ \textcolor{comment}{\ *\ Setup}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00095}00095\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00096}\doxymbox{\hyperlink{mm__stack_8c_a619469114909760a1e86b1a1e897536b}{00096}}\ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \doxymbox{\hyperlink{mm__stack_8c_a619469114909760a1e86b1a1e897536b}{mm\_stack\_new}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00097}00097\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ segment\_size)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00098}00098\ \ \ \textcolor{comment}{//\ Allocate\ handler}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00099}00099\ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack\ =\ (\doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*)\ malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}));}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00100}00100\ \ \ \textcolor{comment}{//\ Memory\ segments}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00101}00101\ \ \ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}}\ =\ \doxymbox{\hyperlink{vector_8h_a4786de815d5637b2ee097263a582d1a0}{vector\_new}}(\doxymbox{\hyperlink{mm__stack_8c_a4061ebaafc62a80b16920067d5544ea3}{MM\_STACK\_INITIAL\_SEGMENTS}},\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00102}00102\ \ \ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a44e9d8acdfa5788add51531f9ccf464a}{segment\_size}}\ =\ segment\_size;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00103}00103\ \textcolor{preprocessor}{\#ifndef\ MM\_STACK\_FORCE\_MALLOC}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00104}00104\ \ \ \doxymbox{\hyperlink{mm__stack_8c_aba1cb87a78cde2a2764be9150c032bdf}{mm\_stack\_segment\_new}}(mm\_stack);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00105}00105\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00106}00106\ \ \ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00107}00107\ \ \ \textcolor{comment}{//\ Malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00108}00108\ \ \ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}}\ =\ \doxymbox{\hyperlink{vector_8h_a4786de815d5637b2ee097263a582d1a0}{vector\_new}}(\doxymbox{\hyperlink{mm__stack_8c_ad18539dd7447549503639842ef1251e3}{MM\_STACK\_INITIAL\_MALLOC\_REQUESTS}},\textcolor{keywordtype}{void}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00109}00109\ \ \ \textcolor{comment}{//\ Stack\ states}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00110}00110\ \ \ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_af6be04d21354ca61e5ce4ab9653a7d71}{states}}\ =\ \doxymbox{\hyperlink{vector_8h_a4786de815d5637b2ee097263a582d1a0}{vector\_new}}(\doxymbox{\hyperlink{mm__stack_8c_a8d0970de5c656592098d1c627f1fb71e}{MM\_STACK\_INITIAL\_STATES}},\doxymbox{\hyperlink{structmm__stack__state__t}{mm\_stack\_state\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00111}00111\ \ \ \textcolor{comment}{//\ Return}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00112}00112\ \ \ \textcolor{keywordflow}{return}\ mm\_stack;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00114}\doxymbox{\hyperlink{mm__stack_8c_a2bf112b788168a234dfb36e6e0990c1e}{00114}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__stack_8c_a2bf112b788168a234dfb36e6e0990c1e}{mm\_stack\_clear}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00115}00115\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00116}00116\ \ \ \textcolor{comment}{//\ Clear\ first\ memory\ segment\ and\ discard\ the\ rest}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00117}00117\ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ *\doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}},0,\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00118}00118\ \ \ \doxymbox{\hyperlink{mm__stack_8c_af5d944d6d2e0ce628e37039e4176160f}{mm\_stack\_segment\_clear}}(segment);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00119}00119\ \ \ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00120}00120\ \ \ \textcolor{comment}{//\ Free\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00121}00121\ \ \ \doxymbox{\hyperlink{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}{VECTOR\_ITERATE}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}},mem\_ptr,m,\textcolor{keywordtype}{void}*)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00122}00122\ \ \ \ \ free(*mem\_ptr);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00123}00123\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00124}00124\ \ \ \doxymbox{\hyperlink{vector_8h_aaa7e86baaa12fb648e515991c8416017}{vector\_clear}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00125}00125\ \ \ \textcolor{comment}{//\ Clear\ states}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00126}00126\ \ \ \doxymbox{\hyperlink{vector_8h_aaa7e86baaa12fb648e515991c8416017}{vector\_clear}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_af6be04d21354ca61e5ce4ab9653a7d71}{states}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00127}00127\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00128}\doxymbox{\hyperlink{mm__stack_8c_a058f59aee23f8c8b84f58d28bb5a5457}{00128}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__stack_8c_a058f59aee23f8c8b84f58d28bb5a5457}{mm\_stack\_delete}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00129}00129\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00130}00130\ \ \ \textcolor{comment}{//\ Delete\ memory\ segments}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00131}00131\ \ \ \doxymbox{\hyperlink{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}{VECTOR\_ITERATE}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}},segment\_ptr,p,\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00132}00132\ \ \ \ \ \doxymbox{\hyperlink{mm__stack_8c_a15612db77c45e0c889ee97897254891e}{mm\_stack\_segment\_delete}}(*segment\_ptr);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00133}00133\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00134}00134\ \ \ \doxymbox{\hyperlink{vector_8c_a20a5c81de9d61719072d55eac137d3c0}{vector\_delete}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00135}00135\ \ \ \textcolor{comment}{//\ Free\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00136}00136\ \ \ \doxymbox{\hyperlink{vector_8h_a23da00311dafe3b5b68ac26037bcaebf}{VECTOR\_ITERATE}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}},mem\_ptr,m,\textcolor{keywordtype}{void}*)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00137}00137\ \ \ \ \ free(*mem\_ptr);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00138}00138\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00139}00139\ \ \ \doxymbox{\hyperlink{vector_8c_a20a5c81de9d61719072d55eac137d3c0}{vector\_delete}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00140}00140\ \ \ \textcolor{comment}{//\ Clear\ states}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00141}00141\ \ \ \doxymbox{\hyperlink{vector_8c_a20a5c81de9d61719072d55eac137d3c0}{vector\_delete}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_af6be04d21354ca61e5ce4ab9653a7d71}{states}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00142}00142\ \ \ \textcolor{comment}{//\ Free\ handler}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00143}00143\ \ \ free(mm\_stack);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00144}00144\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00145}00145\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00146}00146\ \textcolor{comment}{\ *\ Allocator}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00147}00147\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00148}\doxymbox{\hyperlink{mm__stack_8c_ae516ac751113c9877f68db1259281af0}{00148}}\ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \doxymbox{\hyperlink{mm__stack_8c_ae516ac751113c9877f68db1259281af0}{mm\_stack\_fetch\_segment}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00149}00149\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack,}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00150}00150\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_bytes)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00151}00151\ \ \ \textcolor{comment}{//\ Fetch\ current\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00152}00152\ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ curr\_segment\ =}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00153}00153\ \ \ \ \ \ \ *\doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}},mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}},\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00154}00154\ \textcolor{comment}{//\ \ //\ Check\ overall\ segment\ size}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00155}00155\ \textcolor{comment}{//\ \ if\ (num\_bytes\ >\ curr\_segment-\/>size/2)\ \{\ //\ Never\ buy\ anything\ you\ cannot\ afford\ twice}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00156}00156\ \textcolor{comment}{//\ \ \ \ return\ NULL;\ //\ Memory\ request\ over\ max-\/request\ size}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00157}00157\ \textcolor{comment}{//\ \ \}}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00158}00158\ \ \ \textcolor{comment}{//\ Check\ available\ segment\ size}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00159}00159\ \ \ \textcolor{keywordflow}{if}\ (curr\_segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{used}}\ +\ num\_bytes\ <=\ curr\_segment-\/>size)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00160}00160\ \ \ \ \ \textcolor{keywordflow}{return}\ curr\_segment;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00161}00161\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00162}00162\ \ \ \textcolor{comment}{//\ Check\ overall\ segment\ size}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00163}00163\ \ \ \textcolor{keywordflow}{if}\ (num\_bytes\ >\ curr\_segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_a3b3b4c9f1ef56ecf8d87eedb3d8fd44f}{size}})\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{return}\ NULL;\ \textcolor{comment}{//\ Memory\ request\ over\ segment\ size}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00165}00165\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00166}00166\ \ \ \textcolor{comment}{//\ Get\ free\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00167}00167\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_segments\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00168}00168\ \ \ ++(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00169}00169\ \ \ \textcolor{keywordflow}{if}\ (mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}}\ <\ num\_segments)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00170}00170\ \ \ \ \ \textcolor{comment}{//\ Get\ next\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00171}00171\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00172}00172\ \ \ \ \ \ \ \ \ *\doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}},mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}},\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00173}00173\ \ \ \ \ \textcolor{comment}{//\ Clear}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00174}00174\ \ \ \ \ \doxymbox{\hyperlink{mm__stack_8c_af5d944d6d2e0ce628e37039e4176160f}{mm\_stack\_segment\_clear}}(segment);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//\ Return}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00176}00176\ \ \ \ \ \textcolor{keywordflow}{return}\ segment;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00177}00177\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00178}00178\ \ \ \textcolor{comment}{//\ Add\ new\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00179}00179\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{mm__stack_8c_aba1cb87a78cde2a2764be9150c032bdf}{mm\_stack\_segment\_new}}(mm\_stack);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00180}00180\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00181}\doxymbox{\hyperlink{mm__stack_8c_abd9633e0bf61874c10b882d218dca343}{00181}}\ \textcolor{keywordtype}{void}*\ \doxymbox{\hyperlink{mm__stack_8c_abd9633e0bf61874c10b882d218dca343}{mm\_stack\_allocate}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00182}00182\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack,}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00183}00183\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_bytes,}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00184}00184\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ zero\_mem,}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00185}00185\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ align\_bytes)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00186}00186\ \ \ \textcolor{comment}{//\ Zero\ check}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00187}00187\ \ \ \textcolor{keywordflow}{if}\ (num\_bytes\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00188}00188\ \ \ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}MMStack\ error.\ Zero\ bytes\ requested\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00189}00189\ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00190}00190\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00191}00191\ \ \ \textcolor{comment}{//\ Add\ payload}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00192}00192\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_bytes\_allocated\ =\ num\_bytes\ +\ align\_bytes;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00193}00193\ \ \ \textcolor{comment}{//\ Fetch\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00194}00194\ \textcolor{preprocessor}{\#ifdef\ MM\_STACK\_FORCE\_MALLOC}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00195}00195\ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ NULL;\ \textcolor{comment}{//\ Force\ malloc\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00196}00196\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00197}00197\ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ segment\ =\ \doxymbox{\hyperlink{mm__stack_8c_ae516ac751113c9877f68db1259281af0}{mm\_stack\_fetch\_segment}}(mm\_stack,num\_bytes\_allocated);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00198}00198\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00199}00199\ \ \ \textcolor{comment}{//\ Allocate\ memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00200}00200\ \ \ \textcolor{keywordtype}{void}*\ memory\_base\ ;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00201}00201\ \ \ \textcolor{keywordflow}{if}\ (segment\ !=\ NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00202}00202\ \ \ \ \ \textcolor{comment}{//\ Segment-\/memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00203}00203\ \ \ \ \ memory\_base\ =\ segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_a1b7ba8066c8035fdc33fcdb50b6f2811}{memory}}\ +\ segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{used}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00204}00204\ \ \ \ \ \textcolor{keywordflow}{if}\ (zero\_mem)\ memset(memory\_base,0,num\_bytes\_allocated);\ \textcolor{comment}{//\ Set\ zero}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00205}00205\ \ \ \ \ segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{used}}\ +=\ num\_bytes\_allocated;\ \textcolor{comment}{//\ Update\ segment}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00206}00206\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00207}00207\ \ \ \ \ \textcolor{comment}{//\ Malloc-\/memory}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00208}00208\ \ \ \ \ memory\_base\ =\ malloc(num\_bytes\_allocated);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00209}00209\ \ \ \ \ \textcolor{keywordflow}{if}\ (zero\_mem)\ memset(memory\_base,0,num\_bytes\_allocated);\ \textcolor{comment}{//\ Set\ zero}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00210}00210\ \ \ \ \ \textcolor{comment}{//\ Add\ malloc-\/request}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00211}00211\ \ \ \ \ \doxymbox{\hyperlink{vector_8h_a04da31aeb07f7f2f981feb97a65730f4}{vector\_insert}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}},memory\_base,\textcolor{keywordtype}{void}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00212}00212\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00213}00213\ \ \ \textcolor{comment}{//\ Check\ alignment}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00214}00214\ \ \ \textcolor{keywordflow}{if}\ (align\_bytes\ ==\ 0)\ \textcolor{keywordflow}{return}\ memory\_base;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00215}00215\ \ \ \textcolor{comment}{//\ Align\ memory\ request}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00216}00216\ \ \ \textcolor{keywordtype}{void}*\ memory\_aligned\ =\ memory\_base\ +\ align\_bytes;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00217}00217\ \ \ memory\_aligned\ =\ memory\_aligned\ -\/\ ((uintptr\_t)memory\_aligned\ \%\ align\_bytes);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00218}00218\ \ \ \textcolor{keywordflow}{return}\ memory\_aligned;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00219}00219\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00220}00220\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00221}00221\ \textcolor{comment}{\ *\ Push/pop\ states}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00222}00222\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00223}\doxymbox{\hyperlink{mm__stack_8c_aa767d7d29aee900142618f522b42b058}{00223}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__stack_8c_aa767d7d29aee900142618f522b42b058}{mm\_stack\_push}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00224}00224\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00225}00225\ \ \ \textcolor{comment}{//\ Get\ new\ stack-\/state}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00226}00226\ \ \ \doxymbox{\hyperlink{structmm__stack__state__t}{mm\_stack\_state\_t}}*\ stack\_state;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00227}00227\ \ \ \doxymbox{\hyperlink{vector_8h_a77b7a9afa88a10ca886a84883b65a069}{vector\_alloc\_new}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_af6be04d21354ca61e5ce4ab9653a7d71}{states}},\doxymbox{\hyperlink{structmm__stack__state__t}{mm\_stack\_state\_t}},stack\_state);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00228}00228\ \ \ \textcolor{comment}{//\ Store\ current\ state}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00229}00229\ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ current\_segment\ =}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00230}00230\ \ \ \ \ \ \ *\doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}},mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}},\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00231}00231\ \ \ stack\_state-\/>\doxymbox{\hyperlink{structmm__stack__state__t_a1769bb9b9ab0ef1592c49ddeeec775a0}{segment\_idx}}\ =\ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00232}00232\ \ \ stack\_state-\/>\doxymbox{\hyperlink{structmm__stack__state__t_a48167c72a333a5613fe81dcf362a20e5}{segment\_used}}\ =\ current\_segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{used}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00233}00233\ \ \ stack\_state-\/>\doxymbox{\hyperlink{structmm__stack__state__t_a04d6d05cba0758a20716592419217cd1}{num\_malloc\_requests}}\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00234}00234\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00235}\doxymbox{\hyperlink{mm__stack_8c_a50d43f5de72500813091dfc629d8f0ad}{00235}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__stack_8c_a50d43f5de72500813091dfc629d8f0ad}{mm\_stack\_pop}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00236}00236\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00237}00237\ \ \ \textcolor{comment}{//\ Get\ last\ stack-\/state}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00238}00238\ \ \ \doxymbox{\hyperlink{structmm__stack__state__t}{mm\_stack\_state\_t}}*\ \textcolor{keyword}{const}\ stack\_state\ =\ \doxymbox{\hyperlink{vector_8h_adc191b8ef65b892416237b733ed0484a}{vector\_get\_last\_elm}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_af6be04d21354ca61e5ce4ab9653a7d71}{states}},\doxymbox{\hyperlink{structmm__stack__state__t}{mm\_stack\_state\_t}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00239}00239\ \ \ \doxymbox{\hyperlink{vector_8h_af48538f2eaa5b5742ac30e756a8aa757}{vector\_dec\_used}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_af6be04d21354ca61e5ce4ab9653a7d71}{states}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00240}00240\ \ \ \textcolor{comment}{//\ Restore\ segment-\/memory\ state}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00241}00241\ \ \ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_ada977d1e58ba09c08252026bccd49f7e}{current\_segment\_idx}}\ =\ stack\_state-\/>\doxymbox{\hyperlink{structmm__stack__state__t_a1769bb9b9ab0ef1592c49ddeeec775a0}{segment\_idx}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00242}00242\ \ \ \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*\ \textcolor{keyword}{const}\ current\_segment\ =}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00243}00243\ \ \ \ \ \ \ *(\doxymbox{\hyperlink{vector_8h_ac3fb564d756619b6200ed9a00d407824}{vector\_get\_elm}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}},stack\_state-\/>\doxymbox{\hyperlink{structmm__stack__state__t_a1769bb9b9ab0ef1592c49ddeeec775a0}{segment\_idx}},\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\_stack\_segment\_t}}*));}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00244}00244\ \ \ current\_segment-\/>\doxymbox{\hyperlink{structmm__stack__segment__t_ab86583fc608f0d419f6721d8bcf28247}{used}}\ =\ stack\_state-\/>\doxymbox{\hyperlink{structmm__stack__state__t_a48167c72a333a5613fe81dcf362a20e5}{segment\_used}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00245}00245\ \ \ \textcolor{comment}{//\ Restore\ malloc-\/memory\ state\ (free\ requests)}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00246}00246\ \ \ \textcolor{keyword}{const}\ uint64\_t\ total\_malloc\_requests\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00247}00247\ \ \ \textcolor{keywordtype}{void}**\ \textcolor{keyword}{const}\ malloc\_requests\ =\ \doxymbox{\hyperlink{vector_8h_ad1ff270f55a1482824c6690302977999}{vector\_get\_mem}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}},\textcolor{keywordtype}{void}*);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00248}00248\ \ \ uint64\_t\ i;}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00249}00249\ \ \ \textcolor{keywordflow}{for}\ (i=stack\_state-\/>\doxymbox{\hyperlink{structmm__stack__state__t_a04d6d05cba0758a20716592419217cd1}{num\_malloc\_requests}};i<total\_malloc\_requests;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00250}00250\ \ \ \ \ free(*(malloc\_requests+i));\ \textcolor{comment}{//\ Free}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00251}00251\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00252}00252\ \ \ \doxymbox{\hyperlink{vector_8h_a44866c41c3b4831b671a176fce9c0c67}{vector\_set\_used}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a30109253d8540a993063c66787b7fedf}{malloc\_requests}},stack\_state-\/>\doxymbox{\hyperlink{structmm__stack__state__t_a04d6d05cba0758a20716592419217cd1}{num\_malloc\_requests}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00253}00253\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00254}00254\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00255}00255\ \textcolor{comment}{\ *\ Display}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00256}00256\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00257}\doxymbox{\hyperlink{mm__stack_8c_a6107a0b4086e4a797030553f8b75dc58}{00257}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{mm__stack_8c_a6107a0b4086e4a797030553f8b75dc58}{mm\_stack\_print}}(}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00258}00258\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00259}00259\ \ \ \ \ \doxymbox{\hyperlink{structmm__stack__t}{mm\_stack\_t}}*\ \textcolor{keyword}{const}\ mm\_stack)\ \{}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00260}00260\ \ \ \textcolor{comment}{//\ Print\ header}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00261}00261\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}MMStack.report\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00262}00262\ \ \ \textcolor{comment}{//\ Print\ segment\ information}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00263}00263\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_segments\ =\ \doxymbox{\hyperlink{vector_8h_a878dd9a3d5465d694340166f2b2c47d9}{vector\_get\_used}}(mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a93b50bc666c405480f847ed74956f0bf}{segments}});}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00264}00264\ \ \ \textcolor{keyword}{const}\ uint64\_t\ segment\_size\ =\ mm\_stack-\/>\doxymbox{\hyperlink{structmm__stack__t_a44e9d8acdfa5788add51531f9ccf464a}{segment\_size}};}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00265}00265\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ =>\ Segments.allocated\ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}},num\_segments);}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00266}00266\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ =>\ Segments.size\ \ \ \ \ \ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ MB\(\backslash\)n"{}},segment\_size/(1024*1024));}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00267}00267\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ =>\ Memory.available\ \ \ \%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}\ MB\(\backslash\)n"{}},num\_segments*(segment\_size/(1024*1024)));}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00268}00268\ \}}
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{mm__stack_8c_source_l00270}00270\ }
+
+\end{DoxyCode}

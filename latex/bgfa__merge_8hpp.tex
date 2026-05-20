@@ -1,0 +1,501 @@
+\doxysection{src/\+bgfa\+\_\+merge.hpp File Reference}
+\hypertarget{bgfa__merge_8hpp}{}\label{bgfa__merge_8hpp}\index{src/bgfa\_merge.hpp@{src/bgfa\_merge.hpp}}
+{\ttfamily \+\#include "{}bgfa.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}bgfa\+\_\+graph.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}bgfa\+\_\+seed.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}bgfa\+\_\+alignment.\+hpp"{}}\newline
+Include dependency graph for bgfa\+\_\+merge.\+hpp:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\+\_\+\+PLACEHOLDER}}~4
+\begin{DoxyCompactList}\small\item\em Placeholder size, used for graph ID shifting in merging. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}{EXACT\+\_\+\+MERGE\+\_\+\+PLACEHOLDER}}~12
+\begin{DoxyCompactList}\small\item\em Placeholder size, used for renumbering segments in exactly merging. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_af95f48c71cc6081b10abdcdde2a0f3dd}{EXACT\+\_\+\+MERGE\+\_\+\+CLEAR\+\_\+\+MASK}}~(\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}(-\/1) \texorpdfstring{$^\wedge$}{\string^} (((\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}(1) $<$$<$ \doxymbox{\hyperlink{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}{EXACT\+\_\+\+MERGE\+\_\+\+PLACEHOLDER}}) -\/ 1) $<$$<$ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\+\_\+\+BIT}} -\/ \doxymbox{\hyperlink{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}{EXACT\+\_\+\+MERGE\+\_\+\+PLACEHOLDER}})))
+\begin{DoxyCompactList}\small\item\em Dynamic calculation for clearing the EXACT\+\_\+\+MERGE\+\_\+\+PLACEHOLDER bit field mask. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_ab7d4103b221dc76e8480e710f5c817bc}{SCREEN\+\_\+\+MODE\+\_\+\+DIRECT}}~0
+\begin{DoxyCompactList}\small\item\em All nodes are considered for merging. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_ae10392c69766ab025875e15401a6dc63}{SCREEN\+\_\+\+MODE\+\_\+\+MINIMIZER}}~2
+\begin{DoxyCompactList}\small\item\em Nodes are screened based on minimizers. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_ab676a082bbd1e27d7897bf359e9962e3}{SCREEN\+\_\+\+MODE\+\_\+\+DISTANCE}}~4
+\begin{DoxyCompactList}\small\item\em Nodes are screened based on distance. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_a2884d488d3fcf19912456aa400b19c98}{SCREEN\+\_\+\+MODE\+\_\+\+PATH}}~8
+\begin{DoxyCompactList}\small\item\em Nodes are screened based on paths. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_af2d7373b67cd4ba4add36c7f339d2194}{MERGE\+\_\+\+MODE\+\_\+\+STRICT}}~0
+\begin{DoxyCompactList}\small\item\em Merge nodes if they are consistent. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa__merge_8hpp_a0e590d5aec03cb33a0170678998f4f13}{MERGE\+\_\+\+MODE\+\_\+\+EXACT}}~1
+\begin{DoxyCompactList}\small\item\em Merge nodes based on alignment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std::\+unordered\+\_\+map$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}, std::\+pair$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ $>$ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{New\+Id\+Map}}
+\begin{DoxyCompactList}\small\item\em New ID mapping:\+ graph\+\_\+id \texorpdfstring{$\vert$}{|} old\+\_\+id -\/\texorpdfstring{$>$}{>} (new\+\_\+first\+\_\+id, new\+\_\+last\+\_\+id). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}{update\+Link}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&graphs, const \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{New\+Id\+Map}} \&new\+\_\+id\+\_\+list)
+\begin{DoxyCompactList}\small\item\em Update links in the merged graph based on segment set. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}{update\+Segment\+Set}} (\doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&segment\+\_\+set, const \doxymbox{\hyperlink{class_g_f_a}{GFA}} \&gfa, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} graph\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Update segment set with segments from a \doxylink{class_g_f_a}{GFA} graph. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{bgfa__merge_8hpp_a491928b6194fa72c3e5f72940f04ce58}{ensure\+Segment\+In\+Merged}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&segment\+\_\+set, const std::\+string \&seq)
+\begin{DoxyCompactList}\small\item\em Ensure a sequence exists in merged\+\_\+graph and segment\+\_\+set, return its index If the sequence is already present in segment\+\_\+set, return the mapped index. Otherwise, create a new \doxylink{class_segment}{Segment} in merged\+\_\+graph, record it in segment\+\_\+set and return the new index. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{bgfa__merge_8hpp_aa7c48abe813e3dccdb7d8448a1ec05f3}{get\+Similar\+Score}} (\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&seg\+\_\+ms, \doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&ref\+\_\+ms)
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{bgfa__merge_8hpp_aa9f36d38de004a8aff40657310e12b70}{get\+Merge\+Targetby\+Minimizers}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, \doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&ref\+\_\+ms, \doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&seg\+\_\+ms)
+\item 
+void \doxymbox{\hyperlink{bgfa__merge_8hpp_abac2142dd51555991eec46dbcbedd1e1}{merge\+Exact\+Compare}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{New\+Id\+Map}} \&new\+\_\+id\+\_\+list, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} g\+\_\+id, const \doxymbox{\hyperlink{class_segment}{Segment}} \&segment, const std::\+string \&target\+\_\+seq, const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} target\+\_\+id, bool \&is\+\_\+merged, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} merge\+\_\+limited, uint8\+\_\+t alignment\+\_\+kernel)
+\begin{DoxyCompactList}\small\item\em Merge a segment with a target sequence using exact comparison. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{bgfa__merge_8hpp_a6b9f59cb69c32caa10b017d55f92585e}{merge\+GFAStrict}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&graphs)
+\begin{DoxyCompactList}\small\item\em Merge multiple \doxylink{class_g_f_a}{GFA} graphs strictly by matching node sequences. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{bgfa__merge_8hpp_a68f1a505a82a74d220ad6594e13ea657}{merge\+GFAExact}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&graphs, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} merge\+\_\+limited, uint8\+\_\+t alignment\+\_\+kernel)
+\item 
+void \doxymbox{\hyperlink{bgfa__merge_8hpp_a2488d7a7fc984dd8a180696d247222eb}{merge\+GFAStrict\+By\+Distance}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&graphs)
+\begin{DoxyCompactList}\small\item\em Merge multiple \doxylink{class_g_f_a}{GFA} graphs strictly by distance. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{bgfa__merge_8hpp_a9162a950995ba45432b5a90c14147924}{merge\+GFAExact\+By\+Distance}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&graphs, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} merge\+\_\+limited, uint8\+\_\+t alignment\+\_\+kernel)
+\item 
+void \doxymbox{\hyperlink{bgfa__merge_8hpp_a84056021bcf2c6f38ac06e6618792cbd}{merge\+GFAExact\+By\+Minimize}} (\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&merged\+\_\+graph, const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&graphs, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} merge\+\_\+limited, uint8\+\_\+t alignment\+\_\+kernel)
+\begin{DoxyCompactList}\small\item\em Merge multiple \doxylink{class_g_f_a}{GFA} graphs exactly by minimizers. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_g_f_a}{GFA}} \doxymbox{\hyperlink{bgfa__merge_8hpp_abbf4cc6196c12478dbaf3a70aa85fa3f}{merge\+Graphs}} (const \doxymbox{\hyperlink{class_g_f_a}{GFA}} \&ref\+\_\+graph, const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&graphs, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} merge\+\_\+args, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} merge\+\_\+limited=90, uint8\+\_\+t alignment\+\_\+kernel=1)
+\begin{DoxyCompactList}\small\item\em Merge multiple \doxylink{class_g_f_a}{GFA} graphs fuzzily. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{bgfa__merge_8hpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{bgfa__merge_8hpp_af95f48c71cc6081b10abdcdde2a0f3dd}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!EXACT\_MERGE\_CLEAR\_MASK@{EXACT\_MERGE\_CLEAR\_MASK}}
+\index{EXACT\_MERGE\_CLEAR\_MASK@{EXACT\_MERGE\_CLEAR\_MASK}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{EXACT\_MERGE\_CLEAR\_MASK}{EXACT\_MERGE\_CLEAR\_MASK}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_af95f48c71cc6081b10abdcdde2a0f3dd} 
+\+\#define EXACT\+\_\+\+MERGE\+\_\+\+CLEAR\+\_\+\+MASK~(\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}(-\/1) \texorpdfstring{$^\wedge$}{\string^} (((\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}(1) $<$$<$ \doxymbox{\hyperlink{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}{EXACT\+\_\+\+MERGE\+\_\+\+PLACEHOLDER}}) -\/ 1) $<$$<$ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\+\_\+\+BIT}} -\/ \doxymbox{\hyperlink{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}{EXACT\+\_\+\+MERGE\+\_\+\+PLACEHOLDER}})))}
+
+
+
+Dynamic calculation for clearing the EXACT\+\_\+\+MERGE\+\_\+\+PLACEHOLDER bit field mask. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00024}{24}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+\Hypertarget{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!EXACT\_MERGE\_PLACEHOLDER@{EXACT\_MERGE\_PLACEHOLDER}}
+\index{EXACT\_MERGE\_PLACEHOLDER@{EXACT\_MERGE\_PLACEHOLDER}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{EXACT\_MERGE\_PLACEHOLDER}{EXACT\_MERGE\_PLACEHOLDER}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4} 
+\+\#define EXACT\+\_\+\+MERGE\+\_\+\+PLACEHOLDER~12}
+
+
+
+Placeholder size, used for renumbering segments in exactly merging. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00021}{21}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+\Hypertarget{bgfa__merge_8hpp_a0e590d5aec03cb33a0170678998f4f13}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!MERGE\_MODE\_EXACT@{MERGE\_MODE\_EXACT}}
+\index{MERGE\_MODE\_EXACT@{MERGE\_MODE\_EXACT}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{MERGE\_MODE\_EXACT}{MERGE\_MODE\_EXACT}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a0e590d5aec03cb33a0170678998f4f13} 
+\+\#define MERGE\+\_\+\+MODE\+\_\+\+EXACT~1}
+
+
+
+Merge nodes based on alignment. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00031}{31}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+\Hypertarget{bgfa__merge_8hpp_af2d7373b67cd4ba4add36c7f339d2194}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!MERGE\_MODE\_STRICT@{MERGE\_MODE\_STRICT}}
+\index{MERGE\_MODE\_STRICT@{MERGE\_MODE\_STRICT}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{MERGE\_MODE\_STRICT}{MERGE\_MODE\_STRICT}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_af2d7373b67cd4ba4add36c7f339d2194} 
+\+\#define MERGE\+\_\+\+MODE\+\_\+\+STRICT~0}
+
+
+
+Merge nodes if they are consistent. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00030}{30}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+\Hypertarget{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!MERGE\_PLACEHOLDER@{MERGE\_PLACEHOLDER}}
+\index{MERGE\_PLACEHOLDER@{MERGE\_PLACEHOLDER}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{MERGE\_PLACEHOLDER}{MERGE\_PLACEHOLDER}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a} 
+\+\#define MERGE\+\_\+\+PLACEHOLDER~4}
+
+
+
+Placeholder size, used for graph ID shifting in merging. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00019}{19}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+\Hypertarget{bgfa__merge_8hpp_ab7d4103b221dc76e8480e710f5c817bc}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!SCREEN\_MODE\_DIRECT@{SCREEN\_MODE\_DIRECT}}
+\index{SCREEN\_MODE\_DIRECT@{SCREEN\_MODE\_DIRECT}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_MODE\_DIRECT}{SCREEN\_MODE\_DIRECT}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_ab7d4103b221dc76e8480e710f5c817bc} 
+\+\#define SCREEN\+\_\+\+MODE\+\_\+\+DIRECT~0}
+
+
+
+All nodes are considered for merging. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00026}{26}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+\Hypertarget{bgfa__merge_8hpp_ab676a082bbd1e27d7897bf359e9962e3}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!SCREEN\_MODE\_DISTANCE@{SCREEN\_MODE\_DISTANCE}}
+\index{SCREEN\_MODE\_DISTANCE@{SCREEN\_MODE\_DISTANCE}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_MODE\_DISTANCE}{SCREEN\_MODE\_DISTANCE}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_ab676a082bbd1e27d7897bf359e9962e3} 
+\+\#define SCREEN\+\_\+\+MODE\+\_\+\+DISTANCE~4}
+
+
+
+Nodes are screened based on distance. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00028}{28}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+\Hypertarget{bgfa__merge_8hpp_ae10392c69766ab025875e15401a6dc63}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!SCREEN\_MODE\_MINIMIZER@{SCREEN\_MODE\_MINIMIZER}}
+\index{SCREEN\_MODE\_MINIMIZER@{SCREEN\_MODE\_MINIMIZER}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_MODE\_MINIMIZER}{SCREEN\_MODE\_MINIMIZER}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_ae10392c69766ab025875e15401a6dc63} 
+\+\#define SCREEN\+\_\+\+MODE\+\_\+\+MINIMIZER~2}
+
+
+
+Nodes are screened based on minimizers. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00027}{27}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+\Hypertarget{bgfa__merge_8hpp_a2884d488d3fcf19912456aa400b19c98}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!SCREEN\_MODE\_PATH@{SCREEN\_MODE\_PATH}}
+\index{SCREEN\_MODE\_PATH@{SCREEN\_MODE\_PATH}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{SCREEN\_MODE\_PATH}{SCREEN\_MODE\_PATH}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a2884d488d3fcf19912456aa400b19c98} 
+\+\#define SCREEN\+\_\+\+MODE\+\_\+\+PATH~8}
+
+
+
+Nodes are screened based on paths. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00029}{29}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{bgfa__merge_8hpp_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{bgfa__merge_8hpp_a821355656807593072c54951745e409b}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!NewIdMap@{NewIdMap}}
+\index{NewIdMap@{NewIdMap}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{NewIdMap}{NewIdMap}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a821355656807593072c54951745e409b} 
+typedef std::\+unordered\+\_\+map$<$\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}, std::\+pair$<$\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}$>$ $>$ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{New\+Id\+Map}}}
+
+
+
+New ID mapping:\+ graph\+\_\+id \texorpdfstring{$\vert$}{|} old\+\_\+id -\/\texorpdfstring{$>$}{>} (new\+\_\+first\+\_\+id, new\+\_\+last\+\_\+id). 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00034}{34}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{bgfa__merge_8hpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{bgfa__merge_8hpp_a491928b6194fa72c3e5f72940f04ce58}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!ensureSegmentInMerged@{ensureSegmentInMerged}}
+\index{ensureSegmentInMerged@{ensureSegmentInMerged}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{ensureSegmentInMerged()}{ensureSegmentInMerged()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a491928b6194fa72c3e5f72940f04ce58} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} ensure\+Segment\+In\+Merged (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{\doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&}]{segment\+\_\+set}{, }\item[{const std::\+string \&}]{seq}{}\end{DoxyParamCaption})}
+
+
+
+Ensure a sequence exists in merged\+\_\+graph and segment\+\_\+set, return its index If the sequence is already present in segment\+\_\+set, return the mapped index. Otherwise, create a new \doxylink{class_segment}{Segment} in merged\+\_\+graph, record it in segment\+\_\+set and return the new index. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00106}{106}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{bgfa__merge_8hpp_aa9f36d38de004a8aff40657310e12b70}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!getMergeTargetbyMinimizers@{getMergeTargetbyMinimizers}}
+\index{getMergeTargetbyMinimizers@{getMergeTargetbyMinimizers}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{getMergeTargetbyMinimizers()}{getMergeTargetbyMinimizers()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_aa9f36d38de004a8aff40657310e12b70} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} get\+Merge\+Targetby\+Minimizers (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&}]{ref\+\_\+ms}{, }\item[{\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&}]{seg\+\_\+ms}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00181}{181}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{bgfa__merge_8hpp_aa7c48abe813e3dccdb7d8448a1ec05f3}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!getSimilarScore@{getSimilarScore}}
+\index{getSimilarScore@{getSimilarScore}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{getSimilarScore()}{getSimilarScore()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_aa7c48abe813e3dccdb7d8448a1ec05f3} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} get\+Similar\+Score (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&}]{seg\+\_\+ms}{, }\item[{\doxymbox{\hyperlink{class_minimizer_set}{Minimizer\+Set}} \&}]{ref\+\_\+ms}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00119}{119}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{bgfa__merge_8hpp_abac2142dd51555991eec46dbcbedd1e1}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!mergeExactCompare@{mergeExactCompare}}
+\index{mergeExactCompare@{mergeExactCompare}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{mergeExactCompare()}{mergeExactCompare()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_abac2142dd51555991eec46dbcbedd1e1} 
+void merge\+Exact\+Compare (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{\doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{New\+Id\+Map}} \&}]{new\+\_\+id\+\_\+list}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{g\+\_\+id}{, }\item[{const \doxymbox{\hyperlink{class_segment}{Segment}} \&}]{segment}{, }\item[{const std::\+string \&}]{target\+\_\+seq}{, }\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{target\+\_\+id}{, }\item[{bool \&}]{is\+\_\+merged}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{merge\+\_\+limited}{, }\item[{uint8\+\_\+t}]{alignment\+\_\+kernel}{}\end{DoxyParamCaption})}
+
+
+
+Merge a segment with a target sequence using exact comparison. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+GFA\}} & \&merged\+\_\+graph -\/ The merged \doxylink{class_g_f_a}{GFA} graph \\
+\hline
+{\em \{\+New\+Id\+Map\}} & \&new\+\_\+id\+\_\+list -\/ Mapping of graph\+\_\+id \texorpdfstring{$\vert$}{|} old\+\_\+id to new ID \\
+\hline
+{\em \{uword\+\_\+t\}} & g\+\_\+id -\/ Unique ID for the graph \\
+\hline
+{\em \{\+Segment\}} & \&segment -\/ \doxylink{class_segment}{Segment} to be merged \\
+\hline
+{\em \{string\}} & \&target\+\_\+seq -\/ Target sequence to compare against \\
+\hline
+{\em \{uword\+\_\+t\}} & target\+\_\+id -\/ Target segment ID in merged\+\_\+graph \\
+\hline
+{\em \{bool\}} & \&is\+\_\+merged -\/ Output flag indicating if the segment was merged \\
+\hline
+{\em \{uword\+\_\+t\}} & merge\+\_\+limited -\/ Merge threshold percentage \\
+\hline
+{\em \{uint8\+\_\+t\}} & alignment\+\_\+kernel -\/ Alignment kernel to use (0:\+ KSW, 1:\+ WFA) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\texorpdfstring{$\ast$}{*}\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00262}{262}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{bgfa__merge_8hpp_a68f1a505a82a74d220ad6594e13ea657}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!mergeGFAExact@{mergeGFAExact}}
+\index{mergeGFAExact@{mergeGFAExact}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{mergeGFAExact()}{mergeGFAExact()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a68f1a505a82a74d220ad6594e13ea657} 
+void merge\+GFAExact (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&}]{graphs}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{merge\+\_\+limited}{, }\item[{uint8\+\_\+t}]{alignment\+\_\+kernel}{}\end{DoxyParamCaption})}
+
+\texorpdfstring{$<$}{<} segment sequence -\/\texorpdfstring{$>$}{>} new segment ID (only for not merged segments)
+
+\texorpdfstring{$<$}{<} old segment ID -\/\texorpdfstring{$>$}{>} new segment ID
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00623}{623}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{bgfa__merge_8hpp_a9162a950995ba45432b5a90c14147924}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!mergeGFAExactByDistance@{mergeGFAExactByDistance}}
+\index{mergeGFAExactByDistance@{mergeGFAExactByDistance}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{mergeGFAExactByDistance()}{mergeGFAExactByDistance()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a9162a950995ba45432b5a90c14147924} 
+void merge\+GFAExact\+By\+Distance (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&}]{graphs}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{merge\+\_\+limited}{, }\item[{uint8\+\_\+t}]{alignment\+\_\+kernel}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00757}{757}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 11
+Here is the caller graph for this function:\+
+% FIG 12
+\Hypertarget{bgfa__merge_8hpp_a84056021bcf2c6f38ac06e6618792cbd}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!mergeGFAExactByMinimize@{mergeGFAExactByMinimize}}
+\index{mergeGFAExactByMinimize@{mergeGFAExactByMinimize}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{mergeGFAExactByMinimize()}{mergeGFAExactByMinimize()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a84056021bcf2c6f38ac06e6618792cbd} 
+void merge\+GFAExact\+By\+Minimize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&}]{graphs}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{merge\+\_\+limited}{, }\item[{uint8\+\_\+t}]{alignment\+\_\+kernel}{}\end{DoxyParamCaption})}
+
+
+
+Merge multiple \doxylink{class_g_f_a}{GFA} graphs exactly by minimizers. 
+
+This function generates default empty \doxylink{class_minimizer_set}{Minimizer\+Set} instances for each graph and then calls merge\+GFAStrict\+By\+Minimize() that utilizes minimizers for merging 
+\begin{DoxyParams}{Parameters}
+{\em \{\+GFA\}} & \&merged\+\_\+graph \\
+\hline
+{\em \{vector$<$\+GFA$>$\}} & \&graphs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\texorpdfstring{$\ast$}{*}\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00847}{847}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 13
+Here is the caller graph for this function:\+
+% FIG 14
+\Hypertarget{bgfa__merge_8hpp_a6b9f59cb69c32caa10b017d55f92585e}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!mergeGFAStrict@{mergeGFAStrict}}
+\index{mergeGFAStrict@{mergeGFAStrict}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{mergeGFAStrict()}{mergeGFAStrict()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a6b9f59cb69c32caa10b017d55f92585e} 
+void merge\+GFAStrict (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&}]{graphs}{}\end{DoxyParamCaption})}
+
+
+
+Merge multiple \doxylink{class_g_f_a}{GFA} graphs strictly by matching node sequences. 
+
+Merges nodes with identical sequences across graphs. Only exact matches are considered; no sequence similarity is used. The resulting graph may be larger than with other methods if inputs have many similar but non-\/identical nodes. 
+\begin{DoxyParams}{Parameters}
+{\em \{\+GFA\}} & \&merged\+\_\+graph -\/ Reference to the \doxylink{class_g_f_a}{GFA} \\
+\hline
+{\em \{vector$<$\+GFA$>$\}} & graphs -\/ Vector of \doxylink{class_g_f_a}{GFA} graphs to merge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{void\} 
+\end{DoxyReturn}
+\texorpdfstring{$<$}{<} segment sequence -\/\texorpdfstring{$>$}{>} new segment ID
+
+\texorpdfstring{$<$}{<} old segment ID -\/\texorpdfstring{$>$}{>} new segment ID
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00590}{590}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 15
+Here is the caller graph for this function:\+
+% FIG 16
+\Hypertarget{bgfa__merge_8hpp_a2488d7a7fc984dd8a180696d247222eb}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!mergeGFAStrictByDistance@{mergeGFAStrictByDistance}}
+\index{mergeGFAStrictByDistance@{mergeGFAStrictByDistance}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{mergeGFAStrictByDistance()}{mergeGFAStrictByDistance()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_a2488d7a7fc984dd8a180696d247222eb} 
+void merge\+GFAStrict\+By\+Distance (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&}]{graphs}{}\end{DoxyParamCaption})}
+
+
+
+Merge multiple \doxylink{class_g_f_a}{GFA} graphs strictly by distance. 
+
+This function merges graphs based on segment distances. Segments from different graphs that have similar distances (within a defined threshold) are considered for merging. \begin{DoxyNote}{Note}
+This function may be enabled, as it appears that distance optimizations in strict merges are not faster than a single find in a set? 
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+GFA\}} & \&merged\+\_\+graph \\
+\hline
+{\em \{vector$<$\+GFA$>$\}} & \&graphs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\texorpdfstring{$\ast$}{*}\} 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00713}{713}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 17
+Here is the caller graph for this function:\+
+% FIG 18
+\Hypertarget{bgfa__merge_8hpp_abbf4cc6196c12478dbaf3a70aa85fa3f}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!mergeGraphs@{mergeGraphs}}
+\index{mergeGraphs@{mergeGraphs}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{mergeGraphs()}{mergeGraphs()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_abbf4cc6196c12478dbaf3a70aa85fa3f} 
+\doxymbox{\hyperlink{class_g_f_a}{GFA}} merge\+Graphs (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{ref\+\_\+graph}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&}]{graphs}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{merge\+\_\+args}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{merge\+\_\+limited}{ = {\ttfamily 90}, }\item[{uint8\+\_\+t}]{alignment\+\_\+kernel}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Merge multiple \doxylink{class_g_f_a}{GFA} graphs fuzzily. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{vector$<$\+GFA$>$\}} & graphs -\/ Vector of \doxylink{class_g_f_a}{GFA} graphs to merge \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\doxylink{class_g_f_a}{GFA}\} Merged \doxylink{class_g_f_a}{GFA} graph 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00926}{926}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+\Hypertarget{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!updateLink@{updateLink}}
+\index{updateLink@{updateLink}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{updateLink()}{updateLink()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9} 
+void update\+Link (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{merged\+\_\+graph}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{class_g_f_a}{GFA}} $>$ \&}]{graphs}{, }\item[{const \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{New\+Id\+Map}} \&}]{new\+\_\+id\+\_\+list}{}\end{DoxyParamCaption})}
+
+
+
+Update links in the merged graph based on segment set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+GFA\}} & \&merged\+\_\+graph -\/ The merged \doxylink{class_g_f_a}{GFA} graph \\
+\hline
+{\em \{vector$<$\+GFA$>$\}} & \&graphs -\/ List of \doxylink{class_g_f_a}{GFA} graphs to merge \\
+\hline
+{\em \{\+New\+Id\+Map\}} & \&new\+\_\+id\+\_\+list -\/ Mapping of graph\+\_\+id \texorpdfstring{$\vert$}{|} old\+\_\+id to new ID ranges \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00044}{44}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 20
+Here is the caller graph for this function:\+
+% FIG 21
+\Hypertarget{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}\index{bgfa\_merge.hpp@{bgfa\_merge.hpp}!updateSegmentSet@{updateSegmentSet}}
+\index{updateSegmentSet@{updateSegmentSet}!bgfa\_merge.hpp@{bgfa\_merge.hpp}}
+\doxysubsubsection{\texorpdfstring{updateSegmentSet()}{updateSegmentSet()}}
+{\footnotesize\ttfamily \label{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d} 
+void update\+Segment\+Set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{Node\+Map}} \&}]{segment\+\_\+set}{, }\item[{const \doxymbox{\hyperlink{class_g_f_a}{GFA}} \&}]{gfa}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{graph\+\_\+id}{}\end{DoxyParamCaption})}
+
+
+
+Update segment set with segments from a \doxylink{class_g_f_a}{GFA} graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{\+Node\+Map\}} & \&segment\+\_\+set -\/ Mapping of segment sequences to new IDs \\
+\hline
+{\em \{\+GFA\}} & \&gfa -\/ \doxylink{class_g_f_a}{GFA} graph to extract segments from \\
+\hline
+{\em \{uword\+\_\+t\}} & graph\+\_\+id -\/ Unique ID for the graph \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__merge_8hpp_source_l00091}{91}} of file \doxymbox{\hyperlink{bgfa__merge_8hpp_source}{bgfa\+\_\+merge.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 22
+Here is the caller graph for this function:\+
+% FIG 23

@@ -1,0 +1,353 @@
+\doxysection{src/\+wfa/\+tools/\+generate\+\_\+dataset/\+generate\+\_\+dataset.c File Reference}
+\hypertarget{generate__dataset_8c}{}\label{generate__dataset_8c}\index{src/wfa/tools/generate\_dataset/generate\_dataset.c@{src/wfa/tools/generate\_dataset/generate\_dataset.c}}
+{\ttfamily \+\#include $<$stdio.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \+\#include $<$getopt.\+h$>$}\newline
+{\ttfamily \+\#include $<$stddef.\+h$>$}\newline
+{\ttfamily \+\#include $<$stdint.\+h$>$}\newline
+{\ttfamily \+\#include $<$string.\+h$>$}\newline
+{\ttfamily \+\#include $<$math.\+h$>$}\newline
+{\ttfamily \+\#include $<$time.\+h$>$}\newline
+Include dependency graph for generate\+\_\+dataset.\+c:\+
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{structcountour__bench__args}{countour\+\_\+bench\+\_\+args}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(a,  b)
+\item 
+\+\#define \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(a,  b)
+\item 
+\+\#define \doxymbox{\hyperlink{generate__dataset_8c_ae2f08dc603ae93c402abd918ba4e23e1}{ABS}}(a)
+\item 
+\+\#define \doxymbox{\hyperlink{generate__dataset_8c_a6572f1706059832f94025fa12c6c45ed}{ALPHABET\+\_\+\+SIZE}}~4
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}{rand\+\_\+iid}} (const uint64\+\_\+t min, const uint64\+\_\+t max)
+\item 
+void \doxymbox{\hyperlink{generate__dataset_8c_a09ecbb3fa135f1ab6d22617af29b2ace}{sequence\+\_\+generate\+\_\+random}} (char \texorpdfstring{$\ast$}{*}const sequence, const int length)
+\item 
+int \doxymbox{\hyperlink{generate__dataset_8c_a59e959c3656abed03617695ebbc76a7a}{sequence\+\_\+extract}} (char \texorpdfstring{$\ast$}{*}const seqlong, const int seqlong\+\_\+length, char \texorpdfstring{$\ast$}{*}const seqshort, const int seqshort\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{generate__dataset_8c_a8b188fa0a1e6e212c708253dfca96232}{sequence\+\_\+errors\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const errors\+\_\+log)
+\item 
+void \doxymbox{\hyperlink{generate__dataset_8c_a2c53f24073e264e93b691d70662bf22d}{sequence\+\_\+generate\+\_\+mismatch}} (char \texorpdfstring{$\ast$}{*}const sequence, const int sequence\+\_\+length, \doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const errors\+\_\+log)
+\item 
+void \doxymbox{\hyperlink{generate__dataset_8c_a1a15052f5865a4095b925c3ecc6d7978}{sequence\+\_\+generate\+\_\+deletion}} (char \texorpdfstring{$\ast$}{*}const sequence, int \texorpdfstring{$\ast$}{*}const sequence\+\_\+length, \doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const errors\+\_\+log)
+\item 
+void \doxymbox{\hyperlink{generate__dataset_8c_a312690150b4ac09164708187b723beba}{sequence\+\_\+generate\+\_\+insertion}} (char \texorpdfstring{$\ast$}{*}const sequence, int \texorpdfstring{$\ast$}{*}const sequence\+\_\+length, \doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const errors\+\_\+log)
+\item 
+int \doxymbox{\hyperlink{generate__dataset_8c_a30001acb7180e5d95406d201fd24fa2e}{sequence\+\_\+generate\+\_\+errors}} (char \texorpdfstring{$\ast$}{*}const sequence, const int sequence\+\_\+length, const int num\+\_\+errors, \doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const errors\+\_\+log)
+\item 
+void \doxymbox{\hyperlink{generate__dataset_8c_af3e601db681a672bfcb5f9163cd2b7ba}{sequence\+\_\+generate\+\_\+indel}} (char \texorpdfstring{$\ast$}{*}const sequence, int \texorpdfstring{$\ast$}{*}const sequence\+\_\+length, const int deletion\+\_\+length, \doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const errors\+\_\+log)
+\item 
+int \doxymbox{\hyperlink{generate__dataset_8c_a10fb4cc41a7ee03742c865951e7d6bca}{sequence\+\_\+generate\+\_\+indels}} (char \texorpdfstring{$\ast$}{*}const sequence, const int sequence\+\_\+length, const int max\+\_\+indels, const int deletion\+\_\+length, \doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const errors\+\_\+log)
+\item 
+void \doxymbox{\hyperlink{generate__dataset_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}{usage}} ()
+\item 
+void \doxymbox{\hyperlink{generate__dataset_8c_ac28906ed3a3a34f6c8b04e2ec1479383}{parse\+\_\+arguments}} (int argc, char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}argv)
+\item 
+int \doxymbox{\hyperlink{generate__dataset_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char \texorpdfstring{$\ast$}{*}argv\+[$\,$]\+)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \doxymbox{\hyperlink{generate__dataset_8c_aa0caf1362d64b0af98bb3c37b8919755}{alphabet}} \+[$\,$]\+
+\item 
+\doxymbox{\hyperlink{structcountour__bench__args}{countour\+\_\+bench\+\_\+args}} \doxymbox{\hyperlink{generate__dataset_8c_a188374f8a44c602e6db43e9197eb6188}{parameters}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{generate__dataset_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{generate__dataset_8c_ae2f08dc603ae93c402abd918ba4e23e1}\index{generate\_dataset.c@{generate\_dataset.c}!ABS@{ABS}}
+\index{ABS@{ABS}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{ABS}{ABS}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_ae2f08dc603ae93c402abd918ba4e23e1} 
+\+\#define ABS(\begin{DoxyParamCaption}\item[{}]{a}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((a)>=0)?(a):-\/(a))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00046}{46}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+\Hypertarget{generate__dataset_8c_a6572f1706059832f94025fa12c6c45ed}\index{generate\_dataset.c@{generate\_dataset.c}!ALPHABET\_SIZE@{ALPHABET\_SIZE}}
+\index{ALPHABET\_SIZE@{ALPHABET\_SIZE}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{ALPHABET\_SIZE}{ALPHABET\_SIZE}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a6572f1706059832f94025fa12c6c45ed} 
+\+\#define ALPHABET\+\_\+\+SIZE~4}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00060}{60}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+\Hypertarget{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}\index{generate\_dataset.c@{generate\_dataset.c}!MAX@{MAX}}
+\index{MAX@{MAX}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{MAX}{MAX}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f} 
+\+\#define MAX(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((a)>=(b))?(a):(b))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00045}{45}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+\Hypertarget{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}\index{generate\_dataset.c@{generate\_dataset.c}!MIN@{MIN}}
+\index{MIN@{MIN}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{MIN}{MIN}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f} 
+\+\#define MIN(\begin{DoxyParamCaption}\item[{}]{a}{, }\item[{}]{b}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{(((a)<=(b))?(a):(b))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{generate__dataset_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{generate__dataset_8c_a0ddf1224851353fc92bfbff6f499fa97}\index{generate\_dataset.c@{generate\_dataset.c}!main@{main}}
+\index{main@{main}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a0ddf1224851353fc92bfbff6f499fa97} 
+int main (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{argv}{\+[$\,$]\+}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00350}{350}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+\Hypertarget{generate__dataset_8c_ac28906ed3a3a34f6c8b04e2ec1479383}\index{generate\_dataset.c@{generate\_dataset.c}!parse\_arguments@{parse\_arguments}}
+\index{parse\_arguments@{parse\_arguments}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{parse\_arguments()}{parse\_arguments()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_ac28906ed3a3a34f6c8b04e2ec1479383} 
+void parse\+\_\+arguments (\begin{DoxyParamCaption}\item[{int}]{argc}{, }\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00297}{297}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68}\index{generate\_dataset.c@{generate\_dataset.c}!rand\_iid@{rand\_iid}}
+\index{rand\_iid@{rand\_iid}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{rand\_iid()}{rand\_iid()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a3700d09312e8e0f261baa1f3bdd69e68} 
+uint64\+\_\+t rand\+\_\+iid (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{min}{, }\item[{const uint64\+\_\+t}]{max}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00080}{80}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{generate__dataset_8c_a8b188fa0a1e6e212c708253dfca96232}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_errors\_print@{sequence\_errors\_print}}
+\index{sequence\_errors\_print@{sequence\_errors\_print}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_errors\_print()}{sequence\_errors\_print()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a8b188fa0a1e6e212c708253dfca96232} 
+void sequence\+\_\+errors\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{errors\+\_\+log}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00124}{124}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{generate__dataset_8c_a59e959c3656abed03617695ebbc76a7a}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_extract@{sequence\_extract}}
+\index{sequence\_extract@{sequence\_extract}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_extract()}{sequence\_extract()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a59e959c3656abed03617695ebbc76a7a} 
+int sequence\+\_\+extract (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{seqlong}{, }\item[{const int}]{seqlong\+\_\+length}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{seqshort}{, }\item[{const int}]{seqshort\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00110}{110}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{generate__dataset_8c_a1a15052f5865a4095b925c3ecc6d7978}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_generate\_deletion@{sequence\_generate\_deletion}}
+\index{sequence\_generate\_deletion@{sequence\_generate\_deletion}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_generate\_deletion()}{sequence\_generate\_deletion()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a1a15052f5865a4095b925c3ecc6d7978} 
+void sequence\+\_\+generate\+\_\+deletion (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{sequence}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{sequence\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{errors\+\_\+log}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00163}{163}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{generate__dataset_8c_a30001acb7180e5d95406d201fd24fa2e}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_generate\_errors@{sequence\_generate\_errors}}
+\index{sequence\_generate\_errors@{sequence\_generate\_errors}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_generate\_errors()}{sequence\_generate\_errors()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a30001acb7180e5d95406d201fd24fa2e} 
+int sequence\+\_\+generate\+\_\+errors (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{sequence}{, }\item[{const int}]{sequence\+\_\+length}{, }\item[{const int}]{num\+\_\+errors}{, }\item[{\doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{errors\+\_\+log}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00197}{197}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 11
+Here is the caller graph for this function:\+
+% FIG 12
+\Hypertarget{generate__dataset_8c_af3e601db681a672bfcb5f9163cd2b7ba}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_generate\_indel@{sequence\_generate\_indel}}
+\index{sequence\_generate\_indel@{sequence\_generate\_indel}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_generate\_indel()}{sequence\_generate\_indel()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_af3e601db681a672bfcb5f9163cd2b7ba} 
+void sequence\+\_\+generate\+\_\+indel (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{sequence}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{sequence\+\_\+length}{, }\item[{const int}]{deletion\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{errors\+\_\+log}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00221}{221}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 13
+Here is the caller graph for this function:\+
+% FIG 14
+\Hypertarget{generate__dataset_8c_a10fb4cc41a7ee03742c865951e7d6bca}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_generate\_indels@{sequence\_generate\_indels}}
+\index{sequence\_generate\_indels@{sequence\_generate\_indels}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_generate\_indels()}{sequence\_generate\_indels()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a10fb4cc41a7ee03742c865951e7d6bca} 
+int sequence\+\_\+generate\+\_\+indels (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{sequence}{, }\item[{const int}]{sequence\+\_\+length}{, }\item[{const int}]{max\+\_\+indels}{, }\item[{const int}]{deletion\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{errors\+\_\+log}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00239}{239}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 15
+Here is the caller graph for this function:\+
+% FIG 16
+\Hypertarget{generate__dataset_8c_a312690150b4ac09164708187b723beba}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_generate\_insertion@{sequence\_generate\_insertion}}
+\index{sequence\_generate\_insertion@{sequence\_generate\_insertion}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_generate\_insertion()}{sequence\_generate\_insertion()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a312690150b4ac09164708187b723beba} 
+void sequence\+\_\+generate\+\_\+insertion (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{sequence}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{sequence\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{errors\+\_\+log}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00179}{179}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 17
+Here is the caller graph for this function:\+
+% FIG 18
+\Hypertarget{generate__dataset_8c_a2c53f24073e264e93b691d70662bf22d}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_generate\_mismatch@{sequence\_generate\_mismatch}}
+\index{sequence\_generate\_mismatch@{sequence\_generate\_mismatch}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_generate\_mismatch()}{sequence\_generate\_mismatch()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a2c53f24073e264e93b691d70662bf22d} 
+void sequence\+\_\+generate\+\_\+mismatch (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{sequence}{, }\item[{const int}]{sequence\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structseq__error__t}{seq\+\_\+error\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{errors\+\_\+log}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00144}{144}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+Here is the caller graph for this function:\+
+% FIG 20
+\Hypertarget{generate__dataset_8c_a09ecbb3fa135f1ab6d22617af29b2ace}\index{generate\_dataset.c@{generate\_dataset.c}!sequence\_generate\_random@{sequence\_generate\_random}}
+\index{sequence\_generate\_random@{sequence\_generate\_random}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{sequence\_generate\_random()}{sequence\_generate\_random()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a09ecbb3fa135f1ab6d22617af29b2ace} 
+void sequence\+\_\+generate\+\_\+random (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{sequence}{, }\item[{const int}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00097}{97}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 21
+Here is the caller graph for this function:\+
+% FIG 22
+\Hypertarget{generate__dataset_8c_a2ef30c42cbc289d899a8be5d2d8f77d0}\index{generate\_dataset.c@{generate\_dataset.c}!usage@{usage}}
+\index{usage@{usage}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a2ef30c42cbc289d899a8be5d2d8f77d0} 
+void usage (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00283}{283}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 23
+
+
+\label{doc-var-members}
+\Hypertarget{generate__dataset_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{generate__dataset_8c_aa0caf1362d64b0af98bb3c37b8919755}\index{generate\_dataset.c@{generate\_dataset.c}!alphabet@{alphabet}}
+\index{alphabet@{alphabet}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{alphabet}{alphabet}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_aa0caf1362d64b0af98bb3c37b8919755} 
+char alphabet\+[$\,$]\+}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{charliteral}{'A'},\textcolor{charliteral}{'C'},\textcolor{charliteral}{'G'},\textcolor{charliteral}{'T'}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00061}{61}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+
+\Hypertarget{generate__dataset_8c_a188374f8a44c602e6db43e9197eb6188}\index{generate\_dataset.c@{generate\_dataset.c}!parameters@{parameters}}
+\index{parameters@{parameters}!generate\_dataset.c@{generate\_dataset.c}}
+\doxysubsubsection{\texorpdfstring{parameters}{parameters}}
+{\footnotesize\ttfamily \label{generate__dataset_8c_a188374f8a44c602e6db43e9197eb6188} 
+\doxymbox{\hyperlink{structcountour__bench__args}{countour\+\_\+bench\+\_\+args}} parameters}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =\ \{}
+\DoxyCodeLine{\ \ \ \ .num\_reads\ =\ 1000,}
+\DoxyCodeLine{\ \ \ \ .output\ =\ NULL,}
+\DoxyCodeLine{\ \ \ \ .length\ =\ 100,}
+\DoxyCodeLine{\ \ \ \ .length\_diff\ =\ 1.0,}
+\DoxyCodeLine{\ \ \ \ .error\_degree\ =\ 0.04,}
+\DoxyCodeLine{\ \ \ \ .indels\_num\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ .indels\_length\ =\ 0,}
+\DoxyCodeLine{\ \ \ \ .debug\ =\ 0,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{generate__dataset_8c_source_l00270}{270}} of file \doxymbox{\hyperlink{generate__dataset_8c_source}{generate\+\_\+dataset.\+c}}.
+

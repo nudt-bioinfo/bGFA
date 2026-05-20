@@ -1,0 +1,169 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+display.c File Reference}
+\hypertarget{wavefront__display_8c}{}\label{wavefront__display_8c}\index{src/wfa/wavefront/wavefront\_display.c@{src/wfa/wavefront/wavefront\_display.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+display.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+aligner.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+compute.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+display.\+c:\+
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__display_8c_ab2b3cbf5f9a54c217c39e53ce3025611}{WF\+\_\+\+DISPLAY\+\_\+\+YLABEL\+\_\+\+LENGTH}}~8
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{wavefront__display_8c_aa184d5165c09ee7d03aada7dfeb2f233}{wavefront\+\_\+display\+\_\+compute\+\_\+row\+\_\+width}} (const \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\+\_\+metric\+\_\+t}} distance\+\_\+metric, const int bt\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__display_8c_aa317457bac4bd79caf8621ab8d5b2e5f}{wavefront\+\_\+display\+\_\+compute\+\_\+limits}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score\+\_\+begin, const int score\+\_\+end, int \texorpdfstring{$\ast$}{*}const out\+\_\+max\+\_\+k, int \texorpdfstring{$\ast$}{*}const out\+\_\+min\+\_\+k)
+\item 
+void \doxymbox{\hyperlink{wavefront__display_8c_aa8db185f9d28b60dc09566a383e8d213}{wavefront\+\_\+display\+\_\+print\+\_\+element}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront, const int k, const int bt\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__display_8c_a343264bdaa16abc408d793f5fa36d778}{wavefront\+\_\+display\+\_\+print\+\_\+frame}} (FILE \texorpdfstring{$\ast$}{*}const stream, const int score\+\_\+begin, const int score\+\_\+end, const int row\+\_\+width, const int bt\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__display_8c_ac84bdf8bae21c5ba62e610ca35fb4c6e}{wavefront\+\_\+display\+\_\+print\+\_\+score}} (FILE \texorpdfstring{$\ast$}{*}const stream, const int score\+\_\+begin, const int score\+\_\+end, const int row\+\_\+width, const int bt\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__display_8c_af71ffb15a449b05dd8cfd7414a1f7f90}{wavefront\+\_\+display\+\_\+print\+\_\+header\+\_\+component}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const wavefront, char \texorpdfstring{$\ast$}{*}const wavefront\+\_\+id, const int bt\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__display_8c_af5ddc7faac543b85e0cda000bcec699d}{wavefront\+\_\+display\+\_\+print\+\_\+header}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score\+\_\+begin, const int score\+\_\+end, const int bt\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__display_8c_a0d1429a9ad765773db18699f154be846}{wavefront\+\_\+aligner\+\_\+print\+\_\+block}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score\+\_\+begin, const int score\+\_\+end, int bt\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__display_8c_aaa50816b15ab6fff74f9032a020c5690}{wavefront\+\_\+aligner\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score\+\_\+begin, const int score\+\_\+end, const int num\+\_\+wfs\+\_\+per\+\_\+row, const int backtrace\+\_\+length)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{wavefront__display_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{wavefront__display_8c_ab2b3cbf5f9a54c217c39e53ce3025611}\index{wavefront\_display.c@{wavefront\_display.c}!WF\_DISPLAY\_YLABEL\_LENGTH@{WF\_DISPLAY\_YLABEL\_LENGTH}}
+\index{WF\_DISPLAY\_YLABEL\_LENGTH@{WF\_DISPLAY\_YLABEL\_LENGTH}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{WF\_DISPLAY\_YLABEL\_LENGTH}{WF\_DISPLAY\_YLABEL\_LENGTH}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_ab2b3cbf5f9a54c217c39e53ce3025611} 
+\+\#define WF\+\_\+\+DISPLAY\+\_\+\+YLABEL\+\_\+\+LENGTH~8}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00041}{41}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__display_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__display_8c_aaa50816b15ab6fff74f9032a020c5690}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_aligner\_print@{wavefront\_aligner\_print}}
+\index{wavefront\_aligner\_print@{wavefront\_aligner\_print}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_aligner\_print()}{wavefront\_aligner\_print()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_aaa50816b15ab6fff74f9032a020c5690} 
+void wavefront\+\_\+aligner\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score\+\_\+begin}{, }\item[{const int}]{score\+\_\+end}{, }\item[{const int}]{num\+\_\+wfs\+\_\+per\+\_\+row}{, }\item[{const int}]{backtrace\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00270}{270}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+\Hypertarget{wavefront__display_8c_a0d1429a9ad765773db18699f154be846}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_aligner\_print\_block@{wavefront\_aligner\_print\_block}}
+\index{wavefront\_aligner\_print\_block@{wavefront\_aligner\_print\_block}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_aligner\_print\_block()}{wavefront\_aligner\_print\_block()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_a0d1429a9ad765773db18699f154be846} 
+void wavefront\+\_\+aligner\+\_\+print\+\_\+block (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score\+\_\+begin}{, }\item[{const int}]{score\+\_\+end}{, }\item[{int}]{bt\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00226}{226}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__display_8c_aa317457bac4bd79caf8621ab8d5b2e5f}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_display\_compute\_limits@{wavefront\_display\_compute\_limits}}
+\index{wavefront\_display\_compute\_limits@{wavefront\_display\_compute\_limits}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_display\_compute\_limits()}{wavefront\_display\_compute\_limits()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_aa317457bac4bd79caf8621ab8d5b2e5f} 
+void wavefront\+\_\+display\+\_\+compute\+\_\+limits (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score\+\_\+begin}{, }\item[{const int}]{score\+\_\+end}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{out\+\_\+max\+\_\+k}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{out\+\_\+min\+\_\+k}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00062}{62}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{wavefront__display_8c_aa184d5165c09ee7d03aada7dfeb2f233}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_display\_compute\_row\_width@{wavefront\_display\_compute\_row\_width}}
+\index{wavefront\_display\_compute\_row\_width@{wavefront\_display\_compute\_row\_width}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_display\_compute\_row\_width()}{wavefront\_display\_compute\_row\_width()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_aa184d5165c09ee7d03aada7dfeb2f233} 
+int wavefront\+\_\+display\+\_\+compute\+\_\+row\+\_\+width (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\+\_\+metric\+\_\+t}}}]{distance\+\_\+metric}{, }\item[{const int}]{bt\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00046}{46}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__display_8c_aa8db185f9d28b60dc09566a383e8d213}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_display\_print\_element@{wavefront\_display\_print\_element}}
+\index{wavefront\_display\_print\_element@{wavefront\_display\_print\_element}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_display\_print\_element()}{wavefront\_display\_print\_element()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_aa8db185f9d28b60dc09566a383e8d213} 
+void wavefront\+\_\+display\+\_\+print\+\_\+element (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront}{, }\item[{const int}]{k}{, }\item[{const int}]{bt\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00110}{110}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{wavefront__display_8c_a343264bdaa16abc408d793f5fa36d778}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_display\_print\_frame@{wavefront\_display\_print\_frame}}
+\index{wavefront\_display\_print\_frame@{wavefront\_display\_print\_frame}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_display\_print\_frame()}{wavefront\_display\_print\_frame()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_a343264bdaa16abc408d793f5fa36d778} 
+void wavefront\+\_\+display\+\_\+print\+\_\+frame (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const int}]{score\+\_\+begin}{, }\item[{const int}]{score\+\_\+end}{, }\item[{const int}]{row\+\_\+width}{, }\item[{const int}]{bt\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00137}{137}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{wavefront__display_8c_af5ddc7faac543b85e0cda000bcec699d}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_display\_print\_header@{wavefront\_display\_print\_header}}
+\index{wavefront\_display\_print\_header@{wavefront\_display\_print\_header}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_display\_print\_header()}{wavefront\_display\_print\_header()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_af5ddc7faac543b85e0cda000bcec699d} 
+void wavefront\+\_\+display\+\_\+print\+\_\+header (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score\+\_\+begin}{, }\item[{const int}]{score\+\_\+end}{, }\item[{const int}]{bt\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00187}{187}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{wavefront__display_8c_af71ffb15a449b05dd8cfd7414a1f7f90}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_display\_print\_header\_component@{wavefront\_display\_print\_header\_component}}
+\index{wavefront\_display\_print\_header\_component@{wavefront\_display\_print\_header\_component}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_display\_print\_header\_component()}{wavefront\_display\_print\_header\_component()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_af71ffb15a449b05dd8cfd7414a1f7f90} 
+void wavefront\+\_\+display\+\_\+print\+\_\+header\+\_\+component (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structwavefront__t}{wavefront\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wavefront}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{wavefront\+\_\+id}{, }\item[{const int}]{bt\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00172}{172}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{wavefront__display_8c_ac84bdf8bae21c5ba62e610ca35fb4c6e}\index{wavefront\_display.c@{wavefront\_display.c}!wavefront\_display\_print\_score@{wavefront\_display\_print\_score}}
+\index{wavefront\_display\_print\_score@{wavefront\_display\_print\_score}!wavefront\_display.c@{wavefront\_display.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_display\_print\_score()}{wavefront\_display\_print\_score()}}
+{\footnotesize\ttfamily \label{wavefront__display_8c_ac84bdf8bae21c5ba62e610ca35fb4c6e} 
+void wavefront\+\_\+display\+\_\+print\+\_\+score (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const int}]{score\+\_\+begin}{, }\item[{const int}]{score\+\_\+end}{, }\item[{const int}]{row\+\_\+width}{, }\item[{const int}]{bt\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__display_8c_source_l00152}{152}} of file \doxymbox{\hyperlink{wavefront__display_8c_source}{wavefront\+\_\+display.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 12

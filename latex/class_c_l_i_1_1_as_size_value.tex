@@ -1,0 +1,201 @@
+\doxysection{CLI::\+As\+Size\+Value Class Reference}
+\hypertarget{class_c_l_i_1_1_as_size_value}{}\label{class_c_l_i_1_1_as_size_value}\index{CLI::AsSizeValue@{CLI::AsSizeValue}}
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+As\+Size\+Value:\+
+% FIG 0
+
+
+Collaboration diagram for CLI::\+As\+Size\+Value:\+
+% FIG 1
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_adb05af0aa99ba3dddbb3548d42e3de26}{result\+\_\+t}} = std::\+uint64\+\_\+t
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit}{CLI::\+\+As\+Number\+With\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_a4f1b96d1a43a6acb3f85b68dd6f5a321}{Options}} \{ \newline
+\doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_a4f1b96d1a43a6acb3f85b68dd6f5a321a9a74bbe8ec5a2e406528acf1a03e4c8c}{CASE\+\_\+\+SENSITIVE}} = 0
+, \doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_a4f1b96d1a43a6acb3f85b68dd6f5a321a7f446c7c1a6b0381bb3b648fab313bcb}{CASE\+\_\+\+INSENSITIVE}} = 1
+, \doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_a4f1b96d1a43a6acb3f85b68dd6f5a321a485b9e5f4b359102413727e5b2491d8d}{UNIT\+\_\+\+OPTIONAL}} = 0
+, \doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_a4f1b96d1a43a6acb3f85b68dd6f5a321a9996f24d3f700b703d5f5843f6ad1d99}{UNIT\+\_\+\+REQUIRED}} = 2
+, \newline
+\doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_a4f1b96d1a43a6acb3f85b68dd6f5a321a870d760dcdc3ddfe3dea704c3985eb89}{DEFAULT}} = CASE\+\_\+\+INSENSITIVE \texorpdfstring{$\vert$}{|} UNIT\+\_\+\+OPTIONAL
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_ab7352d0563b2d81244cc720854c9d7f5}{As\+Size\+Value}} (bool kb\+\_\+is\+\_\+1000)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit}{CLI::\+\+As\+Number\+With\+Unit}}}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename \doxymbox{\hyperlink{namespace_c_l_i_ad26eb8a490b25b301412d98b055691be}{Number}}$>$ }\\\doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_af5d2fc29cd92c1821e653a97f91b00cb}{As\+Number\+With\+Unit}} (std::\+map$<$ std::\+string, \doxymbox{\hyperlink{namespace_c_l_i_ad26eb8a490b25b301412d98b055691be}{Number}} $>$ mapping, \doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_a4f1b96d1a43a6acb3f85b68dd6f5a321}{Options}} opts=\doxymbox{\hyperlink{class_c_l_i_1_1_as_number_with_unit_a4f1b96d1a43a6acb3f85b68dd6f5a321a870d760dcdc3ddfe3dea704c3985eb89}{DEFAULT}}, const std::\+string \&unit\+\_\+name="{}UNIT"{})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_validator}{CLI::\+\+Validator}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a918d82662319f6dc9dad53d580741569}{Validator}} ()=default
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a71df7c1c94c4abceee930eef957f5b76}{Validator}} (std::\+string validator\+\_\+desc)
+\begin{DoxyCompactList}\small\item\em Construct a \doxylink{class_c_l_i_1_1_validator}{Validator} with just the description string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_aede1b1a51a7f924342a92cbbd3ee41be}{Validator}} (std::\+function$<$ std::\+string(std::\+string \&)$>$ op, std::\+string validator\+\_\+desc, std::\+string validator\+\_\+name="{}"{})
+\begin{DoxyCompactList}\small\item\em Construct \doxylink{class_c_l_i_1_1_validator}{Validator} from basic information. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_afc57c1bbaadbff4ce9c5772519818831}{operation}} (std::\+function$<$ std::\+string(std::\+string \&)$>$ op)
+\begin{DoxyCompactList}\small\item\em Set the \doxylink{class_c_l_i_1_1_validator}{Validator} operation function. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ad5af4b2a81e1171817bbe0aa32a1ff3f}{operator()}} (std::\+string \&str) const
+\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a3e4e7670d82455a43c0d3f8c9cc1db4f}{operator()}} (const std::\+string \&str) const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a35930c9b193bb0f7c5b7597dfe002e1f}{description}} (std::\+string validator\+\_\+desc)
+\begin{DoxyCompactList}\small\item\em Specify the type string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a26bde53346b0d7e84b1a8a9a6dddcb2c}{description}} (std::\+string validator\+\_\+desc) const
+\begin{DoxyCompactList}\small\item\em Specify the type string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_validator_aafca1f37669930a6233da74033078851}{get\+\_\+description}} () const
+\begin{DoxyCompactList}\small\item\em Generate type description information for the \doxylink{class_c_l_i_1_1_validator}{Validator}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8fc0ddaaa61f5dc5a7fa527d697991da}{name}} (std::\+string validator\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Specify the type string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_acb5ba8d1f332769ed85efa7ff6d90218}{name}} (std::\+string validator\+\_\+name) const
+\begin{DoxyCompactList}\small\item\em Specify the type string. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} const std::\+string \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_abf70035d0b958609333688c61fd39b89}{get\+\_\+name}} () const
+\begin{DoxyCompactList}\small\item\em Get the name of the \doxylink{class_c_l_i_1_1_validator}{Validator}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ac8f0bd247c6cca15729c2f0f5b822fe4}{active}} (bool active\+\_\+val=true)
+\begin{DoxyCompactList}\small\item\em Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} is active or not. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ab449787dbb355fafc3ad7ef95f36822e}{active}} (bool active\+\_\+val=true) const
+\begin{DoxyCompactList}\small\item\em Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} is active or not. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a356d979d984dffff3489caf4baca9160}{non\+\_\+modifying}} (bool no\+\_\+modify=true)
+\begin{DoxyCompactList}\small\item\em Specify whether the \doxylink{class_c_l_i_1_1_validator}{Validator} can be modifying or not. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \& \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ae24fb3eedf62301b733b3a20d2b93757}{application\+\_\+index}} (int app\+\_\+index)
+\begin{DoxyCompactList}\small\item\em Specify the application index of a validator. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a4b9f06e319d6b366f9fb713944ff2dfa}{application\+\_\+index}} (int app\+\_\+index) const
+\begin{DoxyCompactList}\small\item\em Specify the application index of a validator. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a232e6d9a2742b614418073aa886fdb15}{get\+\_\+application\+\_\+index}} () const
+\begin{DoxyCompactList}\small\item\em Get the current value of the application index. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a4f8d6d12b6e4ddfa7326d2b9f25b4116}{get\+\_\+active}} () const
+\begin{DoxyCompactList}\small\item\em Get a boolean if the validator is active. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} bool \doxymbox{\hyperlink{class_c_l_i_1_1_validator_acaa0fe79dce823acbae97e70f23fcd12}{get\+\_\+modifying}} () const
+\begin{DoxyCompactList}\small\item\em Get a boolean if the validator is allowed to modify the input returns true if it can modify the input. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a21ad4ed1554ff2caef4bcb447e276d3b}{operator\&}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&other) const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a4edf771c049626cf9df9e99fd1259441}{operator\texorpdfstring{$\vert$}{|}}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \&other) const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ad1cebeb6f7f34b1405ddf85a9cb41c25}{operator!}} () const
+\begin{DoxyCompactList}\small\item\em Create a validator that fails when a given validator succeeds. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+map$<$ std::\+string, \doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_adb05af0aa99ba3dddbb3548d42e3de26}{result\+\_\+t}} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_abc4dece8cda0ba54869db11133c0ef4a}{init\+\_\+mapping}} (bool kb\+\_\+is\+\_\+1000)
+\begin{DoxyCompactList}\small\item\em Get \texorpdfstring{$<$}{<}size unit, factor\texorpdfstring{$>$}{>} mapping. \end{DoxyCompactList}\item 
+static std::\+map$<$ std::\+string, \doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_adb05af0aa99ba3dddbb3548d42e3de26}{result\+\_\+t}} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_a4e41bd2fea4bcafd02506492b767eb2a}{get\+\_\+mapping}} (bool kb\+\_\+is\+\_\+1000)
+\begin{DoxyCompactList}\small\item\em Cache calculated mapping. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_validator}{CLI::\+\+Validator}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_validator_a8d286010aa97e8cbe805d1479834b6a1}{Validator}} (std::\+string validator\+\_\+desc, std::\+function$<$ std::\+string(std::\+string \&)$>$ func)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_validator}{CLI::\+\+Validator}}}
+\begin{DoxyCompactItemize}
+\item 
+std::\+function$<$ std::\+string()$>$ \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a9f00a86d01b79facfc300be76b7463d7}{desc\+\_\+function\+\_\+}} \{\+[$\,$]\+() \{ return std::\+string\{\}; \}\}
+\begin{DoxyCompactList}\small\item\em This is the description function, if empty the description\+\_\+ will be used. \end{DoxyCompactList}\item 
+std::\+function$<$ std::\+string(std::\+string \&)$>$ \doxymbox{\hyperlink{class_c_l_i_1_1_validator_aa6c1eedd7839b91d88246539f2305ef3}{func\+\_\+}} \{\+[$\,$]\+(std::\+string \&) \{ return std::\+string\{\}; \}\}
+\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_validator_ac97b23ee16e15ae0b31253feb39706bf}{name\+\_\+}} \{\}
+\begin{DoxyCompactList}\small\item\em The name for search purposes of the \doxylink{class_c_l_i_1_1_validator}{Validator}. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a301ecf2851e4a7cdcad7c9b774598320}{application\+\_\+index\+\_\+}} = -\/1
+\begin{DoxyCompactList}\small\item\em A \doxylink{class_c_l_i_1_1_validator}{Validator} will only apply to an indexed value (-\/1 is all elements). \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a558776377513d88bf637b5d775c4e31b}{active\+\_\+}} \{true\}
+\begin{DoxyCompactList}\small\item\em Enable for \doxylink{class_c_l_i_1_1_validator}{Validator} to allow it to be disabled if need be. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_c_l_i_1_1_validator_a60df532d1d80afc040ec0e8ed2736200}{non\+\_\+modifying\+\_\+}} \{false\}
+\begin{DoxyCompactList}\small\item\em specify that a validator should not modify the input \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Converts a human-\/readable size string (with unit literal) to uin64\+\_\+t size. Example:\+ "{}100"{} =\texorpdfstring{$>$}{>} 100 "{}1 b"{} =\texorpdfstring{$>$}{>} 100 "{}10\+Kb"{} =\texorpdfstring{$>$}{>} 10240 /\+/\+ you can configure this to be interpreted as kilobyte (\texorpdfstring{$\ast$}{*}1000) or kibibyte (\texorpdfstring{$\ast$}{*}1024) "{}10 KB"{} =\texorpdfstring{$>$}{>} 10240 "{}10 kb"{} =\texorpdfstring{$>$}{>} 10240 "{}10 kib"{} =\texorpdfstring{$>$}{>} 10240 /\+/\+ \texorpdfstring{$\ast$}{*}i, \texorpdfstring{$\ast$}{*}ib are always interpreted as \texorpdfstring{$\ast$}{*}bibyte (\texorpdfstring{$\ast$}{*}1024) "{}10kb"{} =\texorpdfstring{$>$}{>} 10240 "{}2 MB"{} =\texorpdfstring{$>$}{>} 2097152 "{}2 Ei\+B"{} =\texorpdfstring{$>$}{>} 2\texorpdfstring{$^\wedge$}{\string^}61 /\+/\+ Units up to exibyte are supported 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04615}{4615}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{class_c_l_i_1_1_as_size_value_doc-typedef-members}
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{class_c_l_i_1_1_as_size_value_adb05af0aa99ba3dddbb3548d42e3de26}\index{CLI::AsSizeValue@{CLI::AsSizeValue}!result\_t@{result\_t}}
+\index{result\_t@{result\_t}!CLI::AsSizeValue@{CLI::AsSizeValue}}
+\doxysubsubsection{\texorpdfstring{result\_t}{result\_t}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_as_size_value_adb05af0aa99ba3dddbb3548d42e3de26} 
+using \doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_adb05af0aa99ba3dddbb3548d42e3de26}{CLI::\+\+As\+Size\+Value::\+result\+\_\+t}} = std::\+uint64\+\_\+t}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04617}{4617}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_c_l_i_1_1_as_size_value_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_l_i_1_1_as_size_value_ab7352d0563b2d81244cc720854c9d7f5}\index{CLI::AsSizeValue@{CLI::AsSizeValue}!AsSizeValue@{AsSizeValue}}
+\index{AsSizeValue@{AsSizeValue}!CLI::AsSizeValue@{CLI::AsSizeValue}}
+\doxysubsubsection{\texorpdfstring{AsSizeValue()}{AsSizeValue()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_as_size_value_ab7352d0563b2d81244cc720854c9d7f5} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} CLI::\+\+As\+Size\+Value::\+\+As\+Size\+Value (\begin{DoxyParamCaption}\item[{bool}]{kb\+\_\+is\+\_\+1000}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+If kb\+\_\+is\+\_\+1000 is true, interpret \textquotesingle{}kb\textquotesingle{}, \textquotesingle{}k\textquotesingle{} as 1000 and \textquotesingle{}kib\textquotesingle{}, \textquotesingle{}ki\textquotesingle{} as 1024 (same applies to higher order units as well). Otherwise, interpret all literals as factors of 1024. The first option is formally correct, but the second interpretation is more wide-\/spread (see \href{https://en.wikipedia.org/wiki/Binary_prefix}{\texttt{https:\+/\+/\+en.\+wikipedia.\+org/\+wiki/\+\+Binary\+\_\+prefix}}). 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04905}{4905}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1_as_size_value_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1_as_size_value_a4e41bd2fea4bcafd02506492b767eb2a}\index{CLI::AsSizeValue@{CLI::AsSizeValue}!get\_mapping@{get\_mapping}}
+\index{get\_mapping@{get\_mapping}!CLI::AsSizeValue@{CLI::AsSizeValue}}
+\doxysubsubsection{\texorpdfstring{get\_mapping()}{get\_mapping()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_as_size_value_a4e41bd2fea4bcafd02506492b767eb2a} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} std::\+map$<$ std::\+string, \doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_adb05af0aa99ba3dddbb3548d42e3de26}{As\+Size\+Value::\+result\+\_\+t}} $>$ CLI::\+\+As\+Size\+Value::\+get\+\_\+mapping (\begin{DoxyParamCaption}\item[{bool}]{kb\+\_\+is\+\_\+1000}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Cache calculated mapping. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04931}{4931}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{class_c_l_i_1_1_as_size_value_abc4dece8cda0ba54869db11133c0ef4a}\index{CLI::AsSizeValue@{CLI::AsSizeValue}!init\_mapping@{init\_mapping}}
+\index{init\_mapping@{init\_mapping}!CLI::AsSizeValue@{CLI::AsSizeValue}}
+\doxysubsubsection{\texorpdfstring{init\_mapping()}{init\_mapping()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_as_size_value_abc4dece8cda0ba54869db11133c0ef4a} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_ae98448e41749e6ca61eebe5c743a2a01}{CLI11\+\_\+\+INLINE}} std::\+map$<$ std::\+string, \doxymbox{\hyperlink{class_c_l_i_1_1_as_size_value_adb05af0aa99ba3dddbb3548d42e3de26}{As\+Size\+Value::\+result\+\_\+t}} $>$ CLI::\+\+As\+Size\+Value::\+init\+\_\+mapping (\begin{DoxyParamCaption}\item[{bool}]{kb\+\_\+is\+\_\+1000}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Get \texorpdfstring{$<$}{<}size unit, factor\texorpdfstring{$>$}{>} mapping. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l04913}{4913}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

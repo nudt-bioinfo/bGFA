@@ -1,0 +1,118 @@
+\doxysection{src/\+wfa/\+utils/\+vector.c File Reference}
+\hypertarget{vector_8c}{}\label{vector_8c}\index{src/wfa/utils/vector.c@{src/wfa/utils/vector.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}vector.\+h"{}}\newline
+Include dependency graph for vector.\+c:\+
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{vector_8c_a57a0abe2838c7a9f71aef4871d1f252c}{VECTOR\+\_\+\+EXPAND\+\_\+\+FACTOR}}~(3.\+0/\+2.\+0)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{vector_8c_aa367bdc55bf2b1dfd9c31d3934315caf}{vector\+\_\+new\+\_\+}} (const uint64\+\_\+t num\+\_\+initial\+\_\+elements, const uint64\+\_\+t element\+\_\+size)
+\item 
+void \doxymbox{\hyperlink{vector_8c_a20a5c81de9d61719072d55eac137d3c0}{vector\+\_\+delete}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector)
+\item 
+void \doxymbox{\hyperlink{vector_8c_a5ab51cbbe1bc89961cbe255df60b61eb}{vector\+\_\+cast}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector, const uint64\+\_\+t element\+\_\+size)
+\item 
+void \doxymbox{\hyperlink{vector_8c_a9e80248c78d65dca99916d9965db6d79}{vector\+\_\+reserve}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector, const uint64\+\_\+t num\+\_\+elements, const bool zero\+\_\+mem)
+\item 
+void \doxymbox{\hyperlink{vector_8c_a4d854556c802995c74109df186ccc19b}{vector\+\_\+copy}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector\+\_\+to, \doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector\+\_\+from)
+\item 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{vector_8c_aaae9f5a121eca6804e533bf35ae9c41d}{vector\+\_\+dup}} (\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const vector\+\_\+src)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{vector_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{vector_8c_a57a0abe2838c7a9f71aef4871d1f252c}\index{vector.c@{vector.c}!VECTOR\_EXPAND\_FACTOR@{VECTOR\_EXPAND\_FACTOR}}
+\index{VECTOR\_EXPAND\_FACTOR@{VECTOR\_EXPAND\_FACTOR}!vector.c@{vector.c}}
+\doxysubsubsection{\texorpdfstring{VECTOR\_EXPAND\_FACTOR}{VECTOR\_EXPAND\_FACTOR}}
+{\footnotesize\ttfamily \label{vector_8c_a57a0abe2838c7a9f71aef4871d1f252c} 
+\+\#define VECTOR\+\_\+\+EXPAND\+\_\+\+FACTOR~(3.\+0/\+2.\+0)}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00039}{39}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{vector_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{vector_8c_a5ab51cbbe1bc89961cbe255df60b61eb}\index{vector.c@{vector.c}!vector\_cast@{vector\_cast}}
+\index{vector\_cast@{vector\_cast}!vector.c@{vector.c}}
+\doxysubsubsection{\texorpdfstring{vector\_cast()}{vector\_cast()}}
+{\footnotesize\ttfamily \label{vector_8c_a5ab51cbbe1bc89961cbe255df60b61eb} 
+void vector\+\_\+cast (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector}{, }\item[{const uint64\+\_\+t}]{element\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00064}{64}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{vector_8c_a4d854556c802995c74109df186ccc19b}\index{vector.c@{vector.c}!vector\_copy@{vector\_copy}}
+\index{vector\_copy@{vector\_copy}!vector.c@{vector.c}}
+\doxysubsubsection{\texorpdfstring{vector\_copy()}{vector\_copy()}}
+{\footnotesize\ttfamily \label{vector_8c_a4d854556c802995c74109df186ccc19b} 
+void vector\+\_\+copy (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector\+\_\+to}{, }\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector\+\_\+from}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00108}{108}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{vector_8c_a20a5c81de9d61719072d55eac137d3c0}\index{vector.c@{vector.c}!vector\_delete@{vector\_delete}}
+\index{vector\_delete@{vector\_delete}!vector.c@{vector.c}}
+\doxysubsubsection{\texorpdfstring{vector\_delete()}{vector\_delete()}}
+{\footnotesize\ttfamily \label{vector_8c_a20a5c81de9d61719072d55eac137d3c0} 
+void vector\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00059}{59}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{vector_8c_aaae9f5a121eca6804e533bf35ae9c41d}\index{vector.c@{vector.c}!vector\_dup@{vector\_dup}}
+\index{vector\_dup@{vector\_dup}!vector.c@{vector.c}}
+\doxysubsubsection{\texorpdfstring{vector\_dup()}{vector\_dup()}}
+{\footnotesize\ttfamily \label{vector_8c_aaae9f5a121eca6804e533bf35ae9c41d} 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} vector\+\_\+dup (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector\+\_\+src}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00118}{118}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+\Hypertarget{vector_8c_aa367bdc55bf2b1dfd9c31d3934315caf}\index{vector.c@{vector.c}!vector\_new\_@{vector\_new\_}}
+\index{vector\_new\_@{vector\_new\_}!vector.c@{vector.c}}
+\doxysubsubsection{\texorpdfstring{vector\_new\_()}{vector\_new\_()}}
+{\footnotesize\ttfamily \label{vector_8c_aa367bdc55bf2b1dfd9c31d3934315caf} 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} vector\+\_\+new\+\_\+ (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{num\+\_\+initial\+\_\+elements}{, }\item[{const uint64\+\_\+t}]{element\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{vector_8c_a9e80248c78d65dca99916d9965db6d79}\index{vector.c@{vector.c}!vector\_reserve@{vector\_reserve}}
+\index{vector\_reserve@{vector\_reserve}!vector.c@{vector.c}}
+\doxysubsubsection{\texorpdfstring{vector\_reserve()}{vector\_reserve()}}
+{\footnotesize\ttfamily \label{vector_8c_a9e80248c78d65dca99916d9965db6d79} 
+void vector\+\_\+reserve (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{vector}{, }\item[{const uint64\+\_\+t}]{num\+\_\+elements}{, }\item[{const bool}]{zero\+\_\+mem}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{vector_8c_source_l00071}{71}} of file \doxymbox{\hyperlink{vector_8c_source}{vector.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6

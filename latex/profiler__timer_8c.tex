@@ -1,0 +1,278 @@
+\doxysection{src/\+wfa/\+system/\+profiler\+\_\+timer.c File Reference}
+\hypertarget{profiler__timer_8c}{}\label{profiler__timer_8c}\index{src/wfa/system/profiler\_timer.c@{src/wfa/system/profiler\_timer.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}profiler\+\_\+timer.\+h"{}}\newline
+Include dependency graph for profiler\+\_\+timer.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{profiler__timer_8c_a2a551ff23f53da11d3cf4a7cea945ebb}{timer\+\_\+get\+\_\+system\+\_\+time}} (struct timespec \texorpdfstring{$\ast$}{*}ts)
+\item 
+void \doxymbox{\hyperlink{profiler__timer_8c_aaaff18fe50e77430f52228077a516e98}{timer\+\_\+start}} (\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+void \doxymbox{\hyperlink{profiler__timer_8c_a3cca768cb023ecf376820e28e70ce209}{timer\+\_\+stop}} (\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+void \doxymbox{\hyperlink{profiler__timer_8c_a0887aebfbe62769d5d88c36b909681a7}{timer\+\_\+pause}} (\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+void \doxymbox{\hyperlink{profiler__timer_8c_a20c6c37c145c37a7c0b227fe08e75dcc}{timer\+\_\+continue}} (\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+void \doxymbox{\hyperlink{profiler__timer_8c_a23fbf5f5024c3d913abc6be40c673fba}{timer\+\_\+reset}} (\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_ac294a1cf6ecaf095f905efc332705d88}{timer\+\_\+get\+\_\+current\+\_\+lap\+\_\+ns}} (\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_a9adea764b7d3e72e0c4749abce304f1c}{timer\+\_\+get\+\_\+current\+\_\+total\+\_\+ns}} (\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_a4cedd89d66bdbe85563a7a96178db96c}{timer\+\_\+get\+\_\+total\+\_\+ns}} (const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_a16a66f28a5265619c5b13acb66dd20c0}{timer\+\_\+get\+\_\+num\+\_\+samples}} (const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_a58bec7c3db500fb73b77bccc22a30bed}{timer\+\_\+get\+\_\+min\+\_\+ns}} (const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_ab79f7d85d15f3a4f40f488bb49e46e00}{timer\+\_\+get\+\_\+max\+\_\+ns}} (const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_a6977a7508aea4a3e532d083c6421866d}{timer\+\_\+get\+\_\+mean}} (const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_af2ffb38f19a91872c73a12f45fa65d14}{timer\+\_\+get\+\_\+variance}} (const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+uint64\+\_\+t \doxymbox{\hyperlink{profiler__timer_8c_ae42df4937ca7a32c0ad748de58a9c09b}{timer\+\_\+get\+\_\+stddev}} (const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+void \doxymbox{\hyperlink{profiler__timer_8c_ac3548b30409a2bb7671ac51e6c3b837f}{timer\+\_\+print\+\_\+total}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer)
+\item 
+void \doxymbox{\hyperlink{profiler__timer_8c_a9d2c1ef30a35e4d5d9371326cec30e00}{timer\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const timer, const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const ref\+\_\+timer)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{profiler__timer_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{profiler__timer_8c_a20c6c37c145c37a7c0b227fe08e75dcc}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_continue@{timer\_continue}}
+\index{timer\_continue@{timer\_continue}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_continue()}{timer\_continue()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a20c6c37c145c37a7c0b227fe08e75dcc} 
+void timer\+\_\+continue (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00075}{75}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{profiler__timer_8c_ac294a1cf6ecaf095f905efc332705d88}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_current\_lap\_ns@{timer\_get\_current\_lap\_ns}}
+\index{timer\_get\_current\_lap\_ns@{timer\_get\_current\_lap\_ns}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_current\_lap\_ns()}{timer\_get\_current\_lap\_ns()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_ac294a1cf6ecaf095f905efc332705d88} 
+uint64\+\_\+t timer\+\_\+get\+\_\+current\+\_\+lap\+\_\+ns (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00082}{82}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{profiler__timer_8c_a9adea764b7d3e72e0c4749abce304f1c}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_current\_total\_ns@{timer\_get\_current\_total\_ns}}
+\index{timer\_get\_current\_total\_ns@{timer\_get\_current\_total\_ns}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_current\_total\_ns()}{timer\_get\_current\_total\_ns()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a9adea764b7d3e72e0c4749abce304f1c} 
+uint64\+\_\+t timer\+\_\+get\+\_\+current\+\_\+total\+\_\+ns (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00087}{87}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{profiler__timer_8c_ab79f7d85d15f3a4f40f488bb49e46e00}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_max\_ns@{timer\_get\_max\_ns}}
+\index{timer\_get\_max\_ns@{timer\_get\_max\_ns}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_max\_ns()}{timer\_get\_max\_ns()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_ab79f7d85d15f3a4f40f488bb49e46e00} 
+uint64\+\_\+t timer\+\_\+get\+\_\+max\+\_\+ns (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00099}{99}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{profiler__timer_8c_a6977a7508aea4a3e532d083c6421866d}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_mean@{timer\_get\_mean}}
+\index{timer\_get\_mean@{timer\_get\_mean}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_mean()}{timer\_get\_mean()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a6977a7508aea4a3e532d083c6421866d} 
+uint64\+\_\+t timer\+\_\+get\+\_\+mean (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00102}{102}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+\Hypertarget{profiler__timer_8c_a58bec7c3db500fb73b77bccc22a30bed}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_min\_ns@{timer\_get\_min\_ns}}
+\index{timer\_get\_min\_ns@{timer\_get\_min\_ns}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_min\_ns()}{timer\_get\_min\_ns()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a58bec7c3db500fb73b77bccc22a30bed} 
+uint64\+\_\+t timer\+\_\+get\+\_\+min\+\_\+ns (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00096}{96}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 10
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{profiler__timer_8c_a16a66f28a5265619c5b13acb66dd20c0}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_num\_samples@{timer\_get\_num\_samples}}
+\index{timer\_get\_num\_samples@{timer\_get\_num\_samples}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_num\_samples()}{timer\_get\_num\_samples()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a16a66f28a5265619c5b13acb66dd20c0} 
+uint64\+\_\+t timer\+\_\+get\+\_\+num\+\_\+samples (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00093}{93}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{profiler__timer_8c_ae42df4937ca7a32c0ad748de58a9c09b}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_stddev@{timer\_get\_stddev}}
+\index{timer\_get\_stddev@{timer\_get\_stddev}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_stddev()}{timer\_get\_stddev()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_ae42df4937ca7a32c0ad748de58a9c09b} 
+uint64\+\_\+t timer\+\_\+get\+\_\+stddev (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00108}{108}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 14
+\Hypertarget{profiler__timer_8c_a2a551ff23f53da11d3cf4a7cea945ebb}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_system\_time@{timer\_get\_system\_time}}
+\index{timer\_get\_system\_time@{timer\_get\_system\_time}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_system\_time()}{timer\_get\_system\_time()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a2a551ff23f53da11d3cf4a7cea945ebb} 
+void timer\+\_\+get\+\_\+system\+\_\+time (\begin{DoxyParamCaption}\item[{struct timespec \texorpdfstring{$\ast$}{*}}]{ts}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00045}{45}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 15
+\Hypertarget{profiler__timer_8c_a4cedd89d66bdbe85563a7a96178db96c}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_total\_ns@{timer\_get\_total\_ns}}
+\index{timer\_get\_total\_ns@{timer\_get\_total\_ns}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_total\_ns()}{timer\_get\_total\_ns()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a4cedd89d66bdbe85563a7a96178db96c} 
+uint64\+\_\+t timer\+\_\+get\+\_\+total\+\_\+ns (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00090}{90}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 16
+Here is the caller graph for this function:\+
+% FIG 17
+\Hypertarget{profiler__timer_8c_af2ffb38f19a91872c73a12f45fa65d14}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_get\_variance@{timer\_get\_variance}}
+\index{timer\_get\_variance@{timer\_get\_variance}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_get\_variance()}{timer\_get\_variance()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_af2ffb38f19a91872c73a12f45fa65d14} 
+uint64\+\_\+t timer\+\_\+get\+\_\+variance (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00105}{105}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 18
+\Hypertarget{profiler__timer_8c_a0887aebfbe62769d5d88c36b909681a7}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_pause@{timer\_pause}}
+\index{timer\_pause@{timer\_pause}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_pause()}{timer\_pause()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a0887aebfbe62769d5d88c36b909681a7} 
+void timer\+\_\+pause (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00070}{70}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+Here is the caller graph for this function:\+
+% FIG 20
+\Hypertarget{profiler__timer_8c_a9d2c1ef30a35e4d5d9371326cec30e00}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_print@{timer\_print}}
+\index{timer\_print@{timer\_print}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_print()}{timer\_print()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a9d2c1ef30a35e4d5d9371326cec30e00} 
+void timer\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{, }\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{ref\+\_\+timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00128}{128}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 21
+Here is the caller graph for this function:\+
+% FIG 22
+\Hypertarget{profiler__timer_8c_ac3548b30409a2bb7671ac51e6c3b837f}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_print\_total@{timer\_print\_total}}
+\index{timer\_print\_total@{timer\_print\_total}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_print\_total()}{timer\_print\_total()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_ac3548b30409a2bb7671ac51e6c3b837f} 
+void timer\+\_\+print\+\_\+total (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00111}{111}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 23
+Here is the caller graph for this function:\+
+% FIG 24
+\Hypertarget{profiler__timer_8c_a23fbf5f5024c3d913abc6be40c673fba}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_reset@{timer\_reset}}
+\index{timer\_reset@{timer\_reset}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_reset()}{timer\_reset()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a23fbf5f5024c3d913abc6be40c673fba} 
+void timer\+\_\+reset (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00078}{78}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 25
+Here is the caller graph for this function:\+
+% FIG 26
+\Hypertarget{profiler__timer_8c_aaaff18fe50e77430f52228077a516e98}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_start@{timer\_start}}
+\index{timer\_start@{timer\_start}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_start()}{timer\_start()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_aaaff18fe50e77430f52228077a516e98} 
+void timer\+\_\+start (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00061}{61}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 27
+Here is the caller graph for this function:\+
+% FIG 28
+\Hypertarget{profiler__timer_8c_a3cca768cb023ecf376820e28e70ce209}\index{profiler\_timer.c@{profiler\_timer.c}!timer\_stop@{timer\_stop}}
+\index{timer\_stop@{timer\_stop}!profiler\_timer.c@{profiler\_timer.c}}
+\doxysubsubsection{\texorpdfstring{timer\_stop()}{timer\_stop()}}
+{\footnotesize\ttfamily \label{profiler__timer_8c_a3cca768cb023ecf376820e28e70ce209} 
+void timer\+\_\+stop (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structprofiler__timer__t}{profiler\+\_\+timer\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{timer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{profiler__timer_8c_source_l00065}{65}} of file \doxymbox{\hyperlink{profiler__timer_8c_source}{profiler\+\_\+timer.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 29
+Here is the caller graph for this function:\+
+% FIG 30

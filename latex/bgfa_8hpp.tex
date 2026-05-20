@@ -1,0 +1,79 @@
+\doxysection{src/\+bgfa.hpp File Reference}
+\hypertarget{bgfa_8hpp}{}\label{bgfa_8hpp}\index{src/bgfa.hpp@{src/bgfa.hpp}}
+{\ttfamily \+\#include $<$algorithm$>$}\newline
+{\ttfamily \+\#include $<$array$>$}\newline
+{\ttfamily \+\#include $<$cassert$>$}\newline
+{\ttfamily \+\#include $<$cctype$>$}\newline
+{\ttfamily \+\#include $<$cstdint$>$}\newline
+{\ttfamily \+\#include $<$cstring$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$iomanip$>$}\newline
+{\ttfamily \+\#include $<$queue$>$}\newline
+{\ttfamily \+\#include $<$sstream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$sys/\+time.\+h$>$}\newline
+{\ttfamily \+\#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \+\#include $<$unordered\+\_\+set$>$}\newline
+{\ttfamily \+\#include $<$unistd.\+h$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+Include dependency graph for bgfa.\+hpp:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\+\_\+\+BIT}}~32
+\begin{DoxyCompactList}\small\item\em Default to 32 bits if not defined. \end{DoxyCompactList}\item 
+\+\#define \doxymbox{\hyperlink{bgfa_8hpp_aeea7ec6e47ecea02cc6812b268034b28}{\+\_\+\+\_\+\+WORDSIZE}}~\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\+\_\+\+BIT}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint32\+\_\+t \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{bgfa_8hpp_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{bgfa_8hpp_aeea7ec6e47ecea02cc6812b268034b28}\index{bgfa.hpp@{bgfa.hpp}!\_\_WORDSIZE@{\_\_WORDSIZE}}
+\index{\_\_WORDSIZE@{\_\_WORDSIZE}!bgfa.hpp@{bgfa.hpp}}
+\doxysubsubsection{\texorpdfstring{\_\_WORDSIZE}{\_\_WORDSIZE}}
+{\footnotesize\ttfamily \label{bgfa_8hpp_aeea7ec6e47ecea02cc6812b268034b28} 
+\+\#define \+\_\+\+\_\+\+WORDSIZE~\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\+\_\+\+BIT}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa_8hpp_source_l00039}{39}} of file \doxymbox{\hyperlink{bgfa_8hpp_source}{bgfa.\+hpp}}.
+
+\Hypertarget{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}\index{bgfa.hpp@{bgfa.hpp}!WORD\_BIT@{WORD\_BIT}}
+\index{WORD\_BIT@{WORD\_BIT}!bgfa.hpp@{bgfa.hpp}}
+\doxysubsubsection{\texorpdfstring{WORD\_BIT}{WORD\_BIT}}
+{\footnotesize\ttfamily \label{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04} 
+\+\#define WORD\+\_\+\+BIT~32}
+
+
+
+Default to 32 bits if not defined. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa_8hpp_source_l00035}{35}} of file \doxymbox{\hyperlink{bgfa_8hpp_source}{bgfa.\+hpp}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{bgfa_8hpp_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}\index{bgfa.hpp@{bgfa.hpp}!uword\_t@{uword\_t}}
+\index{uword\_t@{uword\_t}!bgfa.hpp@{bgfa.hpp}}
+\doxysubsubsection{\texorpdfstring{uword\_t}{uword\_t}}
+{\footnotesize\ttfamily \label{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a} 
+typedef uint32\+\_\+t \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa_8hpp_source_l00045}{45}} of file \doxymbox{\hyperlink{bgfa_8hpp_source}{bgfa.\+hpp}}.
+

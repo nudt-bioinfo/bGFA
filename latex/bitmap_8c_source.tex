@@ -1,0 +1,131 @@
+\doxysection{bitmap.\+c}
+\hypertarget{bitmap_8c_source}{}\label{bitmap_8c_source}\index{src/wfa/utils/bitmap.c@{src/wfa/utils/bitmap.c}}
+\doxymbox{\hyperlink{bitmap_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Basic\ bitmap\ datastructure\ (static)}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bitmap_8h}{utils/bitmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mm__allocator_8h}{system/mm\_allocator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00036}00036\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00037}00037\ \textcolor{comment}{\ *\ Setup}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00038}00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00039}\doxymbox{\hyperlink{bitmap_8c_a8a0e6a299e0b58694427de47bcd92225}{00039}}\ \doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}}*\ \doxymbox{\hyperlink{bitmap_8c_a8a0e6a299e0b58694427de47bcd92225}{bitmap\_new}}(}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00040}00040\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ length,}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00041}00041\ \ \ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator)\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00042}00042\ \ \ \textcolor{comment}{//\ Allocate}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00043}00043\ \ \ \doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}}*\ \textcolor{keyword}{const}\ bitmap\ =}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00044}00044\ \ \ \ \ \ \ \doxymbox{\hyperlink{mm__allocator_8h_a6363263ad3dd2a567fbef80696f7b135}{mm\_allocator\_alloc}}(mm\_allocator,\doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}});}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00045}00045\ \ \ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ae0f4f6d3bdf17147f8d6144d1bd88359}{mm\_allocator}}\ =\ mm\_allocator;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00046}00046\ \ \ \textcolor{comment}{//\ Allocate\ bitmap-\/blocks}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00047}00047\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_blocks\ =\ \doxymbox{\hyperlink{commons_8h_ad7555fc30b9a2aed0ad31f408794ce07}{DIV\_CEIL}}(length,\doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}});}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00048}00048\ \ \ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_abc7d1987ef47bf576aaee471ea088ffc}{num\_blocks}}\ =\ num\_blocks;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00049}00049\ \ \ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ac22768ddcf7d6cbe7c7895bd2db07cb7}{bitmap\_blocks}}\ =\ \doxymbox{\hyperlink{mm__allocator_8h_af03a94fc054925cae7933619e249712a}{mm\_allocator\_calloc}}(mm\_allocator,num\_blocks,\doxymbox{\hyperlink{structbitmap__block__t}{bitmap\_block\_t}},\textcolor{keyword}{true});}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00050}00050\ \ \ \textcolor{comment}{//\ Return}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00051}00051\ \ \ \textcolor{keywordflow}{return}\ bitmap;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00052}00052\ \}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00053}\doxymbox{\hyperlink{bitmap_8c_a4c772fb263ac5fa3479f7a7a52fe92f7}{00053}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bitmap_8c_a4c772fb263ac5fa3479f7a7a52fe92f7}{bitmap\_delete}}(}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00054}00054\ \ \ \ \ \doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}}*\ \textcolor{keyword}{const}\ bitmap)\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00055}00055\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00056}00056\ \ \ \doxymbox{\hyperlink{structmm__allocator__t}{mm\_allocator\_t}}*\ \textcolor{keyword}{const}\ mm\_allocator\ =\ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ae0f4f6d3bdf17147f8d6144d1bd88359}{mm\_allocator}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00057}00057\ \ \ \textcolor{comment}{//\ Free}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00058}00058\ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a2e6409a5effa914e7489bb4ec6db5188}{mm\_allocator\_free}}(mm\_allocator,bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ac22768ddcf7d6cbe7c7895bd2db07cb7}{bitmap\_blocks}});}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00059}00059\ \ \ \doxymbox{\hyperlink{mm__allocator_8c_a2e6409a5effa914e7489bb4ec6db5188}{mm\_allocator\_free}}(mm\_allocator,bitmap);}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00060}00060\ \}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00061}00061\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00062}00062\ \textcolor{comment}{\ *\ Accessors}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00063}00063\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00064}\doxymbox{\hyperlink{bitmap_8c_ac60fdd26e186a633faa49e615c4159a4}{00064}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bitmap_8c_ac60fdd26e186a633faa49e615c4159a4}{bitmap\_set}}(}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00065}00065\ \ \ \ \ \doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}}*\ \textcolor{keyword}{const}\ bitmap,}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00066}00066\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00067}00067\ \ \ \textcolor{comment}{//\ Locate\ block}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00068}00068\ \ \ \textcolor{keyword}{const}\ uint64\_t\ block\_num\ =\ position\ /\ \doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00069}00069\ \ \ \textcolor{keyword}{const}\ uint64\_t\ block\_pos\ =\ position\ \%\ \doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00070}00070\ \ \ \textcolor{comment}{//\ Set\ bitmap}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00071}00071\ \ \ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ac22768ddcf7d6cbe7c7895bd2db07cb7}{bitmap\_blocks}}[block\_num].\doxymbox{\hyperlink{structbitmap__block__t_a043e6630521de5bd1e9ad3118e423be2}{bitmap}}\ |=\ (\doxymbox{\hyperlink{bitmap_8h_a933e6855e66a33a0155a8645a7ed6ad3}{BITMAP\_BLOCK\_MASK}}\ <<\ block\_pos);}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00072}00072\ \}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00073}\doxymbox{\hyperlink{bitmap_8c_a4d809a3c114cfcd587b1bc7c96f8bc73}{00073}}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{bitmap_8c_a4d809a3c114cfcd587b1bc7c96f8bc73}{bitmap\_is\_set}}(}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00074}00074\ \ \ \ \ \doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}}*\ \textcolor{keyword}{const}\ bitmap,}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00076}00076\ \ \ \textcolor{comment}{//\ Locate\ block}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00077}00077\ \ \ \textcolor{keyword}{const}\ uint64\_t\ block\_num\ =\ position\ /\ \doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00078}00078\ \ \ \textcolor{keyword}{const}\ uint64\_t\ block\_pos\ =\ position\ \%\ \doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00079}00079\ \ \ \textcolor{comment}{//\ Set\ bitmap}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00080}00080\ \ \ \textcolor{keywordflow}{return}\ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ac22768ddcf7d6cbe7c7895bd2db07cb7}{bitmap\_blocks}}[block\_num].\doxymbox{\hyperlink{structbitmap__block__t_a043e6630521de5bd1e9ad3118e423be2}{bitmap}}\ \&\ (\doxymbox{\hyperlink{bitmap_8h_a933e6855e66a33a0155a8645a7ed6ad3}{BITMAP\_BLOCK\_MASK}}\ <<\ block\_pos);}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00081}00081\ \}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00083}\doxymbox{\hyperlink{bitmap_8c_a36c933933a9f231022515ecd0edaf9a9}{00083}}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{bitmap_8c_a36c933933a9f231022515ecd0edaf9a9}{bitmap\_check\_\_set}}(}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00084}00084\ \ \ \ \ \doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}}*\ \textcolor{keyword}{const}\ bitmap,}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00085}00085\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00086}00086\ \ \ \textcolor{comment}{//\ Locate\ block}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00087}00087\ \ \ \textcolor{keyword}{const}\ uint64\_t\ block\_num\ =\ position\ /\ \doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00088}00088\ \ \ \textcolor{keyword}{const}\ uint64\_t\ block\_pos\ =\ position\ \%\ \doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00089}00089\ \ \ \textcolor{comment}{//\ Check\ bit\ set}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00090}00090\ \ \ \textcolor{keywordflow}{if}\ (bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ac22768ddcf7d6cbe7c7895bd2db07cb7}{bitmap\_blocks}}[block\_num].\doxymbox{\hyperlink{structbitmap__block__t_a043e6630521de5bd1e9ad3118e423be2}{bitmap}}\ \&\ (\doxymbox{\hyperlink{bitmap_8h_a933e6855e66a33a0155a8645a7ed6ad3}{BITMAP\_BLOCK\_MASK}}\ <<\ block\_pos))\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00091}00091\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Return\ true\ (it\ was\ set)}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00092}00092\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00093}00093\ \ \ \ \ \textcolor{comment}{//\ Set\ bitmap}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00094}00094\ \ \ \ \ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ac22768ddcf7d6cbe7c7895bd2db07cb7}{bitmap\_blocks}}[block\_num].\doxymbox{\hyperlink{structbitmap__block__t_a043e6630521de5bd1e9ad3118e423be2}{bitmap}}\ |=\ (\doxymbox{\hyperlink{bitmap_8h_a933e6855e66a33a0155a8645a7ed6ad3}{BITMAP\_BLOCK\_MASK}}\ <<\ block\_pos);}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00095}00095\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Return\ false\ (it\ was\ not\ set)}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00096}00096\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00097}00097\ \}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00098}00098\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00099}00099\ \textcolor{comment}{\ *\ Rank}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00100}00100\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00101}\doxymbox{\hyperlink{bitmap_8c_a39b1fb5f1e2d49c1944e49e9cdf2fa99}{00101}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bitmap_8c_a39b1fb5f1e2d49c1944e49e9cdf2fa99}{bitmap\_update\_counters}}(}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00102}00102\ \ \ \ \ \doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}}*\ \textcolor{keyword}{const}\ bitmap)\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00103}00103\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00104}00104\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_blocks\ =\ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_abc7d1987ef47bf576aaee471ea088ffc}{num\_blocks}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00105}00105\ \ \ \doxymbox{\hyperlink{structbitmap__block__t}{bitmap\_block\_t}}*\ bitmap\_block\ =\ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ac22768ddcf7d6cbe7c7895bd2db07cb7}{bitmap\_blocks}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00106}00106\ \ \ \textcolor{comment}{//\ Update\ all\ counters}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00107}00107\ \ \ uint64\_t\ acc\_count\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00108}00108\ \ \ uint64\_t\ i;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00109}00109\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<num\_blocks;++i,++bitmap\_block)\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00110}00110\ \ \ \ \ bitmap\_block-\/>\doxymbox{\hyperlink{structbitmap__block__t_a5c9bbaf375ecb8371f4a092bb24c22dd}{counter}}\ =\ acc\_count;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00111}00111\ \ \ \ \ acc\_count\ +=\ \doxymbox{\hyperlink{commons_8h_af527eda3bec33576d0ca6bf17647b4f5}{POPCOUNT\_64}}(bitmap\_block-\/>\doxymbox{\hyperlink{structbitmap__block__t_a043e6630521de5bd1e9ad3118e423be2}{bitmap}});}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00112}00112\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00113}00113\ \}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00114}\doxymbox{\hyperlink{bitmap_8c_a7c8d8dee2165d10a2a115ccb056012f3}{00114}}\ uint64\_t\ \doxymbox{\hyperlink{bitmap_8c_a7c8d8dee2165d10a2a115ccb056012f3}{bitmap\_erank}}(}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00115}00115\ \ \ \ \ \doxymbox{\hyperlink{structbitmap__t}{bitmap\_t}}*\ \textcolor{keyword}{const}\ bitmap,}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00116}00116\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ position)\ \{}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00117}00117\ \ \ \textcolor{comment}{//\ Locate\ block}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00118}00118\ \ \ \textcolor{keyword}{const}\ uint64\_t\ block\_num\ =\ position\ /\ \doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00119}00119\ \ \ \textcolor{keyword}{const}\ uint64\_t\ block\_pos\ =\ position\ \%\ \doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}};}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00120}00120\ \ \ \textcolor{comment}{//\ Compute\ e(xclusive)rank\ (number\ of\ bits\ set\ to\ one\ before\ the\ given\ position,\ not\ included)}}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00121}00121\ \ \ \doxymbox{\hyperlink{structbitmap__block__t}{bitmap\_block\_t}}*\ \textcolor{keyword}{const}\ bitmap\_block\ =\ bitmap-\/>\doxymbox{\hyperlink{structbitmap__t_ac22768ddcf7d6cbe7c7895bd2db07cb7}{bitmap\_blocks}}\ +\ block\_num;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00122}00122\ \ \ \textcolor{keyword}{const}\ uint64\_t\ bitmap\_masked\ =\ (block\_pos!=0)\ ?\ bitmap\_block-\/>\doxymbox{\hyperlink{structbitmap__block__t_a043e6630521de5bd1e9ad3118e423be2}{bitmap}}\ <<\ (\doxymbox{\hyperlink{bitmap_8h_a9ff0198b15ea3a626f1e20abbebab7de}{BITMAP\_BLOCK\_ELEMENTS}}\ -\/\ block\_pos)\ :\ 0;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00123}00123\ \ \ \textcolor{keyword}{const}\ uint64\_t\ bitmap\_count\ =\ \doxymbox{\hyperlink{commons_8h_af527eda3bec33576d0ca6bf17647b4f5}{POPCOUNT\_64}}(bitmap\_masked);}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00124}00124\ \ \ \textcolor{keywordflow}{return}\ bitmap\_block-\/>\doxymbox{\hyperlink{structbitmap__block__t_a5c9bbaf375ecb8371f4a092bb24c22dd}{counter}}\ +\ bitmap\_count;}
+\DoxyCodeLine{\Hypertarget{bitmap_8c_source_l00125}00125\ \}}
+
+\end{DoxyCode}

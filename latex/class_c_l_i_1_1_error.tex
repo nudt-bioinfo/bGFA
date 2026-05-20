@@ -1,0 +1,132 @@
+\doxysection{CLI::\+Error Class Reference}
+\hypertarget{class_c_l_i_1_1_error}{}\label{class_c_l_i_1_1_error}\index{CLI::Error@{CLI::Error}}
+
+
+All errors derive from this one.  
+
+
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+Error:\+
+% FIG 0
+
+
+Collaboration diagram for CLI::\+Error:\+
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_error_a28565e52e7527594d2c60c5aab14c9a6}{get\+\_\+exit\+\_\+code}} () const
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_error_a6acdbeb066f1d58a14156f05808b85a7}{get\+\_\+name}} () const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a7b30cbdb0c6f3ef3d5550df7d8e18904}{Error}} (std::\+string name, std::\+string msg, int exit\+\_\+code=static\+\_\+cast$<$ int $>$(\doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037ea45b3e4c35409fb597ea598dc4b984b8c}{Exit\+Codes::\+\+Base\+Class}}))
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a52187308eced1fc96f270ef384dbd7a2}{Error}} (std::\+string name, std::\+string msg, \doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037e}{Exit\+Codes}} exit\+\_\+code)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{class_c_l_i_1_1_error_aa8b05303385808853853ace2b3337342}{actual\+\_\+exit\+\_\+code}}
+\item 
+std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_error_a7ded9c4092009928dd9dfb8dd05cc111}{error\+\_\+name}} \{"{}Error"{}\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+All errors derive from this one. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01350}{1350}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_c_l_i_1_1_error_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_l_i_1_1_error_a7b30cbdb0c6f3ef3d5550df7d8e18904}\index{CLI::Error@{CLI::Error}!Error@{Error}}
+\index{Error@{Error}!CLI::Error@{CLI::Error}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_error_a7b30cbdb0c6f3ef3d5550df7d8e18904} 
+CLI::\+\+Error::\+\+Error (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{std::\+string}]{msg}{, }\item[{int}]{exit\+\_\+code}{ = {\ttfamily static\+\_\+cast$<$int$>$(\doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037ea45b3e4c35409fb597ea598dc4b984b8c}{Exit\+Codes::\+\+Base\+Class}})}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01359}{1359}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{class_c_l_i_1_1_error_a52187308eced1fc96f270ef384dbd7a2}\index{CLI::Error@{CLI::Error}!Error@{Error}}
+\index{Error@{Error}!CLI::Error@{CLI::Error}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_error_a52187308eced1fc96f270ef384dbd7a2} 
+CLI::\+\+Error::\+\+Error (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{std::\+string}]{msg}{, }\item[{\doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037e}{Exit\+Codes}}}]{exit\+\_\+code}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01362}{1362}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1_error_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1_error_a28565e52e7527594d2c60c5aab14c9a6}\index{CLI::Error@{CLI::Error}!get\_exit\_code@{get\_exit\_code}}
+\index{get\_exit\_code@{get\_exit\_code}!CLI::Error@{CLI::Error}}
+\doxysubsubsection{\texorpdfstring{get\_exit\_code()}{get\_exit\_code()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_error_a28565e52e7527594d2c60c5aab14c9a6} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int CLI::\+\+Error::\+get\+\_\+exit\+\_\+code (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01355}{1355}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{class_c_l_i_1_1_error_a6acdbeb066f1d58a14156f05808b85a7}\index{CLI::Error@{CLI::Error}!get\_name@{get\_name}}
+\index{get\_name@{get\_name}!CLI::Error@{CLI::Error}}
+\doxysubsubsection{\texorpdfstring{get\_name()}{get\_name()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_error_a6acdbeb066f1d58a14156f05808b85a7} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string CLI::\+\+Error::\+get\+\_\+name (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01357}{1357}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+
+
+\label{doc-variable-members}
+\Hypertarget{class_c_l_i_1_1_error_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_l_i_1_1_error_aa8b05303385808853853ace2b3337342}\index{CLI::Error@{CLI::Error}!actual\_exit\_code@{actual\_exit\_code}}
+\index{actual\_exit\_code@{actual\_exit\_code}!CLI::Error@{CLI::Error}}
+\doxysubsubsection{\texorpdfstring{actual\_exit\_code}{actual\_exit\_code}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_error_aa8b05303385808853853ace2b3337342} 
+int CLI::\+\+Error::\+actual\+\_\+exit\+\_\+code\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01351}{1351}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+\Hypertarget{class_c_l_i_1_1_error_a7ded9c4092009928dd9dfb8dd05cc111}\index{CLI::Error@{CLI::Error}!error\_name@{error\_name}}
+\index{error\_name@{error\_name}!CLI::Error@{CLI::Error}}
+\doxysubsubsection{\texorpdfstring{error\_name}{error\_name}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_error_a7ded9c4092009928dd9dfb8dd05cc111} 
+std::\+string CLI::\+\+Error::\+error\+\_\+name \{"{}Error"{}\}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01352}{1352}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

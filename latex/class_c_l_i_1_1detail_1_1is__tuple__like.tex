@@ -1,0 +1,69 @@
+\doxysection{CLI::\+detail::\+is\+\_\+tuple\+\_\+like\texorpdfstring{$<$}{<} S \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_c_l_i_1_1detail_1_1is__tuple__like}{}\label{class_c_l_i_1_1detail_1_1is__tuple__like}\index{CLI::detail::is\_tuple\_like$<$ S $>$@{CLI::detail::is\_tuple\_like$<$ S $>$}}
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr bool \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_ad1cf4b28e4267524bb4e65aabf5ffd40}{value}} = decltype(\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_a6d483b306fbbf637c4d45266e119cca8}{test}}$<$S$>$(0))::\+value
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename SS, \doxymbox{\hyperlink{namespace_c_l_i_a4858f02cc3a0eeda7af44dd3e957b506}{enable\+\_\+if\+\_\+t}}$<$!\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__complex}{is\+\_\+complex}}$<$ SS $>$\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_ad1cf4b28e4267524bb4e65aabf5ffd40}{::\+value}}, \doxymbox{\hyperlink{namespace_c_l_i_1_1detail_af27dda5da343e609526e3dacf435b1c6}{detail::\+enabler}} $>$ = detail::\+dummy$>$ }\\static auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_a6d483b306fbbf637c4d45266e119cca8}{test}} (int) -\/$>$ decltype(std::\+tuple\+\_\+size$<$ typename std::\+decay$<$ SS $>$::\+type $>$\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_ad1cf4b28e4267524bb4e65aabf5ffd40}{::\+value}}, std::\+true\+\_\+type\{\})
+\item 
+{\footnotesize template$<$typename$>$ }\\static auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_a44d422c44755ae57f0ffe8e2e2b93b9f}{test}} (...) -\/$>$ std::\+false\+\_\+type
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename S$>$\newline
+class CLI::\+detail::\+is\+\_\+tuple\+\_\+like$<$ S $>$}
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01910}{1910}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1detail_1_1is__tuple__like_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1detail_1_1is__tuple__like_a44d422c44755ae57f0ffe8e2e2b93b9f}\index{CLI::detail::is\_tuple\_like$<$ S $>$@{CLI::detail::is\_tuple\_like$<$ S $>$}!test@{test}}
+\index{test@{test}!CLI::detail::is\_tuple\_like$<$ S $>$@{CLI::detail::is\_tuple\_like$<$ S $>$}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1detail_1_1is__tuple__like_a44d422c44755ae57f0ffe8e2e2b93b9f} 
+template$<$typename S$>$ \\
+template$<$typename$>$ \\
+auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like}{CLI::\+detail::\+is\+\_\+tuple\+\_\+like}}$<$ S $>$::\+test (\begin{DoxyParamCaption}\item[{}]{...}{}\end{DoxyParamCaption}) -\/$>$  std::\+false\+\_\+type\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_c_l_i_1_1detail_1_1is__tuple__like_a6d483b306fbbf637c4d45266e119cca8}\index{CLI::detail::is\_tuple\_like$<$ S $>$@{CLI::detail::is\_tuple\_like$<$ S $>$}!test@{test}}
+\index{test@{test}!CLI::detail::is\_tuple\_like$<$ S $>$@{CLI::detail::is\_tuple\_like$<$ S $>$}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1detail_1_1is__tuple__like_a6d483b306fbbf637c4d45266e119cca8} 
+template$<$typename S$>$ \\
+template$<$typename SS, \doxymbox{\hyperlink{namespace_c_l_i_a4858f02cc3a0eeda7af44dd3e957b506}{enable\+\_\+if\+\_\+t}}$<$!\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__complex}{is\+\_\+complex}}$<$ SS $>$\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_ad1cf4b28e4267524bb4e65aabf5ffd40}{::\+value}}, \doxymbox{\hyperlink{namespace_c_l_i_1_1detail_af27dda5da343e609526e3dacf435b1c6}{detail::\+enabler}} $>$ = detail::\+dummy$>$ \\
+auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like}{CLI::\+detail::\+is\+\_\+tuple\+\_\+like}}$<$ S $>$::\+test (\begin{DoxyParamCaption}\item[{int}]{}{}\end{DoxyParamCaption}) -\/$>$  decltype(std::\+tuple\+\_\+size$<$ typename std::\+decay$<$ SS $>$::\+type $>$\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_ad1cf4b28e4267524bb4e65aabf5ffd40}{::\+value}}, std::\+true\+\_\+type\{\})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_c_l_i_1_1detail_1_1is__tuple__like_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_l_i_1_1detail_1_1is__tuple__like_ad1cf4b28e4267524bb4e65aabf5ffd40}\index{CLI::detail::is\_tuple\_like$<$ S $>$@{CLI::detail::is\_tuple\_like$<$ S $>$}!value@{value}}
+\index{value@{value}!CLI::detail::is\_tuple\_like$<$ S $>$@{CLI::detail::is\_tuple\_like$<$ S $>$}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1detail_1_1is__tuple__like_ad1cf4b28e4267524bb4e65aabf5ffd40} 
+template$<$typename S$>$ \\
+bool \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like}{CLI::\+detail::\+is\+\_\+tuple\+\_\+like}}$<$ S $>$::\+value = decltype(\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__tuple__like_a6d483b306fbbf637c4d45266e119cca8}{test}}$<$S$>$(0))::\+value\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01918}{1918}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,75 @@
+\doxysection{bgfa\+\_\+args.\+hpp}
+\hypertarget{bgfa__args_8hpp_source}{}\label{bgfa__args_8hpp_source}\index{src/bgfa\_args.hpp@{src/bgfa\_args.hpp}}
+\doxymbox{\hyperlink{bgfa__args_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ @Author:\ grampart\ guo018248@163.com}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ @Date:\ 2025-\/04-\/07\ 16:29:33}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00004}00004\ \textcolor{comment}{\ *\ @LastEditors\ Please\ set\ LastEditors}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ @LastEditTime\ 2026-\/04-\/13\ 15:07:53}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ @FilePath:\ /bGFA/src/args.hpp}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00007}00007\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00008}00008\ \textcolor{preprocessor}{\#ifndef\ BGFA\_ARGS\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#define\ BGFA\_ARGS\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00010}00010\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{_c_l_i11_8hpp}{./CLI11/CLI11.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00012}00012\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00015}00015\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00016}\doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{00016}}\ \textcolor{keyword}{typedef}\ std::map<std::string,\ int>\ \doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{argsMap}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00017}\doxymbox{\hyperlink{bgfa__args_8hpp_ac3acfb7d645df58812ea484384c955b9}{00017}}\ \doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{argsMap}}\ \doxymbox{\hyperlink{bgfa__args_8hpp_ac3acfb7d645df58812ea484384c955b9}{index\_itrmode\_map}}\{\{\textcolor{stringliteral}{"{}single"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}single-\/reverse"{}},\ 1\},\ \{\textcolor{stringliteral}{"{}double"{}},\ 2\}\};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00018}\doxymbox{\hyperlink{bgfa__args_8hpp_acaec4764ccc1b01a53cb52466bdd931a}{00018}}\ \doxymbox{\hyperlink{bgfa__args_8hpp_ab4658c6ae8930985350ec5277d1336c0}{argsMap}}\ \doxymbox{\hyperlink{bgfa__args_8hpp_acaec4764ccc1b01a53cb52466bdd931a}{merge\_alig\_map}}\{\{\textcolor{stringliteral}{"{}ksw"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}wfa"{}},\ 1\}\};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00019}00019\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00020}\doxymbox{\hyperlink{struct_convert_args}{00020}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_convert_args}{ConvertArgs}}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00021}00021\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00022}\doxymbox{\hyperlink{struct_convert_args_a581a42375758cb3b55e1cb73c67d395e}{00022}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_convert_args_a581a42375758cb3b55e1cb73c67d395e}{gfa\_path}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00023}\doxymbox{\hyperlink{struct_convert_args_a7b2cd81a12c7833ff9f92044dd2507a5}{00023}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_convert_args_a7b2cd81a12c7833ff9f92044dd2507a5}{output\_path}}\ =\ \textcolor{stringliteral}{"{}auto"{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00024}\doxymbox{\hyperlink{struct_convert_args_ada09d12b6b5411eba9017f422565bfbb}{00024}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_convert_args_ada09d12b6b5411eba9017f422565bfbb}{output\_mode}}\ =\ \textcolor{stringliteral}{"{}all"{}};\ \textcolor{comment}{//\ "{}all"{}\ or\ "{}split"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00025}\doxymbox{\hyperlink{struct_convert_args_aac93cb8b65be06efb849a745b860da71}{00025}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_convert_args_aac93cb8b65be06efb849a745b860da71}{path\_mode}}\ =\ \textcolor{stringliteral}{"{}inc"{}};\ \ \ \textcolor{comment}{//\ "{}direct"{}\ or\ "{}inc"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00026}\doxymbox{\hyperlink{struct_convert_args_afb66799fff708642e602f30526658b29}{00026}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_convert_args_afb66799fff708642e602f30526658b29}{normalized}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00027}\doxymbox{\hyperlink{struct_convert_args_acaf7701fe46979cb23f69033a44903f6}{00027}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_convert_args_acaf7701fe46979cb23f69033a44903f6}{segment\_no\_id}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00028}00028\ \ \ \ \ \textcolor{comment}{//\ bool\ auto\_output\ =\ true;}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00029}00029\ \};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00031}\doxymbox{\hyperlink{struct_index_args}{00031}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_index_args}{IndexArgs}}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00032}00032\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00033}\doxymbox{\hyperlink{struct_index_args_a40873124cf9b7e61e2c3c3623a1c299a}{00033}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_index_args_a40873124cf9b7e61e2c3c3623a1c299a}{input\_path}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00034}\doxymbox{\hyperlink{struct_index_args_accbad4f05677390092dedf58ca2a0c5d}{00034}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_index_args_accbad4f05677390092dedf58ca2a0c5d}{output\_path}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00035}\doxymbox{\hyperlink{struct_index_args_ac82f0ac52cef5256306ceecaac95fa67}{00035}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{struct_index_args_ac82f0ac52cef5256306ceecaac95fa67}{is\_bgfa}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00036}\doxymbox{\hyperlink{struct_index_args_a5f66c0ded1f60a0ad45b93b794cf89ef}{00036}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_index_args_a5f66c0ded1f60a0ad45b93b794cf89ef}{seed\_mode}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00037}\doxymbox{\hyperlink{struct_index_args_a1cdb092dc1fe78d878d6682ce29a0839}{00037}}\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_index_args_a1cdb092dc1fe78d878d6682ce29a0839}{iterate\_mode}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00038}\doxymbox{\hyperlink{struct_index_args_a9795d4a0262a3e7fc15d54521efb00c6}{00038}}\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_index_args_a9795d4a0262a3e7fc15d54521efb00c6}{window\_size}}\ =\ 20;}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00039}\doxymbox{\hyperlink{struct_index_args_a887d2d6827a8eeed40551338ddaaf1ae}{00039}}\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_index_args_a887d2d6827a8eeed40551338ddaaf1ae}{minimizer\_length}}\ =\ 15;}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00040}00040\ \};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00041}00041\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00042}\doxymbox{\hyperlink{struct_view_args}{00042}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_view_args}{ViewArgs}}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00043}00043\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00044}\doxymbox{\hyperlink{struct_view_args_a53ab44b50f0f1460832c5ed47472c5ed}{00044}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_view_args_a53ab44b50f0f1460832c5ed47472c5ed}{graph\_path}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00045}\doxymbox{\hyperlink{struct_view_args_a2cc0821b8f6d53fcec166c764a966e0a}{00045}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_view_args_a2cc0821b8f6d53fcec166c764a966e0a}{minimizer\_path}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00046}00046\ \};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00047}00047\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00048}\doxymbox{\hyperlink{struct_merge_args}{00048}}\ \textcolor{keyword}{struct\ }\doxymbox{\hyperlink{struct_merge_args}{MergeArgs}}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00049}00049\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00050}\doxymbox{\hyperlink{struct_merge_args_a620860fe8b72a1be1fb193c95f9c4b4e}{00050}}\ \ \ \ \ std::vector<std::string>\ \doxymbox{\hyperlink{struct_merge_args_a620860fe8b72a1be1fb193c95f9c4b4e}{graph\_path}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00051}\doxymbox{\hyperlink{struct_merge_args_a62577a94bcbf04120e70fc02f689782a}{00051}}\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_merge_args_a62577a94bcbf04120e70fc02f689782a}{merge\_type}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00052}\doxymbox{\hyperlink{struct_merge_args_afff283a0f6f6f79233093468ca377e0a}{00052}}\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_merge_args_afff283a0f6f6f79233093468ca377e0a}{merge\_limited}}\ =\ 90;\ \ \ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00053}\doxymbox{\hyperlink{struct_merge_args_a9c1955fb596d4e107421db5ce508ad17}{00053}}\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_merge_args_a9c1955fb596d4e107421db5ce508ad17}{alignment\_kernel}}\ =\ 1;\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00054}\doxymbox{\hyperlink{struct_merge_args_ae512e9418e0f7dee419b2350755f0af9}{00054}}\ \ \ \ \ uint8\_t\ \doxymbox{\hyperlink{struct_merge_args_ae512e9418e0f7dee419b2350755f0af9}{details\_type}}\ =\ 0;\ \ \ \ \ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00055}\doxymbox{\hyperlink{struct_merge_args_a2b6c357c886c30081c0e9c9f8d2f1f0f}{00055}}\ \ \ \ \ std::string\ \doxymbox{\hyperlink{struct_merge_args_a2b6c357c886c30081c0e9c9f8d2f1f0f}{output\_path}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00056}00056\ \ \ \ \ \textcolor{comment}{//\ std::string\ minimizer\_path;}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00057}00057\ \};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00059}\doxymbox{\hyperlink{class_command_parser}{00059}}\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_command_parser}{CommandParser}}}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00060}00060\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00061}00061\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00062}\doxymbox{\hyperlink{class_command_parser_ae7e38311383b071803e325df5cb9b142}{00062}}\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_command_parser_ae7e38311383b071803e325df5cb9b142}{time}}\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00063}\doxymbox{\hyperlink{class_command_parser_aa1d7a2b8332b6995f4d3cf1887e54531}{00063}}\ \ \ \ \ \doxymbox{\hyperlink{struct_convert_args}{ConvertArgs}}\ \doxymbox{\hyperlink{class_command_parser_aa1d7a2b8332b6995f4d3cf1887e54531}{convert\_args}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00064}\doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{00064}}\ \ \ \ \ \doxymbox{\hyperlink{struct_index_args}{IndexArgs}}\ \doxymbox{\hyperlink{class_command_parser_a9401271cc0ec09dae05a16316ab0cf43}{index\_args}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00065}\doxymbox{\hyperlink{class_command_parser_a66e65a5d293ec97f2486cc18331edb93}{00065}}\ \ \ \ \ \doxymbox{\hyperlink{struct_view_args}{ViewArgs}}\ \doxymbox{\hyperlink{class_command_parser_a66e65a5d293ec97f2486cc18331edb93}{view\_args}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00066}\doxymbox{\hyperlink{class_command_parser_a2c36be7b333fccbeb568fecbecf9f322}{00066}}\ \ \ \ \ \doxymbox{\hyperlink{struct_merge_args}{MergeArgs}}\ \doxymbox{\hyperlink{class_command_parser_a2c36be7b333fccbeb568fecbecf9f322}{merge\_args}};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00067}00067\ \};}
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{bgfa__args_8hpp_source_l00069}00069\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ \_ARGS\_HPP\_}}
+
+\end{DoxyCode}

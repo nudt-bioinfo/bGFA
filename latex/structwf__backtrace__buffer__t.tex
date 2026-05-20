@@ -1,0 +1,150 @@
+\doxysection{wf\+\_\+backtrace\+\_\+buffer\+\_\+t Struct Reference}
+\hypertarget{structwf__backtrace__buffer__t}{}\label{structwf__backtrace__buffer__t}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+
+
+{\ttfamily \+\#include $<$wavefront\+\_\+backtrace\+\_\+buffer.\+h$>$}
+
+
+
+Collaboration diagram for wf\+\_\+backtrace\+\_\+buffer\+\_\+t:\+
+% FIG 0
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{structwf__backtrace__buffer__t_a00354c189ca24948151c2e87fcf4a536}{segment\+\_\+idx}}
+\item 
+int \doxymbox{\hyperlink{structwf__backtrace__buffer__t_a8de23207b7d08f97522c5e72da830791}{segment\+\_\+offset}}
+\item 
+bt\+\_\+block\+\_\+t \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structwf__backtrace__buffer__t_aa01a26711621c22be7431d8d7c8ea9c1}{block\+\_\+next}}
+\item 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structwf__backtrace__buffer__t_a94a1fb682c999de4a3b80b62dc5b794f}{segments}}
+\item 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structwf__backtrace__buffer__t_a224a38570ba9bd79cefa8acf52ba4328}{alignment\+\_\+init\+\_\+pos}}
+\item 
+\doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_a41dc65ba28e1c984278301c6c7100d6e}{bt\+\_\+block\+\_\+idx\+\_\+t}} \doxymbox{\hyperlink{structwf__backtrace__buffer__t_a32bb586fc2b10c6742407b64e08769c2}{num\+\_\+compacted\+\_\+blocks}}
+\item 
+int \doxymbox{\hyperlink{structwf__backtrace__buffer__t_ade48f8320b17a43af059deae0dbfda3e}{num\+\_\+compactions}}
+\item 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structwf__backtrace__buffer__t_aa0dd247e4329382f650f541a26f9973c}{alignment\+\_\+packed}}
+\item 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structwf__backtrace__buffer__t_a83f64bf12f9a473f2b153f2881f5f933}{prefetch\+\_\+blocks\+\_\+idxs}}
+\item 
+\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{structwf__backtrace__buffer__t_ad3cab8a1175c2da1acd5eda56fc8dde2}{mm\+\_\+allocator}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00066}{66}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{structwf__backtrace__buffer__t_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structwf__backtrace__buffer__t_a224a38570ba9bd79cefa8acf52ba4328}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!alignment\_init\_pos@{alignment\_init\_pos}}
+\index{alignment\_init\_pos@{alignment\_init\_pos}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{alignment\_init\_pos}{alignment\_init\_pos}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_a224a38570ba9bd79cefa8acf52ba4328} 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}}\texorpdfstring{$\ast$}{*} wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+alignment\+\_\+init\+\_\+pos}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00073}{73}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_aa0dd247e4329382f650f541a26f9973c}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!alignment\_packed@{alignment\_packed}}
+\index{alignment\_packed@{alignment\_packed}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{alignment\_packed}{alignment\_packed}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_aa0dd247e4329382f650f541a26f9973c} 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}}\texorpdfstring{$\ast$}{*} wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+alignment\+\_\+packed}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00077}{77}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_aa01a26711621c22be7431d8d7c8ea9c1}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!block\_next@{block\_next}}
+\index{block\_next@{block\_next}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{block\_next}{block\_next}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_aa01a26711621c22be7431d8d7c8ea9c1} 
+bt\+\_\+block\+\_\+t\texorpdfstring{$\ast$}{*} wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+block\+\_\+next}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00070}{70}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_ad3cab8a1175c2da1acd5eda56fc8dde2}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!mm\_allocator@{mm\_allocator}}
+\index{mm\_allocator@{mm\_allocator}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{mm\_allocator}{mm\_allocator}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_ad3cab8a1175c2da1acd5eda56fc8dde2} 
+\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}}\texorpdfstring{$\ast$}{*} wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+mm\+\_\+allocator}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00080}{80}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_a32bb586fc2b10c6742407b64e08769c2}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!num\_compacted\_blocks@{num\_compacted\_blocks}}
+\index{num\_compacted\_blocks@{num\_compacted\_blocks}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{num\_compacted\_blocks}{num\_compacted\_blocks}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_a32bb586fc2b10c6742407b64e08769c2} 
+\doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_a41dc65ba28e1c984278301c6c7100d6e}{bt\+\_\+block\+\_\+idx\+\_\+t}} wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+num\+\_\+compacted\+\_\+blocks}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00074}{74}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_ade48f8320b17a43af059deae0dbfda3e}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!num\_compactions@{num\_compactions}}
+\index{num\_compactions@{num\_compactions}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{num\_compactions}{num\_compactions}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_ade48f8320b17a43af059deae0dbfda3e} 
+int wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+num\+\_\+compactions}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00075}{75}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_a83f64bf12f9a473f2b153f2881f5f933}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!prefetch\_blocks\_idxs@{prefetch\_blocks\_idxs}}
+\index{prefetch\_blocks\_idxs@{prefetch\_blocks\_idxs}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{prefetch\_blocks\_idxs}{prefetch\_blocks\_idxs}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_a83f64bf12f9a473f2b153f2881f5f933} 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}}\texorpdfstring{$\ast$}{*} wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+prefetch\+\_\+blocks\+\_\+idxs}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00078}{78}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_a00354c189ca24948151c2e87fcf4a536}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!segment\_idx@{segment\_idx}}
+\index{segment\_idx@{segment\_idx}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{segment\_idx}{segment\_idx}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_a00354c189ca24948151c2e87fcf4a536} 
+int wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+segment\+\_\+idx}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00068}{68}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_a8de23207b7d08f97522c5e72da830791}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!segment\_offset@{segment\_offset}}
+\index{segment\_offset@{segment\_offset}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{segment\_offset}{segment\_offset}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_a8de23207b7d08f97522c5e72da830791} 
+int wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+segment\+\_\+offset}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00069}{69}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+\Hypertarget{structwf__backtrace__buffer__t_a94a1fb682c999de4a3b80b62dc5b794f}\index{wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}!segments@{segments}}
+\index{segments@{segments}!wf\_backtrace\_buffer\_t@{wf\_backtrace\_buffer\_t}}
+\doxysubsubsection{\texorpdfstring{segments}{segments}}
+{\footnotesize\ttfamily \label{structwf__backtrace__buffer__t_a94a1fb682c999de4a3b80b62dc5b794f} 
+\doxymbox{\hyperlink{structvector__t}{vector\+\_\+t}}\texorpdfstring{$\ast$}{*} wf\+\_\+backtrace\+\_\+buffer\+\_\+t::\+segments}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source_l00072}{72}} of file \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_source}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}.
+
+
+
+The documentation for this struct was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+wfa/\+wavefront/\+\doxymbox{\hyperlink{wavefront__backtrace__buffer_8h}{wavefront\+\_\+backtrace\+\_\+buffer.\+h}}\end{DoxyCompactItemize}

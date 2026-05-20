@@ -1,0 +1,47 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+edit/\+edit\+\_\+dp.h File Reference}
+\hypertarget{edit__dp_8h}{}\label{edit__dp_8h}\index{src/wfa/tools/align\_benchmark/edit/edit\_dp.h@{src/wfa/tools/align\_benchmark/edit/edit\_dp.h}}
+{\ttfamily \+\#include "{}alignment/\+score\+\_\+matrix.\+h"{}}\newline
+Include dependency graph for edit\+\_\+dp.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{edit__dp_8h_ae0ea2c0a0158f691e54c9f3e94761fee}{edit\+\_\+dp\+\_\+align}} (\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+void \doxymbox{\hyperlink{edit__dp_8h_a83a4a1cfd5fff67fd3d4c184e8ae4ec2}{edit\+\_\+dp\+\_\+align\+\_\+banded}} (\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const score\+\_\+matrix, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, const int bandwidth, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{edit__dp_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{edit__dp_8h_ae0ea2c0a0158f691e54c9f3e94761fee}\index{edit\_dp.h@{edit\_dp.h}!edit\_dp\_align@{edit\_dp\_align}}
+\index{edit\_dp\_align@{edit\_dp\_align}!edit\_dp.h@{edit\_dp.h}}
+\doxysubsubsection{\texorpdfstring{edit\_dp\_align()}{edit\_dp\_align()}}
+{\footnotesize\ttfamily \label{edit__dp_8h_ae0ea2c0a0158f691e54c9f3e94761fee} 
+void edit\+\_\+dp\+\_\+align (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__dp_8c_source_l00075}{75}} of file \doxymbox{\hyperlink{edit__dp_8c_source}{edit\+\_\+dp.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{edit__dp_8h_a83a4a1cfd5fff67fd3d4c184e8ae4ec2}\index{edit\_dp.h@{edit\_dp.h}!edit\_dp\_align\_banded@{edit\_dp\_align\_banded}}
+\index{edit\_dp\_align\_banded@{edit\_dp\_align\_banded}!edit\_dp.h@{edit\_dp.h}}
+\doxysubsubsection{\texorpdfstring{edit\_dp\_align\_banded()}{edit\_dp\_align\_banded()}}
+{\footnotesize\ttfamily \label{edit__dp_8h_a83a4a1cfd5fff67fd3d4c184e8ae4ec2} 
+void edit\+\_\+dp\+\_\+align\+\_\+banded (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structscore__matrix__t}{score\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{score\+\_\+matrix}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{const int}]{bandwidth}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__dp_8c_source_l00105}{105}} of file \doxymbox{\hyperlink{edit__dp_8c_source}{edit\+\_\+dp.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5

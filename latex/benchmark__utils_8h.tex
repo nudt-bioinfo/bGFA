@@ -1,0 +1,204 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+benchmark/\+benchmark\+\_\+utils.h File Reference}
+\hypertarget{benchmark__utils_8h}{}\label{benchmark__utils_8h}\index{src/wfa/tools/align\_benchmark/benchmark/benchmark\_utils.h@{src/wfa/tools/align\_benchmark/benchmark/benchmark\_utils.h}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+profiler\+\_\+timer.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+score\+\_\+matrix.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront/\+wavefront\+\_\+aligner.\+h"{}}\newline
+Include dependency graph for benchmark\+\_\+utils.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_a0caaf3ab3af360690f3ee1768565938f}{ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+CORRECT}}~0x00000001
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_abe2dd6510aa6e2b5ac8a5becdccaadfa}{ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+SCORE}}~0x00000002
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_ad6920b4fc10adaced1e4cd54d2dd6151}{ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+ALIGNMENT}}~0x00000004
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_a62e5f4ba133dd796aa0c15e0c94505c4}{ALIGN\+\_\+\+DEBUG\+\_\+\+DISPLAY\+\_\+\+INFO}}~0x00000008
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_a990f8a5603fc047c0c7ce28887baef22}{ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+INDEL}}~0x00000010
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_a75420456683c658afaaafa9009c0d74c}{ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+EDIT}}~0x00000040
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_ab3d8f8d76534e1a94f2aa34d3a45d719}{ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+GAP\+\_\+\+LINEAR}}~0x00000080
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_a2dcda2d6542dd383d1cf8af95c66b9fd}{ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+GAP\+\_\+\+AFFINE}}~0x00000100
+\item 
+\+\#define \doxymbox{\hyperlink{benchmark__utils_8h_aff1d1018faa35b6e3e1684afc09cd6a8}{ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+GAP\+\_\+\+AFFINE2P}}~0x00000400
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{benchmark__utils_8h_af3da6c3f43a09c668ce2a7303939d791}{benchmark\+\_\+align\+\_\+input\+\_\+clear}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input)
+\item 
+void \doxymbox{\hyperlink{benchmark__utils_8h_ac242d2c19521c3b92753d76e442c9411}{benchmark\+\_\+print\+\_\+alignment}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, const int score\+\_\+computed, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+computed, const int score\+\_\+correct, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+correct)
+\item 
+void \doxymbox{\hyperlink{benchmark__utils_8h_a9332dcee00b7ad42e663c2f34213e99f}{benchmark\+\_\+print\+\_\+output}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, const \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\+\_\+metric\+\_\+t}} distance\+\_\+metric, const bool score\+\_\+only, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+void \doxymbox{\hyperlink{benchmark__utils_8h_ab4e0fb073a4b49b14af1075c6487d8b5}{benchmark\+\_\+print\+\_\+stats}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, const bool print\+\_\+wf\+\_\+stats)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{benchmark__utils_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{benchmark__utils_8h_ad6920b4fc10adaced1e4cd54d2dd6151}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_CHECK\_ALIGNMENT@{ALIGN\_DEBUG\_CHECK\_ALIGNMENT}}
+\index{ALIGN\_DEBUG\_CHECK\_ALIGNMENT@{ALIGN\_DEBUG\_CHECK\_ALIGNMENT}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_CHECK\_ALIGNMENT}{ALIGN\_DEBUG\_CHECK\_ALIGNMENT}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_ad6920b4fc10adaced1e4cd54d2dd6151} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+ALIGNMENT~0x00000004}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00046}{46}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{benchmark__utils_8h_a0caaf3ab3af360690f3ee1768565938f}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_CHECK\_CORRECT@{ALIGN\_DEBUG\_CHECK\_CORRECT}}
+\index{ALIGN\_DEBUG\_CHECK\_CORRECT@{ALIGN\_DEBUG\_CHECK\_CORRECT}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_CHECK\_CORRECT}{ALIGN\_DEBUG\_CHECK\_CORRECT}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_a0caaf3ab3af360690f3ee1768565938f} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+CORRECT~0x00000001}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00044}{44}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{benchmark__utils_8h_a75420456683c658afaaafa9009c0d74c}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_EDIT@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_EDIT}}
+\index{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_EDIT@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_EDIT}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_EDIT}{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_EDIT}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_a75420456683c658afaaafa9009c0d74c} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+EDIT~0x00000040}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00050}{50}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{benchmark__utils_8h_a2dcda2d6542dd383d1cf8af95c66b9fd}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE}}
+\index{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE}{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_a2dcda2d6542dd383d1cf8af95c66b9fd} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+GAP\+\_\+\+AFFINE~0x00000100}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00052}{52}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{benchmark__utils_8h_aff1d1018faa35b6e3e1684afc09cd6a8}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE2P@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE2P}}
+\index{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE2P@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE2P}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE2P}{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_AFFINE2P}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_aff1d1018faa35b6e3e1684afc09cd6a8} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+GAP\+\_\+\+AFFINE2P~0x00000400}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00053}{53}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{benchmark__utils_8h_ab3d8f8d76534e1a94f2aa34d3a45d719}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_LINEAR@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_LINEAR}}
+\index{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_LINEAR@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_LINEAR}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_LINEAR}{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_GAP\_LINEAR}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_ab3d8f8d76534e1a94f2aa34d3a45d719} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+GAP\+\_\+\+LINEAR~0x00000080}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00051}{51}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{benchmark__utils_8h_a990f8a5603fc047c0c7ce28887baef22}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_INDEL@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_INDEL}}
+\index{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_INDEL@{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_INDEL}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_INDEL}{ALIGN\_DEBUG\_CHECK\_DISTANCE\_METRIC\_INDEL}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_a990f8a5603fc047c0c7ce28887baef22} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+DISTANCE\+\_\+\+METRIC\+\_\+\+INDEL~0x00000010}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00049}{49}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{benchmark__utils_8h_abe2dd6510aa6e2b5ac8a5becdccaadfa}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_CHECK\_SCORE@{ALIGN\_DEBUG\_CHECK\_SCORE}}
+\index{ALIGN\_DEBUG\_CHECK\_SCORE@{ALIGN\_DEBUG\_CHECK\_SCORE}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_CHECK\_SCORE}{ALIGN\_DEBUG\_CHECK\_SCORE}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_abe2dd6510aa6e2b5ac8a5becdccaadfa} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+CHECK\+\_\+\+SCORE~0x00000002}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00045}{45}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+\Hypertarget{benchmark__utils_8h_a62e5f4ba133dd796aa0c15e0c94505c4}\index{benchmark\_utils.h@{benchmark\_utils.h}!ALIGN\_DEBUG\_DISPLAY\_INFO@{ALIGN\_DEBUG\_DISPLAY\_INFO}}
+\index{ALIGN\_DEBUG\_DISPLAY\_INFO@{ALIGN\_DEBUG\_DISPLAY\_INFO}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{ALIGN\_DEBUG\_DISPLAY\_INFO}{ALIGN\_DEBUG\_DISPLAY\_INFO}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_a62e5f4ba133dd796aa0c15e0c94505c4} 
+\+\#define ALIGN\+\_\+\+DEBUG\+\_\+\+DISPLAY\+\_\+\+INFO~0x00000008}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8h_source_l00047}{47}} of file \doxymbox{\hyperlink{benchmark__utils_8h_source}{benchmark\+\_\+utils.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{benchmark__utils_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{benchmark__utils_8h_af3da6c3f43a09c668ce2a7303939d791}\index{benchmark\_utils.h@{benchmark\_utils.h}!benchmark\_align\_input\_clear@{benchmark\_align\_input\_clear}}
+\index{benchmark\_align\_input\_clear@{benchmark\_align\_input\_clear}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{benchmark\_align\_input\_clear()}{benchmark\_align\_input\_clear()}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_af3da6c3f43a09c668ce2a7303939d791} 
+void benchmark\+\_\+align\+\_\+input\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8c_source_l00042}{42}} of file \doxymbox{\hyperlink{benchmark__utils_8c_source}{benchmark\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{benchmark__utils_8h_ac242d2c19521c3b92753d76e442c9411}\index{benchmark\_utils.h@{benchmark\_utils.h}!benchmark\_print\_alignment@{benchmark\_print\_alignment}}
+\index{benchmark\_print\_alignment@{benchmark\_print\_alignment}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{benchmark\_print\_alignment()}{benchmark\_print\_alignment()}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_ac242d2c19521c3b92753d76e442c9411} 
+void benchmark\+\_\+print\+\_\+alignment (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{const int}]{score\+\_\+computed}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+computed}{, }\item[{const int}]{score\+\_\+correct}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+correct}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8c_source_l00070}{70}} of file \doxymbox{\hyperlink{benchmark__utils_8c_source}{benchmark\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{benchmark__utils_8h_a9332dcee00b7ad42e663c2f34213e99f}\index{benchmark\_utils.h@{benchmark\_utils.h}!benchmark\_print\_output@{benchmark\_print\_output}}
+\index{benchmark\_print\_output@{benchmark\_print\_output}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{benchmark\_print\_output()}{benchmark\_print\_output()}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_a9332dcee00b7ad42e663c2f34213e99f} 
+void benchmark\+\_\+print\+\_\+output (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{const \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\+\_\+metric\+\_\+t}}}]{distance\+\_\+metric}{, }\item[{const bool}]{score\+\_\+only}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8c_source_l00143}{143}} of file \doxymbox{\hyperlink{benchmark__utils_8c_source}{benchmark\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{benchmark__utils_8h_ab4e0fb073a4b49b14af1075c6487d8b5}\index{benchmark\_utils.h@{benchmark\_utils.h}!benchmark\_print\_stats@{benchmark\_print\_stats}}
+\index{benchmark\_print\_stats@{benchmark\_print\_stats}!benchmark\_utils.h@{benchmark\_utils.h}}
+\doxysubsubsection{\texorpdfstring{benchmark\_print\_stats()}{benchmark\_print\_stats()}}
+{\footnotesize\ttfamily \label{benchmark__utils_8h_ab4e0fb073a4b49b14af1075c6487d8b5} 
+void benchmark\+\_\+print\+\_\+stats (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{const bool}]{print\+\_\+wf\+\_\+stats}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__utils_8c_source_l00183}{183}} of file \doxymbox{\hyperlink{benchmark__utils_8c_source}{benchmark\+\_\+utils.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9

@@ -1,0 +1,163 @@
+\doxysection{gen\+\_\+graph Namespace Reference}
+\hypertarget{namespacegen__graph}{}\label{namespacegen__graph}\index{gen\_graph@{gen\_graph}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacegen__graph_a44cc4c0593dc212e80d34151586006f1}{random\+\_\+dna}} (int length, random.\+Random rng)
+\item 
+List\+[Tuple\+[int, int, str, str]\+]\+ \doxymbox{\hyperlink{namespacegen__graph_a8936cb4754cfb812ad74be21049cff91}{make\+\_\+edges}} (int num\+\_\+nodes, int complexity, float loop\+\_\+prob, random.\+Random rng)
+\item 
+bool \doxymbox{\hyperlink{namespacegen__graph_a9387068e739e07c90ae75f1e8e0f63a0}{\+\_\+is\+\_\+strict\+\_\+linear}} (int num\+\_\+nodes, List\+[Tuple\+[int, int, str, str]\+]\+ edges)
+\item 
+None \doxymbox{\hyperlink{namespacegen__graph_aa580740b06a8f4ab01eb590ecb0e8e2f}{write\+\_\+gfa}} (str output\+\_\+path, List\+[str]\+ sequences, List\+[Tuple\+[int, int, str, str]\+]\+ edges)
+\item 
+Tuple\+[List\+[str]\+, List\+[Tuple\+[int, int, str, str]\+]\+, Dict\+[int, int]\+]\+ \doxymbox{\hyperlink{namespacegen__graph_aa4c8645ae16ebe7ffc0ab2c7b41a5284}{compress\+\_\+linear}} (List\+[str]\+ sequences, List\+[Tuple\+[int, int, str, str]\+]\+ edges)
+\item 
+argparse.\+Namespace \doxymbox{\hyperlink{namespacegen__graph_a6e58c0f46f4acfc0f9d7affd51cfbdb6}{parse\+\_\+args}} (List\+[str]\+ argv)
+\item 
+int \doxymbox{\hyperlink{namespacegen__graph_a33581113e7691305c1e360ea83a87b83}{main}} (List\+[str]\+ argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacegen__graph_ac8a4f34098ed24be47e7181e11ffc63c}{DNA\+\_\+\+ALPHABET}} = "{}ACGT"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Generate simple GFA graphs for testing.
+
+This script creates DNA sequences and graph edges with configurable
+complexity, optionally compressing linear chains into single segments.
+
+Author: grampart
+Version: 0.1
+Copyright: Copyright(c) 2025 by grampart
+License: MIT License
+\end{DoxyVerb}
+ 
+
+\label{doc-func-members}
+\Hypertarget{namespacegen__graph_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacegen__graph_a9387068e739e07c90ae75f1e8e0f63a0}\index{gen\_graph@{gen\_graph}!\_is\_strict\_linear@{\_is\_strict\_linear}}
+\index{\_is\_strict\_linear@{\_is\_strict\_linear}!gen\_graph@{gen\_graph}}
+\doxysubsubsection{\texorpdfstring{\_is\_strict\_linear()}{\_is\_strict\_linear()}}
+{\footnotesize\ttfamily \label{namespacegen__graph_a9387068e739e07c90ae75f1e8e0f63a0} 
+ bool gen\+\_\+graph.\+\_\+is\+\_\+strict\+\_\+linear (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+nodes}{, }\item[{List\+[Tuple\+[int, int, str, str]\+]\+}]{edges}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Check if the whole graph forms a strict linear chain.\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{gen__graph_8py_source_l00106}{106}} of file \doxymbox{\hyperlink{gen__graph_8py_source}{gen\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 0
+\Hypertarget{namespacegen__graph_aa4c8645ae16ebe7ffc0ab2c7b41a5284}\index{gen\_graph@{gen\_graph}!compress\_linear@{compress\_linear}}
+\index{compress\_linear@{compress\_linear}!gen\_graph@{gen\_graph}}
+\doxysubsubsection{\texorpdfstring{compress\_linear()}{compress\_linear()}}
+{\footnotesize\ttfamily \label{namespacegen__graph_aa4c8645ae16ebe7ffc0ab2c7b41a5284} 
+ Tuple\+[List\+[str]\+, List\+[Tuple\+[int, int, str, str]\+]\+, Dict\+[int, int]\+]\+ gen\+\_\+graph.\+compress\+\_\+linear (\begin{DoxyParamCaption}\item[{List\+[str]\+}]{sequences}{, }\item[{List\+[Tuple\+[int, int, str, str]\+]\+}]{edges}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Merge maximal strictly linear chains where internal nodes have in-degree==1 and out-degree==1.
+Returns:
+- New sequence list (reindexed 1..M)
+- New edge list (orientations normalized to '+')
+- Mapping from old id to new id
+Note: For simplicity and robustness, orientations are normalized to '+', and overlap stays as '0M'.
+\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{gen__graph_8py_source_l00173}{173}} of file \doxymbox{\hyperlink{gen__graph_8py_source}{gen\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{namespacegen__graph_a33581113e7691305c1e360ea83a87b83}\index{gen\_graph@{gen\_graph}!main@{main}}
+\index{main@{main}!gen\_graph@{gen\_graph}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{namespacegen__graph_a33581113e7691305c1e360ea83a87b83} 
+ int gen\+\_\+graph.\+main (\begin{DoxyParamCaption}\item[{List\+[str]\+}]{argv}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Entry point: build sequences and edges, compress, and write GFA.\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{gen__graph_8py_source_l00296}{296}} of file \doxymbox{\hyperlink{gen__graph_8py_source}{gen\+\_\+graph.\+py}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{namespacegen__graph_a8936cb4754cfb812ad74be21049cff91}\index{gen\_graph@{gen\_graph}!make\_edges@{make\_edges}}
+\index{make\_edges@{make\_edges}!gen\_graph@{gen\_graph}}
+\doxysubsubsection{\texorpdfstring{make\_edges()}{make\_edges()}}
+{\footnotesize\ttfamily \label{namespacegen__graph_a8936cb4754cfb812ad74be21049cff91} 
+ List\+[Tuple\+[int, int, str, str]\+]\+ gen\+\_\+graph.\+make\+\_\+edges (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+nodes}{, }\item[{int}]{complexity}{, }\item[{float}]{loop\+\_\+prob}{, }\item[{random.\+Random}]{rng}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Construct edges for a test graph.
+
+Returns a list of edges in the form:
+(from_id, to_id, from_orient, to_orient), with orientations in '+' or '-'.
+\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{gen__graph_8py_source_l00033}{33}} of file \doxymbox{\hyperlink{gen__graph_8py_source}{gen\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{namespacegen__graph_a6e58c0f46f4acfc0f9d7affd51cfbdb6}\index{gen\_graph@{gen\_graph}!parse\_args@{parse\_args}}
+\index{parse\_args@{parse\_args}!gen\_graph@{gen\_graph}}
+\doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
+{\footnotesize\ttfamily \label{namespacegen__graph_a6e58c0f46f4acfc0f9d7affd51cfbdb6} 
+ argparse.\+Namespace gen\+\_\+graph.\+parse\+\_\+args (\begin{DoxyParamCaption}\item[{List\+[str]\+}]{argv}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Parse CLI arguments for graph generation.\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{gen__graph_8py_source_l00276}{276}} of file \doxymbox{\hyperlink{gen__graph_8py_source}{gen\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{namespacegen__graph_a44cc4c0593dc212e80d34151586006f1}\index{gen\_graph@{gen\_graph}!random\_dna@{random\_dna}}
+\index{random\_dna@{random\_dna}!gen\_graph@{gen\_graph}}
+\doxysubsubsection{\texorpdfstring{random\_dna()}{random\_dna()}}
+{\footnotesize\ttfamily \label{namespacegen__graph_a44cc4c0593dc212e80d34151586006f1} 
+ str gen\+\_\+graph.\+random\+\_\+dna (\begin{DoxyParamCaption}\item[{int}]{length}{, }\item[{random.\+Random}]{rng}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Generate a random DNA string of 90~110% length using provided RNG.\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{gen__graph_8py_source_l00024}{24}} of file \doxymbox{\hyperlink{gen__graph_8py_source}{gen\+\_\+graph.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{namespacegen__graph_aa580740b06a8f4ab01eb590ecb0e8e2f}\index{gen\_graph@{gen\_graph}!write\_gfa@{write\_gfa}}
+\index{write\_gfa@{write\_gfa}!gen\_graph@{gen\_graph}}
+\doxysubsubsection{\texorpdfstring{write\_gfa()}{write\_gfa()}}
+{\footnotesize\ttfamily \label{namespacegen__graph_aa580740b06a8f4ab01eb590ecb0e8e2f} 
+ None gen\+\_\+graph.\+write\+\_\+gfa (\begin{DoxyParamCaption}\item[{str}]{output\+\_\+path}{, }\item[{List\+[str]\+}]{sequences}{, }\item[{List\+[Tuple\+[int, int, str, str]\+]\+}]{edges}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}Write GFA v1: S/L records; add one P record if strictly linear.
+
+If `output_path` is '-', emit to stdout instead of a file.
+\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{gen__graph_8py_source_l00143}{143}} of file \doxymbox{\hyperlink{gen__graph_8py_source}{gen\+\_\+graph.\+py}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+
+
+\label{doc-var-members}
+\Hypertarget{namespacegen__graph_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacegen__graph_ac8a4f34098ed24be47e7181e11ffc63c}\index{gen\_graph@{gen\_graph}!DNA\_ALPHABET@{DNA\_ALPHABET}}
+\index{DNA\_ALPHABET@{DNA\_ALPHABET}!gen\_graph@{gen\_graph}}
+\doxysubsubsection{\texorpdfstring{DNA\_ALPHABET}{DNA\_ALPHABET}}
+{\footnotesize\ttfamily \label{namespacegen__graph_ac8a4f34098ed24be47e7181e11ffc63c} 
+str gen\+\_\+graph.\+DNA\+\_\+\+ALPHABET = "{}ACGT"{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__graph_8py_source_l00021}{21}} of file \doxymbox{\hyperlink{gen__graph_8py_source}{gen\+\_\+graph.\+py}}.
+

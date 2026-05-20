@@ -1,0 +1,300 @@
+\doxysection{profiler\+\_\+counter.\+c}
+\hypertarget{profiler__counter_8c_source}{}\label{profiler__counter_8c_source}\index{src/wfa/system/profiler\_counter.c@{src/wfa/system/profiler\_counter.c}}
+\doxymbox{\hyperlink{profiler__counter_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00029}00029\ \textcolor{comment}{\ *\ VERSION:\ v20.08.25}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00030}00030\ \textcolor{comment}{\ *\ DESCRIPTION:\ Simple\ profile\ counter}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00031}00031\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{profiler__counter_8h}{profiler\_counter.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00036}00036\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00037}00037\ \textcolor{comment}{\ *\ Counters}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00038}00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00039}\doxymbox{\hyperlink{profiler__counter_8c_a7205b8c2c72f2c54aeb0029ccd16a80a}{00039}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_a7205b8c2c72f2c54aeb0029ccd16a80a}{counter\_reset}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00040}00040\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00041}00041\ \ \ memset(counter,0,\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}));}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00042}00042\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00043}\doxymbox{\hyperlink{profiler__counter_8c_acbd71bfd6af600aad54f743f8331a9a3}{00043}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_acbd71bfd6af600aad54f743f8331a9a3}{counter\_add}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00044}00044\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ amount)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00046}00046\ \ \ \textcolor{comment}{//\ Add\ to\ total\ \&\ increment\ number\ of\ samples}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00047}00047\ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a660e265b89ae6c0f712ec1d7ef7bc856}{total}}\ +=\ amount;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00048}00048\ \ \ ++(counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00049}00049\ \ \ \textcolor{comment}{//\ From\ http://www.johndcook.com/standard\_deviation.html}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00050}00050\ \ \ \textcolor{comment}{//\ See\ Knuth\ TAOCP\ vol\ 2,\ 3rd\ edition,\ page\ 232}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00051}00051\ \ \ \textcolor{keywordflow}{if}\ (counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}}\ ==\ 1)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00052}00052\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a29052d0c6c4d6a70fea727efe0f96826}{min}}\ =\ amount;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00053}00053\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_ae8127428deef4ccb61d766d0a31bc159}{max}}\ =\ amount;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00054}00054\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a71efd623210c4af55425802ba0619474}{m\_oldM}}\ =\ amount;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00055}00055\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a43e5bd69d2ebec232638cc4d271eb209}{m\_newM}}\ =\ amount;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00056}00056\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9925e6ddfdaa5948f4d7446cc641244b}{m\_oldS}}\ =\ 0.0;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00057}00057\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00058}00058\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a29052d0c6c4d6a70fea727efe0f96826}{min}}\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a29052d0c6c4d6a70fea727efe0f96826}{min}},amount);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00059}00059\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_ae8127428deef4ccb61d766d0a31bc159}{max}}\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_ae8127428deef4ccb61d766d0a31bc159}{max}},amount);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00060}00060\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a43e5bd69d2ebec232638cc4d271eb209}{m\_newM}}\ =\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a71efd623210c4af55425802ba0619474}{m\_oldM}}\ +\ ((double)amount-\/counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a71efd623210c4af55425802ba0619474}{m\_oldM}})/(\textcolor{keywordtype}{double})counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00061}00061\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a3ace45e2bfd97566a629999721b66340}{m\_newS}}\ =\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9925e6ddfdaa5948f4d7446cc641244b}{m\_oldS}}\ +\ ((double)amount-\/counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a71efd623210c4af55425802ba0619474}{m\_oldM}})*((\textcolor{keywordtype}{double})amount-\/counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a43e5bd69d2ebec232638cc4d271eb209}{m\_newM}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00062}00062\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a71efd623210c4af55425802ba0619474}{m\_oldM}}\ =\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a43e5bd69d2ebec232638cc4d271eb209}{m\_newM}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00063}00063\ \ \ \ \ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9925e6ddfdaa5948f4d7446cc641244b}{m\_oldS}}\ =\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a3ace45e2bfd97566a629999721b66340}{m\_newS}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00064}00064\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00065}00065\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00066}\doxymbox{\hyperlink{profiler__counter_8c_acb0c93ba8c01b19003497dc036340c98}{00066}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_acb0c93ba8c01b19003497dc036340c98}{counter\_get\_total}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00067}00067\ \ \ \textcolor{keywordflow}{return}\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a660e265b89ae6c0f712ec1d7ef7bc856}{total}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00068}00068\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00069}\doxymbox{\hyperlink{profiler__counter_8c_a1b78cde9eb8f3e06ae3b9421c840ada6}{00069}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_a1b78cde9eb8f3e06ae3b9421c840ada6}{counter\_get\_num\_samples}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00070}00070\ \ \ \textcolor{keywordflow}{return}\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00071}00071\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00072}\doxymbox{\hyperlink{profiler__counter_8c_ad5bddf9cac868302d023381062ab6048}{00072}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_ad5bddf9cac868302d023381062ab6048}{counter\_get\_min}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00073}00073\ \ \ \textcolor{keywordflow}{return}\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a29052d0c6c4d6a70fea727efe0f96826}{min}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00075}\doxymbox{\hyperlink{profiler__counter_8c_ada86ab55cf8736111cb3b83c7c373ad8}{00075}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_ada86ab55cf8736111cb3b83c7c373ad8}{counter\_get\_max}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00076}00076\ \ \ \textcolor{keywordflow}{return}\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_ae8127428deef4ccb61d766d0a31bc159}{max}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00077}00077\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00078}\doxymbox{\hyperlink{profiler__counter_8c_a72ecf068a2080857bc7b51b063df9cb3}{00078}}\ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{profiler__counter_8c_a72ecf068a2080857bc7b51b063df9cb3}{counter\_get\_mean}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00079}00079\ \ \ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{double})counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a660e265b89ae6c0f712ec1d7ef7bc856}{total}}/(double)counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00080}00080\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00081}\doxymbox{\hyperlink{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b}{00081}}\ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b}{counter\_get\_variance}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00082}00082\ \ \ \textcolor{keywordflow}{return}\ ((counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}}\ >\ 1)\ ?\ counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a3ace45e2bfd97566a629999721b66340}{m\_newS}}/(\textcolor{keywordtype}{double})(counter-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}}\ -\/\ 1)\ :\ 0.0);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00084}\doxymbox{\hyperlink{profiler__counter_8c_aab5759c91be55e4e2537fbb3eff70437}{00084}}\ \textcolor{keywordtype}{double}\ \doxymbox{\hyperlink{profiler__counter_8c_aab5759c91be55e4e2537fbb3eff70437}{counter\_get\_stddev}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00085}00085\ \ \ \textcolor{keywordflow}{return}\ sqrt(\doxymbox{\hyperlink{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b}{counter\_get\_variance}}(counter));}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00086}00086\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00087}\doxymbox{\hyperlink{profiler__counter_8c_a3309eb329061c41266f6370b32dfd5cb}{00087}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_a3309eb329061c41266f6370b32dfd5cb}{counter\_combine\_sum}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00088}00088\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter\_dst,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00089}00089\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter\_src)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00090}00090\ \ \ counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a660e265b89ae6c0f712ec1d7ef7bc856}{total}}\ +=\ counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a660e265b89ae6c0f712ec1d7ef7bc856}{total}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00091}00091\ \ \ counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}}\ +=\ counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9b469dc17b01a480d42aae6ba69ed5e7}{samples}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00092}00092\ \ \ counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a29052d0c6c4d6a70fea727efe0f96826}{min}}\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a29052d0c6c4d6a70fea727efe0f96826}{min}},counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a29052d0c6c4d6a70fea727efe0f96826}{min}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00093}00093\ \ \ counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_ae8127428deef4ccb61d766d0a31bc159}{max}}\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_ae8127428deef4ccb61d766d0a31bc159}{max}},counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_ae8127428deef4ccb61d766d0a31bc159}{max}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00094}00094\ \ \ \textcolor{keywordflow}{if}\ (counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a3ace45e2bfd97566a629999721b66340}{m\_newS}}!=0.0)\ counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a3ace45e2bfd97566a629999721b66340}{m\_newS}}\ =\ counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a3ace45e2bfd97566a629999721b66340}{m\_newS}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00095}00095\ \ \ \textcolor{keywordflow}{if}\ (counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a43e5bd69d2ebec232638cc4d271eb209}{m\_newM}}!=0.0)\ counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a43e5bd69d2ebec232638cc4d271eb209}{m\_newM}}\ =\ counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a43e5bd69d2ebec232638cc4d271eb209}{m\_newM}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00096}00096\ \ \ \textcolor{keywordflow}{if}\ (counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9925e6ddfdaa5948f4d7446cc641244b}{m\_oldS}}!=0.0)\ counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9925e6ddfdaa5948f4d7446cc641244b}{m\_oldS}}\ =\ counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a9925e6ddfdaa5948f4d7446cc641244b}{m\_oldS}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00097}00097\ \ \ \textcolor{keywordflow}{if}\ (counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a71efd623210c4af55425802ba0619474}{m\_oldM}}!=0.0)\ counter\_dst-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a71efd623210c4af55425802ba0619474}{m\_oldM}}\ =\ counter\_src-\/>\doxymbox{\hyperlink{structprofiler__counter__t_a71efd623210c4af55425802ba0619474}{m\_oldM}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00098}00098\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00099}\doxymbox{\hyperlink{profiler__counter_8c_a62be5bc271f3830d6075ed26aa2ce4cf}{00099}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_a62be5bc271f3830d6075ed26aa2ce4cf}{counter\_print\_stats}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00100}00100\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00101}00101\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00102}00102\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ ref\_counter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00103}00103\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ units)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00104}00104\ \ \ \textcolor{comment}{//\ Print\ Samples}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00105}00105\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_samples\ =\ \doxymbox{\hyperlink{profiler__counter_8c_a1b78cde9eb8f3e06ae3b9421c840ada6}{counter\_get\_num\_samples}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00106}00106\ \ \ \textcolor{keywordflow}{if}\ (num\_samples\ >=\ \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00107}00107\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (samples=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}G"{}},num\_samples/\doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00108}00108\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (num\_samples\ >=\ \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00109}00109\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (samples=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}M"{}},num\_samples/\doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00110}00110\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (num\_samples\ >=\ \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00111}00111\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (samples=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}K"{}},num\_samples/\doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00112}00112\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00113}00113\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (samples=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}"{}},num\_samples);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00114}00114\ \ \ \ \ \textcolor{keywordflow}{if}\ (num\_samples==0)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00115}00115\ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},-\/-\/n/a-\/-\/)\}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00116}00116\ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00118}00118\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00119}00119\ \ \ \textcolor{comment}{//\ Print\ Mean}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00120}00120\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mean\ =\ \doxymbox{\hyperlink{profiler__counter_8c_a72ecf068a2080857bc7b51b063df9cb3}{counter\_get\_mean}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00121}00121\ \ \ \textcolor{keywordflow}{if}\ (mean\ >=\ \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00122}00122\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\{mean\%.2fG"{}},mean/\doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00123}00123\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mean\ >=\ \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00124}00124\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\{mean\%.2fM"{}},mean/\doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00125}00125\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (mean\ >=\ \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00126}00126\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\{mean\%.2fK"{}},mean/\doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00127}00127\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00128}00128\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\{mean\%.2f"{}},mean);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00129}00129\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00130}00130\ \ \ \textcolor{comment}{//\ Print\ Min}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00131}00131\ \ \ \textcolor{keyword}{const}\ uint64\_t\ min\ =\ \doxymbox{\hyperlink{profiler__counter_8c_ad5bddf9cac868302d023381062ab6048}{counter\_get\_min}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00132}00132\ \ \ \textcolor{keywordflow}{if}\ (min\ >=\ \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00133}00133\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},min\%.2fG"{}},(\textcolor{keywordtype}{double})min/\doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00134}00134\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (min\ >=\ \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00135}00135\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},min\%.2fM"{}},(\textcolor{keywordtype}{double})min/\doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00136}00136\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (min\ >=\ \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00137}00137\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},min\%.2fK"{}},(\textcolor{keywordtype}{double})min/\doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00138}00138\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00139}00139\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},min\%.2f"{}},(\textcolor{keywordtype}{double})min);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00140}00140\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00141}00141\ \ \ \textcolor{comment}{//\ Print\ Max}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00142}00142\ \ \ \textcolor{keyword}{const}\ uint64\_t\ max\ =\ \doxymbox{\hyperlink{profiler__counter_8c_ada86ab55cf8736111cb3b83c7c373ad8}{counter\_get\_max}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00143}00143\ \ \ \textcolor{keywordflow}{if}\ (max\ >=\ \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00144}00144\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Max\%.2fG"{}},(\textcolor{keywordtype}{double})max/\doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00145}00145\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (max\ >=\ \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00146}00146\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Max\%.2fM"{}},(\textcolor{keywordtype}{double})max/\doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00147}00147\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (max\ >=\ \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00148}00148\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Max\%.2fK"{}},(\textcolor{keywordtype}{double})max/\doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00149}00149\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00150}00150\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Max\%.2f"{}},(\textcolor{keywordtype}{double})max);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00151}00151\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00152}00152\ \ \ \textcolor{comment}{//\ Print\ Variance}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00153}00153\ \ \ \textcolor{keyword}{const}\ uint64\_t\ var\ =\ \doxymbox{\hyperlink{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b}{counter\_get\_variance}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00154}00154\ \ \ \textcolor{keywordflow}{if}\ (var\ >=\ \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00155}00155\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Var\%.2fG"{}},(\textcolor{keywordtype}{double})var/\doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00156}00156\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (var\ >=\ \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00157}00157\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Var\%.2fM"{}},(\textcolor{keywordtype}{double})var/\doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00158}00158\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (var\ >=\ \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00159}00159\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Var\%.2fK"{}},(\textcolor{keywordtype}{double})var/\doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00160}00160\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00161}00161\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Var\%.2f"{}},(\textcolor{keywordtype}{double})var);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00162}00162\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00163}00163\ \ \ \textcolor{comment}{//\ Print\ Standard\ Deviation}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00164}00164\ \ \ \textcolor{keyword}{const}\ uint64\_t\ stdDev\ =\ \doxymbox{\hyperlink{profiler__counter_8c_aab5759c91be55e4e2537fbb3eff70437}{counter\_get\_stddev}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00165}00165\ \ \ \textcolor{keywordflow}{if}\ (stdDev\ >=\ \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00166}00166\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},StdDev\%.2fG)\}\(\backslash\)n"{}},(\textcolor{keywordtype}{double})stdDev/\doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00167}00167\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stdDev\ >=\ \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00168}00168\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},StdDev\%.2fM)\}\(\backslash\)n"{}},(\textcolor{keywordtype}{double})stdDev/\doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00169}00169\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (stdDev\ >=\ \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00170}00170\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},StdDev\%.2fK)\}\(\backslash\)n"{}},(\textcolor{keywordtype}{double})stdDev/\doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00171}00171\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00172}00172\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{},StdDev\%.2f)\}\(\backslash\)n"{}},(\textcolor{keywordtype}{double})stdDev);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00173}00173\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00174}00174\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00175}\doxymbox{\hyperlink{profiler__counter_8c_a6225bcddb2fc8f77c06f3cf650ab96d4}{00175}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_a6225bcddb2fc8f77c06f3cf650ab96d4}{counter\_print}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00176}00176\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00177}00177\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00178}00178\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ ref\_counter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00179}00179\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ units,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00180}00180\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ full\_report)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00181}00181\ \ \ \textcolor{keyword}{const}\ uint64\_t\ total\ =\ \doxymbox{\hyperlink{profiler__counter_8c_acb0c93ba8c01b19003497dc036340c98}{counter\_get\_total}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00182}00182\ \ \ \textcolor{comment}{//\ Print\ Total}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00183}00183\ \ \ \textcolor{keywordflow}{if}\ (total\ >=\ \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00184}00184\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\%7.2f\ G\%s"{}},(\textcolor{keywordtype}{double})total/\doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}},units);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00185}00185\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (total\ >=\ \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00186}00186\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\%7.2f\ M\%s"{}},(\textcolor{keywordtype}{double})total/\doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}},units);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00187}00187\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (total\ >=\ \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00188}00188\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\%7.2f\ K\%s"{}},(\textcolor{keywordtype}{double})total/\doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}},units);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00189}00189\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00190}00190\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\%7.2f\ \%s\ "{}},(\textcolor{keywordtype}{double})total,units);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00191}00191\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00192}00192\ \ \ \textcolor{comment}{//\ Print\ percentage\ wrt\ reference}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00193}00193\ \ \ \textcolor{keywordflow}{if}\ (ref\_counter!=NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00194}00194\ \ \ \ \ \textcolor{keywordflow}{if}\ (total==0)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (\ \ 0.00\ \%\%)"{}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00196}00196\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00197}00197\ \ \ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ total\_ref\ =\ \doxymbox{\hyperlink{profiler__counter_8c_acb0c93ba8c01b19003497dc036340c98}{counter\_get\_total}}(ref\_counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00198}00198\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (total\_ref==0)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (\ \ n/a\ \ \%\%)"{}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00200}00200\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00201}00201\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ percentage\ =\ (double)(total*100)/(double)total\_ref;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00202}00202\ \ \ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (\%6.02f\ \%\%)"{}},percentage);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00203}00203\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00204}00204\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00205}00205\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00206}00206\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ \ \ \ \ \ \ \ \ \ \ "{}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00207}00207\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00208}00208\ \ \ \textcolor{comment}{//\ Full\ report}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00209}00209\ \ \ \textcolor{keywordflow}{if}\ (!full\_report)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00210}00210\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00211}00211\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00212}00212\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00213}00213\ \ \ \ \ \doxymbox{\hyperlink{profiler__counter_8c_a62be5bc271f3830d6075ed26aa2ce4cf}{counter\_print\_stats}}(stream,counter,ref\_counter,units);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00214}00214\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00215}00215\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00216}\doxymbox{\hyperlink{profiler__counter_8c_ad35f0ab207433fb713a822fcf09feaaa}{00216}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_ad35f0ab207433fb713a822fcf09feaaa}{percentage\_print}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00217}00217\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00218}00218\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{structprofiler__counter__t}{profiler\_counter\_t}}*\ \textcolor{keyword}{const}\ counter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00219}00219\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ units)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00220}00220\ \ \ \textcolor{comment}{//\ Print\ Mean}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00221}00221\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{double}\ mean\ =\ \doxymbox{\hyperlink{profiler__counter_8c_a72ecf068a2080857bc7b51b063df9cb3}{counter\_get\_mean}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00222}00222\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\%7.2f\ \%\%\%s\(\backslash\)t\(\backslash\)t"{}},mean,units);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00223}00223\ \ \ \textcolor{comment}{//\ Print\ Samples}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00224}00224\ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_samples\ =\ \doxymbox{\hyperlink{profiler__counter_8c_a1b78cde9eb8f3e06ae3b9421c840ada6}{counter\_get\_num\_samples}}(counter);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00225}00225\ \ \ \textcolor{keywordflow}{if}\ (num\_samples\ >=\ \doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00226}00226\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (samples=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}G"{}},num\_samples/\doxymbox{\hyperlink{commons_8h_a973f23a9cf78d4dbc30cfa1a4fa83e7c}{METRIC\_FACTOR\_1G}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00227}00227\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (num\_samples\ >=\ \doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00228}00228\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (samples=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}M"{}},num\_samples/\doxymbox{\hyperlink{commons_8h_ad949e6e0efd6a0388a50c07d47680fd8}{METRIC\_FACTOR\_1M}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00229}00229\ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (num\_samples\ >=\ \doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}})\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00230}00230\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (samples=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}K"{}},num\_samples/\doxymbox{\hyperlink{commons_8h_a408508f0d18a6bd5a1c6c137ef791842}{METRIC\_FACTOR\_1K}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00231}00231\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00232}00232\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\ (samples=\%"{}}\ PRIu64\ \textcolor{stringliteral}{"{}"{}},num\_samples);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00233}00233\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00234}00234\ \ \ \textcolor{keywordflow}{if}\ (num\_samples\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00235}00235\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{})\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00236}00236\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00237}00237\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00238}00238\ \ \ \textcolor{comment}{//\ Print\ Min/Max}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00239}00239\ \ \ fprintf(stream,\textcolor{stringliteral}{"{},min\%.2f\%\%,Max\%.2f\%\%"{}},}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00240}00240\ \ \ \ \ \ \ (\textcolor{keywordtype}{double})\doxymbox{\hyperlink{profiler__counter_8c_ad5bddf9cac868302d023381062ab6048}{counter\_get\_min}}(counter),(\textcolor{keywordtype}{double})\doxymbox{\hyperlink{profiler__counter_8c_ada86ab55cf8736111cb3b83c7c373ad8}{counter\_get\_max}}(counter));}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00241}00241\ \ \ \textcolor{comment}{//\ Print\ Variance/StandardDeviation}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00242}00242\ \ \ fprintf(stream,\textcolor{stringliteral}{"{},Var\%.2f,StdDev\%.2f)\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00243}00243\ \ \ \ \ \ \ \doxymbox{\hyperlink{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b}{counter\_get\_variance}}(counter),\doxymbox{\hyperlink{profiler__counter_8c_aab5759c91be55e4e2537fbb3eff70437}{counter\_get\_stddev}}(counter));}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00244}00244\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00245}00245\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00246}00246\ \textcolor{comment}{\ *\ Reference\ Counter\ (Counts\ wrt\ a\ reference\ counter.\ Eg\ ranks)}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00247}00247\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00248}\doxymbox{\hyperlink{profiler__counter_8c_a8e16c8a17f44dc1f548f68172c8d77db}{00248}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_a8e16c8a17f44dc1f548f68172c8d77db}{rcounter\_start}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00249}00249\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00250}00250\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ reference)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00251}00251\ \ \ rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_a7cb72fc52fc5cd1148f06f18c9463c63}{accumulated}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00252}00252\ \ \ rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_a52eca87734df65a793cf046243d15091}{begin\_count}}\ =\ reference;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00253}00253\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00254}\doxymbox{\hyperlink{profiler__counter_8c_a1eb117bd38a4e2de28990379b5f5ca77}{00254}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_a1eb117bd38a4e2de28990379b5f5ca77}{rcounter\_stop}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00255}00255\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00256}00256\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ reference)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00257}00257\ \ \ \doxymbox{\hyperlink{profiler__counter_8c_aac66016e9e8fa8e3958123faff280535}{rcounter\_pause}}(rcounter,reference);}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00258}00258\ \ \ \doxymbox{\hyperlink{profiler__counter_8c_acbd71bfd6af600aad54f743f8331a9a3}{counter\_add}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}},rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_a7cb72fc52fc5cd1148f06f18c9463c63}{accumulated}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00259}00259\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00260}\doxymbox{\hyperlink{profiler__counter_8c_aac66016e9e8fa8e3958123faff280535}{00260}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_aac66016e9e8fa8e3958123faff280535}{rcounter\_pause}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00261}00261\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00262}00262\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ reference)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00263}00263\ \ \ rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_a7cb72fc52fc5cd1148f06f18c9463c63}{accumulated}}\ +=\ reference\ -\/\ rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_a52eca87734df65a793cf046243d15091}{begin\_count}};}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00264}00264\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00265}\doxymbox{\hyperlink{profiler__counter_8c_a853f160bccf6f9b1bf72c4770373392d}{00265}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_a853f160bccf6f9b1bf72c4770373392d}{rcounter\_restart}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00266}00266\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter,}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00267}00267\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ reference)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00268}00268\ \ \ rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_a52eca87734df65a793cf046243d15091}{begin\_count}}\ =\ reference;}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00269}00269\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00270}\doxymbox{\hyperlink{profiler__counter_8c_a0b2f49dd29bc1f614533937c48a4a37c}{00270}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{profiler__counter_8c_a0b2f49dd29bc1f614533937c48a4a37c}{rcounter\_reset}}(}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00271}00271\ \ \ \ \ \doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00272}00272\ \ \ \doxymbox{\hyperlink{profiler__counter_8c_a7205b8c2c72f2c54aeb0029ccd16a80a}{counter\_reset}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00273}00273\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00274}\doxymbox{\hyperlink{profiler__counter_8c_a69941ec7136d3966c457043a9f5f8c2a}{00274}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_a69941ec7136d3966c457043a9f5f8c2a}{rcounter\_get\_total}}(\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00275}00275\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{profiler__counter_8c_acb0c93ba8c01b19003497dc036340c98}{counter\_get\_total}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00276}00276\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00277}\doxymbox{\hyperlink{profiler__counter_8c_ac60e1659e157970793009403eeeb593a}{00277}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_ac60e1659e157970793009403eeeb593a}{rcounter\_get\_num\_samples}}(\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00278}00278\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{profiler__counter_8c_a1b78cde9eb8f3e06ae3b9421c840ada6}{counter\_get\_num\_samples}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00279}00279\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00280}\doxymbox{\hyperlink{profiler__counter_8c_aa3df72c58258bf23c5af9f32aa599a8a}{00280}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_aa3df72c58258bf23c5af9f32aa599a8a}{rcounter\_get\_min}}(\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00281}00281\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{profiler__counter_8c_ad5bddf9cac868302d023381062ab6048}{counter\_get\_min}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00282}00282\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00283}\doxymbox{\hyperlink{profiler__counter_8c_a07cc4c219e47211abc9ca1ebbca9f138}{00283}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_a07cc4c219e47211abc9ca1ebbca9f138}{rcounter\_get\_max}}(\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00284}00284\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{profiler__counter_8c_ada86ab55cf8736111cb3b83c7c373ad8}{counter\_get\_max}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00285}00285\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00286}\doxymbox{\hyperlink{profiler__counter_8c_a402450f04be131232c857460d14fd165}{00286}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_a402450f04be131232c857460d14fd165}{rcounter\_get\_mean}}(\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00287}00287\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{profiler__counter_8c_a72ecf068a2080857bc7b51b063df9cb3}{counter\_get\_mean}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00288}00288\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00289}\doxymbox{\hyperlink{profiler__counter_8c_a0e3355f39547706561dda0fbe3929b9f}{00289}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_a0e3355f39547706561dda0fbe3929b9f}{rcounter\_get\_variance}}(\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00290}00290\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{profiler__counter_8c_a6e6478d24d6de855fba8a1bba4d39c7b}{counter\_get\_variance}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00291}00291\ \}}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00292}\doxymbox{\hyperlink{profiler__counter_8c_acd902a517858b41541e76dcf7d6a92b6}{00292}}\ uint64\_t\ \doxymbox{\hyperlink{profiler__counter_8c_acd902a517858b41541e76dcf7d6a92b6}{rcounter\_get\_stddev}}(\doxymbox{\hyperlink{structprofiler__rcounter__t}{profiler\_rcounter\_t}}*\ \textcolor{keyword}{const}\ rcounter)\ \{}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00293}00293\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{profiler__counter_8c_aab5759c91be55e4e2537fbb3eff70437}{counter\_get\_stddev}}(\&rcounter-\/>\doxymbox{\hyperlink{structprofiler__rcounter__t_aa9bee2950e247e306215e95fe18a5279}{counter}});}
+\DoxyCodeLine{\Hypertarget{profiler__counter_8c_source_l00294}00294\ \}}
+
+\end{DoxyCode}

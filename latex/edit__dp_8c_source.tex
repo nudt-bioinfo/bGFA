@@ -1,0 +1,146 @@
+\doxysection{edit\+\_\+dp.\+c}
+\hypertarget{edit__dp_8c_source}{}\label{edit__dp_8c_source}\index{src/wfa/tools/align\_benchmark/edit/edit\_dp.c@{src/wfa/tools/align\_benchmark/edit/edit\_dp.c}}
+\doxymbox{\hyperlink{edit__dp_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Dynamic-\/programming\ algorithm\ to\ compute\ Levenshtein\ alignment\ (edit)}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mm__allocator_8h}{system/mm\_allocator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{edit__dp_8h}{edit\_dp.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00036}00036\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00037}00037\ \textcolor{comment}{\ *\ Edit\ distance\ computation\ using\ dynamic-\/programming\ matrix}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00038}00038\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00039}\doxymbox{\hyperlink{edit__dp_8c_aeeb6fd56bfbf87ba7e727c92507e7298}{00039}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{edit__dp_8c_aeeb6fd56bfbf87ba7e727c92507e7298}{edit\_dp\_traceback}}(}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00040}00040\ \ \ \ \ \doxymbox{\hyperlink{structscore__matrix__t}{score\_matrix\_t}}*\ \textcolor{keyword}{const}\ score\_matrix,}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00041}00041\ \ \ \ \ \doxymbox{\hyperlink{structcigar__t}{cigar\_t}}*\ \textcolor{keyword}{const}\ cigar)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00042}00042\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00043}00043\ \ \ \textcolor{keywordtype}{int}**\ \textcolor{keyword}{const}\ dp\ =\ score\_matrix-\/>\doxymbox{\hyperlink{structscore__matrix__t_a9823b04092909ba44209c056c7ab1e6a}{columns}};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00044}00044\ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ operations\ =\ cigar-\/>\doxymbox{\hyperlink{structcigar__t_af5a274222afea8efdfcf6ae6dea11301}{operations}};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00045}00045\ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_acfce63569d7d0c85ade8d0c5eafd7d11}{end\_offset}}\ =\ cigar-\/>\doxymbox{\hyperlink{structcigar__t_adca8edc6f11757f3b73c4cf5c836c892}{max\_operations}};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00046}00046\ \ \ \textcolor{keywordtype}{int}\ op\_sentinel\ =\ cigar-\/>\doxymbox{\hyperlink{structcigar__t_acfce63569d7d0c85ade8d0c5eafd7d11}{end\_offset}}\ -\/\ 1;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00047}00047\ \ \ \textcolor{keywordtype}{int}\ h,\ v;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00048}00048\ \ \ \textcolor{comment}{//\ Compute\ traceback}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00049}00049\ \ \ h\ =\ score\_matrix-\/>\doxymbox{\hyperlink{structscore__matrix__t_a2ebacce1f4a0152ad9279bc0a343f754}{num\_columns}}-\/1;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00050}00050\ \ \ v\ =\ score\_matrix-\/>\doxymbox{\hyperlink{structscore__matrix__t_aef159571820500e710261b70e6b0a3e5}{num\_rows}}-\/1;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00051}00051\ \ \ \textcolor{keywordflow}{while}\ (h>0\ \&\&\ v>0)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00052}00052\ \ \ \ \ \textcolor{keywordflow}{if}\ (dp[h][v]==dp[h][v-\/1]+1)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00053}00053\ \ \ \ \ \ \ operations[op\_sentinel-\/-\/]\ =\ \textcolor{charliteral}{'D'};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00054}00054\ \ \ \ \ \ \ -\/-\/v;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00055}00055\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dp[h][v]==dp[h-\/1][v]+1)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00056}00056\ \ \ \ \ \ \ operations[op\_sentinel-\/-\/]\ =\ \textcolor{charliteral}{'I'};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00057}00057\ \ \ \ \ \ \ -\/-\/h;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00058}00058\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dp[h][v]==dp[h-\/1][v-\/1])\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00059}00059\ \ \ \ \ \ \ operations[op\_sentinel-\/-\/]\ =\ \textcolor{charliteral}{'M'};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00060}00060\ \ \ \ \ \ \ -\/-\/h;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00061}00061\ \ \ \ \ \ \ -\/-\/v;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00062}00062\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (dp[h][v]==dp[h-\/1][v-\/1]+1)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00063}00063\ \ \ \ \ \ \ operations[op\_sentinel-\/-\/]\ =\ \textcolor{charliteral}{'X'};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00064}00064\ \ \ \ \ \ \ -\/-\/h;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00065}00065\ \ \ \ \ \ \ -\/-\/v;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00066}00066\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00067}00067\ \ \ \ \ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}Edit\ backtrace.\ No\ backtrace\ operation\ found"{}});}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00068}00068\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00069}00069\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00070}00070\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00071}00071\ \ \ \textcolor{keywordflow}{while}\ (h>0)\ \{operations[op\_sentinel-\/-\/]\ =\ \textcolor{charliteral}{'I'};\ -\/-\/h;\}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00072}00072\ \ \ \textcolor{keywordflow}{while}\ (v>0)\ \{operations[op\_sentinel-\/-\/]\ =\ \textcolor{charliteral}{'D'};\ -\/-\/v;\}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00073}00073\ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_ac960282199e335fafcb8b14bff41faf9}{begin\_offset}}\ =\ op\_sentinel\ +\ 1;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00074}00074\ \}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00075}\doxymbox{\hyperlink{edit__dp_8c_ae0ea2c0a0158f691e54c9f3e94761fee}{00075}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{edit__dp_8c_ae0ea2c0a0158f691e54c9f3e94761fee}{edit\_dp\_align}}(}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00076}00076\ \ \ \ \ \doxymbox{\hyperlink{structscore__matrix__t}{score\_matrix\_t}}*\ \textcolor{keyword}{const}\ score\_matrix,}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00078}00078\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00079}00079\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00080}00080\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length,}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00081}00081\ \ \ \ \ \doxymbox{\hyperlink{structcigar__t}{cigar\_t}}*\ \textcolor{keyword}{const}\ cigar)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00082}00082\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00083}00083\ \ \ \textcolor{keywordtype}{int}**\ dp\ =\ score\_matrix-\/>\doxymbox{\hyperlink{structscore__matrix__t_a9823b04092909ba44209c056c7ab1e6a}{columns}};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00084}00084\ \ \ \textcolor{keywordtype}{int}\ h,\ v;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00085}00085\ \ \ \textcolor{comment}{//\ Init\ DP}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00086}00086\ \ \ \textcolor{keywordflow}{for}\ (v=0;v<=pattern\_length;++v)\ dp[0][v]\ =\ v;\ \textcolor{comment}{//\ No\ ends-\/free}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00087}00087\ \ \ \textcolor{keywordflow}{for}\ (h=0;h<=text\_length;++h)\ dp[h][0]\ =\ h;\ \textcolor{comment}{//\ No\ ends-\/free}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00088}00088\ \ \ \textcolor{comment}{//\ Compute\ DP}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00089}00089\ \ \ \textcolor{keywordflow}{for}\ (h=1;h<=text\_length;++h)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00090}00090\ \ \ \ \ \textcolor{keywordflow}{for}\ (v=1;v<=pattern\_length;++v)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00091}00091\ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ min\ =\ dp[h-\/1][v-\/1]\ +\ (\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}[h-\/1]!=\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}[v-\/1]);}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00092}00092\ \ \ \ \ \ \ min\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(min,dp[h-\/1][v]+1);\ \textcolor{comment}{//\ Ins}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00093}00093\ \ \ \ \ \ \ min\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(min,dp[h][v-\/1]+1);\ \textcolor{comment}{//\ Del}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00094}00094\ \ \ \ \ \ \ dp[h][v]\ =\ min;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00095}00095\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00096}00096\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00097}00097\ \ \ \textcolor{comment}{//\ Compute\ traceback}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00098}00098\ \ \ \doxymbox{\hyperlink{edit__dp_8c_aeeb6fd56bfbf87ba7e727c92507e7298}{edit\_dp\_traceback}}(score\_matrix,cigar);}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00099}00099\ \ \ \textcolor{comment}{//\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00100}00100\ \ \ \textcolor{comment}{//\ score\_matrix\_print(stderr,score\_matrix,pattern,text);}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00101}00101\ \}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00102}00102\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00103}00103\ \textcolor{comment}{\ *\ Edit\ distance\ computation\ using\ dynamic-\/programming\ matrix\ (banded)}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00104}00104\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00105}\doxymbox{\hyperlink{edit__dp_8c_a83a4a1cfd5fff67fd3d4c184e8ae4ec2}{00105}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{edit__dp_8c_a83a4a1cfd5fff67fd3d4c184e8ae4ec2}{edit\_dp\_align\_banded}}(}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00106}00106\ \ \ \ \ \doxymbox{\hyperlink{structscore__matrix__t}{score\_matrix\_t}}*\ \textcolor{keyword}{const}\ score\_matrix,}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00107}00107\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00108}00108\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00109}00109\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00110}00110\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length,}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00111}00111\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ bandwidth,}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00112}00112\ \ \ \ \ \doxymbox{\hyperlink{structcigar__t}{cigar\_t}}*\ \textcolor{keyword}{const}\ cigar)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00113}00113\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00114}00114\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ k\_end\ =\ \doxymbox{\hyperlink{generate__dataset_8c_ae2f08dc603ae93c402abd918ba4e23e1}{ABS}}(text\_length-\/pattern\_length)+1;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00115}00115\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ effective\_bandwidth\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(k\_end,bandwidth);}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00116}00116\ \ \ \textcolor{keywordtype}{int}**\ dp\ =\ score\_matrix-\/>\doxymbox{\hyperlink{structscore__matrix__t_a9823b04092909ba44209c056c7ab1e6a}{columns}};}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00117}00117\ \ \ \textcolor{keywordtype}{int}\ h,\ v;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00118}00118\ \ \ \textcolor{comment}{//\ Initialize}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00119}00119\ \ \ dp[0][0]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00120}00120\ \ \ \textcolor{keywordflow}{for}\ (v=1;v<=effective\_bandwidth;++v)\ dp[0][v]\ =\ v;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00121}00121\ \ \ \textcolor{comment}{//\ Compute\ DP}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00122}00122\ \ \ \textcolor{keywordflow}{for}\ (h=1;h<=text\_length;++h)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00123}00123\ \ \ \ \ \textcolor{comment}{//\ Compute\ lo\ limit}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00124}00124\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ lo\_band\ =\ (h\ <=\ effective\_bandwidth);}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00125}00125\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ lo\ =\ (lo\_band)\ ?\ 1\ :\ h\ -\/\ effective\_bandwidth;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00126}00126\ \ \ \ \ dp[h][lo-\/1]\ =\ (lo\_band)\ ?\ h\ :\ INT16\_MAX;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00127}00127\ \ \ \ \ \textcolor{comment}{//\ Compute\ hi\ limit}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ hi\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(pattern\_length,effective\_bandwidth+h-\/1);}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{if}\ (h\ >\ 1)\ dp[h-\/1][hi]\ =\ INT16\_MAX;}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00130}00130\ \ \ \ \ \textcolor{comment}{//\ Compute\ column}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{for}\ (v=lo;v<=hi;++v)\ \{}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00132}00132\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ sub\ =\ dp[h-\/1][v-\/1]\ +\ (\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}[h-\/1]!=\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}[v-\/1]);\ \textcolor{comment}{//\ Sub}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00133}00133\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ ins\ =\ dp[h-\/1][v];\ \textcolor{comment}{//\ Ins}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00134}00134\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ del\ =\ dp[h][v-\/1];\ \textcolor{comment}{//\ Del}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00135}00135\ \ \ \ \ \ \ dp[h][v]\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(\doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(ins,del)+1,sub);}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00136}00136\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00137}00137\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00138}00138\ \ \ \textcolor{comment}{//\ Compute\ traceback}}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00139}00139\ \ \ \doxymbox{\hyperlink{edit__dp_8c_aeeb6fd56bfbf87ba7e727c92507e7298}{edit\_dp\_traceback}}(score\_matrix,cigar);}
+\DoxyCodeLine{\Hypertarget{edit__dp_8c_source_l00140}00140\ \}}
+
+\end{DoxyCode}

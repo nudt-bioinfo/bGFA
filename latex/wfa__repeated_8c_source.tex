@@ -1,0 +1,67 @@
+\doxysection{wfa\+\_\+repeated.\+c}
+\hypertarget{wfa__repeated_8c_source}{}\label{wfa__repeated_8c_source}\index{src/wfa/examples/wfa\_repeated.c@{src/wfa/examples/wfa\_repeated.c}}
+\doxymbox{\hyperlink{wfa__repeated_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ WFA\ Sample-\/Code}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__align_8h}{wavefront/wavefront\_align.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00035}\doxymbox{\hyperlink{wfa__repeated_8c_a0ddf1224851353fc92bfbff6f499fa97}{00035}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{test__bgfa_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(\textcolor{keywordtype}{int}\ argc,\textcolor{keywordtype}{char}*\ argv[])\ \{}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00036}00036\ \ \ \textcolor{comment}{//\ Patter\ \&\ Text}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00037}00037\ \ \ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}\ =\ \textcolor{stringliteral}{"{}TCTTTACTCGCGCGTTTCTTACTCGCGCGTTGGAGAAATACAATAGTGGAGAAATACAATAGTTTTTTTTTTTT"{}};}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00038}00038\ \ \ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}\ \ \ \ =\ \textcolor{stringliteral}{"{}TTTTTTCTATACTGCGCGTTTTCTATACTCGCGCGTTGGAGAAATACAATAGTGGAGAAATAAAATAGT"{}};}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00039}00039\ \ \ \textcolor{comment}{//\ Configure\ alignment\ attributes}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00040}00040\ \ \ \doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\_aligner\_attr\_t}}\ attributes\ =\ \doxymbox{\hyperlink{wavefront__attributes_8c_a87e91d1e75a390a0d4e99b67855bdc72}{wavefront\_aligner\_attr\_default}};}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00041}00041\ \ \ attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_ab50d07405667d22e50e875668c0adcfa}{distance\_metric}}\ =\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{gap\_affine}};}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00042}00042\ \ \ attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_a968d741e58d5ce6ac31fa915302e5ece}{match}}\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00043}00043\ \ \ attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_a5efb3471e7c6f46820644556e9b53bdd}{mismatch}}\ =\ 4;}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00044}00044\ \ \ attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_a515f12e47d1db00305757720b4311518}{gap\_opening}}\ =\ 6;}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00045}00045\ \ \ attributes.\doxymbox{\hyperlink{structwavefront__aligner__attr__t_a27ba26d19652f7202887d1bb8ced415e}{affine\_penalties}}.\doxymbox{\hyperlink{structaffine__penalties__t_af486bb6869aecaebd8de26ecafe15223}{gap\_extension}}\ =\ 2;}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00046}00046\ \ \ \textcolor{comment}{//\ Initialize\ Wavefront\ Aligner}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00047}00047\ \ \ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner\ =\ \doxymbox{\hyperlink{wavefront__aligner_8c_aa05e9e72839f4a3295b16d9b7a3d16a4}{wavefront\_aligner\_new}}(\&attributes);}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00048}00048\ \ \ \textcolor{comment}{//\ Repeat\ alignment\ (for\ the\ sake\ of\ it)}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00049}00049\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00050}00050\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<100000;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00051}00051\ \ \ \ \ \textcolor{comment}{//\ Align}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00052}00052\ \ \ \ \ \doxymbox{\hyperlink{wavefront__align_8c_ae1881b46dea77aecf2f6df61247ffc30}{wavefront\_align}}(wf\_aligner,\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},strlen(\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}),\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},strlen(\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}));}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00053}00053\ \ \ \ \ \textcolor{comment}{//\ Report}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00054}00054\ \ \ \ \ \textcolor{keywordflow}{if}\ ((i\%1000)\ ==\ 0)\ \{}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00055}00055\ \ \ \ \ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}...\ done\ \%d\ alignments\(\backslash\)n"{}},i);}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00056}00056\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00057}00057\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00058}00058\ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}...\ done\ \%d\ alignments\(\backslash\)n"{}},100000);}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00059}00059\ \ \ \textcolor{comment}{//\ Free}}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00060}00060\ \ \ \doxymbox{\hyperlink{wavefront__aligner_8c_aecff0b68c52e3248237f6066eae0a6dc}{wavefront\_aligner\_delete}}(wf\_aligner);}
+\DoxyCodeLine{\Hypertarget{wfa__repeated_8c_source_l00061}00061\ \}}
+
+\end{DoxyCode}

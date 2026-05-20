@@ -1,0 +1,79 @@
+\doxysection{CLI::\+detail::\+is\+\_\+direct\+\_\+constructible\texorpdfstring{$<$}{<} T, C \texorpdfstring{$>$}{>} Class Template Reference}
+\hypertarget{class_c_l_i_1_1detail_1_1is__direct__constructible}{}\label{class_c_l_i_1_1detail_1_1is__direct__constructible}\index{CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}}
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr bool \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible_a4249fb3f2a63b33af754625ab7580375}{value}} = decltype(\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible_a22e7d7b45a35b83a9b2fdc44cd0daa68}{test}}$<$T, C$>$(0, typename std::\+is\+\_\+constructible$<$T, C$>$::\+type()))::\+value
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename TT, typename CC$>$ }\\static auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible_a22e7d7b45a35b83a9b2fdc44cd0daa68}{test}} (int, std::\+true\+\_\+type) -\/$>$ decltype(TT\{std::\+declval$<$ CC $>$()\}, std::\+is\+\_\+move\+\_\+assignable$<$ TT $>$())
+\item 
+{\footnotesize template$<$typename TT, typename CC$>$ }\\static auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible_ac29aa745a0817f7fcc443611fa4fb8f3}{test}} (int, std::\+false\+\_\+type) -\/$>$ std::\+false\+\_\+type
+\item 
+{\footnotesize template$<$typename, typename$>$ }\\static auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible_a9be5851b139e88bb59e47891cf812047}{test}} (...) -\/$>$ std::\+false\+\_\+type
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$typename T, typename C$>$\newline
+class CLI::\+detail::\+is\+\_\+direct\+\_\+constructible$<$ T, C $>$}
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01788}{1788}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1detail_1_1is__direct__constructible_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1detail_1_1is__direct__constructible_a9be5851b139e88bb59e47891cf812047}\index{CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}!test@{test}}
+\index{test@{test}!CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1detail_1_1is__direct__constructible_a9be5851b139e88bb59e47891cf812047} 
+template$<$typename T, typename C$>$ \\
+template$<$typename, typename$>$ \\
+auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible}{CLI::\+detail::\+is\+\_\+direct\+\_\+constructible}}$<$ T, C $>$::\+test (\begin{DoxyParamCaption}\item[{}]{...}{}\end{DoxyParamCaption}) -\/$>$  std::\+false\+\_\+type\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_c_l_i_1_1detail_1_1is__direct__constructible_ac29aa745a0817f7fcc443611fa4fb8f3}\index{CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}!test@{test}}
+\index{test@{test}!CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1detail_1_1is__direct__constructible_ac29aa745a0817f7fcc443611fa4fb8f3} 
+template$<$typename T, typename C$>$ \\
+template$<$typename TT, typename CC$>$ \\
+auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible}{CLI::\+detail::\+is\+\_\+direct\+\_\+constructible}}$<$ T, C $>$::\+test (\begin{DoxyParamCaption}\item[{int}]{}{, }\item[{std::\+false\+\_\+type}]{}{}\end{DoxyParamCaption}) -\/$>$  std::\+false\+\_\+type\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+\Hypertarget{class_c_l_i_1_1detail_1_1is__direct__constructible_a22e7d7b45a35b83a9b2fdc44cd0daa68}\index{CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}!test@{test}}
+\index{test@{test}!CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{test()}{test()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1detail_1_1is__direct__constructible_a22e7d7b45a35b83a9b2fdc44cd0daa68} 
+template$<$typename T, typename C$>$ \\
+template$<$typename TT, typename CC$>$ \\
+auto \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible}{CLI::\+detail::\+is\+\_\+direct\+\_\+constructible}}$<$ T, C $>$::\+test (\begin{DoxyParamCaption}\item[{int}]{}{, }\item[{std::\+true\+\_\+type}]{}{}\end{DoxyParamCaption}) -\/$>$  decltype(TT\{std::\+declval$<$ CC $>$()\}, std::\+is\+\_\+move\+\_\+assignable$<$ TT $>$())\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_c_l_i_1_1detail_1_1is__direct__constructible_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_l_i_1_1detail_1_1is__direct__constructible_a4249fb3f2a63b33af754625ab7580375}\index{CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}!value@{value}}
+\index{value@{value}!CLI::detail::is\_direct\_constructible$<$ T, C $>$@{CLI::detail::is\_direct\_constructible$<$ T, C $>$}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1detail_1_1is__direct__constructible_a4249fb3f2a63b33af754625ab7580375} 
+template$<$typename T, typename C$>$ \\
+bool \doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible}{CLI::\+detail::\+is\+\_\+direct\+\_\+constructible}}$<$ T, C $>$::\+value = decltype(\doxymbox{\hyperlink{class_c_l_i_1_1detail_1_1is__direct__constructible_a22e7d7b45a35b83a9b2fdc44cd0daa68}{test}}$<$T, C$>$(0, typename std::\+is\+\_\+constructible$<$T, C$>$::\+type()))::\+value\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01815}{1815}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

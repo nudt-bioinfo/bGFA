@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['div_5fceil_0',['DIV_CEIL',['../commons_8h.html#ad7555fc30b9a2aed0ad31f408794ce07',1,'commons.h']]],
+  ['div_5ffloor_1',['DIV_FLOOR',['../commons_8h.html#a8b8a0baa6b603351ede6411419d61096',1,'commons.h']]],
+  ['divc_5fceil_2',['DIVC_CEIL',['../commons_8h.html#a7494712f806534f6d91b2f34353c4550',1,'commons.h']]],
+  ['divc_5ffloor_3',['DIVC_FLOOR',['../commons_8h.html#a0a059fc6efa7cbb43bf5edea65399052',1,'commons.h']]],
+  ['dna_5fchar_5fa_4',['DNA_CHAR_A',['../dna__text_8h.html#a76047c8f32079e648588173e3a660307',1,'dna_text.h']]],
+  ['dna_5fchar_5fc_5',['DNA_CHAR_C',['../dna__text_8h.html#ab596fdc3f2080afb9fa6c1c0d69f360a',1,'dna_text.h']]],
+  ['dna_5fchar_5fg_6',['DNA_CHAR_G',['../dna__text_8h.html#a05b171de2b50e0defd4486135f772973',1,'dna_text.h']]],
+  ['dna_5fchar_5fn_7',['DNA_CHAR_N',['../dna__text_8h.html#acbb349ed5e894f435a8adcc32f62e43f',1,'dna_text.h']]],
+  ['dna_5fchar_5ft_8',['DNA_CHAR_T',['../dna__text_8h.html#ad3d97d46c7caaee02278bb2a139d892c',1,'dna_text.h']]],
+  ['dna_5fdecode_9',['dna_decode',['../dna__text_8h.html#a0138b5b61a35118a16d4a5c812a19a59',1,'dna_text.h']]],
+  ['dna_5fencode_10',['dna_encode',['../dna__text_8h.html#a7bd2b215f3aace083b35385d9bbcb77c',1,'dna_text.h']]],
+  ['dna_5fextended_5frange_11',['DNA_EXTENDED_RANGE',['../dna__text_8h.html#a4d20782e2947c46d56edc93103dd143c',1,'dna_text.h']]],
+  ['dna_5frange_12',['DNA_RANGE',['../dna__text_8h.html#a54d23d75bd30dfa451fbdb9f7b82017b',1,'dna_text.h']]],
+  ['dna_5frange_5fbits_13',['DNA_RANGE_BITS',['../dna__text_8h.html#ab5f88c89aa840964ea7ea8b8a30df30b',1,'dna_text.h']]],
+  ['dos_5feol_14',['DOS_EOL',['../commons_8h.html#a757c0deba59949e5a5e349e99f14afb8',1,'commons.h']]],
+  ['dot_15',['DOT',['../commons_8h.html#a8a5043e7ab655e37e903ffbd8b95d6b2',1,'commons.h']]],
+  ['dpmatrix_5fantidiagonal_16',['DPMATRIX_ANTIDIAGONAL',['../wavefront__offset_8h.html#adb201a885d72cacf142beb1ba6e09661',1,'wavefront_offset.h']]],
+  ['dpmatrix_5fdiagonal_17',['DPMATRIX_DIAGONAL',['../wavefront__offset_8h.html#a3319441d39aa847021e3e979abb79b3b',1,'wavefront_offset.h']]],
+  ['dpmatrix_5fdiagonal_5fnull_18',['DPMATRIX_DIAGONAL_NULL',['../wavefront__offset_8h.html#aa10843b3c9ac3b60bd47822c22dd39f3',1,'wavefront_offset.h']]],
+  ['dpmatrix_5foffset_19',['DPMATRIX_OFFSET',['../wavefront__offset_8h.html#a7fc5555efe8335bbb6e04f4950eff0e7',1,'wavefront_offset.h']]]
+];

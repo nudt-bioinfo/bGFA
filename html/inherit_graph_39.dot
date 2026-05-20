@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="CLI::detail::type_count\l_base\< T, typename std\l::enable_if\< is_mutable\l_container\< T \>::value \>\l::type \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$struct_c_l_i_1_1detail_1_1type__count__base_3_01_t_00_01typename_01std_1_1enable__if_3_01is__mut25537d1dbe2209c0fb1d9a95e46a36a7.html",tooltip="Type count base for containers is the type_count_base of the individual element."];
+}

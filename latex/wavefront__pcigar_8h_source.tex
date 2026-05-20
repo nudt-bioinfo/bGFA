@@ -1,0 +1,121 @@
+\doxysection{wavefront\+\_\+pcigar.\+h}
+\hypertarget{wavefront__pcigar_8h_source}{}\label{wavefront__pcigar_8h_source}\index{src/wfa/wavefront/wavefront\_pcigar.h@{src/wfa/wavefront/wavefront\_pcigar.h}}
+\doxymbox{\hyperlink{wavefront__pcigar_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Packed\ CIGAR\ (Alignment\ operations\ in\ 2-\/bits)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ WAVEFRONT\_PACKED\_CIGAR\_H\_}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ WAVEFRONT\_PACKED\_CIGAR\_H\_}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__attributes_8h}{wavefront\_attributes.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__sequences_8h}{wavefront\_sequences.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00038}00038\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00039}00039\ \textcolor{comment}{\ *\ Configuration}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00040}00040\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00041}\doxymbox{\hyperlink{wavefront__pcigar_8h_ad5f21591df92f6acf62b03a1365e7f8c}{00041}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_32BITS}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00042}00042\ \textcolor{comment}{//\#define\ PCIGAR\_64BITS}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00044}00044\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00045}00045\ \textcolor{comment}{\ *\ Packed\ CIGAR}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00046}00046\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00047}\doxymbox{\hyperlink{wavefront__pcigar_8h_ae41e9a74a8c0eb8c685dc6b6957d8540}{00047}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_NULL\ \ \ \ \ \ \ \ 0ul}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00048}\doxymbox{\hyperlink{wavefront__pcigar_8h_a6195dfda6c1ced74758b8e75b794400d}{00048}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_DELETION\ \ \ \ 1ul}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00049}\doxymbox{\hyperlink{wavefront__pcigar_8h_a4ba81a03babe679d370924fc580f3c01}{00049}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_MISMATCH\ \ \ \ 2ul}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00050}\doxymbox{\hyperlink{wavefront__pcigar_8h_a505ce9422c48409d457ead4952fa050e}{00050}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_INSERTION\ \ \ 3ul}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00052}\doxymbox{\hyperlink{wavefront__pcigar_8h_a743b6d5fe5bc5b804c6a79541f1a023e}{00052}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_POP\_FRONT(pcigar)\ \ \ \ \ \ \ \ \ \ \ pcigar\ =\ pcigar\ <<\ 2}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00053}\doxymbox{\hyperlink{wavefront__pcigar_8h_ac3ddd6fb3d40d6858623d30287863e14}{00053}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_PUSH\_BACK(pcigar,operation)\ ((pcigar<<2)\ |\ operation)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00055}\doxymbox{\hyperlink{wavefront__pcigar_8h_ae061bf6b4f3d8983359cbe51cc0535b6}{00055}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_PUSH\_BACK\_INS(pcigar)\ \ \ ((pcigar<<2)\ |\ PCIGAR\_INSERTION)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00056}\doxymbox{\hyperlink{wavefront__pcigar_8h_a7b324082f4bb0a0aaeb6bfc10b440228}{00056}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_PUSH\_BACK\_DEL(pcigar)\ \ \ ((pcigar<<2)\ |\ PCIGAR\_DELETION)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00057}\doxymbox{\hyperlink{wavefront__pcigar_8h_a8852fb1cc658e06d92369f88a4594732}{00057}}\ \textcolor{preprocessor}{\#define\ PCIGAR\_PUSH\_BACK\_MISMS(pcigar)\ ((pcigar<<2)\ |\ PCIGAR\_MISMATCH)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00059}00059\ \textcolor{preprocessor}{\#ifdef\ PCIGAR\_32BITS}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00060}\doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{00060}}\ \ \ \textcolor{keyword}{typedef}\ uint32\_t\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\_t}};}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00061}\doxymbox{\hyperlink{wavefront__pcigar_8h_a31f3f1aadb62f31a223f24ce824486db}{00061}}\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_MAX\_LENGTH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 16}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00062}\doxymbox{\hyperlink{wavefront__pcigar_8h_a9e89997c5ff6802c0553bb24d0eef385}{00062}}\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_FULL\_MASK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x40000000u\ }\textcolor{comment}{/*\ Completely\ full\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00063}\doxymbox{\hyperlink{wavefront__pcigar_8h_ab8a33be403113e726b65d77aa9cdd6a6}{00063}}\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_ALMOST\_FULL\_MASK\ \ \ \ \ \ \ \ \ 0x10000000u\ }\textcolor{comment}{/*\ 15-\/slots\ busy\ or\ more\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00064}\doxymbox{\hyperlink{wavefront__pcigar_8h_af3e605599142a53503c93650e2dacca2}{00064}}\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_HALF\_FULL\_MASK\ \ \ \ \ \ \ \ \ \ \ 0x00010000u\ }\textcolor{comment}{/*\ \ 9-\/slots\ busy\ or\ more\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00065}\doxymbox{\hyperlink{wavefront__pcigar_8h_a1c058bd2f0e5fe29df250ec1b47e116d}{00065}}\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_IS\_UTILISED(pcigar,mask)\ ((pcigar)\ >=\ mask)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00066}\doxymbox{\hyperlink{wavefront__pcigar_8h_a462d519cd147ef491d376b45b0022dc9}{00066}}\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_EXTRACT(pcigar)\ \ \ \ \ \ \ \ \ \ ((pcigar)\ >>\ 30)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00067}\doxymbox{\hyperlink{wavefront__pcigar_8h_aa91ad5e1e9eacc6349e166408b891499}{00067}}\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_FREE\_SLOTS(pcigar)\ \ \ \ \ \ \ ((pcigar)!=0)\ ?\ \_\_builtin\_clz(pcigar)/2\ :\ PCIGAR\_MAX\_LENGTH;}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00068}00068\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00069}00069\ \ \ \textcolor{keyword}{typedef}\ uint64\_t\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\_t}};}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00070}00070\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_MAX\_LENGTH\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 32}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00071}00071\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_FULL\_MASK\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ 0x4000000000000000ul\ }\textcolor{comment}{/*\ Completely\ full\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00072}00072\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_ALMOST\_FULL\_MASK\ \ \ \ \ \ \ \ \ 0x1000000000000000ul\ }\textcolor{comment}{/*\ 31-\/slots\ busy\ or\ more\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00073}00073\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_HALF\_FULL\_MASK\ \ \ \ \ \ \ \ \ \ \ 0x0000000100000000ul\ }\textcolor{comment}{/*\ 17-\/slots\ busy\ or\ more\ */}\textcolor{preprocessor}{}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00074}00074\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_IS\_UTILISED(pcigar,mask)\ ((pcigar)\ >=\ mask)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00075}00075\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_EXTRACT(pcigar)\ \ \ \ \ \ \ \ \ \ ((pcigar)\ >>\ 62)}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00076}00076\ \textcolor{preprocessor}{\ \ \#define\ PCIGAR\_FREE\_SLOTS(pcigar)\ \ \ \ \ \ \ ((pcigar)!=0)\ ?\ \_\_builtin\_clzl(pcigar)/2\ :\ PCIGAR\_MAX\_LENGTH;}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00077}00077\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00080}00080\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00081}00081\ \textcolor{comment}{\ *\ Accessors}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00082}00082\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00083}00083\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a4ab128f9268680501784b7a3493b78ff}{pcigar\_get\_length}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00084}00084\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\_t}}\ pcigar);}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00085}00085\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{wavefront__pcigar_8h_aeef6dba48d45c940bb7c3a167f586015}{pcigar\_unpack}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00086}00086\ \ \ \ \ \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\_t}}\ pcigar,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00087}00087\ \ \ \ \ \textcolor{keywordtype}{char}*\ cigar\_buffer);}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00088}00088\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00089}00089\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00090}00090\ \textcolor{comment}{\ *\ PCIGAR\ unpack}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00091}00091\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00092}00092\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a9ab021e7dfdc273073f5baf4ae2eb3e3}{pcigar\_unpack\_linear}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00093}00093\ \ \ \ \ \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\_t}}\ pcigar,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00094}00094\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\_sequences\_t}}*\ \textcolor{keyword}{const}\ sequences,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00095}00095\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ v\_pos,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00096}00096\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ h\_pos,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00097}00097\ \ \ \ \ \textcolor{keywordtype}{char}*\ cigar\_buffer,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00098}00098\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ cigar\_length);}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00099}00099\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a8e3b3b22824b4241b857222f13f87367}{pcigar\_unpack\_affine}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00100}00100\ \ \ \ \ \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\_t}}\ pcigar,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00101}00101\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\_sequences\_t}}*\ \textcolor{keyword}{const}\ sequences,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00102}00102\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ v\_pos,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00103}00103\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ h\_pos,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00104}00104\ \ \ \ \ \textcolor{keywordtype}{char}*\ cigar\_buffer,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00105}00105\ \ \ \ \ \textcolor{keywordtype}{int}*\ \textcolor{keyword}{const}\ cigar\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00106}00106\ \ \ \ \ \doxymbox{\hyperlink{affine__penalties_8h_ad9726665210d0dae02c8ee1a67e52541}{affine\_matrix\_type}}*\ \textcolor{keyword}{const}\ current\_matrix\_type);}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00108}00108\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00109}00109\ \textcolor{comment}{\ *\ Display}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00110}00110\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00111}00111\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__pcigar_8h_ab0b73b0d8b9ef553957bb6d5525715fe}{pcigar\_print}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00112}00112\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00113}00113\ \ \ \ \ \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\_t}}\ pcigar);}
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00114}00114\ }
+\DoxyCodeLine{\Hypertarget{wavefront__pcigar_8h_source_l00115}00115\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ WAVEFRONT\_PACKED\_CIGAR\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

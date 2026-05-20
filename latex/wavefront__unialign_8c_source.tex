@@ -1,0 +1,330 @@
+\doxysection{wavefront\+\_\+unialign.\+c}
+\hypertarget{wavefront__unialign_8c_source}{}\label{wavefront__unialign_8c_source}\index{src/wfa/wavefront/wavefront\_unialign.c@{src/wfa/wavefront/wavefront\_unialign.c}}
+\doxymbox{\hyperlink{wavefront__unialign_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00029}00029\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mm__allocator_8h}{system/mm\_allocator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00033}00033\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__unialign_8h}{wavefront\_unialign.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront_8h}{wavefront.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__attributes_8h}{wavefront\_attributes.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00036}00036\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__offset_8h}{wavefront\_offset.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00037}00037\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__penalties_8h}{wavefront\_penalties.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00038}00038\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__plot_8h}{wavefront\_plot.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00039}00039\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__slab_8h}{wavefront\_slab.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00041}00041\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__components_8h}{wavefront\_components.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00042}00042\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__compute_8h}{wavefront\_compute.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00043}00043\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__compute__affine_8h}{wavefront\_compute\_affine.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00044}00044\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__compute__affine2p_8h}{wavefront\_compute\_affine2p.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00045}00045\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__compute__edit_8h}{wavefront\_compute\_edit.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00046}00046\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__compute__linear_8h}{wavefront\_compute\_linear.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00047}00047\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__extend_8h}{wavefront\_extend.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00048}00048\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__backtrace_8h}{wavefront\_backtrace.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00049}00049\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{wavefront__backtrace__buffer_8h}{wavefront\_backtrace\_buffer.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00051}00051\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00052}00052\ \textcolor{comment}{\ *\ Initialize\ alignment}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00053}00053\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00054}\doxymbox{\hyperlink{wavefront__unialign_8c_ad1191a9a21066e324cc94018ad7c3209}{00054}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__unialign_8c_ad1191a9a21066e324cc94018ad7c3209}{wavefront\_unialign\_init}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00055}00055\ \ \ \ \ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00056}00056\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\_matrix\_type}}\ component\_begin,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00057}00057\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\_matrix\_type}}\ component\_end)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00058}00058\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00059}00059\ \ \ \doxymbox{\hyperlink{structwavefront__align__status__t}{wavefront\_align\_status\_t}}*\ \textcolor{keyword}{const}\ align\_status\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_afc83e2456863cddc659aead81628c1f3}{align\_status}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00060}00060\ \ \ \doxymbox{\hyperlink{structalignment__form__t}{alignment\_form\_t}}*\ \textcolor{keyword}{const}\ alignment\_form\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_aa1d6387697a9739140367c03d8d19650}{alignment\_form}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00061}00061\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ end2end\ =\ (alignment\_form-\/>\doxymbox{\hyperlink{structalignment__form__t_a5b907ba86b7c8a8930ef54d17d21d346}{span}}\ ==\ \doxymbox{\hyperlink{wavefront__attributes_8h_a5b8a1592e58707ce2bfa23531cb5b5e6a7634a74bff3a950f7b29003bc4fb425f}{alignment\_end2end}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00062}00062\ \ \ \textcolor{comment}{//\ Configure\ WF-\/compute\ function}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00063}00063\ \ \ \textcolor{keywordflow}{switch}\ (wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_abcf2680354f770b9ced804a9ff969c3f}{penalties}}.\doxymbox{\hyperlink{structwavefront__penalties__t_a0aa2c16460611a4b5a18f55efb984e5c}{distance\_metric}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00064}00064\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9}{indel}}:}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00065}00065\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab9973bd80402101013fe9b4e66c7e64f}{edit}}:}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00066}00066\ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a132b830bb7e54f02572498441da76f76}{wf\_align\_compute}}\ =\ \&\doxymbox{\hyperlink{wavefront__compute__edit_8c_aff739e81d87ca4de0cec37e341186bee}{wavefront\_compute\_edit}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00067}00067\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00068}00068\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaae71387ff7cf210d857caee413c21582}{gap\_linear}}:}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00069}00069\ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a132b830bb7e54f02572498441da76f76}{wf\_align\_compute}}\ =\ \&\doxymbox{\hyperlink{wavefront__compute__linear_8c_ac1a58848a30f8cc3383a661f1796b02c}{wavefront\_compute\_linear}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00070}00070\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00071}00071\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa36a3f353c185486268e43f16c8bbbbf}{gap\_affine}}:}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00072}00072\ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a132b830bb7e54f02572498441da76f76}{wf\_align\_compute}}\ =\ \&\doxymbox{\hyperlink{wavefront__compute__affine_8c_a7cff0d3241346bb1ce3265d517b34725}{wavefront\_compute\_affine}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00073}00073\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00074}00074\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecab2dc11ac0ec88c88ab4999ea27460322}{gap\_affine\_2p}}:}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00075}00075\ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a132b830bb7e54f02572498441da76f76}{wf\_align\_compute}}\ =\ \&\doxymbox{\hyperlink{wavefront__compute__affine2p_8c_a4d3707b16785663665d7837c046a28de}{wavefront\_compute\_affine2p}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00076}00076\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00077}00077\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00078}00078\ \ \ \ \ \ \ fprintf(stderr,\textcolor{stringliteral}{"{}[WFA]\ Distance\ function\ not\ implemented\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00079}00079\ \ \ \ \ \ \ exit(1);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00080}00080\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00081}00081\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00082}00082\ \ \ \textcolor{comment}{//\ Configure\ WF-\/extend\ function}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00083}00083\ \ \ \textcolor{keywordflow}{if}\ (end2end)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00084}00084\ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a1fba5361db8aa8e2b9e8a58e40b95f56}{wf\_align\_extend}}\ =\ \&\doxymbox{\hyperlink{wavefront__extend_8c_a29cf75c3f7b80b5acdf73a751890b299}{wavefront\_extend\_end2end}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00085}00085\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00086}00086\ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a1fba5361db8aa8e2b9e8a58e40b95f56}{wf\_align\_extend}}\ =\ \&\doxymbox{\hyperlink{wavefront__extend_8c_a5cb2c8360a9251059ed3254d167d080c}{wavefront\_extend\_endsfree}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00087}00087\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00088}00088\ \ \ \textcolor{comment}{//\ Initialize\ wavefront-\/aligner\ (to\ perform\ a\ new\ alignment)}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00089}00089\ \ \ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a994286d1e266f1016f66213f188eb7be}{component\_begin}}\ =\ component\_begin;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00090}00090\ \ \ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_aa66177a2378304a4d46477b41e750a70}{component\_end}}\ =\ component\_end;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00091}00091\ \ \ \doxymbox{\hyperlink{wavefront__aligner_8c_ac466c4c964b14b200682d9e4cfcb9f7e}{wavefront\_aligner\_init}}(wf\_aligner,0);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00092}00092\ \ \ \textcolor{comment}{//\ Clear\ cigar}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00093}00093\ \ \ \doxymbox{\hyperlink{cigar_8c_a761cc5a323a07219f47f9487e638ea45}{cigar\_clear}}(wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_adabef95752917cdf665424403f6bae43}{cigar}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00094}00094\ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00095}00095\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00096}00096\ \textcolor{comment}{\ *\ Limits}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00097}00097\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00098}\doxymbox{\hyperlink{wavefront__unialign_8c_a08d33ca84bd6afbd9b54996f15fab0f2}{00098}}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{wavefront__unialign_8c_a08d33ca84bd6afbd9b54996f15fab0f2}{wavefront\_unialign\_reached\_limits}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00099}00099\ \ \ \ \ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00100}00100\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ score)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00101}00101\ \ \ \textcolor{comment}{//\ Check\ alignment-\/score\ limit}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00102}00102\ \ \ \textcolor{keywordflow}{if}\ (score\ >=\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_ab934bac2abcac88586b78a93c7ed1c54}{system}}.\doxymbox{\hyperlink{structalignment__system__t_abf1e3d9b0bf83dfc9a919478bb1aad05}{max\_alignment\_steps}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00103}00103\ \ \ \ \ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_adabef95752917cdf665424403f6bae43}{cigar}}-\/>\doxymbox{\hyperlink{structcigar__t_a13dbad79ec3fab5c1bee14d7a7b08399}{score}}\ =\ -\/wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_ab934bac2abcac88586b78a93c7ed1c54}{system}}.\doxymbox{\hyperlink{structalignment__system__t_abf1e3d9b0bf83dfc9a919478bb1aad05}{max\_alignment\_steps}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00104}00104\ \ \ \ \ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_afc83e2456863cddc659aead81628c1f3}{align\_status}}.\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ =\ \doxymbox{\hyperlink{wfa_8h_a4349ba0df1af27733211e665099ef450}{WF\_STATUS\_MAX\_STEPS\_REACHED}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00105}00105\ \ \ \ \ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_afc83e2456863cddc659aead81628c1f3}{align\_status}}.\doxymbox{\hyperlink{structwavefront__align__status__t_aaa066fff99a7ee748a8af399513d81d7}{score}}\ =\ score;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00106}00106\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Stop}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00107}00107\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00108}00108\ \ \ \textcolor{comment}{//\ Global\ probing\ interval}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00109}00109\ \ \ \doxymbox{\hyperlink{structalignment__system__t}{alignment\_system\_t}}*\ \textcolor{keyword}{const}\ system\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_ab934bac2abcac88586b78a93c7ed1c54}{system}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00110}00110\ \ \ \textcolor{keywordflow}{if}\ (score\ \%\ system-\/>\doxymbox{\hyperlink{structalignment__system__t_accb6fea921b339062e9eb661a18d49f4}{probe\_interval\_global}}\ !=\ 0)\ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};\ \textcolor{comment}{//\ Continue}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00111}00111\ \ \ \textcolor{keywordflow}{if}\ (system-\/>\doxymbox{\hyperlink{structalignment__system__t_a88b3c38071c358323fff99435fbe04bd}{verbose}}\ >=\ 3)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00112}00112\ \ \ \ \ \doxymbox{\hyperlink{wavefront__unialign_8c_a0bc3a7ce348bf3b99f13d0b1284c2250}{wavefront\_unialign\_print\_status}}(stderr,wf\_aligner,score);\ \textcolor{comment}{//\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00113}00113\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00114}00114\ \ \ \textcolor{comment}{//\ BT-\/Buffer}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00115}00115\ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a7748d68f4d0e2658f2884b9dc61b0980}{wf\_components}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00116}00116\ \ \ \textcolor{keywordflow}{if}\ (wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{bt\_buffer}}!=NULL\ \&\&\ (score\%system-\/>\doxymbox{\hyperlink{structalignment__system__t_a669d1aa3d6ce89746ffa2ab1e3dc2ce3}{probe\_interval\_compact}})==0)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00117}00117\ \ \ \ \ uint64\_t\ bt\_memory\ =\ \doxymbox{\hyperlink{wavefront__backtrace__buffer_8c_a32536bf793b32f66e39c38ff2b6f279e}{wf\_backtrace\_buffer\_get\_size\_used}}(wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{bt\_buffer}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00118}00118\ \ \ \ \ \textcolor{comment}{//\ Check\ BT-\/buffer\ memory}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00119}00119\ \ \ \ \ \textcolor{keywordflow}{if}\ (bt\_memory\ >\ system-\/>\doxymbox{\hyperlink{structalignment__system__t_a87616fc81b3a6b9adf8a34fae07cc4f9}{max\_memory\_compact}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00120}00120\ \ \ \ \ \ \ \textcolor{comment}{//\ Compact\ BT-\/buffer}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00121}00121\ \ \ \ \ \ \ \doxymbox{\hyperlink{wavefront__components_8c_a25c1b961b4ee9a70e6e6d84cc25b734e}{wavefront\_components\_compact\_bt\_buffer}}(wf\_components,score,wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_ab934bac2abcac88586b78a93c7ed1c54}{system}}.\doxymbox{\hyperlink{structalignment__system__t_a88b3c38071c358323fff99435fbe04bd}{verbose}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00122}00122\ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ new\ buffer\ limit}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00123}00123\ \ \ \ \ \ \ bt\_memory\ =\ \doxymbox{\hyperlink{wavefront__backtrace__buffer_8c_a32536bf793b32f66e39c38ff2b6f279e}{wf\_backtrace\_buffer\_get\_size\_used}}(wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{bt\_buffer}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00124}00124\ \ \ \ \ \ \ uint64\_t\ proposed\_mem\ =\ (double)bt\_memory\ *\ \doxymbox{\hyperlink{commons_8h_ad434d0a5c49b91936c6fa1cda555218a}{TELESCOPIC\_FACTOR}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00125}00125\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (system-\/>\doxymbox{\hyperlink{structalignment__system__t_a87616fc81b3a6b9adf8a34fae07cc4f9}{max\_memory\_compact}}\ <\ proposed\_mem\ \&\&\ proposed\_mem\ <\ system-\/>max\_memory\_abort)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00126}00126\ \ \ \ \ \ \ \ \ proposed\_mem\ =\ system-\/>\doxymbox{\hyperlink{structalignment__system__t_a87616fc81b3a6b9adf8a34fae07cc4f9}{max\_memory\_compact}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00127}00127\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00128}00128\ \ \ \ \ \ \ \textcolor{comment}{//\ Reset\ (if\ maximum\ compacts\ has\ been\ performed)}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00129}00129\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{bt\_buffer}}-\/>\doxymbox{\hyperlink{structwf__backtrace__buffer__t_ade48f8320b17a43af059deae0dbfda3e}{num\_compactions}}\ >=\ system-\/>\doxymbox{\hyperlink{structalignment__system__t_a89104668b2bb55896d7d8c15a8d92f12}{max\_partial\_compacts}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00130}00130\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{wavefront__backtrace__buffer_8c_a412fdb55d98009760c2fd8b1f5381ecb}{wf\_backtrace\_buffer\_reset\_compaction}}(wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{bt\_buffer}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00131}00131\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00132}00132\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00133}00133\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00134}00134\ \ \ \textcolor{comment}{//\ Check\ overall\ memory\ used}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00135}00135\ \ \ \textcolor{keyword}{const}\ uint64\_t\ wf\_memory\_used\ =\ \doxymbox{\hyperlink{wavefront__aligner_8c_a82b117989eccedf40478addd82d1845e}{wavefront\_aligner\_get\_size}}(wf\_aligner);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00136}00136\ \ \ \textcolor{keywordflow}{if}\ (wf\_memory\_used\ >\ system-\/>\doxymbox{\hyperlink{structalignment__system__t_a7adca644517fe148d41c6de47d3f4e25}{max\_memory\_abort}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00137}00137\ \ \ \ \ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_afc83e2456863cddc659aead81628c1f3}{align\_status}}.\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ =\ \doxymbox{\hyperlink{wfa_8h_a730da975025e0626e30f46cf9015ca2f}{WF\_STATUS\_OOM}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00138}00138\ \ \ \ \ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_afc83e2456863cddc659aead81628c1f3}{align\_status}}.\doxymbox{\hyperlink{structwavefront__align__status__t_aaa066fff99a7ee748a8af399513d81d7}{score}}\ =\ score;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//\ Stop}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00140}00140\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00141}00141\ \ \ \textcolor{comment}{//\ Otherwise\ continue}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00142}00142\ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00143}00143\ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00144}00144\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00145}00145\ \textcolor{comment}{\ *\ Terminate\ alignment\ (backtrace)}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00146}00146\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00147}\doxymbox{\hyperlink{wavefront__unialign_8c_ab650b3ba70aeca5b297ba7ac64c3ac75}{00147}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__unialign_8c_ab650b3ba70aeca5b297ba7ac64c3ac75}{wavefront\_unialign\_terminate}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00148}00148\ \ \ \ \ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00149}00149\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ score)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00150}00150\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00151}00151\ \ \ \doxymbox{\hyperlink{structwavefront__align__status__t}{wavefront\_align\_status\_t}}*\ \textcolor{keyword}{const}\ align\_status\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_afc83e2456863cddc659aead81628c1f3}{align\_status}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00152}00152\ \ \ \doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\_sequences\_t}}*\ \textcolor{keyword}{const}\ sequences\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a39f898d028c404ee32880e38ad0f4355}{sequences}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00153}00153\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length\ =\ sequences-\/>\doxymbox{\hyperlink{structwavefront__sequences__t_aabf33a98ea46308fdc996fd3cc532195}{pattern\_length}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00154}00154\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length\ =\ sequences-\/>\doxymbox{\hyperlink{structwavefront__sequences__t_a0003def9f3c061bb628d5c71456b57e8}{text\_length}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00155}00155\ \ \ \doxymbox{\hyperlink{structcigar__t}{cigar\_t}}*\ \textcolor{keyword}{const}\ cigar\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_adabef95752917cdf665424403f6bae43}{cigar}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00156}00156\ \ \ \textcolor{comment}{//\ Select\ alignment\ scope}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00157}00157\ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_aaa066fff99a7ee748a8af399513d81d7}{score}}\ =\ score;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00158}00158\ \ \ \textcolor{keywordflow}{if}\ (wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_aefb4b96b25cb47ae61a90cc73948bd54}{alignment\_scope}}\ ==\ \doxymbox{\hyperlink{wavefront__attributes_8h_a046091a78c7ac079d14af816d52b3f36accc28f7e258d4cacee45103ce5dc513b}{compute\_score}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00159}00159\ \ \ \ \ \textcolor{comment}{//\ Set\ end-\/alignment\ position\ \&\ score}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00160}00160\ \ \ \ \ \textcolor{keywordflow}{if}\ (align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ ==\ \doxymbox{\hyperlink{wfa_8h_a2d77a9c542bd95fb5812a5fc8776bb9b}{WF\_STATUS\_END\_REACHED}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00161}00161\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a4cf8cc6b8e4b95db4c843aada895c95b}{end\_v}}\ =\ pattern\_length;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00162}00162\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a158911b012827bbfdfd8793ca6e5594b}{end\_h}}\ =\ text\_length;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00163}00163\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a13dbad79ec3fab5c1bee14d7a7b08399}{score}}\ =\ \doxymbox{\hyperlink{wavefront__compute_8c_aca39eb6a1bf6555345c9f6b39d30cd72}{wavefront\_compute\_classic\_score}}(wf\_aligner,pattern\_length,text\_length,score);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00164}00164\ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ =\ \doxymbox{\hyperlink{wfa_8h_acc34adc149c1b61c8d778dbb137d0050}{WF\_STATUS\_ALG\_COMPLETED}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00165}00165\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00166}00166\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ k\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a4f1c8c1603c79f4c8aee205aea9b4f30}{alignment\_end\_pos}}.\doxymbox{\hyperlink{structwavefront__pos__t_a47ae7fdb4fde6b3f867572485e2f79d0}{k}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00167}00167\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ offset\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a4f1c8c1603c79f4c8aee205aea9b4f30}{alignment\_end\_pos}}.\doxymbox{\hyperlink{structwavefront__pos__t_a01f9fba940de4fe87d759593af6ce33d}{offset}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00168}00168\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a4cf8cc6b8e4b95db4c843aada895c95b}{end\_v}}\ =\ \doxymbox{\hyperlink{wavefront__offset_8h_a07102e008c25090ce4eb4ec64dcf62fe}{WAVEFRONT\_V}}(k,offset);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00169}00169\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a158911b012827bbfdfd8793ca6e5594b}{end\_h}}\ =\ \doxymbox{\hyperlink{wavefront__offset_8h_a4b578347574878ed12e490f8a54044f5}{WAVEFRONT\_H}}(k,offset);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00170}00170\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a13dbad79ec3fab5c1bee14d7a7b08399}{score}}\ =\ \doxymbox{\hyperlink{wavefront__compute_8c_aca39eb6a1bf6555345c9f6b39d30cd72}{wavefront\_compute\_classic\_score}}(wf\_aligner,cigar-\/>\doxymbox{\hyperlink{structcigar__t_a4cf8cc6b8e4b95db4c843aada895c95b}{end\_v}},cigar-\/>\doxymbox{\hyperlink{structcigar__t_a158911b012827bbfdfd8793ca6e5594b}{end\_h}},score);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00171}00171\ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a3adfbeb3521a179fcbb1d16f9fa45e4b}{dropped}}\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00172}00172\ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ =\ \doxymbox{\hyperlink{wfa_8h_a1c7c9b41139ae4552b480f7003fd1ee8}{WF\_STATUS\_ALG\_PARTIAL}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00173}00173\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00174}00174\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00175}00175\ \ \ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00176}00176\ \ \ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a7748d68f4d0e2658f2884b9dc61b0980}{wf\_components}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00177}00177\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ alignment\_end\_k\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a4f1c8c1603c79f4c8aee205aea9b4f30}{alignment\_end\_pos}}.\doxymbox{\hyperlink{structwavefront__pos__t_a47ae7fdb4fde6b3f867572485e2f79d0}{k}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00178}00178\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\_offset\_t}}\ alignment\_end\_offset\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a4f1c8c1603c79f4c8aee205aea9b4f30}{alignment\_end\_pos}}.\doxymbox{\hyperlink{structwavefront__pos__t_a01f9fba940de4fe87d759593af6ce33d}{offset}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00179}00179\ \ \ \ \ \textcolor{keywordflow}{if}\ (alignment\_end\_offset\ !=\ \doxymbox{\hyperlink{wavefront__offset_8h_ad46ed6d4a63125219168a21066abcb26}{WAVEFRONT\_OFFSET\_NULL}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00180}00180\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_a841073f114286de326d886e7ef9057e0}{bt\_piggyback}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00181}00181\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fetch\ wavefront}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00182}00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ memory\_modular\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a7748d68f4d0e2658f2884b9dc61b0980}{wf\_components}}.\doxymbox{\hyperlink{structwavefront__components__t_a6a54b39e984966640c239d93cfa9284c}{memory\_modular}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00183}00183\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_score\_scope\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a7748d68f4d0e2658f2884b9dc61b0980}{wf\_components}}.\doxymbox{\hyperlink{structwavefront__components__t_a2e90955e5ca8d44cb46e2d9d184a4a2f}{max\_score\_scope}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00184}00184\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ score\_mod\ =\ (memory\_modular)\ ?\ score\ \%\ max\_score\_scope\ :\ score;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00185}00185\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}*\ \textcolor{keyword}{const}\ mwavefront\ =\ wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_a041e810ed8b6faa8d7aec33bdcab05db}{mwavefronts}}[score\_mod];}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00186}00186\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Backtrace\ alignment\ from\ buffer\ (unpacking\ pcigar)}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00187}00187\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{wavefront__backtrace_8c_a7b8164ae4c481c72a841ec35660975b5}{wavefront\_backtrace\_pcigar}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00188}00188\ \ \ \ \ \ \ \ \ \ \ \ \ wf\_aligner,alignment\_end\_k,alignment\_end\_offset,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00189}00189\ \ \ \ \ \ \ \ \ \ \ \ \ mwavefront-\/>\doxymbox{\hyperlink{structwavefront__t_ac26a63c14a71e3c1c5879ed32fd6ad48}{bt\_pcigar}}[alignment\_end\_k],}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00190}00190\ \ \ \ \ \ \ \ \ \ \ \ \ mwavefront-\/>\doxymbox{\hyperlink{structwavefront__t_af20404c1354514af4281a70cd183aec7}{bt\_prev}}[alignment\_end\_k]);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00191}00191\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00192}00192\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Backtrace\ alignment}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_abcf2680354f770b9ced804a9ff969c3f}{penalties}}.\doxymbox{\hyperlink{structwavefront__penalties__t_a0aa2c16460611a4b5a18f55efb984e5c}{distance\_metric}}\ <=\ \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaae71387ff7cf210d857caee413c21582}{gap\_linear}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00194}00194\ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{wavefront__backtrace_8c_abdcfb2ce4415b4c0a92ecb928965cf47}{wavefront\_backtrace\_linear}}(wf\_aligner,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00195}00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ score,alignment\_end\_k,alignment\_end\_offset);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00196}00196\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{wavefront__backtrace_8c_a7b6c252282a539becde5878ad7de38db}{wavefront\_backtrace\_affine}}(wf\_aligner,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a994286d1e266f1016f66213f188eb7be}{component\_begin}},wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_aa66177a2378304a4d46477b41e750a70}{component\_end}},}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ score,alignment\_end\_k,alignment\_end\_offset);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00200}00200\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00201}00201\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00202}00202\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00203}00203\ \ \ \ \ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00204}00204\ \textcolor{comment}{\ \ \ \ \ *\ Post-\/processing\ (Extension-\/Trim,\ Score,\ and\ Ends)}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00205}00205\ \textcolor{comment}{\ \ \ \ \ *}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00206}00206\ \textcolor{comment}{\ \ \ \ \ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |\ \ \ \ \ Alignment-\/Regular\ \ \ \ |\ \ \ \ \ \ Alignment-\/Extension\ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00207}00207\ \textcolor{comment}{\ \ \ \ \ *\ \ |-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/|}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00208}00208\ \textcolor{comment}{\ \ \ \ \ *\ \ |\ \ END\_REACHABLE\ |\ \ NoTrim\ +\ ALG\_COMPLETED\ \ |\ Trim\ +\ ALG\_PARTIAL|ALG\_COMPLETED\ |}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00209}00209\ \textcolor{comment}{\ \ \ \ \ *\ \ |END\_UNREACHABLE\ |\ \ Trim\ +\ ALG\_PARTIAL\ \ \ \ \ \ |\ Trim\ +\ ALG\_PARTIAL\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ |}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00210}00210\ \textcolor{comment}{\ \ \ \ \ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00211}00211\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ do\_extension\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_aa1d6387697a9739140367c03d8d19650}{alignment\_form}}.\doxymbox{\hyperlink{structalignment__form__t_aa7798afb1b20d2dbbd996e21de641aa9}{extension}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00212}00212\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ unreachable\ =\ (align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ ==\ \doxymbox{\hyperlink{wfa_8h_a65b8f656a4aa45330f82566208c9ca45}{WF\_STATUS\_END\_UNREACHABLE}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00213}00213\ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a3adfbeb3521a179fcbb1d16f9fa45e4b}{dropped}}\ =\ unreachable;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00214}00214\ \ \ \ \ \textcolor{keywordflow}{if}\ (do\_extension\ ||\ unreachable)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00215}00215\ \ \ \ \ \ \ \textcolor{comment}{//\ Alignment\ extension\ (maximal\ score)}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00216}00216\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{bool}\ cigar\_trimmed\ =\ \doxymbox{\hyperlink{wavefront__aligner_8c_af296e8b7ed1a8f051037877bef0fe6bf}{wavefront\_aligner\_maxtrim\_cigar}}(wf\_aligner);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00217}00217\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cigar\_trimmed)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00218}00218\ \ \ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ =\ \doxymbox{\hyperlink{wfa_8h_a1c7c9b41139ae4552b480f7003fd1ee8}{WF\_STATUS\_ALG\_PARTIAL}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00219}00219\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00220}00220\ \ \ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ =\ (align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ ==\ \doxymbox{\hyperlink{wfa_8h_a65b8f656a4aa45330f82566208c9ca45}{WF\_STATUS\_END\_UNREACHABLE}})\ ?}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{wfa_8h_a1c7c9b41139ae4552b480f7003fd1ee8}{WF\_STATUS\_ALG\_PARTIAL}}\ :\ \doxymbox{\hyperlink{wfa_8h_acc34adc149c1b61c8d778dbb137d0050}{WF\_STATUS\_ALG\_COMPLETED}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00222}00222\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00223}00223\ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00224}00224\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ k\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a4f1c8c1603c79f4c8aee205aea9b4f30}{alignment\_end\_pos}}.\doxymbox{\hyperlink{structwavefront__pos__t_a47ae7fdb4fde6b3f867572485e2f79d0}{k}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00225}00225\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ offset\ =\ wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a4f1c8c1603c79f4c8aee205aea9b4f30}{alignment\_end\_pos}}.\doxymbox{\hyperlink{structwavefront__pos__t_a01f9fba940de4fe87d759593af6ce33d}{offset}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00226}00226\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a4cf8cc6b8e4b95db4c843aada895c95b}{end\_v}}\ =\ \doxymbox{\hyperlink{wavefront__offset_8h_a07102e008c25090ce4eb4ec64dcf62fe}{WAVEFRONT\_V}}(k,offset);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00227}00227\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a158911b012827bbfdfd8793ca6e5594b}{end\_h}}\ =\ \doxymbox{\hyperlink{wavefront__offset_8h_a4b578347574878ed12e490f8a54044f5}{WAVEFRONT\_H}}(k,offset);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00228}00228\ \ \ \ \ \ \ cigar-\/>\doxymbox{\hyperlink{structcigar__t_a13dbad79ec3fab5c1bee14d7a7b08399}{score}}\ =\ \doxymbox{\hyperlink{wavefront__compute_8c_aca39eb6a1bf6555345c9f6b39d30cd72}{wavefront\_compute\_classic\_score}}(wf\_aligner,cigar-\/>\doxymbox{\hyperlink{structcigar__t_a4cf8cc6b8e4b95db4c843aada895c95b}{end\_v}},cigar-\/>\doxymbox{\hyperlink{structcigar__t_a158911b012827bbfdfd8793ca6e5594b}{end\_h}},score);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00229}00229\ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ status}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00230}00230\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (unreachable)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00231}00231\ \ \ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ =\ \doxymbox{\hyperlink{wfa_8h_a1c7c9b41139ae4552b480f7003fd1ee8}{WF\_STATUS\_ALG\_PARTIAL}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00232}00232\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00233}00233\ \ \ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ =\ \doxymbox{\hyperlink{wfa_8h_acc34adc149c1b61c8d778dbb137d0050}{WF\_STATUS\_ALG\_COMPLETED}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00234}00234\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00235}00235\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00236}00236\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00237}00237\ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00238}00238\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00239}00239\ \textcolor{comment}{\ *\ Classic\ WF-\/Alignment\ (Unidirectional)}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00240}00240\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00241}\doxymbox{\hyperlink{wavefront__unialign_8c_ac0088cbbf61b18bed03f3ef64d2ea4fd}{00241}}\ \textcolor{preprocessor}{\#define\ WFA\_UNIALIGN\_DEBUG()\ wavefront\_aligner\_print(stderr,wf\_aligner,0,score,7,0)}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00242}\doxymbox{\hyperlink{wavefront__unialign_8c_abc8146ada33db8b9a15c927eb4a31e2c}{00242}}\ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{wavefront__unialign_8c_abc8146ada33db8b9a15c927eb4a31e2c}{wavefront\_unialign}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00243}00243\ \ \ \ \ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00244}00244\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00245}00245\ \ \ \doxymbox{\hyperlink{structwavefront__align__status__t}{wavefront\_align\_status\_t}}*\ \textcolor{keyword}{const}\ align\_status\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_afc83e2456863cddc659aead81628c1f3}{align\_status}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00246}00246\ \ \ void\ (*wf\_align\_compute)(\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const},\textcolor{keyword}{const}\ int)\ =\ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a132b830bb7e54f02572498441da76f76}{wf\_align\_compute}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00247}00247\ \ \ int\ (*wf\_align\_extend)(\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const},\textcolor{keyword}{const}\ int)\ =\ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_a1fba5361db8aa8e2b9e8a58e40b95f56}{wf\_align\_extend}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00248}00248\ \ \ \textcolor{comment}{//\ Compute\ wavefronts\ of\ increasing\ score}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00249}00249\ \ \ \textcolor{keywordtype}{int}\ score\ =\ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_aaa066fff99a7ee748a8af399513d81d7}{score}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00250}00250\ \ \ \textcolor{comment}{//\ WFA\_UNIALIGN\_DEBUG();\ //\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00251}00251\ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00252}00252\ \ \ \ \ \textcolor{comment}{//\ Exact\ extend\ s-\/wavefront}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00253}00253\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ finished\ =\ (*wf\_align\_extend)(wf\_aligner,score);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00254}00254\ \ \ \ \ \textcolor{keywordflow}{if}\ (finished)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00255}00255\ \ \ \ \ \ \ \textcolor{comment}{//\ WFA\_UNIALIGN\_DEBUG();\ //\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00256}00256\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ ==\ \doxymbox{\hyperlink{wfa_8h_a2d77a9c542bd95fb5812a5fc8776bb9b}{WF\_STATUS\_END\_REACHED}}\ ||}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}}\ ==\ \doxymbox{\hyperlink{wfa_8h_a65b8f656a4aa45330f82566208c9ca45}{WF\_STATUS\_END\_UNREACHABLE}})\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00258}00258\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{wavefront__unialign_8c_ab650b3ba70aeca5b297ba7ac64c3ac75}{wavefront\_unialign\_terminate}}(wf\_aligner,score);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00259}00259\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00260}00260\ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00261}00261\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00262}00262\ \ \ \ \ \textcolor{comment}{//\ Compute\ (s+1)-\/wavefront}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00263}00263\ \ \ \ \ ++score;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00264}00264\ \ \ \ \ (*wf\_align\_compute)(wf\_aligner,score);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00265}00265\ \ \ \ \ \textcolor{comment}{//\ Probe\ limits}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00266}00266\ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{wavefront__unialign_8c_a08d33ca84bd6afbd9b54996f15fab0f2}{wavefront\_unialign\_reached\_limits}}(wf\_aligner,score))\ \textcolor{keywordflow}{return}\ align\_status-\/>\doxymbox{\hyperlink{structwavefront__align__status__t_ab03dee91c638e24cc165a89324e3759b}{status}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00267}00267\ \ \ \ \ \textcolor{comment}{//\ Plot}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00268}00268\ \ \ \ \ \textcolor{keywordflow}{if}\ (wf\_aligner-\/>plot\ !=\ NULL)\ \doxymbox{\hyperlink{wavefront__plot_8c_a45d0182444cc2510da036329737a7a6c}{wavefront\_plot}}(wf\_aligner,score,0);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00269}00269\ \ \ \ \ \textcolor{comment}{//\ WFA\_UNIALIGN\_DEBUG();\ //\ DEBUG}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00270}00270\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00271}00271\ \ \ \textcolor{comment}{//\ Unreachable\ code}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00272}00272\ \ \ \textcolor{keywordflow}{return}\ \doxymbox{\hyperlink{wfa_8h_ab6bd1c1e3a1e1708d808b83ecacd31f0}{WF\_STATUS\_OK}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00273}00273\ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00274}00274\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00275}00275\ \textcolor{comment}{\ *\ Display}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00276}00276\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00277}\doxymbox{\hyperlink{wavefront__unialign_8c_a0bc3a7ce348bf3b99f13d0b1284c2250}{00277}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{wavefront__unialign_8c_a0bc3a7ce348bf3b99f13d0b1284c2250}{wavefront\_unialign\_print\_status}}(}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00278}00278\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00279}00279\ \ \ \ \ \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\_aligner\_t}}*\ \textcolor{keyword}{const}\ wf\_aligner,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00280}00280\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ score)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00281}00281\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00282}00282\ \ \ \doxymbox{\hyperlink{structwavefront__components__t}{wavefront\_components\_t}}*\ \textcolor{keyword}{const}\ wf\_components\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a7748d68f4d0e2658f2884b9dc61b0980}{wf\_components}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00283}00283\ \ \ \doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\_sequences\_t}}*\ \textcolor{keyword}{const}\ sequences\ =\ \&wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_a39f898d028c404ee32880e38ad0f4355}{sequences}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00284}00284\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ pattern\_length\ =\ sequences-\/>\doxymbox{\hyperlink{structwavefront__sequences__t_aabf33a98ea46308fdc996fd3cc532195}{pattern\_length}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00285}00285\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ text\_length\ =\ sequences-\/>\doxymbox{\hyperlink{structwavefront__sequences__t_a0003def9f3c061bb628d5c71456b57e8}{text\_length}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00286}00286\ \ \ \textcolor{comment}{//\ Approximate\ progress}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00287}00287\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ dist\_total\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(text\_length,pattern\_length);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00288}00288\ \ \ \textcolor{keywordtype}{int}\ s\ =\ (wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_a6a54b39e984966640c239d93cfa9284c}{memory\_modular}})\ ?\ score\%wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_a2e90955e5ca8d44cb46e2d9d184a4a2f}{max\_score\_scope}}\ :\ score;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00289}00289\ \ \ \doxymbox{\hyperlink{structwavefront__t}{wavefront\_t}}*\ wavefront\ =\ wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_a041e810ed8b6faa8d7aec33bdcab05db}{mwavefronts}}[s];}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00290}00290\ \ \ \textcolor{keywordflow}{if}\ (wavefront==NULL\ \&\&\ s>0)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00291}00291\ \ \ \ \ s\ =\ (wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_a6a54b39e984966640c239d93cfa9284c}{memory\_modular}})\ ?\ (score-\/1)\%wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_a2e90955e5ca8d44cb46e2d9d184a4a2f}{max\_score\_scope}}\ :\ (score-\/1);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00292}00292\ \ \ \ \ wavefront\ =\ wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_a041e810ed8b6faa8d7aec33bdcab05db}{mwavefronts}}[s];}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00293}00293\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00294}00294\ \ \ \textcolor{keywordtype}{int}\ dist\_max\ =\ -\/1,\ wf\_len\ =\ -\/1,\ k;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00295}00295\ \ \ \textcolor{keywordflow}{if}\ (wavefront!=NULL)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00296}00296\ \ \ \ \ \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\_offset\_t}}*\ \textcolor{keyword}{const}\ offsets\ =\ wavefront-\/>\doxymbox{\hyperlink{structwavefront__t_ac282a183f576258527ce2768384cd3d1}{offsets}};}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00297}00297\ \ \ \ \ \textcolor{keywordflow}{for}\ (k=wavefront-\/>\doxymbox{\hyperlink{structwavefront__t_a7624c9d34e0082fe98ffd61e1e081497}{lo}};k<=wavefront-\/>hi;++k)\ \{}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00298}00298\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ dist\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(\doxymbox{\hyperlink{wavefront__offset_8h_a07102e008c25090ce4eb4ec64dcf62fe}{WAVEFRONT\_V}}(k,offsets[k]),\doxymbox{\hyperlink{wavefront__offset_8h_a4b578347574878ed12e490f8a54044f5}{WAVEFRONT\_H}}(k,offsets[k]));}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00299}00299\ \ \ \ \ \ \ dist\_max\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(dist\_max,dist);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00300}00300\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00301}00301\ \ \ \ \ wf\_len\ =\ wavefront-\/>\doxymbox{\hyperlink{structwavefront__t_aae890befd3e6580fcfc11a15f4c11ee0}{hi}}-\/wavefront-\/>\doxymbox{\hyperlink{structwavefront__t_a7624c9d34e0082fe98ffd61e1e081497}{lo}}+1;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00302}00302\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00303}00303\ \ \ \textcolor{comment}{//\ Memory\ used}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00304}00304\ \ \ \textcolor{keyword}{const}\ uint64\_t\ slab\_size\ =\ \doxymbox{\hyperlink{wavefront__slab_8c_a03c38a93bddacb706fb0847031588799}{wavefront\_slab\_get\_size}}(wf\_aligner-\/>\doxymbox{\hyperlink{struct__wavefront__aligner__t_ae00cf3c7d9490d145eaba76495900bdf}{wavefront\_slab}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00305}00305\ \ \ \textcolor{keyword}{const}\ uint64\_t\ bt\_buffer\_used\ =\ (wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{bt\_buffer}})\ ?}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00306}00306\ \ \ \ \ \ \ \doxymbox{\hyperlink{wavefront__backtrace__buffer_8c_a32536bf793b32f66e39c38ff2b6f279e}{wf\_backtrace\_buffer\_get\_size\_used}}(wf\_components-\/>\doxymbox{\hyperlink{structwavefront__components__t_ac4457f19de59ee1d05adabde3b04a586}{bt\_buffer}})\ :\ 0;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00307}00307\ \ \ \textcolor{comment}{//\ Progress}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00308}00308\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ aligned\_progress\ =\ (dist\_max>=0)\ ?\ (100.0f*(\textcolor{keywordtype}{float})dist\_max/(\textcolor{keywordtype}{float})dist\_total)\ :\ -\/1.0f;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00309}00309\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{float}\ million\_offsets\ =\ (wf\_len>=0)\ ?\ (\textcolor{keywordtype}{float})wf\_len/1000000.0f\ :\ -\/1.0f;}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00310}00310\ \ \ \textcolor{comment}{//\ Print\ one-\/line\ status}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00311}00311\ \ \ fprintf(stream,\textcolor{stringliteral}{"{}["{}});}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00312}00312\ \ \ \doxymbox{\hyperlink{wavefront__aligner_8c_a297e5d90e31a78738f33073b219a2024}{wavefront\_aligner\_print\_mode}}(stream,wf\_aligner);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00313}00313\ \ \ fprintf(stream,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00314}00314\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}]\ SequenceLength=(\%d,\%d)\ Score\ \%d\ (\string~\ \%2.3f\%\%\ aligned).\ "{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00315}00315\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}MemoryUsed(WF-\/Slab,BT-\/buffer)=(\%lu\ MB,\%lu\ MB).\ "{}}}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00316}00316\ \ \ \ \ \ \ \textcolor{stringliteral}{"{}Wavefronts\ \string~\ \%2.3f\ Moffsets\(\backslash\)n"{}},}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00317}00317\ \ \ \ \ \ \ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00318}00318\ \ \ \ \ \ \ text\_length,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00319}00319\ \ \ \ \ \ \ score,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00320}00320\ \ \ \ \ \ \ aligned\_progress,}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00321}00321\ \ \ \ \ \ \ \doxymbox{\hyperlink{commons_8h_adec104e0612084739970d4f0629e2cdd}{CONVERT\_B\_TO\_MB}}(slab\_size),}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00322}00322\ \ \ \ \ \ \ \doxymbox{\hyperlink{commons_8h_adec104e0612084739970d4f0629e2cdd}{CONVERT\_B\_TO\_MB}}(bt\_buffer\_used),}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00323}00323\ \ \ \ \ \ \ million\_offsets);}
+\DoxyCodeLine{\Hypertarget{wavefront__unialign_8c_source_l00324}00324\ \}}
+
+\end{DoxyCode}

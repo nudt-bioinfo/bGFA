@@ -1,0 +1,171 @@
+\doxysection{test\+\_\+bgfa.\+hpp}
+\hypertarget{test__bgfa_8hpp_source}{}\label{test__bgfa_8hpp_source}\index{src/test/test\_bgfa.hpp@{src/test/test\_bgfa.hpp}}
+\doxymbox{\hyperlink{test__bgfa_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00001}00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00002}00002\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00003}00003\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00004}00004\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00005}00005\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00006}00006\ \textcolor{preprocessor}{\#include\ <sys/stat.h>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00007}00007\ \textcolor{preprocessor}{\#include\ <sys/types.h>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00008}00008\ }
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00009}00009\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa__graph_8hpp}{../bgfa\_graph.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa__merge_8hpp}{../bgfa\_merge.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa__alignment_8hpp}{../bgfa\_alignment.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00013}\doxymbox{\hyperlink{test__bgfa_8hpp_a6ce27f3c3097d4317b0f6716bd383fb0}{00013}}\ \textcolor{keyword}{static}\ std::vector<std::string>\ \doxymbox{\hyperlink{test__bgfa_8hpp_a6ce27f3c3097d4317b0f6716bd383fb0}{canonicalizeGfa}}(\textcolor{keyword}{const}\ std::string\ \&path)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00014}00014\ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00015}00015\ \ \ \ \ std::ifstream\ f(path);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00016}00016\ \ \ \ \ std::vector<std::string>\ out;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00017}00017\ \ \ \ \ \textcolor{keywordflow}{if}\ (!f.is\_open())}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00018}00018\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00019}00019\ \ \ \ \ \textcolor{comment}{//\ First\ pass:\ build\ name-\/>idx\ by\ S\ order}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00020}00020\ \ \ \ \ std::vector<std::pair<std::string,\ std::string>>\ s\_lines;\ \textcolor{comment}{//\ name,\ seq}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00021}00021\ \ \ \ \ std::vector<std::string>\ raw\_lines;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00022}00022\ \ \ \ \ raw\_lines.reserve(256);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00023}00023\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00024}00024\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(f,\ line))}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00025}00025\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00026}00026\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line.empty()\ ||\ line[0]\ ==\ \textcolor{charliteral}{'\#'})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00027}00027\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00028}00028\ \ \ \ \ \ \ \ \ raw\_lines.push\_back(line);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00029}00029\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line[0]\ ==\ \textcolor{charliteral}{'S'})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00030}00030\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00031}00031\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ S\ <name>\ <seq>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00032}00032\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ type,\ name,\ seq;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00033}00033\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ ss(line);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00034}00034\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ >>\ type\ >>\ name\ >>\ seq;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00035}00035\ \ \ \ \ \ \ \ \ \ \ \ \ s\_lines.emplace\_back(name,\ seq);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00036}00036\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00037}00037\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00038}00038\ \ \ \ \ \textcolor{comment}{//\ Build\ mapping}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00039}00039\ \ \ \ \ std::unordered\_map<std::string,\ int>\ name2idx;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00040}00040\ \ \ \ \ name2idx.reserve(s\_lines.size()\ *\ 2);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00041}00041\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ s\_lines.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00042}00042\ \ \ \ \ \ \ \ \ name2idx[s\_lines[i].first]\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(i);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00043}00043\ }
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00044}00044\ \ \ \ \ \textcolor{comment}{//\ Second\ pass:\ emit\ canonical\ lines}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00045}00045\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&ln\ :\ raw\_lines)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00046}00046\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00047}00047\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ln[0]\ ==\ \textcolor{charliteral}{'S'})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00048}00048\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00049}00049\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ type,\ name,\ seq;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00050}00050\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ ss(ln);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00051}00051\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ >>\ type\ >>\ name\ >>\ seq;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00052}00052\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ idx\ =\ name2idx[name];}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \ \ \ \ out.push\_back(\textcolor{stringliteral}{"{}S\ "{}}\ +\ std::to\_string(idx)\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ seq);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ln[0]\ ==\ \textcolor{charliteral}{'L'})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L\ <from>\ <from\_dir>\ <to>\ <to\_dir>\ <ovl>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ type,\ from,\ fdir,\ to,\ tdir,\ ovl;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00059}00059\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ ss(ln);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ >>\ type\ >>\ from\ >>\ fdir\ >>\ to\ >>\ tdir\ >>\ ovl;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ fi\ =\ name2idx[from];}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00062}00062\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ti\ =\ name2idx[to];}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ out.push\_back(\textcolor{stringliteral}{"{}L\ "{}}\ +\ std::to\_string(fi)\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ fdir\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ std::to\_string(ti)\ +\ \textcolor{stringliteral}{"{}\ "{}}\ +\ tdir\ +\ \textcolor{stringliteral}{"{}\ *"{}});}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (ln[0]\ ==\ \textcolor{charliteral}{'P'})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00066}00066\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ P\ <id>\ <nodes>\ <cigar>}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ type,\ pid,\ nodes,\ cigar;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00069}00069\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ ss(ln);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ ss\ >>\ type\ >>\ pid\ >>\ nodes\ >>\ cigar;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ rewrite\ nodes\ list}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ std::stringstream\ ns(nodes);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ node;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<std::string>\ normNodes;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(ns,\ node,\ \textcolor{charliteral}{','}))}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (node.empty())}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00079}00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ dir\ =\ node.back();}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00080}00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ name\ =\ node.substr(0,\ node.size()\ -\/\ 1);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00081}00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ ni\ =\ name2idx[name];}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00082}00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ normNodes.push\_back(std::to\_string(ni)\ +\ std::string(1,\ dir));}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00083}00083\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00084}00084\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ joined;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00085}00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ normNodes.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00087}00087\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00088}00088\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ joined.push\_back(\textcolor{charliteral}{','});}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00089}00089\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ joined\ +=\ normNodes[i];}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00090}00090\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00091}00091\ \ \ \ \ \ \ \ \ \ \ \ \ out.push\_back(\textcolor{stringliteral}{"{}P\ 0\ "{}}\ +\ joined\ +\ \textcolor{stringliteral}{"{}\ *"{}});}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00092}00092\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00093}00093\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00094}00094\ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00095}00095\ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00096}00096\ }
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00097}\doxymbox{\hyperlink{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0}{00097}}\ \textcolor{keyword}{static}\ std::string\ \doxymbox{\hyperlink{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0}{normalize}}(\textcolor{keyword}{const}\ std::string\ \&s)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00098}00098\ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00099}00099\ \ \ \ \ std::string\ out;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00100}00100\ \ \ \ \ out.reserve(s.size());}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00101}00101\ \ \ \ \ \textcolor{keywordtype}{bool}\ inSpace\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00102}00102\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{char}\ c\ :\ s)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00103}00103\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00104}00104\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (c\ ==\ \textcolor{charliteral}{'\(\backslash\)t'}\ ||\ c\ ==\ \textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00105}00105\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00106}00106\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!inSpace)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00107}00107\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00108}00108\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ out.push\_back(\textcolor{charliteral}{'\ '});}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00109}00109\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inSpace\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00110}00110\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00112}00112\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00113}00113\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00114}00114\ \ \ \ \ \ \ \ \ \ \ \ \ out.push\_back(c);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00115}00115\ \ \ \ \ \ \ \ \ \ \ \ \ inSpace\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00116}00116\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00117}00117\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00118}00118\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out.empty()\ \&\&\ out.front()\ ==\ \textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00119}00119\ \ \ \ \ \ \ \ \ out.erase(out.begin());}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00120}00120\ \ \ \ \ \textcolor{keywordflow}{if}\ (!out.empty()\ \&\&\ out.back()\ ==\ \textcolor{charliteral}{'\ '})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00121}00121\ \ \ \ \ \ \ \ \ out.pop\_back();}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00123}00123\ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00124}00124\ }
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00125}\doxymbox{\hyperlink{test__bgfa_8hpp_ac4f4a4352f3929141f3fcd5807523e0d}{00125}}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{test__bgfa_8hpp_ac4f4a4352f3929141f3fcd5807523e0d}{filesEqual}}(\textcolor{keyword}{const}\ std::string\ \&a,\ \textcolor{keyword}{const}\ std::string\ \&b)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00126}00126\ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00127}00127\ \ \ \ \ \textcolor{keyword}{auto}\ ca\ =\ \doxymbox{\hyperlink{test__bgfa_8hpp_a6ce27f3c3097d4317b0f6716bd383fb0}{canonicalizeGfa}}(a);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00128}00128\ \ \ \ \ \textcolor{keyword}{auto}\ cb\ =\ \doxymbox{\hyperlink{test__bgfa_8hpp_a6ce27f3c3097d4317b0f6716bd383fb0}{canonicalizeGfa}}(b);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00129}00129\ \ \ \ \ \textcolor{keywordflow}{if}\ (ca.size()\ !=\ cb.size())}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00130}00130\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00131}00131\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ ca.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00132}00132\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00133}00133\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0}{normalize}}(ca[i])\ !=\ \doxymbox{\hyperlink{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0}{normalize}}(cb[i]))}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00134}00134\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00135}00135\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00137}00137\ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00138}00138\ }
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00139}\doxymbox{\hyperlink{test__bgfa_8hpp_a1cedbced6db14ea1d1e1069eb7f0a1b0}{00139}}\ \textcolor{keyword}{static}\ std::vector<std::string>\ \doxymbox{\hyperlink{test__bgfa_8hpp_a1cedbced6db14ea1d1e1069eb7f0a1b0}{readLines}}(\textcolor{keyword}{const}\ std::string\ \&path)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00140}00140\ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00141}00141\ \ \ \ \ std::ifstream\ f(path);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00142}00142\ \ \ \ \ std::vector<std::string>\ out;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00143}00143\ \ \ \ \ std::string\ line;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00144}00144\ \ \ \ \ \textcolor{keywordflow}{while}\ (getline(f,\ line))}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00145}00145\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (line.empty()\ ||\ line[0]\ ==\ \textcolor{charliteral}{'\#'})}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00148}00148\ \ \ \ \ \ \ \ \ out.push\_back(line);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00149}00149\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00150}00150\ \ \ \ \ \textcolor{keywordflow}{return}\ out;}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00151}00151\ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00152}00152\ }
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00153}\doxymbox{\hyperlink{test__bgfa_8hpp_a5474cb3d7e3729c00cfb325e5ff54cfb}{00153}}\ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{test__bgfa_8hpp_a5474cb3d7e3729c00cfb325e5ff54cfb}{gfaEqualLoose}}(\textcolor{keyword}{const}\ std::string\ \&a,\ \textcolor{keyword}{const}\ std::string\ \&b)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00154}00154\ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00155}00155\ \ \ \ \ \textcolor{keyword}{auto}\ la\ =\ \doxymbox{\hyperlink{test__bgfa_8hpp_a1cedbced6db14ea1d1e1069eb7f0a1b0}{readLines}}(a);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00156}00156\ \ \ \ \ \textcolor{keyword}{auto}\ lb\ =\ \doxymbox{\hyperlink{test__bgfa_8hpp_a1cedbced6db14ea1d1e1069eb7f0a1b0}{readLines}}(b);}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00157}00157\ \ \ \ \ \textcolor{keywordflow}{if}\ (la.size()\ !=\ lb.size())}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00159}00159\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 0;\ i\ <\ la.size();\ ++i)}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00160}00160\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (\doxymbox{\hyperlink{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0}{normalize}}(la[i])\ !=\ \doxymbox{\hyperlink{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0}{normalize}}(lb[i]))}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00163}00163\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00164}00164\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{test__bgfa_8hpp_source_l00165}00165\ \}}
+
+\end{DoxyCode}

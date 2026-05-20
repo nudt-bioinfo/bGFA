@@ -1,0 +1,56 @@
+\doxysection{benchmark\+\_\+edit.\+h}
+\hypertarget{benchmark__edit_8h_source}{}\label{benchmark__edit_8h_source}\index{src/wfa/tools/align\_benchmark/benchmark/benchmark\_edit.h@{src/wfa/tools/align\_benchmark/benchmark/benchmark\_edit.h}}
+\doxymbox{\hyperlink{benchmark__edit_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00029}00029\ \textcolor{comment}{\ *\ DESCRIPTION:\ Edit-\/distance\ alignment\ algorithms\ wrapper}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00030}00030\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00031}00031\ }
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00032}00032\ \textcolor{preprocessor}{\#ifndef\ BENCHMARK\_EDIT\_H\_}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00033}00033\ \textcolor{preprocessor}{\#define\ BENCHMARK\_EDIT\_H\_}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00034}00034\ }
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00035}00035\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{benchmark__utils_8h}{benchmark/benchmark\_utils.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00036}00036\ }
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00037}00037\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00038}00038\ \textcolor{comment}{\ *\ Benchmark\ Edit}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00039}00039\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00040}00040\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{benchmark__edit_8h_aec61a123438dafa9fb80e3702e494497}{benchmark\_edit\_bpm}}(}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00041}00041\ \ \ \ \ \doxymbox{\hyperlink{structalign__input__t}{align\_input\_t}}*\ \textcolor{keyword}{const}\ align\_input);}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00042}00042\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{benchmark__edit_8h_aea43baf9440d1ad8b59ded992f788e50}{benchmark\_edit\_dp}}(}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00043}00043\ \ \ \ \ \doxymbox{\hyperlink{structalign__input__t}{align\_input\_t}}*\ \textcolor{keyword}{const}\ align\_input);}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00044}00044\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{benchmark__edit_8h_a8e31bf9008218950ed272fd08a2bfa22}{benchmark\_edit\_dp\_banded}}(}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00045}00045\ \ \ \ \ \doxymbox{\hyperlink{structalign__input__t}{align\_input\_t}}*\ \textcolor{keyword}{const}\ align\_input,}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ bandwidth);}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00047}00047\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{benchmark__edit_8h_aaa6416f08c5e06deb57dc547f9a41565}{benchmark\_edit\_wavefront}}(}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00048}00048\ \ \ \ \ \doxymbox{\hyperlink{structalign__input__t}{align\_input\_t}}*\ \textcolor{keyword}{const}\ align\_input);}
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00049}00049\ }
+\DoxyCodeLine{\Hypertarget{benchmark__edit_8h_source_l00050}00050\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ BENCHMARK\_EDIT\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

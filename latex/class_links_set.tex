@@ -1,0 +1,596 @@
+\doxysection{Links\+Set Class Reference}
+\hypertarget{class_links_set}{}\label{class_links_set}\index{LinksSet@{LinksSet}}
+
+
+\doxylink{class_links_set}{Links\+Set} class representing a set of links in the graph.  
+
+
+
+
+{\ttfamily \+\#include $<$bgfa\+\_\+graph.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_links_set_a805d5c6be244540956db5fa0e3b413f0}{Links\+Set}} ()
+\begin{DoxyCompactList}\small\item\em Default constructor initializes an empty \doxylink{class_links_set}{Links\+Set}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{class_links_set_aaf2a8e55bff0cb31365a8fff19e5d22b}{Links\+Set}} (const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} links\+\_\+num, const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} nodes\+\_\+num, const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&data, const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&indptr)
+\begin{DoxyCompactList}\small\item\em Constructor that builds \doxylink{class_links_set}{Links\+Set} from given data and indptr vectors. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_links_set_a895274e7bf45c760488a3d8a99e00eaa}{get\+Link\+Num}} () const
+\begin{DoxyCompactList}\small\item\em Get the number of links. \end{DoxyCompactList}\item 
+const std::\+unordered\+\_\+set$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \& \doxymbox{\hyperlink{class_links_set_a52f61d58f6ac1c92445d81dd5fcf090b}{get\+Links\+From\+Node}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} index) const
+\begin{DoxyCompactList}\small\item\em Get the links from a specific node. \end{DoxyCompactList}\item 
+const std::\+vector$<$ std::\+unordered\+\_\+set$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ $>$ \& \doxymbox{\hyperlink{class_links_set_aecc3bcb0868c36f0ae7738a643f68bf8}{get\+All\+Links}} () const
+\begin{DoxyCompactList}\small\item\em Get all links in the \doxylink{class_links_set}{Links\+Set}. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_links_set_a35e9f5029d8b280f30e817ef166a1c3e}{get\+Link\+To\+By\+Index}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} from\+\_\+id, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} i) const
+\begin{DoxyCompactList}\small\item\em Get the target node index of a link by link index. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_links_set_a919c48c19c17205eae70930faf5d683e}{get\+Link\+Dir}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} from\+\_\+id, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} to\+\_\+id) const
+\begin{DoxyCompactList}\small\item\em Get the direction of a link from a specific node to a target node. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_links_set_a23ee9df2970f28dc388ec69ecf4c0852}{get\+Link\+Dir\+By\+Index}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} from\+\_\+id, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} i) const
+\begin{DoxyCompactList}\small\item\em Get the direction of a link from a specific node by link index. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_links_set_a1d1810ea7d25492ae892b779f17036c3}{get\+Store\+Size}} ()
+\begin{DoxyCompactList}\small\item\em Get the storage size of the \doxylink{class_links_set}{Links\+Set} in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_a3349764379b151949f6fc11bdd3d796c}{add\+Node}} ()
+\begin{DoxyCompactList}\small\item\em Add a new empty node to the \doxylink{class_links_set}{Links\+Set}. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_ad12e2e6ad316b146150499c4deeab89b}{resize\+Links}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} new\+\_\+size)
+\begin{DoxyCompactList}\small\item\em Resize the \doxylink{class_links_set}{Links\+Set} to accommodate a new size. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_aadbbd4d1bb7909e760a11ceed428630d}{add\+Link}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} from\+\_\+id, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} to\+\_\+id, std::\+string from\+\_\+dir, std::\+string to\+\_\+dir)
+\begin{DoxyCompactList}\small\item\em Add a link from from\+\_\+id to to\+\_\+id with specified directions. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_a8e3f088e3e75fc506cf99e050496eb34}{add\+Link}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} from\+\_\+id, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} to\+\_\+value)
+\begin{DoxyCompactList}\small\item\em Add a link from from\+\_\+id to to\+\_\+value. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_a9fae4967365d96111936c44adb6d318b}{redirect\+Incoming}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} old\+\_\+to, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} new\+\_\+to)
+\begin{DoxyCompactList}\small\item\em Redirect all incoming links pointing to old\+\_\+to so they point to new\+\_\+to. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_aa2efdc68528394843315c224d1b2a879}{redirect\+Outgoing}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} old\+\_\+from, \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} new\+\_\+from)
+\begin{DoxyCompactList}\small\item\em Move all outgoing links from old\+\_\+from to new\+\_\+from, preserving direction bits. After moving, the old\+\_\+from\textquotesingle{}s outgoing links are cleared. The total link count remains unchanged. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_abdb96c4bf11d62566d57354f6519dbbe}{remove\+Outgoing}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} from\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Remove all outgoing links from a node. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_a7e5591fd03315cb95451d537af7301c7}{remove\+Incoming}} (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} to\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Remove all incoming links to a node. \end{DoxyCompactList}\item 
+std::\+string \doxymbox{\hyperlink{class_links_set_aeefce18683f19b6b9e5e82bf1be4153a}{to\+Gfa\+Txt}} () const
+\begin{DoxyCompactList}\small\item\em Convert the \doxylink{class_links_set}{Links\+Set} to \doxylink{class_g_f_a}{GFA} text format. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_links_set_a2b1ca6bd0b37818e6125c8b3e4580855}{to\+Bgfa\+Bin}} (std::\+ofstream \&output\+\_\+file) const
+\begin{DoxyCompactList}\small\item\em Convert the \doxylink{class_links_set}{Links\+Set} to b\+GFA binary format. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{class_links_set_a9e25a5cdc8a023fed0acfb0b4f2d1c71}{set\+Store\+Size}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_links_set_ae7a6391eeac9b707f691b397d6188962}{link\+\_\+num\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Number of links. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} \doxymbox{\hyperlink{class_links_set_aa138a0ec5a9052d75813ee3e399c07d9}{store\+\_\+size\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Size in storage (in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units). \end{DoxyCompactList}\item 
+std::\+vector$<$ std::\+unordered\+\_\+set$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ $>$ \doxymbox{\hyperlink{class_links_set_a9a18167d0a1a49352a78679dd731ee1f}{links\+\_\+}}
+\begin{DoxyCompactList}\small\item\em Adjacency set representation of links, links\+[from\+\_\+id]\+ contains encoded (to\+\_\+id\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}2)\texorpdfstring{$\vert$}{|}dir. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std::\+ostream \& \doxymbox{\hyperlink{class_links_set_a0fefa2ee4af861a460646d6c8669f208}{operator$<$$<$}} (std::\+ostream \&os, const \doxymbox{\hyperlink{class_links_set}{Links\+Set}} \&links\+\_\+set)
+\begin{DoxyCompactList}\small\item\em Output stream operator for \doxylink{class_links_set}{Links\+Set}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_links_set}{Links\+Set} class representing a set of links in the graph. 
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00631}{631}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_links_set_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_links_set_a805d5c6be244540956db5fa0e3b413f0}\index{LinksSet@{LinksSet}!LinksSet@{LinksSet}}
+\index{LinksSet@{LinksSet}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{LinksSet()}{LinksSet()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_links_set_a805d5c6be244540956db5fa0e3b413f0} 
+Links\+Set::\+\+Links\+Set (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Default constructor initializes an empty \doxylink{class_links_set}{Links\+Set}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00642}{642}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 0
+\Hypertarget{class_links_set_aaf2a8e55bff0cb31365a8fff19e5d22b}\index{LinksSet@{LinksSet}!LinksSet@{LinksSet}}
+\index{LinksSet@{LinksSet}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{LinksSet()}{LinksSet()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_links_set_aaf2a8e55bff0cb31365a8fff19e5d22b} 
+Links\+Set::\+\+Links\+Set (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{links\+\_\+num}{, }\item[{const \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{nodes\+\_\+num}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&}]{data}{, }\item[{const std::\+vector$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \&}]{indptr}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}}
+
+
+
+Constructor that builds \doxylink{class_links_set}{Links\+Set} from given data and indptr vectors. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & links\+\_\+num -\/ Number of links \\
+\hline
+{\em \{uword\+\_\+t\}} & nodes\+\_\+num -\/ Number of nodes \\
+\hline
+{\em \{vector$<$uword\+\_\+t$>$\}} & \&data -\/ Data vector containing link information \\
+\hline
+{\em \{vector$<$uword\+\_\+t$>$\}} & \&indptr -\/ Indptr vector for indexing \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00651}{651}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+
+
+\label{doc-func-members}
+\Hypertarget{class_links_set_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_links_set_aadbbd4d1bb7909e760a11ceed428630d}\index{LinksSet@{LinksSet}!addLink@{addLink}}
+\index{addLink@{addLink}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{addLink()}{addLink()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_links_set_aadbbd4d1bb7909e760a11ceed428630d} 
+void Links\+Set::\+add\+Link (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{from\+\_\+id}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{to\+\_\+id}{, }\item[{std::\+string}]{from\+\_\+dir}{, }\item[{std::\+string}]{to\+\_\+dir}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a link from from\+\_\+id to to\+\_\+id with specified directions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & from\+\_\+id -\/ Source node index \\
+\hline
+{\em \{uword\+\_\+t\}} & to\+\_\+id -\/ Target node index \\
+\hline
+{\em \{string\}} & from\+\_\+dir -\/ Direction from source node (\textquotesingle{}+\textquotesingle{} or \textquotesingle{}-\/\textquotesingle{}) \\
+\hline
+{\em \{string\}} & to\+\_\+dir -\/ Direction to target node (\textquotesingle{}+\textquotesingle{} or \textquotesingle{}-\/\textquotesingle{}) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00801}{801}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{class_links_set_a8e3f088e3e75fc506cf99e050496eb34}\index{LinksSet@{LinksSet}!addLink@{addLink}}
+\index{addLink@{addLink}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{addLink()}{addLink()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_links_set_a8e3f088e3e75fc506cf99e050496eb34} 
+void Links\+Set::\+add\+Link (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{from\+\_\+id}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{to\+\_\+value}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a link from from\+\_\+id to to\+\_\+value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & from\+\_\+id -\/ Source node index \\
+\hline
+{\em \{uword\+\_\+t\}} & to\+\_\+value -\/ Encoded target node index and direction \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00828}{828}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+\Hypertarget{class_links_set_a3349764379b151949f6fc11bdd3d796c}\index{LinksSet@{LinksSet}!addNode@{addNode}}
+\index{addNode@{addNode}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{addNode()}{addNode()}}
+{\footnotesize\ttfamily \label{class_links_set_a3349764379b151949f6fc11bdd3d796c} 
+void Links\+Set::\+add\+Node (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Add a new empty node to the \doxylink{class_links_set}{Links\+Set}. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00775}{775}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{class_links_set_aecc3bcb0868c36f0ae7738a643f68bf8}\index{LinksSet@{LinksSet}!getAllLinks@{getAllLinks}}
+\index{getAllLinks@{getAllLinks}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{getAllLinks()}{getAllLinks()}}
+{\footnotesize\ttfamily \label{class_links_set_aecc3bcb0868c36f0ae7738a643f68bf8} 
+const std::\+vector$<$ std::\+unordered\+\_\+set$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ $>$ \& Links\+Set::\+get\+All\+Links (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get all links in the \doxylink{class_links_set}{Links\+Set}. 
+
+\begin{DoxyReturn}{Returns}
+\{const vector$<$vector$<$uword\+\_\+t$>$$>$\&\} 2D vector of all links 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00693}{693}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{class_links_set_a919c48c19c17205eae70930faf5d683e}\index{LinksSet@{LinksSet}!getLinkDir@{getLinkDir}}
+\index{getLinkDir@{getLinkDir}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{getLinkDir()}{getLinkDir()}}
+{\footnotesize\ttfamily \label{class_links_set_a919c48c19c17205eae70930faf5d683e} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Links\+Set::\+get\+Link\+Dir (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{from\+\_\+id}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{to\+\_\+id}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the direction of a link from a specific node to a target node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & from\+\_\+id -\/ Source node index \\
+\hline
+{\em \{uword\+\_\+t\}} & to\+\_\+id -\/ Target node index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} Direction of the link (2-\/bit encoded) 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00725}{725}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_links_set_a23ee9df2970f28dc388ec69ecf4c0852}\index{LinksSet@{LinksSet}!getLinkDirByIndex@{getLinkDirByIndex}}
+\index{getLinkDirByIndex@{getLinkDirByIndex}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{getLinkDirByIndex()}{getLinkDirByIndex()}}
+{\footnotesize\ttfamily \label{class_links_set_a23ee9df2970f28dc388ec69ecf4c0852} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Links\+Set::\+get\+Link\+Dir\+By\+Index (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{from\+\_\+id}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the direction of a link from a specific node by link index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & from\+\_\+id -\/ Source node index \\
+\hline
+{\em \{uword\+\_\+t\}} & i -\/ Link index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} Direction of the link (2-\/bit encoded) 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00747}{747}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{class_links_set_a895274e7bf45c760488a3d8a99e00eaa}\index{LinksSet@{LinksSet}!getLinkNum@{getLinkNum}}
+\index{getLinkNum@{getLinkNum}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{getLinkNum()}{getLinkNum()}}
+{\footnotesize\ttfamily \label{class_links_set_a895274e7bf45c760488a3d8a99e00eaa} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Links\+Set::\+get\+Link\+Num (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the number of links. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} Number of links 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00673}{673}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_links_set_a52f61d58f6ac1c92445d81dd5fcf090b}\index{LinksSet@{LinksSet}!getLinksFromNode@{getLinksFromNode}}
+\index{getLinksFromNode@{getLinksFromNode}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{getLinksFromNode()}{getLinksFromNode()}}
+{\footnotesize\ttfamily \label{class_links_set_a52f61d58f6ac1c92445d81dd5fcf090b} 
+const std::\+unordered\+\_\+set$<$ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} $>$ \& Links\+Set::\+get\+Links\+From\+Node (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{index}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the links from a specific node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & index -\/ Node index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{const vector$<$uword\+\_\+t$>$\&\} Vector of links from the specified node 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00680}{680}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{class_links_set_a35e9f5029d8b280f30e817ef166a1c3e}\index{LinksSet@{LinksSet}!getLinkToByIndex@{getLinkToByIndex}}
+\index{getLinkToByIndex@{getLinkToByIndex}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{getLinkToByIndex()}{getLinkToByIndex()}}
+{\footnotesize\ttfamily \label{class_links_set_a35e9f5029d8b280f30e817ef166a1c3e} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Links\+Set::\+get\+Link\+To\+By\+Index (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{from\+\_\+id}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{i}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the target node index of a link by link index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & from\+\_\+id -\/ Source node index \\
+\hline
+{\em \{uword\+\_\+t\}} & i -\/ Link index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} Target node index 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00704}{704}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{class_links_set_a1d1810ea7d25492ae892b779f17036c3}\index{LinksSet@{LinksSet}!getStoreSize@{getStoreSize}}
+\index{getStoreSize@{getStoreSize}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{getStoreSize()}{getStoreSize()}}
+{\footnotesize\ttfamily \label{class_links_set_a1d1810ea7d25492ae892b779f17036c3} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Links\+Set::\+get\+Store\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the storage size of the \doxylink{class_links_set}{Links\+Set} in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units. 
+
+\begin{DoxyReturn}{Returns}
+\{\doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}\} Storage size 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00766}{766}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 11
+\Hypertarget{class_links_set_a9fae4967365d96111936c44adb6d318b}\index{LinksSet@{LinksSet}!redirectIncoming@{redirectIncoming}}
+\index{redirectIncoming@{redirectIncoming}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{redirectIncoming()}{redirectIncoming()}}
+{\footnotesize\ttfamily \label{class_links_set_a9fae4967365d96111936c44adb6d318b} 
+void Links\+Set::\+redirect\+Incoming (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{old\+\_\+to}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{new\+\_\+to}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Redirect all incoming links pointing to old\+\_\+to so they point to new\+\_\+to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+\_\+to} & -\/ Original target node id \\
+\hline
+{\em new\+\_\+to} & -\/ New target node id \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00846}{846}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+\Hypertarget{class_links_set_aa2efdc68528394843315c224d1b2a879}\index{LinksSet@{LinksSet}!redirectOutgoing@{redirectOutgoing}}
+\index{redirectOutgoing@{redirectOutgoing}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{redirectOutgoing()}{redirectOutgoing()}}
+{\footnotesize\ttfamily \label{class_links_set_aa2efdc68528394843315c224d1b2a879} 
+void Links\+Set::\+redirect\+Outgoing (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{old\+\_\+from}{, }\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{new\+\_\+from}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Move all outgoing links from old\+\_\+from to new\+\_\+from, preserving direction bits. After moving, the old\+\_\+from\textquotesingle{}s outgoing links are cleared. The total link count remains unchanged. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em old\+\_\+from} & -\/ Original source node id \\
+\hline
+{\em new\+\_\+from} & -\/ New source node id \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00891}{891}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 13
+\Hypertarget{class_links_set_a7e5591fd03315cb95451d537af7301c7}\index{LinksSet@{LinksSet}!removeIncoming@{removeIncoming}}
+\index{removeIncoming@{removeIncoming}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{removeIncoming()}{removeIncoming()}}
+{\footnotesize\ttfamily \label{class_links_set_a7e5591fd03315cb95451d537af7301c7} 
+void Links\+Set::\+remove\+Incoming (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{to\+\_\+id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove all incoming links to a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+\_\+id} & -\/ Target node id \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00940}{940}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 14
+\Hypertarget{class_links_set_abdb96c4bf11d62566d57354f6519dbbe}\index{LinksSet@{LinksSet}!removeOutgoing@{removeOutgoing}}
+\index{removeOutgoing@{removeOutgoing}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{removeOutgoing()}{removeOutgoing()}}
+{\footnotesize\ttfamily \label{class_links_set_abdb96c4bf11d62566d57354f6519dbbe} 
+void Links\+Set::\+remove\+Outgoing (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{from\+\_\+id}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove all outgoing links from a node. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em from\+\_\+id} & -\/ Source node id \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00924}{924}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 15
+\Hypertarget{class_links_set_ad12e2e6ad316b146150499c4deeab89b}\index{LinksSet@{LinksSet}!resizeLinks@{resizeLinks}}
+\index{resizeLinks@{resizeLinks}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{resizeLinks()}{resizeLinks()}}
+{\footnotesize\ttfamily \label{class_links_set_ad12e2e6ad316b146150499c4deeab89b} 
+void Links\+Set::\+resize\+Links (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}}]{new\+\_\+size}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Resize the \doxylink{class_links_set}{Links\+Set} to accommodate a new size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{uword\+\_\+t\}} & new\+\_\+size -\/ New size for the \doxylink{class_links_set}{Links\+Set} \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00785}{785}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 16
+\Hypertarget{class_links_set_a9e25a5cdc8a023fed0acfb0b4f2d1c71}\index{LinksSet@{LinksSet}!setStoreSize@{setStoreSize}}
+\index{setStoreSize@{setStoreSize}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{setStoreSize()}{setStoreSize()}}
+{\footnotesize\ttfamily \label{class_links_set_a9e25a5cdc8a023fed0acfb0b4f2d1c71} 
+void Links\+Set::\+set\+Store\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01061}{1061}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 17
+\Hypertarget{class_links_set_a2b1ca6bd0b37818e6125c8b3e4580855}\index{LinksSet@{LinksSet}!toBgfaBin@{toBgfaBin}}
+\index{toBgfaBin@{toBgfaBin}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{toBgfaBin()}{toBgfaBin()}}
+{\footnotesize\ttfamily \label{class_links_set_a2b1ca6bd0b37818e6125c8b3e4580855} 
+void Links\+Set::\+to\+Bgfa\+Bin (\begin{DoxyParamCaption}\item[{std::\+ofstream \&}]{output\+\_\+file}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert the \doxylink{class_links_set}{Links\+Set} to b\+GFA binary format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{ofstream\}} & \&output\+\_\+file -\/ Output binary file stream \\
+\hline
+{\em \{uword\+\_\+t\}} & \&l\+\_\+offset -\/ Current offset in the binary file \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00993}{993}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_links_set_aeefce18683f19b6b9e5e82bf1be4153a}\index{LinksSet@{LinksSet}!toGfaTxt@{toGfaTxt}}
+\index{toGfaTxt@{toGfaTxt}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{toGfaTxt()}{toGfaTxt()}}
+{\footnotesize\ttfamily \label{class_links_set_aeefce18683f19b6b9e5e82bf1be4153a} 
+std::\+string Links\+Set::\+to\+Gfa\+Txt (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Convert the \doxylink{class_links_set}{Links\+Set} to \doxylink{class_g_f_a}{GFA} text format. 
+
+\begin{DoxyReturn}{Returns}
+\{string\} \doxylink{class_g_f_a}{GFA} text representation of the links 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00969}{969}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+\label{doc-related-members}
+\Hypertarget{class_links_set_doc-related-members}
+\doxysubsection{Friends And Related Symbol Documentation}
+\Hypertarget{class_links_set_a0fefa2ee4af861a460646d6c8669f208}\index{LinksSet@{LinksSet}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily \label{class_links_set_a0fefa2ee4af861a460646d6c8669f208} 
+std::\+ostream \& operator$<$$<$ (\begin{DoxyParamCaption}\item[{std::\+ostream \&}]{os}{, }\item[{const \doxymbox{\hyperlink{class_links_set}{Links\+Set}} \&}]{links\+\_\+set}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Output stream operator for \doxylink{class_links_set}{Links\+Set}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \{ostream\}} & \&os -\/ Output stream \\
+\hline
+{\em \{\+Links\+Set\}} & \&links\+\_\+set -\/ \doxylink{class_links_set}{Links\+Set} to output \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+\{ostream\&\} Reference to the output stream 
+\end{DoxyReturn}
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l01043}{1043}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+\label{doc-variable-members}
+\Hypertarget{class_links_set_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_links_set_ae7a6391eeac9b707f691b397d6188962}\index{LinksSet@{LinksSet}!link\_num\_@{link\_num\_}}
+\index{link\_num\_@{link\_num\_}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{link\_num\_}{link\_num\_}}
+{\footnotesize\ttfamily \label{class_links_set_ae7a6391eeac9b707f691b397d6188962} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Links\+Set::\+link\+\_\+num\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Number of links. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00634}{634}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_links_set_a9a18167d0a1a49352a78679dd731ee1f}\index{LinksSet@{LinksSet}!links\_@{links\_}}
+\index{links\_@{links\_}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{links\_}{links\_}}
+{\footnotesize\ttfamily \label{class_links_set_a9a18167d0a1a49352a78679dd731ee1f} 
+std::\+vector$<$std::\+unordered\+\_\+set$<$\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}}$>$ $>$ Links\+Set::\+links\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Adjacency set representation of links, links\+[from\+\_\+id]\+ contains encoded (to\+\_\+id\texorpdfstring{$<$}{<}\texorpdfstring{$<$}{<}2)\texorpdfstring{$\vert$}{|}dir. 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00636}{636}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+\Hypertarget{class_links_set_aa138a0ec5a9052d75813ee3e399c07d9}\index{LinksSet@{LinksSet}!store\_size\_@{store\_size\_}}
+\index{store\_size\_@{store\_size\_}!LinksSet@{LinksSet}}
+\doxysubsubsection{\texorpdfstring{store\_size\_}{store\_size\_}}
+{\footnotesize\ttfamily \label{class_links_set_aa138a0ec5a9052d75813ee3e399c07d9} 
+\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t}} Links\+Set::\+store\+\_\+size\+\_\+\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Size in storage (in \doxylink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\+\_\+t} units). 
+
+
+
+Definition at line \doxymbox{\hyperlink{bgfa__graph_8hpp_source_l00635}{635}} of file \doxymbox{\hyperlink{bgfa__graph_8hpp_source}{bgfa\+\_\+graph.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\doxymbox{\hyperlink{bgfa__graph_8hpp}{bgfa\+\_\+graph.\+hpp}}\end{DoxyCompactItemize}

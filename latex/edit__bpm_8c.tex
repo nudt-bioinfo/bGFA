@@ -1,0 +1,275 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+edit/\+edit\+\_\+bpm.c File Reference}
+\hypertarget{edit__bpm_8c}{}\label{edit__bpm_8c}\index{src/wfa/tools/align\_benchmark/edit/edit\_bpm.c@{src/wfa/tools/align\_benchmark/edit/edit\_bpm.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}edit/\+edit\+\_\+bpm.\+h"{}}\newline
+{\ttfamily \+\#include "{}utils/\+dna\+\_\+text.\+h"{}}\newline
+Include dependency graph for edit\+\_\+bpm.\+c:\+
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{edit__bpm_8c_a669d6a1bf3cc3ae6712d8bd0e6b44f79}{BPM\+\_\+\+ALPHABET\+\_\+\+LENGTH}}~4
+\item 
+\+\#define \doxymbox{\hyperlink{edit__bpm_8c_a2c72968a2f116f6fd6aeae534a89e51f}{BPM\+\_\+\+W64\+\_\+\+LENGTH}}~\doxymbox{\hyperlink{commons_8h_a1975636872ec62179e62077b2792467d}{UINT64\+\_\+\+LENGTH}}
+\item 
+\+\#define \doxymbox{\hyperlink{edit__bpm_8c_a82d1fa77c7ad0a5c51741d436d35b898}{BPM\+\_\+\+W64\+\_\+\+SIZE}}~\doxymbox{\hyperlink{commons_8h_a83d57fa5bf231d2224ca44e347370cd7}{UINT64\+\_\+\+SIZE}}
+\item 
+\+\#define \doxymbox{\hyperlink{edit__bpm_8c_a671a5fd4a197ae28f9ae249c7707de30}{BPM\+\_\+\+W64\+\_\+\+ONES}}~UINT64\+\_\+\+MAX
+\item 
+\+\#define \doxymbox{\hyperlink{edit__bpm_8c_ae73ff44f5d8693bb71ccc56a985efe47}{BPM\+\_\+\+W64\+\_\+\+MASK}}~(1ull$<$$<$63)
+\item 
+\+\#define \doxymbox{\hyperlink{edit__bpm_8c_adfdc715320ff384af8a5b78e0e6f887c}{BPM\+\_\+\+PATTERN\+\_\+\+PEQ\+\_\+\+IDX}}(word\+\_\+pos,  encoded\+\_\+character)
+\item 
+\+\#define \doxymbox{\hyperlink{edit__bpm_8c_a01b38d90f23a9f4221f93c947324f498}{BPM\+\_\+\+PATTERN\+\_\+\+BDP\+\_\+\+IDX}}(position,  num\+\_\+words,  word\+\_\+pos)
+\item 
+\+\#define \doxymbox{\hyperlink{edit__bpm_8c_a4b369372cf521bc9681cddc12fb11f33}{BPM\+\_\+\+ADVANCE\+\_\+\+BLOCK}}(Eq,  mask,  Pv,  Mv,  PHin,  MHin,  PHout,  MHout)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8c_ad37bcbb6ffda02f980271d7137067ad5}{edit\+\_\+bpm\+\_\+pattern\+\_\+compile}} (\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+pattern, char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8c_a2bd9a14e0a88b6e7dfe4300f1f282f3c}{edit\+\_\+bpm\+\_\+pattern\+\_\+free}} (\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+pattern, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8c_aeea020638f569db2ae70ac4525638e9e}{edit\+\_\+bpm\+\_\+matrix\+\_\+allocate}} (\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+matrix, const uint64\+\_\+t pattern\+\_\+length, const uint64\+\_\+t text\+\_\+length, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8c_a71336e1d762b5bea5f45703cb95e437f}{edit\+\_\+bpm\+\_\+matrix\+\_\+free}} (\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+matrix, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8c_a1a09e1259195c1b8c4684128b3adcd36}{edit\+\_\+bpm\+\_\+reset\+\_\+search\+\_\+cutoff}} (uint8\+\_\+t \texorpdfstring{$\ast$}{*}const top\+\_\+level, uint64\+\_\+t \texorpdfstring{$\ast$}{*}const P, uint64\+\_\+t \texorpdfstring{$\ast$}{*}const M, int64\+\_\+t \texorpdfstring{$\ast$}{*}const score, const int64\+\_\+t \texorpdfstring{$\ast$}{*}const init\+\_\+score, const uint64\+\_\+t max\+\_\+distance)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8c_ad52ea35ac58a6b31b21c36b46ebfb565}{edit\+\_\+bpm\+\_\+compute\+\_\+matrix}} (\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+matrix, \doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+pattern, char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const uint64\+\_\+t text\+\_\+length, uint64\+\_\+t max\+\_\+distance)
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8c_ad15282eec8ed32c9539937c6435f1cb9}{edit\+\_\+bpm\+\_\+backtrace\+\_\+matrix}} (\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+matrix, const \doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+pattern, char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\item 
+void \doxymbox{\hyperlink{edit__bpm_8c_a7290aee179f226bb331b9559d2427316}{edit\+\_\+bpm\+\_\+compute}} (\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+matrix, \doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const bpm\+\_\+pattern, char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, const int max\+\_\+distance)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{edit__bpm_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{edit__bpm_8c_a4b369372cf521bc9681cddc12fb11f33}\index{edit\_bpm.c@{edit\_bpm.c}!BPM\_ADVANCE\_BLOCK@{BPM\_ADVANCE\_BLOCK}}
+\index{BPM\_ADVANCE\_BLOCK@{BPM\_ADVANCE\_BLOCK}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{BPM\_ADVANCE\_BLOCK}{BPM\_ADVANCE\_BLOCK}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a4b369372cf521bc9681cddc12fb11f33} 
+\+\#define BPM\+\_\+\+ADVANCE\+\_\+\+BLOCK(\begin{DoxyParamCaption}\item[{}]{Eq}{, }\item[{}]{mask}{, }\item[{}]{Pv}{, }\item[{}]{Mv}{, }\item[{}]{PHin}{, }\item[{}]{MHin}{, }\item[{}]{PHout}{, }\item[{}]{MHout}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{/*\ Computes\ modulator\ vector\ \{Xv,Xh\}\ (\ cases\ A\&C\ )\ */}\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{keyword}{const}\ uint64\_t\ Xv\ =\ Eq\ |\ Mv;\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{keyword}{const}\ uint64\_t\ \_Eq\ =\ Eq\ |\ MHin;\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{keyword}{const}\ uint64\_t\ Xh\ =\ (((\_Eq\ \&\ Pv)\ +\ Pv)\ \string^\ Pv)\ |\ \_Eq;\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{comment}{/*\ Calculate\ Hout\ */}\ \(\backslash\)}
+\DoxyCodeLine{uint64\_t\ Ph\ =\ Mv\ |\ \string~(Xh\ |\ Pv);\ \(\backslash\)}
+\DoxyCodeLine{uint64\_t\ Mh\ =\ Pv\ \&\ Xh;\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{comment}{/*\ Account\ Hout\ that\ propagates\ for\ the\ next\ block\ */}\ \(\backslash\)}
+\DoxyCodeLine{PHout\ =\ (Ph\ \&\ mask)!=0;\ \(\backslash\)}
+\DoxyCodeLine{MHout\ =\ (Mh\ \&\ mask)!=0;\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{comment}{/*\ Hout\ become\ the\ Hin\ of\ the\ next\ cell\ */}\ \(\backslash\)}
+\DoxyCodeLine{Ph\ <<=\ 1;\ \(\backslash\)}
+\DoxyCodeLine{Mh\ <<=\ 1;\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{comment}{/*\ Account\ Hin\ coming\ from\ the\ previous\ block\ */}\ \(\backslash\)}
+\DoxyCodeLine{Ph\ |=\ PHin;\ \(\backslash\)}
+\DoxyCodeLine{Mh\ |=\ MHin;\ \(\backslash\)}
+\DoxyCodeLine{\textcolor{comment}{/*\ Finally,\ generate\ the\ Vout\ */}\ \(\backslash\)}
+\DoxyCodeLine{Pv\ =\ Mh\ |\ \string~(Xv\ |\ Ph);\ \(\backslash\)}
+\DoxyCodeLine{Mv\ =\ Ph\ \&\ Xv}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00049}{49}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+\Hypertarget{edit__bpm_8c_a669d6a1bf3cc3ae6712d8bd0e6b44f79}\index{edit\_bpm.c@{edit\_bpm.c}!BPM\_ALPHABET\_LENGTH@{BPM\_ALPHABET\_LENGTH}}
+\index{BPM\_ALPHABET\_LENGTH@{BPM\_ALPHABET\_LENGTH}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{BPM\_ALPHABET\_LENGTH}{BPM\_ALPHABET\_LENGTH}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a669d6a1bf3cc3ae6712d8bd0e6b44f79} 
+\+\#define BPM\+\_\+\+ALPHABET\+\_\+\+LENGTH~4}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00033}{33}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+\Hypertarget{edit__bpm_8c_a01b38d90f23a9f4221f93c947324f498}\index{edit\_bpm.c@{edit\_bpm.c}!BPM\_PATTERN\_BDP\_IDX@{BPM\_PATTERN\_BDP\_IDX}}
+\index{BPM\_PATTERN\_BDP\_IDX@{BPM\_PATTERN\_BDP\_IDX}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{BPM\_PATTERN\_BDP\_IDX}{BPM\_PATTERN\_BDP\_IDX}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a01b38d90f23a9f4221f93c947324f498} 
+\+\#define BPM\+\_\+\+PATTERN\+\_\+\+BDP\+\_\+\+IDX(\begin{DoxyParamCaption}\item[{}]{position}{, }\item[{}]{num\+\_\+words}{, }\item[{}]{word\+\_\+pos}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((position)*(num\_words)+(word\_pos))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00043}{43}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+\Hypertarget{edit__bpm_8c_adfdc715320ff384af8a5b78e0e6f887c}\index{edit\_bpm.c@{edit\_bpm.c}!BPM\_PATTERN\_PEQ\_IDX@{BPM\_PATTERN\_PEQ\_IDX}}
+\index{BPM\_PATTERN\_PEQ\_IDX@{BPM\_PATTERN\_PEQ\_IDX}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{BPM\_PATTERN\_PEQ\_IDX}{BPM\_PATTERN\_PEQ\_IDX}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_adfdc715320ff384af8a5b78e0e6f887c} 
+\+\#define BPM\+\_\+\+PATTERN\+\_\+\+PEQ\+\_\+\+IDX(\begin{DoxyParamCaption}\item[{}]{word\+\_\+pos}{, }\item[{}]{encoded\+\_\+character}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((word\_pos*\doxymbox{\hyperlink{edit__bpm_8c_a669d6a1bf3cc3ae6712d8bd0e6b44f79}{BPM\_ALPHABET\_LENGTH}})+(encoded\_character))}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00042}{42}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+\Hypertarget{edit__bpm_8c_a2c72968a2f116f6fd6aeae534a89e51f}\index{edit\_bpm.c@{edit\_bpm.c}!BPM\_W64\_LENGTH@{BPM\_W64\_LENGTH}}
+\index{BPM\_W64\_LENGTH@{BPM\_W64\_LENGTH}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{BPM\_W64\_LENGTH}{BPM\_W64\_LENGTH}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a2c72968a2f116f6fd6aeae534a89e51f} 
+\+\#define BPM\+\_\+\+W64\+\_\+\+LENGTH~\doxymbox{\hyperlink{commons_8h_a1975636872ec62179e62077b2792467d}{UINT64\+\_\+\+LENGTH}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00034}{34}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+\Hypertarget{edit__bpm_8c_ae73ff44f5d8693bb71ccc56a985efe47}\index{edit\_bpm.c@{edit\_bpm.c}!BPM\_W64\_MASK@{BPM\_W64\_MASK}}
+\index{BPM\_W64\_MASK@{BPM\_W64\_MASK}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{BPM\_W64\_MASK}{BPM\_W64\_MASK}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_ae73ff44f5d8693bb71ccc56a985efe47} 
+\+\#define BPM\+\_\+\+W64\+\_\+\+MASK~(1ull$<$$<$63)}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00037}{37}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+\Hypertarget{edit__bpm_8c_a671a5fd4a197ae28f9ae249c7707de30}\index{edit\_bpm.c@{edit\_bpm.c}!BPM\_W64\_ONES@{BPM\_W64\_ONES}}
+\index{BPM\_W64\_ONES@{BPM\_W64\_ONES}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{BPM\_W64\_ONES}{BPM\_W64\_ONES}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a671a5fd4a197ae28f9ae249c7707de30} 
+\+\#define BPM\+\_\+\+W64\+\_\+\+ONES~UINT64\+\_\+\+MAX}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00036}{36}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+\Hypertarget{edit__bpm_8c_a82d1fa77c7ad0a5c51741d436d35b898}\index{edit\_bpm.c@{edit\_bpm.c}!BPM\_W64\_SIZE@{BPM\_W64\_SIZE}}
+\index{BPM\_W64\_SIZE@{BPM\_W64\_SIZE}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{BPM\_W64\_SIZE}{BPM\_W64\_SIZE}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a82d1fa77c7ad0a5c51741d436d35b898} 
+\+\#define BPM\+\_\+\+W64\+\_\+\+SIZE~\doxymbox{\hyperlink{commons_8h_a83d57fa5bf231d2224ca44e347370cd7}{UINT64\+\_\+\+SIZE}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00035}{35}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{edit__bpm_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{edit__bpm_8c_ad15282eec8ed32c9539937c6435f1cb9}\index{edit\_bpm.c@{edit\_bpm.c}!edit\_bpm\_backtrace\_matrix@{edit\_bpm\_backtrace\_matrix}}
+\index{edit\_bpm\_backtrace\_matrix@{edit\_bpm\_backtrace\_matrix}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_backtrace\_matrix()}{edit\_bpm\_backtrace\_matrix()}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_ad15282eec8ed32c9539937c6435f1cb9} 
+void edit\+\_\+bpm\+\_\+backtrace\+\_\+matrix (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+matrix}{, }\item[{const \doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+pattern}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00278}{278}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{edit__bpm_8c_a7290aee179f226bb331b9559d2427316}\index{edit\_bpm.c@{edit\_bpm.c}!edit\_bpm\_compute@{edit\_bpm\_compute}}
+\index{edit\_bpm\_compute@{edit\_bpm\_compute}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_compute()}{edit\_bpm\_compute()}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a7290aee179f226bb331b9559d2427316} 
+void edit\+\_\+bpm\+\_\+compute (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+pattern}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{const int}]{max\+\_\+distance}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00318}{318}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{edit__bpm_8c_ad52ea35ac58a6b31b21c36b46ebfb565}\index{edit\_bpm.c@{edit\_bpm.c}!edit\_bpm\_compute\_matrix@{edit\_bpm\_compute\_matrix}}
+\index{edit\_bpm\_compute\_matrix@{edit\_bpm\_compute\_matrix}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_compute\_matrix()}{edit\_bpm\_compute\_matrix()}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_ad52ea35ac58a6b31b21c36b46ebfb565} 
+void edit\+\_\+bpm\+\_\+compute\+\_\+matrix (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+pattern}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const uint64\+\_\+t}]{text\+\_\+length}{, }\item[{uint64\+\_\+t}]{max\+\_\+distance}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00192}{192}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{edit__bpm_8c_aeea020638f569db2ae70ac4525638e9e}\index{edit\_bpm.c@{edit\_bpm.c}!edit\_bpm\_matrix\_allocate@{edit\_bpm\_matrix\_allocate}}
+\index{edit\_bpm\_matrix\_allocate@{edit\_bpm\_matrix\_allocate}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_matrix\_allocate()}{edit\_bpm\_matrix\_allocate()}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_aeea020638f569db2ae70ac4525638e9e} 
+void edit\+\_\+bpm\+\_\+matrix\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+matrix}{, }\item[{const uint64\+\_\+t}]{pattern\+\_\+length}{, }\item[{const uint64\+\_\+t}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00144}{144}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{edit__bpm_8c_a71336e1d762b5bea5f45703cb95e437f}\index{edit\_bpm.c@{edit\_bpm.c}!edit\_bpm\_matrix\_free@{edit\_bpm\_matrix\_free}}
+\index{edit\_bpm\_matrix\_free@{edit\_bpm\_matrix\_free}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_matrix\_free()}{edit\_bpm\_matrix\_free()}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a71336e1d762b5bea5f45703cb95e437f} 
+void edit\+\_\+bpm\+\_\+matrix\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__matrix__t}{bpm\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+matrix}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00160}{160}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{edit__bpm_8c_ad37bcbb6ffda02f980271d7137067ad5}\index{edit\_bpm.c@{edit\_bpm.c}!edit\_bpm\_pattern\_compile@{edit\_bpm\_pattern\_compile}}
+\index{edit\_bpm\_pattern\_compile@{edit\_bpm\_pattern\_compile}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_pattern\_compile()}{edit\_bpm\_pattern\_compile()}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_ad37bcbb6ffda02f980271d7137067ad5} 
+void edit\+\_\+bpm\+\_\+pattern\+\_\+compile (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+pattern}{, }\item[{char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00072}{72}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{edit__bpm_8c_a2bd9a14e0a88b6e7dfe4300f1f282f3c}\index{edit\_bpm.c@{edit\_bpm.c}!edit\_bpm\_pattern\_free@{edit\_bpm\_pattern\_free}}
+\index{edit\_bpm\_pattern\_free@{edit\_bpm\_pattern\_free}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_pattern\_free()}{edit\_bpm\_pattern\_free()}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a2bd9a14e0a88b6e7dfe4300f1f282f3c} 
+void edit\+\_\+bpm\+\_\+pattern\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structbpm__pattern__t}{bpm\+\_\+pattern\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{bpm\+\_\+pattern}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00139}{139}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 11
+Here is the caller graph for this function:\+
+% FIG 12
+\Hypertarget{edit__bpm_8c_a1a09e1259195c1b8c4684128b3adcd36}\index{edit\_bpm.c@{edit\_bpm.c}!edit\_bpm\_reset\_search\_cutoff@{edit\_bpm\_reset\_search\_cutoff}}
+\index{edit\_bpm\_reset\_search\_cutoff@{edit\_bpm\_reset\_search\_cutoff}!edit\_bpm.c@{edit\_bpm.c}}
+\doxysubsubsection{\texorpdfstring{edit\_bpm\_reset\_search\_cutoff()}{edit\_bpm\_reset\_search\_cutoff()}}
+{\footnotesize\ttfamily \label{edit__bpm_8c_a1a09e1259195c1b8c4684128b3adcd36} 
+void edit\+\_\+bpm\+\_\+reset\+\_\+search\+\_\+cutoff (\begin{DoxyParamCaption}\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{top\+\_\+level}{, }\item[{uint64\+\_\+t \texorpdfstring{$\ast$}{*}const}]{P}{, }\item[{uint64\+\_\+t \texorpdfstring{$\ast$}{*}const}]{M}{, }\item[{int64\+\_\+t \texorpdfstring{$\ast$}{*}const}]{score}{, }\item[{const int64\+\_\+t \texorpdfstring{$\ast$}{*}const}]{init\+\_\+score}{, }\item[{const uint64\+\_\+t}]{max\+\_\+distance}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{edit__bpm_8c_source_l00171}{171}} of file \doxymbox{\hyperlink{edit__bpm_8c_source}{edit\+\_\+bpm.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 13

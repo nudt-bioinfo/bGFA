@@ -1,0 +1,25 @@
+var wavefront__compute_8c =
+[
+    [ "wavefront_compute_allocate_output", "wavefront__compute_8c.html#a9b75b1989d700b4d521be693087c6c7b", null ],
+    [ "wavefront_compute_allocate_output_null", "wavefront__compute_8c.html#ade79e748613c9d4063fb707facdb34f3", null ],
+    [ "wavefront_compute_classic_score", "wavefront__compute_8c.html#aca39eb6a1bf6555345c9f6b39d30cd72", null ],
+    [ "wavefront_compute_endsfree_allocate_null", "wavefront__compute_8c.html#ae15b7618ba378d8bea5b26eaae8d8e53", null ],
+    [ "wavefront_compute_endsfree_init", "wavefront__compute_8c.html#a1a6607d78ba95a18121ddc9cff70231f", null ],
+    [ "wavefront_compute_endsfree_init_offset", "wavefront__compute_8c.html#ae1d01becfd17b921fd35a9d5e12215d7", null ],
+    [ "wavefront_compute_endsfree_limits", "wavefront__compute_8c.html#ad00ce8e6345f41cc40b481da9c385f35", null ],
+    [ "wavefront_compute_endsfree_required", "wavefront__compute_8c.html#a04427d7ebf36c4c831ce549855ff31c8", null ],
+    [ "wavefront_compute_fetch_input", "wavefront__compute_8c.html#a03a31e5500b0b59e5abe0d28a2d1e03d", null ],
+    [ "wavefront_compute_free_output", "wavefront__compute_8c.html#a01f9b2240626f29b7da8285ba9818bb3", null ],
+    [ "wavefront_compute_get_d1wavefront", "wavefront__compute_8c.html#ae057906d64945e60dea8e0bb4214b1f8", null ],
+    [ "wavefront_compute_get_d2wavefront", "wavefront__compute_8c.html#a09c16b5eed139e024e7c68e4199fe291", null ],
+    [ "wavefront_compute_get_i1wavefront", "wavefront__compute_8c.html#af8c8ae28f69e7ed35099b2274e1f95e6", null ],
+    [ "wavefront_compute_get_i2wavefront", "wavefront__compute_8c.html#ad19f7d3bd99ba8dfd974af8b35128927", null ],
+    [ "wavefront_compute_get_mwavefront", "wavefront__compute_8c.html#a5816b5d546d1df4d7c0aa9e65b31a797", null ],
+    [ "wavefront_compute_init_ends", "wavefront__compute_8c.html#a49fb68967e09ae01cbcb2a9c72a82d64", null ],
+    [ "wavefront_compute_init_ends_wf_higher", "wavefront__compute_8c.html#a4a1a6d6de15f4d37765c489fbdb3ae03", null ],
+    [ "wavefront_compute_init_ends_wf_lower", "wavefront__compute_8c.html#a968950b9fcdac38d120b6abf77daf1bd", null ],
+    [ "wavefront_compute_limits_input", "wavefront__compute_8c.html#a51e93236a7ff21af02c1803ab624b939", null ],
+    [ "wavefront_compute_limits_output", "wavefront__compute_8c.html#a70dabd46a2c9e7cb9bcc147681a210cb", null ],
+    [ "wavefront_compute_process_ends", "wavefront__compute_8c.html#a902f56da94158ea0e0b8b5f0e850faa2", null ],
+    [ "wavefront_compute_trim_ends", "wavefront__compute_8c.html#ac3277416635f4cf48d93115e981eca02", null ]
+];

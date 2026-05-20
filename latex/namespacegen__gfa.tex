@@ -1,0 +1,289 @@
+\doxysection{gen\+\_\+gfa Namespace Reference}
+\hypertarget{namespacegen__gfa}{}\label{namespacegen__gfa}\index{gen\_gfa@{gen\_gfa}}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{random\+\_\+dna}} (int length, random.\+Random rng)
+\item 
+None \doxymbox{\hyperlink{namespacegen__gfa_aa3d7537b9f1285bea5db3361738ccb10}{write\+\_\+gfa}} (str output\+\_\+path, Sequence\+[str]\+ sequences, Sequence\+[Tuple\+[int, int, str, str]\+]\+ edges)
+\item 
+int \doxymbox{\hyperlink{namespacegen__gfa_ae9265ee80c26309e91b461d5a5682741}{\+\_\+target\+\_\+edge\+\_\+count}} (int n, float mult)
+\item 
+List\+[Tuple\+[int, int, str, str]\+]\+ \doxymbox{\hyperlink{namespacegen__gfa_a3620cff3d113c979cc6a52faffde337e}{\+\_\+generate\+\_\+edges}} (int num\+\_\+nodes, float edge\+\_\+mult, random.\+Random rng)
+\item 
+List\+[str]\+ \doxymbox{\hyperlink{namespacegen__gfa_acb03bb3d5910e26b88c06f6bcdc86a50}{\+\_\+sample\+\_\+lengths\+\_\+mode\+\_\+a}} (int n, int avg\+\_\+len, random.\+Random rng)
+\item 
+List\+[float]\+ \doxymbox{\hyperlink{namespacegen__gfa_a6e2de3b35f596b7b760104151ab24f30}{\+\_\+bin\+\_\+avgs}} (int max\+\_\+len\+\_\+last\+\_\+bin)
+\item 
+List\+[float]\+ \doxymbox{\hyperlink{namespacegen__gfa_a020c84ebd82745909224a2609e3716bb}{\+\_\+normalize\+\_\+dist}} (List\+[float]\+ dist)
+\item 
+List\+[float]\+ \doxymbox{\hyperlink{namespacegen__gfa_a1d73098bc886ef662461f65f29deb879}{\+\_\+perturb\+\_\+percentages}} (List\+[float]\+ dist\+\_\+pct, float jitter, random.\+Random rng)
+\item 
+List\+[int]\+ \doxymbox{\hyperlink{namespacegen__gfa_af3c8138f749128f3baccc8bc67f909dc}{\+\_\+round\+\_\+counts}} (int total, List\+[float]\+ weights)
+\item 
+List\+[str]\+ \doxymbox{\hyperlink{namespacegen__gfa_aa3aaf94ddfdd2b2393ca12f3ae412f07}{\+\_\+sample\+\_\+lengths\+\_\+mode\+\_\+b}} (int total\+\_\+len, List\+[float]\+ dist\+\_\+pct, int max\+\_\+len\+\_\+last\+\_\+bin, random.\+Random rng, float tol=0.\+1)
+\item 
+argparse.\+Namespace \doxymbox{\hyperlink{namespacegen__gfa_a8576015783986833d302646ee9ae44ad}{parse\+\_\+args}} (List\+[str]\+ argv)
+\item 
+int \doxymbox{\hyperlink{namespacegen__gfa_a1b0bebd85b753e4a8c015afb9bef3af3}{main}} (List\+[str]\+ argv)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+str \doxymbox{\hyperlink{namespacegen__gfa_ac46088ae35a74a7fdc8c33a82157f53a}{DNA\+\_\+\+ALPHABET}} = "{}ACGT"{}
+\item 
+list \doxymbox{\hyperlink{namespacegen__gfa_a0c005c517fae8e8648891dd695b54405}{BINS\+\_\+\+SPECS}}
+\item 
+dict \doxymbox{\hyperlink{namespacegen__gfa_ac5d0745222bc70617393c10c575f6c29}{PRESET\+\_\+\+DISTS}}
+\item 
+dict \doxymbox{\hyperlink{namespacegen__gfa_a62870d65c96727f87fe4af3552b9d282}{EDGE\+\_\+\+MULT\+\_\+\+CHOICES}} = \{"{}1.\+2"{}:\+ 1.\+2, "{}1.\+5"{}:\+ 1.\+5, "{}2.\+0"{}:\+ 2.\+0\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyVerb}Generate GFA graphs with two generation modes.
+
+Mode A (basic):
+- Given node count, average length (±20%), and edge multiplier (1.2/1.5/2.0),
+  build sequences and a non-linear connection scheme.
+- Ensures exactly one source-only node (indeg==0) and one sink-only node (outdeg==0).
+  All other nodes have at least one predecessor and one successor.
+- The graph is not strictly linear (adds cross edges beyond a simple chain).
+
+Mode B (distribution):
+- Given total length and a node-length distribution across 6 bins
+  (<10, 10-100, 100-1000, 1k-10k, 10k-100k, >100k),
+  either via explicit percentages or presets, estimate node count and sample lengths.
+- Then generate connections with the same degree constraints and edge multiplier.
+
+Author: grampart 
+Version: 0.1
+License: MIT License
+\end{DoxyVerb}
+ 
+
+\label{doc-func-members}
+\Hypertarget{namespacegen__gfa_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{namespacegen__gfa_a6e2de3b35f596b7b760104151ab24f30}\index{gen\_gfa@{gen\_gfa}!\_bin\_avgs@{\_bin\_avgs}}
+\index{\_bin\_avgs@{\_bin\_avgs}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{\_bin\_avgs()}{\_bin\_avgs()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a6e2de3b35f596b7b760104151ab24f30} 
+ List\+[float]\+ gen\+\_\+gfa.\+\_\+bin\+\_\+avgs (\begin{DoxyParamCaption}\item[{int}]{max\+\_\+len\+\_\+last\+\_\+bin}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00120}{120}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 0
+\Hypertarget{namespacegen__gfa_a3620cff3d113c979cc6a52faffde337e}\index{gen\_gfa@{gen\_gfa}!\_generate\_edges@{\_generate\_edges}}
+\index{\_generate\_edges@{\_generate\_edges}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{\_generate\_edges()}{\_generate\_edges()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a3620cff3d113c979cc6a52faffde337e} 
+ List\+[Tuple\+[int, int, str, str]\+]\+ gen\+\_\+gfa.\+\_\+generate\+\_\+edges (\begin{DoxyParamCaption}\item[{int}]{num\+\_\+nodes}{, }\item[{float}]{edge\+\_\+mult}{, }\item[{random.\+Random}]{rng}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00083}{83}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{namespacegen__gfa_a020c84ebd82745909224a2609e3716bb}\index{gen\_gfa@{gen\_gfa}!\_normalize\_dist@{\_normalize\_dist}}
+\index{\_normalize\_dist@{\_normalize\_dist}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{\_normalize\_dist()}{\_normalize\_dist()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a020c84ebd82745909224a2609e3716bb} 
+ List\+[float]\+ gen\+\_\+gfa.\+\_\+normalize\+\_\+dist (\begin{DoxyParamCaption}\item[{List\+[float]\+}]{dist}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00128}{128}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{namespacegen__gfa_a1d73098bc886ef662461f65f29deb879}\index{gen\_gfa@{gen\_gfa}!\_perturb\_percentages@{\_perturb\_percentages}}
+\index{\_perturb\_percentages@{\_perturb\_percentages}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{\_perturb\_percentages()}{\_perturb\_percentages()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a1d73098bc886ef662461f65f29deb879} 
+ List\+[float]\+ gen\+\_\+gfa.\+\_\+perturb\+\_\+percentages (\begin{DoxyParamCaption}\item[{List\+[float]\+}]{dist\+\_\+pct}{, }\item[{float}]{jitter}{, }\item[{random.\+Random}]{rng}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+\begin{DoxyVerb}Apply ±jitter relative fluctuation to each percentage and rescale to sum 100.
+
+- jitter=0.1 means each value multiplied by U[0.9, 1.1].
+- Ensures non-negative and final sum exactly 100.0 (within float error).
+\end{DoxyVerb}
+ 
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00135}{135}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{namespacegen__gfa_af3c8138f749128f3baccc8bc67f909dc}\index{gen\_gfa@{gen\_gfa}!\_round\_counts@{\_round\_counts}}
+\index{\_round\_counts@{\_round\_counts}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{\_round\_counts()}{\_round\_counts()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_af3c8138f749128f3baccc8bc67f909dc} 
+ List\+[int]\+ gen\+\_\+gfa.\+\_\+round\+\_\+counts (\begin{DoxyParamCaption}\item[{int}]{total}{, }\item[{List\+[float]\+}]{weights}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00158}{158}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{namespacegen__gfa_acb03bb3d5910e26b88c06f6bcdc86a50}\index{gen\_gfa@{gen\_gfa}!\_sample\_lengths\_mode\_a@{\_sample\_lengths\_mode\_a}}
+\index{\_sample\_lengths\_mode\_a@{\_sample\_lengths\_mode\_a}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{\_sample\_lengths\_mode\_a()}{\_sample\_lengths\_mode\_a()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_acb03bb3d5910e26b88c06f6bcdc86a50} 
+ List\+[str]\+ gen\+\_\+gfa.\+\_\+sample\+\_\+lengths\+\_\+mode\+\_\+a (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{int}]{avg\+\_\+len}{, }\item[{random.\+Random}]{rng}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00111}{111}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{namespacegen__gfa_aa3aaf94ddfdd2b2393ca12f3ae412f07}\index{gen\_gfa@{gen\_gfa}!\_sample\_lengths\_mode\_b@{\_sample\_lengths\_mode\_b}}
+\index{\_sample\_lengths\_mode\_b@{\_sample\_lengths\_mode\_b}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{\_sample\_lengths\_mode\_b()}{\_sample\_lengths\_mode\_b()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_aa3aaf94ddfdd2b2393ca12f3ae412f07} 
+ List\+[str]\+ gen\+\_\+gfa.\+\_\+sample\+\_\+lengths\+\_\+mode\+\_\+b (\begin{DoxyParamCaption}\item[{int}]{total\+\_\+len}{, }\item[{List\+[float]\+}]{dist\+\_\+pct}{, }\item[{int}]{max\+\_\+len\+\_\+last\+\_\+bin}{, }\item[{random.\+Random}]{rng}{, }\item[{float }]{tol}{ = {\ttfamily 0.1}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00170}{170}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{namespacegen__gfa_ae9265ee80c26309e91b461d5a5682741}\index{gen\_gfa@{gen\_gfa}!\_target\_edge\_count@{\_target\_edge\_count}}
+\index{\_target\_edge\_count@{\_target\_edge\_count}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{\_target\_edge\_count()}{\_target\_edge\_count()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_ae9265ee80c26309e91b461d5a5682741} 
+ int gen\+\_\+gfa.\+\_\+target\+\_\+edge\+\_\+count (\begin{DoxyParamCaption}\item[{int}]{n}{, }\item[{float}]{mult}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00078}{78}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{namespacegen__gfa_a1b0bebd85b753e4a8c015afb9bef3af3}\index{gen\_gfa@{gen\_gfa}!main@{main}}
+\index{main@{main}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a1b0bebd85b753e4a8c015afb9bef3af3} 
+ int gen\+\_\+gfa.\+main (\begin{DoxyParamCaption}\item[{List\+[str]\+}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00332}{332}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the call graph for this function:\+
+% FIG 11
+\Hypertarget{namespacegen__gfa_a8576015783986833d302646ee9ae44ad}\index{gen\_gfa@{gen\_gfa}!parse\_args@{parse\_args}}
+\index{parse\_args@{parse\_args}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{parse\_args()}{parse\_args()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a8576015783986833d302646ee9ae44ad} 
+ argparse.\+Namespace gen\+\_\+gfa.\+parse\+\_\+args (\begin{DoxyParamCaption}\item[{List\+[str]\+}]{argv}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00289}{289}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 12
+\Hypertarget{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}\index{gen\_gfa@{gen\_gfa}!random\_dna@{random\_dna}}
+\index{random\_dna@{random\_dna}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{random\_dna()}{random\_dna()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7} 
+ str gen\+\_\+gfa.\+random\+\_\+dna (\begin{DoxyParamCaption}\item[{int}]{length}{, }\item[{random.\+Random}]{rng}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00055}{55}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{namespacegen__gfa_aa3d7537b9f1285bea5db3361738ccb10}\index{gen\_gfa@{gen\_gfa}!write\_gfa@{write\_gfa}}
+\index{write\_gfa@{write\_gfa}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{write\_gfa()}{write\_gfa()}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_aa3d7537b9f1285bea5db3361738ccb10} 
+ None gen\+\_\+gfa.\+write\+\_\+gfa (\begin{DoxyParamCaption}\item[{str}]{output\+\_\+path}{, }\item[{Sequence\+[str]\+}]{sequences}{, }\item[{Sequence\+[Tuple\+[int, int, str, str]\+]\+}]{edges}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00059}{59}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+Here is the caller graph for this function:\+
+% FIG 14
+
+
+\label{doc-var-members}
+\Hypertarget{namespacegen__gfa_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{namespacegen__gfa_a0c005c517fae8e8648891dd695b54405}\index{gen\_gfa@{gen\_gfa}!BINS\_SPECS@{BINS\_SPECS}}
+\index{BINS\_SPECS@{BINS\_SPECS}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{BINS\_SPECS}{BINS\_SPECS}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a0c005c517fae8e8648891dd695b54405} 
+list gen\+\_\+gfa.\+BINS\+\_\+\+SPECS}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ [}
+\DoxyCodeLine{00002\ \ \ \ \ (0,\ 1)}
+\DoxyCodeLine{00003\ \ \ \ \ (1,\ 9),\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ <10}}
+\DoxyCodeLine{00004\ \ \ \ \ (10,\ 100),\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 10-\/100}}
+\DoxyCodeLine{00005\ \ \ \ \ (100,\ 300),\ \ \ \ \ \ \ \textcolor{comment}{\#\ 100-\/1000}}
+\DoxyCodeLine{00006\ \ \ \ \ (300,\ 1000)}
+\DoxyCodeLine{00007\ \ \ \ \ (1000,\ 3000),\ \ \ \ \ \textcolor{comment}{\#\ 1k-\/10k}}
+\DoxyCodeLine{00008\ \ \ \ \ (3000,\ 10000),\ \ \ \ \ \textcolor{comment}{\#\ 1k-\/10k}}
+\DoxyCodeLine{00009\ \ \ \ \ (10000,\ \textcolor{keywordtype}{None}),\ \ \ \ \textcolor{comment}{\#\ >100k\ (upper\ bound\ decided\ at\ runtime)}}
+\DoxyCodeLine{00010\ ]}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00035}{35}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+\Hypertarget{namespacegen__gfa_ac46088ae35a74a7fdc8c33a82157f53a}\index{gen\_gfa@{gen\_gfa}!DNA\_ALPHABET@{DNA\_ALPHABET}}
+\index{DNA\_ALPHABET@{DNA\_ALPHABET}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{DNA\_ALPHABET}{DNA\_ALPHABET}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_ac46088ae35a74a7fdc8c33a82157f53a} 
+str gen\+\_\+gfa.\+DNA\+\_\+\+ALPHABET = "{}ACGT"{}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00031}{31}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+\Hypertarget{namespacegen__gfa_a62870d65c96727f87fe4af3552b9d282}\index{gen\_gfa@{gen\_gfa}!EDGE\_MULT\_CHOICES@{EDGE\_MULT\_CHOICES}}
+\index{EDGE\_MULT\_CHOICES@{EDGE\_MULT\_CHOICES}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{EDGE\_MULT\_CHOICES}{EDGE\_MULT\_CHOICES}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_a62870d65c96727f87fe4af3552b9d282} 
+dict gen\+\_\+gfa.\+EDGE\+\_\+\+MULT\+\_\+\+CHOICES = \{"{}1.\+2"{}:\+ 1.\+2, "{}1.\+5"{}:\+ 1.\+5, "{}2.\+0"{}:\+ 2.\+0\}}
+
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00052}{52}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+
+\Hypertarget{namespacegen__gfa_ac5d0745222bc70617393c10c575f6c29}\index{gen\_gfa@{gen\_gfa}!PRESET\_DISTS@{PRESET\_DISTS}}
+\index{PRESET\_DISTS@{PRESET\_DISTS}!gen\_gfa@{gen\_gfa}}
+\doxysubsubsection{\texorpdfstring{PRESET\_DISTS}{PRESET\_DISTS}}
+{\footnotesize\ttfamily \label{namespacegen__gfa_ac5d0745222bc70617393c10c575f6c29} 
+dict gen\+\_\+gfa.\+PRESET\+\_\+\+DISTS}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ =\ \ \{}
+\DoxyCodeLine{00002\ \ \ \ \ \textcolor{stringliteral}{"{}short"{}}:\ [65,\ 16,\ 14,\ 3,\ 1,\ 0.1,\ 0.02,\ 0.005],}
+\DoxyCodeLine{00003\ \ \ \ \ \textcolor{stringliteral}{"{}long"{}}:\ [2.5,\ 7.5,\ 27.5,\ 20,\ 20,\ 10,\ 6,\ 7],}
+\DoxyCodeLine{00004\ \}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{gen__gfa_8py_source_l00047}{47}} of file \doxymbox{\hyperlink{gen__gfa_8py_source}{gen\+\_\+gfa.\+py}}.
+

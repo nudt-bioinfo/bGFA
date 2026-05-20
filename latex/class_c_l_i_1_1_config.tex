@@ -1,0 +1,142 @@
+\doxysection{CLI::\+Config Class Reference}
+\hypertarget{class_c_l_i_1_1_config}{}\label{class_c_l_i_1_1_config}\index{CLI::Config@{CLI::Config}}
+
+
+This class provides a converter for configuration files.  
+
+
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+Config:\+
+% FIG 0
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_config_a516815ecb20f72816caeab5049d0873d}{to\+\_\+config}} (const \doxymbox{\hyperlink{class_c_l_i_1_1_app}{App}} \texorpdfstring{$\ast$}{*}, bool, bool, std::\+string) const =0
+\begin{DoxyCompactList}\small\item\em Convert an app into a configuration. \end{DoxyCompactList}\item 
+virtual std::\+vector$<$ \doxymbox{\hyperlink{struct_c_l_i_1_1_config_item}{Config\+Item}} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_config_af08741b7aa795644af5491faf04a0b2e}{from\+\_\+config}} (std::\+istream \&) const =0
+\begin{DoxyCompactList}\small\item\em Convert a configuration into an app. \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_config_a37ee9fa2380c8640b98c3d7069430031}{to\+\_\+flag}} (const \doxymbox{\hyperlink{struct_c_l_i_1_1_config_item}{Config\+Item}} \&item) const
+\begin{DoxyCompactList}\small\item\em Get a flag value. \end{DoxyCompactList}\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+vector$<$ \doxymbox{\hyperlink{struct_c_l_i_1_1_config_item}{Config\+Item}} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_config_abe902d1dbfa8ee66b29d4fdb97112daa}{from\+\_\+file}} (const std::\+string \&name) const
+\begin{DoxyCompactList}\small\item\em Parse a config file, throw an error (\doxylink{class_c_l_i_1_1_parse_error}{Parse\+Error}:\+Config\+Parse\+Error or \doxylink{class_c_l_i_1_1_file_error}{File\+Error}) on failure. \end{DoxyCompactList}\item 
+virtual \doxymbox{\hyperlink{class_c_l_i_1_1_config_adf504285455f78fb1595d2ddad1cb626}{\texorpdfstring{$\sim$}{\string~}\+Config}} ()=default
+\begin{DoxyCompactList}\small\item\em Virtual destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std::\+vector$<$ \doxymbox{\hyperlink{struct_c_l_i_1_1_config_item}{Config\+Item}} $>$ \doxymbox{\hyperlink{class_c_l_i_1_1_config_a44be58c62906c58a118d8a3bf0f2a312}{items}} \{\}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class provides a converter for configuration files. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03640}{3640}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_c_l_i_1_1_config_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_l_i_1_1_config_adf504285455f78fb1595d2ddad1cb626}\index{CLI::Config@{CLI::Config}!````~Config@{\texorpdfstring{$\sim$}{\string~}Config}}
+\index{````~Config@{\texorpdfstring{$\sim$}{\string~}Config}!CLI::Config@{CLI::Config}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}Config()}{\string~Config()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_config_adf504285455f78fb1595d2ddad1cb626} 
+virtual CLI::\+\+Config::\+\texorpdfstring{$\sim$}{\string~}\+Config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}, {\ttfamily [default]}}
+
+
+
+Virtual destructor. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1_config_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1_config_af08741b7aa795644af5491faf04a0b2e}\index{CLI::Config@{CLI::Config}!from\_config@{from\_config}}
+\index{from\_config@{from\_config}!CLI::Config@{CLI::Config}}
+\doxysubsubsection{\texorpdfstring{from\_config()}{from\_config()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_config_af08741b7aa795644af5491faf04a0b2e} 
+virtual std::\+vector$<$ \doxymbox{\hyperlink{struct_c_l_i_1_1_config_item}{Config\+Item}} $>$ CLI::\+\+Config::\+from\+\_\+config (\begin{DoxyParamCaption}\item[{std::\+istream \&}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Convert a configuration into an app. 
+
+
+
+Implemented in \doxymbox{\hyperlink{class_c_l_i_1_1_config_base_a1395eecde5af65b73e3670529df0e17b}{CLI::\+\+Config\+Base}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{class_c_l_i_1_1_config_abe902d1dbfa8ee66b29d4fdb97112daa}\index{CLI::Config@{CLI::Config}!from\_file@{from\_file}}
+\index{from\_file@{from\_file}!CLI::Config@{CLI::Config}}
+\doxysubsubsection{\texorpdfstring{from\_file()}{from\_file()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_config_abe902d1dbfa8ee66b29d4fdb97112daa} 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+vector$<$ \doxymbox{\hyperlink{struct_c_l_i_1_1_config_item}{Config\+Item}} $>$ CLI::\+\+Config::\+from\+\_\+file (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Parse a config file, throw an error (\doxylink{class_c_l_i_1_1_parse_error}{Parse\+Error}:\+Config\+Parse\+Error or \doxylink{class_c_l_i_1_1_file_error}{File\+Error}) on failure. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03663}{3663}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{class_c_l_i_1_1_config_a516815ecb20f72816caeab5049d0873d}\index{CLI::Config@{CLI::Config}!to\_config@{to\_config}}
+\index{to\_config@{to\_config}!CLI::Config@{CLI::Config}}
+\doxysubsubsection{\texorpdfstring{to\_config()}{to\_config()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_config_a516815ecb20f72816caeab5049d0873d} 
+virtual std::\+string CLI::\+\+Config::\+to\+\_\+config (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{class_c_l_i_1_1_app}{App}} \texorpdfstring{$\ast$}{*}}]{}{, }\item[{bool}]{}{, }\item[{bool}]{}{, }\item[{std::\+string}]{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Convert an app into a configuration. 
+
+
+
+Implemented in \doxymbox{\hyperlink{class_c_l_i_1_1_config_base_af942b73981e9e9fb5b0ced54b63b1e61}{CLI::\+\+Config\+Base}}.
+
+\Hypertarget{class_c_l_i_1_1_config_a37ee9fa2380c8640b98c3d7069430031}\index{CLI::Config@{CLI::Config}!to\_flag@{to\_flag}}
+\index{to\_flag@{to\_flag}!CLI::Config@{CLI::Config}}
+\doxysubsubsection{\texorpdfstring{to\_flag()}{to\_flag()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_config_a37ee9fa2380c8640b98c3d7069430031} 
+virtual \doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string CLI::\+\+Config::\+to\+\_\+flag (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{struct_c_l_i_1_1_config_item}{Config\+Item}} \&}]{item}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Get a flag value. 
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03652}{3652}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+
+
+\label{doc-variable-members}
+\Hypertarget{class_c_l_i_1_1_config_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_c_l_i_1_1_config_a44be58c62906c58a118d8a3bf0f2a312}\index{CLI::Config@{CLI::Config}!items@{items}}
+\index{items@{items}!CLI::Config@{CLI::Config}}
+\doxysubsubsection{\texorpdfstring{items}{items}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_config_a44be58c62906c58a118d8a3bf0f2a312} 
+std::\+vector$<$\doxymbox{\hyperlink{struct_c_l_i_1_1_config_item}{Config\+Item}}$>$ CLI::\+\+Config::\+items \{\}\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l03642}{3642}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,21 @@
+digraph "wavefront_components_mark_wavefronts"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="wavefront_components\l_mark_wavefronts",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge7_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="bitmap_update_counters",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$bitmap_8c.html#a39b1fb5f1e2d49c1944e49e9cdf2fa99",tooltip=" "];
+  Node1 -> Node3 [id="edge8_Node000001_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="wavefront_components\l_mark_backtrace",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__components_8c.html#a3c65c53a33d95d9846f21f9f49b26de6",tooltip=" "];
+  Node3 -> Node4 [id="edge9_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="wf_backtrace_buffer\l_mark_backtrace_batch",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__backtrace__buffer_8c.html#a1d7c647fd3d196a3ea4b26d4f9cea12d",tooltip=" "];
+  Node4 -> Node5 [id="edge10_Node000004_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="vector_reserve",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$vector_8c.html#a9e80248c78d65dca99916d9965db6d79",tooltip=" "];
+  Node4 -> Node6 [id="edge11_Node000004_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="wf_backtrace_buffer\l_get_block",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__backtrace__buffer_8c.html#a6eea06aac4bfb2e3988a75fba7eae1c8",tooltip=" "];
+  Node4 -> Node7 [id="edge12_Node000004_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="wf_backtrace_buffer\l_prefetch_block",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$wavefront__backtrace__buffer_8c.html#a35bdf9fe6ca18ce2614563dad69cf7f4",tooltip=" "];
+}

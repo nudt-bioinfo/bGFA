@@ -1,0 +1,9 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node0 [id="Node000000",label="CLI::detail::element\l_type\< T, typename std\l::enable_if\< is_copyable\l_ptr\< T \>::value \>::type \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$struct_c_l_i_1_1detail_1_1element__type_3_01_t_00_01typename_01std_1_1enable__if_3_01is__copyablcf4068753293666f52fa2143458d7e20.html",tooltip=" "];
+}

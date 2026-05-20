@@ -1,0 +1,917 @@
+\doxysection{bgfa\+\_\+merge.\+hpp}
+\hypertarget{bgfa__merge_8hpp_source}{}\label{bgfa__merge_8hpp_source}\index{src/bgfa\_merge.hpp@{src/bgfa\_merge.hpp}}
+\doxymbox{\hyperlink{bgfa__merge_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00002}00002\ \textcolor{comment}{\ *\ @file\ \(\backslash\)bGFA\(\backslash\)src\(\backslash\)bgfa\_merge.hpp}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00003}00003\ \textcolor{comment}{\ *\ @brief}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00004}00004\ \textcolor{comment}{\ *\ @details}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00005}00005\ \textcolor{comment}{\ *\ @author\ grampart}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00006}00006\ \textcolor{comment}{\ *\ @version}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00007}00007\ \textcolor{comment}{\ *\ @copyright:\ Copyright(c)\ 2025\ by\ grampart,\ All\ Rights\ Reserved.}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00008}00008\ \textcolor{comment}{\ *\ @license:\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00009}00009\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00010}00010\ \textcolor{preprocessor}{\#ifndef\ BGFA\_MERGE\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00011}00011\ \textcolor{preprocessor}{\#define\ BGFA\_MERGE\_HPP\_}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00012}00012\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00013}00013\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa_8hpp}{bgfa.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00014}00014\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa__graph_8hpp}{bgfa\_graph.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00015}00015\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa__seed_8hpp}{bgfa\_seed.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00016}00016\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{bgfa__alignment_8hpp}{bgfa\_alignment.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00017}00017\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00019}\doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{00019}}\ \textcolor{preprocessor}{\#define\ MERGE\_PLACEHOLDER\ 4}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00021}\doxymbox{\hyperlink{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}{00021}}\ \textcolor{preprocessor}{\#define\ EXACT\_MERGE\_PLACEHOLDER\ 12}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00022}00022\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00024}\doxymbox{\hyperlink{bgfa__merge_8hpp_af95f48c71cc6081b10abdcdde2a0f3dd}{00024}}\ \textcolor{preprocessor}{\#define\ EXACT\_MERGE\_CLEAR\_MASK\ (uword\_t(-\/1)\ \string^\ (((uword\_t(1)\ <<\ EXACT\_MERGE\_PLACEHOLDER)\ -\/\ 1)\ <<\ (WORD\_BIT\ -\/\ EXACT\_MERGE\_PLACEHOLDER)))}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00025}00025\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00026}\doxymbox{\hyperlink{bgfa__merge_8hpp_ab7d4103b221dc76e8480e710f5c817bc}{00026}}\ \textcolor{preprocessor}{\#define\ SCREEN\_MODE\_DIRECT\ 0\ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00027}\doxymbox{\hyperlink{bgfa__merge_8hpp_ae10392c69766ab025875e15401a6dc63}{00027}}\ \textcolor{preprocessor}{\#define\ SCREEN\_MODE\_MINIMIZER\ 2\ }}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00028}\doxymbox{\hyperlink{bgfa__merge_8hpp_ab676a082bbd1e27d7897bf359e9962e3}{00028}}\ \textcolor{preprocessor}{\#define\ SCREEN\_MODE\_DISTANCE\ 4\ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00029}\doxymbox{\hyperlink{bgfa__merge_8hpp_a2884d488d3fcf19912456aa400b19c98}{00029}}\ \textcolor{preprocessor}{\#define\ SCREEN\_MODE\_PATH\ 8\ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00030}\doxymbox{\hyperlink{bgfa__merge_8hpp_af2d7373b67cd4ba4add36c7f339d2194}{00030}}\ \textcolor{preprocessor}{\#define\ MERGE\_MODE\_STRICT\ 0\ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00031}\doxymbox{\hyperlink{bgfa__merge_8hpp_a0e590d5aec03cb33a0170678998f4f13}{00031}}\ \textcolor{preprocessor}{\#define\ MERGE\_MODE\_EXACT\ 1\ \ \ \ \ \ }}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00034}\doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{00034}}\ \textcolor{keyword}{typedef}\ std::unordered\_map<uword\_t,\ std::pair<uword\_t,\ uword\_t>>\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{NewIdMap}};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00036}00036\ \textcolor{comment}{//\ TODO:\ 目前仅设计了增量合并，是否需要增加归并合并？}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00037}00037\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00044}\doxymbox{\hyperlink{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}{00044}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}{updateLink}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00045}00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<GFA>\ \&graphs,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00046}00046\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{NewIdMap}}\ \&new\_id\_list)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00047}00047\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00048}00048\ \ \ \ \ \textcolor{comment}{//\ 0\ is\ the\ reference\ graph}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00049}00049\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_id\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00050}00050\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00051}00051\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&gfa\ :\ graphs)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00052}00052\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00053}00053\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&all\_links\ =\ gfa.getLinksSet().getAllLinks();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00054}00054\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ from\_id\ =\ 0;\ from\_id\ <\ all\_links.size();\ from\_id++)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00055}00055\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00056}00056\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&data\ =\ all\_links[from\_id];}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00057}00057\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&to\_value\ :\ data)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00058}00058\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00059}00059\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_from\_id\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00061}00061\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |\ from\_id);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00062}00062\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00063}00063\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_to\_id\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00064}00064\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ((graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (to\_value\ >>\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}}));}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00066}00066\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ from\_it\ =\ new\_id\_list.find(graph\_from\_id);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00068}00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ to\_it\ =\ new\_id\_list.find(graph\_to\_id);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00069}00069\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00070}00070\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (from\_it\ !=\ new\_id\_list.end()\ \&\&\ to\_it\ !=\ new\_id\_list.end())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00071}00071\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00072}00072\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ From\ last\ id\ -\/>\ To\ first\ id}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00074}00074\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ from\_it-\/>second.second,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ (to\_it-\/>second.first\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}}\ |\ (to\_value\ \&\ 0x03)));}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00076}00076\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00077}00077\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00078}00078\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00079}00079\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00080}00080\ \ \ \ \ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00081}00081\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00082}00082\ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00083}00083\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00084}00084\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00091}\doxymbox{\hyperlink{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}{00091}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}{updateSegmentSet}}(\doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{NodeMap}}\ \&segment\_set,\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&gfa,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_id)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00092}00092\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00093}00093\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&segment\ :\ gfa.\doxymbox{\hyperlink{class_g_f_a_a2368cf1e7678827ac287e542ce85a727}{getAllSegments}}())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00094}00094\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00095}00095\ \ \ \ \ \ \ \ \ std::string\ segment\_seq\ =\ segment.getSequenceAsString();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00096}00096\ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00097}00097\ \ \ \ \ \ \ \ \ \ \ \ \ graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}})\ |\ segment.getId();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00098}00098\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00099}00099\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00100}00100\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00106}\doxymbox{\hyperlink{bgfa__merge_8hpp_a491928b6194fa72c3e5f72940f04ce58}{00106}}\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a491928b6194fa72c3e5f72940f04ce58}{ensureSegmentInMerged}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,\ \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{NodeMap}}\ \&segment\_set,\ \textcolor{keyword}{const}\ std::string\ \&seq)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00107}00107\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00108}00108\ \ \ \ \ \textcolor{keyword}{auto}\ it\ =\ segment\_set.find(seq);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00109}00109\ \ \ \ \ \textcolor{keywordflow}{if}\ (it\ !=\ segment\_set.end())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00110}00110\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00111}00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ it-\/>second;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00112}00112\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00113}00113\ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ tmp(0,\ seq);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00114}00114\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ idx\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(tmp);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00115}00115\ \ \ \ \ segment\_set[seq]\ =\ idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00116}00116\ \ \ \ \ \textcolor{keywordflow}{return}\ idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00117}00117\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00119}\doxymbox{\hyperlink{bgfa__merge_8hpp_aa7c48abe813e3dccdb7d8448a1ec05f3}{00119}}\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_aa7c48abe813e3dccdb7d8448a1ec05f3}{getSimilarScore}}(\doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ \&seg\_ms,\ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ \&ref\_ms)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00120}00120\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00121}00121\ \ \ \ \ \doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{MinimizerSetVect}}\ seg\_ms\_vect\ =\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a5923a84210ab80bb04ca3901da20ebe3}{getMinimizerVect}}(seg\_ms);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00122}00122\ \ \ \ \ \doxymbox{\hyperlink{bgfa__seed_8hpp_ade5eabc6a308900319bb63dfe8dcb4c7}{MinimizerSetVect}}\ ref\_ms\_vect\ =\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a5923a84210ab80bb04ca3901da20ebe3}{getMinimizerVect}}(ref\_ms);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00123}00123\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00124}00124\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ m\ =\ seg\_ms\_vect.size();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00125}00125\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ n\ =\ ref\_ms\_vect.size();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00126}00126\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\ ==\ 0\ ||\ n\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00127}00127\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00128}00128\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00129}00129\ \ \ \ \ \textcolor{comment}{//\ TODO:\ 硬编码，后续换成参数传入}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00130}00130\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MATCH\ =\ 1;\ \ \ \ \ \ \ \textcolor{comment}{//\ hash\ match\ +1}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00131}00131\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ ORDER\_BONUS\ =\ 1;\ \textcolor{comment}{//\ additional\ +1\ if\ previous\ match\ preserves\ order}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00132}00132\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ MISMATCH\ =\ -\/1;\ \ \ \textcolor{comment}{//\ mismatch\ -\/1}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00133}00133\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ GAP\ =\ -\/1;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ gap\ penalty\ -\/1}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00135}00135\ \ \ \ \ \textcolor{comment}{//\ Use\ rolling\ 1D\ DP\ (two\ rows)\ for\ Smith-\/Waterman\ local\ alignment\ to\ save\ memory.}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00136}00136\ \ \ \ \ std::vector<int>\ prev(n\ +\ 1,\ 0);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00137}00137\ \ \ \ \ std::vector<int>\ curr(n\ +\ 1,\ 0);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00138}00138\ \ \ \ \ \textcolor{keywordtype}{int}\ max\_score\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00139}00139\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00140}00140\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ i\ =\ 1;\ i\ <=\ m;\ ++i)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00141}00141\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00142}00142\ \ \ \ \ \ \ \ \ curr[0]\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{size\_t}\ j\ =\ 1;\ j\ <=\ n;\ ++j)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00144}00144\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00145}00145\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ diag\_score;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00146}00146\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ compare\ hashes\ (second\ element\ of\ pair)}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00147}00147\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seg\_ms\_vect[i\ -\/\ 1].second\ ==\ ref\_ms\_vect[j\ -\/\ 1].second)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00148}00148\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00149}00149\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diag\_score\ =\ prev[j\ -\/\ 1]\ +\ MATCH;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00150}00150\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ if\ previous\ items\ exist\ and\ offsets\ are\ increasing\ in\ both\ sequences,}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00151}00151\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ treat\ this\ as\ preserving\ order\ and\ give\ an\ extra\ bonus}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00152}00152\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (i\ >\ 1\ \&\&\ j\ >\ 1\ \&\&}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00153}00153\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seg\_ms\_vect[i\ -\/\ 2].first\ <\ seg\_ms\_vect[i\ -\/\ 1].first\ \&\&}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00154}00154\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ref\_ms\_vect[j\ -\/\ 2].first\ <\ ref\_ms\_vect[j\ -\/\ 1].first)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00155}00155\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00156}00156\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diag\_score\ +=\ ORDER\_BONUS;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00157}00157\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00158}00158\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00159}00159\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00160}00160\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00161}00161\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ diag\_score\ =\ prev[j\ -\/\ 1]\ +\ MISMATCH;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00162}00162\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00163}00163\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00164}00164\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ up\_score\ =\ prev[j]\ +\ GAP;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00165}00165\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ left\_score\ =\ curr[j\ -\/\ 1]\ +\ GAP;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00166}00166\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00167}00167\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ cell\ =\ std::max(0,\ std::max(diag\_score,\ std::max(up\_score,\ left\_score)));}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00168}00168\ \ \ \ \ \ \ \ \ \ \ \ \ curr[j]\ =\ cell;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00169}00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cell\ >\ max\_score)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00170}00170\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ max\_score\ =\ cell;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00171}00171\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00172}00172\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ move\ current\ row\ to\ previous,\ and\ reset\ current}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00174}00174\ \ \ \ \ \ \ \ \ std::swap(prev,\ curr);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00175}00175\ \ \ \ \ \ \ \ \ std::fill(curr.begin(),\ curr.end(),\ 0);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00176}00176\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00177}00177\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00178}00178\ \ \ \ \ \textcolor{keywordflow}{return}\ (\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}})max\_score;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00179}00179\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00180}00180\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00181}\doxymbox{\hyperlink{bgfa__merge_8hpp_aa9f36d38de004a8aff40657310e12b70}{00181}}\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_aa9f36d38de004a8aff40657310e12b70}{getMergeTargetbyMinimizers}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00182}00182\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ \&ref\_ms,\ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ \&seg\_ms)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00183}00183\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00184}00184\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ target\_seg\_id\ =\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00185}00185\ \ \ \ \ \textcolor{comment}{//\ id\ -\/>\ (current\_score,\ last\_seg\_offset)}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00186}00186\ \ \ \ \ std::unordered\_map<uword\_t,\ uword\_t>\ seg\_minimizer\_hit;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00187}00187\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00188}00188\ \ \ \ \ \textcolor{comment}{//\ hit\ count\ for\ each\ minimizer\ in\ the\ segment}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00189}00189\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&seg\_minimizer\ :\ seg\_ms.\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{getMinimizerTable}}())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00190}00190\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00191}00191\ \ \ \ \ \ \ \ \ uint64\_t\ minimizer\_hash\ =\ seg\_minimizer.first;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00192}00192\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00193}00193\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Check\ if\ this\ minimizer\ exists\ in\ the\ reference\ minimizer\ set}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00194}00194\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ ref\_it\ =\ ref\_ms.\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{getMinimizerTable}}().find(minimizer\_hash);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00195}00195\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00196}00196\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ hits}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00197}00197\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (ref\_it\ !=\ ref\_ms.\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{getMinimizerTable}}().end())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00198}00198\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&pos\ :\ ref\_it-\/>second.getPositions())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00200}00200\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00201}00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ ref\_seg\_id\ =\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a5943b9d742a50c2e692dba88173d941b}{getPosID}}(pos);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00202}00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ ref\_seg\_offset\ =\ \doxymbox{\hyperlink{bgfa__seed_8hpp_a4e16d6781bdc320524ec6e85ecb070fa}{getPosOffset}}(pos);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00203}00203\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00204}00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ score\_it\ =\ seg\_minimizer\_hit.find(ref\_seg\_id);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00205}00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (score\_it\ !=\ seg\_minimizer\_hit.end())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00206}00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00207}00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seg\_minimizer\_hit[ref\_seg\_id]\ +=\ 1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00208}00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00209}00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00210}00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00211}00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seg\_minimizer\_hit[ref\_seg\_id]\ =\ 1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00212}00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00213}00213\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00214}00214\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00215}00215\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00216}00216\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00217}00217\ \ \ \ \ \textcolor{keywordflow}{if}\ (seg\_minimizer\_hit.empty())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00218}00218\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00219}00219\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ target\_seg\_id;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00220}00220\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00221}00221\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00222}00222\ \ \ \ \ \textcolor{comment}{//\ hit\ order}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00223}00223\ \ \ \ \ \textcolor{comment}{//\ TODO:\ 阈值不应该是硬编码，后续需要调整}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00224}00224\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ min\_hit\_count\ =\ seg\_ms.\doxymbox{\hyperlink{class_minimizer_set_a4bec54e8e5ec4b166d4ac2b5d3cc42a8}{getMinimizerTable}}().size()\ *\ 0.7;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00225}00225\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ max\_score\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00226}00226\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&hit\_pair\ :\ seg\_minimizer\_hit)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00227}00227\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (hit\_pair.second\ <\ min\_hit\_count)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00229}00229\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00231}00231\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00232}00232\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00233}00233\ \ \ \ \ \ \ \ \ target\_seg\_id\ =\ hit\_pair.first;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00234}00234\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ target\_seg\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_aa21b20f420f0d9b99235606b25a1c36c}{getSegmentByIndex}}(hit\_pair.first);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00235}00235\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ target\_seg\_ms\ =\ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}(}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00236}00236\ \ \ \ \ \ \ \ \ \ \ \ \ target\_seg,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ ref\_ms.\doxymbox{\hyperlink{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e}{getLength}}(),}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ ref\_ms.\doxymbox{\hyperlink{class_minimizer_set_a21678694eb637e1989367d7390290227}{getWindowSize}}(),}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ ref\_ms.\doxymbox{\hyperlink{class_minimizer_set_a017be930961cc6b2045ad052c52c0159}{getMode}}());}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00240}00240\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (max\_score\ <\ \doxymbox{\hyperlink{bgfa__merge_8hpp_aa7c48abe813e3dccdb7d8448a1ec05f3}{getSimilarScore}}(seg\_ms,\ target\_seg\_ms))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00241}00241\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ max\_score\ =\ \doxymbox{\hyperlink{bgfa__merge_8hpp_aa7c48abe813e3dccdb7d8448a1ec05f3}{getSimilarScore}}(seg\_ms,\ target\_seg\_ms);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00243}00243\ \ \ \ \ \ \ \ \ \ \ \ \ target\_seg\_id\ =\ hit\_pair.first;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00244}00244\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00245}00245\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00246}00246\ \ \ \ \ \textcolor{keywordflow}{return}\ target\_seg\_id;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00247}00247\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00248}00248\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00262}\doxymbox{\hyperlink{bgfa__merge_8hpp_abac2142dd51555991eec46dbcbedd1e1}{00262}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_abac2142dd51555991eec46dbcbedd1e1}{mergeExactCompare}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{NewIdMap}}\ \&new\_id\_list,\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ g\_id,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00263}00263\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_segment}{Segment}}\ \&segment,\ \textcolor{keyword}{const}\ std::string\ \&target\_seq,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00264}00264\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ target\_id,\ \textcolor{keywordtype}{bool}\ \&is\_merged,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00265}00265\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ merge\_limited,\ uint8\_t\ alignment\_kernel)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00266}00266\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00267}00267\ \ \ \ \ \textcolor{keyword}{const}\ std::string\ segment\_seq\ =\ segment.\doxymbox{\hyperlink{class_segment_a68afa9b1485b7e7910ef9180c7e090f7}{getSequenceAsString}}();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00268}00268\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ segment\_id\ =\ segment.\doxymbox{\hyperlink{class_segment_a44d2763636bd56cecf70dda3f88377c6}{getId}}();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00269}00269\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00270}00270\ \ \ \ \ \textcolor{comment}{//\ Skip\ if\ length\ difference\ exceeds\ threshold}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00271}00271\ \ \ \ \ \textcolor{keywordtype}{double}\ length\_diff\ =\ std::abs((\textcolor{keywordtype}{int})segment\_seq.size()\ -\/\ (\textcolor{keywordtype}{int})target\_seq.size());}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00272}00272\ \ \ \ \ length\_diff\ /=\ std::max(segment\_seq.size(),\ target\_seq.size());}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00273}00273\ \ \ \ \ \textcolor{keywordflow}{if}\ (length\_diff\ >\ (100\ -\/\ merge\_limited)\ /\ 100.0)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00274}00274\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00275}00275\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00276}00276\ \textcolor{preprocessor}{\#ifdef\ INFO\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00277}00277\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[mergeExactCompare]\ segment\_id="{}}\ <<\ segment\_id}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ target\_id="{}}\ <<\ target\_id}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ seg\_len="{}}\ <<\ segment\_seq.size()}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ target\_len="{}}\ <<\ target\_seq.size()}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ seg\_seq="{}}\ <<\ segment\_seq}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00282}00282\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ target\_seq="{}}\ <<\ target\_seq}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00283}00283\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ length\_diff="{}}\ <<\ length\_diff\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00284}00284\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00286}00286\ \ \ \ \ std::string\ cigar\_str\ =\ \doxymbox{\hyperlink{bgfa__alignment_8hpp_aebd9c65b4aa65b9e41e0416b6e6dbb45}{alignmentSequence}}(segment\_seq,\ target\_seq);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00287}00287\ \ \ \ \ \textcolor{keywordflow}{if}\ (cigar\_str.empty()\ ||\ cigar\_str\ ==\ \textcolor{stringliteral}{"{}0M"{}})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00288}00288\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00289}00289\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00290}00290\ \ \ \ \ uint64\_t\ m\_number\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00291}00291\ \ \ \ \ uint64\_t\ cigar\_number\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00292}00292\ \ \ \ \ uint64\_t\ total\_ops\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00293}00293\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00294}00294\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ p\ =\ 0,\ n\ =\ cigar\_str.size();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00295}00295\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\doxymbox{\hyperlink{test__bgfa__merge_8hpp_a5b319b0cc567c2c23edb751700222b42}{s1}}\ =\ segment\_seq.data();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00296}00296\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\doxymbox{\hyperlink{test__bgfa__merge_8hpp_af2467ab620e8e2aa57d5bdbbd1958025}{s2}}\ =\ target\_seq.data();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos1\_tmp\ =\ 0,\ pos2\_tmp\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00298}00298\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (p\ <\ n)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00299}00299\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00300}00300\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (p\ <\ n\ \&\&\ std::isdigit(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(cigar\_str[p])))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00302}00302\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00303}00303\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ num\ *\ 10\ +\ (cigar\_str[p]\ -\/\ \textcolor{charliteral}{'0'});}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00304}00304\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++p;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00305}00305\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00306}00306\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ >=\ n)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};\ \textcolor{comment}{//\ malformed}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00308}00308\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ op\ =\ cigar\_str[p++];}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ ++total\_ops;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00310}00310\ \ \ \ \ \ \ \ \ \ \ \ \ cigar\_number\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00311}00311\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00312}00312\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (op\ ==\ \textcolor{charliteral}{'M'})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00314}00314\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ m\_number\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00316}00316\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos1\_tmp\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos2\_tmp\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00318}00318\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00319}00319\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (op\ ==\ \textcolor{charliteral}{'I'})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00320}00320\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00321}00321\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos2\_tmp\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00323}00323\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (op\ ==\ \textcolor{charliteral}{'D'})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00325}00325\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos1\_tmp\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00327}00327\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (op\ ==\ \textcolor{charliteral}{'X'})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00328}00328\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00329}00329\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos1\_tmp\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00330}00330\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos2\_tmp\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00331}00331\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00332}00332\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00333}00333\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00334}00334\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00335}00335\ \ \ \ \ \textcolor{keywordflow}{if}\ (cigar\_number\ ==\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00336}00336\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00337}00337\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00338}00338\ \textcolor{preprocessor}{\#ifdef\ INFO\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00339}00339\ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)t\(\backslash\)t\ \ \ \ cigar="{}}\ <<\ cigar\_str}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ cigar\_len="{}}\ <<\ cigar\_number}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00341}00341\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ m\_number="{}}\ <<\ m\_number}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00342}00342\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ total\_ops="{}}\ <<\ total\_ops}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00343}00343\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}\ merge\_limited="{}}\ <<\ merge\_limited\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00344}00344\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00345}00345\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00346}00346\ \ \ \ \ \textcolor{keywordflow}{if}\ (m\_number\ *\ 100\ <\ merge\_limited\ *\ cigar\_number)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00347}00347\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00348}00348\ \ \ \ \ \textcolor{keywordflow}{if}\ (total\_ops\ >\ (\textcolor{keyword}{static\_cast<}uint64\_t\textcolor{keyword}{>}(1)\ <<\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}{EXACT\_MERGE\_PLACEHOLDER}})\ -\/\ 1)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00349}00349\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00350}00350\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00351}00351\ \ \ \ \ \textcolor{comment}{//\ Default:\ not\ merged}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00352}00352\ \ \ \ \ is\_merged\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00353}00353\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00354}00354\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ first\_new\_target\ =\ -\/1,\ last\_new\_target\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00355}00355\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ first\_new\_segment\ =\ -\/1,\ last\_new\_segment\ =\ -\/1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00356}00356\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00357}00357\ \ \ \ \ \textcolor{keywordtype}{size\_t}\ pos1\ =\ 0,\ pos2\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00358}00358\ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_first\_seg1\ =\ \textcolor{keyword}{true},\ is\_first\_seg2\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00359}00359\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ seq1\_cur\_id\ =\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1),\ seq2\_cur\_id\ =\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00361}00361\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ p\ =\ 0,\ n\ =\ cigar\_str.size();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00363}00363\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ op\_idx\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00364}00364\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\doxymbox{\hyperlink{test__bgfa__merge_8hpp_a5b319b0cc567c2c23edb751700222b42}{s1}}\ =\ segment\_seq.data();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\doxymbox{\hyperlink{test__bgfa__merge_8hpp_af2467ab620e8e2aa57d5bdbbd1958025}{s2}}\ =\ target\_seq.data();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00366}00366\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00367}00367\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (p\ <\ n)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00368}00368\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00369}00369\ \ \ \ \ \ \ \ \ \ \ \ \ uint64\_t\ num\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00370}00370\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ (p\ <\ n\ \&\&\ std::isdigit(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{unsigned}\ \textcolor{keywordtype}{char}\textcolor{keyword}{>}(cigar\_str[p])))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00371}00371\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00372}00372\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ num\ =\ num\ *\ 10\ +\ (cigar\_str[p]\ -\/\ \textcolor{charliteral}{'0'});}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00373}00373\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ++p;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00374}00374\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00375}00375\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p\ >=\ n)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00376}00376\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00377}00377\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{char}\ op\ =\ cigar\_str[p++];}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00379}00379\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ id\_tag\ =\ \textcolor{keyword}{static\_cast<}\doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\textcolor{keyword}{>}(op\_idx)\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ad3366b2b760dc5fdee8ba3749ebbf0f4}{EXACT\_MERGE\_PLACEHOLDER}});}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00380}00380\ \ \ \ \ \ \ \ \ \ \ \ \ ++op\_idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00381}00381\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00382}00382\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (op\ ==\ \textcolor{charliteral}{'M'})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00383}00383\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00384}00384\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos1\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00385}00385\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos2\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ start1\ =\ pos1\ -\/\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00387}00387\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ start2\ =\ pos2\ -\/\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00388}00388\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00389}00389\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ create\ (or\ reuse)\ merged\ segments\ for\ the\ matched\ region}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00390}00390\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00391}00391\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00392}00392\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ piece1\ =\ segment\_seq.substr(start1,\ num);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00393}00393\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ piece2\ =\ target\_seq.substr(start2,\ num);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00394}00394\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00395}00395\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (piece1\ ==\ piece2)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00396}00396\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00397}00397\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ tmp(0,\ piece1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00398}00398\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_idx\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(tmp);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00399}00399\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_first\_seg1)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00400}00400\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00401}00401\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_new\_segment\ =\ new\_idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00402}00402\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_first\_seg1\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00403}00403\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00404}00404\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\_new\_segment\ =\ new\_idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00405}00405\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00406}00406\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_first\_seg2)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00407}00407\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00408}00408\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_new\_target\ =\ new\_idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00409}00409\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_first\_seg2\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00410}00410\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00411}00411\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\_new\_target\ =\ new\_idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00412}00412\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00413}00413\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seq1\_cur\_id\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00414}00414\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00415}00415\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(seq1\_cur\_id,\ (new\_idx\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}})\ |\ 0x03);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00416}00416\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00417}00417\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq1\_cur\_id\ =\ new\_idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00418}00418\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00419}00419\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seq2\_cur\_id\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00420}00420\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00421}00421\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(seq2\_cur\_id,\ (new\_idx\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}})\ |\ 0x03);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00422}00422\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00423}00423\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq2\_cur\_id\ =\ new\_idx;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00424}00424\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00425}00425\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00426}00426\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00427}00427\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ different\ sequences\ in\ M\ -\/>\ create\ two\ nodes}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00428}00428\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ tmp1(0,\ piece1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00429}00429\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ tmp2(0,\ piece2);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00430}00430\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_idx1\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(tmp1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00431}00431\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_idx2\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(tmp2);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00432}00432\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00433}00433\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_first\_seg1)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00434}00434\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00435}00435\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_new\_segment\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00436}00436\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_first\_seg1\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00437}00437\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00438}00438\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\_new\_segment\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00439}00439\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00440}00440\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_first\_seg2)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00441}00441\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00442}00442\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_new\_target\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00443}00443\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_first\_seg2\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00444}00444\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00445}00445\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\_new\_target\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00446}00446\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00447}00447\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seq1\_cur\_id\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00448}00448\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00449}00449\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(seq1\_cur\_id,\ (new\_idx1\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}})\ |\ 0x03);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00450}00450\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00451}00451\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq1\_cur\_id\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00452}00452\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00453}00453\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seq2\_cur\_id\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00454}00454\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00455}00455\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(seq2\_cur\_id,\ (new\_idx2\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}})\ |\ 0x03);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00456}00456\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00457}00457\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq2\_cur\_id\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00458}00458\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00459}00459\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00460}00460\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00461}00461\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (op\ ==\ \textcolor{charliteral}{'X'})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00462}00462\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00463}00463\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos1\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00464}00464\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos2\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00465}00465\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ start1\ =\ pos1\ -\/\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00466}00466\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ start2\ =\ pos2\ -\/\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00467}00467\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00468}00468\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ separate\ nodes\ for\ mismatched\ region\ on\ both\ sides}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00469}00469\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00470}00470\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00471}00471\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ piece1\ =\ segment\_seq.substr(start1,\ num);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00472}00472\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ piece2\ =\ target\_seq.substr(start2,\ num);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00473}00473\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00474}00474\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ tmp1(0,\ piece1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00475}00475\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ tmp2(0,\ piece2);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00476}00476\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_idx1\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(tmp1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00477}00477\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_idx2\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(tmp2);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00478}00478\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00479}00479\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_first\_seg1)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00480}00480\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00481}00481\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_new\_segment\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00482}00482\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_first\_seg1\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00483}00483\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00484}00484\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\_new\_segment\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00485}00485\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seq1\_cur\_id\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00486}00486\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00487}00487\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(seq1\_cur\_id,\ (new\_idx1\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}})\ |\ 0x03);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00488}00488\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00489}00489\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq1\_cur\_id\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00490}00490\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00491}00491\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_first\_seg2)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00492}00492\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00493}00493\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_new\_target\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00494}00494\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_first\_seg2\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00495}00495\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00496}00496\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\_new\_target\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00497}00497\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seq2\_cur\_id\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00498}00498\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00499}00499\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(seq2\_cur\_id,\ (new\_idx2\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}})\ |\ 0x03);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00500}00500\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00501}00501\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq2\_cur\_id\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00502}00502\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00503}00503\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00504}00504\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (op\ ==\ \textcolor{charliteral}{'I'})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00505}00505\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00506}00506\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos2\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00507}00507\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ start2\ =\ pos2\ -\/\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00508}00508\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00509}00509\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00510}00510\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ piece2\ =\ target\_seq.substr(start2,\ num);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00511}00511\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ tmp2(0,\ piece2);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00512}00512\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_idx2\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(tmp2);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00513}00513\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_first\_seg2)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00514}00514\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00515}00515\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_new\_target\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00516}00516\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_first\_seg2\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00517}00517\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00518}00518\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\_new\_target\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00519}00519\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seq2\_cur\_id\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00520}00520\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00521}00521\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(seq2\_cur\_id,\ (new\_idx2\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}})\ |\ 0x03);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00522}00522\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00523}00523\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq2\_cur\_id\ =\ new\_idx2;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00524}00524\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00525}00525\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00526}00526\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (op\ ==\ \textcolor{charliteral}{'D'})}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00527}00527\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00528}00528\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ pos1\ +=\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00529}00529\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{size\_t}\ start1\ =\ pos1\ -\/\ num;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00530}00530\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (num\ >\ 0)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00531}00531\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00532}00532\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ piece1\ =\ segment\_seq.substr(start1,\ num);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00533}00533\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_segment}{Segment}}\ tmp1(0,\ piece1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00534}00534\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_idx1\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(tmp1);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00535}00535\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_first\_seg1)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00536}00536\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00537}00537\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ first\_new\_segment\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00538}00538\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_first\_seg1\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00539}00539\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00540}00540\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ last\_new\_segment\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00541}00541\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (seq1\_cur\_id\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00542}00542\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00543}00543\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a7440c1cfa5f8bc65e037837732625815}{addLink}}(seq1\_cur\_id,\ (new\_idx1\ <<\ \doxymbox{\hyperlink{bgfa__graph_8hpp_aeebde399ac45912e57b360927d82bc0d}{LINK\_DIR\_BIT}})\ |\ 0x03);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00544}00544\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00545}00545\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq1\_cur\_id\ =\ new\_idx1;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00546}00546\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00547}00547\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00548}00548\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00549}00549\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00550}00550\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00551}00551\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00552}00552\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00553}00553\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00554}00554\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00555}00555\ \ \ \ \ \textcolor{comment}{//\ Only\ consider\ "{}merged"{}\ if\ new\ nodes\ are\ actually\ created\ on\ the\ source\ side,\ and\ write\ to\ the\ mapping}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00556}00556\ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_new\_segment\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1)\ \&\&\ last\_new\_segment\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00557}00557\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00558}00558\ \ \ \ \ \ \ \ \ is\_merged\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00559}00559\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00560}00560\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Redirect\ links\ for\ the\ Target\ segment（仅当目标侧也产生了首尾时）}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00561}00561\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (first\_new\_target\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1)\ \&\&\ last\_new\_target\ !=\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00562}00562\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00563}00563\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Redirect\ all\ incoming\ edges\ X\ -\/>\ target\ to\ X\ -\/>\ first\_new\_target}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00564}00564\ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_ab49ec6cc422fa4004c1399518cdf03fe}{redirectLinksTo}}(target\_id,\ first\_new\_target);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00565}00565\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00566}00566\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Move\ all\ outgoing\ edges\ target\ -\/>\ Y\ to\ last\_new\_target\ -\/>\ Y}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00567}00567\ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_aff821722f74a186278644e094f66bf38}{redirectLinksFrom}}(target\_id,\ last\_new\_target);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00568}00568\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00569}00569\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Remove\ any\ remaining\ edges\ of\ target\ (if\ any)\ and\ mark\ segment\ deleted}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00570}00570\ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a65e33df9eeb798efe63864d2b9618a0d}{removeLinksOf}}(target\_id);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00571}00571\ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a788ce71e42daebce7eae43fe3d242f6b}{markSegmentDeleted}}(target\_id);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00572}00572\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00573}00573\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00574}00574\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Set\ Information\ in\ new\_id\_list}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00575}00575\ \ \ \ \ \ \ \ \ new\_id\_list[(g\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |\ segment\_id]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00576}00576\ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_pair(first\_new\_segment,\ last\_new\_segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00577}00577\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00578}00578\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00579}00579\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00590}\doxymbox{\hyperlink{bgfa__merge_8hpp_a6b9f59cb69c32caa10b017d55f92585e}{00590}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a6b9f59cb69c32caa10b017d55f92585e}{mergeGFAStrict}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,\ \textcolor{keyword}{const}\ std::vector<GFA>\ \&graphs)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00591}00591\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00592}00592\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_id\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00593}00593\ \ \ \ \ \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{NodeMap}}\ segment\_set;\ \ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00594}00594\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{NewIdMap}}\ new\_id\_list;\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00595}00595\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00596}00596\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}{updateSegmentSet}}(segment\_set,\ merged\_graph,\ 0);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00597}00597\ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00598}00598\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00599}00599\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&gfa\ :\ graphs)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00600}00600\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00601}00601\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&segment\ :\ gfa.getAllSegments())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00602}00602\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00603}00603\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ segment\_seq\ =\ segment.getSequenceAsString();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00604}00604\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00605}00605\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (segment\_set.find(segment\_seq)\ ==\ segment\_set.end())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00606}00606\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00607}00607\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00608}00608\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00609}00609\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00610}00610\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00611}00611\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_id\_list[(graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00612}00612\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment.getId()]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00613}00613\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_pair(segment\_set[segment\_seq],}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00614}00614\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00615}00615\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00616}00616\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00617}00617\ \ \ \ \ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00618}00618\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00619}00619\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00620}00620\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}{updateLink}}(merged\_graph,\ graphs,\ new\_id\_list);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00621}00621\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00622}00622\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00623}\doxymbox{\hyperlink{bgfa__merge_8hpp_a68f1a505a82a74d220ad6594e13ea657}{00623}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a68f1a505a82a74d220ad6594e13ea657}{mergeGFAExact}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00624}00624\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<GFA>\ \&graphs,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00625}00625\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ merge\_limited,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00626}00626\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ alignment\_kernel)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00627}00627\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00628}00628\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_id\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00629}00629\ \ \ \ \ \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{NodeMap}}\ segment\_set;\ \ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00630}00630\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{NewIdMap}}\ new\_id\_list;\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00631}00631\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00632}00632\ \ \ \ \ \textcolor{keywordflow}{if}\ (merge\_limited\ <=\ 0\ ||\ merge\_limited\ >\ 100)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00633}00633\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00634}00634\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00635}00635\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[Merge\ GFA\ Exact]\ merge\_limited\ should\ be\ between\ 1\ and\ 100."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00636}00636\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00637}00637\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00638}00638\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}{updateSegmentSet}}(segment\_set,\ merged\_graph,\ 0);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00639}00639\ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00640}00640\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00641}00641\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&gfa\ :\ graphs)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00642}00642\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00643}00643\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&segment\ :\ gfa.getAllSegments())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00644}00644\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00645}00645\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ segment\_seq\ =\ segment.getSequenceAsString();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00646}00646\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ segment\_id\ =\ segment.getId();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00647}00647\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00648}00648\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (segment\_set.find(segment\_seq)\ ==\ segment\_set.end())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00649}00649\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00650}00650\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_merged\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00651}00651\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00652}00652\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ std::string\ segment\_seq\ =\ segment.getSequenceAsString();}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00653}00653\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ uword\_t\ segment\_id\ =\ segment.getId();}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00654}00654\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00655}00655\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&segment\_in\_set\ :\ segment\_set)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00656}00656\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00657}00657\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_merged)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00658}00658\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00659}00659\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_abac2142dd51555991eec46dbcbedd1e1}{mergeExactCompare}}(merged\_graph,\ new\_id\_list,\ graph\_id,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00660}00660\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment,\ segment\_in\_set.first,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00661}00661\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_in\_set.second,\ is\_merged,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00662}00662\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merge\_limited,\ alignment\_kernel);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00663}00663\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00664}00664\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_merged)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00665}00665\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00666}00666\ \textcolor{preprocessor}{\#ifdef\ INFO\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00667}00667\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[mergeGFAExact]\ Merged\ segment\_id="{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00668}00668\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ segment\_id\ <<\ \textcolor{stringliteral}{"{}\ seq="{}}\ <<\ segment\_seq\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00669}00669\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00670}00670\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00671}00671\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00672}00672\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00673}00673\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00674}00674\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_id\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00675}00675\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00676}00676\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Record\ new\ segment\ ID\ in\ new\_id\_list\ and\ segment\_set}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00677}00677\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_id\_list[(graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |\ segment\_id]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00678}00678\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_pair(new\_id,\ new\_id);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00679}00679\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]\ =\ new\_id;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00680}00680\ \textcolor{preprocessor}{\#ifdef\ INFO\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00681}00681\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00682}00682\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}[mergeGFAExact]\ New\ segment\_id="{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00683}00683\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ segment\_id\ <<\ \textcolor{stringliteral}{"{}\ seq="{}}\ <<\ segment\_seq\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00684}00684\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00685}00685\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00686}00686\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00687}00687\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00688}00688\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00689}00689\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_id\_list[(graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00690}00690\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment.getId()]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00691}00691\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_pair(segment\_set[segment\_seq],}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00692}00692\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00693}00693\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00694}00694\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00695}00695\ \ \ \ \ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00696}00696\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00697}00697\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00698}00698\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}{updateLink}}(merged\_graph,\ graphs,\ new\_id\_list);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00699}00699\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00700}00700\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00713}\doxymbox{\hyperlink{bgfa__merge_8hpp_a2488d7a7fc984dd8a180696d247222eb}{00713}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a2488d7a7fc984dd8a180696d247222eb}{mergeGFAStrictByDistance}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,\ \textcolor{keyword}{const}\ std::vector<GFA>\ \&graphs)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00714}00714\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00715}00715\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_id\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00716}00716\ \ \ \ \ \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{NodeMap}}\ segment\_set;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00717}00717\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{NewIdMap}}\ new\_id\_list;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00718}00718\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00719}00719\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}{updateSegmentSet}}(segment\_set,\ merged\_graph,\ 0);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00720}00720\ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00721}00721\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00722}00722\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&gfa\ :\ graphs)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00723}00723\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00724}00724\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&segment\ :\ gfa.getAllSegments())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00725}00725\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00726}00726\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ seg\_dis\ =\ segment.getDis();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00727}00727\ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Segment>\ candidates;\ \textcolor{comment}{//\ Const\ \&}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00728}00728\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ 此处阈值需要设置代码进行传入(DISTANCE\_THRESHOLD)，而不是硬编码}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00729}00729\ \ \ \ \ \ \ \ \ \ \ \ \ candidates\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a3e070eff9521410eb47b7c0dbb463213}{findSegmentsByDistance}}(seg\_dis,\ 10);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00730}00730\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_found\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00731}00731\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&cand\_seg\ :\ candidates)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00732}00732\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00733}00733\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (cand\_seg.getSequenceAsString()\ ==}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00734}00734\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment.getSequenceAsString())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00735}00735\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00736}00736\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ segment\_seq\ =\ segment.getSequenceAsString();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00737}00737\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_id\_list[(graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00738}00738\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment.getId()]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00739}00739\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_pair(segment\_set[segment\_seq],}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00740}00740\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00741}00741\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00742}00742\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ is\_found\ =\ \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00743}00743\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00744}00744\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00745}00745\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00746}00746\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_found)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00747}00747\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00748}00748\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment.getSequenceAsString()]\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00749}00749\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00750}00750\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00751}00751\ \ \ \ \ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00752}00752\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00753}00753\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00754}00754\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}{updateLink}}(merged\_graph,\ graphs,\ new\_id\_list);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00755}00755\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00756}00756\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00757}\doxymbox{\hyperlink{bgfa__merge_8hpp_a9162a950995ba45432b5a90c14147924}{00757}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a9162a950995ba45432b5a90c14147924}{mergeGFAExactByDistance}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00758}00758\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<GFA>\ \&graphs,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00759}00759\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ merge\_limited,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00760}00760\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ alignment\_kernel)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00761}00761\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00762}00762\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_id\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00763}00763\ \ \ \ \ \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{NodeMap}}\ segment\_set;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00764}00764\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{NewIdMap}}\ new\_id\_list;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00765}00765\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00766}00766\ \ \ \ \ \textcolor{keywordflow}{if}\ (merge\_limited\ <=\ 0\ ||\ merge\_limited\ >\ 100)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00767}00767\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00768}00768\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00769}00769\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[Merge\ GFA\ Exact]\ merge\_limited\ should\ be\ between\ 1\ and\ 100."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00770}00770\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00771}00771\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00772}00772\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}{updateSegmentSet}}(segment\_set,\ merged\_graph,\ 0);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00773}00773\ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00774}00774\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&gfa\ :\ graphs)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00775}00775\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00776}00776\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&segment\ :\ gfa.getAllSegments())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00777}00777\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00778}00778\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ segment\_seq\ =\ segment.getSequenceAsString();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00779}00779\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ segment\_id\ =\ segment.getId();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00780}00780\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00781}00781\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ ((segment\_set.find(segment\_seq)\ ==\ segment\_set.end())\ ||}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00782}00782\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set.empty())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00783}00783\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00784}00784\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_merged\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00785}00785\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00786}00786\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Find\ candidates\ by\ distance}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00787}00787\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ seg\_dis\ =\ segment.getDis();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00788}00788\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::vector<Segment>\ candidates;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00789}00789\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ TODO:\ 此处阈值需要设置代码进行传入(DISTANCE\_THRESHOLD)，而不是硬编码}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00790}00790\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ candidates\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a3e070eff9521410eb47b7c0dbb463213}{findSegmentsByDistance}}(seg\_dis,\ 10);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00791}00791\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00792}00792\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&cand\_seg\ :\ candidates)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00793}00793\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00794}00794\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_merged)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00795}00795\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00796}00796\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_abac2142dd51555991eec46dbcbedd1e1}{mergeExactCompare}}(merged\_graph,\ new\_id\_list,\ graph\_id,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00797}00797\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment,\ cand\_seg.getSequenceAsString(),}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00798}00798\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cand\_seg.getId(),\ is\_merged,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00799}00799\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merge\_limited,\ alignment\_kernel);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00800}00800\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00801}00801\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00802}00802\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (is\_merged)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00803}00803\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00804}00804\ \textcolor{preprocessor}{\#ifdef\ INFO\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00805}00805\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[mergeGFAExact]\ Merged\ segment\_id="{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00806}00806\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ segment\_id\ <<\ \textcolor{stringliteral}{"{}\ seq="{}}\ <<\ segment\_seq\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00807}00807\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00808}00808\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00809}00809\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00810}00810\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00811}00811\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00812}00812\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ new\_id\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00813}00813\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00814}00814\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Record\ new\ segment\ ID\ in\ new\_id\_list\ and\ segment\_set}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00815}00815\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_id\_list[(graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |\ segment\_id]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00816}00816\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_pair(new\_id,\ new\_id);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00817}00817\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]\ =\ new\_id;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00818}00818\ \textcolor{preprocessor}{\#ifdef\ INFO\_DEBUG}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00819}00819\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::cerr\ <<\ \textcolor{stringliteral}{"{}[mergeGFAExact]\ New\ segment\_id="{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00820}00820\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ segment\_id\ <<\ \textcolor{stringliteral}{"{}\ seq="{}}\ <<\ segment\_seq\ <<\ \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00821}00821\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00822}00822\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00823}00823\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00824}00824\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00825}00825\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00826}00826\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_id\_list[(graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00827}00827\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment.getId()]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00828}00828\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_pair(segment\_set[segment\_seq],}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00829}00829\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00830}00830\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00831}00831\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00832}00832\ \ \ \ \ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00833}00833\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00834}00834\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00835}00835\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}{updateLink}}(merged\_graph,\ graphs,\ new\_id\_list);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00836}00836\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00837}00837\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00847}\doxymbox{\hyperlink{bgfa__merge_8hpp_a84056021bcf2c6f38ac06e6618792cbd}{00847}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a84056021bcf2c6f38ac06e6618792cbd}{mergeGFAExactByMinimize}}(\doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&merged\_graph,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00848}00848\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<GFA>\ \&graphs,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00849}00849\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ merge\_limited,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00850}00850\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ alignment\_kernel)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00851}00851\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00852}00852\ \ \ \ \ \textcolor{comment}{//\ TODO:\ minimizer的长度和窗口大小需要作为参数传入，目前仅是硬编码}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00853}00853\ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ ref\_ms\ =\ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}(merged\_graph,\ 15,\ 20);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00854}00854\ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ graph\_id\ =\ 0;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00855}00855\ \ \ \ \ \doxymbox{\hyperlink{bgfa__graph_8hpp_ad88354973d6f808e1525117580731894}{NodeMap}}\ segment\_set;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00856}00856\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a821355656807593072c54951745e409b}{NewIdMap}}\ new\_id\_list;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00857}00857\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00858}00858\ \ \ \ \ \textcolor{keywordflow}{if}\ (merge\_limited\ <=\ 0\ ||\ merge\_limited\ >\ 100)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00859}00859\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00860}00860\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::logic\_error(}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00861}00861\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[Merge\ GFA\ Exact]\ merge\_limited\ should\ be\ between\ 1\ and\ 100."{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00862}00862\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00863}00863\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00864}00864\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab83bae8347d8d362aac82cd7b0aea18d}{updateSegmentSet}}(segment\_set,\ merged\_graph,\ 0);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00865}00865\ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00866}00866\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00867}00867\ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&graph\ :\ graphs)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00868}00868\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00869}00869\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ MinimizerSet\ temp\_ms\ =\ MinimizerSet(graph,\ 15,\ 20);}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00870}00870\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keyword}{const}\ \textcolor{keyword}{auto}\ \&segment\ :\ graph.getAllSegments())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00871}00871\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00872}00872\ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ segment\_seq\ =\ segment.getSequenceAsString();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00873}00873\ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ segment\_id\ =\ segment.getId();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00874}00874\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00875}00875\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (segment\_set.find(segment\_seq)\ ==\ segment\_set.end())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00876}00876\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00877}00877\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ is\_merged\ =\ \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00878}00878\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Minimizer\ of\ a\ segment}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00879}00879\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}\ seg\_ms\ =\ \doxymbox{\hyperlink{class_minimizer_set}{MinimizerSet}}(segment,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00880}00880\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ref\_ms.\doxymbox{\hyperlink{class_minimizer_set_a4a5cc9fb94f6f633e6d40a7c06898c0e}{getLength}}(),}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00881}00881\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ref\_ms.\doxymbox{\hyperlink{class_minimizer_set_a21678694eb637e1989367d7390290227}{getWindowSize}}(),}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00882}00882\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ref\_ms.\doxymbox{\hyperlink{class_minimizer_set_a017be930961cc6b2045ad052c52c0159}{getMode}}());}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00883}00883\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00884}00884\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ target\_id\ =\ \doxymbox{\hyperlink{bgfa__merge_8hpp_aa9f36d38de004a8aff40657310e12b70}{getMergeTargetbyMinimizers}}(merged\_graph,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00885}00885\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ref\_ms,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00886}00886\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seg\_ms);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00887}00887\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00888}00888\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Guard:\ if\ no\ valid\ target\ found,\ add\ as\ new\ segment}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00889}00889\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (target\_id\ ==\ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}(-\/1))}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00890}00890\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00891}00891\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00892}00892\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00893}00893\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00894}00894\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00895}00895\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::string\ target\_seq\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00896}00896\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_aa21b20f420f0d9b99235606b25a1c36c}{getSegmentByIndex}}(target\_id).\doxymbox{\hyperlink{class_segment_a68afa9b1485b7e7910ef9180c7e090f7}{getSequenceAsString}}();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00897}00897\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_abac2142dd51555991eec46dbcbedd1e1}{mergeExactCompare}}(merged\_graph,\ new\_id\_list,\ graph\_id,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00898}00898\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment,\ target\_seq,\ target\_id,\ is\_merged,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00899}00899\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ merge\_limited,\ alignment\_kernel);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00900}00900\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00901}00901\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (!is\_merged)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00902}00902\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00903}00903\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]\ =\ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a38e71448a53fbe1893d373823fa93d57}{addSegment}}(segment);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00904}00904\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00905}00905\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00906}00906\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00907}00907\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00908}00908\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00909}00909\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ new\_id\_list[(graph\_id\ <<\ (\doxymbox{\hyperlink{bgfa_8hpp_af95e2cdeed2bb68c59e2c3d07b6c3d04}{WORD\_BIT}}\ -\/\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a57e8c9f956ca0e40a8ec138db8474f9a}{MERGE\_PLACEHOLDER}}))\ |}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00910}00910\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment.getId()]\ =}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00911}00911\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ std::make\_pair(segment\_set[segment\_seq],}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00912}00912\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ segment\_set[segment\_seq]);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00913}00913\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00914}00914\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00915}00915\ \ \ \ \ \ \ \ \ graph\_id++;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00916}00916\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00917}00917\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00918}00918\ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_aafea1dcd664807d9d0b0872d7965e5d9}{updateLink}}(merged\_graph,\ graphs,\ new\_id\_list);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00919}00919\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00920}00920\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00926}\doxymbox{\hyperlink{bgfa__merge_8hpp_abbf4cc6196c12478dbaf3a70aa85fa3f}{00926}}\ \doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_abbf4cc6196c12478dbaf3a70aa85fa3f}{mergeGraphs}}(\textcolor{keyword}{const}\ \doxymbox{\hyperlink{class_g_f_a}{GFA}}\ \&ref\_graph,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00927}00927\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<GFA>\ \&graphs,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00928}00928\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ merge\_args,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00929}00929\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa_8hpp_aa3abdd3c952c9bf3d6c946100064698a}{uword\_t}}\ merge\_limited\ =\ 90,}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00930}00930\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ uint8\_t\ alignment\_kernel\ =\ 1)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00931}00931\ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00932}00932\ \ \ \ \ \doxymbox{\hyperlink{class_g_f_a}{GFA}}\ merged\_graph\ =\ ref\_graph;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00933}00933\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00934}00934\ \ \ \ \ \textcolor{keywordflow}{if}\ (graphs.empty())}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00935}00935\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00936}00936\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{throw}\ std::invalid\_argument(\textcolor{stringliteral}{"{}[Merge\ Graphs]\ Input\ graph\ list\ is\ empty"{}});}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00937}00937\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00938}00938\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00939}00939\ \ \ \ \ \textcolor{comment}{//\ TODO:\ merge\_args\ 需要包含更多信息，例如minimizer长度、窗口大小等参数}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00940}00940\ \ \ \ \ \textcolor{keywordflow}{switch}\ (merge\_args)}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00941}00941\ \ \ \ \ \{}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00942}00942\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab7d4103b221dc76e8480e710f5c817bc}{SCREEN\_MODE\_DIRECT}}\ |\ \doxymbox{\hyperlink{bgfa__merge_8hpp_af2d7373b67cd4ba4add36c7f339d2194}{MERGE\_MODE\_STRICT}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00943}00943\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a6b9f59cb69c32caa10b017d55f92585e}{mergeGFAStrict}}(merged\_graph,\ graphs);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00944}00944\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00945}00945\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ae10392c69766ab025875e15401a6dc63}{SCREEN\_MODE\_MINIMIZER}}\ |\ \doxymbox{\hyperlink{bgfa__merge_8hpp_af2d7373b67cd4ba4add36c7f339d2194}{MERGE\_MODE\_STRICT}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00946}00946\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Due\ to\ performance\ considerations,"{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00947}00947\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}strict\ merging\ using\ the\ minimizer\ has\ been\ abandoned."{}}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00948}00948\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ <<\ \textcolor{stringliteral}{"{}We\ will\ use\ exact\ merging\ as\ an\ alternative."{}};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00949}00949\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a84056021bcf2c6f38ac06e6618792cbd}{mergeGFAExactByMinimize}}(}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00950}00950\ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph,\ graphs,\ merge\_limited,\ alignment\_kernel);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00951}00951\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00952}00952\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab676a082bbd1e27d7897bf359e9962e3}{SCREEN\_MODE\_DISTANCE}}\ |\ \doxymbox{\hyperlink{bgfa__merge_8hpp_af2d7373b67cd4ba4add36c7f339d2194}{MERGE\_MODE\_STRICT}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00953}00953\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a2488d7a7fc984dd8a180696d247222eb}{mergeGFAStrictByDistance}}(merged\_graph,\ graphs);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00954}00954\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00955}00955\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a2884d488d3fcf19912456aa400b19c98}{SCREEN\_MODE\_PATH}}\ |\ \doxymbox{\hyperlink{bgfa__merge_8hpp_af2d7373b67cd4ba4add36c7f339d2194}{MERGE\_MODE\_STRICT}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00956}00956\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mergeGFAStrictByPath(merged\_graph,\ graphs);}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00957}00957\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00958}00958\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab7d4103b221dc76e8480e710f5c817bc}{SCREEN\_MODE\_DIRECT}}\ |\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a0e590d5aec03cb33a0170678998f4f13}{MERGE\_MODE\_EXACT}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00959}00959\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a68f1a505a82a74d220ad6594e13ea657}{mergeGFAExact}}(merged\_graph,\ graphs,\ merge\_limited,\ alignment\_kernel);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00960}00960\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00961}00961\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ae10392c69766ab025875e15401a6dc63}{SCREEN\_MODE\_MINIMIZER}}\ |\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a0e590d5aec03cb33a0170678998f4f13}{MERGE\_MODE\_EXACT}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00962}00962\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a84056021bcf2c6f38ac06e6618792cbd}{mergeGFAExactByMinimize}}(}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00963}00963\ \ \ \ \ \ \ \ \ \ \ \ \ merged\_graph,\ graphs,\ merge\_limited,\ alignment\_kernel);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00964}00964\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00965}00965\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_ab676a082bbd1e27d7897bf359e9962e3}{SCREEN\_MODE\_DISTANCE}}\ |\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a0e590d5aec03cb33a0170678998f4f13}{MERGE\_MODE\_EXACT}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00966}00966\ \ \ \ \ \ \ \ \ \doxymbox{\hyperlink{bgfa__merge_8hpp_a9162a950995ba45432b5a90c14147924}{mergeGFAExactByDistance}}(merged\_graph,\ graphs,\ merge\_limited,\ alignment\_kernel);}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00967}00967\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00968}00968\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a2884d488d3fcf19912456aa400b19c98}{SCREEN\_MODE\_PATH}}\ |\ \doxymbox{\hyperlink{bgfa__merge_8hpp_a0e590d5aec03cb33a0170678998f4f13}{MERGE\_MODE\_EXACT}}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00969}00969\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ mergeGFAExactByPath(merged\_graph,\ graphs);}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00970}00970\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00971}00971\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00972}00972\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00973}00973\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00974}00974\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00975}00975\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00976}00976\ \ \ \ \ merged\_graph.\doxymbox{\hyperlink{class_g_f_a_a514636d558faa6c3f23b4c6ea83d5e74}{compactAndRenumber}}();}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00977}00977\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00978}00978\ \ \ \ \ \textcolor{keywordflow}{return}\ merged\_graph;}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00979}00979\ \}}
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00980}00980\ }
+\DoxyCodeLine{\Hypertarget{bgfa__merge_8hpp_source_l00981}00981\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ MERGE\_HPP\_}}
+
+\end{DoxyCode}

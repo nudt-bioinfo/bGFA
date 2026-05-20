@@ -1,0 +1,399 @@
+\doxysection{gen\+\_\+gfa.\+py}
+\hypertarget{gen__gfa_8py_source}{}\label{gen__gfa_8py_source}\index{src/test/script/gen\_gfa.py@{src/test/script/gen\_gfa.py}}
+\doxymbox{\hyperlink{gen__gfa_8py}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00001}\doxymbox{\hyperlink{namespacegen__gfa}{00001}}\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00002}00002\ \textcolor{stringliteral}{Generate\ GFA\ graphs\ with\ two\ generation\ modes.}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00003}00003\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00004}00004\ \textcolor{stringliteral}{Mode\ A\ (basic):}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00005}00005\ \textcolor{stringliteral}{-\/\ Given\ node\ count,\ average\ length\ (±20\%),\ and\ edge\ multiplier\ (1.2/1.5/2.0),}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00006}00006\ \textcolor{stringliteral}{\ \ build\ sequences\ and\ a\ non-\/linear\ connection\ scheme.}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00007}00007\ \textcolor{stringliteral}{-\/\ Ensures\ exactly\ one\ source-\/only\ node\ (indeg==0)\ and\ one\ sink-\/only\ node\ (outdeg==0).}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00008}00008\ \textcolor{stringliteral}{\ \ All\ other\ nodes\ have\ at\ least\ one\ predecessor\ and\ one\ successor.}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00009}00009\ \textcolor{stringliteral}{-\/\ The\ graph\ is\ not\ strictly\ linear\ (adds\ cross\ edges\ beyond\ a\ simple\ chain).}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00010}00010\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00011}00011\ \textcolor{stringliteral}{Mode\ B\ (distribution):}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00012}00012\ \textcolor{stringliteral}{-\/\ Given\ total\ length\ and\ a\ node-\/length\ distribution\ across\ 6\ bins}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00013}00013\ \textcolor{stringliteral}{\ \ (<10,\ 10-\/100,\ 100-\/1000,\ 1k-\/10k,\ 10k-\/100k,\ >100k),}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00014}00014\ \textcolor{stringliteral}{\ \ either\ via\ explicit\ percentages\ or\ presets,\ estimate\ node\ count\ and\ sample\ lengths.}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00015}00015\ \textcolor{stringliteral}{-\/\ Then\ generate\ connections\ with\ the\ same\ degree\ constraints\ and\ edge\ multiplier.}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00016}00016\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00017}00017\ \textcolor{stringliteral}{Author:\ grampart\ }}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00018}00018\ \textcolor{stringliteral}{Version:\ 0.1}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00019}00019\ \textcolor{stringliteral}{License:\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00020}00020\ \textcolor{stringliteral}{"{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00021}00021\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00022}00022\ \textcolor{keyword}{from}\ \_\_future\_\_\ \textcolor{keyword}{import}\ annotations}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00023}00023\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00024}00024\ \textcolor{keyword}{import}\ argparse}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00025}00025\ \textcolor{keyword}{import}\ math}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00026}00026\ \textcolor{keyword}{import}\ os}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00027}00027\ \textcolor{keyword}{import}\ random}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00028}00028\ \textcolor{keyword}{import}\ sys}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00029}00029\ \textcolor{keyword}{from}\ typing\ \textcolor{keyword}{import}\ List,\ Tuple,\ Dict,\ Sequence}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00031}\doxymbox{\hyperlink{namespacegen__gfa_ac46088ae35a74a7fdc8c33a82157f53a}{00031}}\ DNA\_ALPHABET\ =\ \textcolor{stringliteral}{"{}ACGT"{}}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00032}00032\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00033}00033\ \textcolor{comment}{\#\ Length\ bins\ for\ mode\ B:\ (low,\ high)\ inclusive}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00034}00034\ \textcolor{comment}{\#\ For\ the\ last\ bin,\ the\ 'high'\ will\ be\ replaced\ by\ user-\/provided\ max\ length}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00035}\doxymbox{\hyperlink{namespacegen__gfa_a0c005c517fae8e8648891dd695b54405}{00035}}\ BINS\_SPECS\ =\ [}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00036}00036\ \ \ \ \ (0,\ 1)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00037}00037\ \ \ \ \ (1,\ 9),\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ <10}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00038}00038\ \ \ \ \ (10,\ 100),\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 10-\/100}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00039}00039\ \ \ \ \ (100,\ 300),\ \ \ \ \ \ \ \textcolor{comment}{\#\ 100-\/1000}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00040}00040\ \ \ \ \ (300,\ 1000)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00041}00041\ \ \ \ \ (1000,\ 3000),\ \ \ \ \ \textcolor{comment}{\#\ 1k-\/10k}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00042}00042\ \ \ \ \ (3000,\ 10000),\ \ \ \ \ \textcolor{comment}{\#\ 1k-\/10k}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00043}00043\ \ \ \ \ (10000,\ \textcolor{keywordtype}{None}),\ \ \ \ \textcolor{comment}{\#\ >100k\ (upper\ bound\ decided\ at\ runtime)}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00044}00044\ ]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00045}00045\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00046}00046\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00047}\doxymbox{\hyperlink{namespacegen__gfa_ac5d0745222bc70617393c10c575f6c29}{00047}}\ PRESET\_DISTS\ =\ \{}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00048}00048\ \ \ \ \ \textcolor{stringliteral}{"{}short"{}}:\ [65,\ 16,\ 14,\ 3,\ 1,\ 0.1,\ 0.02,\ 0.005],}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00049}00049\ \ \ \ \ \textcolor{stringliteral}{"{}long"{}}:\ [2.5,\ 7.5,\ 27.5,\ 20,\ 20,\ 10,\ 6,\ 7],}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00050}00050\ \}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00051}00051\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00052}\doxymbox{\hyperlink{namespacegen__gfa_a62870d65c96727f87fe4af3552b9d282}{00052}}\ EDGE\_MULT\_CHOICES\ =\ \{\textcolor{stringliteral}{"{}1.2"{}}:\ 1.2,\ \textcolor{stringliteral}{"{}1.5"{}}:\ 1.5,\ \textcolor{stringliteral}{"{}2.0"{}}:\ 2.0\}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00053}00053\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00054}00054\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00055}\doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{00055}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{random\_dna}}(length:\ int,\ rng:\ random.Random)\ -\/>\ str:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00056}00056\ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}"{}}.join(rng.choice(DNA\_ALPHABET)\ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ range(max(1,\ int(length))))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00058}00058\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00059}\doxymbox{\hyperlink{namespacegen__gfa_aa3d7537b9f1285bea5db3361738ccb10}{00059}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_aa3d7537b9f1285bea5db3361738ccb10}{write\_gfa}}(output\_path:\ str,\ sequences:\ Sequence[str],}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00060}00060\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ edges:\ Sequence[Tuple[int,\ int,\ str,\ str]])\ -\/>\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00061}00061\ \ \ \ \ \textcolor{keywordflow}{if}\ output\_path\ ==\ \textcolor{stringliteral}{"{}-\/"{}}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00062}00062\ \ \ \ \ \ \ \ \ f\ =\ sys.stdout}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00063}00063\ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}H\(\backslash\)tVN:Z:1\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00064}00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ seq\ \textcolor{keywordflow}{in}\ enumerate(sequences,\ start=1):}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00065}00065\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}S\(\backslash\)t\{i\}\(\backslash\)t\{seq\}\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00066}00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (a,\ b,\ oa,\ ob)\ \textcolor{keywordflow}{in}\ edges:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00067}00067\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}L\(\backslash\)t\{a\}\(\backslash\)t\{oa\}\(\backslash\)t\{b\}\(\backslash\)t\{ob\}\(\backslash\)t0M\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00068}00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00069}00069\ \ \ \ \ os.makedirs(os.path.dirname(output\_path)\ \textcolor{keywordflow}{or}\ \textcolor{stringliteral}{"{}."{}},\ exist\_ok=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00070}00070\ \ \ \ \ \textcolor{keyword}{with}\ open(output\_path,\ \textcolor{stringliteral}{"{}w"{}},\ encoding=\textcolor{stringliteral}{"{}utf-\/8"{}})\ \textcolor{keyword}{as}\ f:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00071}00071\ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}H\(\backslash\)tVN:Z:1\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00072}00072\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ seq\ \textcolor{keywordflow}{in}\ enumerate(sequences,\ start=1):}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00073}00073\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}S\(\backslash\)t\{i\}\(\backslash\)t\{seq\}\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00074}00074\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (a,\ b,\ oa,\ ob)\ \textcolor{keywordflow}{in}\ edges:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00075}00075\ \ \ \ \ \ \ \ \ \ \ \ \ f.write(f\textcolor{stringliteral}{"{}L\(\backslash\)t\{a\}\(\backslash\)t\{oa\}\(\backslash\)t\{b\}\(\backslash\)t\{ob\}\(\backslash\)t0M\(\backslash\)n"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00076}00076\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00077}00077\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00078}\doxymbox{\hyperlink{namespacegen__gfa_ae9265ee80c26309e91b461d5a5682741}{00078}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_ae9265ee80c26309e91b461d5a5682741}{\_target\_edge\_count}}(n:\ int,\ mult:\ float)\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00079}00079\ \ \ \ \ \textcolor{comment}{\#\ Always\ at\ least\ a\ chain;\ then\ add\ up\ to\ round(mult*n)}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00080}00080\ \ \ \ \ \textcolor{keywordflow}{return}\ max(n\ -\/\ 1,\ int(round(mult\ *\ n)))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00081}00081\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00082}00082\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00083}\doxymbox{\hyperlink{namespacegen__gfa_a3620cff3d113c979cc6a52faffde337e}{00083}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_a3620cff3d113c979cc6a52faffde337e}{\_generate\_edges}}(num\_nodes:\ int,\ edge\_mult:\ float,\ rng:\ random.Random)\ -\/>\ List[Tuple[int,\ int,\ str,\ str]]:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00084}00084\ \ \ \ \ \textcolor{keywordflow}{if}\ num\_nodes\ <\ 2:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00085}00085\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00086}00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}num\_nodes\ must\ be\ >=\ 2\ to\ ensure\ unique\ source\ and\ sink"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00087}00087\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00088}00088\ \ \ \ \ \textcolor{comment}{\#\ Start\ with\ a\ simple\ chain\ to\ guarantee\ connectivity\ and\ degree\ constraints\ for\ inner\ nodes}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00089}00089\ \ \ \ \ edges:\ List[Tuple[int,\ int,\ str,\ str]]\ =\ [}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00090}00090\ \ \ \ \ \ \ \ \ (i,\ i\ +\ 1,\ \textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}+"{}})\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(1,\ num\_nodes)]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00091}00091\ \ \ \ \ edge\_set\ =\ set(edges)\ \ \textcolor{comment}{\#\ for\ duplicate\ checks\ (includes\ orientation)}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00092}00092\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00093}00093\ \ \ \ \ target\ =\ \doxymbox{\hyperlink{namespacegen__gfa_ae9265ee80c26309e91b461d5a5682741}{\_target\_edge\_count}}(num\_nodes,\ edge\_mult)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00094}00094\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00095}00095\ \ \ \ \ \textcolor{comment}{\#\ Add\ cross\ edges\ forward\ in\ index\ to\ avoid\ cycles\ and\ preserve\ source/sink\ uniqueness}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00096}00096\ \ \ \ \ \textcolor{comment}{\#\ Source\ is\ 1\ (indeg=0),\ sink\ is\ num\_nodes\ (outdeg=0).\ We\ avoid\ edges\ into\ 1\ or\ out\ of\ N\ implicitly\ by\ a<b.}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00097}00097\ \ \ \ \ \textcolor{keywordflow}{while}\ len(edges)\ <\ target:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00098}00098\ \ \ \ \ \ \ \ \ a\ =\ rng.randint(1,\ num\_nodes\ -\/\ 1)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00099}00099\ \ \ \ \ \ \ \ \ b\ =\ rng.randint(a\ +\ 1,\ num\_nodes)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00100}00100\ \ \ \ \ \ \ \ \ oa\ =\ rng.choice([\textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}-\/"{}}])}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00101}00101\ \ \ \ \ \ \ \ \ ob\ =\ rng.choice([\textcolor{stringliteral}{"{}+"{}},\ \textcolor{stringliteral}{"{}-\/"{}}])}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00102}00102\ \ \ \ \ \ \ \ \ candidate\ =\ (a,\ b,\ oa,\ ob)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00103}00103\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ candidate\ \textcolor{keywordflow}{in}\ edge\_set:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00104}00104\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{continue}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00105}00105\ \ \ \ \ \ \ \ \ edge\_set.add(candidate)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00106}00106\ \ \ \ \ \ \ \ \ edges.append(candidate)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00107}00107\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00108}00108\ \ \ \ \ \textcolor{keywordflow}{return}\ edges}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00109}00109\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00110}00110\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00111}\doxymbox{\hyperlink{namespacegen__gfa_acb03bb3d5910e26b88c06f6bcdc86a50}{00111}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_acb03bb3d5910e26b88c06f6bcdc86a50}{\_sample\_lengths\_mode\_a}}(n:\ int,\ avg\_len:\ int,\ rng:\ random.Random)\ -\/>\ List[str]:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00112}00112\ \ \ \ \ \textcolor{keywordflow}{if}\ avg\_len\ <=\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00113}00113\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(\textcolor{stringliteral}{"{}Average\ length\ must\ be\ positive"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00114}00114\ \ \ \ \ lo\ =\ max(1,\ int(round(avg\_len\ *\ 0.8)))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00115}00115\ \ \ \ \ hi\ =\ max(lo,\ int(round(avg\_len\ *\ 1.2)))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00116}00116\ \ \ \ \ seqs\ =\ [\doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{random\_dna}}(rng.randint(lo,\ hi),\ rng)\ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ range(n)]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00117}00117\ \ \ \ \ \textcolor{keywordflow}{return}\ seqs}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00118}00118\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00119}00119\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00120}\doxymbox{\hyperlink{namespacegen__gfa_a6e2de3b35f596b7b760104151ab24f30}{00120}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_a6e2de3b35f596b7b760104151ab24f30}{\_bin\_avgs}}(max\_len\_last\_bin:\ int)\ -\/>\ List[float]:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00121}00121\ \ \ \ \ avgs:\ List[float]\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00122}00122\ \ \ \ \ \textcolor{keywordflow}{for}\ low,\ high\ \textcolor{keywordflow}{in}\ BINS\_SPECS:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00123}00123\ \ \ \ \ \ \ \ \ h\ =\ max\_len\_last\_bin\ \textcolor{keywordflow}{if}\ high\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{else}\ high}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00124}00124\ \ \ \ \ \ \ \ \ avgs.append((low\ +\ h)\ /\ 2.0)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00125}00125\ \ \ \ \ \textcolor{keywordflow}{return}\ avgs}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00126}00126\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00127}00127\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00128}\doxymbox{\hyperlink{namespacegen__gfa_a020c84ebd82745909224a2609e3716bb}{00128}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_a020c84ebd82745909224a2609e3716bb}{\_normalize\_dist}}(dist:\ List[float])\ -\/>\ List[float]:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00129}00129\ \ \ \ \ s\ =\ sum(dist)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00130}00130\ \ \ \ \ \textcolor{keywordflow}{if}\ s\ <=\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00131}00131\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(\textcolor{stringliteral}{"{}Distribution\ sum\ must\ be\ >\ 0"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00132}00132\ \ \ \ \ \textcolor{keywordflow}{return}\ [x\ /\ s\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ dist]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00133}00133\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00134}00134\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00135}\doxymbox{\hyperlink{namespacegen__gfa_a1d73098bc886ef662461f65f29deb879}{00135}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_a1d73098bc886ef662461f65f29deb879}{\_perturb\_percentages}}(dist\_pct:\ List[float],\ jitter:\ float,\ rng:\ random.Random)\ -\/>\ List[float]:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00136}00136\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{}Apply\ ±jitter\ relative\ fluctuation\ to\ each\ percentage\ and\ rescale\ to\ sum\ 100.}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00137}00137\ \textcolor{stringliteral}{}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00138}00138\ \textcolor{stringliteral}{\ \ \ \ -\/\ jitter=0.1\ means\ each\ value\ multiplied\ by\ U[0.9,\ 1.1].}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00139}00139\ \textcolor{stringliteral}{\ \ \ \ -\/\ Ensures\ non-\/negative\ and\ final\ sum\ exactly\ 100.0\ (within\ float\ error).}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00140}00140\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00141}00141\ \ \ \ \ jitter\ =\ max(0.0,\ jitter)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{if}\ jitter\ ==\ 0.0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00143}00143\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list(dist\_pct)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00144}00144\ \ \ \ \ perturbed\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00145}00145\ \ \ \ \ low\ =\ 1.0\ -\/\ jitter}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00146}00146\ \ \ \ \ high\ =\ 1.0\ +\ jitter}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00147}00147\ \ \ \ \ \textcolor{keywordflow}{for}\ w\ \textcolor{keywordflow}{in}\ dist\_pct:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00148}00148\ \ \ \ \ \ \ \ \ factor\ =\ rng.uniform(low,\ high)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00149}00149\ \ \ \ \ \ \ \ \ val\ =\ max(0.0,\ w\ *\ factor)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00150}00150\ \ \ \ \ \ \ \ \ perturbed.append(val)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00151}00151\ \ \ \ \ total\ =\ sum(perturbed)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00152}00152\ \ \ \ \ \textcolor{keywordflow}{if}\ total\ <=\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00153}00153\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ list(dist\_pct)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00154}00154\ \ \ \ \ scale\ =\ 100.0\ /\ total}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00155}00155\ \ \ \ \ \textcolor{keywordflow}{return}\ [v\ *\ scale\ \textcolor{keywordflow}{for}\ v\ \textcolor{keywordflow}{in}\ perturbed]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00156}00156\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00157}00157\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00158}\doxymbox{\hyperlink{namespacegen__gfa_af3c8138f749128f3baccc8bc67f909dc}{00158}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_af3c8138f749128f3baccc8bc67f909dc}{\_round\_counts}}(total:\ int,\ weights:\ List[float])\ -\/>\ List[int]:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00159}00159\ \ \ \ \ \textcolor{comment}{\#\ Largest\ remainder\ method}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00160}00160\ \ \ \ \ raw\ =\ [total\ *\ w\ \textcolor{keywordflow}{for}\ w\ \textcolor{keywordflow}{in}\ weights]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00161}00161\ \ \ \ \ floors\ =\ [int(x)\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ raw]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00162}00162\ \ \ \ \ rem\ =\ total\ -\/\ sum(floors)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00163}00163\ \ \ \ \ fracs\ =\ [(i,\ raw[i]\ -\/\ floors[i])\ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(len(weights))]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00164}00164\ \ \ \ \ fracs.sort(key=\textcolor{keyword}{lambda}\ t:\ t[1],\ reverse=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00165}00165\ \ \ \ \ \textcolor{keywordflow}{for}\ i\ \textcolor{keywordflow}{in}\ range(rem):}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00166}00166\ \ \ \ \ \ \ \ \ floors[fracs[i][0]]\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00167}00167\ \ \ \ \ \textcolor{keywordflow}{return}\ floors}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00168}00168\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00169}00169\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00170}\doxymbox{\hyperlink{namespacegen__gfa_aa3aaf94ddfdd2b2393ca12f3ae412f07}{00170}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_aa3aaf94ddfdd2b2393ca12f3ae412f07}{\_sample\_lengths\_mode\_b}}(total\_len:\ int,\ dist\_pct:\ List[float],\ max\_len\_last\_bin:\ int,}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00171}00171\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ rng:\ random.Random,\ tol:\ float\ =\ 0.1)\ -\/>\ List[str]:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00172}00172\ \ \ \ \ \textcolor{keywordflow}{if}\ total\_len\ <=\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00173}00173\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(\textcolor{stringliteral}{"{}Total\ length\ must\ be\ positive"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00174}00174\ \ \ \ \ \textcolor{keywordflow}{if}\ max\_len\_last\_bin\ <\ 100001:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00175}00175\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{raise}\ ValueError(\textcolor{stringliteral}{"{}max\ length\ for\ last\ bin\ must\ be\ >=\ 100001"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00176}00176\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00177}00177\ \ \ \ \ weights\ =\ \doxymbox{\hyperlink{namespacegen__gfa_a020c84ebd82745909224a2609e3716bb}{\_normalize\_dist}}(dist\_pct)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00178}00178\ \ \ \ \ avgs\ =\ \doxymbox{\hyperlink{namespacegen__gfa_a6e2de3b35f596b7b760104151ab24f30}{\_bin\_avgs}}(max\_len\_last\_bin)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00179}00179\ \ \ \ \ exp\_avg\ =\ sum(w\ *\ a\ \textcolor{keywordflow}{for}\ w,\ a\ \textcolor{keywordflow}{in}\ zip(weights,\ avgs))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00180}00180\ \ \ \ \ n\_est\ =\ max(2,\ int(round(total\_len\ /\ max(1.0,\ exp\_avg))))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00181}00181\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00182}00182\ \ \ \ \ counts\ =\ \doxymbox{\hyperlink{namespacegen__gfa_af3c8138f749128f3baccc8bc67f909dc}{\_round\_counts}}(n\_est,\ weights)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00183}00183\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00184}00184\ \ \ \ \ \textcolor{comment}{\#\ Build\ ranges\ with\ applied\ max\ for\ last\ bin}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00185}00185\ \ \ \ \ ranges:\ List[Tuple[int,\ int]]\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00186}00186\ \ \ \ \ \textcolor{keywordflow}{for}\ low,\ high\ \textcolor{keywordflow}{in}\ BINS\_SPECS:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00187}00187\ \ \ \ \ \ \ \ \ h\ =\ max\_len\_last\_bin\ \textcolor{keywordflow}{if}\ high\ \textcolor{keywordflow}{is}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{else}\ high}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00188}00188\ \ \ \ \ \ \ \ \ ranges.append((low,\ h))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00189}00189\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00190}00190\ \ \ \ \ \textcolor{comment}{\#\ First\ pass:\ sample\ lengths\ within\ their\ bins;\ keep\ track\ of\ assigned\ bin\ ranges}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00191}00191\ \ \ \ \ seqs:\ List[str]\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00192}00192\ \ \ \ \ lengths:\ List[int]\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00193}00193\ \ \ \ \ assigned\_ranges:\ List[Tuple[int,\ int]]\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00194}00194\ \ \ \ \ \textcolor{keywordflow}{for}\ (low,\ high),\ cnt\ \textcolor{keywordflow}{in}\ zip(ranges,\ counts):}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00195}00195\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ \_\ \textcolor{keywordflow}{in}\ range(cnt):}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00196}00196\ \ \ \ \ \ \ \ \ \ \ \ \ length\ =\ rng.randint(low,\ high)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00197}00197\ \ \ \ \ \ \ \ \ \ \ \ \ lengths.append(length)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00198}00198\ \ \ \ \ \ \ \ \ \ \ \ \ assigned\_ranges.append((low,\ high))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00199}00199\ \ \ \ \ \ \ \ \ \ \ \ \ seqs.append(\doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{random\_dna}}(length,\ rng))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00200}00200\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00201}00201\ \ \ \ \ \textcolor{comment}{\#\ In\ rare\ cases,\ if\ counts\ rounded\ down\ to\ <2\ due\ to\ extremely\ small\ total\_len,\ pad\ to\ 2\ nodes}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00202}00202\ \ \ \ \ \textcolor{keywordflow}{while}\ len(seqs)\ <\ 2:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00203}00203\ \ \ \ \ \ \ \ \ seqs.append(\doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{random\_dna}}(10,\ rng))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00204}00204\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00205}00205\ \ \ \ \ \textcolor{comment}{\#\ Top-\/up\ to\ reach\ at\ least\ total\_len\ by\ extending\ nodes\ within\ bin\ caps,\ then\ add\ nodes\ if\ needed}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00206}00206\ \ \ \ \ current\_total\ =\ sum(lengths)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00207}00207\ \ \ \ \ \textcolor{comment}{\#\ desired\ bounds\ for\ tolerance}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00208}00208\ \ \ \ \ tol\ =\ max(0.0,\ min(1.0,\ tol))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00209}00209\ \ \ \ \ lower\_bound\ =\ int(math.floor(total\_len\ *\ (1.0\ -\/\ tol)))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00210}00210\ \ \ \ \ upper\_bound\ =\ int(math.ceil(total\_len\ *\ (1.0\ +\ tol)))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00211}00211\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00212}00212\ \ \ \ \ \textcolor{keywordflow}{if}\ current\_total\ <\ total\_len:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00213}00213\ \ \ \ \ \ \ \ \ gap\ =\ total\_len\ -\/\ current\_total}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00214}00214\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Extend\ existing\ nodes\ up\ to\ their\ bin\ upper\ bounds}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00215}00215\ \ \ \ \ \ \ \ \ idx\ =\ 0}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00216}00216\ \ \ \ \ \ \ \ \ n\_nodes\ =\ len(lengths)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00217}00217\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ gap\ >\ 0\ \textcolor{keywordflow}{and}\ idx\ <\ n\_nodes:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00218}00218\ \ \ \ \ \ \ \ \ \ \ \ \ low,\ high\ =\ assigned\_ranges[idx]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00219}00219\ \ \ \ \ \ \ \ \ \ \ \ \ can\_inc\ =\ max(0,\ high\ -\/\ lengths[idx])}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00220}00220\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ can\_inc\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00221}00221\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ inc\ =\ min(can\_inc,\ gap)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00222}00222\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lengths[idx]\ +=\ inc}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00223}00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ append\ random\ bases\ deterministically\ per\ node}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00224}00224\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seqs[idx]\ +=\ \doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{random\_dna}}(inc,\ rng)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00225}00225\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gap\ -\/=\ inc}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00226}00226\ \ \ \ \ \ \ \ \ \ \ \ \ idx\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00227}00227\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00228}00228\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ still\ not\ enough,\ append\ new\ nodes\ sampled\ by\ weights}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00229}00229\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ gap\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00230}00230\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Build\ cumulative\ weights\ for\ sampling\ bin\ index}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00231}00231\ \ \ \ \ \ \ \ \ \ \ \ \ cum:\ List[float]\ =\ []}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00232}00232\ \ \ \ \ \ \ \ \ \ \ \ \ s\ =\ 0.0}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00233}00233\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ w\ \textcolor{keywordflow}{in}\ weights:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00234}00234\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ s\ +=\ w}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00235}00235\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ cum.append(s)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00236}00236\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00237}00237\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{def\ }pick\_bin()\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00238}00238\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ r\ =\ rng.random()}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00239}00239\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ i,\ c\ \textcolor{keywordflow}{in}\ enumerate(cum):}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00240}00240\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ r\ <=\ c:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00241}00241\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ i}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00242}00242\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ len(cum)\ -\/\ 1}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00243}00243\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00244}00244\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ gap\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00245}00245\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ bi\ =\ pick\_bin()}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00246}00246\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ low,\ high\ =\ ranges[bi]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00247}00247\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ choose\ a\ length\ trying\ not\ to\ overshoot\ too\ much,\ but\ stay\ within\ bin}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00248}00248\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ if\ gap\ <\ low,\ we\ will\ overshoot;\ that's\ acceptable\ to\ satisfy\ minimum\ total\ length}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00249}00249\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ desired\ =\ max(low,\ min(high,\ gap))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00250}00250\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seq\ =\ \doxymbox{\hyperlink{namespacegen__gfa_a1b6bcca8934ae6d8a5c11801e04f9cd7}{random\_dna}}(desired,\ rng)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00251}00251\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seqs.append(seq)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00252}00252\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lengths.append(desired)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00253}00253\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ assigned\_ranges.append((low,\ high))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00254}00254\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ update\ gap\ (allow\ negative\ to\ indicate\ overshoot\ handled)}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00255}00255\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ desired\ >=\ gap:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00256}00256\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gap\ =\ 0}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00257}00257\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00258}00258\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gap\ -\/=\ desired}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00259}00259\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00260}00260\ \ \ \ \ \ \ \ \ current\_total\ =\ sum(lengths)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00261}00261\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00262}00262\ \ \ \ \ \textcolor{comment}{\#\ If\ we\ exceed\ the\ upper\ bound,\ try\ to\ shrink\ towards\ target\ without\ going\ below\ bin\ lows}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00263}00263\ \ \ \ \ \textcolor{keywordflow}{if}\ current\_total\ >\ upper\_bound:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00264}00264\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Aim\ for\ target\ total\_len\ if\ achievable;\ otherwise\ get\ as\ low\ as\ allowed\ by\ lows}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00265}00265\ \ \ \ \ \ \ \ \ target\_total\ =\ max(lower\_bound,\ min(total\_len,\ current\_total))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00266}00266\ \ \ \ \ \ \ \ \ shrink\ =\ current\_total\ -\/\ target\_total}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00267}00267\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ shrink\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00268}00268\ \ \ \ \ \ \ \ \ \ \ \ \ idx\ =\ 0}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00269}00269\ \ \ \ \ \ \ \ \ \ \ \ \ n\_nodes\ =\ len(lengths)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00270}00270\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{while}\ shrink\ >\ 0\ \textcolor{keywordflow}{and}\ idx\ <\ n\_nodes:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00271}00271\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ low,\ \_high\ =\ assigned\_ranges[idx]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00272}00272\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dec\_cap\ =\ max(0,\ lengths[idx]\ -\/\ low)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00273}00273\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ dec\_cap\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00274}00274\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dec\ =\ min(dec\_cap,\ shrink)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00275}00275\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ lengths[idx]\ -\/=\ dec}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00276}00276\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ trim\ sequence\ tail\ by\ dec\ bases}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00277}00277\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ dec\ >\ 0:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00278}00278\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ seqs[idx]\ =\ seqs[idx][:-\/}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00279}00279\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dec]\ \textcolor{keywordflow}{if}\ dec\ <=\ len(seqs[idx])\ \textcolor{keywordflow}{else}\ \textcolor{stringliteral}{"{}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00280}00280\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ shrink\ -\/=\ dec}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00281}00281\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ idx\ +=\ 1}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00282}00282\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00283}00283\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Recompute;\ if\ still\ above\ upper\ bound,\ we've\ hit\ lower\ limits;\ accept\ best\ effort}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00284}00284\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ If\ we\ undershot\ below\ lower\ bound\ due\ to\ rounding,\ we\ can\ extend\ 1\ base\ back\ to\ fix,\ but\ unlikely.}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00285}00285\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00286}00286\ \ \ \ \ \textcolor{keywordflow}{return}\ seqs}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00287}00287\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00288}00288\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00289}\doxymbox{\hyperlink{namespacegen__gfa_a8576015783986833d302646ee9ae44ad}{00289}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{namespacegen__gfa_a8576015783986833d302646ee9ae44ad}{parse\_args}}(argv:\ List[str])\ -\/>\ argparse.Namespace:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00290}00290\ \ \ \ \ p\ =\ argparse.ArgumentParser(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00291}00291\ \ \ \ \ \ \ \ \ description=\textcolor{stringliteral}{"{}Generate\ GFA\ files\ with\ two\ modes:\ basic\ or\ distribution-\/driven"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00292}00292\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00293}00293\ \ \ \ \ sub\ =\ p.add\_subparsers(dest=\textcolor{stringliteral}{"{}mode"{}},\ required=\textcolor{keyword}{True})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00294}00294\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00295}00295\ \ \ \ \ \textcolor{comment}{\#\ Mode\ A:\ basic}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00296}00296\ \ \ \ \ pa\ =\ sub.add\_parser(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00297}00297\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}basic"{}},\ help=\textcolor{stringliteral}{"{}Mode\ A:\ specify\ node\ count\ and\ average\ length\ ±20\%"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00298}00298\ \ \ \ \ pa.add\_argument(\textcolor{stringliteral}{"{}-\/n"{}},\ \textcolor{stringliteral}{"{}-\/-\/nodes"{}},\ type=int,\ required=\textcolor{keyword}{True},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00299}00299\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Number\ of\ nodes\ (>=2)"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00300}00300\ \ \ \ \ pa.add\_argument(\textcolor{stringliteral}{"{}-\/L"{}},\ \textcolor{stringliteral}{"{}-\/-\/avg-\/length"{}},\ type=int,\ required=\textcolor{keyword}{True},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00301}00301\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Average\ length\ per\ node\ (±20\%)"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00302}00302\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00303}00303\ \ \ \ \ \textcolor{comment}{\#\ Mode\ B:\ distribution}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00304}00304\ \ \ \ \ pb\ =\ sub.add\_parser(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00305}00305\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}dist"{}},\ help=\textcolor{stringliteral}{"{}Mode\ B:\ specify\ total\ length\ and\ node-\/length\ distribution"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00306}00306\ \ \ \ \ pb.add\_argument(\textcolor{stringliteral}{"{}-\/-\/total-\/length"{}},\ type=int,\ required=\textcolor{keyword}{True},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00307}00307\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Total\ length\ across\ all\ nodes"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00308}00308\ \ \ \ \ pb.add\_argument(\textcolor{stringliteral}{"{}-\/-\/dist"{}},\ type=str,\ default=\textcolor{keywordtype}{None},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00309}00309\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Comma-\/separated\ percentages\ for\ 6\ bins\ (<10,10-\/100,100-\/1000,1k-\/10k,10k-\/100k,>100k).\ Sums\ to\ 100."{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00310}00310\ \ \ \ \ pb.add\_argument(\textcolor{stringliteral}{"{}-\/-\/preset"{}},\ type=str,\ choices=sorted(PRESET\_DISTS.keys()),\ default=\textcolor{stringliteral}{"{}long"{}},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00311}00311\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Use\ a\ preset\ node-\/length\ distribution"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00312}00312\ \ \ \ \ pb.add\_argument(\textcolor{stringliteral}{"{}-\/-\/max-\/length"{}},\ type=int,\ default=1000000,}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00313}00313\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}>100k\ bin\ upper\ bound\ (inclusive),\ default\ 1,000,000"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00314}00314\ \ \ \ \ pb.add\_argument(\textcolor{stringliteral}{"{}-\/-\/tolerance"{}},\ type=float,\ default=0.10,}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00315}00315\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Allowed\ relative\ deviation\ for\ total\ length\ in\ dist\ mode\ (e.g.,\ 0.10\ for\ ±10\%)"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00316}00316\ \ \ \ \ pb.add\_argument(\textcolor{stringliteral}{"{}-\/-\/preset-\/jitter"{}},\ type=float,\ default=0.10,}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00317}00317\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Relative\ jitter\ applied\ to\ preset\ distribution\ (e.g.,\ 0.10\ for\ ±10\%\ per\ bin).\ Set\ 0\ to\ disable."{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00318}00318\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00319}00319\ \ \ \ \ \textcolor{comment}{\#\ Common\ options}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00320}00320\ \ \ \ \ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ (pa,\ pb):}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00321}00321\ \ \ \ \ \ \ \ \ x.add\_argument(\textcolor{stringliteral}{"{}-\/-\/edge-\/mult"{}},\ type=str,\ choices=list(EDGE\_MULT\_CHOICES.keys()),\ default=\textcolor{stringliteral}{"{}1.5"{}},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00322}00322\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Edge\ count\ ≈\ edge-\/mult\ *\ nodes\ (rounded).\ Choices:\ 1.2,\ 1.5,\ 2.0"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00323}00323\ \ \ \ \ \ \ \ \ x.add\_argument(\textcolor{stringliteral}{"{}-\/o"{}},\ \textcolor{stringliteral}{"{}-\/-\/output"{}},\ type=str,\ default=\textcolor{stringliteral}{"{}temp/generated.gfa"{}},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00324}00324\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Output\ GFA\ path\ or\ '-\/'\ for\ stdout"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00325}00325\ \ \ \ \ \ \ \ \ x.add\_argument(\textcolor{stringliteral}{"{}-\/-\/emit"{}},\ type=str,\ choices=[\textcolor{stringliteral}{"{}file"{}},\ \textcolor{stringliteral}{"{}stdout"{}}],\ default=\textcolor{stringliteral}{"{}file"{}},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00326}00326\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ help=\textcolor{stringliteral}{"{}Emit\ target:\ 'file'\ or\ 'stdout'\ (or\ use\ output='-\/')"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00327}00327\ \ \ \ \ \ \ \ \ x.add\_argument(\textcolor{stringliteral}{"{}-\/-\/seed"{}},\ type=int,\ default=\textcolor{keywordtype}{None},\ help=\textcolor{stringliteral}{"{}Random\ seed"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00328}00328\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00329}00329\ \ \ \ \ \textcolor{keywordflow}{return}\ p.parse\_args(argv)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00330}00330\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00331}00331\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00332}\doxymbox{\hyperlink{namespacegen__gfa_a1b0bebd85b753e4a8c015afb9bef3af3}{00332}}\ \textcolor{keyword}{def\ }\doxymbox{\hyperlink{test__bgfa_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(argv:\ List[str])\ -\/>\ int:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00333}00333\ \ \ \ \ args\ =\ \doxymbox{\hyperlink{namespacegen__gfa_a8576015783986833d302646ee9ae44ad}{parse\_args}}(argv)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00334}00334\ \ \ \ \ rng\ =\ random.Random(args.seed)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00335}00335\ \ \ \ \ mult\ =\ EDGE\_MULT\_CHOICES[args.edge\_mult]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00336}00336\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00337}00337\ \ \ \ \ \textcolor{keywordflow}{if}\ args.mode\ ==\ \textcolor{stringliteral}{"{}basic"{}}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00338}00338\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ args.nodes\ <\ 2:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00339}00339\ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}[gen\_gfa]\ nodes\ must\ be\ >=\ 2"{}},\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00340}00340\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00341}00341\ \ \ \ \ \ \ \ \ sequences\ =\ \doxymbox{\hyperlink{namespacegen__gfa_acb03bb3d5910e26b88c06f6bcdc86a50}{\_sample\_lengths\_mode\_a}}(args.nodes,\ args.avg\_length,\ rng)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00342}00342\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00343}00343\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ dist\ mode}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00344}00344\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ args.dist\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00345}00345\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00346}00346\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ dist\ =\ [float(x)\ \textcolor{keywordflow}{for}\ x\ \textcolor{keywordflow}{in}\ args.dist.split(\textcolor{stringliteral}{"{},"{}})]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00347}00347\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00348}00348\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00349}00349\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}[gen\_gfa]\ -\/-\/dist\ must\ be\ 6\ comma-\/separated\ numbers"{}},\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00350}00350\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00351}00351\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ len(dist)\ !=\ 6:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00352}00352\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}[gen\_gfa]\ -\/-\/dist\ must\ contain\ exactly\ 6\ values"{}},}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00353}00353\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00354}00354\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00355}00355\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00356}00356\ \ \ \ \ \ \ \ \ \ \ \ \ base\ =\ PRESET\_DISTS[args.preset]}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00357}00357\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Apply\ per-\/bin\ jitter\ to\ presets,\ then\ proceed}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00358}00358\ \ \ \ \ \ \ \ \ \ \ \ \ dist\ =\ \doxymbox{\hyperlink{namespacegen__gfa_a1d73098bc886ef662461f65f29deb879}{\_perturb\_percentages}}(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00359}00359\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ base,\ getattr(args,\ \textcolor{stringliteral}{"{}preset\_jitter"{}},\ 0.10),\ rng)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00360}00360\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00361}00361\ \ \ \ \ \ \ \ \ \ \ \ \ print(dist)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00362}00362\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00363}00363\ \ \ \ \ \ \ \ \ \ \ \ \ sequences\ =\ \doxymbox{\hyperlink{namespacegen__gfa_aa3aaf94ddfdd2b2393ca12f3ae412f07}{\_sample\_lengths\_mode\_b}}(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00364}00364\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ args.total\_length,\ dist,\ args.max\_length,\ rng,\ tol=getattr(args,\ \textcolor{stringliteral}{"{}tolerance"{}},\ 0.10))}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00365}00365\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ ValueError\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00366}00366\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}[gen\_gfa]\ \{e\}"{}},\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00367}00367\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00368}00368\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00369}00369\ \ \ \ \ n\ =\ len(sequences)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00370}00370\ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00371}00371\ \ \ \ \ \ \ \ \ edges\ =\ \doxymbox{\hyperlink{namespacegen__gfa_a3620cff3d113c979cc6a52faffde337e}{\_generate\_edges}}(n,\ mult,\ rng)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00372}00372\ \ \ \ \ \textcolor{keywordflow}{except}\ ValueError\ \textcolor{keyword}{as}\ e:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00373}00373\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}[gen\_gfa]\ \{e\}"{}},\ file=sys.stderr)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00374}00374\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 2}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00375}00375\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00376}00376\ \ \ \ \ output\_path\ =\ \textcolor{stringliteral}{"{}-\/"{}}\ \textcolor{keywordflow}{if}\ args.emit\ ==\ \textcolor{stringliteral}{"{}stdout"{}}\ \textcolor{keywordflow}{or}\ args.output\ ==\ \textcolor{stringliteral}{"{}-\/"{}}\ \textcolor{keywordflow}{else}\ args.output}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00377}00377\ \ \ \ \ \doxymbox{\hyperlink{namespacegen__gfa_aa3d7537b9f1285bea5db3361738ccb10}{write\_gfa}}(output\_path,\ sequences,\ edges)}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00378}00378\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00379}00379\ \ \ \ \ \textcolor{comment}{\#\ stats}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00380}00380\ \ \ \ \ print(f\textcolor{stringliteral}{"{}[gen\_gfa]\ Nodes=\{n\},\ Edges=\{len(edges)\}\ (mult=\{mult\})"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00381}00381\ \ \ \ \ \textcolor{keywordflow}{if}\ args.mode\ ==\ \textcolor{stringliteral}{"{}basic"{}}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00382}00382\ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}[gen\_gfa]\ Mode=basic,\ avgLen=\{args.avg\_length\}"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00383}00383\ \ \ \ \ \textcolor{keywordflow}{else}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00384}00384\ \ \ \ \ \ \ \ \ src\ =\ args.dist\ \textcolor{keywordflow}{if}\ args.dist\ \textcolor{keywordflow}{is}\ \textcolor{keywordflow}{not}\ \textcolor{keywordtype}{None}\ \textcolor{keywordflow}{else}\ f\textcolor{stringliteral}{"{}preset:\{args.preset\}"{}}}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00385}00385\ \ \ \ \ \ \ \ \ print(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00386}00386\ \ \ \ \ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}[gen\_gfa]\ Mode=dist,\ totalLen=\{args.total\_length\},\ dist=\{src\},\ maxLastBin=\{args.max\_length\}"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00387}00387\ \ \ \ \ print(}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00388}00388\ \ \ \ \ \ \ \ \ f\textcolor{stringliteral}{"{}[gen\_gfa]\ Written:\ \{'stdout'\ if\ output\_path\ ==\ '-\/'\ else\ output\_path\}"{}})}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00389}00389\ \ \ \ \ \textcolor{keywordflow}{return}\ 0}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00390}00390\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00391}00391\ }
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00392}00392\ \textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
+\DoxyCodeLine{\Hypertarget{gen__gfa_8py_source_l00393}00393\ \ \ \ \ sys.exit(\doxymbox{\hyperlink{test__bgfa_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}(sys.argv[1:]))}
+
+\end{DoxyCode}

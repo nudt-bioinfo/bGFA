@@ -1,0 +1,135 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+unialign.c File Reference}
+\hypertarget{wavefront__unialign_8c}{}\label{wavefront__unialign_8c}\index{src/wfa/wavefront/wavefront\_unialign.c@{src/wfa/wavefront/wavefront\_unialign.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+unialign.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+attributes.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+offset.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+plot.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+slab.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+components.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+compute.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+compute\+\_\+affine.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+compute\+\_\+affine2p.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+compute\+\_\+edit.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+compute\+\_\+linear.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+extend.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+backtrace.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+backtrace\+\_\+buffer.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+unialign.\+c:\+
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__unialign_8c_ac0088cbbf61b18bed03f3ef64d2ea4fd}{WFA\+\_\+\+UNIALIGN\+\_\+\+DEBUG}}()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{wavefront__unialign_8c_ad1191a9a21066e324cc94018ad7c3209}{wavefront\+\_\+unialign\+\_\+init}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\+\_\+matrix\+\_\+type}} component\+\_\+begin, const \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\+\_\+matrix\+\_\+type}} component\+\_\+end)
+\item 
+bool \doxymbox{\hyperlink{wavefront__unialign_8c_a08d33ca84bd6afbd9b54996f15fab0f2}{wavefront\+\_\+unialign\+\_\+reached\+\_\+limits}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score)
+\item 
+void \doxymbox{\hyperlink{wavefront__unialign_8c_ab650b3ba70aeca5b297ba7ac64c3ac75}{wavefront\+\_\+unialign\+\_\+terminate}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score)
+\item 
+int \doxymbox{\hyperlink{wavefront__unialign_8c_abc8146ada33db8b9a15c927eb4a31e2c}{wavefront\+\_\+unialign}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner)
+\item 
+void \doxymbox{\hyperlink{wavefront__unialign_8c_a0bc3a7ce348bf3b99f13d0b1284c2250}{wavefront\+\_\+unialign\+\_\+print\+\_\+status}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{wavefront__unialign_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{wavefront__unialign_8c_ac0088cbbf61b18bed03f3ef64d2ea4fd}\index{wavefront\_unialign.c@{wavefront\_unialign.c}!WFA\_UNIALIGN\_DEBUG@{WFA\_UNIALIGN\_DEBUG}}
+\index{WFA\_UNIALIGN\_DEBUG@{WFA\_UNIALIGN\_DEBUG}!wavefront\_unialign.c@{wavefront\_unialign.c}}
+\doxysubsubsection{\texorpdfstring{WFA\_UNIALIGN\_DEBUG}{WFA\_UNIALIGN\_DEBUG}}
+{\footnotesize\ttfamily \label{wavefront__unialign_8c_ac0088cbbf61b18bed03f3ef64d2ea4fd} 
+\+\#define WFA\+\_\+\+UNIALIGN\+\_\+\+DEBUG(\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\doxymbox{\hyperlink{wavefront__display_8c_aaa50816b15ab6fff74f9032a020c5690}{wavefront\_aligner\_print}}(stderr,wf\_aligner,0,score,7,0)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__unialign_8c_source_l00241}{241}} of file \doxymbox{\hyperlink{wavefront__unialign_8c_source}{wavefront\+\_\+unialign.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__unialign_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__unialign_8c_abc8146ada33db8b9a15c927eb4a31e2c}\index{wavefront\_unialign.c@{wavefront\_unialign.c}!wavefront\_unialign@{wavefront\_unialign}}
+\index{wavefront\_unialign@{wavefront\_unialign}!wavefront\_unialign.c@{wavefront\_unialign.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_unialign()}{wavefront\_unialign()}}
+{\footnotesize\ttfamily \label{wavefront__unialign_8c_abc8146ada33db8b9a15c927eb4a31e2c} 
+int wavefront\+\_\+unialign (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__unialign_8c_source_l00242}{242}} of file \doxymbox{\hyperlink{wavefront__unialign_8c_source}{wavefront\+\_\+unialign.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{wavefront__unialign_8c_ad1191a9a21066e324cc94018ad7c3209}\index{wavefront\_unialign.c@{wavefront\_unialign.c}!wavefront\_unialign\_init@{wavefront\_unialign\_init}}
+\index{wavefront\_unialign\_init@{wavefront\_unialign\_init}!wavefront\_unialign.c@{wavefront\_unialign.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_unialign\_init()}{wavefront\_unialign\_init()}}
+{\footnotesize\ttfamily \label{wavefront__unialign_8c_ad1191a9a21066e324cc94018ad7c3209} 
+void wavefront\+\_\+unialign\+\_\+init (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\+\_\+matrix\+\_\+type}}}]{component\+\_\+begin}{, }\item[{const \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\+\_\+matrix\+\_\+type}}}]{component\+\_\+end}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__unialign_8c_source_l00054}{54}} of file \doxymbox{\hyperlink{wavefront__unialign_8c_source}{wavefront\+\_\+unialign.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{wavefront__unialign_8c_a0bc3a7ce348bf3b99f13d0b1284c2250}\index{wavefront\_unialign.c@{wavefront\_unialign.c}!wavefront\_unialign\_print\_status@{wavefront\_unialign\_print\_status}}
+\index{wavefront\_unialign\_print\_status@{wavefront\_unialign\_print\_status}!wavefront\_unialign.c@{wavefront\_unialign.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_unialign\_print\_status()}{wavefront\_unialign\_print\_status()}}
+{\footnotesize\ttfamily \label{wavefront__unialign_8c_a0bc3a7ce348bf3b99f13d0b1284c2250} 
+void wavefront\+\_\+unialign\+\_\+print\+\_\+status (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__unialign_8c_source_l00277}{277}} of file \doxymbox{\hyperlink{wavefront__unialign_8c_source}{wavefront\+\_\+unialign.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{wavefront__unialign_8c_a08d33ca84bd6afbd9b54996f15fab0f2}\index{wavefront\_unialign.c@{wavefront\_unialign.c}!wavefront\_unialign\_reached\_limits@{wavefront\_unialign\_reached\_limits}}
+\index{wavefront\_unialign\_reached\_limits@{wavefront\_unialign\_reached\_limits}!wavefront\_unialign.c@{wavefront\_unialign.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_unialign\_reached\_limits()}{wavefront\_unialign\_reached\_limits()}}
+{\footnotesize\ttfamily \label{wavefront__unialign_8c_a08d33ca84bd6afbd9b54996f15fab0f2} 
+bool wavefront\+\_\+unialign\+\_\+reached\+\_\+limits (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__unialign_8c_source_l00098}{98}} of file \doxymbox{\hyperlink{wavefront__unialign_8c_source}{wavefront\+\_\+unialign.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{wavefront__unialign_8c_ab650b3ba70aeca5b297ba7ac64c3ac75}\index{wavefront\_unialign.c@{wavefront\_unialign.c}!wavefront\_unialign\_terminate@{wavefront\_unialign\_terminate}}
+\index{wavefront\_unialign\_terminate@{wavefront\_unialign\_terminate}!wavefront\_unialign.c@{wavefront\_unialign.c}}
+\doxysubsubsection{\texorpdfstring{wavefront\_unialign\_terminate()}{wavefront\_unialign\_terminate()}}
+{\footnotesize\ttfamily \label{wavefront__unialign_8c_ab650b3ba70aeca5b297ba7ac64c3ac75} 
+void wavefront\+\_\+unialign\+\_\+terminate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__unialign_8c_source_l00147}{147}} of file \doxymbox{\hyperlink{wavefront__unialign_8c_source}{wavefront\+\_\+unialign.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10

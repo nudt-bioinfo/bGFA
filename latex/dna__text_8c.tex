@@ -1,0 +1,60 @@
+\doxysection{src/\+wfa/\+utils/\+dna\+\_\+text.c File Reference}
+\hypertarget{dna__text_8c}{}\label{dna__text_8c}\index{src/wfa/utils/dna\_text.c@{src/wfa/utils/dna\_text.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}utils/\+dna\+\_\+text.\+h"{}}\newline
+Include dependency graph for dna\+\_\+text.\+c:\+
+% FIG 0
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const uint8\+\_\+t \doxymbox{\hyperlink{dna__text_8c_afa39e5af1cd9e13162133b0f2645dff9}{dna\+\_\+encode\+\_\+table}} \+[256]\+
+\item 
+const char \doxymbox{\hyperlink{dna__text_8c_ad17570e32087a6dced2d193e2ad6b571}{dna\+\_\+decode\+\_\+table}} \+[\doxymbox{\hyperlink{dna__text_8h_a4d20782e2947c46d56edc93103dd143c}{DNA\+\_\+\+EXTENDED\+\_\+\+RANGE}}]\+
+\end{DoxyCompactItemize}
+
+
+\label{doc-var-members}
+\Hypertarget{dna__text_8c_doc-var-members}
+\doxysubsection{Variable Documentation}
+\Hypertarget{dna__text_8c_ad17570e32087a6dced2d193e2ad6b571}\index{dna\_text.c@{dna\_text.c}!dna\_decode\_table@{dna\_decode\_table}}
+\index{dna\_decode\_table@{dna\_decode\_table}!dna\_text.c@{dna\_text.c}}
+\doxysubsubsection{\texorpdfstring{dna\_decode\_table}{dna\_decode\_table}}
+{\footnotesize\ttfamily \label{dna__text_8c_ad17570e32087a6dced2d193e2ad6b571} 
+const char dna\+\_\+decode\+\_\+table\+[\doxymbox{\hyperlink{dna__text_8h_a4d20782e2947c46d56edc93103dd143c}{DNA\+\_\+\+EXTENDED\+\_\+\+RANGE}}]\+}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ [\doxymbox{\hyperlink{dna__text_8h_a12b036a67123faba4aee341cd21bf976}{ENC\_DNA\_CHAR\_A}}]\ =\ \doxymbox{\hyperlink{dna__text_8h_a76047c8f32079e648588173e3a660307}{DNA\_CHAR\_A}},}
+\DoxyCodeLine{\ \ [\doxymbox{\hyperlink{dna__text_8h_a35b277cbe240c3e723797a6ee32be3ad}{ENC\_DNA\_CHAR\_C}}]\ =\ \doxymbox{\hyperlink{dna__text_8h_ab596fdc3f2080afb9fa6c1c0d69f360a}{DNA\_CHAR\_C}},}
+\DoxyCodeLine{\ \ [\doxymbox{\hyperlink{dna__text_8h_a9e3449e583afa5791b34558541027b28}{ENC\_DNA\_CHAR\_G}}]\ =\ \doxymbox{\hyperlink{dna__text_8h_a05b171de2b50e0defd4486135f772973}{DNA\_CHAR\_G}},}
+\DoxyCodeLine{\ \ [\doxymbox{\hyperlink{dna__text_8h_a447869d48821a9e4d4dfcfb3b2b64b81}{ENC\_DNA\_CHAR\_T}}]\ =\ \doxymbox{\hyperlink{dna__text_8h_ad3d97d46c7caaee02278bb2a139d892c}{DNA\_CHAR\_T}},}
+\DoxyCodeLine{\ \ [\doxymbox{\hyperlink{dna__text_8h_a22c70dd8739635c04fa04648b29874db}{ENC\_DNA\_CHAR\_N}}]\ =\ \doxymbox{\hyperlink{dna__text_8h_acbb349ed5e894f435a8adcc32f62e43f}{DNA\_CHAR\_N}},}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{dna__text_8c_source_l00054}{54}} of file \doxymbox{\hyperlink{dna__text_8c_source}{dna\+\_\+text.\+c}}.
+
+\Hypertarget{dna__text_8c_afa39e5af1cd9e13162133b0f2645dff9}\index{dna\_text.c@{dna\_text.c}!dna\_encode\_table@{dna\_encode\_table}}
+\index{dna\_encode\_table@{dna\_encode\_table}!dna\_text.c@{dna\_text.c}}
+\doxysubsubsection{\texorpdfstring{dna\_encode\_table}{dna\_encode\_table}}
+{\footnotesize\ttfamily \label{dna__text_8c_afa39e5af1cd9e13162133b0f2645dff9} 
+const uint8\+\_\+t dna\+\_\+encode\+\_\+table\+[256]\+}
+
+{\bfseries Initial value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ =}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ [0\ ...\ 255]\ =\ 4,}
+\DoxyCodeLine{\ \ [\textcolor{charliteral}{'A'}]\ =\ 0,\ [\textcolor{charliteral}{'C'}]\ =\ 1,\ [\textcolor{charliteral}{'G'}]\ =\ 2,\ \ [\textcolor{charliteral}{'T'}]\ =\ 3,\ [\textcolor{charliteral}{'N'}]\ =\ 4,}
+\DoxyCodeLine{\ \ [\textcolor{charliteral}{'a'}]\ =\ 0,\ [\textcolor{charliteral}{'c'}]\ =\ 1,\ [\textcolor{charliteral}{'g'}]\ =\ 2,\ \ [\textcolor{charliteral}{'t'}]\ =\ 3,\ [\textcolor{charliteral}{'n'}]\ =\ 4,}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{dna__text_8c_source_l00048}{48}} of file \doxymbox{\hyperlink{dna__text_8c_source}{dna\+\_\+text.\+c}}.
+

@@ -1,0 +1,155 @@
+\doxysection{CLI::\+Argument\+Mismatch Class Reference}
+\hypertarget{class_c_l_i_1_1_argument_mismatch}{}\label{class_c_l_i_1_1_argument_mismatch}\index{CLI::ArgumentMismatch@{CLI::ArgumentMismatch}}
+
+
+Thrown when the wrong number of arguments has been received.  
+
+
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+Argument\+Mismatch:\+
+% FIG 0
+
+
+Collaboration diagram for CLI::\+Argument\+Mismatch:\+
+% FIG 1
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} (std::\+string name, int expected, std::\+size\+\_\+t received)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a76c9d5822d9b0a2825a54a22e04e05ff}{At\+Least}} (std::\+string name, int num, std::\+size\+\_\+t received)
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_ae13fac165ff6b4fdc588d364dbaa85bf}{At\+Most}} (std::\+string name, int num, std::\+size\+\_\+t received)
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_ad98dd3c8796e1fa4c3e6e426aa28e766}{Typed\+At\+Least}} (std::\+string name, int num, std::\+string type)
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_af40fccb119664c7c5025bba76fb2d7e2}{Flag\+Override}} (std::\+string name)
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} \doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a493ba626f0dad1d00a28ac2a2cafe22c}{Partial\+Type}} (std::\+string name, int num, std::\+string type)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_error}{CLI::\+\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_error_a28565e52e7527594d2c60c5aab14c9a6}{get\+\_\+exit\+\_\+code}} () const
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_error_a6acdbeb066f1d58a14156f05808b85a7}{get\+\_\+name}} () const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a7b30cbdb0c6f3ef3d5550df7d8e18904}{Error}} (std::\+string name, std::\+string msg, int exit\+\_\+code=static\+\_\+cast$<$ int $>$(\doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037ea45b3e4c35409fb597ea598dc4b984b8c}{Exit\+Codes::\+\+Base\+Class}}))
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a52187308eced1fc96f270ef384dbd7a2}{Error}} (std::\+string name, std::\+string msg, \doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037e}{Exit\+Codes}} exit\+\_\+code)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Thrown when the wrong number of arguments has been received. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01540}{1540}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_c_l_i_1_1_argument_mismatch_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}\index{CLI::ArgumentMismatch@{CLI::ArgumentMismatch}!ArgumentMismatch@{ArgumentMismatch}}
+\index{ArgumentMismatch@{ArgumentMismatch}!CLI::ArgumentMismatch@{CLI::ArgumentMismatch}}
+\doxysubsubsection{\texorpdfstring{ArgumentMismatch()}{ArgumentMismatch()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545} 
+CLI::\+\+Argument\+Mismatch::\+\+Argument\+Mismatch (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{int}]{expected}{, }\item[{std::\+size\+\_\+t}]{received}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01543}{1543}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1_argument_mismatch_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1_argument_mismatch_a76c9d5822d9b0a2825a54a22e04e05ff}\index{CLI::ArgumentMismatch@{CLI::ArgumentMismatch}!AtLeast@{AtLeast}}
+\index{AtLeast@{AtLeast}!CLI::ArgumentMismatch@{CLI::ArgumentMismatch}}
+\doxysubsubsection{\texorpdfstring{AtLeast()}{AtLeast()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_argument_mismatch_a76c9d5822d9b0a2825a54a22e04e05ff} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} CLI::\+\+Argument\+Mismatch::\+\+At\+Least (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{int}]{num}{, }\item[{std::\+size\+\_\+t}]{received}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01550}{1550}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{class_c_l_i_1_1_argument_mismatch_ae13fac165ff6b4fdc588d364dbaa85bf}\index{CLI::ArgumentMismatch@{CLI::ArgumentMismatch}!AtMost@{AtMost}}
+\index{AtMost@{AtMost}!CLI::ArgumentMismatch@{CLI::ArgumentMismatch}}
+\doxysubsubsection{\texorpdfstring{AtMost()}{AtMost()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_argument_mismatch_ae13fac165ff6b4fdc588d364dbaa85bf} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} CLI::\+\+Argument\+Mismatch::\+\+At\+Most (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{int}]{num}{, }\item[{std::\+size\+\_\+t}]{received}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01554}{1554}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{class_c_l_i_1_1_argument_mismatch_af40fccb119664c7c5025bba76fb2d7e2}\index{CLI::ArgumentMismatch@{CLI::ArgumentMismatch}!FlagOverride@{FlagOverride}}
+\index{FlagOverride@{FlagOverride}!CLI::ArgumentMismatch@{CLI::ArgumentMismatch}}
+\doxysubsubsection{\texorpdfstring{FlagOverride()}{FlagOverride()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_argument_mismatch_af40fccb119664c7c5025bba76fb2d7e2} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} CLI::\+\+Argument\+Mismatch::\+\+Flag\+Override (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01561}{1561}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{class_c_l_i_1_1_argument_mismatch_a493ba626f0dad1d00a28ac2a2cafe22c}\index{CLI::ArgumentMismatch@{CLI::ArgumentMismatch}!PartialType@{PartialType}}
+\index{PartialType@{PartialType}!CLI::ArgumentMismatch@{CLI::ArgumentMismatch}}
+\doxysubsubsection{\texorpdfstring{PartialType()}{PartialType()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_argument_mismatch_a493ba626f0dad1d00a28ac2a2cafe22c} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} CLI::\+\+Argument\+Mismatch::\+\+Partial\+Type (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{int}]{num}{, }\item[{std::\+string}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01564}{1564}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 10
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{class_c_l_i_1_1_argument_mismatch_ad98dd3c8796e1fa4c3e6e426aa28e766}\index{CLI::ArgumentMismatch@{CLI::ArgumentMismatch}!TypedAtLeast@{TypedAtLeast}}
+\index{TypedAtLeast@{TypedAtLeast}!CLI::ArgumentMismatch@{CLI::ArgumentMismatch}}
+\doxysubsubsection{\texorpdfstring{TypedAtLeast()}{TypedAtLeast()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_argument_mismatch_ad98dd3c8796e1fa4c3e6e426aa28e766} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_argument_mismatch_a03b5d359cb07e82b2d2f0f734ffeb545}{Argument\+Mismatch}} CLI::\+\+Argument\+Mismatch::\+\+Typed\+At\+Least (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{, }\item[{int}]{num}{, }\item[{std::\+string}]{type}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01558}{1558}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+Here is the caller graph for this function:\+
+% FIG 13
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

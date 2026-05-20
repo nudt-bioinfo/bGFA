@@ -1,0 +1,676 @@
+\doxysection{wfa::\+WFAligner Class Reference}
+\hypertarget{classwfa_1_1_w_f_aligner}{}\label{classwfa_1_1_w_f_aligner}\index{wfa::WFAligner@{wfa::WFAligner}}
+
+
+{\ttfamily \+\#include $<$WFAligner.\+hpp$>$}
+
+
+
+Inheritance diagram for wfa::\+WFAligner:\+
+% FIG 0
+
+
+Collaboration diagram for wfa::\+WFAligner:\+
+% FIG 1
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}} \{ \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}}
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcab7169426d21772db00430411c77cb710}{Memory\+Med}}
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dca45f2e04e585e58fc4988fb2d4e45da50}{Memory\+Low}}
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dca48bcb5f3e66a1766e4da3c1aac3f1f85}{Memory\+Ultralow}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}} \{ \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447dad14be3f859c9bcf099db73127f1d2df3}{Score}}
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447dab7d62f4978bb18273c0af338fdec2a19}{Alignment}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \{ \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea41cef18aab045450e9d08cbe1985b7df}{Status\+Alg\+Completed}} = WF\+\_\+\+STATUS\+\_\+\+ALG\+\_\+\+COMPLETED
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea2d3dd04904e07a27d6c0a40e7513c213}{Status\+Alg\+Partial}} = WF\+\_\+\+STATUS\+\_\+\+ALG\+\_\+\+PARTIAL
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea8f30b9c4e9c6566d1a94e1113a1731eb}{Status\+Max\+Steps\+Reached}} = WF\+\_\+\+STATUS\+\_\+\+MAX\+\_\+\+STEPS\+\_\+\+REACHED
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea8943eb9f96f0bd9c69018a60447bc630}{Status\+OOM}} = WF\+\_\+\+STATUS\+\_\+\+OOM
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_afd14b6c3918611f6266ac22f33f370b1}{align\+End2\+End}} (const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a99245a1009dd024c5f57f872005b79b4}{align\+End2\+End}} (const std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_aa0a930c5c6b9d1b8c2afda7acca7105b}{align\+End2\+End}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_ab859204bd8d7a7db61fe89b8a7e948c4}{align\+End2\+End}} (int(\texorpdfstring{$\ast$}{*}match\+Funct)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}match\+Funct\+Arguments, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_add96afb608fa163c26e02dfb65bba7d9}{align\+Ends\+Free}} (const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int pattern\+Begin\+Free, const int pattern\+End\+Free, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}}, const int text\+Begin\+Free, const int text\+End\+Free)
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4922b691c3b18b847d35f04c8a0892cc}{align\+Ends\+Free}} (const std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+Begin\+Free, const int pattern\+End\+Free, const std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+Begin\+Free, const int text\+End\+Free)
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a72ed5108617a5b9b77f81e8be972cfab}{align\+Ends\+Free}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int pattern\+Begin\+Free, const int pattern\+End\+Free, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}}, const int text\+Begin\+Free, const int text\+End\+Free)
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4beac355aefe1665e6c51a2dcd393b8a}{align\+Ends\+Free}} (int(\texorpdfstring{$\ast$}{*}match\+Funct)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}match\+Funct\+Arguments, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int pattern\+Begin\+Free, const int pattern\+End\+Free, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}}, const int text\+Begin\+Free, const int text\+End\+Free)
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4d19f9f8f73d9af391093d804bafeea7}{align\+Extension}} (const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a0fb88ca5b9e0f99dfa868896e317adfc}{align\+Extension}} (std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a5d12e2d7957d0d4dc7eef961b8ab5a1d}{align\+Extension}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ef2c4e0306866717b7a0977b99cfd72}{align\+Extension}} (int(\texorpdfstring{$\ast$}{*}match\+Funct)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}match\+Funct\+Arguments, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_abbad13e68dde89caa96a421b39cd3d92}{set\+Heuristic\+None}} ()
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_aa9d446a5c30c3ac1fac3186af87d041e}{set\+Heuristic\+Banded\+Static}} (const int band\+\_\+min\+\_\+k, const int band\+\_\+max\+\_\+k)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_ab4d7de1e16b492b77b7f58f3c40a1422}{set\+Heuristic\+Banded\+Adaptive}} (const int band\+\_\+min\+\_\+k, const int band\+\_\+max\+\_\+k, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a0ca3ca4fbf157084fc69095c0ab02446}{set\+Heuristic\+WFadaptive}} (const int min\+\_\+wavefront\+\_\+length, const int max\+\_\+distance\+\_\+threshold, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a193e2a8b6609e87ef12aa95c84df83b2}{set\+Heuristic\+WFmash}} (const int min\+\_\+wavefront\+\_\+length, const int max\+\_\+distance\+\_\+threshold, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a54b37a5d488cbc41151d5e0ae14880fa}{set\+Heuristic\+XDrop}} (const int xdrop, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a74b0787835647f08ceb74f67302d5166}{set\+Heuristic\+ZDrop}} (const int zdrop, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a2224fb1316c40c87a491d65f727062f2}{set\+Max\+Alignment\+Steps}} (const int max\+Alignment\+Steps)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4f70e0e80f370608e580b054cb30b952}{set\+Max\+Memory}} (const uint64\+\_\+t max\+Memory\+Resident, const uint64\+\_\+t max\+Memory\+Abort)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a396b5547f21312fb5e1f1e150f425dbe}{set\+Max\+Num\+Threads}} (const int max\+Num\+Threads)
+\item 
+int \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a2c1878bf10c14b01dd0d330a6e03b293}{get\+Alignment\+Status}} ()
+\item 
+int \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_af5efcdbc5c29170b91ebfe48441a9fe3}{get\+Alignment\+Score}} ()
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a839995dd497fea8b57575570975bdca3}{get\+Alignment}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}const cigar\+Operations, int \texorpdfstring{$\ast$}{*}cigar\+Length)
+\item 
+std::\+string \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7694d2e86aaaca45b55be6021df1d793}{get\+Alignment}} ()
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_aa2f5aa68153c61a333cce526d3f7fe19}{get\+CIGAR}} (const bool show\+Mismatches, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}const cigar\+Operations, int \texorpdfstring{$\ast$}{*}const num\+Cigar\+Operations)
+\item 
+std::\+string \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a1446154bcbde83ffc8d81df0999da5a8}{get\+CIGAR}} (const bool show\+Mismatches)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a72e87630efda69e0ea88e5270aa53622}{print\+Pretty}} (FILE \texorpdfstring{$\ast$}{*}const stream, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_aa9740ce5ffdc7f43b4d30f934d6b1293}{str\+Status}} (const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} status)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7df4f2b66af9ccdad1c3d7f67e2fa252}{debug\+Tag}} (char \texorpdfstring{$\ast$}{*}const debug\+Tag)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_af72ca980da1cd76682dcfa08f5f36a19}{WFAligner}} (const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}} alignment\+Scope, const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}} memory\+Model=\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a95f07f9e31a2126979a298c24fec0441}{\texorpdfstring{$\sim$}{\string~}\+WFAligner}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\+\_\+aligner\+\_\+attr\+\_\+t}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a89e8c70fa90755afead1eea58d3547af}{attributes}}
+\item 
+\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4c2edcb2f5d68722c04eafdca94ceb53}{wf\+Aligner}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_abe6e53411b55fb89c1364efdd420ce12}{WFAligner}} (const WFAligner \&)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8hpp_source_l00048}{48}} of file \doxymbox{\hyperlink{_w_f_aligner_8hpp_source}{WFAligner.\+hpp}}.
+
+
+
+\label{doc-enum-members}
+\Hypertarget{classwfa_1_1_w_f_aligner_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}\index{wfa::WFAligner@{wfa::WFAligner}!AlignmentScope@{AlignmentScope}}
+\index{AlignmentScope@{AlignmentScope}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{AlignmentScope}{AlignmentScope}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d} 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{wfa::\+\+WFAligner::\+\+Alignment\+Scope}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Score@{Score}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!Score@{Score}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447dad14be3f859c9bcf099db73127f1d2df3}\label{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447dad14be3f859c9bcf099db73127f1d2df3} 
+Score&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Alignment@{Alignment}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!Alignment@{Alignment}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447dab7d62f4978bb18273c0af338fdec2a19}\label{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447dab7d62f4978bb18273c0af338fdec2a19} 
+Alignment&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8hpp_source_l00057}{57}} of file \doxymbox{\hyperlink{_w_f_aligner_8hpp_source}{WFAligner.\+hpp}}.
+
+\Hypertarget{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}\index{wfa::WFAligner@{wfa::WFAligner}!AlignmentStatus@{AlignmentStatus}}
+\index{AlignmentStatus@{AlignmentStatus}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{AlignmentStatus}{AlignmentStatus}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e} 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{wfa::\+\+WFAligner::\+\+Alignment\+Status}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StatusAlgCompleted@{StatusAlgCompleted}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!StatusAlgCompleted@{StatusAlgCompleted}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea41cef18aab045450e9d08cbe1985b7df}\label{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea41cef18aab045450e9d08cbe1985b7df} 
+Status\+Alg\+Completed&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StatusAlgPartial@{StatusAlgPartial}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!StatusAlgPartial@{StatusAlgPartial}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea2d3dd04904e07a27d6c0a40e7513c213}\label{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea2d3dd04904e07a27d6c0a40e7513c213} 
+Status\+Alg\+Partial&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StatusMaxStepsReached@{StatusMaxStepsReached}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!StatusMaxStepsReached@{StatusMaxStepsReached}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea8f30b9c4e9c6566d1a94e1113a1731eb}\label{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea8f30b9c4e9c6566d1a94e1113a1731eb} 
+Status\+Max\+Steps\+Reached&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{StatusOOM@{StatusOOM}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!StatusOOM@{StatusOOM}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea8943eb9f96f0bd9c69018a60447bc630}\label{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea8943eb9f96f0bd9c69018a60447bc630} 
+Status\+OOM&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8hpp_source_l00061}{61}} of file \doxymbox{\hyperlink{_w_f_aligner_8hpp_source}{WFAligner.\+hpp}}.
+
+\Hypertarget{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}\index{wfa::WFAligner@{wfa::WFAligner}!MemoryModel@{MemoryModel}}
+\index{MemoryModel@{MemoryModel}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{MemoryModel}{MemoryModel}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc} 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{wfa::\+\+WFAligner::\+\+Memory\+Model}}}
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MemoryHigh@{MemoryHigh}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!MemoryHigh@{MemoryHigh}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}\label{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c} 
+Memory\+High&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MemoryMed@{MemoryMed}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!MemoryMed@{MemoryMed}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcab7169426d21772db00430411c77cb710}\label{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcab7169426d21772db00430411c77cb710} 
+Memory\+Med&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MemoryLow@{MemoryLow}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!MemoryLow@{MemoryLow}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dca45f2e04e585e58fc4988fb2d4e45da50}\label{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dca45f2e04e585e58fc4988fb2d4e45da50} 
+Memory\+Low&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MemoryUltralow@{MemoryUltralow}!wfa::WFAligner@{wfa::WFAligner}}
+\index{wfa::WFAligner@{wfa::WFAligner}!MemoryUltralow@{MemoryUltralow}}
+}\Hypertarget{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dca48bcb5f3e66a1766e4da3c1aac3f1f85}\label{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dca48bcb5f3e66a1766e4da3c1aac3f1f85} 
+Memory\+Ultralow&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8hpp_source_l00051}{51}} of file \doxymbox{\hyperlink{_w_f_aligner_8hpp_source}{WFAligner.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classwfa_1_1_w_f_aligner_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwfa_1_1_w_f_aligner_af72ca980da1cd76682dcfa08f5f36a19}\index{wfa::WFAligner@{wfa::WFAligner}!WFAligner@{WFAligner}}
+\index{WFAligner@{WFAligner}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{WFAligner()}{WFAligner()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_af72ca980da1cd76682dcfa08f5f36a19} 
+wfa::\+\+WFAligner::\+\+WFAligner (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}}}]{alignment\+Scope}{, }\item[{const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}}}]{memory\+Model}{ = {\ttfamily \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}}}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00046}{46}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{classwfa_1_1_w_f_aligner_a95f07f9e31a2126979a298c24fec0441}\index{wfa::WFAligner@{wfa::WFAligner}!````~WFAligner@{\texorpdfstring{$\sim$}{\string~}WFAligner}}
+\index{````~WFAligner@{\texorpdfstring{$\sim$}{\string~}WFAligner}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{\texorpdfstring{$\sim$}{\string~}WFAligner()}{\string~WFAligner()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a95f07f9e31a2126979a298c24fec0441} 
+wfa::\+\+WFAligner::\+\texorpdfstring{$\sim$}{\string~}\+WFAligner (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00062}{62}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{classwfa_1_1_w_f_aligner_abe6e53411b55fb89c1364efdd420ce12}\index{wfa::WFAligner@{wfa::WFAligner}!WFAligner@{WFAligner}}
+\index{WFAligner@{WFAligner}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{WFAligner()}{WFAligner()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_abe6e53411b55fb89c1364efdd420ce12} 
+wfa::\+\+WFAligner::\+\+WFAligner (\begin{DoxyParamCaption}\item[{const WFAligner \&}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Here is the call graph for this function:\+
+% FIG 4
+
+
+\label{doc-func-members}
+\Hypertarget{classwfa_1_1_w_f_aligner_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classwfa_1_1_w_f_aligner_afd14b6c3918611f6266ac22f33f370b1}\index{wfa::WFAligner@{wfa::WFAligner}!alignEnd2End@{alignEnd2End}}
+\index{alignEnd2End@{alignEnd2End}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignEnd2End()}{alignEnd2End()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_afd14b6c3918611f6266ac22f33f370b1} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+End2\+End (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+Length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00068}{68}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{classwfa_1_1_w_f_aligner_a99245a1009dd024c5f57f872005b79b4}\index{wfa::WFAligner@{wfa::WFAligner}!alignEnd2End@{alignEnd2End}}
+\index{alignEnd2End@{alignEnd2End}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignEnd2End()}{alignEnd2End()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a99245a1009dd024c5f57f872005b79b4} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+End2\+End (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{pattern}{, }\item[{const std::\+string \&}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00079}{79}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+\Hypertarget{classwfa_1_1_w_f_aligner_aa0a930c5c6b9d1b8c2afda7acca7105b}\index{wfa::WFAligner@{wfa::WFAligner}!alignEnd2End@{alignEnd2End}}
+\index{alignEnd2End@{alignEnd2End}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignEnd2End()}{alignEnd2End()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_aa0a930c5c6b9d1b8c2afda7acca7105b} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+End2\+End (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+Length}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00085}{85}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+\Hypertarget{classwfa_1_1_w_f_aligner_ab859204bd8d7a7db61fe89b8a7e948c4}\index{wfa::WFAligner@{wfa::WFAligner}!alignEnd2End@{alignEnd2End}}
+\index{alignEnd2End@{alignEnd2End}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignEnd2End()}{alignEnd2End()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_ab859204bd8d7a7db61fe89b8a7e948c4} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+End2\+End (\begin{DoxyParamCaption}\item[{int(\texorpdfstring{$\ast$}{*}}]{match\+Funct~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{match\+Funct\+Arguments}{, }\item[{const int}]{pattern\+Length}{, }\item[{const int}]{text\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00096}{96}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+\Hypertarget{classwfa_1_1_w_f_aligner_add96afb608fa163c26e02dfb65bba7d9}\index{wfa::WFAligner@{wfa::WFAligner}!alignEndsFree@{alignEndsFree}}
+\index{alignEndsFree@{alignEndsFree}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignEndsFree()}{alignEndsFree()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_add96afb608fa163c26e02dfb65bba7d9} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+Ends\+Free (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+Length}{, }\item[{const int}]{pattern\+Begin\+Free}{, }\item[{const int}]{pattern\+End\+Free}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+Length}{, }\item[{const int}]{text\+Begin\+Free}{, }\item[{const int}]{text\+End\+Free}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00110}{110}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 10
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{classwfa_1_1_w_f_aligner_a4922b691c3b18b847d35f04c8a0892cc}\index{wfa::WFAligner@{wfa::WFAligner}!alignEndsFree@{alignEndsFree}}
+\index{alignEndsFree@{alignEndsFree}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignEndsFree()}{alignEndsFree()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a4922b691c3b18b847d35f04c8a0892cc} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+Ends\+Free (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{pattern}{, }\item[{const int}]{pattern\+Begin\+Free}{, }\item[{const int}]{pattern\+End\+Free}{, }\item[{const std::\+string \&}]{text}{, }\item[{const int}]{text\+Begin\+Free}{, }\item[{const int}]{text\+End\+Free}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00127}{127}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+\Hypertarget{classwfa_1_1_w_f_aligner_a72ed5108617a5b9b77f81e8be972cfab}\index{wfa::WFAligner@{wfa::WFAligner}!alignEndsFree@{alignEndsFree}}
+\index{alignEndsFree@{alignEndsFree}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignEndsFree()}{alignEndsFree()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a72ed5108617a5b9b77f81e8be972cfab} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+Ends\+Free (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+Length}{, }\item[{const int}]{pattern\+Begin\+Free}{, }\item[{const int}]{pattern\+End\+Free}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+Length}{, }\item[{const int}]{text\+Begin\+Free}{, }\item[{const int}]{text\+End\+Free}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00139}{139}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 13
+\Hypertarget{classwfa_1_1_w_f_aligner_a4beac355aefe1665e6c51a2dcd393b8a}\index{wfa::WFAligner@{wfa::WFAligner}!alignEndsFree@{alignEndsFree}}
+\index{alignEndsFree@{alignEndsFree}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignEndsFree()}{alignEndsFree()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a4beac355aefe1665e6c51a2dcd393b8a} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+Ends\+Free (\begin{DoxyParamCaption}\item[{int(\texorpdfstring{$\ast$}{*}}]{match\+Funct~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{match\+Funct\+Arguments}{, }\item[{const int}]{pattern\+Length}{, }\item[{const int}]{pattern\+Begin\+Free}{, }\item[{const int}]{pattern\+End\+Free}{, }\item[{const int}]{text\+Length}{, }\item[{const int}]{text\+Begin\+Free}{, }\item[{const int}]{text\+End\+Free}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00156}{156}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 14
+\Hypertarget{classwfa_1_1_w_f_aligner_a4d19f9f8f73d9af391093d804bafeea7}\index{wfa::WFAligner@{wfa::WFAligner}!alignExtension@{alignExtension}}
+\index{alignExtension@{alignExtension}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignExtension()}{alignExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a4d19f9f8f73d9af391093d804bafeea7} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+Extension (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+Length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00176}{176}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 15
+Here is the caller graph for this function:\+
+% FIG 16
+\Hypertarget{classwfa_1_1_w_f_aligner_a5d12e2d7957d0d4dc7eef961b8ab5a1d}\index{wfa::WFAligner@{wfa::WFAligner}!alignExtension@{alignExtension}}
+\index{alignExtension@{alignExtension}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignExtension()}{alignExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a5d12e2d7957d0d4dc7eef961b8ab5a1d} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+Extension (\begin{DoxyParamCaption}\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+Length}{, }\item[{const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00193}{193}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 17
+\Hypertarget{classwfa_1_1_w_f_aligner_a7ef2c4e0306866717b7a0977b99cfd72}\index{wfa::WFAligner@{wfa::WFAligner}!alignExtension@{alignExtension}}
+\index{alignExtension@{alignExtension}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignExtension()}{alignExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a7ef2c4e0306866717b7a0977b99cfd72} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+Extension (\begin{DoxyParamCaption}\item[{int(\texorpdfstring{$\ast$}{*}}]{match\+Funct~}{)(int, int, void \texorpdfstring{$\ast$}{*}), }\item[{void \texorpdfstring{$\ast$}{*}}]{match\+Funct\+Arguments}{, }\item[{const int}]{pattern\+Length}{, }\item[{const int}]{text\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00204}{204}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 18
+\Hypertarget{classwfa_1_1_w_f_aligner_a0fb88ca5b9e0f99dfa868896e317adfc}\index{wfa::WFAligner@{wfa::WFAligner}!alignExtension@{alignExtension}}
+\index{alignExtension@{alignExtension}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{alignExtension()}{alignExtension()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a0fb88ca5b9e0f99dfa868896e317adfc} 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{WFAligner::\+\+Alignment\+Status}} wfa::\+\+WFAligner::\+align\+Extension (\begin{DoxyParamCaption}\item[{std::\+string \&}]{pattern}{, }\item[{std::\+string \&}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00187}{187}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+\Hypertarget{classwfa_1_1_w_f_aligner_a7df4f2b66af9ccdad1c3d7f67e2fa252}\index{wfa::WFAligner@{wfa::WFAligner}!debugTag@{debugTag}}
+\index{debugTag@{debugTag}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{debugTag()}{debugTag()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a7df4f2b66af9ccdad1c3d7f67e2fa252} 
+void wfa::\+\+WFAligner::\+debug\+Tag (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{debug\+Tag}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00339}{339}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 20
+Here is the caller graph for this function:\+
+% FIG 21
+\Hypertarget{classwfa_1_1_w_f_aligner_a7694d2e86aaaca45b55be6021df1d793}\index{wfa::WFAligner@{wfa::WFAligner}!getAlignment@{getAlignment}}
+\index{getAlignment@{getAlignment}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{getAlignment()}{getAlignment()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a7694d2e86aaaca45b55be6021df1d793} 
+std::\+string wfa::\+\+WFAligner::\+get\+Alignment (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00294}{294}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+\Hypertarget{classwfa_1_1_w_f_aligner_a839995dd497fea8b57575570975bdca3}\index{wfa::WFAligner@{wfa::WFAligner}!getAlignment@{getAlignment}}
+\index{getAlignment@{getAlignment}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{getAlignment()}{getAlignment()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a839995dd497fea8b57575570975bdca3} 
+void wfa::\+\+WFAligner::\+get\+Alignment (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}const}]{cigar\+Operations}{, }\item[{int \texorpdfstring{$\ast$}{*}}]{cigar\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00288}{288}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 22
+\Hypertarget{classwfa_1_1_w_f_aligner_af5efcdbc5c29170b91ebfe48441a9fe3}\index{wfa::WFAligner@{wfa::WFAligner}!getAlignmentScore@{getAlignmentScore}}
+\index{getAlignmentScore@{getAlignmentScore}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{getAlignmentScore()}{getAlignmentScore()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_af5efcdbc5c29170b91ebfe48441a9fe3} 
+int wfa::\+\+WFAligner::\+get\+Alignment\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00285}{285}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 23
+\Hypertarget{classwfa_1_1_w_f_aligner_a2c1878bf10c14b01dd0d330a6e03b293}\index{wfa::WFAligner@{wfa::WFAligner}!getAlignmentStatus@{getAlignmentStatus}}
+\index{getAlignmentStatus@{getAlignmentStatus}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{getAlignmentStatus()}{getAlignmentStatus()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a2c1878bf10c14b01dd0d330a6e03b293} 
+int wfa::\+\+WFAligner::\+get\+Alignment\+Status (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00282}{282}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+\Hypertarget{classwfa_1_1_w_f_aligner_a1446154bcbde83ffc8d81df0999da5a8}\index{wfa::WFAligner@{wfa::WFAligner}!getCIGAR@{getCIGAR}}
+\index{getCIGAR@{getCIGAR}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{getCIGAR()}{getCIGAR()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a1446154bcbde83ffc8d81df0999da5a8} 
+std::\+string wfa::\+\+WFAligner::\+get\+CIGAR (\begin{DoxyParamCaption}\item[{const bool}]{show\+Mismatches}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00307}{307}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 24
+\Hypertarget{classwfa_1_1_w_f_aligner_aa2f5aa68153c61a333cce526d3f7fe19}\index{wfa::WFAligner@{wfa::WFAligner}!getCIGAR@{getCIGAR}}
+\index{getCIGAR@{getCIGAR}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{getCIGAR()}{getCIGAR()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_aa2f5aa68153c61a333cce526d3f7fe19} 
+void wfa::\+\+WFAligner::\+get\+CIGAR (\begin{DoxyParamCaption}\item[{const bool}]{show\+Mismatches}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}const}]{cigar\+Operations}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{num\+Cigar\+Operations}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00301}{301}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 25
+Here is the caller graph for this function:\+
+% FIG 26
+\Hypertarget{classwfa_1_1_w_f_aligner_a72e87630efda69e0ea88e5270aa53622}\index{wfa::WFAligner@{wfa::WFAligner}!printPretty@{printPretty}}
+\index{printPretty@{printPretty}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{printPretty()}{printPretty()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a72e87630efda69e0ea88e5270aa53622} 
+void wfa::\+\+WFAligner::\+print\+Pretty (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+Length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+Length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00324}{324}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 27
+\Hypertarget{classwfa_1_1_w_f_aligner_ab4d7de1e16b492b77b7f58f3c40a1422}\index{wfa::WFAligner@{wfa::WFAligner}!setHeuristicBandedAdaptive@{setHeuristicBandedAdaptive}}
+\index{setHeuristicBandedAdaptive@{setHeuristicBandedAdaptive}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setHeuristicBandedAdaptive()}{setHeuristicBandedAdaptive()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_ab4d7de1e16b492b77b7f58f3c40a1422} 
+void wfa::\+\+WFAligner::\+set\+Heuristic\+Banded\+Adaptive (\begin{DoxyParamCaption}\item[{const int}]{band\+\_\+min\+\_\+k}{, }\item[{const int}]{band\+\_\+max\+\_\+k}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00227}{227}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 28
+\Hypertarget{classwfa_1_1_w_f_aligner_aa9d446a5c30c3ac1fac3186af87d041e}\index{wfa::WFAligner@{wfa::WFAligner}!setHeuristicBandedStatic@{setHeuristicBandedStatic}}
+\index{setHeuristicBandedStatic@{setHeuristicBandedStatic}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setHeuristicBandedStatic()}{setHeuristicBandedStatic()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_aa9d446a5c30c3ac1fac3186af87d041e} 
+void wfa::\+\+WFAligner::\+set\+Heuristic\+Banded\+Static (\begin{DoxyParamCaption}\item[{const int}]{band\+\_\+min\+\_\+k}{, }\item[{const int}]{band\+\_\+max\+\_\+k}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00221}{221}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 29
+\Hypertarget{classwfa_1_1_w_f_aligner_abbad13e68dde89caa96a421b39cd3d92}\index{wfa::WFAligner@{wfa::WFAligner}!setHeuristicNone@{setHeuristicNone}}
+\index{setHeuristicNone@{setHeuristicNone}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setHeuristicNone()}{setHeuristicNone()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_abbad13e68dde89caa96a421b39cd3d92} 
+void wfa::\+\+WFAligner::\+set\+Heuristic\+None (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00218}{218}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 30
+\Hypertarget{classwfa_1_1_w_f_aligner_a0ca3ca4fbf157084fc69095c0ab02446}\index{wfa::WFAligner@{wfa::WFAligner}!setHeuristicWFadaptive@{setHeuristicWFadaptive}}
+\index{setHeuristicWFadaptive@{setHeuristicWFadaptive}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setHeuristicWFadaptive()}{setHeuristicWFadaptive()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a0ca3ca4fbf157084fc69095c0ab02446} 
+void wfa::\+\+WFAligner::\+set\+Heuristic\+WFadaptive (\begin{DoxyParamCaption}\item[{const int}]{min\+\_\+wavefront\+\_\+length}{, }\item[{const int}]{max\+\_\+distance\+\_\+threshold}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00234}{234}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 31
+\Hypertarget{classwfa_1_1_w_f_aligner_a193e2a8b6609e87ef12aa95c84df83b2}\index{wfa::WFAligner@{wfa::WFAligner}!setHeuristicWFmash@{setHeuristicWFmash}}
+\index{setHeuristicWFmash@{setHeuristicWFmash}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setHeuristicWFmash()}{setHeuristicWFmash()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a193e2a8b6609e87ef12aa95c84df83b2} 
+void wfa::\+\+WFAligner::\+set\+Heuristic\+WFmash (\begin{DoxyParamCaption}\item[{const int}]{min\+\_\+wavefront\+\_\+length}{, }\item[{const int}]{max\+\_\+distance\+\_\+threshold}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00242}{242}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 32
+\Hypertarget{classwfa_1_1_w_f_aligner_a54b37a5d488cbc41151d5e0ae14880fa}\index{wfa::WFAligner@{wfa::WFAligner}!setHeuristicXDrop@{setHeuristicXDrop}}
+\index{setHeuristicXDrop@{setHeuristicXDrop}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setHeuristicXDrop()}{setHeuristicXDrop()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a54b37a5d488cbc41151d5e0ae14880fa} 
+void wfa::\+\+WFAligner::\+set\+Heuristic\+XDrop (\begin{DoxyParamCaption}\item[{const int}]{xdrop}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00250}{250}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 33
+\Hypertarget{classwfa_1_1_w_f_aligner_a74b0787835647f08ceb74f67302d5166}\index{wfa::WFAligner@{wfa::WFAligner}!setHeuristicZDrop@{setHeuristicZDrop}}
+\index{setHeuristicZDrop@{setHeuristicZDrop}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setHeuristicZDrop()}{setHeuristicZDrop()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a74b0787835647f08ceb74f67302d5166} 
+void wfa::\+\+WFAligner::\+set\+Heuristic\+ZDrop (\begin{DoxyParamCaption}\item[{const int}]{zdrop}{, }\item[{const int}]{steps\+\_\+between\+\_\+cutoffs}{ = {\ttfamily 1}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00256}{256}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 34
+\Hypertarget{classwfa_1_1_w_f_aligner_a2224fb1316c40c87a491d65f727062f2}\index{wfa::WFAligner@{wfa::WFAligner}!setMaxAlignmentSteps@{setMaxAlignmentSteps}}
+\index{setMaxAlignmentSteps@{setMaxAlignmentSteps}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setMaxAlignmentSteps()}{setMaxAlignmentSteps()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a2224fb1316c40c87a491d65f727062f2} 
+void wfa::\+\+WFAligner::\+set\+Max\+Alignment\+Steps (\begin{DoxyParamCaption}\item[{const int}]{max\+Alignment\+Steps}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00265}{265}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 35
+\Hypertarget{classwfa_1_1_w_f_aligner_a4f70e0e80f370608e580b054cb30b952}\index{wfa::WFAligner@{wfa::WFAligner}!setMaxMemory@{setMaxMemory}}
+\index{setMaxMemory@{setMaxMemory}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setMaxMemory()}{setMaxMemory()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a4f70e0e80f370608e580b054cb30b952} 
+void wfa::\+\+WFAligner::\+set\+Max\+Memory (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{max\+Memory\+Resident}{, }\item[{const uint64\+\_\+t}]{max\+Memory\+Abort}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00269}{269}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 36
+\Hypertarget{classwfa_1_1_w_f_aligner_a396b5547f21312fb5e1f1e150f425dbe}\index{wfa::WFAligner@{wfa::WFAligner}!setMaxNumThreads@{setMaxNumThreads}}
+\index{setMaxNumThreads@{setMaxNumThreads}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{setMaxNumThreads()}{setMaxNumThreads()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a396b5547f21312fb5e1f1e150f425dbe} 
+void wfa::\+\+WFAligner::\+set\+Max\+Num\+Threads (\begin{DoxyParamCaption}\item[{const int}]{max\+Num\+Threads}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00275}{275}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 37
+\Hypertarget{classwfa_1_1_w_f_aligner_aa9740ce5ffdc7f43b4d30f934d6b1293}\index{wfa::WFAligner@{wfa::WFAligner}!strStatus@{strStatus}}
+\index{strStatus@{strStatus}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{strStatus()}{strStatus()}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_aa9740ce5ffdc7f43b4d30f934d6b1293} 
+char \texorpdfstring{$\ast$}{*} wfa::\+\+WFAligner::\+str\+Status (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}}}]{status}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00335}{335}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 38
+
+
+\label{doc-variable-members}
+\Hypertarget{classwfa_1_1_w_f_aligner_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classwfa_1_1_w_f_aligner_a89e8c70fa90755afead1eea58d3547af}\index{wfa::WFAligner@{wfa::WFAligner}!attributes@{attributes}}
+\index{attributes@{attributes}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{attributes}{attributes}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a89e8c70fa90755afead1eea58d3547af} 
+\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\+\_\+aligner\+\_\+attr\+\_\+t}} wfa::\+\+WFAligner::\+attributes\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8hpp_source_l00200}{200}} of file \doxymbox{\hyperlink{_w_f_aligner_8hpp_source}{WFAligner.\+hpp}}.
+
+\Hypertarget{classwfa_1_1_w_f_aligner_a4c2edcb2f5d68722c04eafdca94ceb53}\index{wfa::WFAligner@{wfa::WFAligner}!wfAligner@{wfAligner}}
+\index{wfAligner@{wfAligner}!wfa::WFAligner@{wfa::WFAligner}}
+\doxysubsubsection{\texorpdfstring{wfAligner}{wfAligner}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_a4c2edcb2f5d68722c04eafdca94ceb53} 
+\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}}\texorpdfstring{$\ast$}{*} wfa::\+\+WFAligner::\+wf\+Aligner\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8hpp_source_l00201}{201}} of file \doxymbox{\hyperlink{_w_f_aligner_8hpp_source}{WFAligner.\+hpp}}.
+
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+wfa/\+bindings/\+cpp/\+\doxymbox{\hyperlink{_w_f_aligner_8hpp}{WFAligner.\+hpp}}\item 
+src/\+wfa/\+bindings/\+cpp/\+\doxymbox{\hyperlink{_w_f_aligner_8cpp}{WFAligner.\+cpp}}\end{DoxyCompactItemize}

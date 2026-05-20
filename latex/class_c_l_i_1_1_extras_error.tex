@@ -1,0 +1,81 @@
+\doxysection{CLI::\+Extras\+Error Class Reference}
+\hypertarget{class_c_l_i_1_1_extras_error}{}\label{class_c_l_i_1_1_extras_error}\index{CLI::ExtrasError@{CLI::ExtrasError}}
+
+
+Thrown when too many positionals or options are found.  
+
+
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+Extras\+Error:\+
+% FIG 0
+
+
+Collaboration diagram for CLI::\+Extras\+Error:\+
+% FIG 1
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_extras_error_a859422a4eb856a261e41bba1f6bd87f9}{Extras\+Error}} (std::\+vector$<$ std::\+string $>$ args)
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_extras_error_a81d8c1878d1397dac1070f4a977c3fbd}{Extras\+Error}} (const std::\+string \&name, std::\+vector$<$ std::\+string $>$ args)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_error}{CLI::\+\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_error_a28565e52e7527594d2c60c5aab14c9a6}{get\+\_\+exit\+\_\+code}} () const
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_error_a6acdbeb066f1d58a14156f05808b85a7}{get\+\_\+name}} () const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a7b30cbdb0c6f3ef3d5550df7d8e18904}{Error}} (std::\+string name, std::\+string msg, int exit\+\_\+code=static\+\_\+cast$<$ int $>$(\doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037ea45b3e4c35409fb597ea598dc4b984b8c}{Exit\+Codes::\+\+Base\+Class}}))
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a52187308eced1fc96f270ef384dbd7a2}{Error}} (std::\+string name, std::\+string msg, \doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037e}{Exit\+Codes}} exit\+\_\+code)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Thrown when too many positionals or options are found. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01585}{1585}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_c_l_i_1_1_extras_error_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_l_i_1_1_extras_error_a859422a4eb856a261e41bba1f6bd87f9}\index{CLI::ExtrasError@{CLI::ExtrasError}!ExtrasError@{ExtrasError}}
+\index{ExtrasError@{ExtrasError}!CLI::ExtrasError@{CLI::ExtrasError}}
+\doxysubsubsection{\texorpdfstring{ExtrasError()}{ExtrasError()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_extras_error_a859422a4eb856a261e41bba1f6bd87f9} 
+CLI::\+\+Extras\+Error::\+\+Extras\+Error (\begin{DoxyParamCaption}\item[{std::\+vector$<$ std::\+string $>$}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01587}{1587}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{class_c_l_i_1_1_extras_error_a81d8c1878d1397dac1070f4a977c3fbd}\index{CLI::ExtrasError@{CLI::ExtrasError}!ExtrasError@{ExtrasError}}
+\index{ExtrasError@{ExtrasError}!CLI::ExtrasError@{CLI::ExtrasError}}
+\doxysubsubsection{\texorpdfstring{ExtrasError()}{ExtrasError()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_extras_error_a81d8c1878d1397dac1070f4a977c3fbd} 
+CLI::\+\+Extras\+Error::\+\+Extras\+Error (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{name}{, }\item[{std::\+vector$<$ std::\+string $>$}]{args}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01592}{1592}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

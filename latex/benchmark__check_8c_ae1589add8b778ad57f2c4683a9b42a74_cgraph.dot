@@ -1,0 +1,36 @@
+digraph "benchmark_check_alignment_using_solution"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="benchmark_check_alignment\l_using_solution",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge16_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="benchmark_print_alignment",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$benchmark__utils_8c.html#ac242d2c19521c3b92753d76e442c9411",tooltip=" "];
+  Node2 -> Node3 [id="edge17_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="cigar_print",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a69e9ddcae18d2607a60b7d0db7c024a1",tooltip=" "];
+  Node3 -> Node4 [id="edge18_Node000003_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="cigar_is_null",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a78aa773a3aad27c5a8a0ce8babff2ebd",tooltip=" "];
+  Node3 -> Node5 [id="edge19_Node000003_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="cigar_sprint",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a8790a6d4ff1303b641510ce9110fb754",tooltip=" "];
+  Node5 -> Node4 [id="edge20_Node000005_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node2 -> Node6 [id="edge21_Node000002_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="cigar_print_pretty",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#abeec4a2a2ef07007631c35bc19edcf32",tooltip=" "];
+  Node6 -> Node3 [id="edge22_Node000006_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node6 -> Node7 [id="edge23_Node000006_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="cigar_print_SAM_CIGAR",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#aa9fbabef2c335146e51523bad03a6dc9",tooltip=" "];
+  Node7 -> Node4 [id="edge24_Node000007_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node7 -> Node8 [id="edge25_Node000007_Node000008",color="steelblue1",style="solid",tooltip=" "];
+  Node8 [id="Node000008",label="cigar_sprint_SAM_CIGAR",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#aae530ec59e913842edecd208321fb26a",tooltip=" "];
+  Node8 -> Node9 [id="edge26_Node000008_Node000009",color="steelblue1",style="solid",tooltip=" "];
+  Node9 [id="Node000009",label="cigar_get_CIGAR",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#adf083ff530fa58b1b5a12c12aed27b48",tooltip=" "];
+  Node9 -> Node10 [id="edge27_Node000009_Node000010",color="steelblue1",style="solid",tooltip=" "];
+  Node10 [id="Node000010",label="cigar_compute_CIGAR",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a963d22e4e641867b5c25a8279d0b3fe9",tooltip=" "];
+  Node1 -> Node11 [id="edge28_Node000001_Node000011",color="steelblue1",style="solid",tooltip=" "];
+  Node11 [id="Node000011",label="cigar_check_alignment",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#aaa326437ca8568254ca6c6ebc7467746",tooltip=" "];
+  Node1 -> Node12 [id="edge29_Node000001_Node000012",color="steelblue1",style="solid",tooltip=" "];
+  Node12 [id="Node000012",label="cigar_cmp",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$cigar_8c.html#a713b62c73e2046c61f23dcba7dd5e95f",tooltip=" "];
+  Node1 -> Node13 [id="edge30_Node000001_Node000013",color="steelblue1",style="solid",tooltip=" "];
+  Node13 [id="Node000013",label="counter_add",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$profiler__counter_8c.html#acbd71bfd6af600aad54f743f8331a9a3",tooltip=" "];
+}

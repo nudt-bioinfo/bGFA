@@ -1,0 +1,21 @@
+digraph "mm_allocator_allocate"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="LR";
+  Node1 [id="Node000001",label="mm_allocator_allocate",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
+  Node1 -> Node2 [id="edge1_Node000001_Node000002",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="mm_allocator_fetch\l_segment",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mm__allocator_8c.html#a5bb06498140aada7cdf1de1c03139b0a",tooltip=" "];
+  Node2 -> Node3 [id="edge2_Node000002_Node000003",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="mm_allocator_get_num\l_segments_free",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mm__allocator_8c.html#a6471478621247800c92f0830006543cf",tooltip=" "];
+  Node2 -> Node4 [id="edge3_Node000002_Node000004",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="mm_allocator_get_segment",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mm__allocator_8c.html#aa95a3864c0e60b5c08e6ba363070ffb1",tooltip=" "];
+  Node2 -> Node5 [id="edge4_Node000002_Node000005",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="mm_allocator_get_segment_free",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mm__allocator_8c.html#a06d35baab85ca8045a5740722131f0a6",tooltip=" "];
+  Node2 -> Node6 [id="edge5_Node000002_Node000006",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="mm_allocator_segment_new",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mm__allocator_8c.html#ac59dbe43d6e9a6b8c9c149fb9f9b463a",tooltip=" "];
+  Node1 -> Node7 [id="edge6_Node000001_Node000007",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="mm_allocator_segment\l_get_num_requests",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$mm__allocator_8c.html#a6f47e5420078c0271c2d3e54d9c02c73",tooltip=" "];
+}

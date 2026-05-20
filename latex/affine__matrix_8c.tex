@@ -1,0 +1,98 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+gap\+\_\+affine/\+affine\+\_\+matrix.c File Reference}
+\hypertarget{affine__matrix_8c}{}\label{affine__matrix_8c}\index{src/wfa/tools/align\_benchmark/gap\_affine/affine\_matrix.c@{src/wfa/tools/align\_benchmark/gap\_affine/affine\_matrix.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}gap\+\_\+affine/\+affine\+\_\+matrix.\+h"{}}\newline
+Include dependency graph for affine\+\_\+matrix.\+c:\+
+% FIG 0
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{affine__matrix_8c_a7c4cfcb8430bce57265832d6994c6a39}{AFFINE\+\_\+\+MATRIX\+\_\+\+PRINT\+\_\+\+VALUE}}(value)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{affine__matrix_8c_ab09a33c9f570a2ca5b872728599bde43}{affine\+\_\+matrix\+\_\+allocate}} (\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const matrix, const int num\+\_\+rows, const int num\+\_\+columns, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{affine__matrix_8c_a8cb2e7cacd5d14c05fadb3daa7c214c9}{affine\+\_\+matrix\+\_\+free}} (\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const matrix, \doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+allocator)
+\item 
+void \doxymbox{\hyperlink{affine__matrix_8c_af8efbca6245edd0fd4db63b5d98ff839}{affine\+\_\+matrix\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const matrix, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\item 
+void \doxymbox{\hyperlink{affine__matrix_8c_abb237afce249873a1c0a21641d13df27}{affine\+\_\+matrix\+\_\+print\+\_\+extended}} (FILE \texorpdfstring{$\ast$}{*}const stream, const \doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const matrix, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{affine__matrix_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{affine__matrix_8c_a7c4cfcb8430bce57265832d6994c6a39}\index{affine\_matrix.c@{affine\_matrix.c}!AFFINE\_MATRIX\_PRINT\_VALUE@{AFFINE\_MATRIX\_PRINT\_VALUE}}
+\index{AFFINE\_MATRIX\_PRINT\_VALUE@{AFFINE\_MATRIX\_PRINT\_VALUE}!affine\_matrix.c@{affine\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{AFFINE\_MATRIX\_PRINT\_VALUE}{AFFINE\_MATRIX\_PRINT\_VALUE}}
+{\footnotesize\ttfamily \label{affine__matrix_8c_a7c4cfcb8430bce57265832d6994c6a39} 
+\+\#define AFFINE\+\_\+\+MATRIX\+\_\+\+PRINT\+\_\+\+VALUE(\begin{DoxyParamCaption}\item[{}]{value}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (value\ >=\ 0\ \&\&\ value\ <\ \doxymbox{\hyperlink{affine__matrix_8h_aed6102d6a9dfc5223b5e0ea958363c7a}{AFFINE\_SCORE\_MAX}})\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ fprintf(stream,\textcolor{stringliteral}{"{}\%2d"{}},value);\ \(\backslash\)}
+\DoxyCodeLine{\}\ \textcolor{keywordflow}{else}\ \{\ \(\backslash\)}
+\DoxyCodeLine{\ \ fprintf(stream,\textcolor{stringliteral}{"{}\ *"{}});\ \(\backslash\)}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{affine__matrix_8c_source_l00066}{66}} of file \doxymbox{\hyperlink{affine__matrix_8c_source}{affine\+\_\+matrix.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{affine__matrix_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{affine__matrix_8c_ab09a33c9f570a2ca5b872728599bde43}\index{affine\_matrix.c@{affine\_matrix.c}!affine\_matrix\_allocate@{affine\_matrix\_allocate}}
+\index{affine\_matrix\_allocate@{affine\_matrix\_allocate}!affine\_matrix.c@{affine\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{affine\_matrix\_allocate()}{affine\_matrix\_allocate()}}
+{\footnotesize\ttfamily \label{affine__matrix_8c_ab09a33c9f570a2ca5b872728599bde43} 
+void affine\+\_\+matrix\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{matrix}{, }\item[{const int}]{num\+\_\+rows}{, }\item[{const int}]{num\+\_\+columns}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{affine__matrix_8c_source_l00039}{39}} of file \doxymbox{\hyperlink{affine__matrix_8c_source}{affine\+\_\+matrix.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 1
+\Hypertarget{affine__matrix_8c_a8cb2e7cacd5d14c05fadb3daa7c214c9}\index{affine\_matrix.c@{affine\_matrix.c}!affine\_matrix\_free@{affine\_matrix\_free}}
+\index{affine\_matrix\_free@{affine\_matrix\_free}!affine\_matrix.c@{affine\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{affine\_matrix\_free()}{affine\_matrix\_free()}}
+{\footnotesize\ttfamily \label{affine__matrix_8c_a8cb2e7cacd5d14c05fadb3daa7c214c9} 
+void affine\+\_\+matrix\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{matrix}{, }\item[{\doxymbox{\hyperlink{structmm__allocator__t}{mm\+\_\+allocator\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+allocator}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{affine__matrix_8c_source_l00053}{53}} of file \doxymbox{\hyperlink{affine__matrix_8c_source}{affine\+\_\+matrix.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{affine__matrix_8c_af8efbca6245edd0fd4db63b5d98ff839}\index{affine\_matrix.c@{affine\_matrix.c}!affine\_matrix\_print@{affine\_matrix\_print}}
+\index{affine\_matrix\_print@{affine\_matrix\_print}!affine\_matrix.c@{affine\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{affine\_matrix\_print()}{affine\_matrix\_print()}}
+{\footnotesize\ttfamily \label{affine__matrix_8c_af8efbca6245edd0fd4db63b5d98ff839} 
+void affine\+\_\+matrix\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{matrix}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{affine__matrix_8c_source_l00072}{72}} of file \doxymbox{\hyperlink{affine__matrix_8c_source}{affine\+\_\+matrix.\+c}}.
+
+\Hypertarget{affine__matrix_8c_abb237afce249873a1c0a21641d13df27}\index{affine\_matrix.c@{affine\_matrix.c}!affine\_matrix\_print\_extended@{affine\_matrix\_print\_extended}}
+\index{affine\_matrix\_print\_extended@{affine\_matrix\_print\_extended}!affine\_matrix.c@{affine\_matrix.c}}
+\doxysubsubsection{\texorpdfstring{affine\_matrix\_print\_extended()}{affine\_matrix\_print\_extended()}}
+{\footnotesize\ttfamily \label{affine__matrix_8c_abb237afce249873a1c0a21641d13df27} 
+void affine\+\_\+matrix\+\_\+print\+\_\+extended (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const \doxymbox{\hyperlink{structaffine__matrix__t}{affine\+\_\+matrix\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{matrix}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{affine__matrix_8c_source_l00102}{102}} of file \doxymbox{\hyperlink{affine__matrix_8c_source}{affine\+\_\+matrix.\+c}}.
+

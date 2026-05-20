@@ -1,0 +1,107 @@
+\doxysection{CLI::\+Required\+Error Class Reference}
+\hypertarget{class_c_l_i_1_1_required_error}{}\label{class_c_l_i_1_1_required_error}\index{CLI::RequiredError@{CLI::RequiredError}}
+
+
+Thrown when a required option is missing.  
+
+
+
+
+{\ttfamily \+\#include $<$CLI11.\+hpp$>$}
+
+
+
+Inheritance diagram for CLI::\+Required\+Error:\+
+% FIG 0
+
+
+Collaboration diagram for CLI::\+Required\+Error:\+
+% FIG 1
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_required_error_a13150580687c3277d6d96cc0959c2adc}{Required\+Error}} (std::\+string name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_required_error_a13150580687c3277d6d96cc0959c2adc}{Required\+Error}} \doxymbox{\hyperlink{class_c_l_i_1_1_required_error_af31b1d4286ced90b386783e13f8421b2}{Subcommand}} (std::\+size\+\_\+t min\+\_\+subcom)
+\item 
+static \doxymbox{\hyperlink{class_c_l_i_1_1_required_error_a13150580687c3277d6d96cc0959c2adc}{Required\+Error}} \doxymbox{\hyperlink{class_c_l_i_1_1_required_error_a1283b251494d088d860a89bc2a8bce7f}{Option}} (std::\+size\+\_\+t min\+\_\+option, std::\+size\+\_\+t max\+\_\+option, std::\+size\+\_\+t used, const std::\+string \&option\+\_\+list)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{class_c_l_i_1_1_error}{CLI::\+\+Error}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} int \doxymbox{\hyperlink{class_c_l_i_1_1_error_a28565e52e7527594d2c60c5aab14c9a6}{get\+\_\+exit\+\_\+code}} () const
+\item 
+\doxymbox{\hyperlink{_c_l_i11_8hpp_af6b299358fbdb7a4caa5da7a92ce6b23}{CLI11\+\_\+\+NODISCARD}} std::\+string \doxymbox{\hyperlink{class_c_l_i_1_1_error_a6acdbeb066f1d58a14156f05808b85a7}{get\+\_\+name}} () const
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a7b30cbdb0c6f3ef3d5550df7d8e18904}{Error}} (std::\+string name, std::\+string msg, int exit\+\_\+code=static\+\_\+cast$<$ int $>$(\doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037ea45b3e4c35409fb597ea598dc4b984b8c}{Exit\+Codes::\+\+Base\+Class}}))
+\item 
+\doxymbox{\hyperlink{class_c_l_i_1_1_error_a52187308eced1fc96f270ef384dbd7a2}{Error}} (std::\+string name, std::\+string msg, \doxymbox{\hyperlink{namespace_c_l_i_a1d8108a219533f0b0361640a017f037e}{Exit\+Codes}} exit\+\_\+code)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Thrown when a required option is missing. 
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01505}{1505}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{class_c_l_i_1_1_required_error_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_c_l_i_1_1_required_error_a13150580687c3277d6d96cc0959c2adc}\index{CLI::RequiredError@{CLI::RequiredError}!RequiredError@{RequiredError}}
+\index{RequiredError@{RequiredError}!CLI::RequiredError@{CLI::RequiredError}}
+\doxysubsubsection{\texorpdfstring{RequiredError()}{RequiredError()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_required_error_a13150580687c3277d6d96cc0959c2adc} 
+CLI::\+\+Required\+Error::\+\+Required\+Error (\begin{DoxyParamCaption}\item[{std::\+string}]{name}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [explicit]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01507}{1507}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_l_i_1_1_required_error_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_l_i_1_1_required_error_a1283b251494d088d860a89bc2a8bce7f}\index{CLI::RequiredError@{CLI::RequiredError}!Option@{Option}}
+\index{Option@{Option}!CLI::RequiredError@{CLI::RequiredError}}
+\doxysubsubsection{\texorpdfstring{Option()}{Option()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_required_error_a1283b251494d088d860a89bc2a8bce7f} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_required_error_a13150580687c3277d6d96cc0959c2adc}{Required\+Error}} CLI::\+\+Required\+Error::\+\+Option (\begin{DoxyParamCaption}\item[{std::\+size\+\_\+t}]{min\+\_\+option}{, }\item[{std::\+size\+\_\+t}]{max\+\_\+option}{, }\item[{std::\+size\+\_\+t}]{used}{, }\item[{const std::\+string \&}]{option\+\_\+list}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01515}{1515}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{class_c_l_i_1_1_required_error_af31b1d4286ced90b386783e13f8421b2}\index{CLI::RequiredError@{CLI::RequiredError}!Subcommand@{Subcommand}}
+\index{Subcommand@{Subcommand}!CLI::RequiredError@{CLI::RequiredError}}
+\doxysubsubsection{\texorpdfstring{Subcommand()}{Subcommand()}}
+{\footnotesize\ttfamily \label{class_c_l_i_1_1_required_error_af31b1d4286ced90b386783e13f8421b2} 
+\doxymbox{\hyperlink{class_c_l_i_1_1_required_error_a13150580687c3277d6d96cc0959c2adc}{Required\+Error}} CLI::\+\+Required\+Error::\+\+Subcommand (\begin{DoxyParamCaption}\item[{std::\+size\+\_\+t}]{min\+\_\+subcom}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [private]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{_c_l_i11_8hpp_source_l01508}{1508}} of file \doxymbox{\hyperlink{_c_l_i11_8hpp_source}{CLI11.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+
+
+The documentation for this class was generated from the following file:\+\begin{DoxyCompactItemize}
+\item 
+src/\+\+CLI11/\+\doxymbox{\hyperlink{_c_l_i11_8hpp}{CLI11.\+hpp}}\end{DoxyCompactItemize}

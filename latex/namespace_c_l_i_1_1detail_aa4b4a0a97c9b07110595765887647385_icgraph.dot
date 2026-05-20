@@ -1,0 +1,22 @@
+digraph "CLI::detail::search"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  rankdir="RL";
+  Node1 [id="Node000001",label="CLI::detail::search",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip="A search function."];
+  Node1 -> Node2 [id="edge8_Node000001_Node000002",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node2 [id="Node000002",label="CLI::CheckedTransformer\l::CheckedTransformer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_checked_transformer.html#af11e8936b4c0707ff94338908622e111",tooltip=" "];
+  Node1 -> Node3 [id="edge9_Node000001_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node3 [id="Node000003",label="CLI::detail::find_matching\l_config",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i_1_1detail.html#ae71178674ed9a0e77a896216b4336dc0",tooltip="find a matching configItem in a list"];
+  Node3 -> Node4 [id="edge10_Node000003_Node000004",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node4 [id="Node000004",label="CLI::ConfigBase::from\l_config",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_config_base.html#a1395eecde5af65b73e3670529df0e17b",tooltip="Convert a configuration into an app."];
+  Node1 -> Node5 [id="edge11_Node000001_Node000005",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node5 [id="Node000005",label="CLI::IsMember::IsMember",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_is_member.html#a778da19fa2481912c7fcfe6b3c8b453a",tooltip=" "];
+  Node1 -> Node1 [id="edge12_Node000001_Node000001",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node1 -> Node6 [id="edge13_Node000001_Node000006",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node6 [id="Node000006",label="CLI::detail::search",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$namespace_c_l_i_1_1detail.html#abcb81a667288aa66a4576a06b9322092",tooltip="A search function with a filter function."];
+  Node1 -> Node7 [id="edge14_Node000001_Node000007",dir="back",color="steelblue1",style="solid",tooltip=" "];
+  Node7 [id="Node000007",label="CLI::Transformer::Transformer",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$class_c_l_i_1_1_transformer.html#aef311ee89c54f64e3e78651bd2db826c",tooltip=" "];
+}

@@ -1,0 +1,132 @@
+\doxysection{src/\+wfa/\+tools/\+align\+\_\+benchmark/\+benchmark/\+benchmark\+\_\+check.c File Reference}
+\hypertarget{benchmark__check_8c}{}\label{benchmark__check_8c}\index{src/wfa/tools/align\_benchmark/benchmark/benchmark\_check.c@{src/wfa/tools/align\_benchmark/benchmark/benchmark\_check.c}}
+{\ttfamily \+\#include "{}benchmark\+\_\+check.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+score\+\_\+matrix.\+h"{}}\newline
+{\ttfamily \+\#include "{}indel/\+indel\+\_\+dp.\+h"{}}\newline
+{\ttfamily \+\#include "{}edit/\+edit\+\_\+dp.\+h"{}}\newline
+{\ttfamily \+\#include "{}gap\+\_\+linear/\+nw.\+h"{}}\newline
+{\ttfamily \+\#include "{}gap\+\_\+affine/\+affine\+\_\+matrix.\+h"{}}\newline
+{\ttfamily \+\#include "{}gap\+\_\+affine/\+swg.\+h"{}}\newline
+{\ttfamily \+\#include "{}gap\+\_\+affine2p/\+affine2p\+\_\+dp.\+h"{}}\newline
+Include dependency graph for benchmark\+\_\+check.\+c:\+
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{benchmark__check_8c_ae1589add8b778ad57f2c4683a9b42a74}{benchmark\+\_\+check\+\_\+alignment\+\_\+using\+\_\+solution}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+computed, const int score\+\_\+computed, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+correct, const int score\+\_\+correct)
+\item 
+void \doxymbox{\hyperlink{benchmark__check_8c_a44ac3247c5974d892c622b8326f6f48e}{benchmark\+\_\+check\+\_\+alignment\+\_\+indel}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+computed)
+\item 
+void \doxymbox{\hyperlink{benchmark__check_8c_ac5a2633f104d69a0653453c18063d4a6}{benchmark\+\_\+check\+\_\+alignment\+\_\+edit}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+computed)
+\item 
+void \doxymbox{\hyperlink{benchmark__check_8c_a46420d2db9738bd401a768378d3078f7}{benchmark\+\_\+check\+\_\+alignment\+\_\+gap\+\_\+linear}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+computed)
+\item 
+void \doxymbox{\hyperlink{benchmark__check_8c_a8a02cb015f1098ae326cd4a1329a5e9a}{benchmark\+\_\+check\+\_\+alignment\+\_\+gap\+\_\+affine}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+computed)
+\item 
+void \doxymbox{\hyperlink{benchmark__check_8c_a2b0c59feb5f05a344f311f6138ff11d7}{benchmark\+\_\+check\+\_\+alignment\+\_\+gap\+\_\+affine2p}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+computed)
+\item 
+void \doxymbox{\hyperlink{benchmark__check_8c_a59eade596dcee41953d0873f237d0598}{benchmark\+\_\+check\+\_\+alignment}} (\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const align\+\_\+input, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+computed)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{benchmark__check_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{benchmark__check_8c_a59eade596dcee41953d0873f237d0598}\index{benchmark\_check.c@{benchmark\_check.c}!benchmark\_check\_alignment@{benchmark\_check\_alignment}}
+\index{benchmark\_check\_alignment@{benchmark\_check\_alignment}!benchmark\_check.c@{benchmark\_check.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_check\_alignment()}{benchmark\_check\_alignment()}}
+{\footnotesize\ttfamily \label{benchmark__check_8c_a59eade596dcee41953d0873f237d0598} 
+void benchmark\+\_\+check\+\_\+alignment (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+computed}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__check_8c_source_l00268}{268}} of file \doxymbox{\hyperlink{benchmark__check_8c_source}{benchmark\+\_\+check.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{benchmark__check_8c_ac5a2633f104d69a0653453c18063d4a6}\index{benchmark\_check.c@{benchmark\_check.c}!benchmark\_check\_alignment\_edit@{benchmark\_check\_alignment\_edit}}
+\index{benchmark\_check\_alignment\_edit@{benchmark\_check\_alignment\_edit}!benchmark\_check.c@{benchmark\_check.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_check\_alignment\_edit()}{benchmark\_check\_alignment\_edit()}}
+{\footnotesize\ttfamily \label{benchmark__check_8c_ac5a2633f104d69a0653453c18063d4a6} 
+void benchmark\+\_\+check\+\_\+alignment\+\_\+edit (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+computed}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__check_8c_source_l00150}{150}} of file \doxymbox{\hyperlink{benchmark__check_8c_source}{benchmark\+\_\+check.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{benchmark__check_8c_a8a02cb015f1098ae326cd4a1329a5e9a}\index{benchmark\_check.c@{benchmark\_check.c}!benchmark\_check\_alignment\_gap\_affine@{benchmark\_check\_alignment\_gap\_affine}}
+\index{benchmark\_check\_alignment\_gap\_affine@{benchmark\_check\_alignment\_gap\_affine}!benchmark\_check.c@{benchmark\_check.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_check\_alignment\_gap\_affine()}{benchmark\_check\_alignment\_gap\_affine()}}
+{\footnotesize\ttfamily \label{benchmark__check_8c_a8a02cb015f1098ae326cd4a1329a5e9a} 
+void benchmark\+\_\+check\+\_\+alignment\+\_\+gap\+\_\+affine (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+computed}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__check_8c_source_l00205}{205}} of file \doxymbox{\hyperlink{benchmark__check_8c_source}{benchmark\+\_\+check.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 5
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{benchmark__check_8c_a2b0c59feb5f05a344f311f6138ff11d7}\index{benchmark\_check.c@{benchmark\_check.c}!benchmark\_check\_alignment\_gap\_affine2p@{benchmark\_check\_alignment\_gap\_affine2p}}
+\index{benchmark\_check\_alignment\_gap\_affine2p@{benchmark\_check\_alignment\_gap\_affine2p}!benchmark\_check.c@{benchmark\_check.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_check\_alignment\_gap\_affine2p()}{benchmark\_check\_alignment\_gap\_affine2p()}}
+{\footnotesize\ttfamily \label{benchmark__check_8c_a2b0c59feb5f05a344f311f6138ff11d7} 
+void benchmark\+\_\+check\+\_\+alignment\+\_\+gap\+\_\+affine2p (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+computed}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__check_8c_source_l00238}{238}} of file \doxymbox{\hyperlink{benchmark__check_8c_source}{benchmark\+\_\+check.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 7
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{benchmark__check_8c_a46420d2db9738bd401a768378d3078f7}\index{benchmark\_check.c@{benchmark\_check.c}!benchmark\_check\_alignment\_gap\_linear@{benchmark\_check\_alignment\_gap\_linear}}
+\index{benchmark\_check\_alignment\_gap\_linear@{benchmark\_check\_alignment\_gap\_linear}!benchmark\_check.c@{benchmark\_check.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_check\_alignment\_gap\_linear()}{benchmark\_check\_alignment\_gap\_linear()}}
+{\footnotesize\ttfamily \label{benchmark__check_8c_a46420d2db9738bd401a768378d3078f7} 
+void benchmark\+\_\+check\+\_\+alignment\+\_\+gap\+\_\+linear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+computed}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__check_8c_source_l00179}{179}} of file \doxymbox{\hyperlink{benchmark__check_8c_source}{benchmark\+\_\+check.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{benchmark__check_8c_a44ac3247c5974d892c622b8326f6f48e}\index{benchmark\_check.c@{benchmark\_check.c}!benchmark\_check\_alignment\_indel@{benchmark\_check\_alignment\_indel}}
+\index{benchmark\_check\_alignment\_indel@{benchmark\_check\_alignment\_indel}!benchmark\_check.c@{benchmark\_check.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_check\_alignment\_indel()}{benchmark\_check\_alignment\_indel()}}
+{\footnotesize\ttfamily \label{benchmark__check_8c_a44ac3247c5974d892c622b8326f6f48e} 
+void benchmark\+\_\+check\+\_\+alignment\+\_\+indel (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+computed}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__check_8c_source_l00128}{128}} of file \doxymbox{\hyperlink{benchmark__check_8c_source}{benchmark\+\_\+check.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 11
+Here is the caller graph for this function:\+
+% FIG 12
+\Hypertarget{benchmark__check_8c_ae1589add8b778ad57f2c4683a9b42a74}\index{benchmark\_check.c@{benchmark\_check.c}!benchmark\_check\_alignment\_using\_solution@{benchmark\_check\_alignment\_using\_solution}}
+\index{benchmark\_check\_alignment\_using\_solution@{benchmark\_check\_alignment\_using\_solution}!benchmark\_check.c@{benchmark\_check.c}}
+\doxysubsubsection{\texorpdfstring{benchmark\_check\_alignment\_using\_solution()}{benchmark\_check\_alignment\_using\_solution()}}
+{\footnotesize\ttfamily \label{benchmark__check_8c_ae1589add8b778ad57f2c4683a9b42a74} 
+void benchmark\+\_\+check\+\_\+alignment\+\_\+using\+\_\+solution (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structalign__input__t}{align\+\_\+input\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{align\+\_\+input}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+computed}{, }\item[{const int}]{score\+\_\+computed}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+correct}{, }\item[{const int}]{score\+\_\+correct}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{benchmark__check_8c_source_l00044}{44}} of file \doxymbox{\hyperlink{benchmark__check_8c_source}{benchmark\+\_\+check.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 13
+Here is the caller graph for this function:\+
+% FIG 14

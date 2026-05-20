@@ -1,0 +1,360 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+pcigar.h File Reference}
+\hypertarget{wavefront__pcigar_8h}{}\label{wavefront__pcigar_8h}\index{src/wfa/wavefront/wavefront\_pcigar.h@{src/wfa/wavefront/wavefront\_pcigar.h}}
+{\ttfamily \+\#include "{}wavefront\+\_\+attributes.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront\+\_\+sequences.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+pcigar.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_ad5f21591df92f6acf62b03a1365e7f8c}{PCIGAR\+\_\+32\+BITS}}
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_ae41e9a74a8c0eb8c685dc6b6957d8540}{PCIGAR\+\_\+\+NULL}}~0ul
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a6195dfda6c1ced74758b8e75b794400d}{PCIGAR\+\_\+\+DELETION}}~1ul
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a4ba81a03babe679d370924fc580f3c01}{PCIGAR\+\_\+\+MISMATCH}}~2ul
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a505ce9422c48409d457ead4952fa050e}{PCIGAR\+\_\+\+INSERTION}}~3ul
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a743b6d5fe5bc5b804c6a79541f1a023e}{PCIGAR\+\_\+\+POP\+\_\+\+FRONT}}(pcigar)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_ac3ddd6fb3d40d6858623d30287863e14}{PCIGAR\+\_\+\+PUSH\+\_\+\+BACK}}(pcigar,  operation)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_ae061bf6b4f3d8983359cbe51cc0535b6}{PCIGAR\+\_\+\+PUSH\+\_\+\+BACK\+\_\+\+INS}}(pcigar)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a7b324082f4bb0a0aaeb6bfc10b440228}{PCIGAR\+\_\+\+PUSH\+\_\+\+BACK\+\_\+\+DEL}}(pcigar)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a8852fb1cc658e06d92369f88a4594732}{PCIGAR\+\_\+\+PUSH\+\_\+\+BACK\+\_\+\+MISMS}}(pcigar)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a31f3f1aadb62f31a223f24ce824486db}{PCIGAR\+\_\+\+MAX\+\_\+\+LENGTH}}~16
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a9e89997c5ff6802c0553bb24d0eef385}{PCIGAR\+\_\+\+FULL\+\_\+\+MASK}}~0x40000000u /\+\texorpdfstring{$\ast$}{*} Completely full \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_ab8a33be403113e726b65d77aa9cdd6a6}{PCIGAR\+\_\+\+ALMOST\+\_\+\+FULL\+\_\+\+MASK}}~0x10000000u /\+\texorpdfstring{$\ast$}{*} 15-\/slots busy or more \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_af3e605599142a53503c93650e2dacca2}{PCIGAR\+\_\+\+HALF\+\_\+\+FULL\+\_\+\+MASK}}~0x00010000u /\+\texorpdfstring{$\ast$}{*}  9-\/slots busy or more \texorpdfstring{$\ast$}{*}/\+
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a1c058bd2f0e5fe29df250ec1b47e116d}{PCIGAR\+\_\+\+IS\+\_\+\+UTILISED}}(pcigar,  mask)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_a462d519cd147ef491d376b45b0022dc9}{PCIGAR\+\_\+\+EXTRACT}}(pcigar)
+\item 
+\+\#define \doxymbox{\hyperlink{wavefront__pcigar_8h_aa91ad5e1e9eacc6349e166408b891499}{PCIGAR\+\_\+\+FREE\+\_\+\+SLOTS}}(pcigar)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef uint32\+\_\+t \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \doxymbox{\hyperlink{wavefront__pcigar_8h_a4ab128f9268680501784b7a3493b78ff}{pcigar\+\_\+get\+\_\+length}} (const \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}} pcigar)
+\item 
+int \doxymbox{\hyperlink{wavefront__pcigar_8h_aeef6dba48d45c940bb7c3a167f586015}{pcigar\+\_\+unpack}} (\doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}} pcigar, char \texorpdfstring{$\ast$}{*}cigar\+\_\+buffer)
+\item 
+void \doxymbox{\hyperlink{wavefront__pcigar_8h_a9ab021e7dfdc273073f5baf4ae2eb3e3}{pcigar\+\_\+unpack\+\_\+linear}} (\doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}} pcigar, \doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const sequences, int \texorpdfstring{$\ast$}{*}const v\+\_\+pos, int \texorpdfstring{$\ast$}{*}const h\+\_\+pos, char \texorpdfstring{$\ast$}{*}cigar\+\_\+buffer, int \texorpdfstring{$\ast$}{*}const cigar\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__pcigar_8h_a8e3b3b22824b4241b857222f13f87367}{pcigar\+\_\+unpack\+\_\+affine}} (\doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}} pcigar, \doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const sequences, int \texorpdfstring{$\ast$}{*}const v\+\_\+pos, int \texorpdfstring{$\ast$}{*}const h\+\_\+pos, char \texorpdfstring{$\ast$}{*}cigar\+\_\+buffer, int \texorpdfstring{$\ast$}{*}const cigar\+\_\+length, \doxymbox{\hyperlink{affine__penalties_8h_ad9726665210d0dae02c8ee1a67e52541}{affine\+\_\+matrix\+\_\+type}} \texorpdfstring{$\ast$}{*}const current\+\_\+matrix\+\_\+type)
+\item 
+void \doxymbox{\hyperlink{wavefront__pcigar_8h_ab0b73b0d8b9ef553957bb6d5525715fe}{pcigar\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}} pcigar)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{wavefront__pcigar_8h_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{wavefront__pcigar_8h_ad5f21591df92f6acf62b03a1365e7f8c}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_32BITS@{PCIGAR\_32BITS}}
+\index{PCIGAR\_32BITS@{PCIGAR\_32BITS}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_32BITS}{PCIGAR\_32BITS}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_ad5f21591df92f6acf62b03a1365e7f8c} 
+\+\#define PCIGAR\+\_\+32\+BITS}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00041}{41}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_ab8a33be403113e726b65d77aa9cdd6a6}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_ALMOST\_FULL\_MASK@{PCIGAR\_ALMOST\_FULL\_MASK}}
+\index{PCIGAR\_ALMOST\_FULL\_MASK@{PCIGAR\_ALMOST\_FULL\_MASK}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_ALMOST\_FULL\_MASK}{PCIGAR\_ALMOST\_FULL\_MASK}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_ab8a33be403113e726b65d77aa9cdd6a6} 
+\+\#define PCIGAR\+\_\+\+ALMOST\+\_\+\+FULL\+\_\+\+MASK~0x10000000u /\+\texorpdfstring{$\ast$}{*} 15-\/slots busy or more \texorpdfstring{$\ast$}{*}/\+}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00063}{63}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a6195dfda6c1ced74758b8e75b794400d}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_DELETION@{PCIGAR\_DELETION}}
+\index{PCIGAR\_DELETION@{PCIGAR\_DELETION}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_DELETION}{PCIGAR\_DELETION}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a6195dfda6c1ced74758b8e75b794400d} 
+\+\#define PCIGAR\+\_\+\+DELETION~1ul}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00048}{48}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a462d519cd147ef491d376b45b0022dc9}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_EXTRACT@{PCIGAR\_EXTRACT}}
+\index{PCIGAR\_EXTRACT@{PCIGAR\_EXTRACT}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_EXTRACT}{PCIGAR\_EXTRACT}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a462d519cd147ef491d376b45b0022dc9} 
+\+\#define PCIGAR\+\_\+\+EXTRACT(\begin{DoxyParamCaption}\item[{}]{pcigar}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((pcigar)\ >>\ 30)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00066}{66}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_aa91ad5e1e9eacc6349e166408b891499}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_FREE\_SLOTS@{PCIGAR\_FREE\_SLOTS}}
+\index{PCIGAR\_FREE\_SLOTS@{PCIGAR\_FREE\_SLOTS}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_FREE\_SLOTS}{PCIGAR\_FREE\_SLOTS}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_aa91ad5e1e9eacc6349e166408b891499} 
+\+\#define PCIGAR\+\_\+\+FREE\+\_\+\+SLOTS(\begin{DoxyParamCaption}\item[{}]{pcigar}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((pcigar)!=0)\ ?\ \_\_builtin\_clz(pcigar)/2\ :\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a31f3f1aadb62f31a223f24ce824486db}{PCIGAR\_MAX\_LENGTH}};}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00067}{67}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a9e89997c5ff6802c0553bb24d0eef385}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_FULL\_MASK@{PCIGAR\_FULL\_MASK}}
+\index{PCIGAR\_FULL\_MASK@{PCIGAR\_FULL\_MASK}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_FULL\_MASK}{PCIGAR\_FULL\_MASK}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a9e89997c5ff6802c0553bb24d0eef385} 
+\+\#define PCIGAR\+\_\+\+FULL\+\_\+\+MASK~0x40000000u /\+\texorpdfstring{$\ast$}{*} Completely full \texorpdfstring{$\ast$}{*}/\+}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00062}{62}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_af3e605599142a53503c93650e2dacca2}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_HALF\_FULL\_MASK@{PCIGAR\_HALF\_FULL\_MASK}}
+\index{PCIGAR\_HALF\_FULL\_MASK@{PCIGAR\_HALF\_FULL\_MASK}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_HALF\_FULL\_MASK}{PCIGAR\_HALF\_FULL\_MASK}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_af3e605599142a53503c93650e2dacca2} 
+\+\#define PCIGAR\+\_\+\+HALF\+\_\+\+FULL\+\_\+\+MASK~0x00010000u /\+\texorpdfstring{$\ast$}{*}  9-\/slots busy or more \texorpdfstring{$\ast$}{*}/\+}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00064}{64}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a505ce9422c48409d457ead4952fa050e}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_INSERTION@{PCIGAR\_INSERTION}}
+\index{PCIGAR\_INSERTION@{PCIGAR\_INSERTION}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_INSERTION}{PCIGAR\_INSERTION}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a505ce9422c48409d457ead4952fa050e} 
+\+\#define PCIGAR\+\_\+\+INSERTION~3ul}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00050}{50}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a1c058bd2f0e5fe29df250ec1b47e116d}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_IS\_UTILISED@{PCIGAR\_IS\_UTILISED}}
+\index{PCIGAR\_IS\_UTILISED@{PCIGAR\_IS\_UTILISED}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_IS\_UTILISED}{PCIGAR\_IS\_UTILISED}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a1c058bd2f0e5fe29df250ec1b47e116d} 
+\+\#define PCIGAR\+\_\+\+IS\+\_\+\+UTILISED(\begin{DoxyParamCaption}\item[{}]{pcigar}{, }\item[{}]{mask}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((pcigar)\ >=\ mask)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00065}{65}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a31f3f1aadb62f31a223f24ce824486db}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_MAX\_LENGTH@{PCIGAR\_MAX\_LENGTH}}
+\index{PCIGAR\_MAX\_LENGTH@{PCIGAR\_MAX\_LENGTH}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_MAX\_LENGTH}{PCIGAR\_MAX\_LENGTH}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a31f3f1aadb62f31a223f24ce824486db} 
+\+\#define PCIGAR\+\_\+\+MAX\+\_\+\+LENGTH~16}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00061}{61}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a4ba81a03babe679d370924fc580f3c01}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_MISMATCH@{PCIGAR\_MISMATCH}}
+\index{PCIGAR\_MISMATCH@{PCIGAR\_MISMATCH}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_MISMATCH}{PCIGAR\_MISMATCH}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a4ba81a03babe679d370924fc580f3c01} 
+\+\#define PCIGAR\+\_\+\+MISMATCH~2ul}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00049}{49}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_ae41e9a74a8c0eb8c685dc6b6957d8540}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_NULL@{PCIGAR\_NULL}}
+\index{PCIGAR\_NULL@{PCIGAR\_NULL}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_NULL}{PCIGAR\_NULL}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_ae41e9a74a8c0eb8c685dc6b6957d8540} 
+\+\#define PCIGAR\+\_\+\+NULL~0ul}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00047}{47}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a743b6d5fe5bc5b804c6a79541f1a023e}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_POP\_FRONT@{PCIGAR\_POP\_FRONT}}
+\index{PCIGAR\_POP\_FRONT@{PCIGAR\_POP\_FRONT}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_POP\_FRONT}{PCIGAR\_POP\_FRONT}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a743b6d5fe5bc5b804c6a79541f1a023e} 
+\+\#define PCIGAR\+\_\+\+POP\+\_\+\+FRONT(\begin{DoxyParamCaption}\item[{}]{pcigar}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{pcigar\ =\ pcigar\ <<\ 2}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00052}{52}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_ac3ddd6fb3d40d6858623d30287863e14}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_PUSH\_BACK@{PCIGAR\_PUSH\_BACK}}
+\index{PCIGAR\_PUSH\_BACK@{PCIGAR\_PUSH\_BACK}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_PUSH\_BACK}{PCIGAR\_PUSH\_BACK}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_ac3ddd6fb3d40d6858623d30287863e14} 
+\+\#define PCIGAR\+\_\+\+PUSH\+\_\+\+BACK(\begin{DoxyParamCaption}\item[{}]{pcigar}{, }\item[{}]{operation}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((pcigar<<2)\ |\ operation)}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00053}{53}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a7b324082f4bb0a0aaeb6bfc10b440228}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_PUSH\_BACK\_DEL@{PCIGAR\_PUSH\_BACK\_DEL}}
+\index{PCIGAR\_PUSH\_BACK\_DEL@{PCIGAR\_PUSH\_BACK\_DEL}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_PUSH\_BACK\_DEL}{PCIGAR\_PUSH\_BACK\_DEL}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a7b324082f4bb0a0aaeb6bfc10b440228} 
+\+\#define PCIGAR\+\_\+\+PUSH\+\_\+\+BACK\+\_\+\+DEL(\begin{DoxyParamCaption}\item[{}]{pcigar}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((pcigar<<2)\ |\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a6195dfda6c1ced74758b8e75b794400d}{PCIGAR\_DELETION}})}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00056}{56}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_ae061bf6b4f3d8983359cbe51cc0535b6}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_PUSH\_BACK\_INS@{PCIGAR\_PUSH\_BACK\_INS}}
+\index{PCIGAR\_PUSH\_BACK\_INS@{PCIGAR\_PUSH\_BACK\_INS}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_PUSH\_BACK\_INS}{PCIGAR\_PUSH\_BACK\_INS}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_ae061bf6b4f3d8983359cbe51cc0535b6} 
+\+\#define PCIGAR\+\_\+\+PUSH\+\_\+\+BACK\+\_\+\+INS(\begin{DoxyParamCaption}\item[{}]{pcigar}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((pcigar<<2)\ |\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a505ce9422c48409d457ead4952fa050e}{PCIGAR\_INSERTION}})}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00055}{55}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+\Hypertarget{wavefront__pcigar_8h_a8852fb1cc658e06d92369f88a4594732}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!PCIGAR\_PUSH\_BACK\_MISMS@{PCIGAR\_PUSH\_BACK\_MISMS}}
+\index{PCIGAR\_PUSH\_BACK\_MISMS@{PCIGAR\_PUSH\_BACK\_MISMS}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{PCIGAR\_PUSH\_BACK\_MISMS}{PCIGAR\_PUSH\_BACK\_MISMS}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a8852fb1cc658e06d92369f88a4594732} 
+\+\#define PCIGAR\+\_\+\+PUSH\+\_\+\+BACK\+\_\+\+MISMS(\begin{DoxyParamCaption}\item[{}]{pcigar}{}\end{DoxyParamCaption})}
+
+{\bfseries Value:\+}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{((pcigar<<2)\ |\ \doxymbox{\hyperlink{wavefront__pcigar_8h_a4ba81a03babe679d370924fc580f3c01}{PCIGAR\_MISMATCH}})}
+
+\end{DoxyCode}
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00057}{57}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+
+
+\label{doc-typedef-members}
+\Hypertarget{wavefront__pcigar_8h_doc-typedef-members}
+\doxysubsection{Typedef Documentation}
+\Hypertarget{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!pcigar\_t@{pcigar\_t}}
+\index{pcigar\_t@{pcigar\_t}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{pcigar\_t}{pcigar\_t}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b} 
+typedef uint32\+\_\+t \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}}}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8h_source_l00060}{60}} of file \doxymbox{\hyperlink{wavefront__pcigar_8h_source}{wavefront\+\_\+pcigar.\+h}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__pcigar_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__pcigar_8h_a4ab128f9268680501784b7a3493b78ff}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!pcigar\_get\_length@{pcigar\_get\_length}}
+\index{pcigar\_get\_length@{pcigar\_get\_length}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{pcigar\_get\_length()}{pcigar\_get\_length()}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a4ab128f9268680501784b7a3493b78ff} 
+int pcigar\+\_\+get\+\_\+length (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}}}]{pcigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8c_source_l00058}{58}} of file \doxymbox{\hyperlink{wavefront__pcigar_8c_source}{wavefront\+\_\+pcigar.\+c}}.
+
+\Hypertarget{wavefront__pcigar_8h_ab0b73b0d8b9ef553957bb6d5525715fe}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!pcigar\_print@{pcigar\_print}}
+\index{pcigar\_print@{pcigar\_print}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{pcigar\_print()}{pcigar\_print()}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_ab0b73b0d8b9ef553957bb6d5525715fe} 
+void pcigar\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}}}]{pcigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8c_source_l00270}{270}} of file \doxymbox{\hyperlink{wavefront__pcigar_8c_source}{wavefront\+\_\+pcigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{wavefront__pcigar_8h_aeef6dba48d45c940bb7c3a167f586015}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!pcigar\_unpack@{pcigar\_unpack}}
+\index{pcigar\_unpack@{pcigar\_unpack}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{pcigar\_unpack()}{pcigar\_unpack()}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_aeef6dba48d45c940bb7c3a167f586015} 
+int pcigar\+\_\+unpack (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}}}]{pcigar}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{cigar\+\_\+buffer}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8c_source_l00067}{67}} of file \doxymbox{\hyperlink{wavefront__pcigar_8c_source}{wavefront\+\_\+pcigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__pcigar_8h_a8e3b3b22824b4241b857222f13f87367}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!pcigar\_unpack\_affine@{pcigar\_unpack\_affine}}
+\index{pcigar\_unpack\_affine@{pcigar\_unpack\_affine}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{pcigar\_unpack\_affine()}{pcigar\_unpack\_affine()}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a8e3b3b22824b4241b857222f13f87367} 
+void pcigar\+\_\+unpack\+\_\+affine (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}}}]{pcigar}{, }\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{sequences}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{v\+\_\+pos}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{h\+\_\+pos}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{cigar\+\_\+buffer}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+length}{, }\item[{\doxymbox{\hyperlink{affine__penalties_8h_ad9726665210d0dae02c8ee1a67e52541}{affine\+\_\+matrix\+\_\+type}} \texorpdfstring{$\ast$}{*}const}]{current\+\_\+matrix\+\_\+type}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8c_source_l00204}{204}} of file \doxymbox{\hyperlink{wavefront__pcigar_8c_source}{wavefront\+\_\+pcigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__pcigar_8h_a9ab021e7dfdc273073f5baf4ae2eb3e3}\index{wavefront\_pcigar.h@{wavefront\_pcigar.h}!pcigar\_unpack\_linear@{pcigar\_unpack\_linear}}
+\index{pcigar\_unpack\_linear@{pcigar\_unpack\_linear}!wavefront\_pcigar.h@{wavefront\_pcigar.h}}
+\doxysubsubsection{\texorpdfstring{pcigar\_unpack\_linear()}{pcigar\_unpack\_linear()}}
+{\footnotesize\ttfamily \label{wavefront__pcigar_8h_a9ab021e7dfdc273073f5baf4ae2eb3e3} 
+void pcigar\+\_\+unpack\+\_\+linear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}}}]{pcigar}{, }\item[{\doxymbox{\hyperlink{structwavefront__sequences__t}{wavefront\+\_\+sequences\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{sequences}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{v\+\_\+pos}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{h\+\_\+pos}{, }\item[{char \texorpdfstring{$\ast$}{*}}]{cigar\+\_\+buffer}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__pcigar_8c_source_l00153}{153}} of file \doxymbox{\hyperlink{wavefront__pcigar_8c_source}{wavefront\+\_\+pcigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7

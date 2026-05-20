@@ -1,0 +1,85 @@
+\doxysection{sequence\+\_\+buffer.\+h}
+\hypertarget{sequence__buffer_8h_source}{}\label{sequence__buffer_8h_source}\index{src/wfa/utils/sequence\_buffer.h@{src/wfa/utils/sequence\_buffer.h}}
+\doxymbox{\hyperlink{sequence__buffer_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00029}00029\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00031}00031\ \textcolor{preprocessor}{\#ifndef\ SEQUENCE\_BUFFER\_H\_}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00032}00032\ \textcolor{preprocessor}{\#define\ SEQUENCE\_BUFFER\_H\_}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00034}00034\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{mm__allocator_8h}{system/mm\_allocator.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00035}00035\ }
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00036}\doxymbox{\hyperlink{structsequence__offset__t}{00036}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00037}\doxymbox{\hyperlink{structsequence__offset__t_ae29e6e4b47008170a6e46d1626508c29}{00037}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__offset__t_ae29e6e4b47008170a6e46d1626508c29}{pattern\_offset}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00038}\doxymbox{\hyperlink{structsequence__offset__t_adb25a947869bcba5d4c0102243fe29db}{00038}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__offset__t_adb25a947869bcba5d4c0102243fe29db}{pattern\_length}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00039}\doxymbox{\hyperlink{structsequence__offset__t_abc1f646934b5e75343f9f8373c5f9900}{00039}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__offset__t_abc1f646934b5e75343f9f8373c5f9900}{text\_offset}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00040}\doxymbox{\hyperlink{structsequence__offset__t_acb0b90b74060accb599471a28afc0c01}{00040}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__offset__t_acb0b90b74060accb599471a28afc0c01}{text\_length}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00041}00041\ \}\ \doxymbox{\hyperlink{structsequence__offset__t}{sequence\_offset\_t}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00042}\doxymbox{\hyperlink{structsequence__buffer__t}{00042}}\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\{}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00043}00043\ \ \ \textcolor{comment}{//\ ID}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00044}\doxymbox{\hyperlink{structsequence__buffer__t_a4f36e964b65635442bf75d5bb1ee494a}{00044}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__buffer__t_a4f36e964b65635442bf75d5bb1ee494a}{sequence\_id}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00045}00045\ \ \ \textcolor{comment}{//\ Sequences}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00046}\doxymbox{\hyperlink{structsequence__buffer__t_a8d7a760c98e600b8ddd9ba91ca1e607a}{00046}}\ \ \ \doxymbox{\hyperlink{structsequence__offset__t}{sequence\_offset\_t}}*\ \doxymbox{\hyperlink{structsequence__buffer__t_a8d7a760c98e600b8ddd9ba91ca1e607a}{offsets}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00047}\doxymbox{\hyperlink{structsequence__buffer__t_a4f559592dfe7eb7326671ca4ae0069b2}{00047}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__buffer__t_a4f559592dfe7eb7326671ca4ae0069b2}{offsets\_used}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00048}\doxymbox{\hyperlink{structsequence__buffer__t_a257da7fa89298bb123d697fbec44aebb}{00048}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__buffer__t_a257da7fa89298bb123d697fbec44aebb}{offsets\_allocated}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00049}00049\ \ \ \textcolor{comment}{//\ Buffer}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00050}\doxymbox{\hyperlink{structsequence__buffer__t_aa7b7003f2f25055faa9ee2cd79ae3e21}{00050}}\ \ \ \textcolor{keywordtype}{char}*\ \doxymbox{\hyperlink{structsequence__buffer__t_aa7b7003f2f25055faa9ee2cd79ae3e21}{buffer}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00051}\doxymbox{\hyperlink{structsequence__buffer__t_a496507d844e70b99ec92facd97ffd58e}{00051}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__buffer__t_a496507d844e70b99ec92facd97ffd58e}{buffer\_used}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00052}\doxymbox{\hyperlink{structsequence__buffer__t_ae0ae175e90ff5a8ae232290eefb082fa}{00052}}\ \ \ uint64\_t\ \doxymbox{\hyperlink{structsequence__buffer__t_ae0ae175e90ff5a8ae232290eefb082fa}{buffer\_allocated}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00053}00053\ \ \ \textcolor{comment}{//\ Stats}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00054}\doxymbox{\hyperlink{structsequence__buffer__t_a846f93a3af2d2153e6b9d5eb14f12bd5}{00054}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structsequence__buffer__t_a846f93a3af2d2153e6b9d5eb14f12bd5}{max\_pattern\_length}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00055}\doxymbox{\hyperlink{structsequence__buffer__t_ab9d6e5312b75ea63985d7f8d7760676e}{00055}}\ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{structsequence__buffer__t_ab9d6e5312b75ea63985d7f8d7760676e}{max\_text\_length}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00056}00056\ \}\ \doxymbox{\hyperlink{structsequence__buffer__t}{sequence\_buffer\_t}};}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00057}00057\ }
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00058}00058\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00059}00059\ \textcolor{comment}{\ *\ Setup}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00060}00060\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00061}00061\ \doxymbox{\hyperlink{structsequence__buffer__t}{sequence\_buffer\_t}}*\ \doxymbox{\hyperlink{sequence__buffer_8h_a2618479f6e12b75dfd68541e7a743fd2}{sequence\_buffer\_new}}(}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00062}00062\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ num\_sequences\_hint,}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00063}00063\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ sequence\_length\_hint);}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00064}00064\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{sequence__buffer_8h_a4de88ed72e43b0012e617ac3eebdb2d8}{sequence\_buffer\_clear}}(}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00065}00065\ \ \ \ \ \doxymbox{\hyperlink{structsequence__buffer__t}{sequence\_buffer\_t}}*\ \textcolor{keyword}{const}\ sequence\_buffer);}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00066}00066\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{sequence__buffer_8h_a9fb6005f8459057a99cb1bb8a6dbd667}{sequence\_buffer\_delete}}(}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00067}00067\ \ \ \ \ \doxymbox{\hyperlink{structsequence__buffer__t}{sequence\_buffer\_t}}*\ \textcolor{keyword}{const}\ sequence\_buffer);}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00068}00068\ }
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00069}00069\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00070}00070\ \textcolor{comment}{\ *\ Accessors}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00071}00071\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00072}00072\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{sequence__buffer_8h_a606c932446d255e5ac8df621477f6b78}{sequence\_buffer\_add\_pair}}(}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00073}00073\ \ \ \ \ \doxymbox{\hyperlink{structsequence__buffer__t}{sequence\_buffer\_t}}*\ \textcolor{keyword}{const}\ sequence\_buffer,}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00074}00074\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}},}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00075}00075\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ pattern\_length,}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00076}00076\ \ \ \ \ \textcolor{keywordtype}{char}*\ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}},}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00077}00077\ \ \ \ \ \textcolor{keyword}{const}\ uint64\_t\ text\_length);}
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00078}00078\ }
+\DoxyCodeLine{\Hypertarget{sequence__buffer_8h_source_l00079}00079\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{/*\ SEQUENCE\_BUFFER\_H\_\ */}\textcolor{preprocessor}{}}
+
+\end{DoxyCode}

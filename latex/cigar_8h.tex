@@ -1,0 +1,416 @@
+\doxysection{src/\+wfa/\+alignment/\+cigar.h File Reference}
+\hypertarget{cigar_8h}{}\label{cigar_8h}\index{src/wfa/alignment/cigar.h@{src/wfa/alignment/cigar.h}}
+{\ttfamily \+\#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \+\#include "{}system/\+mm\+\_\+allocator.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+linear\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+affine\+\_\+penalties.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+affine2p\+\_\+penalties.\+h"{}}\newline
+Include dependency graph for cigar.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{cigar_8h_a57c9301ba62a7689713ea4ae714f065f}{cigar\+\_\+new}} (const int max\+\_\+operations)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_a761cc5a323a07219f47f9487e638ea45}{cigar\+\_\+clear}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_ad155e0eb74dcd844b32e89e83d707609}{cigar\+\_\+resize}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const int max\+\_\+operations)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_adb03712c898e33bd73f5b921bd62fb6e}{cigar\+\_\+free}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+bool \doxymbox{\hyperlink{cigar_8h_a78aa773a3aad27c5a8a0ce8babff2ebd}{cigar\+\_\+is\+\_\+null}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+int \doxymbox{\hyperlink{cigar_8h_acaea5d2f4de514d5b71211e3f0940b17}{cigar\+\_\+count\+\_\+matches}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_a12025ba0984ed902b2825405b8f18d41}{cigar\+\_\+append\+\_\+forward}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+dst, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+src)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_a35f61b05fe00315c57e2c6a7ff9eb0ae}{cigar\+\_\+append\+\_\+reverse}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+dst, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+src)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_a8cd21038af38eddabd0377586b52b558}{cigar\+\_\+append\+\_\+deletion}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const int length)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_a88e7a981331175711a6253b35869a5e6}{cigar\+\_\+append\+\_\+insertion}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const int length)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_adf083ff530fa58b1b5a12c12aed27b48}{cigar\+\_\+get\+\_\+\+CIGAR}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const bool show\+\_\+mismatches, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}const cigar\+\_\+buffer, int \texorpdfstring{$\ast$}{*}const cigar\+\_\+length)
+\item 
+int \doxymbox{\hyperlink{cigar_8h_a40bf43b056b66137f07a9ed4b0f940be}{cigar\+\_\+score\+\_\+edit}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+int \doxymbox{\hyperlink{cigar_8h_a4381da4d695c9a0996a7260219502809}{cigar\+\_\+score\+\_\+gap\+\_\+linear}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, \doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\item 
+int \doxymbox{\hyperlink{cigar_8h_adc63a12380d15e70c29f0b14e18ab819}{cigar\+\_\+score\+\_\+gap\+\_\+affine}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\item 
+int \doxymbox{\hyperlink{cigar_8h_a28041a6e66f3fa969ab414da0ca146c2}{cigar\+\_\+score\+\_\+gap\+\_\+affine2p}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, \doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\item 
+int \doxymbox{\hyperlink{cigar_8h_a713b62c73e2046c61f23dcba7dd5e95f}{cigar\+\_\+cmp}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+a, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+b)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_a99380ffcac64917b732b34fdbeabab53}{cigar\+\_\+copy}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+dst, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar\+\_\+src)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_abed706e8393514ab5824ad676673c1b2}{cigar\+\_\+discover\+\_\+mismatches}} (const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar)
+\item 
+bool \doxymbox{\hyperlink{cigar_8h_a9e13d1d11f5e7daabe9f2b8e0aa75c07}{cigar\+\_\+maxtrim\+\_\+gap\+\_\+linear}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, \doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\item 
+bool \doxymbox{\hyperlink{cigar_8h_a1c7e51048bc63f69f41f66c1105b8203}{cigar\+\_\+maxtrim\+\_\+gap\+\_\+affine}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, \doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\item 
+bool \doxymbox{\hyperlink{cigar_8h_a7325f95bfc49bfb074a4d659eef6323a}{cigar\+\_\+maxtrim\+\_\+gap\+\_\+affine2p}} (\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, \doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const penalties)
+\item 
+bool \doxymbox{\hyperlink{cigar_8h_aaa326437ca8568254ca6c6ebc7467746}{cigar\+\_\+check\+\_\+alignment}} (FILE \texorpdfstring{$\ast$}{*}const stream, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const bool verbose)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_a69e9ddcae18d2607a60b7d0db7c024a1}{cigar\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const bool print\+\_\+matches)
+\item 
+int \doxymbox{\hyperlink{cigar_8h_a8790a6d4ff1303b641510ce9110fb754}{cigar\+\_\+sprint}} (char \texorpdfstring{$\ast$}{*}const buffer, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const bool print\+\_\+matches)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_aa9fbabef2c335146e51523bad03a6dc9}{cigar\+\_\+print\+\_\+\+SAM\+\_\+\+CIGAR}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const bool show\+\_\+mismatches)
+\item 
+int \doxymbox{\hyperlink{cigar_8h_aae530ec59e913842edecd208321fb26a}{cigar\+\_\+sprint\+\_\+\+SAM\+\_\+\+CIGAR}} (char \texorpdfstring{$\ast$}{*}const buffer, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const bool show\+\_\+mismatches)
+\item 
+void \doxymbox{\hyperlink{cigar_8h_abeec4a2a2ef07007631c35bc19edcf32}{cigar\+\_\+print\+\_\+pretty}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const cigar, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+\_\+length, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+\_\+length)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{cigar_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{cigar_8h_a8cd21038af38eddabd0377586b52b558}\index{cigar.h@{cigar.h}!cigar\_append\_deletion@{cigar\_append\_deletion}}
+\index{cigar\_append\_deletion@{cigar\_append\_deletion}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_append\_deletion()}{cigar\_append\_deletion()}}
+{\footnotesize\ttfamily \label{cigar_8h_a8cd21038af38eddabd0377586b52b558} 
+void cigar\+\_\+append\+\_\+deletion (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const int}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00154}{154}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{cigar_8h_a12025ba0984ed902b2825405b8f18d41}\index{cigar.h@{cigar.h}!cigar\_append\_forward@{cigar\_append\_forward}}
+\index{cigar\_append\_forward@{cigar\_append\_forward}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_append\_forward()}{cigar\_append\_forward()}}
+{\footnotesize\ttfamily \label{cigar_8h_a12025ba0984ed902b2825405b8f18d41} 
+void cigar\+\_\+append\+\_\+forward (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+dst}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+src}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00125}{125}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{cigar_8h_a88e7a981331175711a6253b35869a5e6}\index{cigar.h@{cigar.h}!cigar\_append\_insertion@{cigar\_append\_insertion}}
+\index{cigar\_append\_insertion@{cigar\_append\_insertion}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_append\_insertion()}{cigar\_append\_insertion()}}
+{\footnotesize\ttfamily \label{cigar_8h_a88e7a981331175711a6253b35869a5e6} 
+void cigar\+\_\+append\+\_\+insertion (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const int}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00166}{166}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 4
+\Hypertarget{cigar_8h_a35f61b05fe00315c57e2c6a7ff9eb0ae}\index{cigar.h@{cigar.h}!cigar\_append\_reverse@{cigar\_append\_reverse}}
+\index{cigar\_append\_reverse@{cigar\_append\_reverse}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_append\_reverse()}{cigar\_append\_reverse()}}
+{\footnotesize\ttfamily \label{cigar_8h_a35f61b05fe00315c57e2c6a7ff9eb0ae} 
+void cigar\+\_\+append\+\_\+reverse (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+dst}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+src}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00137}{137}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+\Hypertarget{cigar_8h_aaa326437ca8568254ca6c6ebc7467746}\index{cigar.h@{cigar.h}!cigar\_check\_alignment@{cigar\_check\_alignment}}
+\index{cigar\_check\_alignment@{cigar\_check\_alignment}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_check\_alignment()}{cigar\_check\_alignment()}}
+{\footnotesize\ttfamily \label{cigar_8h_aaa326437ca8568254ca6c6ebc7467746} 
+bool cigar\+\_\+check\+\_\+alignment (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const bool}]{verbose}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00617}{617}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{cigar_8h_a761cc5a323a07219f47f9487e638ea45}\index{cigar.h@{cigar.h}!cigar\_clear@{cigar\_clear}}
+\index{cigar\_clear@{cigar\_clear}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_clear()}{cigar\_clear()}}
+{\footnotesize\ttfamily \label{cigar_8h_a761cc5a323a07219f47f9487e638ea45} 
+void cigar\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00079}{79}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
+\Hypertarget{cigar_8h_a713b62c73e2046c61f23dcba7dd5e95f}\index{cigar.h@{cigar.h}!cigar\_cmp@{cigar\_cmp}}
+\index{cigar\_cmp@{cigar\_cmp}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_cmp()}{cigar\_cmp()}}
+{\footnotesize\ttfamily \label{cigar_8h_a713b62c73e2046c61f23dcba7dd5e95f} 
+int cigar\+\_\+cmp (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+a}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+b}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00346}{346}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{cigar_8h_a99380ffcac64917b732b34fdbeabab53}\index{cigar.h@{cigar.h}!cigar\_copy@{cigar\_copy}}
+\index{cigar\_copy@{cigar\_copy}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_copy()}{cigar\_copy()}}
+{\footnotesize\ttfamily \label{cigar_8h_a99380ffcac64917b732b34fdbeabab53} 
+void cigar\+\_\+copy (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+dst}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+src}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00365}{365}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+\Hypertarget{cigar_8h_acaea5d2f4de514d5b71211e3f0940b17}\index{cigar.h@{cigar.h}!cigar\_count\_matches@{cigar\_count\_matches}}
+\index{cigar\_count\_matches@{cigar\_count\_matches}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_count\_matches()}{cigar\_count\_matches()}}
+{\footnotesize\ttfamily \label{cigar_8h_acaea5d2f4de514d5b71211e3f0940b17} 
+int cigar\+\_\+count\+\_\+matches (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00117}{117}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+\Hypertarget{cigar_8h_abed706e8393514ab5824ad676673c1b2}\index{cigar.h@{cigar.h}!cigar\_discover\_mismatches@{cigar\_discover\_mismatches}}
+\index{cigar\_discover\_mismatches@{cigar\_discover\_mismatches}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_discover\_mismatches()}{cigar\_discover\_mismatches()}}
+{\footnotesize\ttfamily \label{cigar_8h_abed706e8393514ab5824ad676673c1b2} 
+void cigar\+\_\+discover\+\_\+mismatches (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00376}{376}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+\Hypertarget{cigar_8h_adb03712c898e33bd73f5b921bd62fb6e}\index{cigar.h@{cigar.h}!cigar\_free@{cigar\_free}}
+\index{cigar\_free@{cigar\_free}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_free()}{cigar\_free()}}
+{\footnotesize\ttfamily \label{cigar_8h_adb03712c898e33bd73f5b921bd62fb6e} 
+void cigar\+\_\+free (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00104}{104}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{cigar_8h_adf083ff530fa58b1b5a12c12aed27b48}\index{cigar.h@{cigar.h}!cigar\_get\_CIGAR@{cigar\_get\_CIGAR}}
+\index{cigar\_get\_CIGAR@{cigar\_get\_CIGAR}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_get\_CIGAR()}{cigar\_get\_CIGAR()}}
+{\footnotesize\ttfamily \label{cigar_8h_adf083ff530fa58b1b5a12c12aed27b48} 
+void cigar\+\_\+get\+\_\+\+CIGAR (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const bool}]{show\+\_\+mismatches}{, }\item[{uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+buffer}{, }\item[{int \texorpdfstring{$\ast$}{*}const}]{cigar\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00230}{230}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 9
+Here is the caller graph for this function:\+
+% FIG 10
+\Hypertarget{cigar_8h_a78aa773a3aad27c5a8a0ce8babff2ebd}\index{cigar.h@{cigar.h}!cigar\_is\_null@{cigar\_is\_null}}
+\index{cigar\_is\_null@{cigar\_is\_null}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_is\_null()}{cigar\_is\_null()}}
+{\footnotesize\ttfamily \label{cigar_8h_a78aa773a3aad27c5a8a0ce8babff2ebd} 
+bool cigar\+\_\+is\+\_\+null (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00113}{113}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 11
+\Hypertarget{cigar_8h_a1c7e51048bc63f69f41f66c1105b8203}\index{cigar.h@{cigar.h}!cigar\_maxtrim\_gap\_affine@{cigar\_maxtrim\_gap\_affine}}
+\index{cigar\_maxtrim\_gap\_affine@{cigar\_maxtrim\_gap\_affine}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_maxtrim\_gap\_affine()}{cigar\_maxtrim\_gap\_affine()}}
+{\footnotesize\ttfamily \label{cigar_8h_a1c7e51048bc63f69f41f66c1105b8203} 
+bool cigar\+\_\+maxtrim\+\_\+gap\+\_\+affine (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00473}{473}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 12
+Here is the caller graph for this function:\+
+% FIG 13
+\Hypertarget{cigar_8h_a7325f95bfc49bfb074a4d659eef6323a}\index{cigar.h@{cigar.h}!cigar\_maxtrim\_gap\_affine2p@{cigar\_maxtrim\_gap\_affine2p}}
+\index{cigar\_maxtrim\_gap\_affine2p@{cigar\_maxtrim\_gap\_affine2p}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_maxtrim\_gap\_affine2p()}{cigar\_maxtrim\_gap\_affine2p()}}
+{\footnotesize\ttfamily \label{cigar_8h_a7325f95bfc49bfb074a4d659eef6323a} 
+bool cigar\+\_\+maxtrim\+\_\+gap\+\_\+affine2p (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00561}{561}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 14
+Here is the caller graph for this function:\+
+% FIG 15
+\Hypertarget{cigar_8h_a9e13d1d11f5e7daabe9f2b8e0aa75c07}\index{cigar.h@{cigar.h}!cigar\_maxtrim\_gap\_linear@{cigar\_maxtrim\_gap\_linear}}
+\index{cigar\_maxtrim\_gap\_linear@{cigar\_maxtrim\_gap\_linear}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_maxtrim\_gap\_linear()}{cigar\_maxtrim\_gap\_linear()}}
+{\footnotesize\ttfamily \label{cigar_8h_a9e13d1d11f5e7daabe9f2b8e0aa75c07} 
+bool cigar\+\_\+maxtrim\+\_\+gap\+\_\+linear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{\doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00419}{419}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 16
+Here is the caller graph for this function:\+
+% FIG 17
+\Hypertarget{cigar_8h_a57c9301ba62a7689713ea4ae714f065f}\index{cigar.h@{cigar.h}!cigar\_new@{cigar\_new}}
+\index{cigar\_new@{cigar\_new}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_new()}{cigar\_new()}}
+{\footnotesize\ttfamily \label{cigar_8h_a57c9301ba62a7689713ea4ae714f065f} 
+\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*} cigar\+\_\+new (\begin{DoxyParamCaption}\item[{const int}]{max\+\_\+operations}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00061}{61}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 18
+\Hypertarget{cigar_8h_a69e9ddcae18d2607a60b7d0db7c024a1}\index{cigar.h@{cigar.h}!cigar\_print@{cigar\_print}}
+\index{cigar\_print@{cigar\_print}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_print()}{cigar\_print()}}
+{\footnotesize\ttfamily \label{cigar_8h_a69e9ddcae18d2607a60b7d0db7c024a1} 
+void cigar\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const bool}]{print\+\_\+matches}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00692}{692}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 19
+Here is the caller graph for this function:\+
+% FIG 20
+\Hypertarget{cigar_8h_abeec4a2a2ef07007631c35bc19edcf32}\index{cigar.h@{cigar.h}!cigar\_print\_pretty@{cigar\_print\_pretty}}
+\index{cigar\_print\_pretty@{cigar\_print\_pretty}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_print\_pretty()}{cigar\_print\_pretty()}}
+{\footnotesize\ttfamily \label{cigar_8h_abeec4a2a2ef07007631c35bc19edcf32} 
+void cigar\+\_\+print\+\_\+pretty (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{pattern}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const char \texorpdfstring{$\ast$}{*}const}]{text}{, }\item[{const int}]{text\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00780}{780}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 21
+Here is the caller graph for this function:\+
+% FIG 22
+\Hypertarget{cigar_8h_aa9fbabef2c335146e51523bad03a6dc9}\index{cigar.h@{cigar.h}!cigar\_print\_SAM\_CIGAR@{cigar\_print\_SAM\_CIGAR}}
+\index{cigar\_print\_SAM\_CIGAR@{cigar\_print\_SAM\_CIGAR}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_print\_SAM\_CIGAR()}{cigar\_print\_SAM\_CIGAR()}}
+{\footnotesize\ttfamily \label{cigar_8h_aa9fbabef2c335146e51523bad03a6dc9} 
+void cigar\+\_\+print\+\_\+\+SAM\+\_\+\+CIGAR (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const bool}]{show\+\_\+mismatches}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00741}{741}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 23
+Here is the caller graph for this function:\+
+% FIG 24
+\Hypertarget{cigar_8h_ad155e0eb74dcd844b32e89e83d707609}\index{cigar.h@{cigar.h}!cigar\_resize@{cigar\_resize}}
+\index{cigar\_resize@{cigar\_resize}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_resize()}{cigar\_resize()}}
+{\footnotesize\ttfamily \label{cigar_8h_ad155e0eb74dcd844b32e89e83d707609} 
+void cigar\+\_\+resize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const int}]{max\+\_\+operations}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00091}{91}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 25
+Here is the caller graph for this function:\+
+% FIG 26
+\Hypertarget{cigar_8h_a40bf43b056b66137f07a9ed4b0f940be}\index{cigar.h@{cigar.h}!cigar\_score\_edit@{cigar\_score\_edit}}
+\index{cigar\_score\_edit@{cigar\_score\_edit}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_score\_edit()}{cigar\_score\_edit()}}
+{\footnotesize\ttfamily \label{cigar_8h_a40bf43b056b66137f07a9ed4b0f940be} 
+int cigar\+\_\+score\+\_\+edit (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00244}{244}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 27
+\Hypertarget{cigar_8h_adc63a12380d15e70c29f0b14e18ab819}\index{cigar.h@{cigar.h}!cigar\_score\_gap\_affine@{cigar\_score\_gap\_affine}}
+\index{cigar\_score\_gap\_affine@{cigar\_score\_gap\_affine}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_score\_gap\_affine()}{cigar\_score\_gap\_affine()}}
+{\footnotesize\ttfamily \label{cigar_8h_adc63a12380d15e70c29f0b14e18ab819} 
+int cigar\+\_\+score\+\_\+gap\+\_\+affine (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{\doxymbox{\hyperlink{structaffine__penalties__t}{affine\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00277}{277}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 28
+\Hypertarget{cigar_8h_a28041a6e66f3fa969ab414da0ca146c2}\index{cigar.h@{cigar.h}!cigar\_score\_gap\_affine2p@{cigar\_score\_gap\_affine2p}}
+\index{cigar\_score\_gap\_affine2p@{cigar\_score\_gap\_affine2p}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_score\_gap\_affine2p()}{cigar\_score\_gap\_affine2p()}}
+{\footnotesize\ttfamily \label{cigar_8h_a28041a6e66f3fa969ab414da0ca146c2} 
+int cigar\+\_\+score\+\_\+gap\+\_\+affine2p (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{\doxymbox{\hyperlink{structaffine2p__penalties__t}{affine2p\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00324}{324}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 29
+Here is the caller graph for this function:\+
+% FIG 30
+\Hypertarget{cigar_8h_a4381da4d695c9a0996a7260219502809}\index{cigar.h@{cigar.h}!cigar\_score\_gap\_linear@{cigar\_score\_gap\_linear}}
+\index{cigar\_score\_gap\_linear@{cigar\_score\_gap\_linear}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_score\_gap\_linear()}{cigar\_score\_gap\_linear()}}
+{\footnotesize\ttfamily \label{cigar_8h_a4381da4d695c9a0996a7260219502809} 
+int cigar\+\_\+score\+\_\+gap\+\_\+linear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{\doxymbox{\hyperlink{structlinear__penalties__t}{linear\+\_\+penalties\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{penalties}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00260}{260}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 31
+\Hypertarget{cigar_8h_a8790a6d4ff1303b641510ce9110fb754}\index{cigar.h@{cigar.h}!cigar\_sprint@{cigar\_sprint}}
+\index{cigar\_sprint@{cigar\_sprint}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_sprint()}{cigar\_sprint()}}
+{\footnotesize\ttfamily \label{cigar_8h_a8790a6d4ff1303b641510ce9110fb754} 
+int cigar\+\_\+sprint (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{buffer}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const bool}]{print\+\_\+matches}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00706}{706}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 32
+Here is the caller graph for this function:\+
+% FIG 33
+\Hypertarget{cigar_8h_aae530ec59e913842edecd208321fb26a}\index{cigar.h@{cigar.h}!cigar\_sprint\_SAM\_CIGAR@{cigar\_sprint\_SAM\_CIGAR}}
+\index{cigar\_sprint\_SAM\_CIGAR@{cigar\_sprint\_SAM\_CIGAR}!cigar.h@{cigar.h}}
+\doxysubsubsection{\texorpdfstring{cigar\_sprint\_SAM\_CIGAR()}{cigar\_sprint\_SAM\_CIGAR()}}
+{\footnotesize\ttfamily \label{cigar_8h_aae530ec59e913842edecd208321fb26a} 
+int cigar\+\_\+sprint\+\_\+\+SAM\+\_\+\+CIGAR (\begin{DoxyParamCaption}\item[{char \texorpdfstring{$\ast$}{*}const}]{buffer}{, }\item[{\doxymbox{\hyperlink{structcigar__t}{cigar\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{cigar}{, }\item[{const bool}]{show\+\_\+mismatches}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{cigar_8c_source_l00755}{755}} of file \doxymbox{\hyperlink{cigar_8c_source}{cigar.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 34
+Here is the caller graph for this function:\+
+% FIG 35

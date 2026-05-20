@@ -1,0 +1,162 @@
+\doxysection{wfa::\+WFAligner\+Gap\+Linear Class Reference}
+\hypertarget{classwfa_1_1_w_f_aligner_gap_linear}{}\label{classwfa_1_1_w_f_aligner_gap_linear}\index{wfa::WFAlignerGapLinear@{wfa::WFAlignerGapLinear}}
+
+
+{\ttfamily \+\#include $<$WFAligner.\+hpp$>$}
+
+
+
+Inheritance diagram for wfa::\+WFAligner\+Gap\+Linear:\+
+% FIG 0
+
+
+Collaboration diagram for wfa::\+WFAligner\+Gap\+Linear:\+
+% FIG 1
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_gap_linear_ac5dc80155554ab4c344d653319f2c111}{WFAligner\+Gap\+Linear}} (const int mismatch, const int \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9}{indel}}, const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}} alignment\+Scope, const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}} memory\+Model=\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_gap_linear_a1eda8b2758f8ef8c488fd757a3cbcef6}{WFAligner\+Gap\+Linear}} (const int match, const int mismatch, const int \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ecaa0294f8a97a2655a2bef23cd6e1c8ea9}{indel}}, const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}} alignment\+Scope, const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}} memory\+Model=\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner}{wfa::\+\+WFAligner}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_afd14b6c3918611f6266ac22f33f370b1}{align\+End2\+End}} (const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a99245a1009dd024c5f57f872005b79b4}{align\+End2\+End}} (const std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_aa0a930c5c6b9d1b8c2afda7acca7105b}{align\+End2\+End}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_ab859204bd8d7a7db61fe89b8a7e948c4}{align\+End2\+End}} (int(\texorpdfstring{$\ast$}{*}match\+Funct)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}match\+Funct\+Arguments, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_add96afb608fa163c26e02dfb65bba7d9}{align\+Ends\+Free}} (const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int pattern\+Begin\+Free, const int pattern\+End\+Free, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}}, const int text\+Begin\+Free, const int text\+End\+Free)
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4922b691c3b18b847d35f04c8a0892cc}{align\+Ends\+Free}} (const std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int pattern\+Begin\+Free, const int pattern\+End\+Free, const std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int text\+Begin\+Free, const int text\+End\+Free)
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a72ed5108617a5b9b77f81e8be972cfab}{align\+Ends\+Free}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int pattern\+Begin\+Free, const int pattern\+End\+Free, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}}, const int text\+Begin\+Free, const int text\+End\+Free)
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4beac355aefe1665e6c51a2dcd393b8a}{align\+Ends\+Free}} (int(\texorpdfstring{$\ast$}{*}match\+Funct)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}match\+Funct\+Arguments, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int pattern\+Begin\+Free, const int pattern\+End\+Free, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}}, const int text\+Begin\+Free, const int text\+End\+Free)
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4d19f9f8f73d9af391093d804bafeea7}{align\+Extension}} (const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a0fb88ca5b9e0f99dfa868896e317adfc}{align\+Extension}} (std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, std::\+string \&\doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a5d12e2d7957d0d4dc7eef961b8ab5a1d}{align\+Extension}} (const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const uint8\+\_\+t \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ef2c4e0306866717b7a0977b99cfd72}{align\+Extension}} (int(\texorpdfstring{$\ast$}{*}match\+Funct)(int, int, void \texorpdfstring{$\ast$}{*}), void \texorpdfstring{$\ast$}{*}match\+Funct\+Arguments, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_abbad13e68dde89caa96a421b39cd3d92}{set\+Heuristic\+None}} ()
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_aa9d446a5c30c3ac1fac3186af87d041e}{set\+Heuristic\+Banded\+Static}} (const int band\+\_\+min\+\_\+k, const int band\+\_\+max\+\_\+k)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_ab4d7de1e16b492b77b7f58f3c40a1422}{set\+Heuristic\+Banded\+Adaptive}} (const int band\+\_\+min\+\_\+k, const int band\+\_\+max\+\_\+k, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a0ca3ca4fbf157084fc69095c0ab02446}{set\+Heuristic\+WFadaptive}} (const int min\+\_\+wavefront\+\_\+length, const int max\+\_\+distance\+\_\+threshold, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a193e2a8b6609e87ef12aa95c84df83b2}{set\+Heuristic\+WFmash}} (const int min\+\_\+wavefront\+\_\+length, const int max\+\_\+distance\+\_\+threshold, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a54b37a5d488cbc41151d5e0ae14880fa}{set\+Heuristic\+XDrop}} (const int xdrop, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a74b0787835647f08ceb74f67302d5166}{set\+Heuristic\+ZDrop}} (const int zdrop, const int steps\+\_\+between\+\_\+cutoffs=1)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a2224fb1316c40c87a491d65f727062f2}{set\+Max\+Alignment\+Steps}} (const int max\+Alignment\+Steps)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4f70e0e80f370608e580b054cb30b952}{set\+Max\+Memory}} (const uint64\+\_\+t max\+Memory\+Resident, const uint64\+\_\+t max\+Memory\+Abort)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a396b5547f21312fb5e1f1e150f425dbe}{set\+Max\+Num\+Threads}} (const int max\+Num\+Threads)
+\item 
+int \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a2c1878bf10c14b01dd0d330a6e03b293}{get\+Alignment\+Status}} ()
+\item 
+int \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_af5efcdbc5c29170b91ebfe48441a9fe3}{get\+Alignment\+Score}} ()
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a839995dd497fea8b57575570975bdca3}{get\+Alignment}} (char \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}const cigar\+Operations, int \texorpdfstring{$\ast$}{*}cigar\+Length)
+\item 
+std::\+string \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7694d2e86aaaca45b55be6021df1d793}{get\+Alignment}} ()
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_aa2f5aa68153c61a333cce526d3f7fe19}{get\+CIGAR}} (const bool show\+Mismatches, uint32\+\_\+t \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}const cigar\+Operations, int \texorpdfstring{$\ast$}{*}const num\+Cigar\+Operations)
+\item 
+std::\+string \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a1446154bcbde83ffc8d81df0999da5a8}{get\+CIGAR}} (const bool show\+Mismatches)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a72e87630efda69e0ea88e5270aa53622}{print\+Pretty}} (FILE \texorpdfstring{$\ast$}{*}const stream, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a0f208ae57b10872d77f0587c0d7a56f9}{pattern}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a99bc4802dd04eb46928401d714b2797a}{pattern\+Length}}, const char \texorpdfstring{$\ast$}{*}const \doxymbox{\hyperlink{wfa__lambda_8cpp_a67a212d80b1fb0dc6777257cd6d1bbdf}{text}}, const int \doxymbox{\hyperlink{wfa__lambda_8cpp_a1fdfd76a66b079bc2d0ee47b305fcac4}{text\+Length}})
+\item 
+char \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_aa9740ce5ffdc7f43b4d30f934d6b1293}{str\+Status}} (const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} status)
+\item 
+void \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7df4f2b66af9ccdad1c3d7f67e2fa252}{debug\+Tag}} (char \texorpdfstring{$\ast$}{*}const debug\+Tag)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner}{wfa::\+\+WFAligner}}}
+\begin{DoxyCompactItemize}
+\item 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}} \{ \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}}
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcab7169426d21772db00430411c77cb710}{Memory\+Med}}
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dca45f2e04e585e58fc4988fb2d4e45da50}{Memory\+Low}}
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dca48bcb5f3e66a1766e4da3c1aac3f1f85}{Memory\+Ultralow}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}} \{ \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447dad14be3f859c9bcf099db73127f1d2df3}{Score}}
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447dab7d62f4978bb18273c0af338fdec2a19}{Alignment}}
+ \}
+\item 
+enum \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888e}{Alignment\+Status}} \{ \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea41cef18aab045450e9d08cbe1985b7df}{Status\+Alg\+Completed}} = WF\+\_\+\+STATUS\+\_\+\+ALG\+\_\+\+COMPLETED
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea2d3dd04904e07a27d6c0a40e7513c213}{Status\+Alg\+Partial}} = WF\+\_\+\+STATUS\+\_\+\+ALG\+\_\+\+PARTIAL
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea8f30b9c4e9c6566d1a94e1113a1731eb}{Status\+Max\+Steps\+Reached}} = WF\+\_\+\+STATUS\+\_\+\+MAX\+\_\+\+STEPS\+\_\+\+REACHED
+, \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7ec82b975ec9892eb56b108fbd4e888ea8943eb9f96f0bd9c69018a60447bc630}{Status\+OOM}} = WF\+\_\+\+STATUS\+\_\+\+OOM
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner}{wfa::\+\+WFAligner}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_af72ca980da1cd76682dcfa08f5f36a19}{WFAligner}} (const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}} alignment\+Scope, const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}} memory\+Model=\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}})
+\item 
+\doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a95f07f9e31a2126979a298c24fec0441}{\texorpdfstring{$\sim$}{\string~}\+WFAligner}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner}{wfa::\+\+WFAligner}}}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structwavefront__aligner__attr__t}{wavefront\+\_\+aligner\+\_\+attr\+\_\+t}} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a89e8c70fa90755afead1eea58d3547af}{attributes}}
+\item 
+\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a4c2edcb2f5d68722c04eafdca94ceb53}{wf\+Aligner}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8hpp_source_l00231}{231}} of file \doxymbox{\hyperlink{_w_f_aligner_8hpp_source}{WFAligner.\+hpp}}.
+
+
+
+\label{doc-constructors}
+\Hypertarget{classwfa_1_1_w_f_aligner_gap_linear_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{classwfa_1_1_w_f_aligner_gap_linear_ac5dc80155554ab4c344d653319f2c111}\index{wfa::WFAlignerGapLinear@{wfa::WFAlignerGapLinear}!WFAlignerGapLinear@{WFAlignerGapLinear}}
+\index{WFAlignerGapLinear@{WFAlignerGapLinear}!wfa::WFAlignerGapLinear@{wfa::WFAlignerGapLinear}}
+\doxysubsubsection{\texorpdfstring{WFAlignerGapLinear()}{WFAlignerGapLinear()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_gap_linear_ac5dc80155554ab4c344d653319f2c111} 
+wfa::\+\+WFAligner\+Gap\+Linear::\+\+WFAligner\+Gap\+Linear (\begin{DoxyParamCaption}\item[{const int}]{mismatch}{, }\item[{const int}]{indel}{, }\item[{const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}}}]{alignment\+Scope}{, }\item[{const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}}}]{memory\+Model}{ = {\ttfamily \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00371}{371}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{classwfa_1_1_w_f_aligner_gap_linear_a1eda8b2758f8ef8c488fd757a3cbcef6}\index{wfa::WFAlignerGapLinear@{wfa::WFAlignerGapLinear}!WFAlignerGapLinear@{WFAlignerGapLinear}}
+\index{WFAlignerGapLinear@{WFAlignerGapLinear}!wfa::WFAlignerGapLinear@{wfa::WFAlignerGapLinear}}
+\doxysubsubsection{\texorpdfstring{WFAlignerGapLinear()}{WFAlignerGapLinear()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{classwfa_1_1_w_f_aligner_gap_linear_a1eda8b2758f8ef8c488fd757a3cbcef6} 
+wfa::\+\+WFAligner\+Gap\+Linear::\+\+WFAligner\+Gap\+Linear (\begin{DoxyParamCaption}\item[{const int}]{match}{, }\item[{const int}]{mismatch}{, }\item[{const int}]{indel}{, }\item[{const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a93053072bc5ad24e5b216c36df7c447d}{Alignment\+Scope}}}]{alignment\+Scope}{, }\item[{const \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dc}{Memory\+Model}}}]{memory\+Model}{ = {\ttfamily \doxymbox{\hyperlink{classwfa_1_1_w_f_aligner_a7530f7b2331026947f8d20cc29e740dcaf956ca675084d6f457265fbc35685e6c}{Memory\+High}}}}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{_w_f_aligner_8cpp_source_l00383}{383}} of file \doxymbox{\hyperlink{_w_f_aligner_8cpp_source}{WFAligner.\+cpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+
+
+The documentation for this class was generated from the following files:\+\begin{DoxyCompactItemize}
+\item 
+src/\+wfa/\+bindings/\+cpp/\+\doxymbox{\hyperlink{_w_f_aligner_8hpp}{WFAligner.\+hpp}}\item 
+src/\+wfa/\+bindings/\+cpp/\+\doxymbox{\hyperlink{_w_f_aligner_8cpp}{WFAligner.\+cpp}}\end{DoxyCompactItemize}

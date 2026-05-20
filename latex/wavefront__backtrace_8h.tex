@@ -1,0 +1,63 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+backtrace.h File Reference}
+\hypertarget{wavefront__backtrace_8h}{}\label{wavefront__backtrace_8h}\index{src/wfa/wavefront/wavefront\_backtrace.h@{src/wfa/wavefront/wavefront\_backtrace.h}}
+{\ttfamily \+\#include "{}wavefront\+\_\+aligner.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+backtrace.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \doxymbox{\hyperlink{wavefront__backtrace_8h_abdcfb2ce4415b4c0a92ecb928965cf47}{wavefront\+\_\+backtrace\+\_\+linear}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int alignment\+\_\+score, const int alignment\+\_\+k, const \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}} alignment\+\_\+offset)
+\item 
+void \doxymbox{\hyperlink{wavefront__backtrace_8h_a7b6c252282a539becde5878ad7de38db}{wavefront\+\_\+backtrace\+\_\+affine}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\+\_\+matrix\+\_\+type}} component\+\_\+begin, const \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\+\_\+matrix\+\_\+type}} component\+\_\+end, const int alignment\+\_\+score, const int alignment\+\_\+k, const \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}} alignment\+\_\+offset)
+\item 
+void \doxymbox{\hyperlink{wavefront__backtrace_8h_a7b8164ae4c481c72a841ec35660975b5}{wavefront\+\_\+backtrace\+\_\+pcigar}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int alignment\+\_\+k, const int alignment\+\_\+offset, const \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}} pcigar\+\_\+last, const \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_a41dc65ba28e1c984278301c6c7100d6e}{bt\+\_\+block\+\_\+idx\+\_\+t}} prev\+\_\+idx\+\_\+last)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__backtrace_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__backtrace_8h_a7b6c252282a539becde5878ad7de38db}\index{wavefront\_backtrace.h@{wavefront\_backtrace.h}!wavefront\_backtrace\_affine@{wavefront\_backtrace\_affine}}
+\index{wavefront\_backtrace\_affine@{wavefront\_backtrace\_affine}!wavefront\_backtrace.h@{wavefront\_backtrace.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_backtrace\_affine()}{wavefront\_backtrace\_affine()}}
+{\footnotesize\ttfamily \label{wavefront__backtrace_8h_a7b6c252282a539becde5878ad7de38db} 
+void wavefront\+\_\+backtrace\+\_\+affine (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\+\_\+matrix\+\_\+type}}}]{component\+\_\+begin}{, }\item[{const \doxymbox{\hyperlink{affine2p__penalties_8h_a53a679cbd92cfc993497be8124cee761}{affine2p\+\_\+matrix\+\_\+type}}}]{component\+\_\+end}{, }\item[{const int}]{alignment\+\_\+score}{, }\item[{const int}]{alignment\+\_\+k}{, }\item[{const \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}}}]{alignment\+\_\+offset}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace_8c_source_l00320}{320}} of file \doxymbox{\hyperlink{wavefront__backtrace_8c_source}{wavefront\+\_\+backtrace.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__backtrace_8h_abdcfb2ce4415b4c0a92ecb928965cf47}\index{wavefront\_backtrace.h@{wavefront\_backtrace.h}!wavefront\_backtrace\_linear@{wavefront\_backtrace\_linear}}
+\index{wavefront\_backtrace\_linear@{wavefront\_backtrace\_linear}!wavefront\_backtrace.h@{wavefront\_backtrace.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_backtrace\_linear()}{wavefront\_backtrace\_linear()}}
+{\footnotesize\ttfamily \label{wavefront__backtrace_8h_abdcfb2ce4415b4c0a92ecb928965cf47} 
+void wavefront\+\_\+backtrace\+\_\+linear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{alignment\+\_\+score}{, }\item[{const int}]{alignment\+\_\+k}{, }\item[{const \doxymbox{\hyperlink{wavefront__offset_8h_ae1a9f4d145b6b81aa74fdbfe8b80dd21}{wf\+\_\+offset\+\_\+t}}}]{alignment\+\_\+offset}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace_8c_source_l00223}{223}} of file \doxymbox{\hyperlink{wavefront__backtrace_8c_source}{wavefront\+\_\+backtrace.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__backtrace_8h_a7b8164ae4c481c72a841ec35660975b5}\index{wavefront\_backtrace.h@{wavefront\_backtrace.h}!wavefront\_backtrace\_pcigar@{wavefront\_backtrace\_pcigar}}
+\index{wavefront\_backtrace\_pcigar@{wavefront\_backtrace\_pcigar}!wavefront\_backtrace.h@{wavefront\_backtrace.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_backtrace\_pcigar()}{wavefront\_backtrace\_pcigar()}}
+{\footnotesize\ttfamily \label{wavefront__backtrace_8h_a7b8164ae4c481c72a841ec35660975b5} 
+void wavefront\+\_\+backtrace\+\_\+pcigar (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{alignment\+\_\+k}{, }\item[{const int}]{alignment\+\_\+offset}{, }\item[{const \doxymbox{\hyperlink{wavefront__pcigar_8h_a6b0c596764ae19c9b93ad4c63cf6aa4b}{pcigar\+\_\+t}}}]{pcigar\+\_\+last}{, }\item[{const \doxymbox{\hyperlink{wavefront__backtrace__buffer_8h_a41dc65ba28e1c984278301c6c7100d6e}{bt\+\_\+block\+\_\+idx\+\_\+t}}}]{prev\+\_\+idx\+\_\+last}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__backtrace_8c_source_l00533}{533}} of file \doxymbox{\hyperlink{wavefront__backtrace_8c_source}{wavefront\+\_\+backtrace.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7

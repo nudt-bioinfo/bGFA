@@ -1,0 +1,215 @@
+\doxysection{src/\+wfa/\+system/\+mm\+\_\+stack.c File Reference}
+\hypertarget{mm__stack_8c}{}\label{mm__stack_8c}\index{src/wfa/system/mm\_stack.c@{src/wfa/system/mm\_stack.c}}
+{\ttfamily \+\#include "{}utils/\+commons.\+h"{}}\newline
+{\ttfamily \+\#include "{}mm\+\_\+stack.\+h"{}}\newline
+Include dependency graph for mm\+\_\+stack.\+c:\+
+% FIG 0
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structmm__stack__state__t}{mm\+\_\+stack\+\_\+state\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\+\#define \doxymbox{\hyperlink{mm__stack_8c_a4061ebaafc62a80b16920067d5544ea3}{MM\+\_\+\+STACK\+\_\+\+INITIAL\+\_\+\+SEGMENTS}}~10
+\item 
+\+\#define \doxymbox{\hyperlink{mm__stack_8c_ad18539dd7447549503639842ef1251e3}{MM\+\_\+\+STACK\+\_\+\+INITIAL\+\_\+\+MALLOC\+\_\+\+REQUESTS}}~10
+\item 
+\+\#define \doxymbox{\hyperlink{mm__stack_8c_a8d0970de5c656592098d1c627f1fb71e}{MM\+\_\+\+STACK\+\_\+\+INITIAL\+\_\+\+STATES}}~10
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{mm__stack_8c_aba1cb87a78cde2a2764be9150c032bdf}{mm\+\_\+stack\+\_\+segment\+\_\+new}} (\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+stack)
+\item 
+void \doxymbox{\hyperlink{mm__stack_8c_af5d944d6d2e0ce628e37039e4176160f}{mm\+\_\+stack\+\_\+segment\+\_\+clear}} (\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}} \texorpdfstring{$\ast$}{*}const segment)
+\item 
+void \doxymbox{\hyperlink{mm__stack_8c_a15612db77c45e0c889ee97897254891e}{mm\+\_\+stack\+\_\+segment\+\_\+delete}} (\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}} \texorpdfstring{$\ast$}{*}const segment)
+\item 
+\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{mm__stack_8c_a619469114909760a1e86b1a1e897536b}{mm\+\_\+stack\+\_\+new}} (const uint64\+\_\+t segment\+\_\+size)
+\item 
+void \doxymbox{\hyperlink{mm__stack_8c_a2bf112b788168a234dfb36e6e0990c1e}{mm\+\_\+stack\+\_\+clear}} (\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+stack)
+\item 
+void \doxymbox{\hyperlink{mm__stack_8c_a058f59aee23f8c8b84f58d28bb5a5457}{mm\+\_\+stack\+\_\+delete}} (\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+stack)
+\item 
+\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{mm__stack_8c_ae516ac751113c9877f68db1259281af0}{mm\+\_\+stack\+\_\+fetch\+\_\+segment}} (\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+stack, const uint64\+\_\+t num\+\_\+bytes)
+\item 
+void \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{mm__stack_8c_abd9633e0bf61874c10b882d218dca343}{mm\+\_\+stack\+\_\+allocate}} (\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+stack, const uint64\+\_\+t num\+\_\+bytes, const bool zero\+\_\+mem, const uint64\+\_\+t align\+\_\+bytes)
+\item 
+void \doxymbox{\hyperlink{mm__stack_8c_aa767d7d29aee900142618f522b42b058}{mm\+\_\+stack\+\_\+push}} (\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+stack)
+\item 
+void \doxymbox{\hyperlink{mm__stack_8c_a50d43f5de72500813091dfc629d8f0ad}{mm\+\_\+stack\+\_\+pop}} (\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+stack)
+\item 
+void \doxymbox{\hyperlink{mm__stack_8c_a6107a0b4086e4a797030553f8b75dc58}{mm\+\_\+stack\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const mm\+\_\+stack)
+\end{DoxyCompactItemize}
+
+
+\label{doc-define-members}
+\Hypertarget{mm__stack_8c_doc-define-members}
+\doxysubsection{Macro Definition Documentation}
+\Hypertarget{mm__stack_8c_ad18539dd7447549503639842ef1251e3}\index{mm\_stack.c@{mm\_stack.c}!MM\_STACK\_INITIAL\_MALLOC\_REQUESTS@{MM\_STACK\_INITIAL\_MALLOC\_REQUESTS}}
+\index{MM\_STACK\_INITIAL\_MALLOC\_REQUESTS@{MM\_STACK\_INITIAL\_MALLOC\_REQUESTS}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{MM\_STACK\_INITIAL\_MALLOC\_REQUESTS}{MM\_STACK\_INITIAL\_MALLOC\_REQUESTS}}
+{\footnotesize\ttfamily \label{mm__stack_8c_ad18539dd7447549503639842ef1251e3} 
+\+\#define MM\+\_\+\+STACK\+\_\+\+INITIAL\+\_\+\+MALLOC\+\_\+\+REQUESTS~10}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00047}{47}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+\Hypertarget{mm__stack_8c_a4061ebaafc62a80b16920067d5544ea3}\index{mm\_stack.c@{mm\_stack.c}!MM\_STACK\_INITIAL\_SEGMENTS@{MM\_STACK\_INITIAL\_SEGMENTS}}
+\index{MM\_STACK\_INITIAL\_SEGMENTS@{MM\_STACK\_INITIAL\_SEGMENTS}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{MM\_STACK\_INITIAL\_SEGMENTS}{MM\_STACK\_INITIAL\_SEGMENTS}}
+{\footnotesize\ttfamily \label{mm__stack_8c_a4061ebaafc62a80b16920067d5544ea3} 
+\+\#define MM\+\_\+\+STACK\+\_\+\+INITIAL\+\_\+\+SEGMENTS~10}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00046}{46}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+\Hypertarget{mm__stack_8c_a8d0970de5c656592098d1c627f1fb71e}\index{mm\_stack.c@{mm\_stack.c}!MM\_STACK\_INITIAL\_STATES@{MM\_STACK\_INITIAL\_STATES}}
+\index{MM\_STACK\_INITIAL\_STATES@{MM\_STACK\_INITIAL\_STATES}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{MM\_STACK\_INITIAL\_STATES}{MM\_STACK\_INITIAL\_STATES}}
+{\footnotesize\ttfamily \label{mm__stack_8c_a8d0970de5c656592098d1c627f1fb71e} 
+\+\#define MM\+\_\+\+STACK\+\_\+\+INITIAL\+\_\+\+STATES~10}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00048}{48}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+
+
+\label{doc-func-members}
+\Hypertarget{mm__stack_8c_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{mm__stack_8c_abd9633e0bf61874c10b882d218dca343}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_allocate@{mm\_stack\_allocate}}
+\index{mm\_stack\_allocate@{mm\_stack\_allocate}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_allocate()}{mm\_stack\_allocate()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_abd9633e0bf61874c10b882d218dca343} 
+void \texorpdfstring{$\ast$}{*} mm\+\_\+stack\+\_\+allocate (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+stack}{, }\item[{const uint64\+\_\+t}]{num\+\_\+bytes}{, }\item[{const bool}]{zero\+\_\+mem}{, }\item[{const uint64\+\_\+t}]{align\+\_\+bytes}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00181}{181}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 1
+\Hypertarget{mm__stack_8c_a2bf112b788168a234dfb36e6e0990c1e}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_clear@{mm\_stack\_clear}}
+\index{mm\_stack\_clear@{mm\_stack\_clear}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_clear()}{mm\_stack\_clear()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_a2bf112b788168a234dfb36e6e0990c1e} 
+void mm\+\_\+stack\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+stack}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00114}{114}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+\Hypertarget{mm__stack_8c_a058f59aee23f8c8b84f58d28bb5a5457}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_delete@{mm\_stack\_delete}}
+\index{mm\_stack\_delete@{mm\_stack\_delete}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_delete()}{mm\_stack\_delete()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_a058f59aee23f8c8b84f58d28bb5a5457} 
+void mm\+\_\+stack\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+stack}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00128}{128}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{mm__stack_8c_ae516ac751113c9877f68db1259281af0}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_fetch\_segment@{mm\_stack\_fetch\_segment}}
+\index{mm\_stack\_fetch\_segment@{mm\_stack\_fetch\_segment}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_fetch\_segment()}{mm\_stack\_fetch\_segment()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_ae516ac751113c9877f68db1259281af0} 
+\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}} \texorpdfstring{$\ast$}{*} mm\+\_\+stack\+\_\+fetch\+\_\+segment (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+stack}{, }\item[{const uint64\+\_\+t}]{num\+\_\+bytes}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00148}{148}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{mm__stack_8c_a619469114909760a1e86b1a1e897536b}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_new@{mm\_stack\_new}}
+\index{mm\_stack\_new@{mm\_stack\_new}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_new()}{mm\_stack\_new()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_a619469114909760a1e86b1a1e897536b} 
+\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*} mm\+\_\+stack\+\_\+new (\begin{DoxyParamCaption}\item[{const uint64\+\_\+t}]{segment\+\_\+size}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00096}{96}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+\Hypertarget{mm__stack_8c_a50d43f5de72500813091dfc629d8f0ad}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_pop@{mm\_stack\_pop}}
+\index{mm\_stack\_pop@{mm\_stack\_pop}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_pop()}{mm\_stack\_pop()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_a50d43f5de72500813091dfc629d8f0ad} 
+void mm\+\_\+stack\+\_\+pop (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+stack}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00235}{235}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+\Hypertarget{mm__stack_8c_a6107a0b4086e4a797030553f8b75dc58}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_print@{mm\_stack\_print}}
+\index{mm\_stack\_print@{mm\_stack\_print}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_print()}{mm\_stack\_print()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_a6107a0b4086e4a797030553f8b75dc58} 
+void mm\+\_\+stack\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+stack}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00257}{257}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+\Hypertarget{mm__stack_8c_aa767d7d29aee900142618f522b42b058}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_push@{mm\_stack\_push}}
+\index{mm\_stack\_push@{mm\_stack\_push}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_push()}{mm\_stack\_push()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_aa767d7d29aee900142618f522b42b058} 
+void mm\+\_\+stack\+\_\+push (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+stack}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00223}{223}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+\Hypertarget{mm__stack_8c_af5d944d6d2e0ce628e37039e4176160f}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_segment\_clear@{mm\_stack\_segment\_clear}}
+\index{mm\_stack\_segment\_clear@{mm\_stack\_segment\_clear}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_segment\_clear()}{mm\_stack\_segment\_clear()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_af5d944d6d2e0ce628e37039e4176160f} 
+void mm\+\_\+stack\+\_\+segment\+\_\+clear (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{segment}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00084}{84}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{mm__stack_8c_a15612db77c45e0c889ee97897254891e}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_segment\_delete@{mm\_stack\_segment\_delete}}
+\index{mm\_stack\_segment\_delete@{mm\_stack\_segment\_delete}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_segment\_delete()}{mm\_stack\_segment\_delete()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_a15612db77c45e0c889ee97897254891e} 
+void mm\+\_\+stack\+\_\+segment\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{segment}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00088}{88}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 8
+\Hypertarget{mm__stack_8c_aba1cb87a78cde2a2764be9150c032bdf}\index{mm\_stack.c@{mm\_stack.c}!mm\_stack\_segment\_new@{mm\_stack\_segment\_new}}
+\index{mm\_stack\_segment\_new@{mm\_stack\_segment\_new}!mm\_stack.c@{mm\_stack.c}}
+\doxysubsubsection{\texorpdfstring{mm\_stack\_segment\_new()}{mm\_stack\_segment\_new()}}
+{\footnotesize\ttfamily \label{mm__stack_8c_aba1cb87a78cde2a2764be9150c032bdf} 
+\doxymbox{\hyperlink{structmm__stack__segment__t}{mm\+\_\+stack\+\_\+segment\+\_\+t}} \texorpdfstring{$\ast$}{*} mm\+\_\+stack\+\_\+segment\+\_\+new (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structmm__stack__t}{mm\+\_\+stack\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{mm\+\_\+stack}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{mm__stack_8c_source_l00071}{71}} of file \doxymbox{\hyperlink{mm__stack_8c_source}{mm\+\_\+stack.\+c}}.
+
+Here is the caller graph for this function:\+
+% FIG 9

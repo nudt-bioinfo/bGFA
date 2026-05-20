@@ -1,0 +1,177 @@
+\doxysection{heatmap.\+c}
+\hypertarget{heatmap_8c_source}{}\label{heatmap_8c_source}\index{src/wfa/utils/heatmap.c@{src/wfa/utils/heatmap.c}}
+\doxymbox{\hyperlink{heatmap_8c}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00001}00001\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00002}00002\ \textcolor{comment}{\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ The\ MIT\ License}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00003}00003\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00004}00004\ \textcolor{comment}{\ *\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00005}00005\ \textcolor{comment}{\ *\ Copyright\ (c)\ 2017\ by\ Santiago\ Marco-\/Sola\ \ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00006}00006\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00007}00007\ \textcolor{comment}{\ *\ This\ file\ is\ part\ of\ Wavefront\ Alignment\ Algorithms.}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00008}00008\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00009}00009\ \textcolor{comment}{\ *\ Permission\ is\ hereby\ granted,\ free\ of\ charge,\ to\ any\ person\ obtaining\ a\ copy}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00010}00010\ \textcolor{comment}{\ *\ of\ this\ software\ and\ associated\ documentation\ files\ (the\ "{}Software"{}),\ to\ deal}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00011}00011\ \textcolor{comment}{\ *\ in\ the\ Software\ without\ restriction,\ including\ without\ limitation\ the\ rights}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00012}00012\ \textcolor{comment}{\ *\ to\ use,\ copy,\ modify,\ merge,\ publish,\ distribute,\ sublicense,\ and/or\ sell}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00013}00013\ \textcolor{comment}{\ *\ copies\ of\ the\ Software,\ and\ to\ permit\ persons\ to\ whom\ the\ Software\ is}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00014}00014\ \textcolor{comment}{\ *\ furnished\ to\ do\ so,\ subject\ to\ the\ following\ conditions:}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00015}00015\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00016}00016\ \textcolor{comment}{\ *\ The\ above\ copyright\ notice\ and\ this\ permission\ notice\ shall\ be\ included\ in\ all}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00017}00017\ \textcolor{comment}{\ *\ copies\ or\ substantial\ portions\ of\ the\ Software.}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00018}00018\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00019}00019\ \textcolor{comment}{\ *\ THE\ SOFTWARE\ IS\ PROVIDED\ "{}AS\ IS"{},\ WITHOUT\ WARRANTY\ OF\ ANY\ KIND,\ EXPRESS\ OR}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00020}00020\ \textcolor{comment}{\ *\ IMPLIED,\ INCLUDING\ BUT\ NOT\ LIMITED\ TO\ THE\ WARRANTIES\ OF\ MERCHANTABILITY,}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00021}00021\ \textcolor{comment}{\ *\ FITNESS\ FOR\ A\ PARTICULAR\ PURPOSE\ AND\ NONINFRINGEMENT.\ IN\ NO\ EVENT\ SHALL\ THE}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00022}00022\ \textcolor{comment}{\ *\ AUTHORS\ OR\ COPYRIGHT\ HOLDERS\ BE\ LIABLE\ FOR\ ANY\ CLAIM,\ DAMAGES\ OR\ OTHER}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00023}00023\ \textcolor{comment}{\ *\ LIABILITY,\ WHETHER\ IN\ AN\ ACTION\ OF\ CONTRACT,\ TORT\ OR\ OTHERWISE,\ ARISING\ FROM,}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00024}00024\ \textcolor{comment}{\ *\ OUT\ OF\ OR\ IN\ CONNECTION\ WITH\ THE\ SOFTWARE\ OR\ THE\ USE\ OR\ OTHER\ DEALINGS\ IN\ THE}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00025}00025\ \textcolor{comment}{\ *\ SOFTWARE.}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00026}00026\ \textcolor{comment}{\ *}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00027}00027\ \textcolor{comment}{\ *\ PROJECT:\ Wavefront\ Alignment\ Algorithms}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00028}00028\ \textcolor{comment}{\ *\ AUTHOR(S):\ Santiago\ Marco-\/Sola\ <santiagomsola@gmail.com>}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00029}00029\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00030}00030\ }
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00031}00031\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{commons_8h}{utils/commons.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00032}00032\ \textcolor{preprocessor}{\#include\ "{}\doxymbox{\hyperlink{heatmap_8h}{heatmap.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00033}00033\ }
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00034}00034\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00035}00035\ \textcolor{comment}{\ *\ Constants}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00036}00036\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00037}\doxymbox{\hyperlink{heatmap_8c_a79ad05bbf58c98d849e1c902a0b79be9}{00037}}\ \textcolor{preprocessor}{\#define\ HEATMAP\_INT\_MIN\ INT\_MIN}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00038}\doxymbox{\hyperlink{heatmap_8c_a0dbad3378794091501627e632964e425}{00038}}\ \textcolor{preprocessor}{\#define\ HEATMAP\_INT\_MAX\ INT\_MAX}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00039}\doxymbox{\hyperlink{heatmap_8c_a0657f40eb035b362671eb0221972f655}{00039}}\ \textcolor{preprocessor}{\#define\ HEATMAP\_SEPARATOR\ ','}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00040}00040\ }
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00041}00041\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00042}00042\ \textcolor{comment}{\ *\ Setup}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00043}00043\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00044}\doxymbox{\hyperlink{heatmap_8c_a182d7fc7a7b710de0c5a8ecc46b69af1}{00044}}\ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \doxymbox{\hyperlink{heatmap_8c_a182d7fc7a7b710de0c5a8ecc46b69af1}{heatmap\_new}}(}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00045}00045\ \ \ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3ec}{heatmap\_type}}\ type,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00046}00046\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ min\_v,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00047}00047\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_v,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00048}00048\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ min\_h,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00049}00049\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_h,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00050}00050\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ resolution\_points)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00051}00051\ \ \ \textcolor{comment}{//\ Alloc}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00052}00052\ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \textcolor{keyword}{const}\ heatmap\ =\ (\doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*)malloc(\textcolor{keyword}{sizeof}(\doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}));}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00053}00053\ \ \ \textcolor{comment}{//\ Configure}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00054}00054\ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_ac27cf8293ed024ea7ed38b153c879c3b}{type}}\ =\ type;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00055}00055\ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_aa4f887c46fb05c9aeadca7f80f5f1745}{min\_v}}\ =\ min\_v;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00056}00056\ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a5b55168eb156aeb09c05e39d955e84d3}{max\_v}}\ =\ max\_v;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00057}00057\ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_aff82f356cc008afe7d5133169b2cd3dd}{min\_h}}\ =\ min\_h;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00058}00058\ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_aa5657ac08e1ed1e456689ea4610ad529}{max\_h}}\ =\ max\_h;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00059}00059\ \ \ \textcolor{comment}{//\ Binning\ (mantain\ aspect\ ratio)}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00060}00060\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ v\_range\ =\ (max\_v-\/min\_v+1);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00061}00061\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ h\_range\ =\ (max\_h-\/min\_h+1);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00062}00062\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ max\_range\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(v\_range,h\_range);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00063}00063\ \ \ \textcolor{keywordflow}{if}\ (max\_range\ <=\ resolution\_points)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00064}00064\ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a6aa62ef5cb5028c8ab21b3bb48ed0934}{binning\_factor}}\ =\ 1.0f;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00065}00065\ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a947e86926fb26650274a21cb00c422e3}{num\_rows}}\ =\ v\_range;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00066}00066\ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_af80244eff05c11cadf6120a64a8cc5a7}{num\_columns}}\ =\ h\_range;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00067}00067\ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00068}00068\ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a6aa62ef5cb5028c8ab21b3bb48ed0934}{binning\_factor}}\ =\ (float)max\_range/(\textcolor{keywordtype}{float})resolution\_points;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00069}00069\ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a947e86926fb26650274a21cb00c422e3}{num\_rows}}\ =\ (float)v\_range/heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a6aa62ef5cb5028c8ab21b3bb48ed0934}{binning\_factor}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00070}00070\ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_af80244eff05c11cadf6120a64a8cc5a7}{num\_columns}}\ =\ (float)h\_range/heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a6aa62ef5cb5028c8ab21b3bb48ed0934}{binning\_factor}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00071}00071\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00072}00072\ \ \ \textcolor{comment}{//\ Allocate\ matrix}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00073}00073\ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}\ =\ (\textcolor{keywordtype}{int}**)malloc(heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a947e86926fb26650274a21cb00c422e3}{num\_rows}}*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}*));}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00074}00074\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00075}00075\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a947e86926fb26650274a21cb00c422e3}{num\_rows}};++i)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00076}00076\ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[i]\ =\ (\textcolor{keywordtype}{int}*)malloc(heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_af80244eff05c11cadf6120a64a8cc5a7}{num\_columns}}*\textcolor{keyword}{sizeof}(\textcolor{keywordtype}{int}));\ \textcolor{comment}{//\ Allocate\ row}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00077}00077\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00078}00078\ \ \ \textcolor{comment}{//\ Clear}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00079}00079\ \ \ \doxymbox{\hyperlink{heatmap_8c_a52840eca664ec6090e33deea52b2242b}{heatmap\_clear}}(heatmap);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00080}00080\ \ \ \textcolor{comment}{//\ Return}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00081}00081\ \ \ \textcolor{keywordflow}{return}\ heatmap;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00082}00082\ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00083}\doxymbox{\hyperlink{heatmap_8c_a52840eca664ec6090e33deea52b2242b}{00083}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{heatmap_8c_a52840eca664ec6090e33deea52b2242b}{heatmap\_clear}}(}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00084}00084\ \ \ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \textcolor{keyword}{const}\ heatmap)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00085}00085\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00086}00086\ \ \ \textcolor{keyword}{const}\ \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3ec}{heatmap\_type}}\ type\ =\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_ac27cf8293ed024ea7ed38b153c879c3b}{type}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00087}00087\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_rows\ =\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a947e86926fb26650274a21cb00c422e3}{num\_rows}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00088}00088\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_columns\ =\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_af80244eff05c11cadf6120a64a8cc5a7}{num\_columns}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00089}00089\ \ \ \textcolor{comment}{//\ Clear\ values}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00090}00090\ \ \ \textcolor{keywordtype}{int}\ i,\ j;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00091}00091\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<num\_rows;++i)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00092}00092\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00093}00093\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3eca2ff049b822e560fd4491ac4444378703}{heatmap\_min}}:\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00094}00094\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j=0;j<num\_columns;++j)\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[i][j]\ =\ \doxymbox{\hyperlink{heatmap_8c_a0dbad3378794091501627e632964e425}{HEATMAP\_INT\_MAX}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00095}00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00096}00096\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00097}00097\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3eca0052d59a1b7b1ba4cdc25c78672c8a26}{heatmap\_max}}:}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00098}00098\ \ \ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3eca65dd1ca7cc7d08721cd8b6e77593bcb9}{heatmap\_value}}:}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00099}00099\ \ \ \ \ \ \ \textcolor{keywordflow}{default}:\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00100}00100\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}\ (j=0;j<num\_columns;++j)\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[i][j]\ =\ \doxymbox{\hyperlink{heatmap_8c_a79ad05bbf58c98d849e1c902a0b79be9}{HEATMAP\_INT\_MIN}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00101}00101\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00102}00102\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00103}00103\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00104}00104\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00105}00105\ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00106}\doxymbox{\hyperlink{heatmap_8c_ae8059941b7f91341a8e90419cc38e059}{00106}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{heatmap_8c_ae8059941b7f91341a8e90419cc38e059}{heatmap\_delete}}(}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00107}00107\ \ \ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \textcolor{keyword}{const}\ heatmap)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00108}00108\ \ \ \textcolor{keywordtype}{int}\ i;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00109}00109\ \ \ \textcolor{keywordflow}{for}\ (i=0;i<heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a947e86926fb26650274a21cb00c422e3}{num\_rows}};++i)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00110}00110\ \ \ \ \ free(heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[i]);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00111}00111\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00112}00112\ \ \ free(heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}});}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00113}00113\ \ \ free(heatmap);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00114}00114\ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00115}00115\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00116}00116\ \textcolor{comment}{\ *\ Accessors}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00117}00117\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00118}\doxymbox{\hyperlink{heatmap_8c_ad4e82d3e6cbb0d3bed9a5baa3ca62b7d}{00118}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{heatmap_8c_ad4e82d3e6cbb0d3bed9a5baa3ca62b7d}{heatmap\_set}}(}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00119}00119\ \ \ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \textcolor{keyword}{const}\ heatmap,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00120}00120\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ v,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00121}00121\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ h,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00122}00122\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ value)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00123}00123\ \ \ \textcolor{comment}{//\ Paramters}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00124}00124\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_rows\ =\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a947e86926fb26650274a21cb00c422e3}{num\_rows}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00125}00125\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_columns\ =\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_af80244eff05c11cadf6120a64a8cc5a7}{num\_columns}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00126}00126\ \ \ \textcolor{comment}{//\ Check\ position}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00127}00127\ \ \ \textcolor{keywordflow}{if}\ (v<heatmap-\/>min\_v\ ||\ v>heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a5b55168eb156aeb09c05e39d955e84d3}{max\_v}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00128}00128\ \ \ \textcolor{keywordflow}{if}\ (h<heatmap-\/>min\_h\ ||\ h>heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_aa5657ac08e1ed1e456689ea4610ad529}{max\_h}})\ \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00129}00129\ \ \ \textcolor{comment}{//\ Adjust\ position\ into\ binning}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00130}00130\ \ \ \textcolor{keywordtype}{int}\ v\_adjusted\ =\ (float)(v\ -\/\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_aa4f887c46fb05c9aeadca7f80f5f1745}{min\_v}})\ /\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a6aa62ef5cb5028c8ab21b3bb48ed0934}{binning\_factor}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00131}00131\ \ \ \textcolor{keywordtype}{int}\ h\_adjusted\ =\ (float)(h\ -\/\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_aff82f356cc008afe7d5133169b2cd3dd}{min\_h}})\ /\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a6aa62ef5cb5028c8ab21b3bb48ed0934}{binning\_factor}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00132}00132\ \ \ \textcolor{keywordflow}{if}\ (v\_adjusted\ >=\ num\_rows)\ v\_adjusted\ =\ num\_rows-\/1;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00133}00133\ \ \ \textcolor{keywordflow}{if}\ (h\_adjusted\ >=\ num\_columns)\ h\_adjusted\ =\ num\_columns-\/1;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00134}00134\ \ \ \textcolor{comment}{//\ Set\ value}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00135}00135\ \ \ \textcolor{keywordflow}{switch}\ (heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_ac27cf8293ed024ea7ed38b153c879c3b}{type}})\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00136}00136\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3eca2ff049b822e560fd4491ac4444378703}{heatmap\_min}}:}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00137}00137\ \ \ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[v\_adjusted][h\_adjusted]\ =\ \doxymbox{\hyperlink{generate__dataset_8c_a3acffbd305ee72dcd4593c0d8af64a4f}{MIN}}(heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[v\_adjusted][h\_adjusted],value);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00138}00138\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00139}00139\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3eca0052d59a1b7b1ba4cdc25c78672c8a26}{heatmap\_max}}:}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00140}00140\ \ \ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[v\_adjusted][h\_adjusted]\ =\ \doxymbox{\hyperlink{generate__dataset_8c_afa99ec4acc4ecb2dc3c2d05da15d0e3f}{MAX}}(heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[v\_adjusted][h\_adjusted],value);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00141}00141\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00142}00142\ \ \ \ \ \textcolor{keywordflow}{case}\ \doxymbox{\hyperlink{heatmap_8h_ac02759113f3f782c4684e52f6cd5a3eca65dd1ca7cc7d08721cd8b6e77593bcb9}{heatmap\_value}}:}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00143}00143\ \ \ \ \ \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00144}00144\ \ \ \ \ \ \ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[v\_adjusted][h\_adjusted]\ =\ value;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00145}00145\ \ \ \ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00146}00146\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00147}00147\ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00148}00148\ \textcolor{comment}{/*}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00149}00149\ \textcolor{comment}{\ *\ Display}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00150}00150\ \textcolor{comment}{\ */}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00151}\doxymbox{\hyperlink{heatmap_8c_a41782eadde6f70ccd746b8dc8c8ae121}{00151}}\ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{heatmap_8c_a41782eadde6f70ccd746b8dc8c8ae121}{heatmap\_print}}(}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00152}00152\ \ \ \ \ FILE*\ \textcolor{keyword}{const}\ stream,}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00153}00153\ \ \ \ \ \doxymbox{\hyperlink{structheatmap__t}{heatmap\_t}}*\ \textcolor{keyword}{const}\ heatmap)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00154}00154\ \ \ \textcolor{comment}{//\ Parameters}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00155}00155\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_rows\ =\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a947e86926fb26650274a21cb00c422e3}{num\_rows}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00156}00156\ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ num\_columns\ =\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_af80244eff05c11cadf6120a64a8cc5a7}{num\_columns}};}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00157}00157\ \ \ \textcolor{comment}{//\ Print\ values}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00158}00158\ \ \ \textcolor{keywordtype}{int}\ v,\ h;}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00159}00159\ \ \ \textcolor{keywordflow}{for}\ (v=0;v<num\_rows;++v)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00160}00160\ \ \ \ \ \textcolor{keywordflow}{for}\ (h=0;h<num\_columns;++h)\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00161}00161\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (h>0)\ fprintf(stream,\textcolor{stringliteral}{"{}\%c"{}},\doxymbox{\hyperlink{heatmap_8c_a0657f40eb035b362671eb0221972f655}{HEATMAP\_SEPARATOR}});}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00162}00162\ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ value\ =\ heatmap-\/>\doxymbox{\hyperlink{structheatmap__t_a870d673768447032d5bb786e18ea8372}{values}}[v][h];}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00163}00163\ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (value\ ==\ \doxymbox{\hyperlink{heatmap_8c_a79ad05bbf58c98d849e1c902a0b79be9}{HEATMAP\_INT\_MIN}}\ ||\ value\ ==\ \doxymbox{\hyperlink{heatmap_8c_a0dbad3378794091501627e632964e425}{HEATMAP\_INT\_MAX}})\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00164}00164\ \ \ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}-\/1"{}});}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00165}00165\ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00166}00166\ \ \ \ \ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\%d"{}},value);}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00167}00167\ \ \ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00168}00168\ \ \ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00169}00169\ \ \ \ \ fprintf(stream,\textcolor{stringliteral}{"{}\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00170}00170\ \ \ \}}
+\DoxyCodeLine{\Hypertarget{heatmap_8c_source_l00171}00171\ \}}
+
+\end{DoxyCode}

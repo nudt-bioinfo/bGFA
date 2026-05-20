@@ -1,0 +1,104 @@
+\doxysection{src/\+wfa/\+wavefront/\+wavefront\+\_\+plot.h File Reference}
+\hypertarget{wavefront__plot_8h}{}\label{wavefront__plot_8h}\index{src/wfa/wavefront/wavefront\_plot.h@{src/wfa/wavefront/wavefront\_plot.h}}
+{\ttfamily \+\#include "{}utils/\+heatmap.\+h"{}}\newline
+{\ttfamily \+\#include "{}alignment/\+score\+\_\+matrix.\+h"{}}\newline
+{\ttfamily \+\#include "{}wavefront/\+wavefront\+\_\+penalties.\+h"{}}\newline
+Include dependency graph for wavefront\+\_\+plot.\+h:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \doxymbox{\hyperlink{structwavefront__plot__attr__t}{wavefront\+\_\+plot\+\_\+attr\+\_\+t}}
+\item 
+struct \doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}} \texorpdfstring{$\ast$}{*} \doxymbox{\hyperlink{wavefront__plot_8h_ae6fa51853afb8d19c4f1f2030e73a5f5}{wavefront\+\_\+plot\+\_\+new}} (const \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\+\_\+metric\+\_\+t}} distance\+\_\+metric, const int pattern\+\_\+length, const int text\+\_\+length, \doxymbox{\hyperlink{structwavefront__plot__attr__t}{wavefront\+\_\+plot\+\_\+attr\+\_\+t}} \texorpdfstring{$\ast$}{*}const attributes)
+\item 
+void \doxymbox{\hyperlink{wavefront__plot_8h_ae2a544711784dc35f0e75d8b4553ae8f}{wavefront\+\_\+plot\+\_\+resize}} (\doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+plot, const int pattern\+\_\+length, const int text\+\_\+length)
+\item 
+void \doxymbox{\hyperlink{wavefront__plot_8h_a92592fbdd0a4c2172fffa97e852ea577}{wavefront\+\_\+plot\+\_\+delete}} (\doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+plot)
+\item 
+void \doxymbox{\hyperlink{wavefront__plot_8h_a45d0182444cc2510da036329737a7a6c}{wavefront\+\_\+plot}} (\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner, const int score, const int align\+\_\+level)
+\item 
+void \doxymbox{\hyperlink{wavefront__plot_8h_a4849c59d0be54cd2121ab2d767f900dc}{wavefront\+\_\+plot\+\_\+print}} (FILE \texorpdfstring{$\ast$}{*}const stream, \doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const wf\+\_\+aligner)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{wavefront__plot_8h_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{wavefront__plot_8h_a45d0182444cc2510da036329737a7a6c}\index{wavefront\_plot.h@{wavefront\_plot.h}!wavefront\_plot@{wavefront\_plot}}
+\index{wavefront\_plot@{wavefront\_plot}!wavefront\_plot.h@{wavefront\_plot.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_plot()}{wavefront\_plot()}}
+{\footnotesize\ttfamily \label{wavefront__plot_8h_a45d0182444cc2510da036329737a7a6c} 
+void wavefront\+\_\+plot (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{, }\item[{const int}]{score}{, }\item[{const int}]{align\+\_\+level}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__plot_8c_source_l00186}{186}} of file \doxymbox{\hyperlink{wavefront__plot_8c_source}{wavefront\+\_\+plot.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 2
+Here is the caller graph for this function:\+
+% FIG 3
+\Hypertarget{wavefront__plot_8h_a92592fbdd0a4c2172fffa97e852ea577}\index{wavefront\_plot.h@{wavefront\_plot.h}!wavefront\_plot\_delete@{wavefront\_plot\_delete}}
+\index{wavefront\_plot\_delete@{wavefront\_plot\_delete}!wavefront\_plot.h@{wavefront\_plot.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_plot\_delete()}{wavefront\_plot\_delete()}}
+{\footnotesize\ttfamily \label{wavefront__plot_8h_a92592fbdd0a4c2172fffa97e852ea577} 
+void wavefront\+\_\+plot\+\_\+delete (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+plot}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__plot_8c_source_l00114}{114}} of file \doxymbox{\hyperlink{wavefront__plot_8c_source}{wavefront\+\_\+plot.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{wavefront__plot_8h_ae6fa51853afb8d19c4f1f2030e73a5f5}\index{wavefront\_plot.h@{wavefront\_plot.h}!wavefront\_plot\_new@{wavefront\_plot\_new}}
+\index{wavefront\_plot\_new@{wavefront\_plot\_new}!wavefront\_plot.h@{wavefront\_plot.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_plot\_new()}{wavefront\_plot\_new()}}
+{\footnotesize\ttfamily \label{wavefront__plot_8h_ae6fa51853afb8d19c4f1f2030e73a5f5} 
+\doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}} \texorpdfstring{$\ast$}{*} wavefront\+\_\+plot\+\_\+new (\begin{DoxyParamCaption}\item[{const \doxymbox{\hyperlink{wavefront__penalties_8h_a9e798b194612c85dd50e6237548ab8ec}{distance\+\_\+metric\+\_\+t}}}]{distance\+\_\+metric}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const int}]{text\+\_\+length}{, }\item[{\doxymbox{\hyperlink{structwavefront__plot__attr__t}{wavefront\+\_\+plot\+\_\+attr\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{attributes}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__plot_8c_source_l00086}{86}} of file \doxymbox{\hyperlink{wavefront__plot_8c_source}{wavefront\+\_\+plot.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 6
+Here is the caller graph for this function:\+
+% FIG 7
+\Hypertarget{wavefront__plot_8h_a4849c59d0be54cd2121ab2d767f900dc}\index{wavefront\_plot.h@{wavefront\_plot.h}!wavefront\_plot\_print@{wavefront\_plot\_print}}
+\index{wavefront\_plot\_print@{wavefront\_plot\_print}!wavefront\_plot.h@{wavefront\_plot.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_plot\_print()}{wavefront\_plot\_print()}}
+{\footnotesize\ttfamily \label{wavefront__plot_8h_a4849c59d0be54cd2121ab2d767f900dc} 
+void wavefront\+\_\+plot\+\_\+print (\begin{DoxyParamCaption}\item[{FILE \texorpdfstring{$\ast$}{*}const}]{stream}{, }\item[{\doxymbox{\hyperlink{wavefront__bialigner_8h_a60631eee75726697d489dd31a8c7d9f2}{wavefront\+\_\+aligner\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+aligner}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__plot_8c_source_l00246}{246}} of file \doxymbox{\hyperlink{wavefront__plot_8c_source}{wavefront\+\_\+plot.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 8
+Here is the caller graph for this function:\+
+% FIG 9
+\Hypertarget{wavefront__plot_8h_ae2a544711784dc35f0e75d8b4553ae8f}\index{wavefront\_plot.h@{wavefront\_plot.h}!wavefront\_plot\_resize@{wavefront\_plot\_resize}}
+\index{wavefront\_plot\_resize@{wavefront\_plot\_resize}!wavefront\_plot.h@{wavefront\_plot.h}}
+\doxysubsubsection{\texorpdfstring{wavefront\_plot\_resize()}{wavefront\_plot\_resize()}}
+{\footnotesize\ttfamily \label{wavefront__plot_8h_ae2a544711784dc35f0e75d8b4553ae8f} 
+void wavefront\+\_\+plot\+\_\+resize (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{structwavefront__plot__t}{wavefront\+\_\+plot\+\_\+t}} \texorpdfstring{$\ast$}{*}const}]{wf\+\_\+plot}{, }\item[{const int}]{pattern\+\_\+length}{, }\item[{const int}]{text\+\_\+length}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{wavefront__plot_8c_source_l00105}{105}} of file \doxymbox{\hyperlink{wavefront__plot_8c_source}{wavefront\+\_\+plot.\+c}}.
+
+Here is the call graph for this function:\+
+% FIG 10
+Here is the caller graph for this function:\+
+% FIG 11

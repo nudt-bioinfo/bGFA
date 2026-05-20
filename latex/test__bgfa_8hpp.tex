@@ -1,0 +1,93 @@
+\doxysection{src/\+test/\+test\+\_\+bgfa.hpp File Reference}
+\hypertarget{test__bgfa_8hpp}{}\label{test__bgfa_8hpp}\index{src/test/test\_bgfa.hpp@{src/test/test\_bgfa.hpp}}
+{\ttfamily \+\#include $<$iostream$>$}\newline
+{\ttfamily \+\#include $<$fstream$>$}\newline
+{\ttfamily \+\#include $<$string$>$}\newline
+{\ttfamily \+\#include $<$vector$>$}\newline
+{\ttfamily \+\#include $<$sys/\+stat.\+h$>$}\newline
+{\ttfamily \+\#include $<$sys/\+types.\+h$>$}\newline
+{\ttfamily \+\#include "{}../\+bgfa\+\_\+graph.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}../\+bgfa\+\_\+merge.\+hpp"{}}\newline
+{\ttfamily \+\#include "{}../\+bgfa\+\_\+alignment.\+hpp"{}}\newline
+Include dependency graph for test\+\_\+bgfa.\+hpp:\+
+% FIG 0
+This graph shows which files directly or indirectly include this file:\+
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{test__bgfa_8hpp_a6ce27f3c3097d4317b0f6716bd383fb0}{canonicalize\+Gfa}} (const std::\+string \&path)
+\item 
+static std::\+string \doxymbox{\hyperlink{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0}{normalize}} (const std::\+string \&s)
+\item 
+bool \doxymbox{\hyperlink{test__bgfa_8hpp_ac4f4a4352f3929141f3fcd5807523e0d}{files\+Equal}} (const std::\+string \&a, const std::\+string \&b)
+\item 
+static std::\+vector$<$ std::\+string $>$ \doxymbox{\hyperlink{test__bgfa_8hpp_a1cedbced6db14ea1d1e1069eb7f0a1b0}{read\+Lines}} (const std::\+string \&path)
+\item 
+static bool \doxymbox{\hyperlink{test__bgfa_8hpp_a5474cb3d7e3729c00cfb325e5ff54cfb}{gfa\+Equal\+Loose}} (const std::\+string \&a, const std::\+string \&b)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{test__bgfa_8hpp_doc-func-members}
+\doxysubsection{Function Documentation}
+\Hypertarget{test__bgfa_8hpp_a6ce27f3c3097d4317b0f6716bd383fb0}\index{test\_bgfa.hpp@{test\_bgfa.hpp}!canonicalizeGfa@{canonicalizeGfa}}
+\index{canonicalizeGfa@{canonicalizeGfa}!test\_bgfa.hpp@{test\_bgfa.hpp}}
+\doxysubsubsection{\texorpdfstring{canonicalizeGfa()}{canonicalizeGfa()}}
+{\footnotesize\ttfamily \label{test__bgfa_8hpp_a6ce27f3c3097d4317b0f6716bd383fb0} 
+std::\+vector$<$ std::\+string $>$ canonicalize\+Gfa (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{test__bgfa_8hpp_source_l00013}{13}} of file \doxymbox{\hyperlink{test__bgfa_8hpp_source}{test\+\_\+bgfa.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 2
+\Hypertarget{test__bgfa_8hpp_ac4f4a4352f3929141f3fcd5807523e0d}\index{test\_bgfa.hpp@{test\_bgfa.hpp}!filesEqual@{filesEqual}}
+\index{filesEqual@{filesEqual}!test\_bgfa.hpp@{test\_bgfa.hpp}}
+\doxysubsubsection{\texorpdfstring{filesEqual()}{filesEqual()}}
+{\footnotesize\ttfamily \label{test__bgfa_8hpp_ac4f4a4352f3929141f3fcd5807523e0d} 
+bool files\+Equal (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{a}{, }\item[{const std::\+string \&}]{b}{}\end{DoxyParamCaption})}
+
+
+
+Definition at line \doxymbox{\hyperlink{test__bgfa_8hpp_source_l00125}{125}} of file \doxymbox{\hyperlink{test__bgfa_8hpp_source}{test\+\_\+bgfa.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 3
+\Hypertarget{test__bgfa_8hpp_a5474cb3d7e3729c00cfb325e5ff54cfb}\index{test\_bgfa.hpp@{test\_bgfa.hpp}!gfaEqualLoose@{gfaEqualLoose}}
+\index{gfaEqualLoose@{gfaEqualLoose}!test\_bgfa.hpp@{test\_bgfa.hpp}}
+\doxysubsubsection{\texorpdfstring{gfaEqualLoose()}{gfaEqualLoose()}}
+{\footnotesize\ttfamily \label{test__bgfa_8hpp_a5474cb3d7e3729c00cfb325e5ff54cfb} 
+bool gfa\+Equal\+Loose (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{a}{, }\item[{const std::\+string \&}]{b}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{test__bgfa_8hpp_source_l00153}{153}} of file \doxymbox{\hyperlink{test__bgfa_8hpp_source}{test\+\_\+bgfa.\+hpp}}.
+
+Here is the call graph for this function:\+
+% FIG 4
+\Hypertarget{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0}\index{test\_bgfa.hpp@{test\_bgfa.hpp}!normalize@{normalize}}
+\index{normalize@{normalize}!test\_bgfa.hpp@{test\_bgfa.hpp}}
+\doxysubsubsection{\texorpdfstring{normalize()}{normalize()}}
+{\footnotesize\ttfamily \label{test__bgfa_8hpp_a65853d10f01370f1fef2a9fffa5452d0} 
+std::\+string normalize (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{s}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{test__bgfa_8hpp_source_l00097}{97}} of file \doxymbox{\hyperlink{test__bgfa_8hpp_source}{test\+\_\+bgfa.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 5
+\Hypertarget{test__bgfa_8hpp_a1cedbced6db14ea1d1e1069eb7f0a1b0}\index{test\_bgfa.hpp@{test\_bgfa.hpp}!readLines@{readLines}}
+\index{readLines@{readLines}!test\_bgfa.hpp@{test\_bgfa.hpp}}
+\doxysubsubsection{\texorpdfstring{readLines()}{readLines()}}
+{\footnotesize\ttfamily \label{test__bgfa_8hpp_a1cedbced6db14ea1d1e1069eb7f0a1b0} 
+std::\+vector$<$ std::\+string $>$ read\+Lines (\begin{DoxyParamCaption}\item[{const std::\+string \&}]{path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Definition at line \doxymbox{\hyperlink{test__bgfa_8hpp_source_l00139}{139}} of file \doxymbox{\hyperlink{test__bgfa_8hpp_source}{test\+\_\+bgfa.\+hpp}}.
+
+Here is the caller graph for this function:\+
+% FIG 6
