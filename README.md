@@ -4,7 +4,7 @@ bGFA is a genome graph toolkit for converting between GFA and BGFA, building min
 
 This document focuses on how to use the commands and how BGFA data is laid out.
 
-Detailed Usage is in (bGFA-Doxygen)[https://github.com/nudt-bioinfo/bGFA/blob/main/html/index.html]
+Detailed function descriptions and call relationships is in (bGFA-Doxygen)[https://github.com/nudt-bioinfo/bGFA/blob/main/html/index.html]
 
 ## Fast Start
 
