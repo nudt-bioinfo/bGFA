@@ -1,0 +1,7 @@
+H	VN:Z:1.0
+S	0	AAA	SL:i:3	SO:i:0	SR:i:0	SZ:Z:0
+S	1	TTT	SL:i:3	SO:i:0	SR:i:0	SZ:Z:0
+S	2	GGG	SL:i:3	SO:i:0	SR:i:0	SZ:Z:0
+L	0	+	1	+	0M
+L	1	+	2	+	0M
+P	5	0+,1+,2+

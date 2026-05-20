@@ -6,6 +6,8 @@ This document focuses on how to use the commands and how BGFA data is laid out.
 
 Detailed function descriptions and call relationships is in (bGFA-Doxygen)[https://github.com/nudt-bioinfo/bGFA/blob/main/html/index.html]
 
+The commands and execution methods corresponding to the experiments in the paper are described in (bGFA-Tutorial)[https://github.com/nudt-bioinfo/bGFA/blob/main/doc/tutorial.md].
+
 ## Fast Start
 
 ### Compilation

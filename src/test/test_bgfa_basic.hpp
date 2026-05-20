@@ -163,8 +163,9 @@ int test_path_increment()
 
 int test_segment_no_id_encoding_00_10_11()
 {
-    const std::string gfaIn = "./temp/test_noid_001011.gfa";
-    const std::string bgfaOut = "./temp/test_noid_001011.bgfa";
+    std::string src = "g3.gfa";
+    const std::string gfaIn = basicDir + "/" + "g3.gfa";
+    const std::string bgfaOut = basicDir + "/" + "g3.bgfa";
 
     const std::string seq10 = makeRepeatACGT(5);  // <=13, tag 10
     const std::string seq11 = makeRepeatACGT(20); // 14..28, tag 11
