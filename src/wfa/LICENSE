@@ -1,15 +1,6 @@
-<!--
- * @file \bGFA\LICENSE
- * @brief 
- * @details 
- * @author grampart
- * @version 
- * @copyright: Copyright(c) 2026 by grampart, All Rights Reserved.
- * @license: MIT License
--->
 MIT License
 
-Copyright (c) 2026 nudt-bioinfo
+Copyright (c) 2017 Santiago Marco-Sola
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,3 +19,5 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+AUTHOR/CONTACT: Santiago Marco-Sola <santiagomsola@gmail.com>
