@@ -17,6 +17,46 @@ This document provides step-by-step instructions to reproduce the build and the 
 - Examples and data used in the paper: `data/graph/` and `data/assembly/`.
 - Helper cases used to patch external tools: `case/`.
 
+## Data Preparation
+
+The datasets used in the paper are indicated below:
+
+- 1kcp: [1KCP](https://yanglab.westlake.edu.cn/1kcp/downloadz)
+- hprc: [hprc-v1.0-minigraph-chm13.gfa.gz](https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph/hprc-v1.0-minigraph-chm13.gfa.gz) and [hprc-v1.0-mc-chm13.gfa.gz](https://s3-us-west-2.amazonaws.com/human-pangenomics/pangenomes/freeze/freeze1/minigraph-cactus/hprc-v1.0-mc-chm13.gfa.gz)
+- S.cerevisiae: `./data/assembly/s.c`
+- E.coli: [ecoli50.gfa.zst](https://zenodo.org/records/7937947/files/ecoli50.gfa.zst?download=1)
+
+The graphs in the paper were built using two approaches: Cactus-based "mc" and `minigraph`.
+
+- mc (Cactus pangenome)
+
+Repository: https://github.com/ComparativeGenomicsToolkit/cactus
+
+Example command (replace placeholders):
+
+```powershell
+cactus-pangenome "${JOBSTORE}" "./${name}.txt" \
+                --outDir "${OUT_DIR}" \
+                --outName "${name}" \
+                --reference "refname" \
+                --gfa \
+                --maxCores 16 \
+                --maxMemory 60G \
+                --workDir "${WORK_DIR}"
+```
+
+- minigraph
+
+Repository: https://github.com/lh3/minigraph
+
+Example command:
+
+```powershell
+minigraph -cxggs file1.fa file2.fa ...
+```
+
+Notes: Replace placeholders and ensure fasta inputs are provided in the desired order.
+
 ## Build
 
 1. Change into the repository root and build the project:
@@ -115,3 +155,5 @@ Additional notes
 
 - The commands above were executed and timed on Linux; small differences may appear on other platforms.
 - If you encounter build errors, re-run `make clean` and re-run the top-level `make` so the `wfa` and `ksw` objects are rebuilt.
+
+
