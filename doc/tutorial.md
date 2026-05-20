@@ -26,9 +26,9 @@ The datasets used in the paper are indicated below:
 - S.cerevisiae: `./data/assembly/s.c`
 - E.coli: [ecoli50.gfa.zst](https://zenodo.org/records/7937947/files/ecoli50.gfa.zst?download=1)
 
-The graphs in the paper were built using two approaches: Cactus-based "mc" and `minigraph`.
+The graphs in the paper were built using two approaches: `minigraph-cactus(mc)` and `minigraph`.
 
-- mc (Cactus pangenome)
+- mc
 
 Repository: https://github.com/ComparativeGenomicsToolkit/cactus
 
@@ -139,13 +139,12 @@ This project includes a `case/` directory with helper source files and patches u
 If you need to reproduce the modified external tools exactly:
 
 - Extract the files directly
-if a matching `zip` archive is provided under the corresponding directory, extract it directly and build the tool using its original build procedure.
-
+  if a matching `zip` archive is provided under the corresponding directory, extract it directly and build the tool using its original build procedure.
 - Or replace the files
-  1. Clone the corresponding upstream repository.
-  1. Replace the specified source files with the matching files from `case/<toolname>/` (see the `case/` subfolders).
-  1. Build the tool following its original build instructions.
 
+  1. Clone the corresponding upstream repository.
+  2. Replace the specified source files with the matching files from `case/<toolname>/` (see the `case/` subfolders).
+  3. Build the tool following its original build instructions.
 
 Important note about `gfatools`:
 
@@ -155,5 +154,3 @@ Additional notes
 
 - The commands above were executed and timed on Linux; small differences may appear on other platforms.
 - If you encounter build errors, re-run `make clean` and re-run the top-level `make` so the `wfa` and `ksw` objects are rebuilt.
-
-
