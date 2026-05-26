@@ -561,6 +561,9 @@ gfa_t *bgfa_read(const char *fn)
 	uword_t pre_info = 0, seg_size = 0, link_size = 0, path_size = 0, walk_size = 0;
 	uword_t curr_pos = 0;
 	int i;
+	int no_segment_id = 0;
+	int has_sosr = 0;
+	int sosr_uncompressed = 0;
 
 	if (fn == 0)
 		return 0;
@@ -581,14 +584,16 @@ gfa_t *bgfa_read(const char *fn)
 	if (fread(&walk_size, sizeof(uword_t), 1, fp) != 1)
 		goto fail;
 
-	(void)pre_info;
+	no_segment_id = (pre_info & PRE_INFO_SEGMENT_NO_ID) != 0;
+	has_sosr = (pre_info & PRE_INFO_HAS_SOSR) != 0;
+	sosr_uncompressed = (pre_info & PRE_INFO_SOSR_UNCOMPRESSED) != 0;
 	(void)path_size;
 	(void)walk_size;
 
 	while (curr_pos < seg_size)
 	{
-		uword_t node_id, sosr, l_str;
-		uword_t l_seq, rank, soff;
+		uword_t node_id, sosr, sn_word, l_str;
+		uword_t l_seq, rank, soff, sn_id;
 		uword_t base_per_word = WORD_BIT / 2;
 		uword_t seq_num = 0;
 		uword_t seq_word_compact = 0;
@@ -597,19 +602,81 @@ gfa_t *bgfa_read(const char *fn)
 		gfa_seg_t *gs;
 		char name_buf[64], sn_buf[64];
 		char *seq = 0;
+		int need_compact2_payload = 0;
+		uword_t tag2 = 0;
 
-		if (fread(&node_id, sizeof(uword_t), 1, fp) != 1)
-			goto fail;
-		if (fread(&sosr, sizeof(uword_t), 1, fp) != 1)
-			goto fail;
+		node_id = g ? (uword_t)g->n_seg : 0;
+		sosr = 0;
+		sn_word = 0;
+		sn_id = 0;
+		rank = 0;
+		soff = 0;
+		if (!no_segment_id)
+		{
+			if (fread(&node_id, sizeof(uword_t), 1, fp) != 1)
+				goto fail;
+			curr_pos += 1;
+		}
+		if (has_sosr)
+		{
+			if (fread(&sosr, sizeof(uword_t), 1, fp) != 1)
+				goto fail;
+			curr_pos += 1;
+			if (sosr_uncompressed)
+			{
+				if (fread(&sn_word, sizeof(uword_t), 1, fp) != 1)
+					goto fail;
+				curr_pos += 1;
+			}
+		}
 		if (fread(&l_str, sizeof(uword_t), 1, fp) != 1)
 			goto fail;
-		curr_pos += 3;
+		curr_pos += 1;
 
-		if ((l_str >> (WORD_BIT - 1)) == 1)
+		if (has_sosr)
+		{
+			if (sosr_uncompressed)
+			{
+				rank = (sosr & 0x7F);
+				soff = (sosr >> 7) & 0x01FFFFFF;
+				sn_id = sn_word & 0xFFFFFFFF;
+			}
+			else
+			{
+				rank = (sosr & 0x07);
+				soff = (sosr >> 3) & 0x003FFFFF;
+				sn_id = (sosr >> 25) & 0x7F;
+			}
+		}
+
+		if (no_segment_id)
+		{
+			tag2 = (l_str >> (WORD_BIT - 2)) & 0x3;
+			if (tag2 == 0)
+			{
+				l_seq = l_str;
+				seq_num = l_seq > 0 ? (l_seq + base_per_word - 1) / base_per_word : 0;
+			}
+			else if (tag2 == 2)
+			{
+				l_seq = (l_str >> (WORD_BIT - 6)) & 0x0F;
+				seq_num = l_seq > 0 ? 1 : 0;
+				seq_word_compact = l_str;
+			}
+			else if (tag2 == 3)
+			{
+				l_seq = (l_str >> (WORD_BIT - 8)) & 0x3F;
+				seq_num = l_seq > 0 ? 2 : 0;
+				seq_word_compact = l_str;
+				need_compact2_payload = 1;
+			}
+			else
+				goto fail;
+		}
+		else if ((l_str >> (WORD_BIT - 1)) == 1)
 		{
 			l_seq = (l_str >> (WORD_BIT - SEGMENT_COMPACT_PLACEHOLDER)) &
-					((uword_t)1 << (SEGMENT_COMPACT_PLACEHOLDER - 1)) - 1;
+					(((uword_t)1 << (SEGMENT_COMPACT_PLACEHOLDER - 1)) - 1);
 			seq_word_compact = l_str << SEGMENT_COMPACT_PLACEHOLDER;
 			seq_num = l_seq > 0 ? 1 : 0;
 		}
@@ -627,7 +694,32 @@ gfa_t *bgfa_read(const char *fn)
 
 			if (seq_num > 0)
 			{
-				if ((l_str >> (WORD_BIT - 1)) == 1)
+				if (no_segment_id && tag2 == 2)
+				{
+					seq_words = &seq_word_compact;
+				}
+				else if (no_segment_id && tag2 == 3)
+				{
+					uword_t payload_lo = 0;
+					if (need_compact2_payload)
+					{
+						if (fread(&payload_lo, sizeof(uword_t), 1, fp) != 1)
+						{
+							free(seq);
+							goto fail;
+						}
+						curr_pos += 1;
+					}
+					GFA_MALLOC(seq_words, 2);
+					if (seq_words == 0)
+					{
+						free(seq);
+						goto fail;
+					}
+					seq_words[0] = seq_word_compact;
+					seq_words[1] = payload_lo;
+				}
+				else if (!no_segment_id && (l_str >> (WORD_BIT - 1)) == 1)
 				{
 					seq_words = &seq_word_compact;
 				}
@@ -648,12 +740,44 @@ gfa_t *bgfa_read(const char *fn)
 					curr_pos += seq_num;
 				}
 
-				for (i = 0; i < (int)l_seq; ++i)
+				if (no_segment_id && tag2 == 3)
 				{
-					uword_t word = seq_words[i / base_per_word];
-					uword_t bit_off = (uword_t)(i % (int)base_per_word) * 2;
-					uword_t code = (word >> (WORD_BIT - 2 - bit_off)) & 0x3;
-					seq[i] = "ACGT"[code];
+					uword_t payload_hi = seq_words[0];
+					uword_t payload_lo = seq_words[1];
+					uword_t hi_bits = WORD_BIT - 8;
+					for (i = 0; i < (int)l_seq; ++i)
+					{
+						uword_t p0 = (uword_t)(2 * i);
+						uword_t p1 = p0 + 1;
+						uint8_t b0 = (p0 < hi_bits)
+										 ? (uint8_t)((payload_hi >> (hi_bits - 1 - p0)) & 0x1)
+										 : (uint8_t)((payload_lo >> (WORD_BIT - 1 - (p0 - hi_bits))) & 0x1);
+						uint8_t b1 = (p1 < hi_bits)
+										 ? (uint8_t)((payload_hi >> (hi_bits - 1 - p1)) & 0x1)
+										 : (uint8_t)((payload_lo >> (WORD_BIT - 1 - (p1 - hi_bits))) & 0x1);
+						uint8_t enc = (uint8_t)((b0 << 1) | b1);
+						seq[i] = "ACGT"[enc & 0x3];
+					}
+				}
+				else if (no_segment_id && tag2 == 2)
+				{
+					uword_t payload = l_str & (((uword_t)1 << (WORD_BIT - 6)) - 1);
+					for (i = 0; i < (int)l_seq; ++i)
+					{
+						uword_t shift = (uword_t)(WORD_BIT - 8) - 2 * (uword_t)i;
+						uword_t enc = (payload >> shift) & 0x3;
+						seq[i] = "ACGT"[enc];
+					}
+				}
+				else
+				{
+					for (i = 0; i < (int)l_seq; ++i)
+					{
+						uword_t word = seq_words[i / base_per_word];
+						uword_t bit_off = (uword_t)(i % (int)base_per_word) * 2;
+						uword_t code = (word >> (WORD_BIT - 2 - bit_off)) & 0x3;
+						seq[i] = "ACGT"[code];
+					}
 				}
 				seq[l_seq] = 0;
 			}
@@ -665,16 +789,17 @@ gfa_t *bgfa_read(const char *fn)
 		gs->seq = seq;
 		gs->len = (int32_t)l_seq;
 
-		soff = sosr >> SOSR_OFFSET_SHIFT;
-		rank = sosr & SR_MASK;
-		gs->soff = (int32_t)soff;
-		gs->rank = (int32_t)rank;
-		if ((uint32_t)rank > g->max_rank)
-			g->max_rank = (uint32_t)rank;
+		if (has_sosr)
+		{
+			gs->soff = (int32_t)soff;
+			gs->rank = (int32_t)rank;
+			if ((uint32_t)rank > g->max_rank)
+				g->max_rank = (uint32_t)rank;
 
-		snprintf(sn_buf, sizeof(sn_buf), "%llu", (unsigned long long)rank);
-		gs->snid = gfa_sseq_add(g, sn_buf);
-		gfa_sseq_update(g, gs);
+			snprintf(sn_buf, sizeof(sn_buf), "%llu", (unsigned long long)sn_id);
+			gs->snid = gfa_sseq_add(g, sn_buf);
+			gfa_sseq_update(g, gs);
+		}
 
 		if (seq_words && seq_words != &seq_word_compact)
 			free(seq_words);
@@ -763,22 +888,24 @@ gfa_t *bgfa_read2(const char *fn)
 		gs->len = (uint32_t)seq.size();
 
 		// Populate rGFA stable-coordinate fields from bGFA (SO/SR present; SN := SR)
-		// SR (rank)
-		int32_t sr = (int32_t)s.getRank();
-		gs->rank = sr;
-		if (sr > (int32_t)g->max_rank)
-			g->max_rank = sr;
-		// SO (stable offset)
-		gs->soff = (int32_t)s.getOffset();
-		// SN: use SR as the stable-sequence name string
+		if (s.hasSosr())
 		{
-			char sn_buf[32];
-			// Convert rank to string name (SN == SR by convention here)
-			snprintf(sn_buf, sizeof(sn_buf), "%d", sr);
-			gs->snid = gfa_sseq_add(g, sn_buf);
+			// SR (rank)
+			int32_t sr = (int32_t)s.getRank();
+			gs->rank = sr;
+			if (sr > (int32_t)g->max_rank)
+				g->max_rank = sr;
+			// SO (stable offset)
+			gs->soff = (int32_t)s.getOffset();
+			// SN: use bGFA SN id as the stable-sequence name string
+			{
+				char sn_buf[32];
+				snprintf(sn_buf, sizeof(sn_buf), "%u", (unsigned int)s.getSnId());
+				gs->snid = gfa_sseq_add(g, sn_buf);
+			}
+			// Update sseq min/max/rank bookkeeping
+			gfa_sseq_update(g, gs);
 		}
-		// Update sseq min/max/rank bookkeeping
-		gfa_sseq_update(g, gs);
 	}
 
 	// Links
@@ -813,7 +940,7 @@ gfa_t *gfa_read(const char *fn)
 		const char *dot = strrchr(fn, '.');
 		if (dot && strcmp(dot, ".bgfa") == 0)
 		{
-			return bgfa_read(fn);
+			return bgfa_read2(fn);
 		}
 	}
 	gzFile fp;

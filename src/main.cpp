@@ -44,6 +44,10 @@ int main(int argc, char *argv[])
                      "Normalize linear 1-in-1-out segments once after loading GFA");
     convert.add_flag("--segment-no-id", parse.convert_args.segment_no_id,
                      "Store BGFA segments without explicit segment id (id assigned by read order)");
+    convert.add_flag("--no-sosr", parse.convert_args.no_sosr,
+                     "Disable SOSR/SN storage in BGFA segments");
+    convert.add_flag("--sosr-compact", parse.convert_args.sosr_compact,
+                     "Use compact SOSR+SN packing in BGFA segments");
 
     // merge
     auto &merge = *app.add_subcommand("merge", "merge some gfas/bgfas to one");

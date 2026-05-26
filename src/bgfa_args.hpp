@@ -25,6 +25,8 @@ struct ConvertArgs
     std::string path_mode = "inc";   // "direct" or "inc"
     bool normalized = false;
     bool segment_no_id = false;
+    bool no_sosr = false;
+    bool sosr_compact = false;
     // bool auto_output = true;
 };
 

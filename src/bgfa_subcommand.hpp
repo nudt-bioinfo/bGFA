@@ -60,9 +60,15 @@ double ConvertProcess(CommandParser parse)
     std::cout << "\t Segment ID Storage: "
               << (parse.convert_args.segment_no_id ? "disabled (order-assigned)" : "enabled")
               << std::endl;
+    std::cout << "\t SOSR Storage: "
+              << (parse.convert_args.no_sosr ? "disabled" : "enabled")
+              << ", Mode: "
+              << (parse.convert_args.sosr_compact ? "compact" : "uncompressed")
+              << std::endl;
 
     gettimeofday(&start_time, NULL);
     gfa = GFA(in_path, parse.convert_args.path_mode);
+    gfa.setSosrStorage(!parse.convert_args.no_sosr, parse.convert_args.sosr_compact);
     if (in_ext == "gfa" && parse.convert_args.normalized)
     {
         uword_t merged = gfa.mergeUniqueSuccessorByReverseTable();

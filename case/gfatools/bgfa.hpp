@@ -1,5 +1,5 @@
 /*
- * @file /gfatools-bgfa/bgfa.hpp
+ * @file \bGFA\src\bgfa.hpp
  * @brief Basic definitions for bGFA project
  * @details This file contains basic type definitions, constants,
  *          and includes necessary for the bGFA project.

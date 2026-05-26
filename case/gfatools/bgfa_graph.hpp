@@ -34,6 +34,15 @@
 /// Shift for increment encoding in path
 #define PATH_INC_SHIFT 8
 
+/// pre_info bit0: path mode (0 direct, 1 increment)
+#define PRE_INFO_PATHMODE_INC 0x01
+/// pre_info bit1: segment id storage (0 store id, 1 no id in segment record)
+#define PRE_INFO_SEGMENT_NO_ID 0x02
+/// pre_info bit2: SOSR stored (0 no, 1 yes)
+#define PRE_INFO_HAS_SOSR 0x04
+/// pre_info bit3: SOSR storage mode (0 compressed, 1 uncompressed)
+#define PRE_INFO_SOSR_UNCOMPRESSED 0x08
+
 #if WORD_BIT == 16
 #define PATH_INC_SIZE 2
 #elif WORD_BIT == 32
@@ -116,7 +125,11 @@ class Segment
 private:
     uword_t id_;                    ///< Segment ID
     uword_t dis_;                   ///< Segment distance, not stored
-    uword_t sosr_;                  ///< Segment offset and rank (low 6 bits for rank, high bits for offset)
+    uword_t so_;                    ///< Segment offset (SO)
+    uword_t sr_;                    ///< Segment rank (SR)
+    uword_t sn_id_;                 ///< Segment name id (SN)
+    bool has_sosr_;                 ///< Whether SOSR/SN are stored
+    bool sosr_compact_;             ///< SOSR/SN compact storage mode
     uword_t length_;                ///< Segment length(SL:i), not stored
     std::vector<uword_t> sequence_; ///< Binary encoded sequence
 
@@ -126,7 +139,7 @@ public:
     /**
      * @brief Default constructor initializes an empty segment
      */
-    Segment() : length_(0), store_size_(0) {}
+    Segment() : so_(0), sr_(0), sn_id_(0), has_sosr_(true), sosr_compact_(false), length_(0), store_size_(0) {}
 
     /**
      * @brief Constructor with id, dis, length, and binary sequence
@@ -135,9 +148,10 @@ public:
      * @param {uword_t} length - Segment length
      * @param {vector<uword_t>} &sequence - Binary encoded sequence
      */
-    explicit Segment(const uword_t id, uword_t sosr, uword_t length,
+    explicit Segment(const uword_t id, uword_t so, uword_t sr, uword_t length,
                      const std::vector<uword_t> &sequence)
-        : id_(id), length_(length), sequence_(sequence), sosr_(sosr)
+        : id_(id), so_(so), sr_(sr), sn_id_(0), has_sosr_(true), sosr_compact_(false),
+          length_(length), sequence_(sequence)
     {
         setStoreSize();
     }
@@ -150,7 +164,8 @@ public:
      */
     explicit Segment(const uword_t id, uword_t length,
                      const std::vector<uword_t> &sequence)
-        : id_(id), length_(length), sequence_(sequence), dis_(0), sosr_(0)
+        : id_(id), so_(0), sr_(0), sn_id_(0), has_sosr_(true), sosr_compact_(false),
+          length_(length), sequence_(sequence), dis_(0)
     {
         setStoreSize();
     }
@@ -161,14 +176,16 @@ public:
      * @param {string} &sequence_str - Segment sequence string
      */
     explicit Segment(const uword_t id, const std::string &sequence_str)
-        : id_(id), length_(sequence_str.length()), dis_(0), sosr_(0)
+        : id_(id), so_(0), sr_(0), sn_id_(0), has_sosr_(true), sosr_compact_(false),
+          length_(sequence_str.length()), dis_(0)
     {
         stringToBinary(sequence_str);
         setStoreSize();
     }
 
     explicit Segment(const uword_t id, const std::string &sequence_str, const uword_t offset, const uword_t rank)
-        : id_(id), length_(sequence_str.length()), dis_(0)
+        : id_(id), so_(0), sr_(0), sn_id_(0), has_sosr_(true), sosr_compact_(false),
+          length_(sequence_str.length()), dis_(0)
     {
         setSosr(offset, rank);
         stringToBinary(sequence_str);
@@ -191,19 +208,39 @@ public:
      * @brief Get the SOSR of the Segment
      * @return {uword_t} Segment sosr
      */
-    uword_t getSosr() const { return sosr_; }
+    uword_t getSosr() const
+    {
+        if (!has_sosr_)
+            return 0;
+        if (sosr_compact_)
+        {
+            const uword_t sr = (sr_ & 0x07);
+            const uword_t so = (so_ & 0x003FFFFF);
+            const uword_t sn = (sn_id_ & 0x7F);
+            return (sn << 25) | (so << 3) | sr;
+        }
+        const uword_t sr = (sr_ & 0x7F);
+        const uword_t so = (so_ & 0x01FFFFFF);
+        return (so << 7) | sr;
+    }
 
     /**
      * @brief Get the Offset of the Segment
      * @return {uword_t} Segment offset
      */
-    uword_t getOffset() const { return sosr_ >> SOSR_OFFSET_SHIFT; }
+    uword_t getOffset() const { return has_sosr_ ? so_ : 0; }
 
     /**
      * @brief Get the Rank of the Segment
      * @return {uword_t} Segment rank
      */
-    uword_t getRank() const { return sosr_ & SR_MASK; }
+    uword_t getRank() const { return has_sosr_ ? sr_ : 0; }
+
+    uword_t getSnId() const { return sn_id_; }
+
+    bool hasSosr() const { return has_sosr_; }
+
+    bool isSosrCompact() const { return sosr_compact_; }
 
     /**
      * @brief Get the Length of the Segment
@@ -219,6 +256,38 @@ public:
     {
         setStoreSize();
         return store_size_;
+    }
+
+    uword_t getStoreSize(bool store_id) const
+    {
+        uword_t sz = 0;
+        if (store_id)
+            sz += 1; // id
+        if (has_sosr_)
+            sz += sosr_compact_ ? 1 : 2; // sosr (+sn if uncompressed)
+
+        if (store_id)
+        {
+            if (length_ > (WORD_BIT - 6) / 2)
+                sz += (1 + static_cast<uword_t>(sequence_.size()));
+            else
+                sz += 1;
+            return sz;
+        }
+
+        const uword_t compact1_cap = (WORD_BIT - 6) / 2;
+        const uword_t compact1_len_max = std::min<uword_t>(compact1_cap, 0x0F);
+        const uword_t compact2_cap = (2 * WORD_BIT - 8) / 2;
+        const uword_t compact2_len_max = std::min<uword_t>(compact2_cap, 0x3F);
+
+        if (length_ > compact2_len_max)
+            sz += (1 + static_cast<uword_t>(sequence_.size()));
+        else if (length_ <= compact1_len_max)
+            sz += 1;
+        else
+            sz += 2;
+
+        return sz;
     }
 
     /**
@@ -305,7 +374,22 @@ public:
      */
     void setSosr(const uword_t offset, const uword_t rank)
     {
-        sosr_ = (offset << SOSR_OFFSET_SHIFT) | (rank & SR_MASK);
+        so_ = offset;
+        sr_ = rank;
+        has_sosr_ = true;
+    }
+
+    void setSnId(const uword_t sn_id)
+    {
+        sn_id_ = sn_id;
+        has_sosr_ = true;
+    }
+
+    void setSosrStorage(bool has_sosr, bool compact_mode)
+    {
+        has_sosr_ = has_sosr;
+        sosr_compact_ = compact_mode;
+        setStoreSize();
     }
 
     /**
@@ -324,7 +408,7 @@ public:
         oss << "\tSL:i:" << getLength();
         oss << "\tSO:i:" << getOffset();
         oss << "\tSR:i:" << getRank();
-        oss << "\tSZ:Z:" << getRank();
+        oss << "\tSN:Z:" << getSnId();
 
         return oss.str();
     }
@@ -334,7 +418,7 @@ public:
      * @param {ofstream} &output_file - Output binary file stream
      * @param {uword_t} &s_offset - Current offset in the binary file
      */
-    void toBgfaBin(std::ofstream &output_file) const
+    void toBgfaBin(std::ofstream &output_file, bool store_id = true) const
     {
         if (!output_file.is_open())
         {
@@ -345,28 +429,145 @@ public:
         uint8_t type_flag = 1; // Type flag for segment
 
         // output_file.write(reinterpret_cast<const char *>(&type_flag), sizeof(uword_t));
-        output_file.write(reinterpret_cast<const char *>(&id_),
-                          sizeof(uword_t));
-        output_file.write(reinterpret_cast<const char *>(&sosr_),
-                          sizeof(uword_t));
-
-        if (length_ > (WORD_BIT - 6) / 2)
+        if (store_id)
         {
-            output_file.write(reinterpret_cast<const char *>(&length_),
+            output_file.write(reinterpret_cast<const char *>(&id_),
                               sizeof(uword_t));
-
-            for (const auto &value : sequence_)
+        }
+        if (has_sosr_)
+        {
+            if (sosr_compact_)
             {
-                output_file.write(reinterpret_cast<const char *>(&value),
+                if (sr_ > 0x07 || so_ > 0x003FFFFF || sn_id_ > 0x7F)
+                {
+                    std::cerr << "[BGFA][Warn] SOSR compact overflow: SR(0..7), SO(0..4194303), SN(0..127). "
+                              << "Use --sosr-compact=false (uncompressed) to avoid loss." << std::endl;
+                }
+                const uword_t sr = (sr_ & 0x07);
+                const uword_t so = (so_ & 0x003FFFFF);
+                const uword_t sn = (sn_id_ & 0x7F);
+                const uword_t packed = (sn << 25) | (so << 3) | sr;
+                output_file.write(reinterpret_cast<const char *>(&packed),
+                                  sizeof(uword_t));
+            }
+            else
+            {
+                const uword_t sr = (sr_ & 0x7F);
+                const uword_t so = (so_ & 0x01FFFFFF);
+                const uword_t packed = (so << 7) | sr;
+                output_file.write(reinterpret_cast<const char *>(&packed),
+                                  sizeof(uword_t));
+                output_file.write(reinterpret_cast<const char *>(&sn_id_),
+                                  sizeof(uword_t));
+            }
+        }
+
+        if (store_id)
+        {
+            if (length_ > (WORD_BIT - 6) / 2)
+            {
+                output_file.write(reinterpret_cast<const char *>(&length_),
+                                  sizeof(uword_t));
+
+                for (const auto &value : sequence_)
+                {
+                    output_file.write(reinterpret_cast<const char *>(&value),
+                                      sizeof(uword_t));
+                }
+            }
+            else
+            {
+                uword_t val = (((uword_t(1) << 5) | length_) << (WORD_BIT - 6)) |
+                              (sequence_[0] >> 6);
+                output_file.write(reinterpret_cast<const char *>(&val),
                                   sizeof(uword_t));
             }
         }
         else
         {
-            uword_t val = (((1 << 5) | length_) << (WORD_BIT - 6)) |
-                          (sequence_[0] >> 6);
-            output_file.write(reinterpret_cast<const char *>(&val),
-                              sizeof(uword_t));
+            const uword_t compact1_cap = (WORD_BIT - 6) / 2;
+            const uword_t compact1_len_max = std::min<uword_t>(compact1_cap, 0x0F);
+            const uword_t compact2_cap = (2 * WORD_BIT - 8) / 2;
+            const uword_t compact2_len_max = std::min<uword_t>(compact2_cap, 0x3F);
+
+            if (length_ > compact2_len_max)
+            {
+                // 00: plain length + sequence words
+                output_file.write(reinterpret_cast<const char *>(&length_),
+                                  sizeof(uword_t));
+                for (const auto &value : sequence_)
+                {
+                    output_file.write(reinterpret_cast<const char *>(&value),
+                                      sizeof(uword_t));
+                }
+            }
+            else if (length_ <= compact1_len_max)
+            {
+                // 10: [2-bit tag=10][4-bit length][WORD_BIT-6 bits sequence]
+                uword_t payload = 0;
+                for (uword_t i = 0; i < length_; ++i)
+                {
+                    const uint8_t enc = GlobalVariant::char2bin[static_cast<uint8_t>(getBaseAt(i))] & 0x3;
+                    const uword_t shift = (WORD_BIT - 8) - 2 * i;
+                    payload |= (static_cast<uword_t>(enc) << shift);
+                }
+                const uword_t val = (uword_t(2) << (WORD_BIT - 2)) |
+                                    ((length_ & 0x0F) << (WORD_BIT - 6)) |
+                                    payload;
+                output_file.write(reinterpret_cast<const char *>(&val),
+                                  sizeof(uword_t));
+            }
+            else
+            {
+                // 11: [2-bit tag=11][6-bit length][WORD_BIT-8 bits sequence] + [next uword sequence]
+                uword_t payload_hi = 0;
+                uword_t payload_lo = 0;
+                const uword_t hi_bits = WORD_BIT - 8;
+
+                for (uword_t i = 0; i < length_; ++i)
+                {
+                    const uint8_t enc = GlobalVariant::char2bin[static_cast<uint8_t>(getBaseAt(i))] & 0x3;
+                    const uword_t bit_pos = 2 * i;
+
+                    const uint8_t b0 = (enc >> 1) & 0x1;
+                    const uint8_t b1 = enc & 0x1;
+
+                    const uword_t p0 = bit_pos;
+                    const uword_t p1 = bit_pos + 1;
+
+                    if (p0 < hi_bits)
+                    {
+                        if (b0)
+                            payload_hi |= (uword_t(1) << (hi_bits - 1 - p0));
+                    }
+                    else
+                    {
+                        const uword_t q = p0 - hi_bits;
+                        if (b0)
+                            payload_lo |= (uword_t(1) << (WORD_BIT - 1 - q));
+                    }
+
+                    if (p1 < hi_bits)
+                    {
+                        if (b1)
+                            payload_hi |= (uword_t(1) << (hi_bits - 1 - p1));
+                    }
+                    else
+                    {
+                        const uword_t q = p1 - hi_bits;
+                        if (b1)
+                            payload_lo |= (uword_t(1) << (WORD_BIT - 1 - q));
+                    }
+                }
+
+                const uword_t val = (uword_t(3) << (WORD_BIT - 2)) |
+                                    ((length_ & 0x3F) << (WORD_BIT - 8)) |
+                                    payload_hi;
+                output_file.write(reinterpret_cast<const char *>(&val),
+                                  sizeof(uword_t));
+                output_file.write(reinterpret_cast<const char *>(&payload_lo),
+                                  sizeof(uword_t));
+            }
         }
     }
 
@@ -449,8 +650,8 @@ public:
             os << "...";
         }
 
-        os << "\n\tSO: " << (segment.sosr_ >> SOSR_OFFSET_SHIFT)
-           << "\tSR: " << (segment.sosr_ & SR_MASK);
+        os << "\n\tSO: " << segment.getOffset()
+           << "\tSR: " << segment.getRank();
 
         if (segment.dis_ > 0)
         {
@@ -486,7 +687,8 @@ private:
     {
         store_size_ = 1; // for id
 
-        store_size_ += 1; // for sosr
+        if (has_sosr_)
+            store_size_ += sosr_compact_ ? 1 : 2; // sosr (+sn)
 
         if (length_ > (WORD_BIT - 6) / 2)
         {
@@ -874,6 +1076,11 @@ public:
 
         uword_t n_rows = links_.size();
 
+#ifdef INFO_DEBUG
+        std::cout << "[LinksSet to bGFA Bin] link_num: " << link_num_
+                  << ", n_rows(links_.size()): " << n_rows
+                  << ", store_size: " << store_size_ << std::endl;
+#endif
         // size of links
         output_file.write(reinterpret_cast<const char *>(&link_num_),
                           sizeof(uword_t));
@@ -1092,6 +1299,10 @@ public:
      */
     const std::vector<uword_t> &getAllNodes() const { return nodes_; }
 
+    uword_t getId() const { return id_; }
+
+    PathMode getMode() const { return static_cast<PathMode>(mode_); }
+
     /**
      * @brief Get the storage size of the Path in uword_t units
      * @return {uword_t} Storage size
@@ -1100,6 +1311,16 @@ public:
     {
         setStoreSize();
         return store_size_;
+    }
+
+    void setMode(PathMode mode)
+    {
+        if (mode != PATHMODE_DIRECT && mode != PATHMODE_INCREMENT)
+        {
+            throw std::invalid_argument("[Set Path Mode] Invalid path mode");
+        }
+        mode_ = mode;
+        setStoreSize();
     }
 
     /**
@@ -1608,6 +1829,8 @@ public:
      */
     uword_t getHaplotypeId() const { return haplotype_id_; }
 
+    uword_t getSequenceId() const { return sequence_id_; }
+
     /**
      * @brief Get the underlying Path of the Walk
      * @return {const Path&} Path object
@@ -1748,12 +1971,15 @@ private:
     std::vector<Path> paths_;       ///< List of paths
     std::vector<Walk> walks_;       ///< List of walks
     NodeMap name_to_id_;            ///< Mapping from segment names to IDs
+    NodeMap sn_name_to_id_;         ///< Mapping from SN names to numeric ids
     NodeMap w_sample_to_id_;        ///< Mapping from sample names to IDs
     NodeMap w_sequence_to_id_;      ///< Mapping from sample names to IDs
 
     // Section tag support for convert split mode
     uword_t pre_info_ = 0;
     // PATH_MODE 0x01=>inc、0x00=>direct
+    bool store_sosr_ = true;
+    bool sosr_compact_ = false;
 
 public:
     /**
@@ -1812,11 +2038,11 @@ public:
 
         if (path_mode == "inc")
         {
-            pre_info_ |= 0x01;
+            pre_info_ |= PRE_INFO_PATHMODE_INC;
         }
         else if (path_mode == "direct")
         {
-            pre_info_ &= (~0x01);
+            pre_info_ &= (~PRE_INFO_PATHMODE_INC);
         }
         else
         {
@@ -1870,6 +2096,12 @@ public:
      * @return {uword_t} Number of walks
      */
     uword_t getWalkNum() const { return walk_num_; }
+
+    void setSosrStorage(bool store_sosr, bool compact_mode)
+    {
+        store_sosr_ = store_sosr;
+        sosr_compact_ = compact_mode;
+    }
 
     /**
      * @brief Get the size of segments in storage (in uword_t units)
@@ -1988,6 +2220,15 @@ public:
      * @return {const vector<Walk>&} Vector of all walks
      */
     const std::vector<Walk> &getAllWalks() const { return walks_; }
+
+    void briefStat() const
+    {
+        std::cout << "TotalBases: " << bp_num_ << std::endl;
+        std::cout << "Nodes: " << seg_num_ << std::endl;
+        std::cout << "Edges: " << link_num_ << std::endl;
+        std::cout << "Paths: " << path_num_ << std::endl;
+        std::cout << "Walks: " << walk_num_ << std::endl;
+    }
 
     /**
      * @brief Print graph statistics:
@@ -2320,6 +2561,402 @@ public:
     }
 
     /**
+     * @brief Merge linear unique pairs: if A has exactly one successor B,
+     *        and B has exactly one predecessor A, merge A and B into one node.
+     *        The merged node keeps the smaller id, and L/P/W are updated.
+     * @return {uword_t} Number of successful merges
+     */
+    uword_t mergeLinearUniqueSuccessorPredecessor()
+    {
+        uword_t merged_count = 0;
+
+        while (true)
+        {
+            const auto &all_links = links_.getAllLinks();
+            if (all_links.empty())
+                break;
+
+            std::vector<uword_t> indeg(all_links.size(), 0);
+            std::vector<uword_t> pred(all_links.size(), uword_t(-1));
+            for (uword_t from = 0; from < all_links.size(); ++from)
+            {
+                for (const auto &enc : all_links[from])
+                {
+                    uword_t to = (enc >> LINK_DIR_BIT);
+                    if (to < indeg.size())
+                    {
+                        indeg[to]++;
+                        if (indeg[to] == 1)
+                            pred[to] = from;
+                    }
+                }
+            }
+
+            bool found = false;
+            uword_t a = 0, b = 0;
+
+            for (uword_t from = 0; from < all_links.size(); ++from)
+            {
+                if (from >= segments_.size() || segments_[from].getLength() == 0)
+                    continue;
+                if (all_links[from].size() != 1)
+                    continue;
+
+                uword_t enc = *(all_links[from].begin());
+                uword_t to = (enc >> LINK_DIR_BIT);
+                if (to >= segments_.size() || segments_[to].getLength() == 0)
+                    continue;
+                if (to == from)
+                    continue;
+
+                if (to < indeg.size() && indeg[to] == 1 && pred[to] == from)
+                {
+                    a = from;
+                    b = to;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+                break;
+
+            uword_t keep = std::min(a, b);
+            uword_t drop = std::max(a, b);
+
+            std::string merged_seq = segments_[a].getSequenceAsString() +
+                                     segments_[b].getSequenceAsString();
+
+            segments_[keep].setSequenceFromString(merged_seq);
+            segments_[keep].setDis(std::min(segments_[a].getDis(), segments_[b].getDis()));
+
+            segments_[drop].setSequence(std::vector<uword_t>());
+            segments_[drop].setDis(0);
+
+            auto old_links = links_.getAllLinks();
+            LinksSet new_links;
+            for (uword_t i = 0; i < segments_.size(); ++i)
+                new_links.addNode();
+
+            for (uword_t from = 0; from < old_links.size(); ++from)
+            {
+                for (const auto &enc : old_links[from])
+                {
+                    uword_t to = (enc >> LINK_DIR_BIT);
+                    uword_t dir = (enc & 0x03);
+
+                    if (from == a && to == b)
+                        continue;
+
+                    uword_t new_from = (from == drop) ? keep : from;
+                    uword_t new_to = (to == drop) ? keep : to;
+
+                    if (new_from >= segments_.size() || new_to >= segments_.size())
+                        continue;
+
+                    new_links.addLink(new_from, (new_to << LINK_DIR_BIT) | dir);
+                }
+            }
+            links_ = new_links;
+
+            std::vector<Path> new_paths;
+            new_paths.reserve(paths_.size());
+            for (const auto &path : paths_)
+            {
+                std::string line = path.toGfaTxt();
+                auto nodes = parsePathNodesFromLine(line);
+                auto nodes_new = remapMergedNodes(nodes, a, b, keep, drop);
+                if (nodes_new.empty())
+                    continue;
+
+                std::string body = buildPathBody(nodes_new);
+                PathMode mode = path.getMode();
+                new_paths.emplace_back(Path(path.getId(), body, name_to_id_, mode));
+            }
+            paths_.swap(new_paths);
+
+            std::vector<Walk> new_walks;
+            new_walks.reserve(walks_.size());
+            for (const auto &walk : walks_)
+            {
+                const Path &wpath = walk.getPath();
+                std::string line = wpath.toGfaTxt();
+                auto nodes = parsePathNodesFromLine(line);
+                auto nodes_new = remapMergedNodes(nodes, a, b, keep, drop);
+                if (nodes_new.empty())
+                    continue;
+
+                std::string body = buildPathBody(nodes_new);
+                PathMode mode = wpath.getMode();
+                Path new_path(0, body, name_to_id_, mode);
+                new_walks.emplace_back(Walk(walk.getSampleId(), walk.getHaplotypeId(),
+                                            walk.getSequenceId(), new_path));
+            }
+            walks_.swap(new_walks);
+
+            refreshMetaStats();
+            merged_count++;
+        }
+
+        return merged_count;
+    }
+
+    uword_t mergeUniqueSuccessorByReverseTable()
+    {
+        const uword_t n = static_cast<uword_t>(segments_.size());
+        if (n == 0)
+            return 0;
+
+        const auto &all_links = links_.getAllLinks();
+        if (all_links.empty())
+            return 0;
+
+        std::vector<uint8_t> valid(n, 0);
+        for (uword_t i = 0; i < n; ++i)
+        {
+            valid[i] = (segments_[i].getLength() > 0) ? 1 : 0;
+        }
+
+        std::vector<uword_t> indeg(n, 0), outdeg(n, 0);
+        for (uword_t from = 0; from < all_links.size(); ++from)
+        {
+            if (from >= n || !valid[from])
+                continue;
+
+            outdeg[from] = static_cast<uword_t>(all_links[from].size());
+            for (const auto &enc : all_links[from])
+            {
+                const uword_t to = (enc >> LINK_DIR_BIT);
+                if (to < n && valid[to])
+                    indeg[to]++;
+            }
+        }
+
+        // Successor table for merge-eligible edges only:
+        // A+ -> B+ and outdeg[A]==1 and indeg[B]==1.
+        std::vector<int64_t> succ(n, -1);
+        for (uword_t from = 0; from < all_links.size(); ++from)
+        {
+            if (from >= n || !valid[from])
+                continue;
+            if (outdeg[from] != 1)
+                continue;
+
+            const uword_t enc = *(all_links[from].begin());
+            const uword_t to = (enc >> LINK_DIR_BIT);
+            const uword_t dir = (enc & 0x03);
+            if (dir != 0x03)
+                continue;
+            if (to >= n || !valid[to] || to == from)
+                continue;
+            if (indeg[to] != 1)
+                continue;
+
+            succ[from] = static_cast<int64_t>(to);
+        }
+
+        // indegree in successor-subgraph (outdegree <=1 by construction)
+        std::vector<uword_t> indeg_s(n, 0);
+        for (uword_t u = 0; u < n; ++u)
+        {
+            if (succ[u] >= 0)
+                indeg_s[static_cast<uword_t>(succ[u])]++;
+        }
+
+        std::vector<uint8_t> visited(n, 0);
+        std::vector<std::vector<uword_t>> chains;
+
+        auto collect_linear_from = [&](uword_t start)
+        {
+            std::vector<uword_t> chain;
+            uword_t x = start;
+            while (x < n && !visited[x] && valid[x])
+            {
+                chain.push_back(x);
+                visited[x] = 1;
+                if (succ[x] < 0)
+                    break;
+                x = static_cast<uword_t>(succ[x]);
+            }
+            if (chain.size() >= 2)
+                chains.push_back(std::move(chain));
+        };
+
+        // Phase 1: start from heads in successor-subgraph
+        for (uword_t u = 0; u < n; ++u)
+        {
+            if (!valid[u] || visited[u] || succ[u] < 0)
+                continue;
+            if (indeg_s[u] == 1)
+                continue;
+            collect_linear_from(u);
+        }
+
+        // Phase 2: remaining unvisited nodes belong to pure cycles
+        for (uword_t u = 0; u < n; ++u)
+        {
+            if (!valid[u] || visited[u] || succ[u] < 0)
+                continue;
+
+            std::vector<uword_t> cyc;
+            std::unordered_map<uword_t, size_t> pos;
+            uword_t x = u;
+            while (x < n && !visited[x] && valid[x])
+            {
+                if (pos.find(x) != pos.end())
+                    break;
+                pos[x] = cyc.size();
+                cyc.push_back(x);
+                if (succ[x] < 0)
+                    break;
+                x = static_cast<uword_t>(succ[x]);
+            }
+
+            for (auto node : cyc)
+                visited[node] = 1;
+
+            auto it = pos.find(x);
+            if (it != pos.end())
+            {
+                std::vector<uword_t> pure_cycle(cyc.begin() + static_cast<ptrdiff_t>(it->second), cyc.end());
+                if (pure_cycle.size() >= 2)
+                    chains.push_back(std::move(pure_cycle));
+            }
+            else if (cyc.size() >= 2)
+            {
+                chains.push_back(std::move(cyc));
+            }
+        }
+
+        if (chains.empty())
+            return 0;
+
+        uword_t merged_count = 0;
+        for (const auto &chain : chains)
+        {
+            if (chain.size() >= 2)
+                merged_count += static_cast<uword_t>(chain.size() - 1);
+        }
+
+        // old id -> new id, assigned in rebuild phase
+        std::vector<uword_t> old2new(n, uword_t(-1));
+        std::vector<Segment> new_segments;
+        new_segments.reserve(n);
+
+        // Merge each chain into one node (chain order defines sequence order)
+        for (const auto &chain : chains)
+        {
+            std::string merged_seq;
+            uword_t min_dis = std::numeric_limits<uword_t>::max();
+            for (auto node : chain)
+            {
+                merged_seq += segments_[node].getSequenceAsString();
+                min_dis = std::min(min_dis, segments_[node].getDis());
+            }
+
+            uword_t new_id = static_cast<uword_t>(new_segments.size());
+            Segment merged_seg(new_id, merged_seq);
+            merged_seg.setDis(min_dis == std::numeric_limits<uword_t>::max() ? 0 : min_dis);
+            new_segments.push_back(merged_seg);
+
+            for (auto node : chain)
+                old2new[node] = new_id;
+        }
+
+        // Keep all remaining valid nodes as singletons
+        for (uword_t old_id = 0; old_id < n; ++old_id)
+        {
+            if (!valid[old_id])
+                continue;
+            if (old2new[old_id] != uword_t(-1))
+                continue;
+
+            uword_t new_id = static_cast<uword_t>(new_segments.size());
+            Segment copy_seg(new_id, segments_[old_id].getSequenceAsString());
+            copy_seg.setDis(segments_[old_id].getDis());
+            new_segments.push_back(copy_seg);
+            old2new[old_id] = new_id;
+        }
+
+        // Rebuild name map
+        name_to_id_.clear();
+        for (uword_t i = 0; i < new_segments.size(); ++i)
+            name_to_id_[std::to_string(i)] = i;
+
+        // Rebuild links in one pass
+        LinksSet new_links;
+        for (uword_t i = 0; i < new_segments.size(); ++i)
+            new_links.addNode();
+
+        for (uword_t from = 0; from < all_links.size(); ++from)
+        {
+            if (from >= n || !valid[from])
+                continue;
+            const uword_t new_from = old2new[from];
+            if (new_from == uword_t(-1))
+                continue;
+
+            for (const auto &enc : all_links[from])
+            {
+                const uword_t to = (enc >> LINK_DIR_BIT);
+                const uword_t dir = (enc & 0x03);
+                if (to >= n || !valid[to])
+                    continue;
+                const uword_t new_to = old2new[to];
+                if (new_to == uword_t(-1))
+                    continue;
+                if (new_from == new_to)
+                    continue; // collapsed inside merged node
+
+                new_links.addLink(new_from, (new_to << LINK_DIR_BIT) | dir);
+            }
+        }
+
+        // Rebuild paths and walks once, with remap + normalization
+        std::vector<Path> new_paths;
+        new_paths.reserve(paths_.size());
+        for (const auto &path : paths_)
+        {
+            const std::string line = path.toGfaTxt();
+            const auto nodes = parsePathNodesFromLine(line);
+            const auto mapped = remapNodesByMapNormalized(nodes, old2new);
+            if (mapped.empty())
+                continue;
+
+            const std::string body = buildPathBody(mapped);
+            const PathMode mode = path.getMode();
+            new_paths.emplace_back(Path(path.getId(), body, name_to_id_, mode));
+        }
+
+        std::vector<Walk> new_walks;
+        new_walks.reserve(walks_.size());
+        for (const auto &walk : walks_)
+        {
+            const Path &wpath = walk.getPath();
+            const std::string line = wpath.toGfaTxt();
+            const auto nodes = parsePathNodesFromLine(line);
+            const auto mapped = remapNodesByMapNormalized(nodes, old2new);
+            if (mapped.empty())
+                continue;
+
+            const std::string body = buildPathBody(mapped);
+            const PathMode mode = wpath.getMode();
+            Path new_path(0, body, name_to_id_, mode);
+            new_walks.emplace_back(Walk(walk.getSampleId(), walk.getHaplotypeId(),
+                                        walk.getSequenceId(), new_path));
+        }
+
+        // Commit
+        segments_.swap(new_segments);
+        links_ = new_links;
+        paths_.swap(new_paths);
+        walks_.swap(new_walks);
+        refreshMetaStats();
+
+        return merged_count;
+    }
+
+    /**
      * @brief  Set the distances for all segments in the GFA
      */
     void setSegmentsDis()
@@ -2453,7 +3090,7 @@ public:
      * @brief Write the GFA graph to a bGFA binary format file
      * @param {string} &filename - Output filename
      */
-    void write2Bgfa(const std::string &filename)
+    void write2Bgfa(const std::string &filename, bool store_segment_id = true)
     {
         std::ofstream ofile(filename, std::ios::binary);
         if (!ofile.is_open())
@@ -2465,7 +3102,24 @@ public:
 
         // setPreInfo(ofile);
 
-        pre_info_ = 0;
+        pre_info_ &= PRE_INFO_PATHMODE_INC;
+        if (!store_segment_id)
+            pre_info_ |= PRE_INFO_SEGMENT_NO_ID;
+        else
+            pre_info_ &= (~PRE_INFO_SEGMENT_NO_ID);
+        if (store_sosr_)
+        {
+            pre_info_ |= PRE_INFO_HAS_SOSR;
+            if (!sosr_compact_)
+                pre_info_ |= PRE_INFO_SOSR_UNCOMPRESSED;
+            else
+                pre_info_ &= (~PRE_INFO_SOSR_UNCOMPRESSED);
+        }
+        else
+        {
+            pre_info_ &= (~PRE_INFO_HAS_SOSR);
+            pre_info_ &= (~PRE_INFO_SOSR_UNCOMPRESSED);
+        }
         seg_size_ = 0;
         link_size_ = 0;
         path_size_ = 0;
@@ -2485,8 +3139,9 @@ public:
         // Write segments
         for (auto &segment : segments_)
         {
-            segment.toBgfaBin(ofile);
-            seg_size_ += segment.getStoreSize();
+            segment.setSosrStorage(store_sosr_, sosr_compact_);
+            segment.toBgfaBin(ofile, store_segment_id);
+            seg_size_ += segment.getStoreSize(store_segment_id);
         }
 
         {
@@ -2525,7 +3180,7 @@ public:
      * @brief Write split binary files for S/L/P/W sections and a main BGFA with tags.
      * @param path_noext Base output path without extension
      */
-    void write2BgfaSplit(const std::string &path_noext)
+    void write2BgfaSplit(const std::string &path_noext, bool store_segment_id = true)
     {
         const std::string s_file = path_noext + ".bgfas";
         const std::string l_file = path_noext + ".bgfal";
@@ -2544,7 +3199,22 @@ public:
         uword_t p_tag = static_cast<uword_t>(dist(gen));
         uword_t w_tag = static_cast<uword_t>(dist(gen));
 
-        pre_info_ = 1;
+        pre_info_ = PRE_INFO_PATHMODE_INC;
+        if (!store_segment_id)
+            pre_info_ |= PRE_INFO_SEGMENT_NO_ID;
+        if (store_sosr_)
+        {
+            pre_info_ |= PRE_INFO_HAS_SOSR;
+            if (!sosr_compact_)
+                pre_info_ |= PRE_INFO_SOSR_UNCOMPRESSED;
+            else
+                pre_info_ &= (~PRE_INFO_SOSR_UNCOMPRESSED);
+        }
+        else
+        {
+            pre_info_ &= (~PRE_INFO_HAS_SOSR);
+            pre_info_ &= (~PRE_INFO_SOSR_UNCOMPRESSED);
+        }
 
         {
             std::ofstream ofile(main_bgfa, std::ios::binary);
@@ -2574,7 +3244,10 @@ public:
                 throw std::runtime_error(std::string("[Split] Failed to open: ") + s_file);
             ofs.write(reinterpret_cast<const char *>(&s_tag), sizeof(uword_t));
             for (auto &segment : segments_)
-                segment.toBgfaBin(ofs);
+            {
+                segment.setSosrStorage(store_sosr_, sosr_compact_);
+                segment.toBgfaBin(ofs, store_segment_id);
+            }
             ofs.close();
         }
         // Write L
@@ -2609,6 +3282,134 @@ public:
     }
 
 private:
+    std::vector<std::pair<uword_t, char>> remapNodesByMapNormalized(
+        const std::vector<std::pair<uword_t, char>> &nodes,
+        const std::vector<uword_t> &old2new) const
+    {
+        std::vector<std::pair<uword_t, char>> out;
+        out.reserve(nodes.size());
+
+        for (const auto &nd : nodes)
+        {
+            const uword_t old_id = nd.first;
+            const char dir = nd.second;
+            if (old_id >= old2new.size())
+                continue;
+            const uword_t new_id = old2new[old_id];
+            if (new_id == uword_t(-1))
+                continue;
+
+            if (!out.empty() && out.back().first == new_id)
+            {
+                // collapse consecutive duplicate mapped nodes
+                continue;
+            }
+            out.emplace_back(new_id, dir);
+        }
+
+        return out;
+    }
+
+    std::vector<std::pair<uword_t, char>> parsePathNodesFromLine(const std::string &line) const
+    {
+        std::vector<std::pair<uword_t, char>> nodes;
+
+        size_t t1 = line.find('\t');
+        if (t1 == std::string::npos)
+            return nodes;
+        size_t t2 = line.find('\t', t1 + 1);
+        if (t2 == std::string::npos)
+            return nodes;
+        size_t t3 = line.find('\t', t2 + 1);
+
+        std::string body = (t3 == std::string::npos)
+                               ? line.substr(t2 + 1)
+                               : line.substr(t2 + 1, t3 - (t2 + 1));
+
+        std::istringstream iss(body);
+        std::string token;
+        while (std::getline(iss, token, ','))
+        {
+            if (token.size() < 2)
+                continue;
+            char dir = token.back();
+            if (dir != '+' && dir != '-')
+                continue;
+
+            std::string id_str = token.substr(0, token.size() - 1);
+            uword_t id = static_cast<uword_t>(std::stoull(id_str));
+            nodes.emplace_back(id, dir);
+        }
+
+        return nodes;
+    }
+
+    std::vector<std::pair<uword_t, char>> remapMergedNodes(
+        const std::vector<std::pair<uword_t, char>> &nodes,
+        uword_t a, uword_t b, uword_t keep, uword_t drop) const
+    {
+        std::vector<std::pair<uword_t, char>> out;
+        out.reserve(nodes.size());
+
+        for (size_t i = 0; i < nodes.size(); ++i)
+        {
+            uword_t old_id = nodes[i].first;
+            char dir = nodes[i].second;
+
+            if (i > 0 && nodes[i - 1].first == a && old_id == b)
+            {
+                continue;
+            }
+
+            uword_t new_id = (old_id == drop) ? keep : old_id;
+            out.emplace_back(new_id, dir);
+        }
+
+        return out;
+    }
+
+    std::string buildPathBody(const std::vector<std::pair<uword_t, char>> &nodes) const
+    {
+        std::ostringstream oss;
+        for (size_t i = 0; i < nodes.size(); ++i)
+        {
+            if (i > 0)
+                oss << ",";
+            oss << nodes[i].first << nodes[i].second;
+        }
+        return oss.str();
+    }
+
+    void refreshMetaStats()
+    {
+        bp_num_ = 0;
+        seg_size_ = 0;
+        for (auto &segment : segments_)
+        {
+            if (segment.getLength() > 0)
+                bp_num_ += segment.getLength();
+            seg_size_ += segment.getStoreSize();
+        }
+
+        seg_num_ = segments_.size();
+        link_num_ = links_.getLinkNum();
+        link_size_ = links_.getStoreSize();
+
+        path_num_ = paths_.size();
+        path_size_ = 0;
+        for (auto &path : paths_)
+        {
+            path_size_ += path.getStoreSize();
+        }
+
+        walk_num_ = walks_.size();
+        walk_size_ = 0;
+        for (auto &walk : walks_)
+        {
+            walk_size_ += walk.getStoreSize();
+        }
+    }
+
     /**
      * @brief Load GFA graph from a GFA format file
      * @param {string} &filename - Input filename
@@ -2647,9 +3448,16 @@ private:
             }
         }
 
+        links_.resizeLinks(seg_num_);
+
+#ifdef INFO_DEBUG
+        std::cout << "[Read GFA] Finished loading GFA file: " << filename << std::endl;
+        briefStat();
+        std::cout << "LinkSetSize:" << links_.getAllLinks().size() << std::endl;
+#endif
         link_size_ = links_.getStoreSize();
 
-        pre_info_ = 0x01;
+        // pre_info_ = 0x01;
 
         // // Ensure links row size matches node count for serialization
         // links_.resizeLinks(node_num_);
@@ -2663,8 +3471,7 @@ private:
      */
     void loadFromFileBgfa(const std::string &filename)
     {
-        std::ifstream file(filename);
-        uword_t pre_info, s_offset, l_offset, p_offset;
+        std::ifstream file(filename, std::ios::binary);
         uword_t curr_pos = 0;
 
         if (!file.is_open())
@@ -2673,11 +3480,14 @@ private:
                 "[Load From bGFA File] Failed to open file: " + filename);
         }
 
-        file.read(reinterpret_cast<char *>(&pre_info), sizeof(pre_info));
+        file.read(reinterpret_cast<char *>(&pre_info_), sizeof(pre_info_));
         file.read(reinterpret_cast<char *>(&seg_size_), sizeof(seg_size_));
         file.read(reinterpret_cast<char *>(&link_size_), sizeof(link_size_));
         file.read(reinterpret_cast<char *>(&path_size_), sizeof(path_size_));
         file.read(reinterpret_cast<char *>(&walk_size_), sizeof(walk_size_));
+
+        store_sosr_ = ((pre_info_ & PRE_INFO_HAS_SOSR) != 0);
+        sosr_compact_ = ((pre_info_ & PRE_INFO_SOSR_UNCOMPRESSED) == 0);
 
         // curr_pos;
 
@@ -2720,7 +3530,8 @@ private:
     {
         std::stringstream ss(line);
         std::string type, id, sequence;
-        uword_t so = 0, sr = 0;
+        uword_t so = 0, sr = 0, sn_id = 0;
+        bool has_sn = false;
 
         ss >> type >> id >> sequence;
 
@@ -2759,10 +3570,32 @@ private:
                 continue;
             }
             // Ignore other optional fields (e.g., LN:i:<len>, etc.)
+            const std::string sn_prefix = "SN:Z:";
+            if (token.compare(0, sn_prefix.size(), sn_prefix) == 0)
+            {
+                const std::string name = token.substr(sn_prefix.size());
+                if (!name.empty())
+                {
+                    auto it = sn_name_to_id_.find(name);
+                    if (it == sn_name_to_id_.end())
+                    {
+                        sn_id = static_cast<uword_t>(sn_name_to_id_.size());
+                        sn_name_to_id_[name] = sn_id;
+                    }
+                    else
+                    {
+                        sn_id = it->second;
+                    }
+                    has_sn = true;
+                }
+                continue;
+            }
         }
 
         name_to_id_[id] = seg_num_;
         Segment segment(seg_num_, sequence, so, sr);
+        if (has_sn)
+            segment.setSnId(sn_id);
 
         seg_num_++;
         bp_num_ += segment.getLength();
@@ -2778,44 +3611,174 @@ private:
      */
     void parseBinSegmentField(std::ifstream &file, uword_t &curr_pos, const uword_t limit)
     {
-        uword_t node_num, sosr, l_str;
-        file.read(reinterpret_cast<char *>(&node_num), sizeof(node_num));
-        file.read(reinterpret_cast<char *>(&sosr), sizeof(sosr));
+        uword_t node_num = seg_num_, sosr_word = 0, sn_word = 0, l_str = 0;
+        const bool no_segment_id = ((pre_info_ & PRE_INFO_SEGMENT_NO_ID) != 0);
+        const bool has_sosr = ((pre_info_ & PRE_INFO_HAS_SOSR) != 0);
+        const bool sosr_uncompressed = ((pre_info_ & PRE_INFO_SOSR_UNCOMPRESSED) != 0);
+        if (!no_segment_id)
+        {
+            file.read(reinterpret_cast<char *>(&node_num), sizeof(node_num));
+            curr_pos += 1;
+        }
+        if (has_sosr)
+        {
+            file.read(reinterpret_cast<char *>(&sosr_word), sizeof(sosr_word));
+            curr_pos += 1;
+            if (sosr_uncompressed)
+            {
+                file.read(reinterpret_cast<char *>(&sn_word), sizeof(sn_word));
+                curr_pos += 1;
+            }
+        }
         file.read(reinterpret_cast<char *>(&l_str), sizeof(l_str));
+        curr_pos += 1;
 
         if (!file)
         {
             throw std::runtime_error(
                 "[Load From bGFA File] Error reading S record header.");
         }
-        curr_pos += 3;
-
-        std::vector<uword_t> seq_data(1, 0);
-
-        if ((l_str >> (WORD_BIT - 1)) == 1)
+        uword_t so = 0, sr = 0, sn_id = 0;
+        if (has_sosr)
         {
-            seq_data[0] = l_str << SEGMENT_COMPACT_PLACEHOLDER;
-            l_str = (l_str >> (WORD_BIT - SEGMENT_COMPACT_PLACEHOLDER)) &
-                    uword_t((1 << (SEGMENT_COMPACT_PLACEHOLDER - 1)) - 1);
+            if (sosr_uncompressed)
+            {
+                sr = (sosr_word & 0x7F);
+                so = (sosr_word >> 7) & 0x01FFFFFF;
+                sn_id = (sn_word & 0xFFFFFFFF);
+            }
+            else
+            {
+                sr = (sosr_word & 0x07);
+                so = (sosr_word >> 3) & 0x003FFFFF;
+                sn_id = (sosr_word >> 25) & 0x7F;
+            }
+        }
+
+        if (no_segment_id)
+        {
+            const uword_t tag2 = (l_str >> (WORD_BIT - 2)) & 0x3;
+
+            if (tag2 == 0)
+            {
+                std::vector<uword_t> seq_data;
+                uint8_t baseinElement = WORD_BIT / 2;
+                size_t seq_num = (l_str + baseinElement - 1) / baseinElement;
+                seq_data.resize(seq_num);
+                if (seq_num > 0)
+                {
+                    file.read(reinterpret_cast<char *>(seq_data.data()),
+                              seq_num * sizeof(uword_t));
+                    if (!file)
+                    {
+                        throw std::runtime_error("[Load From bGFA File] Error reading sequence data in S record.");
+                    }
+                }
+                curr_pos += seq_num;
+                Segment segment(node_num, so, sr, l_str, seq_data);
+                segment.setSosrStorage(has_sosr, !sosr_uncompressed);
+                if (has_sosr)
+                    segment.setSnId(sn_id);
+                bp_num_ += segment.getLength();
+                segments_.push_back(segment);
+            }
+            else if (tag2 == 2)
+            {
+                const uword_t len = (l_str >> (WORD_BIT - 6)) & 0x0F;
+                const uword_t payload = l_str & ((uword_t(1) << (WORD_BIT - 6)) - 1);
+                std::string seq;
+                seq.reserve(len);
+                for (uword_t i = 0; i < len; ++i)
+                {
+                    const uword_t shift = (WORD_BIT - 8) - 2 * i;
+                    const uint8_t enc = static_cast<uint8_t>((payload >> shift) & 0x3);
+                    seq.push_back(GlobalVariant::bin2char[enc]);
+                }
+                Segment segment(node_num, seq, so, sr);
+                segment.setSosrStorage(has_sosr, !sosr_uncompressed);
+                if (has_sosr)
+                    segment.setSnId(sn_id);
+                bp_num_ += segment.getLength();
+                segments_.push_back(segment);
+            }
+            else if (tag2 == 3)
+            {
+                uword_t payload_lo = 0;
+                file.read(reinterpret_cast<char *>(&payload_lo), sizeof(payload_lo));
+                if (!file)
+                {
+                    throw std::runtime_error("[Load From bGFA File] Error reading compact-2 sequence payload in S record.");
+                }
+                curr_pos += 1;
+
+                const uword_t len = (l_str >> (WORD_BIT - 8)) & 0x3F;
+                const uword_t hi_bits = WORD_BIT - 8;
+                const uword_t payload_hi = l_str & ((uword_t(1) << hi_bits) - 1);
+
+                std::string seq;
+                seq.reserve(len);
+                for (uword_t i = 0; i < len; ++i)
+                {
+                    const uword_t p0 = 2 * i;
+                    const uword_t p1 = p0 + 1;
+
+                    const uint8_t b0 = (p0 < hi_bits)
+                                           ? static_cast<uint8_t>((payload_hi >> (hi_bits - 1 - p0)) & 0x1)
+                                           : static_cast<uint8_t>((payload_lo >> (WORD_BIT - 1 - (p0 - hi_bits))) & 0x1);
+                    const uint8_t b1 = (p1 < hi_bits)
+                                           ? static_cast<uint8_t>((payload_hi >> (hi_bits - 1 - p1)) & 0x1)
+                                           : static_cast<uint8_t>((payload_lo >> (WORD_BIT - 1 - (p1 - hi_bits))) & 0x1);
+
+                    const uint8_t enc = static_cast<uint8_t>((b0 << 1) | b1);
+                    seq.push_back(GlobalVariant::bin2char[enc]);
+                }
+                Segment segment(node_num, seq, so, sr);
+                segment.setSosrStorage(has_sosr, !sosr_uncompressed);
+                if (has_sosr)
+                    segment.setSnId(sn_id);
+                bp_num_ += segment.getLength();
+                segments_.push_back(segment);
+            }
+            else
+            {
+                throw std::runtime_error("[Load From bGFA File] Invalid segment compact tag in no-id mode.");
+            }
         }
         else
         {
-            uint8_t baseinElement = WORD_BIT / 2;
-            size_t seq_num =
-                (l_str + baseinElement - 1) / baseinElement;
-            seq_data.resize(seq_num);
-            if (seq_num > 0)
+            std::vector<uword_t> seq_data(1, 0);
+
+            if ((l_str >> (WORD_BIT - 1)) == 1)
             {
-                file.read(reinterpret_cast<char *>(seq_data.data()),
-                          seq_num * sizeof(uword_t));
-                if (!file)
-                {
-                    throw std::runtime_error("[Load From bGFA File] Error reading sequence data in S record.");
-                }
+                seq_data[0] = l_str << SEGMENT_COMPACT_PLACEHOLDER;
+                l_str = (l_str >> (WORD_BIT - SEGMENT_COMPACT_PLACEHOLDER)) &
+                        uword_t((1 << (SEGMENT_COMPACT_PLACEHOLDER - 1)) - 1);
             }
-            curr_pos += seq_num;
+            else
+            {
+                uint8_t baseinElement = WORD_BIT / 2;
+                size_t seq_num =
+                    (l_str + baseinElement - 1) / baseinElement;
+                seq_data.resize(seq_num);
+                if (seq_num > 0)
+                {
+                    file.read(reinterpret_cast<char *>(seq_data.data()),
+                              seq_num * sizeof(uword_t));
+                    if (!file)
+                    {
+                        throw std::runtime_error("[Load From bGFA File] Error reading sequence data in S record.");
+                    }
+                }
+                curr_pos += seq_num;
+            }
+            Segment segment(node_num, so, sr, l_str, seq_data);
+            segment.setSosrStorage(has_sosr, !sosr_uncompressed);
+            if (has_sosr)
+                segment.setSnId(sn_id);
+            bp_num_ += segment.getLength();
+            segments_.push_back(segment);
         }
-        segments_.push_back(Segment(node_num, sosr, l_str, seq_data));
+
         name_to_id_[std::to_string(node_num)] = seg_num_;
         seg_num_++;
     }
@@ -2828,6 +3791,14 @@ private:
     {
         // Ensure links set sized to current node count
         links_.resizeLinks(seg_num_);
+#ifdef INFO_DEBUG
+        std::cout << "\tline:" << link_num_ << " Links_size:" << links_.getAllLinks().size() << std::endl;
+        if (seg_num_ != links_.getAllLinks().size())
+        {
+            std::cout << "\tNode_num:" << seg_num_ << " Links_size:" << links_.getAllLinks().size() << std::endl;
+            throw std::logic_error("[Parse Link Line] Node number mismatch when parsing L record.");
+        }
+#endif
         std::istringstream iss(line);
         std::string type, from_name, from_dir, to_name, to_dir, overlap;
 
@@ -2855,10 +3826,10 @@ private:
 
         links_.resizeLinks(n_rows);
 
-        // if (seg_num_ != val_num)
-        // {
-        //     throw std::logic_error("[Load From bGFA File] Node number mismatch when reading L record.");
-        // }
+        if (seg_num_ != n_rows)
+        {
+            throw std::logic_error("[Load From bGFA File] Node number mismatch when reading L record.");
+        }
 
         std::vector<uword_t> indptr(n_rows + 1, 0);
         for (int i = 0; i <= n_rows; i++)
@@ -2889,6 +3860,7 @@ private:
         }
 
         curr_pos += 2 + links_num + n_rows + 1;
+        link_num_ = links_num;
     }
 
     /**
@@ -2902,7 +3874,7 @@ private:
 
         iss >> type >> name >> path_str >> cigar_str;
         Path path;
-        if (pre_info_ & 0x1)
+        if (pre_info_ & PRE_INFO_PATHMODE_INC)
             path = Path(path_num_, path_str, name_to_id_, PATHMODE_INCREMENT);
         else
             path = Path(path_num_, path_str, name_to_id_, PATHMODE_DIRECT);
@@ -2988,7 +3960,7 @@ private:
 
         Path path;
 
-        if (pre_info_ & 0x1)
+        if (pre_info_ & PRE_INFO_PATHMODE_INC)
             path = Path(walk_str, name_to_id_, PATHMODE_INCREMENT);
         else
             path = Path(walk_str, name_to_id_, PATHMODE_DIRECT);
